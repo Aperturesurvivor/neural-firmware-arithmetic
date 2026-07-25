@@ -80,6 +80,9 @@ def train_one(
     model = CausalArithmeticTransformer(tokenizer, model_config, mode).to(device)
     training = experiment_config["training"]
     data = experiment_config["data"]
+    steps = training.get("steps_by_model", {}).get(mode, training["steps"])
+    if steps < 1:
+        raise ValueError("Every run must perform at least one optimization step")
 
     optimizer = torch.optim.AdamW(
         model.parameters(),
@@ -92,7 +95,7 @@ def train_one(
     started = time.perf_counter()
 
     model.train()
-    for step in range(1, training["steps"] + 1):
+    for step in range(1, steps + 1):
         _, batch = sample_training_batch(
             rng=rng,
             batch_size=training["batch_size"],
@@ -108,7 +111,7 @@ def train_one(
         torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
         optimizer.step()
 
-        if step == 1 or step % training["log_every"] == 0 or step == training["steps"]:
+        if step == 1 or step % training["log_every"] == 0 or step == steps:
             record = {
                 "step": step,
                 "loss": float(loss.detach().cpu()),
@@ -116,7 +119,7 @@ def train_one(
             }
             history.append(record)
             print(
-                f"[{mode} seed={seed}] step={step}/{training['steps']} "
+                f"[{mode} seed={seed}] step={step}/{steps} "
                 f"loss={record['loss']:.6f} elapsed={record['elapsed_seconds']:.1f}s",
                 flush=True,
             )
@@ -141,7 +144,7 @@ def train_one(
     result = TrainingResult(
         model=mode,
         seed=seed,
-        steps=training["steps"],
+        steps=steps,
         final_loss=history[-1]["loss"],
         wall_time_seconds=wall_time,
         trainable_parameters=model.trainable_parameter_count(),
@@ -169,4 +172,3 @@ def load_model(checkpoint_path: Path, device: torch.device) -> CausalArithmeticT
 
 def load_config(path: Path) -> dict[str, Any]:
     return json.loads(path.read_text())
-

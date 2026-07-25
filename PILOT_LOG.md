@@ -42,3 +42,40 @@ Decision before confirmatory testing:
 - Retrain latent strength 16 rather than relying only on post-training
   rescaling.
 
+## Pilot v2 — 2026-07-25
+
+### Long baseline
+
+The baseline was trained for 5,000 steps on 1–4 digit operands. Its
+teacher-forced loss fell to 0.027. Exact-match accuracy by maximum operand
+length was:
+
+| Digits | 1 | 2 | 3 | 4 | 5 | 6 |
+|---|---:|---:|---:|---:|---:|---:|
+| Accuracy | 1.000 | 1.000 | 0.893 | 0.939 | 0.017 | 0.000 |
+
+This establishes a fairer control: the model learned lengths represented in
+training and failed sharply immediately outside them.
+
+### Retrained latent firmware
+
+Retraining with strength 16 for 500 steps produced:
+
+| ID 1–6 | OOD 7–12 | OOD 13–20 | Carry chain |
+|---:|---:|---:|---:|
+| 1.000 | 1.000 | 0.990 | 1.000 |
+
+Both errors were premature termination on 20-digit operands. A post-training
+pilot sweep found strengths 20, 24, and 32 each produced 1.000 on every split.
+
+Decision:
+
+- Use strength 32 for the confirmatory study. This is deliberately above the
+  observed threshold so the deterministic code dominates unseen-position
+  residual activations.
+- Run a final baseline-duration pilot at the actual 1–6 digit training range.
+- Train the baseline and latent-firmware models for the same number of steps in
+  the confirmatory study. The direct-firmware upper bound requires only an
+  initialization checkpoint because its correctness is structural rather than
+  learned.
+
