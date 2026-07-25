@@ -79,3 +79,27 @@ Decision:
   initialization checkpoint because its correctness is structural rather than
   learned.
 
+## Pilot v3 — actual 1–6 digit training range
+
+Configuration: `configs/pilot_train6.json`.
+
+The baseline received 10,000 steps and reached 0.923 exact-match accuracy on
+1–6 digit additions. It scored 0.000 on all three extrapolation sets. The
+latent-firmware model received 1,000 steps and scored 1.000 on all four sets.
+
+The baseline was therefore demonstrably capable in-range before comparison,
+while the firmware interface converged substantially earlier.
+
+Final confirmatory decisions:
+
+- Use three new training seeds: 101, 211, and 307.
+- Use a new evaluation seed: 918273.
+- Use 1,000 examples in each random split and 500 carry-chain examples.
+- Give the baseline 10,000 steps, latent firmware 1,000, and the structural
+  direct-firmware upper bound one step.
+- Retain firmware strength 32.
+- Treat different wall times as descriptive only. The baseline receives more
+  optimization compute, so the accuracy comparison is conservative with
+  respect to training budget.
+- Freeze `configs/study.json` before running any confirmatory model.
+

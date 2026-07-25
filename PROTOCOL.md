@@ -30,7 +30,12 @@ grammar, not a solution to open-ended semantic parsing.
   bound rather than the primary proposed model.
 
 All frozen lookup tables and codebooks are excluded from trainable-parameter
-counts. Trainable architecture and optimization settings must otherwise match.
+counts. Trainable architecture and optimization settings otherwise match.
+Pilot results showed that the baseline required 10,000 steps to learn the
+training range, whereas the latent interface converged within 1,000 steps. The
+confirmatory baseline therefore receives 10,000 steps and the latent model
+1,000. This favors the baseline in optimization compute and means wall time is
+descriptive rather than a controlled efficiency comparison.
 
 ## Data
 
@@ -49,7 +54,9 @@ answer generation rather than prompt memorization.
 
 ## Confirmatory evaluation sets
 
-The same committed evaluation examples are used for every model and seed.
+The same committed evaluation examples are used for every model and seed. The
+confirmatory evaluation seed and all three training seeds were not used during
+pilot development.
 
 - `id_random`: 1–6 digit operands.
 - `ood_primary`: 7–12 digit operands.
@@ -65,6 +72,12 @@ Sequence-level exact-match accuracy on `ood_primary`, aggregated by model over
 three independently initialized training seeds.
 
 The main comparison is `latent_firmware` versus `baseline`.
+
+The baseline uses a conventional causal transformer with fixed sinusoidal
+positions. It is a generic small language-model baseline, not the strongest
+task-specific arithmetic transformer known in the literature. Specialized
+relative or coupled position schemes are treated as relevant prior work and a
+limitation on comparative scope.
 
 ## Secondary outcomes
 
@@ -117,4 +130,3 @@ The final artifact must include:
 - analysis tables and figures;
 - machine and software information;
 - manuscript source and compiled PDF.
-

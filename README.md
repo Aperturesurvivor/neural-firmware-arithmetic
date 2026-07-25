@@ -37,9 +37,8 @@ The environment and commands will be finalized after the pilot:
 uv sync --extra dev
 uv run pytest
 uv run nf-study --config configs/study.json
-uv run nf-analyze --study results/study.json
+uv run nf-analyze --study artifacts/confirmatory_v1/study.json
 ```
 
 Compact metrics, configuration files, figures, and the paper belong in Git.
 Large checkpoints remain local under `checkpoints/`.
-

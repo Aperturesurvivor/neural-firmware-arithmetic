@@ -26,6 +26,8 @@ class FrozenRippleCarryAdder(nn.Module):
                     carry_table[a, b, carry] = total // 10
         self.register_buffer("sum_table", sum_table, persistent=True)
         self.register_buffer("carry_table", carry_table, persistent=True)
+        self._sum_lookup = sum_table.tolist()
+        self._carry_lookup = carry_table.tolist()
 
         generator = torch.Generator(device="cpu")
         generator.manual_seed(314159)
@@ -37,16 +39,14 @@ class FrozenRippleCarryAdder(nn.Module):
     def add_digit_ids(self, a_ids: list[int], b_ids: list[int]) -> list[int]:
         a_digits = [self.tokenizer.id_to_digit(token_id) for token_id in reversed(a_ids)]
         b_digits = [self.tokenizer.id_to_digit(token_id) for token_id in reversed(b_ids)]
-        sum_table = self.sum_table.detach().cpu()
-        carry_table = self.carry_table.detach().cpu()
 
         output_reversed: list[int] = []
         carry = 0
         for index in range(max(len(a_digits), len(b_digits))):
             a = a_digits[index] if index < len(a_digits) else 0
             b = b_digits[index] if index < len(b_digits) else 0
-            output_reversed.append(int(sum_table[a, b, carry]))
-            carry = int(carry_table[a, b, carry])
+            output_reversed.append(self._sum_lookup[a][b][carry])
+            carry = self._carry_lookup[a][b][carry]
         if carry:
             output_reversed.append(carry)
         return [
@@ -103,4 +103,3 @@ class FrozenRippleCarryAdder(nn.Module):
         signal = torch.nn.functional.embedding(targets, self.codebook)
         signal = signal * valid.unsqueeze(-1)
         return signal, targets, valid
-

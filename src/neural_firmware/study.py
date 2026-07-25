@@ -25,6 +25,7 @@ def run_study(config: dict[str, Any], project_root: Path) -> Path:
         splits = make_eval_splits(
             eval_examples=config["data"]["eval_examples"],
             carry_examples=config["data"]["carry_examples"],
+            seed=config["data"].get("eval_seed", 260725),
         )
         eval_hash = save_eval_splits(eval_path, splits)
 
