@@ -1,0 +1,30 @@
+{
+  "experiment_name": "confirmatory_v1",
+  "models": ["baseline", "latent_firmware", "direct_firmware"],
+  "seeds": [17, 29, 43],
+  "device": "auto",
+  "data": {
+    "train_min_digits": 1,
+    "train_max_digits": 6,
+    "eval_examples": 1000,
+    "carry_examples": 500
+  },
+  "model": {
+    "d_model": 128,
+    "n_heads": 4,
+    "n_layers": 4,
+    "d_ff": 384,
+    "dropout": 0.0,
+    "max_sequence_length": 96,
+    "firmware_strength": 8.0
+  },
+  "training": {
+    "steps": 2500,
+    "batch_size": 128,
+    "learning_rate": 0.0003,
+    "weight_decay": 0.01,
+    "log_every": 100,
+    "eval_every": 500
+  }
+}
+
