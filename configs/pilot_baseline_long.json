@@ -1,0 +1,30 @@
+{
+  "experiment_name": "pilot_baseline_long",
+  "models": ["baseline"],
+  "seeds": [17],
+  "device": "auto",
+  "data": {
+    "train_min_digits": 1,
+    "train_max_digits": 4,
+    "eval_examples": 200,
+    "carry_examples": 100
+  },
+  "model": {
+    "d_model": 96,
+    "n_heads": 4,
+    "n_layers": 3,
+    "d_ff": 256,
+    "dropout": 0.0,
+    "max_sequence_length": 64,
+    "firmware_strength": 16.0
+  },
+  "training": {
+    "steps": 5000,
+    "batch_size": 128,
+    "learning_rate": 0.0005,
+    "weight_decay": 0.01,
+    "log_every": 250,
+    "eval_every": 1000
+  }
+}
+
