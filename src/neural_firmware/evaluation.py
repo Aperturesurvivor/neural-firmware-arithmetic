@@ -42,6 +42,8 @@ def _generate_bucket(
     input_ids = torch.tensor(prompts, dtype=torch.long, device=device)
     finished = torch.zeros(len(examples), dtype=torch.bool, device=device)
     generated: list[list[int]] = [[] for _ in examples]
+    available_steps = model.config.max_sequence_length - prompt_length + 1
+    max_new_tokens = min(max_new_tokens, available_steps)
 
     with torch.inference_mode():
         for _ in range(max_new_tokens):
