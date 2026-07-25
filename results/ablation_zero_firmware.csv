@@ -1,0 +1,13 @@
+model,seed,split,examples,correct,exact_match_accuracy
+latent_firmware_strength_zero,101,id_random,1000,2,0.002
+latent_firmware_strength_zero,101,ood_primary,1000,0,0.0
+latent_firmware_strength_zero,101,ood_long,1000,0,0.0
+latent_firmware_strength_zero,101,carry_chain,500,0,0.0
+latent_firmware_strength_zero,211,id_random,1000,4,0.004
+latent_firmware_strength_zero,211,ood_primary,1000,0,0.0
+latent_firmware_strength_zero,211,ood_long,1000,0,0.0
+latent_firmware_strength_zero,211,carry_chain,500,0,0.0
+latent_firmware_strength_zero,307,id_random,1000,1,0.001
+latent_firmware_strength_zero,307,ood_primary,1000,0,0.0
+latent_firmware_strength_zero,307,ood_long,1000,0,0.0
+latent_firmware_strength_zero,307,carry_chain,500,0,0.0
