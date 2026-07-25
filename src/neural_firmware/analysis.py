@@ -6,6 +6,7 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+import torch
 
 
 def _prediction_frame(artifact_root: Path) -> pd.DataFrame:
@@ -62,6 +63,34 @@ def analyze(study_path: Path, figures_dir: Path, results_dir: Path) -> Path:
     )
     summary.to_csv(results_dir / "accuracy_summary.csv", index=False)
     per_seed.to_csv(results_dir / "accuracy_per_seed.csv", index=False)
+    predictions[~predictions["correct"]].to_csv(results_dir / "errors.csv", index=False)
+
+    run_rows: list[dict] = []
+    environments: list[dict] = []
+    for run in payload["runs"]:
+        training = run["training"]
+        run_rows.append(
+            {
+                "model": training["model"],
+                "seed": training["seed"],
+                "steps": training["steps"],
+                "final_loss": training["final_loss"],
+                "wall_time_seconds": training["wall_time_seconds"],
+                "trainable_parameters": training["trainable_parameters"],
+                "device": training["device"],
+            }
+        )
+        checkpoint = Path(training["checkpoint"])
+        if checkpoint.exists():
+            checkpoint_payload = torch.load(checkpoint, map_location="cpu", weights_only=False)
+            environments.append(checkpoint_payload["environment"])
+    pd.DataFrame(run_rows).to_csv(results_dir / "run_manifest.csv", index=False)
+    (results_dir / "environment.json").write_text(
+        json.dumps({"runs": environments}, indent=2) + "\n"
+    )
+    (results_dir / "confirmatory_study.json").write_text(
+        json.dumps(payload, indent=2) + "\n"
+    )
 
     primary_difference = bootstrap_seed_difference(
         per_seed,
@@ -99,9 +128,31 @@ def analyze(study_path: Path, figures_dir: Path, results_dir: Path) -> Path:
     )
     by_digits.to_csv(results_dir / "accuracy_by_digits.csv", index=False)
     fig, ax = plt.subplots(figsize=(8.2, 4.8))
+    styles = {
+        "baseline": {"color": "tab:blue", "linestyle": "-", "linewidth": 2.2, "zorder": 3},
+        "latent_firmware": {
+            "color": "tab:orange",
+            "linestyle": "-",
+            "linewidth": 4.0,
+            "zorder": 2,
+        },
+        "direct_firmware": {
+            "color": "tab:green",
+            "linestyle": "--",
+            "linewidth": 2.2,
+            "zorder": 4,
+        },
+    }
     for model in model_order:
         rows = by_digits[by_digits["model"] == model]
-        ax.plot(rows["max_operand_digits"], rows["mean"], marker="o", markersize=3, label=model)
+        ax.plot(
+            rows["max_operand_digits"],
+            rows["mean"],
+            marker="o",
+            markersize=3,
+            label=model,
+            **styles[model],
+        )
     ax.set_xlabel("Maximum operand length (digits)")
     ax.set_ylabel("Exact-match accuracy")
     ax.set_ylim(-0.02, 1.05)
@@ -125,4 +176,3 @@ def analyze(study_path: Path, figures_dir: Path, results_dir: Path) -> Path:
     report_path = results_dir / "analysis.json"
     report_path.write_text(json.dumps(report, indent=2) + "\n")
     return report_path
-

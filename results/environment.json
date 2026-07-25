@@ -1,0 +1,76 @@
+{
+  "runs": [
+    {
+      "python": "3.12.12",
+      "platform": "macOS-26.5.2-arm64-arm-64bit",
+      "machine": "arm64",
+      "torch": "2.13.0",
+      "git_commit": "22f1649e28079ce28620ac8c01b774d8009231cd",
+      "pid": 13994
+    },
+    {
+      "python": "3.12.12",
+      "platform": "macOS-26.5.2-arm64-arm-64bit",
+      "machine": "arm64",
+      "torch": "2.13.0",
+      "git_commit": "22f1649e28079ce28620ac8c01b774d8009231cd",
+      "pid": 13994
+    },
+    {
+      "python": "3.12.12",
+      "platform": "macOS-26.5.2-arm64-arm-64bit",
+      "machine": "arm64",
+      "torch": "2.13.0",
+      "git_commit": "22f1649e28079ce28620ac8c01b774d8009231cd",
+      "pid": 13994
+    },
+    {
+      "python": "3.12.12",
+      "platform": "macOS-26.5.2-arm64-arm-64bit",
+      "machine": "arm64",
+      "torch": "2.13.0",
+      "git_commit": "22f1649e28079ce28620ac8c01b774d8009231cd",
+      "pid": 13994
+    },
+    {
+      "python": "3.12.12",
+      "platform": "macOS-26.5.2-arm64-arm-64bit",
+      "machine": "arm64",
+      "torch": "2.13.0",
+      "git_commit": "22f1649e28079ce28620ac8c01b774d8009231cd",
+      "pid": 13994
+    },
+    {
+      "python": "3.12.12",
+      "platform": "macOS-26.5.2-arm64-arm-64bit",
+      "machine": "arm64",
+      "torch": "2.13.0",
+      "git_commit": "22f1649e28079ce28620ac8c01b774d8009231cd",
+      "pid": 13994
+    },
+    {
+      "python": "3.12.12",
+      "platform": "macOS-26.5.2-arm64-arm-64bit",
+      "machine": "arm64",
+      "torch": "2.13.0",
+      "git_commit": "22f1649e28079ce28620ac8c01b774d8009231cd",
+      "pid": 13994
+    },
+    {
+      "python": "3.12.12",
+      "platform": "macOS-26.5.2-arm64-arm-64bit",
+      "machine": "arm64",
+      "torch": "2.13.0",
+      "git_commit": "22f1649e28079ce28620ac8c01b774d8009231cd",
+      "pid": 13994
+    },
+    {
+      "python": "3.12.12",
+      "platform": "macOS-26.5.2-arm64-arm-64bit",
+      "machine": "arm64",
+      "torch": "2.13.0",
+      "git_commit": "22f1649e28079ce28620ac8c01b774d8009231cd",
+      "pid": 13994
+    }
+  ]
+}

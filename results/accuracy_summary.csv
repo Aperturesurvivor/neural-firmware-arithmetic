@@ -1,0 +1,13 @@
+model,split,mean,std,min,max
+baseline,carry_chain,0.0006666666666666666,0.0011547005383792516,0.0,0.002
+baseline,id_random,0.9013333333333334,0.014502873278538102,0.887,0.916
+baseline,ood_long,0.0,0.0,0.0,0.0
+baseline,ood_primary,0.0,0.0,0.0,0.0
+direct_firmware,carry_chain,1.0,0.0,1.0,1.0
+direct_firmware,id_random,1.0,0.0,1.0,1.0
+direct_firmware,ood_long,1.0,0.0,1.0,1.0
+direct_firmware,ood_primary,1.0,0.0,1.0,1.0
+latent_firmware,carry_chain,1.0,0.0,1.0,1.0
+latent_firmware,id_random,1.0,0.0,1.0,1.0
+latent_firmware,ood_long,1.0,0.0,1.0,1.0
+latent_firmware,ood_primary,1.0,0.0,1.0,1.0

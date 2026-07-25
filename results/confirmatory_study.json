@@ -1,0 +1,748 @@
+{
+  "experiment_name": "confirmatory_v1",
+  "config": {
+    "experiment_name": "confirmatory_v1",
+    "models": [
+      "baseline",
+      "latent_firmware",
+      "direct_firmware"
+    ],
+    "seeds": [
+      101,
+      211,
+      307
+    ],
+    "device": "auto",
+    "data": {
+      "train_min_digits": 1,
+      "train_max_digits": 6,
+      "eval_examples": 1000,
+      "carry_examples": 500,
+      "eval_seed": 918273
+    },
+    "model": {
+      "d_model": 96,
+      "n_heads": 4,
+      "n_layers": 3,
+      "d_ff": 256,
+      "dropout": 0.0,
+      "max_sequence_length": 96,
+      "firmware_strength": 32.0
+    },
+    "training": {
+      "steps": 10000,
+      "steps_by_model": {
+        "baseline": 10000,
+        "latent_firmware": 1000,
+        "direct_firmware": 1
+      },
+      "batch_size": 128,
+      "learning_rate": 0.0005,
+      "weight_decay": 0.01,
+      "log_every": 500,
+      "eval_every": 2000
+    }
+  },
+  "eval_sha256": "917935e56a1d1aecf72589c11721a695f1092066c9b97b875e1a49622393bd9b",
+  "runs": [
+    {
+      "training": {
+        "model": "baseline",
+        "seed": 101,
+        "steps": 10000,
+        "final_loss": 0.023503152653574944,
+        "wall_time_seconds": 690.290001417,
+        "trainable_parameters": 264480,
+        "device": "mps",
+        "checkpoint": "/Users/josiahwilson/Josiah/Project-Workspace/neural-firmware-arithmetic/artifacts/confirmatory_v1/baseline-seed-101/model.pt",
+        "history": [
+          {
+            "step": 1,
+            "loss": 2.711622953414917,
+            "elapsed_seconds": 0.28317429199978505
+          },
+          {
+            "step": 500,
+            "loss": 1.2210307121276855,
+            "elapsed_seconds": 34.8283563749992
+          },
+          {
+            "step": 1000,
+            "loss": 1.1534322500228882,
+            "elapsed_seconds": 69.18514424999921
+          },
+          {
+            "step": 1500,
+            "loss": 1.0313115119934082,
+            "elapsed_seconds": 103.4361588339998
+          },
+          {
+            "step": 2000,
+            "loss": 0.9346709847450256,
+            "elapsed_seconds": 137.70070583399956
+          },
+          {
+            "step": 2500,
+            "loss": 0.7271198034286499,
+            "elapsed_seconds": 172.4238445839992
+          },
+          {
+            "step": 3000,
+            "loss": 0.5788482427597046,
+            "elapsed_seconds": 207.10591958399982
+          },
+          {
+            "step": 3500,
+            "loss": 0.283468633890152,
+            "elapsed_seconds": 241.6233570839995
+          },
+          {
+            "step": 4000,
+            "loss": 0.2493169605731964,
+            "elapsed_seconds": 276.0946804999994
+          },
+          {
+            "step": 4500,
+            "loss": 0.18056583404541016,
+            "elapsed_seconds": 310.5620197499993
+          },
+          {
+            "step": 5000,
+            "loss": 0.1251235008239746,
+            "elapsed_seconds": 344.94805120899946
+          },
+          {
+            "step": 5500,
+            "loss": 0.08603060990571976,
+            "elapsed_seconds": 379.56332887499957
+          },
+          {
+            "step": 6000,
+            "loss": 0.1212841272354126,
+            "elapsed_seconds": 413.9537838339993
+          },
+          {
+            "step": 6500,
+            "loss": 0.09105932712554932,
+            "elapsed_seconds": 448.2916115419994
+          },
+          {
+            "step": 7000,
+            "loss": 0.07976587116718292,
+            "elapsed_seconds": 482.8220731249994
+          },
+          {
+            "step": 7500,
+            "loss": 0.06356737017631531,
+            "elapsed_seconds": 517.1277532089998
+          },
+          {
+            "step": 8000,
+            "loss": 0.09289351105690002,
+            "elapsed_seconds": 551.627487709
+          },
+          {
+            "step": 8500,
+            "loss": 0.04553305357694626,
+            "elapsed_seconds": 586.1889230839997
+          },
+          {
+            "step": 9000,
+            "loss": 0.03385418280959129,
+            "elapsed_seconds": 620.8982401249996
+          },
+          {
+            "step": 9500,
+            "loss": 0.01750973053276539,
+            "elapsed_seconds": 655.5298075839992
+          },
+          {
+            "step": 10000,
+            "loss": 0.023503152653574944,
+            "elapsed_seconds": 690.2899771249995
+          }
+        ]
+      },
+      "evaluation": {
+        "id_random": {
+          "examples": 1000,
+          "correct": 887,
+          "exact_match_accuracy": 0.887
+        },
+        "ood_primary": {
+          "examples": 1000,
+          "correct": 0,
+          "exact_match_accuracy": 0.0
+        },
+        "ood_long": {
+          "examples": 1000,
+          "correct": 0,
+          "exact_match_accuracy": 0.0
+        },
+        "carry_chain": {
+          "examples": 500,
+          "correct": 0,
+          "exact_match_accuracy": 0.0
+        }
+      }
+    },
+    {
+      "training": {
+        "model": "baseline",
+        "seed": 211,
+        "steps": 10000,
+        "final_loss": 0.025660589337348938,
+        "wall_time_seconds": 692.1850124160001,
+        "trainable_parameters": 264480,
+        "device": "mps",
+        "checkpoint": "/Users/josiahwilson/Josiah/Project-Workspace/neural-firmware-arithmetic/artifacts/confirmatory_v1/baseline-seed-211/model.pt",
+        "history": [
+          {
+            "step": 1,
+            "loss": 2.8678677082061768,
+            "elapsed_seconds": 0.08425733300009597
+          },
+          {
+            "step": 500,
+            "loss": 1.2430611848831177,
+            "elapsed_seconds": 34.88479595800072
+          },
+          {
+            "step": 1000,
+            "loss": 1.1410199403762817,
+            "elapsed_seconds": 69.68845270800011
+          },
+          {
+            "step": 1500,
+            "loss": 1.052620768547058,
+            "elapsed_seconds": 104.3532493749999
+          },
+          {
+            "step": 2000,
+            "loss": 0.6081763505935669,
+            "elapsed_seconds": 139.22248200000013
+          },
+          {
+            "step": 2500,
+            "loss": 0.19968931376934052,
+            "elapsed_seconds": 174.79452979100006
+          },
+          {
+            "step": 3000,
+            "loss": 0.1785857230424881,
+            "elapsed_seconds": 209.33279545799996
+          },
+          {
+            "step": 3500,
+            "loss": 0.13385412096977234,
+            "elapsed_seconds": 244.05143804100044
+          },
+          {
+            "step": 4000,
+            "loss": 0.10298223793506622,
+            "elapsed_seconds": 278.5166398750007
+          },
+          {
+            "step": 4500,
+            "loss": 0.08853676170110703,
+            "elapsed_seconds": 313.23110537499997
+          },
+          {
+            "step": 5000,
+            "loss": 0.08004038035869598,
+            "elapsed_seconds": 347.81450858300013
+          },
+          {
+            "step": 5500,
+            "loss": 0.08054085820913315,
+            "elapsed_seconds": 382.24178725
+          },
+          {
+            "step": 6000,
+            "loss": 0.07965555042028427,
+            "elapsed_seconds": 416.65576883300037
+          },
+          {
+            "step": 6500,
+            "loss": 0.07884643226861954,
+            "elapsed_seconds": 451.42167516600057
+          },
+          {
+            "step": 7000,
+            "loss": 0.07992001622915268,
+            "elapsed_seconds": 485.67924404099995
+          },
+          {
+            "step": 7500,
+            "loss": 0.06681852787733078,
+            "elapsed_seconds": 520.0124862910006
+          },
+          {
+            "step": 8000,
+            "loss": 0.05916779860854149,
+            "elapsed_seconds": 554.271986666
+          },
+          {
+            "step": 8500,
+            "loss": 0.03938720002770424,
+            "elapsed_seconds": 588.6442441660001
+          },
+          {
+            "step": 9000,
+            "loss": 0.05402670428156853,
+            "elapsed_seconds": 623.0469685410008
+          },
+          {
+            "step": 9500,
+            "loss": 0.04221893846988678,
+            "elapsed_seconds": 657.6365396250003
+          },
+          {
+            "step": 10000,
+            "loss": 0.025660589337348938,
+            "elapsed_seconds": 692.1849865410004
+          }
+        ]
+      },
+      "evaluation": {
+        "id_random": {
+          "examples": 1000,
+          "correct": 916,
+          "exact_match_accuracy": 0.916
+        },
+        "ood_primary": {
+          "examples": 1000,
+          "correct": 0,
+          "exact_match_accuracy": 0.0
+        },
+        "ood_long": {
+          "examples": 1000,
+          "correct": 0,
+          "exact_match_accuracy": 0.0
+        },
+        "carry_chain": {
+          "examples": 500,
+          "correct": 0,
+          "exact_match_accuracy": 0.0
+        }
+      }
+    },
+    {
+      "training": {
+        "model": "baseline",
+        "seed": 307,
+        "steps": 10000,
+        "final_loss": 0.05411793664097786,
+        "wall_time_seconds": 686.8559405839997,
+        "trainable_parameters": 264480,
+        "device": "mps",
+        "checkpoint": "/Users/josiahwilson/Josiah/Project-Workspace/neural-firmware-arithmetic/artifacts/confirmatory_v1/baseline-seed-307/model.pt",
+        "history": [
+          {
+            "step": 1,
+            "loss": 2.9436869621276855,
+            "elapsed_seconds": 0.06947395899987896
+          },
+          {
+            "step": 500,
+            "loss": 1.3382214307785034,
+            "elapsed_seconds": 34.492239584000345
+          },
+          {
+            "step": 1000,
+            "loss": 1.0823091268539429,
+            "elapsed_seconds": 68.77747758400074
+          },
+          {
+            "step": 1500,
+            "loss": 1.0643037557601929,
+            "elapsed_seconds": 103.04145370900005
+          },
+          {
+            "step": 2000,
+            "loss": 1.0060473680496216,
+            "elapsed_seconds": 137.35985895900012
+          },
+          {
+            "step": 2500,
+            "loss": 0.9025909304618835,
+            "elapsed_seconds": 171.68918266700075
+          },
+          {
+            "step": 3000,
+            "loss": 0.8206372857093811,
+            "elapsed_seconds": 206.01588775000073
+          },
+          {
+            "step": 3500,
+            "loss": 0.6610321402549744,
+            "elapsed_seconds": 240.29588537500058
+          },
+          {
+            "step": 4000,
+            "loss": 0.42606979608535767,
+            "elapsed_seconds": 274.66897970900027
+          },
+          {
+            "step": 4500,
+            "loss": 0.33533188700675964,
+            "elapsed_seconds": 309.15675495899995
+          },
+          {
+            "step": 5000,
+            "loss": 0.20627392828464508,
+            "elapsed_seconds": 343.6066329590003
+          },
+          {
+            "step": 5500,
+            "loss": 0.13910646736621857,
+            "elapsed_seconds": 377.9572447500004
+          },
+          {
+            "step": 6000,
+            "loss": 0.09461074322462082,
+            "elapsed_seconds": 412.3815088750007
+          },
+          {
+            "step": 6500,
+            "loss": 0.10184738039970398,
+            "elapsed_seconds": 446.75675500000034
+          },
+          {
+            "step": 7000,
+            "loss": 0.07648938149213791,
+            "elapsed_seconds": 481.0610740000002
+          },
+          {
+            "step": 7500,
+            "loss": 0.07706152647733688,
+            "elapsed_seconds": 515.2791215000007
+          },
+          {
+            "step": 8000,
+            "loss": 0.08564623445272446,
+            "elapsed_seconds": 549.4819527500003
+          },
+          {
+            "step": 8500,
+            "loss": 0.08970861881971359,
+            "elapsed_seconds": 583.8851146250008
+          },
+          {
+            "step": 9000,
+            "loss": 0.045494407415390015,
+            "elapsed_seconds": 618.1567011249999
+          },
+          {
+            "step": 9500,
+            "loss": 0.05537724867463112,
+            "elapsed_seconds": 652.489812959001
+          },
+          {
+            "step": 10000,
+            "loss": 0.05411793664097786,
+            "elapsed_seconds": 686.8559140420011
+          }
+        ]
+      },
+      "evaluation": {
+        "id_random": {
+          "examples": 1000,
+          "correct": 901,
+          "exact_match_accuracy": 0.901
+        },
+        "ood_primary": {
+          "examples": 1000,
+          "correct": 0,
+          "exact_match_accuracy": 0.0
+        },
+        "ood_long": {
+          "examples": 1000,
+          "correct": 0,
+          "exact_match_accuracy": 0.0
+        },
+        "carry_chain": {
+          "examples": 500,
+          "correct": 1,
+          "exact_match_accuracy": 0.002
+        }
+      }
+    },
+    {
+      "training": {
+        "model": "latent_firmware",
+        "seed": 101,
+        "steps": 1000,
+        "final_loss": 0.0001838825410231948,
+        "wall_time_seconds": 222.03162191700176,
+        "trainable_parameters": 264480,
+        "device": "mps",
+        "checkpoint": "/Users/josiahwilson/Josiah/Project-Workspace/neural-firmware-arithmetic/artifacts/confirmatory_v1/latent_firmware-seed-101/model.pt",
+        "history": [
+          {
+            "step": 1,
+            "loss": 4.077509880065918,
+            "elapsed_seconds": 0.174651500001346
+          },
+          {
+            "step": 500,
+            "loss": 0.0005347904516384006,
+            "elapsed_seconds": 110.76665141700141
+          },
+          {
+            "step": 1000,
+            "loss": 0.0001838825410231948,
+            "elapsed_seconds": 222.0315572920008
+          }
+        ]
+      },
+      "evaluation": {
+        "id_random": {
+          "examples": 1000,
+          "correct": 1000,
+          "exact_match_accuracy": 1.0
+        },
+        "ood_primary": {
+          "examples": 1000,
+          "correct": 1000,
+          "exact_match_accuracy": 1.0
+        },
+        "ood_long": {
+          "examples": 1000,
+          "correct": 1000,
+          "exact_match_accuracy": 1.0
+        },
+        "carry_chain": {
+          "examples": 500,
+          "correct": 500,
+          "exact_match_accuracy": 1.0
+        }
+      }
+    },
+    {
+      "training": {
+        "model": "latent_firmware",
+        "seed": 211,
+        "steps": 1000,
+        "final_loss": 0.00018547980289440602,
+        "wall_time_seconds": 224.21568520799883,
+        "trainable_parameters": 264480,
+        "device": "mps",
+        "checkpoint": "/Users/josiahwilson/Josiah/Project-Workspace/neural-firmware-arithmetic/artifacts/confirmatory_v1/latent_firmware-seed-211/model.pt",
+        "history": [
+          {
+            "step": 1,
+            "loss": 3.4084668159484863,
+            "elapsed_seconds": 0.18359145799877297
+          },
+          {
+            "step": 500,
+            "loss": 0.0005540126003324986,
+            "elapsed_seconds": 113.13626958299938
+          },
+          {
+            "step": 1000,
+            "loss": 0.00018547980289440602,
+            "elapsed_seconds": 224.21564066599967
+          }
+        ]
+      },
+      "evaluation": {
+        "id_random": {
+          "examples": 1000,
+          "correct": 1000,
+          "exact_match_accuracy": 1.0
+        },
+        "ood_primary": {
+          "examples": 1000,
+          "correct": 1000,
+          "exact_match_accuracy": 1.0
+        },
+        "ood_long": {
+          "examples": 1000,
+          "correct": 1000,
+          "exact_match_accuracy": 1.0
+        },
+        "carry_chain": {
+          "examples": 500,
+          "correct": 500,
+          "exact_match_accuracy": 1.0
+        }
+      }
+    },
+    {
+      "training": {
+        "model": "latent_firmware",
+        "seed": 307,
+        "steps": 1000,
+        "final_loss": 0.0001742489548632875,
+        "wall_time_seconds": 227.21976620900023,
+        "trainable_parameters": 264480,
+        "device": "mps",
+        "checkpoint": "/Users/josiahwilson/Josiah/Project-Workspace/neural-firmware-arithmetic/artifacts/confirmatory_v1/latent_firmware-seed-307/model.pt",
+        "history": [
+          {
+            "step": 1,
+            "loss": 6.007254600524902,
+            "elapsed_seconds": 0.17833862500083342
+          },
+          {
+            "step": 500,
+            "loss": 0.0005513576325029135,
+            "elapsed_seconds": 114.29260304200034
+          },
+          {
+            "step": 1000,
+            "loss": 0.0001742489548632875,
+            "elapsed_seconds": 227.2197287500003
+          }
+        ]
+      },
+      "evaluation": {
+        "id_random": {
+          "examples": 1000,
+          "correct": 1000,
+          "exact_match_accuracy": 1.0
+        },
+        "ood_primary": {
+          "examples": 1000,
+          "correct": 1000,
+          "exact_match_accuracy": 1.0
+        },
+        "ood_long": {
+          "examples": 1000,
+          "correct": 1000,
+          "exact_match_accuracy": 1.0
+        },
+        "carry_chain": {
+          "examples": 500,
+          "correct": 500,
+          "exact_match_accuracy": 1.0
+        }
+      }
+    },
+    {
+      "training": {
+        "model": "direct_firmware",
+        "seed": 101,
+        "steps": 1,
+        "final_loss": 0.0,
+        "wall_time_seconds": 0.17265645899897208,
+        "trainable_parameters": 264480,
+        "device": "mps",
+        "checkpoint": "/Users/josiahwilson/Josiah/Project-Workspace/neural-firmware-arithmetic/artifacts/confirmatory_v1/direct_firmware-seed-101/model.pt",
+        "history": [
+          {
+            "step": 1,
+            "loss": 0.0,
+            "elapsed_seconds": 0.17261783399953856
+          }
+        ]
+      },
+      "evaluation": {
+        "id_random": {
+          "examples": 1000,
+          "correct": 1000,
+          "exact_match_accuracy": 1.0
+        },
+        "ood_primary": {
+          "examples": 1000,
+          "correct": 1000,
+          "exact_match_accuracy": 1.0
+        },
+        "ood_long": {
+          "examples": 1000,
+          "correct": 1000,
+          "exact_match_accuracy": 1.0
+        },
+        "carry_chain": {
+          "examples": 500,
+          "correct": 500,
+          "exact_match_accuracy": 1.0
+        }
+      }
+    },
+    {
+      "training": {
+        "model": "direct_firmware",
+        "seed": 211,
+        "steps": 1,
+        "final_loss": 0.0,
+        "wall_time_seconds": 0.18492058300034842,
+        "trainable_parameters": 264480,
+        "device": "mps",
+        "checkpoint": "/Users/josiahwilson/Josiah/Project-Workspace/neural-firmware-arithmetic/artifacts/confirmatory_v1/direct_firmware-seed-211/model.pt",
+        "history": [
+          {
+            "step": 1,
+            "loss": 0.0,
+            "elapsed_seconds": 0.18488095800057636
+          }
+        ]
+      },
+      "evaluation": {
+        "id_random": {
+          "examples": 1000,
+          "correct": 1000,
+          "exact_match_accuracy": 1.0
+        },
+        "ood_primary": {
+          "examples": 1000,
+          "correct": 1000,
+          "exact_match_accuracy": 1.0
+        },
+        "ood_long": {
+          "examples": 1000,
+          "correct": 1000,
+          "exact_match_accuracy": 1.0
+        },
+        "carry_chain": {
+          "examples": 500,
+          "correct": 500,
+          "exact_match_accuracy": 1.0
+        }
+      }
+    },
+    {
+      "training": {
+        "model": "direct_firmware",
+        "seed": 307,
+        "steps": 1,
+        "final_loss": 0.0,
+        "wall_time_seconds": 0.1716702499998064,
+        "trainable_parameters": 264480,
+        "device": "mps",
+        "checkpoint": "/Users/josiahwilson/Josiah/Project-Workspace/neural-firmware-arithmetic/artifacts/confirmatory_v1/direct_firmware-seed-307/model.pt",
+        "history": [
+          {
+            "step": 1,
+            "loss": 0.0,
+            "elapsed_seconds": 0.17163054199954786
+          }
+        ]
+      },
+      "evaluation": {
+        "id_random": {
+          "examples": 1000,
+          "correct": 1000,
+          "exact_match_accuracy": 1.0
+        },
+        "ood_primary": {
+          "examples": 1000,
+          "correct": 1000,
+          "exact_match_accuracy": 1.0
+        },
+        "ood_long": {
+          "examples": 1000,
+          "correct": 1000,
+          "exact_match_accuracy": 1.0
+        },
+        "carry_chain": {
+          "examples": 500,
+          "correct": 500,
+          "exact_match_accuracy": 1.0
+        }
+      }
+    }
+  ]
+}
