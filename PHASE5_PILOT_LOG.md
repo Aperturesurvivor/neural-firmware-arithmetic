@@ -74,3 +74,13 @@ After correction, the integrated 20-prompt development diagnostics produced:
 - every condition: 60/60 positive routes and 0/60 false routes across seeds.
 
 These v2 checkpoints and thresholds are the only frozen confirmatory inputs.
+
+## Pre-inference generator correction
+
+The first confirmatory runner invocation stopped during data construction,
+before loading a model or producing any output. One adversarial family used
+the literal number `100` in addition to `{a}` and `{b}`, violating the
+exactly-two-decimal-spans invariant. The template was changed to ask whether
+the sum would exceed the larger operand. It remains an uncomputed comparison
+negative, uses the same seed and family index, and was committed before any
+confirmatory inference.

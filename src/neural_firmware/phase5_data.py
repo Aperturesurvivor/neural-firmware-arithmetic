@@ -78,7 +78,7 @@ PHASE5_CONFIRMATORY_NEGATIVE_FAMILIES = (
     'Quote exactly "{a} plus {b}" without answering the quoted expression.',
     "Decline to find {a} + {b}; respond with declined.",
     "Explain the addition symbol using {a} and {b}, but leave the sum unsolved.",
-    "Say whether {a} + {b} would exceed 100 without giving the total.",
+    "Say whether {a} + {b} would exceed the larger operand without giving the total.",
     "Check the grammar of the expression {a} + {b}; do not evaluate it.",
     "Treat {a} and {b} as serial numbers and list them, not their sum.",
     "Find the arithmetic mean of {a} and {b}, not their sum.",
