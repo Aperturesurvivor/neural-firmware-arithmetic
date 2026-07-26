@@ -1,0 +1,5 @@
+criterion,observed,threshold,comparison,passed
+latent_ood_primary_mean_accuracy,1.0,0.99,>=,True
+latent_minus_adapter_ood_primary_points,0.79,0.5,>=,True
+latent_language_preservation_rate,0.9633333333333334,0.99,>=,False
+latent_initial_false_route_rate,0.0,0.01,<=,True

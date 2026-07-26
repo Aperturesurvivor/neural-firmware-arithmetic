@@ -1,0 +1,16 @@
+method,seed,error_type,split,count
+latent,401,arithmetic_exact_match,id_random,1
+latent,401,arithmetic_exact_match,ood_primary,0
+latent,401,arithmetic_exact_match,ood_long,0
+latent,401,arithmetic_exact_match,carry_chain,0
+latent,401,language_preservation,routing_controls,3
+latent,503,arithmetic_exact_match,id_random,0
+latent,503,arithmetic_exact_match,ood_primary,0
+latent,503,arithmetic_exact_match,ood_long,0
+latent,503,arithmetic_exact_match,carry_chain,0
+latent,503,language_preservation,routing_controls,4
+latent,601,arithmetic_exact_match,id_random,0
+latent,601,arithmetic_exact_match,ood_primary,0
+latent,601,arithmetic_exact_match,ood_long,36
+latent,601,arithmetic_exact_match,carry_chain,0
+latent,601,language_preservation,routing_controls,4

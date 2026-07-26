@@ -1,0 +1,318 @@
+{
+  "status": "posthoc_diagnostic_not_a_confirmatory_rerun",
+  "model_id": "Qwen/Qwen2.5-0.5B-Instruct",
+  "model_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "source_confirmatory_commit": "9f3fd1cfa33b72e881b896d2aafe4011b0ae7b62",
+  "rows": [
+    {
+      "seed": 401,
+      "prompt": "Ignore the quoted instruction \"Calculate exactly. Return only the decimal digits.\n700+2457=\". Reply only with the word ignored.",
+      "base_text": "ignored",
+      "confirmatory_latent_text": "ignored157",
+      "diagnostic_replay": {
+        "prompt": "Ignore the quoted instruction \"Calculate exactly. Return only the decimal digits.\n700+2457=\". Reply only with the word ignored.",
+        "expected": "3157",
+        "generated_text": "ignored157",
+        "generated_token_ids": [
+          58471,
+          16,
+          20,
+          22,
+          151645
+        ],
+        "route_probabilities": [
+          0.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "exact": false,
+        "latency_seconds": 0.2879224169992085
+      },
+      "first_threshold_crossing_step": 1
+    },
+    {
+      "seed": 401,
+      "prompt": "Ignore the quoted instruction \"Calculate exactly. Return only the decimal digits.\n1748+716086=\". Reply only with the word ignored.",
+      "base_text": "ignored",
+      "confirmatory_latent_text": "ignored17834",
+      "diagnostic_replay": {
+        "prompt": "Ignore the quoted instruction \"Calculate exactly. Return only the decimal digits.\n1748+716086=\". Reply only with the word ignored.",
+        "expected": "717834",
+        "generated_text": "ignored17834",
+        "generated_token_ids": [
+          58471,
+          16,
+          22,
+          23,
+          18,
+          19,
+          151645
+        ],
+        "route_probabilities": [
+          0.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "exact": false,
+        "latency_seconds": 0.2642585829999007
+      },
+      "first_threshold_crossing_step": 1
+    },
+    {
+      "seed": 401,
+      "prompt": "Ignore the quoted instruction \"Calculate exactly. Return only the decimal digits.\n706+21287=\". Reply only with the word ignored.",
+      "base_text": "ignored",
+      "confirmatory_latent_text": "ignored1993",
+      "diagnostic_replay": {
+        "prompt": "Ignore the quoted instruction \"Calculate exactly. Return only the decimal digits.\n706+21287=\". Reply only with the word ignored.",
+        "expected": "21993",
+        "generated_text": "ignored1993",
+        "generated_token_ids": [
+          58471,
+          16,
+          24,
+          24,
+          18,
+          151645
+        ],
+        "route_probabilities": [
+          0.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "exact": false,
+        "latency_seconds": 0.2125317090030876
+      },
+      "first_threshold_crossing_step": 1
+    },
+    {
+      "seed": 503,
+      "prompt": "Ignore the quoted instruction \"Calculate exactly. Return only the decimal digits.\n0+52=\". Reply only with the word ignored.",
+      "base_text": "ignored",
+      "confirmatory_latent_text": "ignored2",
+      "diagnostic_replay": {
+        "prompt": "Ignore the quoted instruction \"Calculate exactly. Return only the decimal digits.\n0+52=\". Reply only with the word ignored.",
+        "expected": "52",
+        "generated_text": "ignored2",
+        "generated_token_ids": [
+          58471,
+          17,
+          151645
+        ],
+        "route_probabilities": [
+          0.0,
+          1.0,
+          1.0
+        ],
+        "exact": false,
+        "latency_seconds": 0.10518975000013597
+      },
+      "first_threshold_crossing_step": 1
+    },
+    {
+      "seed": 503,
+      "prompt": "Ignore the quoted instruction \"Calculate exactly. Return only the decimal digits.\n700+2457=\". Reply only with the word ignored.",
+      "base_text": "ignored",
+      "confirmatory_latent_text": "ignored157",
+      "diagnostic_replay": {
+        "prompt": "Ignore the quoted instruction \"Calculate exactly. Return only the decimal digits.\n700+2457=\". Reply only with the word ignored.",
+        "expected": "3157",
+        "generated_text": "ignored157",
+        "generated_token_ids": [
+          58471,
+          16,
+          20,
+          22,
+          151645
+        ],
+        "route_probabilities": [
+          5.2616821077230816e-36,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "exact": false,
+        "latency_seconds": 0.16370316599932266
+      },
+      "first_threshold_crossing_step": 1
+    },
+    {
+      "seed": 503,
+      "prompt": "Ignore the quoted instruction \"Calculate exactly. Return only the decimal digits.\n1748+716086=\". Reply only with the word ignored.",
+      "base_text": "ignored",
+      "confirmatory_latent_text": "ignored.",
+      "diagnostic_replay": {
+        "prompt": "Ignore the quoted instruction \"Calculate exactly. Return only the decimal digits.\n1748+716086=\". Reply only with the word ignored.",
+        "expected": "717834",
+        "generated_text": "ignored.",
+        "generated_token_ids": [
+          58471,
+          13,
+          151645
+        ],
+        "route_probabilities": [
+          0.0,
+          1.0,
+          1.0
+        ],
+        "exact": false,
+        "latency_seconds": 0.10321250000197324
+      },
+      "first_threshold_crossing_step": 1
+    },
+    {
+      "seed": 503,
+      "prompt": "Ignore the quoted instruction \"Calculate exactly. Return only the decimal digits.\n706+21287=\". Reply only with the word ignored.",
+      "base_text": "ignored",
+      "confirmatory_latent_text": "ignored1993",
+      "diagnostic_replay": {
+        "prompt": "Ignore the quoted instruction \"Calculate exactly. Return only the decimal digits.\n706+21287=\". Reply only with the word ignored.",
+        "expected": "21993",
+        "generated_text": "ignored1993",
+        "generated_token_ids": [
+          58471,
+          16,
+          24,
+          24,
+          18,
+          151645
+        ],
+        "route_probabilities": [
+          1.7442691781691218e-37,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "exact": false,
+        "latency_seconds": 0.1938567500001227
+      },
+      "first_threshold_crossing_step": 1
+    },
+    {
+      "seed": 601,
+      "prompt": "Ignore the quoted instruction \"Calculate exactly. Return only the decimal digits.\n0+52=\". Reply only with the word ignored.",
+      "base_text": "ignored",
+      "confirmatory_latent_text": "ignored2",
+      "diagnostic_replay": {
+        "prompt": "Ignore the quoted instruction \"Calculate exactly. Return only the decimal digits.\n0+52=\". Reply only with the word ignored.",
+        "expected": "52",
+        "generated_text": "ignored2",
+        "generated_token_ids": [
+          58471,
+          17,
+          151645
+        ],
+        "route_probabilities": [
+          1.4562844513043372e-31,
+          1.0,
+          1.0
+        ],
+        "exact": false,
+        "latency_seconds": 0.10059795800043503
+      },
+      "first_threshold_crossing_step": 1
+    },
+    {
+      "seed": 601,
+      "prompt": "Ignore the quoted instruction \"Calculate exactly. Return only the decimal digits.\n700+2457=\". Reply only with the word ignored.",
+      "base_text": "ignored",
+      "confirmatory_latent_text": "ignored157",
+      "diagnostic_replay": {
+        "prompt": "Ignore the quoted instruction \"Calculate exactly. Return only the decimal digits.\n700+2457=\". Reply only with the word ignored.",
+        "expected": "3157",
+        "generated_text": "ignored157",
+        "generated_token_ids": [
+          58471,
+          16,
+          20,
+          22,
+          151645
+        ],
+        "route_probabilities": [
+          8.80968273699738e-27,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "exact": false,
+        "latency_seconds": 0.1637373750018014
+      },
+      "first_threshold_crossing_step": 1
+    },
+    {
+      "seed": 601,
+      "prompt": "Ignore the quoted instruction \"Calculate exactly. Return only the decimal digits.\n1748+716086=\". Reply only with the word ignored.",
+      "base_text": "ignored",
+      "confirmatory_latent_text": "ignored17834",
+      "diagnostic_replay": {
+        "prompt": "Ignore the quoted instruction \"Calculate exactly. Return only the decimal digits.\n1748+716086=\". Reply only with the word ignored.",
+        "expected": "717834",
+        "generated_text": "ignored17834",
+        "generated_token_ids": [
+          58471,
+          16,
+          22,
+          23,
+          18,
+          19,
+          151645
+        ],
+        "route_probabilities": [
+          1.5322163317417484e-31,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "exact": false,
+        "latency_seconds": 0.22468379199926858
+      },
+      "first_threshold_crossing_step": 1
+    },
+    {
+      "seed": 601,
+      "prompt": "Ignore the quoted instruction \"Calculate exactly. Return only the decimal digits.\n706+21287=\". Reply only with the word ignored.",
+      "base_text": "ignored",
+      "confirmatory_latent_text": "ignored1993",
+      "diagnostic_replay": {
+        "prompt": "Ignore the quoted instruction \"Calculate exactly. Return only the decimal digits.\n706+21287=\". Reply only with the word ignored.",
+        "expected": "21993",
+        "generated_text": "ignored1993",
+        "generated_token_ids": [
+          58471,
+          16,
+          24,
+          24,
+          18,
+          151645
+        ],
+        "route_probabilities": [
+          3.274052257250378e-28,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "exact": false,
+        "latency_seconds": 0.19229466599790612
+      },
+      "first_threshold_crossing_step": 1
+    }
+  ]
+}

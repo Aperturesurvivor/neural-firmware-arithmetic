@@ -38,6 +38,35 @@ claim boundary: the frozen module can make arithmetic execution exact, but it
 does not automatically make natural-language parsing, routing, or decoding
 correct.
 
+## Pretrained-LLM study
+
+The second experiment used the 494-million-parameter
+`Qwen/Qwen2.5-0.5B-Instruct` model with every pretrained weight frozen. An
+immutable decimal addition process generated deterministic digit/end symbols;
+a 10,753-parameter learned bridge routed those symbols into the final
+896-dimensional residual before the pretrained output head. This is internal
+generation-time activation steering, not post-generation answer replacement,
+but it is still output-adjacent rather than a deterministic unit inside the
+repeated transformer blocks.
+
+Across three confirmatory bridge seeds, latent firmware achieved 900/900
+(100%) on five- to eight-digit OOD addition, compared with 189/900 (21.0%) for
+a 270,336-parameter all-layer LoRA control. It also achieved 450/450 carry
+chains and 864/900 (96.0%) on nine- to twelve-digit random additions.
+
+The study was **not an overall preregistered success**. Token-exact preservation
+on unrelated controls was 289/300 (96.3%), below the fixed 99% threshold. All
+11 divergences were late activations on prompts that quoted a valid calculator
+command while instructing the model to ignore it. This is a useful negative
+result: exact computation still requires exact scoping and sequence-level
+routing.
+
+The primary phase-2 report is
+[`paper_phase2/neural-firmware-pretrained-llm.pdf`](paper_phase2/neural-firmware-pretrained-llm.pdf).
+The frozen protocol is [`PHASE2_PROTOCOL.md`](PHASE2_PROTOCOL.md), and the full
+chronological record is
+[`PHASE2_LAB_NOTEBOOK.md`](PHASE2_LAB_NOTEBOOK.md).
+
 ## Reproduction
 
 ```bash
@@ -45,6 +74,13 @@ uv sync --extra dev
 uv run pytest
 uv run nf-study --config configs/study.json
 uv run nf-analyze --study artifacts/confirmatory_v1/study.json
+
+# Pretrained-LLM confirmatory study (about 66 minutes on the recorded M4)
+uv run python scripts/run_phase2_study.py \
+  --config configs/phase2_study.json \
+  --artifact-directory phase2_artifacts/confirmatory_v1 \
+  --result-directory phase2_results/confirmatory_v1
+uv run python scripts/analyze_phase2.py
 ```
 
 Compact metrics, configuration files, figures, and the compiled paper are

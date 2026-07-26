@@ -22,3 +22,6 @@ paper/*.log
 paper/*.out
 paper/*.run.xml
 paper/*.synctex.gz
+
+paper_phase2/build/
+paper_phase2/rendered/

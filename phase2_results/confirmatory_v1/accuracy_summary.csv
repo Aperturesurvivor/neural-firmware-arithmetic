@@ -1,0 +1,21 @@
+method,method_label,split,split_label,seed_runs,correct_total,examples_total,mean_accuracy,sample_sd,mean_latency_seconds
+base,Frozen base,id_random,ID 1–4 digits,1,60,300,0.2,0.0,0.18512360526002644
+base,Frozen base,ood_primary,Primary OOD 5–8 digits,1,14,300,0.04666666666666667,0.0,0.3038188744334184
+base,Frozen base,ood_long,Long OOD 9–12 digits,1,2,300,0.006666666666666667,0.0,0.42376636537997303
+base,Frozen base,carry_chain,Carry chain 5–12 digits,1,9,150,0.06,0.0,0.34385468418006593
+firmware_off,Firmware off,id_random,ID 1–4 digits,3,180,900,0.20000000000000004,3.3993498887762956e-17,0.18607758758221785
+firmware_off,Firmware off,ood_primary,Primary OOD 5–8 digits,3,42,900,0.04666666666666667,0.0,0.3087219124678247
+firmware_off,Firmware off,ood_long,Long OOD 9–12 digits,3,6,900,0.006666666666666667,0.0,0.4307232351733183
+firmware_off,Firmware off,carry_chain,Carry chain 5–12 digits,3,27,450,0.06,0.0,0.34662814612444587
+learned_adapter,Learned LoRA,id_random,ID 1–4 digits,3,727,900,0.8077777777777778,0.14852359832450615,0.14078340074562423
+learned_adapter,Learned LoRA,ood_primary,Primary OOD 5–8 digits,3,189,900,0.21,0.1675642497007574,0.2620993904122224
+learned_adapter,Learned LoRA,ood_long,Long OOD 9–12 digits,3,17,900,0.01888888888888889,0.020092379244472363,0.39184970918113926
+learned_adapter,Learned LoRA,carry_chain,Carry chain 5–12 digits,3,44,450,0.09777777777777778,0.06577177149754997,0.29007966953993475
+latent,Latent firmware,id_random,ID 1–4 digits,3,899,900,0.9988888888888888,0.001924500897298733,0.1368786327422519
+latent,Latent firmware,ood_primary,Primary OOD 5–8 digits,3,900,900,1.0,0.0,0.2625666525810973
+latent,Latent firmware,ood_long,Long OOD 9–12 digits,3,864,900,0.96,0.06928203230275509,0.3871114472088933
+latent,Latent firmware,carry_chain,Carry chain 5–12 digits,3,450,450,1.0,0.0,0.2926286892644485
+direct,Direct firmware,id_random,ID 1–4 digits,1,300,300,1.0,0.0,0.13269718073349698
+direct,Direct firmware,ood_primary,Primary OOD 5–8 digits,1,300,300,1.0,0.0,0.25597752025988785
+direct,Direct firmware,ood_long,Long OOD 9–12 digits,1,300,300,1.0,0.0,0.37697475221660476
+direct,Direct firmware,carry_chain,Carry chain 5–12 digits,1,150,150,1.0,0.0,0.28579941476683113

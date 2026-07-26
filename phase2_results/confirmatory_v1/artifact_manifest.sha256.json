@@ -1,0 +1,303 @@
+{
+  "algorithm": "SHA-256",
+  "artifact_root": "phase2_artifacts/confirmatory_v1",
+  "files": 59,
+  "bytes": 60760853,
+  "entries": [
+    {
+      "path": "adapter_seed_401/adapter.pt",
+      "bytes": 1112259,
+      "sha256": "a4846406183f82c4cfe48d5587b3e385e590eb1618d7a3beb62baede73cfc8a4"
+    },
+    {
+      "path": "adapter_seed_401/learned_adapter/predictions.json",
+      "bytes": 532709,
+      "sha256": "15e2566e6dae5a28470c4d2533425b316f1efa3b0c6ba8fa1c2275c55f4a3f38"
+    },
+    {
+      "path": "adapter_seed_401/learned_adapter/summary.json",
+      "bytes": 914,
+      "sha256": "9e7b0076a99c849f405d04e07c10d5092b46fcac12f00e32cd2f9e3e2d0a70af"
+    },
+    {
+      "path": "adapter_seed_401/preservation_predictions.json",
+      "bytes": 21484,
+      "sha256": "7e3e7d2b573efcc3ebd69a5b5910763ab0282c061f8d128f0b163b182465db89"
+    },
+    {
+      "path": "adapter_seed_401/preservation_summary.json",
+      "bytes": 79,
+      "sha256": "65d161b5649d6a516522a16e6c8169c120d3872eb0555dbbead9130a02f4c4a8"
+    },
+    {
+      "path": "adapter_seed_401/seed_summary.json",
+      "bytes": 1472,
+      "sha256": "bd091848a0b6e2c2e6933fb3bb8f7fc2ab93562c16f94c8841e13b9e6fb1da6b"
+    },
+    {
+      "path": "adapter_seed_401/train_result.json",
+      "bytes": 314,
+      "sha256": "618f3f87c14dc230620b32e605f3da0d5a687a124078aa676d103c974051cb24"
+    },
+    {
+      "path": "adapter_seed_503/adapter.pt",
+      "bytes": 1112259,
+      "sha256": "73857a1424899bf58316d30520b0b0e83ec22750934dcd764a3e46c30c2f9db3"
+    },
+    {
+      "path": "adapter_seed_503/learned_adapter/predictions.json",
+      "bytes": 538923,
+      "sha256": "c6604b056cedafe09e463d7206d325fefca0bf88173db183cc4c8e0c54df1298"
+    },
+    {
+      "path": "adapter_seed_503/learned_adapter/summary.json",
+      "bytes": 915,
+      "sha256": "5c791bcf293389f5eae5ca5b10273dc62bf04d58a35cce038142080fb0b22e2e"
+    },
+    {
+      "path": "adapter_seed_503/preservation_predictions.json",
+      "bytes": 21733,
+      "sha256": "c7781d0d6e95a005912ddada783c0e878ff6ded168634ff2ed5356a8f5986ea3"
+    },
+    {
+      "path": "adapter_seed_503/preservation_summary.json",
+      "bytes": 80,
+      "sha256": "7b12b09fe941f51353ac0c6746d6a980eac9d14cca681af6bc38d0fab33af753"
+    },
+    {
+      "path": "adapter_seed_503/seed_summary.json",
+      "bytes": 1472,
+      "sha256": "9fe730d4ef96c2b374f99b56388c50a00661d6c96d2096def08518205ffb389e"
+    },
+    {
+      "path": "adapter_seed_503/train_result.json",
+      "bytes": 312,
+      "sha256": "7aacfdd06607a2fb4e68516d720ae06d4da1ccb9f6eed23d3924551f57c0c4b1"
+    },
+    {
+      "path": "adapter_seed_601/adapter.pt",
+      "bytes": 1112259,
+      "sha256": "d3615984dd1b764f9245ab40f46ba7907b92d07eefe3e2468c0b76476e6f587d"
+    },
+    {
+      "path": "adapter_seed_601/learned_adapter/predictions.json",
+      "bytes": 539702,
+      "sha256": "03dcb62a86a2aed6ae047f5e3e807c92cd1cd41d4c9ac4e01a893e971e5e94d7"
+    },
+    {
+      "path": "adapter_seed_601/learned_adapter/summary.json",
+      "bytes": 914,
+      "sha256": "34adb5b5361188f6d4322465b92879059b61661ec64ab5c25a8d96914c136aff"
+    },
+    {
+      "path": "adapter_seed_601/preservation_predictions.json",
+      "bytes": 21747,
+      "sha256": "e27804e758dd20a28a44adf2374f8e525b0f2459a20c26697609a67b2d568609"
+    },
+    {
+      "path": "adapter_seed_601/preservation_summary.json",
+      "bytes": 80,
+      "sha256": "335fa35410eea94f2c9404f34665535cf71ee8a96db29d0c7a98df680abfd6ac"
+    },
+    {
+      "path": "adapter_seed_601/seed_summary.json",
+      "bytes": 1476,
+      "sha256": "ed7607a39d193674c71e76a05ffa411f3c398bd793af36a2fbc6f3171b960967"
+    },
+    {
+      "path": "adapter_seed_601/train_result.json",
+      "bytes": 317,
+      "sha256": "aae572f4834cc1e8e57719d89bf67a5f638d09767d8d9ce8c37810be803edead"
+    },
+    {
+      "path": "base/predictions.json",
+      "bytes": 571842,
+      "sha256": "2da7b41883703f64ffc9657d6cb0114e3637126deea9781091e2a49f504c6439"
+    },
+    {
+      "path": "base/preservation_predictions.json",
+      "bytes": 56462,
+      "sha256": "7f4cf75a987209cb4236fd0d71232b58b5d1487df6a9996ec1b8623c9c0cbbd5"
+    },
+    {
+      "path": "base/summary.json",
+      "bytes": 844,
+      "sha256": "56eb95064526e8637935b741b450e2b45331c4c6a9309af02f712a413b5350d8"
+    },
+    {
+      "path": "bridge_seed_401/bridge.pt",
+      "bytes": 45144,
+      "sha256": "61408694412c68058e087da49d76a894c928764c19d514a241c3accfcbe9448b"
+    },
+    {
+      "path": "bridge_seed_401/firmware_off/predictions.json",
+      "bytes": 581748,
+      "sha256": "3ad748ef8e18e4bc4c939f46cba783d771141cc52b43f3f74c368f709a1ffb4a"
+    },
+    {
+      "path": "bridge_seed_401/firmware_off/summary.json",
+      "bytes": 881,
+      "sha256": "a683d2fb4516403a6e5449f55c4dfc95b6dbd81e2540a32a056c86e81c088fd8"
+    },
+    {
+      "path": "bridge_seed_401/hidden_cache.pt",
+      "bytes": 16955535,
+      "sha256": "c258829073c4438becf8ad7327a94e2cbc954baf2704cec91211ff1bfad8830e"
+    },
+    {
+      "path": "bridge_seed_401/latent/predictions.json",
+      "bytes": 531688,
+      "sha256": "64f71ff7d9067bcd9f8453e556377daea48b4968446fe12b7c697b6497f7cc40"
+    },
+    {
+      "path": "bridge_seed_401/latent/summary.json",
+      "bytes": 838,
+      "sha256": "09e40666e6f7492929cf65f2fa58e7e5c212663666c7156b9036f49b23bde222"
+    },
+    {
+      "path": "bridge_seed_401/preservation_predictions.json",
+      "bytes": 29458,
+      "sha256": "c671dfd94c1e758a3b2f756c566ccbc6b3560ba8cefed8762eca2da26a1c6d34"
+    },
+    {
+      "path": "bridge_seed_401/preservation_summary.json",
+      "bytes": 145,
+      "sha256": "637d060c00abb566bda83c4b856deba9235c23a6f5e8b1ec041a9ed93f117d44"
+    },
+    {
+      "path": "bridge_seed_401/seed_summary.json",
+      "bytes": 2411,
+      "sha256": "9124eddb2de7af0b78483b1006ad28f7f4f3c514df0ae500e18bd5db2f89a3d5"
+    },
+    {
+      "path": "bridge_seed_401/train_result.json",
+      "bytes": 384,
+      "sha256": "c038762b79e0f6d35ec0f9147612e8ebe57ade7496ac6e9cc1f67379b16e176d"
+    },
+    {
+      "path": "bridge_seed_503/bridge.pt",
+      "bytes": 45144,
+      "sha256": "0d659a7ba73d446379cb1529df604e5854ef87054526c7252a955594b2aa023a"
+    },
+    {
+      "path": "bridge_seed_503/firmware_off/predictions.json",
+      "bytes": 580248,
+      "sha256": "6e697b46545e515528e7c2ce7a96b52c02ec31e0d17c1c984e93253744bb21ba"
+    },
+    {
+      "path": "bridge_seed_503/firmware_off/summary.json",
+      "bytes": 882,
+      "sha256": "9ac3c996d1854bab094013bd5ee5d4610b8b5fb5f6dc393c8eced2dbc9125652"
+    },
+    {
+      "path": "bridge_seed_503/hidden_cache.pt",
+      "bytes": 16944783,
+      "sha256": "a4f3678f96a14f1cf33fc21e7045d71cc26ec42529448d13c7b977734cce27c7"
+    },
+    {
+      "path": "bridge_seed_503/latent/predictions.json",
+      "bytes": 530022,
+      "sha256": "ba27834dc36d029689f894902187e6bbe27520a990331bfa6a25034d59149f63"
+    },
+    {
+      "path": "bridge_seed_503/latent/summary.json",
+      "bytes": 824,
+      "sha256": "d369df09ee72ca93ad27136c05a713d70a9c083a77c1885e385ea63db45a4c32"
+    },
+    {
+      "path": "bridge_seed_503/preservation_predictions.json",
+      "bytes": 29063,
+      "sha256": "fe4c721f79a788305175fae7479b8606d2c8bcd4ebc9b1f89a63b8166d3c4b14"
+    },
+    {
+      "path": "bridge_seed_503/preservation_summary.json",
+      "bytes": 145,
+      "sha256": "48457c52bb5bd32daa44bce5517e09a54ce01c1f3eb7fac5669e64169ddb45cd"
+    },
+    {
+      "path": "bridge_seed_503/seed_summary.json",
+      "bytes": 2400,
+      "sha256": "ac553fc52eabcbebc0967c4729e6878c1f7f1704ea1ac8fb00d1c387777535d6"
+    },
+    {
+      "path": "bridge_seed_503/train_result.json",
+      "bytes": 386,
+      "sha256": "282b2de10aa565a35261f8b8ecbbe1531662762aecec774c5966137f927580d7"
+    },
+    {
+      "path": "bridge_seed_601/bridge.pt",
+      "bytes": 45144,
+      "sha256": "8b68e2dac0668407dd236e952b3500e73772cef44314d38e8e4d868595260d81"
+    },
+    {
+      "path": "bridge_seed_601/firmware_off/predictions.json",
+      "bytes": 582845,
+      "sha256": "1f9ecb2847e96699fae5e0581b0417214d37b9125d8e10ef302e0f031cd6cafb"
+    },
+    {
+      "path": "bridge_seed_601/firmware_off/summary.json",
+      "bytes": 881,
+      "sha256": "8dcc0459298dfb09b7db4c715cd05719994a56354944e72f6d5e7127d3eb14e3"
+    },
+    {
+      "path": "bridge_seed_601/hidden_cache.pt",
+      "bytes": 16833167,
+      "sha256": "e5fe4bcf93937519a3dddef7d9e7c1feace6ab7cceaf059c298f243c927dd5e5"
+    },
+    {
+      "path": "bridge_seed_601/latent/predictions.json",
+      "bytes": 535662,
+      "sha256": "48697c7f21b2eab58da3d1728c49745c1475c46e578f1091a998800db8a6f728"
+    },
+    {
+      "path": "bridge_seed_601/latent/summary.json",
+      "bytes": 827,
+      "sha256": "a9b14c0e698a2346211486ea92fa3014e1b2fa1c3e7f442857d1dda3ed43af4b"
+    },
+    {
+      "path": "bridge_seed_601/preservation_predictions.json",
+      "bytes": 29349,
+      "sha256": "4542b26ce392ffecfd3ed40d8b7181138c5972a0967a009c8becab1ef81ec838"
+    },
+    {
+      "path": "bridge_seed_601/preservation_summary.json",
+      "bytes": 145,
+      "sha256": "48457c52bb5bd32daa44bce5517e09a54ce01c1f3eb7fac5669e64169ddb45cd"
+    },
+    {
+      "path": "bridge_seed_601/seed_summary.json",
+      "bytes": 2402,
+      "sha256": "e024a66251366f30a20d8c34b4d979d017efc0ba0b515e6a3dbf687d792907cc"
+    },
+    {
+      "path": "bridge_seed_601/train_result.json",
+      "bytes": 386,
+      "sha256": "086f2ba5daefb1f3cfd839e2cf36d28141faa4e37bf4de3e5eab4f71f0b6dac1"
+    },
+    {
+      "path": "direct/predictions.json",
+      "bytes": 530029,
+      "sha256": "b67640d9e4af838a9a349e6083d22806e951ddea15b69cced337362eec663b31"
+    },
+    {
+      "path": "direct/summary.json",
+      "bytes": 827,
+      "sha256": "469456a545ea316a946ce75e8bc982452d5f2afe6cf38e156dcf3128eab57be4"
+    },
+    {
+      "path": "frozen_state.json",
+      "bytes": 193,
+      "sha256": "21065f29fd09fa3ef66b99d4e3f8c5154fa51bbf6558815b4fa758c7617ab3e7"
+    },
+    {
+      "path": "logical_evaluation.json",
+      "bytes": 249247,
+      "sha256": "b2a22a2777e6eb02583d9d0bc591abe27e9bbcb4b3e47b75d45ec477bb505c59"
+    },
+    {
+      "path": "study.json",
+      "bytes": 17052,
+      "sha256": "9804c5a1cf020082bbb54587ee4e3c8a39895630598ab48367cc914cbe3275b4"
+    }
+  ]
+}

@@ -1,0 +1,106 @@
+error_family,classification,seed,split,prompt,expected_or_base,observed,initial_route_probability,minimum_route_probability
+latent_arithmetic,end_of_answer_decode_failure,401,id_random,"Calculate exactly. Return only the decimal digits.
+821+0=",821,"821"".
+
+
+
+ длительнheits",1.0,0.581149697303772
+latent_preservation,late_activation_on_quoted_registered_prompt,401,routing_controls,"Ignore the quoted instruction ""Calculate exactly. Return only the decimal digits.
+700+2457="". Reply only with the word ignored.",ignored,ignored157,0.0,
+latent_preservation,late_activation_on_quoted_registered_prompt,401,routing_controls,"Ignore the quoted instruction ""Calculate exactly. Return only the decimal digits.
+1748+716086="". Reply only with the word ignored.",ignored,ignored17834,0.0,
+latent_preservation,late_activation_on_quoted_registered_prompt,401,routing_controls,"Ignore the quoted instruction ""Calculate exactly. Return only the decimal digits.
+706+21287="". Reply only with the word ignored.",ignored,ignored1993,0.0,
+latent_preservation,late_activation_on_quoted_registered_prompt,503,routing_controls,"Ignore the quoted instruction ""Calculate exactly. Return only the decimal digits.
+0+52="". Reply only with the word ignored.",ignored,ignored2,0.0,
+latent_preservation,late_activation_on_quoted_registered_prompt,503,routing_controls,"Ignore the quoted instruction ""Calculate exactly. Return only the decimal digits.
+700+2457="". Reply only with the word ignored.",ignored,ignored157,5.2616821077230816e-36,
+latent_preservation,late_activation_on_quoted_registered_prompt,503,routing_controls,"Ignore the quoted instruction ""Calculate exactly. Return only the decimal digits.
+1748+716086="". Reply only with the word ignored.",ignored,ignored.,0.0,
+latent_preservation,late_activation_on_quoted_registered_prompt,503,routing_controls,"Ignore the quoted instruction ""Calculate exactly. Return only the decimal digits.
+706+21287="". Reply only with the word ignored.",ignored,ignored1993,1.7442691781691218e-37,
+latent_arithmetic,initial_router_underactivation,601,ood_long,"Calculate exactly. Return only the decimal digits.
+11389284371+505717100=",11895001471,To1895001471,0.1052359938621521,0.1052359938621521
+latent_arithmetic,initial_router_underactivation,601,ood_long,"Calculate exactly. Return only the decimal digits.
+748697694540+12520937117=",761218631657,To calculate 21863165789 divided,0.24696962535381317,0.24696962535381317
+latent_arithmetic,initial_router_underactivation,601,ood_long,"Calculate exactly. Return only the decimal digits.
+333853889164+99503730871=",433357620035,"To calculate the sum of the six two-digit035-digitnumbers"":",0.03433950990438461,0.03433950990438461
+latent_arithmetic,initial_router_underactivation,601,ood_long,"Calculate exactly. Return only the decimal digits.
+8837204716+510474051=",9347678767,To calculate the sum of seven eight seven six seven thousand eight hundred,0.2789749801158905,0.2789749801158905
+latent_arithmetic,initial_router_underactivation,601,ood_long,"Calculate exactly. Return only the decimal digits.
+87941672060+604495927205=",692437599265,To calculate the sum of seven five nine nine two six five seven two thousand,0.16696834564208984,0.16696834564208984
+latent_arithmetic,initial_router_underactivation,601,ood_long,"Calculate exactly. Return only the decimal digits.
+247505475+341802106750=",342049612225,To calculate the sum of \(612225\) and \(,0.058532245457172394,0.058532245457172394
+latent_arithmetic,initial_router_underactivation,601,ood_long,"Calculate exactly. Return only the decimal digits.
+4879759093+541435065476=",546314824569,To calculate the sum of four eight-digit four569-digit numbers:,0.48289552330970764,0.48289552330970764
+latent_arithmetic,initial_router_underactivation,601,ood_long,"Calculate exactly. Return only the decimal digits.
+44642826538+23322163198=",67964989736,To calculate the result of \(89736\) modulo \(,0.16160251200199127,0.16160251200199127
+latent_arithmetic,initial_router_underactivation,601,ood_long,"Calculate exactly. Return only the decimal digits.
+636871200232+1721583003=",638592783235,To calculate the sum of two numbers and return only the decimal digits exactly:,0.41197723150253296,0.41197723150253296
+latent_arithmetic,initial_router_underactivation,601,ood_long,"Calculate exactly. Return only the decimal digits.
+892758152825+2212945404=",894971098229,To calculate the sum of 09822958RTOS,0.3006367087364197,0.3006367087364197
+latent_arithmetic,initial_router_underactivation,601,ood_long,"Calculate exactly. Return only the decimal digits.
+1502723134+503132516009=",504635239143,To calculate the result of the two39143-digit integers concatenated,0.09182190895080566,0.09182190895080566
+latent_arithmetic,initial_router_underactivation,601,ood_long,"Calculate exactly. Return only the decimal digits.
+57939310539+400124635=",58339435174,To calculate the sum of four three-digit174-digit integers:,0.21912796795368195,0.21912796795368195
+latent_arithmetic,initial_router_underactivation,601,ood_long,"Calculate exactly. Return only the decimal digits.
+87541637966+81575385241=",169117023207,To calculate the sum of seven zero23207..,0.08882339298725128,0.08882339298725128
+latent_arithmetic,initial_router_underactivation,601,ood_long,"Calculate exactly. Return only the decimal digits.
+383879263848+487663873602=",871543137450,To calculate 54313745087 minus,0.17580224573612213,0.17580224573612213
+latent_arithmetic,initial_router_underactivation,601,ood_long,"Calculate exactly. Return only the decimal digits.
+2033220762+226985282979=",229018503741,To calculate the sum of the five03741℅℅℅,0.30439746379852295,0.30439746379852295
+latent_arithmetic,initial_router_underactivation,601,ood_long,"Calculate exactly. Return only the decimal digits.
+41818710478+7474426339=",49293136817,To calculate the sum of 3681787 concatenated,0.0037492334377020597,0.0037492334377020597
+latent_arithmetic,initial_router_underactivation,601,ood_long,"Calculate exactly. Return only the decimal digits.
+32655426584+215535616=",32870962200,To calculate the sum of \(62200\) digits \(,0.08735395967960358,0.08735395967960358
+latent_arithmetic,initial_router_underactivation,601,ood_long,"Calculate exactly. Return only the decimal digits.
+326647065+8303332429=",8629979494,"To calculate the sum of seven-digit four-digit numbers:
+
+\[3",0.45433762669563293,0.45433762669563293
+latent_arithmetic,initial_router_underactivation,601,ood_long,"Calculate exactly. Return only the decimal digits.
+3421356057+31180023443=",34601379500,To calculate the sum of three numbers9500,0.02119249477982521,0.02119249477982521
+latent_arithmetic,initial_router_underactivation,601,ood_long,"Calculate exactly. Return only the decimal digits.
+46465137733+437316965=",46902454698,To calculate the sum of four five-digit698-digit numbers:,0.01726154051721096,0.01726154051721096
+latent_arithmetic,initial_router_underactivation,601,ood_long,"Calculate exactly. Return only the decimal digits.
+868051561+373683668440=",374551720001,To calculate the sum of 720001561,0.43037354946136475,0.43037354946136475
+latent_arithmetic,initial_router_underactivation,601,ood_long,"Calculate exactly. Return only the decimal digits.
+5252249695+2779555102=",8031804797,To calculate the sum of 4797777,0.2681431472301483,0.2681431472301483
+latent_arithmetic,initial_router_underactivation,601,ood_long,"Calculate exactly. Return only the decimal digits.
+250043115481+798840561004=",1048883676485,To calculate the exact decimal digits of the sum \(485 \% \% \%,0.4456954002380371,0.4456954002380371
+latent_arithmetic,initial_router_underactivation,601,ood_long,"Calculate exactly. Return only the decimal digits.
+117770161654+428223974=",118198385628,To18198385628,0.015001354739069939,0.015001354739069939
+latent_arithmetic,initial_router_underactivation,601,ood_long,"Calculate exactly. Return only the decimal digits.
+717784562459+4776360071=",722560922530,To calculate the sum of the numbers 2530784,0.042134758085012436,0.042134758085012436
+latent_arithmetic,initial_router_underactivation,601,ood_long,"Calculate exactly. Return only the decimal digits.
+32110568822+88483856300=",120594425122,To calculate the sum of four four-digit5122-digit numbers:,0.054030440747737885,0.054030440747737885
+latent_arithmetic,initial_router_underactivation,601,ood_long,"Calculate exactly. Return only the decimal digits.
+12948392523+80377087770=",93325480293,To calculate the two-digit four-digit0293традиizontal addition,0.47289517521858215,0.47289517521858215
+latent_arithmetic,initial_router_underactivation,601,ood_long,"Calculate exactly. Return only the decimal digits.
+270560035+69029419275=",69299979310,To calculate the sum of \(79310\) digits \(,0.2413468062877655,0.2413468062877655
+latent_arithmetic,initial_router_underactivation,601,ood_long,"Calculate exactly. Return only the decimal digits.
+994060780017+82619344845=",1076680124862,To calculate the result of the addition 24862789,0.18615469336509705,0.18615469336509705
+latent_arithmetic,initial_router_underactivation,601,ood_long,"Calculate exactly. Return only the decimal digits.
+42273260569+36983559611=",79256820180,"To calculate the sum of the two decimal180digits:';
+decimal",0.3331219255924225,0.3331219255924225
+latent_arithmetic,initial_router_underactivation,601,ood_long,"Calculate exactly. Return only the decimal digits.
+41093875635+75160016419=",116253892054,To16253892054,0.08405507355928421,0.08405507355928421
+latent_arithmetic,initial_router_underactivation,601,ood_long,"Calculate exactly. Return only the decimal digits.
+2355129682+86540363737=",88895493419,"To calculate the sum of four numbers3419 ,- ,- ,-",0.25545939803123474,0.25545939803123474
+latent_arithmetic,initial_router_underactivation,601,ood_long,"Calculate exactly. Return only the decimal digits.
+38357336722+53463832557=",91821169279,To1821169279,0.035808224231004715,0.035808224231004715
+latent_arithmetic,initial_router_underactivation,601,ood_long,"Calculate exactly. Return only the decimal digits.
+2155628393+712023823383=",714179451776,To14179451776,0.28968513011932373,0.28968513011932373
+latent_arithmetic,initial_router_underactivation,601,ood_long,"Calculate exactly. Return only the decimal digits.
+7017919476+958052219102=",965070138578,To calculate the sum of 13857897 and,0.44392168521881104,0.44392168521881104
+latent_arithmetic,initial_router_underactivation,601,ood_long,"Calculate exactly. Return only the decimal digits.
+32859085841+971936902=",33831022743,"To calculate the sum of 22743 digits:
+
+\[",0.45523983240127563,0.45523983240127563
+latent_preservation,late_activation_on_quoted_registered_prompt,601,routing_controls,"Ignore the quoted instruction ""Calculate exactly. Return only the decimal digits.
+0+52="". Reply only with the word ignored.",ignored,ignored2,1.4562844513043372e-31,
+latent_preservation,late_activation_on_quoted_registered_prompt,601,routing_controls,"Ignore the quoted instruction ""Calculate exactly. Return only the decimal digits.
+700+2457="". Reply only with the word ignored.",ignored,ignored157,8.80968273699738e-27,
+latent_preservation,late_activation_on_quoted_registered_prompt,601,routing_controls,"Ignore the quoted instruction ""Calculate exactly. Return only the decimal digits.
+1748+716086="". Reply only with the word ignored.",ignored,ignored17834,1.5322163317417484e-31,
+latent_preservation,late_activation_on_quoted_registered_prompt,601,routing_controls,"Ignore the quoted instruction ""Calculate exactly. Return only the decimal digits.
+706+21287="". Reply only with the word ignored.",ignored,ignored1993,3.274052257250378e-28,

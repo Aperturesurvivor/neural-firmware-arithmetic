@@ -254,3 +254,99 @@ under the ignored `phase2_artifacts/` directory.
   used unavailable shell command `python`; inspection was immediately repeated
   with `uv run python` and confirmed one bridge and one adapter run were
   recovered.
+
+## 2026-07-25 — Frozen confirmatory execution
+
+- Committed the frozen study state as
+  `9f3fd1cfa33b72e881b896d2aafe4011b0ae7b62` before the runner generated
+  confirmatory training or evaluation data.
+- Canonical configuration SHA-256:
+  `9909e05238b49aaa80553ceea30342d0128f0077d4f78438bb5296ae60f3537b`.
+- Logical evaluation SHA-256:
+  `f6f043dfc290b944db99a53e459631a9dc6663ece43667b5e27ba584df1f4fa4`.
+- Began at 2026-07-25 17:29:44 PDT and completed at 18:35:37 PDT.
+  End-to-end wall time was 3,952.6 seconds (65.9 minutes).
+- The frozen base scored 60/300 (20.0%) ID, 14/300 (4.7%) primary OOD,
+  2/300 (0.7%) long OOD, and 9/150 (6.0%) carry chain.
+- Direct firmware scored 100% on all four splits (1,050/1,050 total).
+- Every trained firmware-off condition exactly reproduced the frozen base
+  counts on every split.
+- Latent firmware by seed:
+  - seed 401: 299/300 ID, 300/300 primary OOD, 300/300 long OOD,
+    150/150 carry, 97/100 preservation;
+  - seed 503: 300/300 ID, 300/300 primary OOD, 300/300 long OOD,
+    150/150 carry, 96/100 preservation;
+  - seed 601: 300/300 ID, 300/300 primary OOD, 264/300 long OOD,
+    150/150 carry, 96/100 preservation.
+- Learned all-layer LoRA by seed:
+  - seed 401: 191/300 ID, 16/300 primary OOD, 0/300 long OOD,
+    26/150 carry, 0/100 preservation;
+  - seed 503: 265/300 ID, 57/300 primary OOD, 5/300 long OOD,
+    10/150 carry, 3/100 preservation;
+  - seed 601: 271/300 ID, 116/300 primary OOD, 12/300 long OOD,
+    8/150 carry, 2/100 preservation.
+- Aggregate latent primary OOD was 900/900 (100%) versus 189/900
+  (21.0%) for LoRA. Paired differences were 94.7, 81.0, and 61.3
+  percentage points; their mean was 79.0 points.
+- Latent preservation was 289/300 (96.3%), with 0/300 initial false routes.
+- Formal verdict: three of four simultaneous criteria passed. The experiment
+  failed the overall preregistered success rule because preservation was below
+  99%. No confirmatory condition was retuned or rerun.
+
+## 2026-07-25 — Confirmatory analysis and error audit
+
+- Added and ran `scripts/analyze_phase2.py`.
+- Analysis bootstrap: 100,000 resamples of the three paired seed differences,
+  seed 20260725. The 95% percentile interval was [61.3, 94.7] percentage
+  points. With only three seed units, this interval is descriptive and not a
+  broad variability claim.
+- The 37 latent arithmetic errors were fully inventoried:
+  - 36 came from seed 601 on the nine- to twelve-digit split and had first-step
+    router probability below 0.5;
+  - one came from seed 401 on `821+0`; the correct prefix `821` was produced,
+    but the bridge failed to decode the end symbol.
+- All 11 language-preservation errors involved a registered calculator command
+  quoted inside an instruction to ignore it. Initial router probabilities
+  remained below 0.5, so the registered initial-false-route metric alone did
+  not explain the sequence divergence.
+- Added and ran `scripts/diagnose_phase2_failures.py` as a post-hoc diagnostic,
+  not a confirmatory rerun. It replayed only the 11 divergences. Every output
+  reproduced exactly, and every router first crossed 0.5 at generation step
+  one, after the base model had already generated `ignored`.
+- Generated tracked CSV tables, `analysis.json`, and three figure pairs
+  (PDF/PNG). The figure contracts and sample-size rules are documented in
+  `phase2_results/chart_map.md`.
+- Compact confirmatory study SHA-256:
+  `9804c5a1cf020082bbb54587ee4e3c8a39895630598ab48367cc914cbe3275b4`.
+- Analysis JSON SHA-256 before manuscript compilation:
+  `952dd4caeaa52d65974307a0affbdec90e4d9f09c7d7b6088458ca58ffd3161e`.
+- Added `scripts/hash_phase2_artifacts.py` and generated
+  `phase2_results/confirmatory_v1/artifact_manifest.sha256.json`. The manifest
+  records the relative path, byte count, and SHA-256 of every local raw
+  confirmatory file so checkpoints, hidden caches, full predictions, and
+  summaries can be verified after archival.
+
+## 2026-07-25 — Manuscript and final verification
+
+- Wrote the formal phase-2 manuscript in `paper_phase2/main.tex`.
+- Compiled it with bundled Tectonic 0.16.9 through the repository's LaTeX
+  compilation workflow. The final report is
+  `paper_phase2/neural-firmware-pretrained-llm.pdf`: 12 US-letter pages,
+  138,080 bytes in the final pre-commit build.
+- The first compilation produced several overfull boxes around long literal
+  prompts, paths, and hashes. Replaced those literals with breakable path or
+  prose forms and recompiled. The remaining messages are harmless underfull
+  boxes in the artifact-inventory table; no overfull boxes remain.
+- Rendered pages 1, 5, 6, and 11 to PNG with `pdftoppm` and visually inspected
+  the title/abstract/verdict, main figure, result tables/error audit, and
+  artifact inventory/conclusion. No clipping, overlap, or unreadable content
+  was observed.
+- A follow-up attempt to scan extracted PDF text for unresolved `??` markers
+  could not run because the standalone `pdftotext` executable is unavailable
+  on this host. Tectonic completed its cross-reference rerun successfully, and
+  the visually inspected references rendered with ordinary numbers.
+- Final automated verification before commit:
+  - `uv run pytest`: 10 passed; two pre-existing harmless nested-tensor
+    warnings from the phase-1 transformer;
+  - `uv run ruff check .`: all checks passed;
+  - `git diff --check`: no whitespace errors.

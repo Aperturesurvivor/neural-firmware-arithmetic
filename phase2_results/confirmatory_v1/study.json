@@ -1,0 +1,603 @@
+{
+  "experiment_name": "phase2_confirmatory_v1",
+  "frozen_state": {
+    "source_commit": "9f3fd1cfa33b72e881b896d2aafe4011b0ae7b62",
+    "config_sha256": "9909e05238b49aaa80553ceea30342d0128f0077d4f78438bb5296ae60f3537b",
+    "started_at_unix": 1785025784.804836
+  },
+  "model_id": "Qwen/Qwen2.5-0.5B-Instruct",
+  "model_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "config": {
+    "experiment_name": "phase2_confirmatory_v1",
+    "model_id": "Qwen/Qwen2.5-0.5B-Instruct",
+    "model_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+    "train_seeds": [
+      401,
+      503,
+      601
+    ],
+    "eval_seed": 771923,
+    "train_examples": 1000,
+    "train_min_digits": 1,
+    "train_max_digits": 4,
+    "routing_negative_train_examples": 400,
+    "hidden_cache_batch_size": 8,
+    "bridge": {
+      "steps": 120,
+      "batch_size": 32,
+      "learning_rate": 0.01,
+      "strength": 64.0,
+      "router_loss_weight": 0.25
+    },
+    "learned_adapter": {
+      "steps": 1000,
+      "batch_size": 1,
+      "learning_rate": 0.0005,
+      "rank": 4,
+      "alpha": 8.0,
+      "all_layers": true
+    },
+    "evaluation": {
+      "examples_per_random_split": 300,
+      "carry_examples": 150,
+      "routing_negative_examples": 100,
+      "splits": {
+        "id_random": [
+          1,
+          4
+        ],
+        "ood_primary": [
+          5,
+          8
+        ],
+        "ood_long": [
+          9,
+          12
+        ],
+        "carry_chain": [
+          5,
+          12
+        ]
+      }
+    },
+    "success_thresholds": {
+      "latent_ood_primary_mean_accuracy": 0.99,
+      "latent_minus_adapter_ood_primary_points": 0.5,
+      "latent_language_preservation_rate": 0.99,
+      "latent_initial_false_route_rate": 0.01
+    }
+  },
+  "evaluation_sha256": "f6f043dfc290b944db99a53e459631a9dc6663ece43667b5e27ba584df1f4fa4",
+  "base_summaries": [
+    {
+      "mode": "base",
+      "split": "id_random",
+      "examples": 300,
+      "correct": 60,
+      "exact_match_accuracy": 0.2,
+      "mean_latency_seconds": 0.18512360526002644
+    },
+    {
+      "mode": "base",
+      "split": "ood_primary",
+      "examples": 300,
+      "correct": 14,
+      "exact_match_accuracy": 0.04666666666666667,
+      "mean_latency_seconds": 0.3038188744334184
+    },
+    {
+      "mode": "base",
+      "split": "ood_long",
+      "examples": 300,
+      "correct": 2,
+      "exact_match_accuracy": 0.006666666666666667,
+      "mean_latency_seconds": 0.42376636537997303
+    },
+    {
+      "mode": "base",
+      "split": "carry_chain",
+      "examples": 150,
+      "correct": 9,
+      "exact_match_accuracy": 0.06,
+      "mean_latency_seconds": 0.34385468418006593
+    }
+  ],
+  "direct_summaries": [
+    {
+      "mode": "direct",
+      "split": "id_random",
+      "examples": 300,
+      "correct": 300,
+      "exact_match_accuracy": 1.0,
+      "mean_latency_seconds": 0.13269718073349698
+    },
+    {
+      "mode": "direct",
+      "split": "ood_primary",
+      "examples": 300,
+      "correct": 300,
+      "exact_match_accuracy": 1.0,
+      "mean_latency_seconds": 0.25597752025988785
+    },
+    {
+      "mode": "direct",
+      "split": "ood_long",
+      "examples": 300,
+      "correct": 300,
+      "exact_match_accuracy": 1.0,
+      "mean_latency_seconds": 0.37697475221660476
+    },
+    {
+      "mode": "direct",
+      "split": "carry_chain",
+      "examples": 150,
+      "correct": 150,
+      "exact_match_accuracy": 1.0,
+      "mean_latency_seconds": 0.28579941476683113
+    }
+  ],
+  "bridge_runs": [
+    {
+      "seed": 401,
+      "training_sha256": "4aeaa4bbd1837c7bb8de0954d3032fbb73614b7ab313c8ab19828071743d54c0",
+      "train_result": {
+        "config": {
+          "seed": 401,
+          "steps": 120,
+          "batch_size": 32,
+          "learning_rate": 0.01,
+          "strength": 64.0,
+          "router_loss_weight": 0.25
+        },
+        "trainable_parameters": 10753,
+        "initial_loss": 0.4187709093093872,
+        "final_loss": 5.719979162677191e-05,
+        "final_token_loss": 5.719979162677191e-05,
+        "final_router_loss": 0.0,
+        "wall_time_seconds": 3.789139000000432
+      },
+      "latent_summaries": [
+        {
+          "mode": "latent",
+          "split": "id_random",
+          "examples": 300,
+          "correct": 299,
+          "exact_match_accuracy": 0.9966666666666667,
+          "mean_latency_seconds": 0.13707882502674087
+        },
+        {
+          "mode": "latent",
+          "split": "ood_primary",
+          "examples": 300,
+          "correct": 300,
+          "exact_match_accuracy": 1.0,
+          "mean_latency_seconds": 0.2647652622299211
+        },
+        {
+          "mode": "latent",
+          "split": "ood_long",
+          "examples": 300,
+          "correct": 300,
+          "exact_match_accuracy": 1.0,
+          "mean_latency_seconds": 0.3857357676132597
+        },
+        {
+          "mode": "latent",
+          "split": "carry_chain",
+          "examples": 150,
+          "correct": 150,
+          "exact_match_accuracy": 1.0,
+          "mean_latency_seconds": 0.293899846120039
+        }
+      ],
+      "firmware_off_summaries": [
+        {
+          "mode": "firmware_off",
+          "split": "id_random",
+          "examples": 300,
+          "correct": 60,
+          "exact_match_accuracy": 0.2,
+          "mean_latency_seconds": 0.1858245169466075
+        },
+        {
+          "mode": "firmware_off",
+          "split": "ood_primary",
+          "examples": 300,
+          "correct": 14,
+          "exact_match_accuracy": 0.04666666666666667,
+          "mean_latency_seconds": 0.3080722598766442
+        },
+        {
+          "mode": "firmware_off",
+          "split": "ood_long",
+          "examples": 300,
+          "correct": 2,
+          "exact_match_accuracy": 0.006666666666666667,
+          "mean_latency_seconds": 0.43035673356332454
+        },
+        {
+          "mode": "firmware_off",
+          "split": "carry_chain",
+          "examples": 150,
+          "correct": 9,
+          "exact_match_accuracy": 0.06,
+          "mean_latency_seconds": 0.346520943840078
+        }
+      ],
+      "preservation_summary": {
+        "prompts": 100,
+        "token_exact_preserved": 97,
+        "preservation_rate": 0.97,
+        "initial_false_routes": 0,
+        "initial_false_route_rate": 0.0
+      }
+    },
+    {
+      "seed": 503,
+      "training_sha256": "cc6494c89f45dc8ac8ade93371a01dae38465afbf1dbd3167d9d8863b2d49eae",
+      "train_result": {
+        "config": {
+          "seed": 503,
+          "steps": 120,
+          "batch_size": 32,
+          "learning_rate": 0.01,
+          "strength": 64.0,
+          "router_loss_weight": 0.25
+        },
+        "trainable_parameters": 10753,
+        "initial_loss": 0.3981527090072632,
+        "final_loss": 0.00016854226123541594,
+        "final_token_loss": 0.00016854226123541594,
+        "final_router_loss": 0.0,
+        "wall_time_seconds": 3.742653999997856
+      },
+      "latent_summaries": [
+        {
+          "mode": "latent",
+          "split": "id_random",
+          "examples": 300,
+          "correct": 300,
+          "exact_match_accuracy": 1.0,
+          "mean_latency_seconds": 0.13673297179667618
+        },
+        {
+          "mode": "latent",
+          "split": "ood_primary",
+          "examples": 300,
+          "correct": 300,
+          "exact_match_accuracy": 1.0,
+          "mean_latency_seconds": 0.2614205577633159
+        },
+        {
+          "mode": "latent",
+          "split": "ood_long",
+          "examples": 300,
+          "correct": 300,
+          "exact_match_accuracy": 1.0,
+          "mean_latency_seconds": 0.3839510476234015
+        },
+        {
+          "mode": "latent",
+          "split": "carry_chain",
+          "examples": 150,
+          "correct": 150,
+          "exact_match_accuracy": 1.0,
+          "mean_latency_seconds": 0.2919642199866939
+        }
+      ],
+      "firmware_off_summaries": [
+        {
+          "mode": "firmware_off",
+          "split": "id_random",
+          "examples": 300,
+          "correct": 60,
+          "exact_match_accuracy": 0.2,
+          "mean_latency_seconds": 0.18618297484333501
+        },
+        {
+          "mode": "firmware_off",
+          "split": "ood_primary",
+          "examples": 300,
+          "correct": 14,
+          "exact_match_accuracy": 0.04666666666666667,
+          "mean_latency_seconds": 0.308405971000102
+        },
+        {
+          "mode": "firmware_off",
+          "split": "ood_long",
+          "examples": 300,
+          "correct": 2,
+          "exact_match_accuracy": 0.006666666666666667,
+          "mean_latency_seconds": 0.4292265961300412
+        },
+        {
+          "mode": "firmware_off",
+          "split": "carry_chain",
+          "examples": 150,
+          "correct": 9,
+          "exact_match_accuracy": 0.06,
+          "mean_latency_seconds": 0.34647305726670313
+        }
+      ],
+      "preservation_summary": {
+        "prompts": 100,
+        "token_exact_preserved": 96,
+        "preservation_rate": 0.96,
+        "initial_false_routes": 0,
+        "initial_false_route_rate": 0.0
+      }
+    },
+    {
+      "seed": 601,
+      "training_sha256": "a2d89bc286cae702a72f10474b107dfc0d0510b9c772c08778019737578bc39c",
+      "train_result": {
+        "config": {
+          "seed": 601,
+          "steps": 120,
+          "batch_size": 32,
+          "learning_rate": 0.01,
+          "strength": 64.0,
+          "router_loss_weight": 0.25
+        },
+        "trainable_parameters": 10753,
+        "initial_loss": 0.2552701234817505,
+        "final_loss": 4.4117718061897904e-05,
+        "final_token_loss": 4.4117718061897904e-05,
+        "final_router_loss": 0.0,
+        "wall_time_seconds": 4.104979499999899
+      },
+      "latent_summaries": [
+        {
+          "mode": "latent",
+          "split": "id_random",
+          "examples": 300,
+          "correct": 300,
+          "exact_match_accuracy": 1.0,
+          "mean_latency_seconds": 0.13682410140333862
+        },
+        {
+          "mode": "latent",
+          "split": "ood_primary",
+          "examples": 300,
+          "correct": 300,
+          "exact_match_accuracy": 1.0,
+          "mean_latency_seconds": 0.26151413775005494
+        },
+        {
+          "mode": "latent",
+          "split": "ood_long",
+          "examples": 300,
+          "correct": 264,
+          "exact_match_accuracy": 0.88,
+          "mean_latency_seconds": 0.39164752639001865
+        },
+        {
+          "mode": "latent",
+          "split": "carry_chain",
+          "examples": 150,
+          "correct": 150,
+          "exact_match_accuracy": 1.0,
+          "mean_latency_seconds": 0.2920220016866127
+        }
+      ],
+      "firmware_off_summaries": [
+        {
+          "mode": "firmware_off",
+          "split": "id_random",
+          "examples": 300,
+          "correct": 60,
+          "exact_match_accuracy": 0.2,
+          "mean_latency_seconds": 0.18622527095671104
+        },
+        {
+          "mode": "firmware_off",
+          "split": "ood_primary",
+          "examples": 300,
+          "correct": 14,
+          "exact_match_accuracy": 0.04666666666666667,
+          "mean_latency_seconds": 0.309687506526728
+        },
+        {
+          "mode": "firmware_off",
+          "split": "ood_long",
+          "examples": 300,
+          "correct": 2,
+          "exact_match_accuracy": 0.006666666666666667,
+          "mean_latency_seconds": 0.432586375826589
+        },
+        {
+          "mode": "firmware_off",
+          "split": "carry_chain",
+          "examples": 150,
+          "correct": 9,
+          "exact_match_accuracy": 0.06,
+          "mean_latency_seconds": 0.34689043726655655
+        }
+      ],
+      "preservation_summary": {
+        "prompts": 100,
+        "token_exact_preserved": 96,
+        "preservation_rate": 0.96,
+        "initial_false_routes": 0,
+        "initial_false_route_rate": 0.0
+      }
+    }
+  ],
+  "adapter_runs": [
+    {
+      "seed": 401,
+      "training_sha256": "edd0314eabccb6d701a534ef27a4adff1042e5e1b19fa37d68beab87aa28cb47",
+      "train_result": {
+        "config": {
+          "seed": 401,
+          "steps": 1000,
+          "batch_size": 1,
+          "learning_rate": 0.0005,
+          "rank": 4,
+          "alpha": 8.0,
+          "all_layers": true
+        },
+        "trainable_parameters": 270336,
+        "initial_loss": 6.061227798461914,
+        "final_loss": 0.04499216750264168,
+        "wall_time_seconds": 81.64429933299834
+      },
+      "adapter_summaries": [
+        {
+          "mode": "learned_adapter",
+          "split": "id_random",
+          "examples": 300,
+          "correct": 191,
+          "exact_match_accuracy": 0.6366666666666667,
+          "mean_latency_seconds": 0.14066070002685593
+        },
+        {
+          "mode": "learned_adapter",
+          "split": "ood_primary",
+          "examples": 300,
+          "correct": 16,
+          "exact_match_accuracy": 0.05333333333333334,
+          "mean_latency_seconds": 0.24917354153333388
+        },
+        {
+          "mode": "learned_adapter",
+          "split": "ood_long",
+          "examples": 300,
+          "correct": 0,
+          "exact_match_accuracy": 0.0,
+          "mean_latency_seconds": 0.38873051849335755
+        },
+        {
+          "mode": "learned_adapter",
+          "split": "carry_chain",
+          "examples": 150,
+          "correct": 26,
+          "exact_match_accuracy": 0.17333333333333334,
+          "mean_latency_seconds": 0.2820805766533158
+        }
+      ],
+      "preservation_summary": {
+        "prompts": 100,
+        "token_exact_preserved": 0,
+        "preservation_rate": 0.0
+      }
+    },
+    {
+      "seed": 503,
+      "training_sha256": "89e582b0af3210d6a203450390fed3722c8c2d4aaaa133b99f83c426f771056f",
+      "train_result": {
+        "config": {
+          "seed": 503,
+          "steps": 1000,
+          "batch_size": 1,
+          "learning_rate": 0.0005,
+          "rank": 4,
+          "alpha": 8.0,
+          "all_layers": true
+        },
+        "trainable_parameters": 270336,
+        "initial_loss": 1.8191313743591309,
+        "final_loss": 0.0011763579677790403,
+        "wall_time_seconds": 82.034401334
+      },
+      "adapter_summaries": [
+        {
+          "mode": "learned_adapter",
+          "split": "id_random",
+          "examples": 300,
+          "correct": 265,
+          "exact_match_accuracy": 0.8833333333333333,
+          "mean_latency_seconds": 0.14003410012667397
+        },
+        {
+          "mode": "learned_adapter",
+          "split": "ood_primary",
+          "examples": 300,
+          "correct": 57,
+          "exact_match_accuracy": 0.19,
+          "mean_latency_seconds": 0.26736074136670746
+        },
+        {
+          "mode": "learned_adapter",
+          "split": "ood_long",
+          "examples": 300,
+          "correct": 5,
+          "exact_match_accuracy": 0.016666666666666666,
+          "mean_latency_seconds": 0.3935723683466616
+        },
+        {
+          "mode": "learned_adapter",
+          "split": "carry_chain",
+          "examples": 150,
+          "correct": 10,
+          "exact_match_accuracy": 0.06666666666666667,
+          "mean_latency_seconds": 0.2912419722264652
+        }
+      ],
+      "preservation_summary": {
+        "prompts": 100,
+        "token_exact_preserved": 3,
+        "preservation_rate": 0.03
+      }
+    },
+    {
+      "seed": 601,
+      "training_sha256": "642b16251d3f4c2e68d35e2db3f78b7784f82f8657c351cb7bc9bb2699d7f762",
+      "train_result": {
+        "config": {
+          "seed": 601,
+          "steps": 1000,
+          "batch_size": 1,
+          "learning_rate": 0.0005,
+          "rank": 4,
+          "alpha": 8.0,
+          "all_layers": true
+        },
+        "trainable_parameters": 270336,
+        "initial_loss": 0.24002166092395782,
+        "final_loss": 0.0015596497105434537,
+        "wall_time_seconds": 81.6603022499985
+      },
+      "adapter_summaries": [
+        {
+          "mode": "learned_adapter",
+          "split": "id_random",
+          "examples": 300,
+          "correct": 271,
+          "exact_match_accuracy": 0.9033333333333333,
+          "mean_latency_seconds": 0.1416554020833428
+        },
+        {
+          "mode": "learned_adapter",
+          "split": "ood_primary",
+          "examples": 300,
+          "correct": 116,
+          "exact_match_accuracy": 0.38666666666666666,
+          "mean_latency_seconds": 0.2697638883366259
+        },
+        {
+          "mode": "learned_adapter",
+          "split": "ood_long",
+          "examples": 300,
+          "correct": 12,
+          "exact_match_accuracy": 0.04,
+          "mean_latency_seconds": 0.39324624070339875
+        },
+        {
+          "mode": "learned_adapter",
+          "split": "carry_chain",
+          "examples": 150,
+          "correct": 8,
+          "exact_match_accuracy": 0.05333333333333334,
+          "mean_latency_seconds": 0.2969164597400231
+        }
+      ],
+      "preservation_summary": {
+        "prompts": 100,
+        "token_exact_preserved": 2,
+        "preservation_rate": 0.02
+      }
+    }
+  ],
+  "completed_at_unix": 1785029737.388917
+}
