@@ -71,6 +71,17 @@ The experiment supports this narrow claim:
 > transformer and produce a large, causally localized skill increase that an
 > equal-sized ordinary learned adapter does not reproduce.
 
+This is not the first integrated calculator inside an LLM. Dietz and Klakow's
+2025 Integrated Gated Calculator (IGC) previously combined a frozen Llama 3.1
+8B model with learned input/output mappings, a gate, and a
+non-differentiable calculator, reporting 98–99% across four arithmetic
+operations. Our result is best understood as an independent small-model
+replication and controlled extension: it uses a 0.5B model, only 24,225
+learned interface parameters, an exactly parameter-matched learned control,
+precommitted same-prompt evaluation, novel wording families, and causal
+on/off tests. The studies are not head-to-head, so their accuracy percentages
+are not directly comparable.
+
 It does not yet show:
 
 - general mathematical understanding;
@@ -87,18 +98,21 @@ residual stream before its normal final normalization and output head.
 
 ## Recommended next step
 
-The next frozen study should improve semantic routing without changing the
-exact arithmetic payload. It should use:
+The next frozen study should compare this architecture directly with an
+IGC-style baseline on the same small model and identical prompts. It should
+use:
 
-- several independently trained routers;
-- at least one Llama-class 0.5–1.5B model in addition to Qwen;
-- a larger adversarial wording corpus;
-- confidence-aware routing or a second semantic verifier;
-- the same untouched, matched-control, oracle, and forced-off comparisons.
+- at least three independently trained interface seeds;
+- Qwen 0.5B first, then a Llama-class 1–1.5B model;
+- fixed learned-parameter budgets;
+- addition, subtraction, multiplication, and division where supported;
+- the same untouched, matched-control, oracle, forced-off, and safety tests.
 
-After routing is replicated, the next architectural milestone is replacing
-the fixed decimal parser with a learned residual-to-register encoder so that
-both operand extraction and operation selection occur inside the model.
+The next architectural milestone is replacing the fixed decimal parser with a
+learned residual-to-register encoder so that both operand extraction and
+operation selection occur inside the model. That comparison is needed before
+claiming an efficiency or architectural advantage over existing integrated
+calculator work.
 
 ## Files
 

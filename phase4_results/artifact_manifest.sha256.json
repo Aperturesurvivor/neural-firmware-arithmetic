@@ -8,14 +8,14 @@
     },
     {
       "path": "PHASE4_LAB_NOTEBOOK.md",
-      "bytes": 12058,
-      "sha256": "6813e725a6013fc52d22b06e5de670b2ff5504ff39ad307b1d3309ed5d3583b0",
+      "bytes": 13232,
+      "sha256": "cd339450940e6ba67fae96a2c9cc567420a68ea997454ee682b918c06967e4bd",
       "tracked": true
     },
     {
       "path": "PHASE4_EXECUTIVE_SUMMARY.md",
-      "bytes": 4789,
-      "sha256": "8dc258ce6618cb7a95d4d34d2657de649fb9035785209e4f519cc550e14ad4db",
+      "bytes": 5625,
+      "sha256": "35ed6da6a47111baf339f7bbcd76fa8ce7f94a723559bb06cd14e286053fb04a",
       "tracked": true
     },
     {
@@ -44,14 +44,14 @@
     },
     {
       "path": "paper_phase4/main.tex",
-      "bytes": 33911,
-      "sha256": "ee41821c6aba4c1cbdfc16d67e1e34b561724eeacc1ee48d4a0ada4183ca2e6a",
+      "bytes": 39799,
+      "sha256": "a58de09f02c8ad72359dcf65cc78a6c5227a09514875b910e54195d6a8834740",
       "tracked": true
     },
     {
       "path": "paper_phase4/natural-language-deterministic-arithmetic.pdf",
-      "bytes": 123717,
-      "sha256": "9b29017fe39a9f1e516ae7ab97122309425c9ce1163da25e6750078d77ddd50d",
+      "bytes": 135300,
+      "sha256": "06cac7551b6e58fb82ba9b4990988aba48084e7268994912a13f68c6c5a36e64",
       "tracked": true
     },
     {

@@ -130,6 +130,16 @@ passed, but positive routing coverage was 87.25%, below the fixed 90%
 threshold. The arithmetic mechanism worked without an observed error; semantic
 route recall remains the bottleneck.
 
+This phase does not originate the general integrated-calculator concept.
+Dietz and Klakow's 2025
+[Integrated Gated Calculator](https://arxiv.org/abs/2501.00684) is direct
+prior work on a frozen Llama 3.1 8B model. Phase 4 is best read as an
+independent small-model replication and controlled extension, distinguished
+by its 24,225-parameter interface, exact parameter-matched control,
+precommitted same-prompt evaluation, held-out natural-language routing, and
+causal on/off tests. The different reported accuracies are not directly
+comparable because the models and tasks differ.
+
 The full phase-4 paper is
 [`paper_phase4/natural-language-deterministic-arithmetic.pdf`](paper_phase4/natural-language-deterministic-arithmetic.pdf).
 For a concise explanation, see

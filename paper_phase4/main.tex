@@ -26,7 +26,7 @@ Unit Inside a 0.5B-Parameter Language Model}\\
 \large A Frozen Same-Prompt Comparison with an Untouched Base and
 Parameter-Matched Learned Control}
 \author{Josiah Wilson\\Independent Researcher}
-\date{July 25, 2026}
+\date{July 26, 2026}
 
 \begin{document}
 \maketitle
@@ -64,7 +64,14 @@ confirmatory verdict is not a full pass. The result is evidence that exact
 typed computation can create a large, causally localized skill increase
 inside a pretrained transformer. It is not evidence for general mathematical
 understanding, a learned number extractor, or arithmetic in one conventional
-scalar neuron.
+scalar neuron. It also does not originate the broad integrated-calculator
+concept: Dietz and Klakow's Integrated Gated Calculator (IGC) previously
+coupled a frozen Llama 3.1 8B model to a learned internal gate, learned
+input/output mappings, and a non-differentiable calculator
+\cite{dietz2025}. The present contribution is a smaller-model controlled
+replication and extension emphasizing a 24,225-parameter interface,
+precommitted same-prompt evaluation, an exactly parameter-matched learned
+control, unseen natural-language routing, and causal on/off tests.
 \end{abstract}
 
 \section*{Technical summary}
@@ -103,7 +110,9 @@ digits. A learned late-layer router decided whether the request asked for
 addition. Consequently, this study tests semantic operation routing and
 deterministic execution, not learned number extraction. The exact cell is a
 small structured module inside a wrapped transformer layer, not one scalar
-neuron and not an external calculator call.
+neuron and not an external calculator call. This is not the first integrated
+calculator architecture; the incremental contribution is the controlled
+small-model evidence and its unusually small learned interface.
 
 \section{Motivation and related work}
 
@@ -125,6 +134,53 @@ models with compiled libraries similarly argue that common algorithms need
 not be relearned from scratch \cite{saldyt2024}. Parameter-efficient methods
 such as LoRA demonstrate that useful adaptations can be introduced while
 freezing pretrained weights \cite{hu2021}.
+
+The closest prior work is the Integrated Gated Calculator (IGC) of Dietz and
+Klakow \cite{dietz2025}. IGC freezes Llama 3.1 8B and trains an approximately
+17-million-parameter module comprising a learned input mapping, categorical
+number and operator selection, a non-differentiable GPU calculator, and a
+learned output mapping. It executes inside a single forward iteration at an
+anchor token rather than through an external scratchpad, and reports
+98--99\% on BIG-Bench Arithmetic across addition, subtraction,
+multiplication, and division. It is therefore direct prior art for the broad
+claim that an internally gated exact calculator can improve a frozen language
+model.
+
+Table~\ref{tab:igc-comparison} separates that established concept from the
+incremental question tested here. The two studies are not head-to-head:
+models, arithmetic tasks, prompt distributions, parameter budgets, and
+evaluation protocols differ, so their accuracy percentages should not be
+compared as if they came from one benchmark.
+
+\begin{table}[H]
+\centering
+\scriptsize
+\begin{tabular}{p{0.20\linewidth}p{0.35\linewidth}p{0.35\linewidth}}
+\toprule
+Dimension & IGC \cite{dietz2025} & Present study\\
+\midrule
+Frozen base & Llama 3.1 8B & Qwen2.5 0.5B\\
+Learned interface & Approximately 17M parameters & 24,225 parameters\\
+Exact payload & Non-differentiable GPU calculator; four operations &
+Zero-parameter typed ripple-carry addition\\
+Input interface & Learned categorical number and operator mapping from tokens &
+Fixed two-decimal boundary plus learned semantic addition router\\
+Language scope & Recognizable input templates; complex word problems left as
+future work & Frozen unseen simple and word-problem families plus 16 negative
+families\\
+Main controls & Learned Llama baseline and component ablations &
+Untouched base, exact parameter-matched residual control, oracle-on, and
+forced-off identity\\
+Confirmation style & Multiple training runs & Single frozen checkpoint,
+precommitted protocol, and per-prompt raw audit\\
+\bottomrule
+\end{tabular}
+\caption{Non-head-to-head positioning against the closest prior integrated
+calculator. IGC is broader in operations and learns operand extraction; this
+study uses a much smaller base and learned interface and concentrates on
+matched causal controls and held-out language routing.}
+\label{tab:igc-comparison}
+\end{table}
 
 The motivating proposal in this project is narrower and more literal: place a
 locked deterministic process inside the language model, then learn only the
@@ -490,6 +546,14 @@ relax that rule after observing the data.
 
 \subsection{What the experiment demonstrates}
 
+Relative to IGC, this experiment should be read as an independent, tightly
+controlled small-model replication and extension of the integrated-calculator
+idea, not as its invention. Its distinctive evidence is that only 24,225
+learned interface parameters, coupled to a typed exact cell, produced a
+73-point gain over the untouched 0.5B model while an exactly
+parameter-matched unstructured payload did not. The precommitted same-prompt
+design and forced on/off interventions localize that gain.
+
 First, the chosen 0.5B model was genuinely weak on the task. It scored 3\% on
 five-to-eight-digit simple prompts, 0\% on nine-to-twelve-digit prompts, and
 6\% on word problems. The evaluation therefore had substantial headroom and
@@ -532,6 +596,13 @@ external answer tool because operation choice and output generation occur in
 the model forward path, but less integrated than learning both operand
 extraction and execution from residuals.
 
+Finally, it does not establish priority for the general integrated-calculator
+architecture. IGC demonstrated that design family before this confirmatory
+study, on a larger frozen model and a broader set of operations. The claim
+supported here is narrower: a small learned interface plus a deterministic
+typed cell can create a large, causally isolated improvement in this
+small-model, matched-control setting.
+
 \section{Limitations and threats to validity}
 
 \begin{itemize}
@@ -561,6 +632,13 @@ extraction and execution from residuals.
   \item \textbf{No tool baseline.} An external exact calculator would likely
   solve the arithmetic more simply. The research question here concerns
   internal deterministic structure, not deployment efficiency.
+  \item \textbf{No direct IGC replication.} This study did not reimplement IGC
+  on Qwen, run this architecture on IGC's task distribution, or equalize
+  parameter budgets. Its 90\% result therefore cannot be interpreted as better
+  or worse than IGC's reported 98--99\%. IGC is stronger in learned operand
+  extraction and operation breadth; this study's evidence is strongest in
+  tiny-interface size, exact parameter matching, precommitment, and causal
+  preservation controls.
   \item \textbf{Observed safety is bounded.} Zero false activations on 160
   negatives has a Wilson upper bound of 2.34\%; it is evidence, not a universal
   guarantee.
@@ -568,18 +646,32 @@ extraction and execution from residuals.
 
 \section{Next experiments}
 
-The most direct next study should freeze a router-improvement protocol before
-new evaluation. It should use multiple interface seeds, several small model
-families, and a much larger adversarial wording corpus. A selective abstention
-region could preserve the observed zero false-positive behavior while a
-second-stage semantic verifier recovers low-confidence additions.
+The highest-priority next study is a direct positioning experiment against an
+IGC-style baseline. On identical prompts and the same 0.5B model, it should
+compare the untouched base, conventional parameter-efficient adaptation, the
+present typed cell, and an IGC-style learned input/calculator/output module.
+At least three independently trained interface seeds and fixed parameter
+budgets should be used. A complementary evaluation should either run both
+architectures on the same expanded four-operation corpus or run the present
+system on BIG-Bench Arithmetic. This would establish whether the tiny typed
+interface offers a reproducible efficiency or control advantage rather than
+merely rediscovering the established integrated-calculator effect.
 
-The next architectural step toward the original proposal is to remove the
-fixed number boundary. A learned residual-to-register encoder could identify
-operand spans and digit values, with separate held-out tests for written
-numbers, signs, extra distractor numbers, and reference resolution. The
-operation registry could then expand from addition to subtraction,
-multiplication, comparison, and bounded code primitives.
+The central architectural step is then to remove the fixed number boundary.
+A learned residual-to-register encoder could identify operand spans and digit
+values, with separate held-out tests for written numbers, signs, extra
+distractor numbers, and reference resolution. Because IGC already learns
+categorical number and operator mappings, this step is necessary for parity
+with the closest prior work. The operation registry could then expand from
+addition to subtraction, multiplication, comparison, and bounded code
+primitives.
+
+Router improvement remains useful but should be evaluated inside that
+comparison rather than as an isolated victory. A larger adversarial wording
+corpus, calibrated abstention, and a second semantic verifier could target the
+observed family-clustered false negatives while preserving low false
+activation. Replication across a 0.5--1.5B Llama-class model would test
+architectural portability.
 
 For code, a credible deterministic payload would not be ``one code neuron.''
 It would be a typed interpreter kernel or verified transition library with
@@ -606,8 +698,11 @@ values were:
   \code{7d43f58126fc60bfb68ee2caa479818ce2b13b9b1c8d9f2b4b7adccb9840da94}.
 \end{itemize}
 
-The canonical rendered-data SHA-256 is
-\code{b6d9de587db437f49e4106c6b10b643976e37f6bcffe1cf8adae7994d2bf7f98}.
+The canonical rendered-data SHA-256 is:
+\begin{center}
+\small
+\path{b6d9de587db437f49e4106c6b10b643976e37f6bcffe1cf8adae7994d2bf7f98}
+\end{center}
 The run used macOS 26.5.2 on Apple arm64, Python 3.12.12, PyTorch 2.13.0,
 and MPS. Confirmatory inference took 1,096.43 seconds. All 22 tests and Ruff
 passed before the frozen runner was launched.
@@ -678,10 +773,14 @@ achieved 90.0\%. Oracle routing was perfect, every automatic activation was
 exact, the forced-off model exactly reproduced base, and all 160 negative
 outputs were preserved.
 
-Those observations support the central neural-firmware hypothesis: a known
-deterministic process can be placed inside a frozen generative model, connected
-through small learned interfaces, and create a dramatic skill improvement
-that an equally sized unstructured learned adapter does not reproduce.
+Those observations independently support the neural-firmware hypothesis: a
+known deterministic process can be placed inside a frozen generative model,
+connected through small learned interfaces, and create a dramatic skill
+improvement that an equally sized unstructured learned adapter does not
+reproduce. They do not establish the first integrated calculator in an LLM;
+IGC is direct prior art. The contribution is instead a small-model,
+tiny-interface replication and extension with a frozen same-prompt protocol,
+an exact parameter-matched control, and causal preservation tests.
 
 The study also exposes the next bottleneck. The exact circuit did not fail;
 the semantic router missed 51 addition prompts and achieved 87.25\% positive
@@ -698,7 +797,7 @@ and drafting were conducted collaboratively with OpenAI Codex. All
 confirmatory prompts, outputs, code, hashes, and criterion decisions are
 archived for audit.
 
-\begin{thebibliography}{9}
+\begin{thebibliography}{10}
 
 \bibitem{trask2018}
 A. Trask, F. Hill, S. Reed, J. Rae, C. Dyer, and P. Blunsom.
@@ -756,6 +855,13 @@ T. Vergara-Browne and A. Soto.
 Models.
 \newblock 2025.
 \newblock \url{https://arxiv.org/abs/2505.10719}.
+
+\bibitem{dietz2025}
+F. Dietz and D. Klakow.
+\newblock IGC: Integrating a Gated Calculator into an LLM to Solve Arithmetic
+Tasks Reliably and Efficiently.
+\newblock 2025.
+\newblock \url{https://arxiv.org/abs/2501.00684}.
 
 \end{thebibliography}
 

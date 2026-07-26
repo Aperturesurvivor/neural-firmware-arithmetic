@@ -225,3 +225,24 @@ and same-prompt baseline experiment. Times use America/Los_Angeles.
 - Added `scripts/hash_phase4_artifacts.py` to produce a final byte-count and
   SHA-256 inventory covering protocols, reports, raw/derived results, paper,
   and the three local ignored checkpoints.
+
+## 2026-07-26 — Post-report prior-art correction
+
+- A targeted novelty review identified Dietz and Klakow's 2025 paper,
+  *IGC: Integrating a Gated Calculator into an LLM to Solve Arithmetic Tasks
+  Reliably and Efficiently* (`https://arxiv.org/abs/2501.00684`), as the
+  closest prior work.
+- IGC had already demonstrated a learned internal gate, learned
+  number/operator and output mappings, and a non-differentiable calculator
+  attached to a frozen Llama 3.1 8B model. It reported 98–99% across four
+  arithmetic operations.
+- Revised the manuscript before public release to remove any implication that
+  this project originated the broad integrated-calculator concept and added a
+  direct, explicitly non-head-to-head comparison.
+- Reframed Phase 4 as an independent small-model replication and controlled
+  extension emphasizing its 24,225-parameter interface, exact
+  parameter-matched learned control, precommitted same-prompt protocol,
+  held-out natural-language routing, and causal on/off tests.
+- No prompt, checkpoint, output, statistic, success criterion, or
+  confirmatory verdict changed. This entry records a literature-positioning
+  correction only.
