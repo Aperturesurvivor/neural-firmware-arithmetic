@@ -1,0 +1,31 @@
+split,family,prompts,base_accuracy,typed_firmware_seed_mean_accuracy,adapter_seed_mean_accuracy,igc_matched_seed_mean_accuracy,igc_native_seed_mean_accuracy
+phase5_confirmatory_id_1_4,Apply integer addition to operands {a} and {b}; state just the result.,14,0.8571428571428571,1.0,0.023809523809523808,0.023809523809523808,0.9761904761904762
+phase5_confirmatory_id_1_4,Combine {a} with {b} additively and output nothing except the answer.,12,0.4166666666666667,1.0,0.19444444444444445,0.0,0.7222222222222222
+phase5_confirmatory_id_1_4,How many is {a} after an increase of {b}? Answer with one number.,10,0.5,1.0,0.0,0.0,1.0
+phase5_confirmatory_id_1_4,Produce the exact total for {a} together with {b}; return only digits.,18,0.2222222222222222,1.0,0.14814814814814814,0.0,1.0
+phase5_confirmatory_id_1_4,Resolve the addition of {a} and {b}. Include no explanatory text.,14,0.8571428571428571,1.0,0.023809523809523808,0.0,1.0
+phase5_confirmatory_id_1_4,Supply only the arithmetic total obtained from {a} plus {b}.,8,0.75,1.0,0.375,0.0,1.0
+phase5_confirmatory_id_1_4,"Take the sum of the pair {a}, {b}, and print only its decimal form.",13,0.38461538461538464,1.0,0.02564102564102564,0.0,0.8461538461538461
+phase5_confirmatory_id_1_4,What integer results from adding {b} to {a}? Give that integer alone.,11,0.5454545454545454,1.0,0.0,0.0,1.0
+phase5_confirmatory_long_9_12,Apply integer addition to operands {a} and {b}; state just the result.,8,0.0,1.0,0.0,0.0,0.8333333333333334
+phase5_confirmatory_long_9_12,Combine {a} with {b} additively and output nothing except the answer.,14,0.0,1.0,0.0,0.0,0.8095238095238095
+phase5_confirmatory_long_9_12,How many is {a} after an increase of {b}? Answer with one number.,10,0.0,1.0,0.0,0.0,0.6333333333333333
+phase5_confirmatory_long_9_12,Produce the exact total for {a} together with {b}; return only digits.,16,0.0,1.0,0.0,0.0,1.0
+phase5_confirmatory_long_9_12,Resolve the addition of {a} and {b}. Include no explanatory text.,14,0.0,1.0,0.0,0.0,1.0
+phase5_confirmatory_long_9_12,Supply only the arithmetic total obtained from {a} plus {b}.,15,0.0,1.0,0.0,0.0,0.9111111111111111
+phase5_confirmatory_long_9_12,"Take the sum of the pair {a}, {b}, and print only its decimal form.",12,0.0,1.0,0.0,0.0,0.9166666666666666
+phase5_confirmatory_long_9_12,What integer results from adding {b} to {a}? Give that integer alone.,11,0.0,1.0,0.0,0.0,1.0
+phase5_confirmatory_ood_5_8,Apply integer addition to operands {a} and {b}; state just the result.,15,0.06666666666666667,1.0,0.0,0.0,0.9777777777777777
+phase5_confirmatory_ood_5_8,Combine {a} with {b} additively and output nothing except the answer.,13,0.07692307692307693,1.0,0.05128205128205128,0.0,0.4358974358974359
+phase5_confirmatory_ood_5_8,How many is {a} after an increase of {b}? Answer with one number.,12,0.0,1.0,0.0,0.0,0.8611111111111112
+phase5_confirmatory_ood_5_8,Produce the exact total for {a} together with {b}; return only digits.,9,0.2222222222222222,1.0,0.07407407407407407,0.0,1.0
+phase5_confirmatory_ood_5_8,Resolve the addition of {a} and {b}. Include no explanatory text.,8,0.25,1.0,0.0,0.0,1.0
+phase5_confirmatory_ood_5_8,Supply only the arithmetic total obtained from {a} plus {b}.,16,0.125,1.0,0.041666666666666664,0.0,0.9583333333333334
+phase5_confirmatory_ood_5_8,"Take the sum of the pair {a}, {b}, and print only its decimal form.",15,0.0,1.0,0.0,0.0,0.9777777777777777
+phase5_confirmatory_ood_5_8,What integer results from adding {b} to {a}? Give that integer alone.,12,0.0,1.0,0.0,0.0,1.0
+phase5_confirmatory_word_5_8,A depot stored {a} parcels before receiving {b} additional parcels. What is the parcel count now? Return only the integer.,11,0.0,1.0,0.0,0.0,0.7878787878787878
+phase5_confirmatory_word_5_8,A lab logged {a} samples in one run and {b} in a second run. How many samples were logged altogether? Reply with digits only.,17,0.17647058823529413,1.0,0.0,0.0,0.7058823529411765
+phase5_confirmatory_word_5_8,A project had {a} records and imported a further {b} records. How many records does it have now? Use digits only.,14,0.0,1.0,0.0,0.0,0.7380952380952381
+phase5_confirmatory_word_5_8,A route covered {a} meters in the morning and {b} meters later. What full distance was covered? State only the result.,17,0.058823529411764705,1.0,0.0,0.0,1.0
+phase5_confirmatory_word_5_8,One server handled {a} requests and another handled {b}. How many requests did they handle in total? Give just the number.,18,0.0,1.0,0.0,0.0,0.9074074074074074
+phase5_confirmatory_word_5_8,Two bins contain {a} and {b} components respectively. How many components are in both bins? Output only the total.,23,0.043478260869565216,1.0,0.0,0.0,1.0

@@ -1,0 +1,5 @@
+comparison,typed_minus_comparator_percentage_points,bootstrap_95_lower_percentage_points,bootstrap_95_upper_percentage_points,paired_predictions
+typed_vs_base,83.0,79.25,86.75,1200
+typed_vs_adapter,97.25,95.66666666666667,98.66666666666667,1200
+typed_vs_igc_matched,99.91666666666667,99.58333333333333,100.0,1200
+typed_vs_igc_native,9.666666666666666,4.333333333333334,15.25,1200

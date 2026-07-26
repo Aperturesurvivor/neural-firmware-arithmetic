@@ -1,0 +1,486 @@
+{
+  "status": "confirmation_complete_raw",
+  "protocol": "PHASE5_CONFIRMATORY_PROTOCOL.md",
+  "protocol_commit": "b90ae8c",
+  "git_commit_at_start": "0b44d11",
+  "model_id": "Qwen/Qwen2.5-0.5B-Instruct",
+  "model_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "environment": {
+    "platform": "macOS-26.5.2-arm64-arm-64bit",
+    "python": "3.12.12",
+    "torch": "2.13.0",
+    "mps_available": true
+  },
+  "rendered_data": "phase5_results/confirmation_raw_v1/rendered_data.json",
+  "rendered_data_sha256": "7bdd97cb8ac68c8673aca4662c2eef83ffb182373dd2db92508ee6cd07f3c015",
+  "base": {
+    "path": "phase5_results/confirmation_raw_v1/base.json",
+    "sha256": "d63e5d1a3c3ddcc18053549ed953f669cf3b7ac19c80fe95fbca0f0a99f8c7b9",
+    "summary": {
+      "positive_examples": 400,
+      "mathematical_correct": 68,
+      "mathematical_accuracy": 0.17,
+      "exact_format_correct": 7,
+      "exact_format_accuracy": 0.0175,
+      "positive_latency": {
+        "mean_seconds": 0.6239015563223802,
+        "median_seconds": 0.7370434795011533,
+        "minimum_seconds": 0.0677952089899918,
+        "maximum_seconds": 0.9150832909945166
+      },
+      "negative_latency": {
+        "mean_seconds": 0.560231989881595,
+        "median_seconds": 0.6226847920042928,
+        "minimum_seconds": 0.09806529100751504,
+        "maximum_seconds": 0.6774483329936629
+      }
+    }
+  },
+  "condition_runs": [
+    {
+      "condition": "typed_firmware",
+      "seed": 10701,
+      "path": "phase5_results/confirmation_raw_v1/typed_firmware_seed_10701.json",
+      "sha256": "c650b29445e193fe6eb52eb0ac909aa50f474152fb3c673af122287c5195eefc",
+      "summary": {
+        "positive_examples": 400,
+        "mathematical_correct": 400,
+        "mathematical_accuracy": 1.0,
+        "exact_format_correct": 400,
+        "exact_format_accuracy": 1.0,
+        "route_true_positive": 400,
+        "route_true_positive_rate": 1.0,
+        "active_positive_mathematical_correct": 400,
+        "active_positive_mathematical_accuracy": 1.0,
+        "negative_examples": 160,
+        "route_false_positive": 5,
+        "route_false_positive_rate": 0.03125,
+        "token_exact_preserved": 155,
+        "token_exact_preservation_rate": 0.96875,
+        "positive_latency": {
+          "mean_seconds": 0.2781227288652735,
+          "median_seconds": 0.27895043750322657,
+          "minimum_seconds": 0.07542358299542684,
+          "maximum_seconds": 0.4769572500081267
+        },
+        "negative_latency": {
+          "mean_seconds": 0.5696398127433895,
+          "median_seconds": 0.635530416497204,
+          "minimum_seconds": 0.1039266659936402,
+          "maximum_seconds": 0.6606685419974383
+        }
+      }
+    },
+    {
+      "condition": "typed_firmware",
+      "seed": 10702,
+      "path": "phase5_results/confirmation_raw_v1/typed_firmware_seed_10702.json",
+      "sha256": "61d1f04b0770e2e84b0121eef8698d731a5f92d3ccbd2c4b160b4f93b8548798",
+      "summary": {
+        "positive_examples": 400,
+        "mathematical_correct": 400,
+        "mathematical_accuracy": 1.0,
+        "exact_format_correct": 400,
+        "exact_format_accuracy": 1.0,
+        "route_true_positive": 400,
+        "route_true_positive_rate": 1.0,
+        "active_positive_mathematical_correct": 400,
+        "active_positive_mathematical_accuracy": 1.0,
+        "negative_examples": 160,
+        "route_false_positive": 6,
+        "route_false_positive_rate": 0.0375,
+        "token_exact_preserved": 154,
+        "token_exact_preservation_rate": 0.9625,
+        "positive_latency": {
+          "mean_seconds": 0.27831429082772957,
+          "median_seconds": 0.28266118800092954,
+          "minimum_seconds": 0.07365962500625756,
+          "maximum_seconds": 0.4755276659998344
+        },
+        "negative_latency": {
+          "mean_seconds": 0.5729429461061045,
+          "median_seconds": 0.6359279164971667,
+          "minimum_seconds": 0.10245800000848249,
+          "maximum_seconds": 0.7773942079948029
+        }
+      }
+    },
+    {
+      "condition": "typed_firmware",
+      "seed": 10703,
+      "path": "phase5_results/confirmation_raw_v1/typed_firmware_seed_10703.json",
+      "sha256": "60e2d8cae6af587d5322fa86fdd10fc3e246abbf3657bed3fada7ca9358ff416",
+      "summary": {
+        "positive_examples": 400,
+        "mathematical_correct": 400,
+        "mathematical_accuracy": 1.0,
+        "exact_format_correct": 400,
+        "exact_format_accuracy": 1.0,
+        "route_true_positive": 400,
+        "route_true_positive_rate": 1.0,
+        "active_positive_mathematical_correct": 400,
+        "active_positive_mathematical_accuracy": 1.0,
+        "negative_examples": 160,
+        "route_false_positive": 7,
+        "route_false_positive_rate": 0.04375,
+        "token_exact_preserved": 153,
+        "token_exact_preservation_rate": 0.95625,
+        "positive_latency": {
+          "mean_seconds": 0.28006245011252756,
+          "median_seconds": 0.2831816664984217,
+          "minimum_seconds": 0.07511270898976363,
+          "maximum_seconds": 0.4651471249962924
+        },
+        "negative_latency": {
+          "mean_seconds": 0.5722121085502294,
+          "median_seconds": 0.6392791870093788,
+          "minimum_seconds": 0.10370504199818242,
+          "maximum_seconds": 0.6988910829968518
+        }
+      }
+    },
+    {
+      "condition": "adapter",
+      "seed": 10701,
+      "path": "phase5_results/confirmation_raw_v1/adapter_seed_10701.json",
+      "sha256": "7673d53f1464b7cdd9e37feb7b52751ae63c06299e6b3ba3e0460199cfce19e3",
+      "summary": {
+        "positive_examples": 400,
+        "mathematical_correct": 13,
+        "mathematical_accuracy": 0.0325,
+        "exact_format_correct": 13,
+        "exact_format_accuracy": 0.0325,
+        "route_true_positive": 400,
+        "route_true_positive_rate": 1.0,
+        "active_positive_mathematical_correct": 13,
+        "active_positive_mathematical_accuracy": 0.0325,
+        "negative_examples": 160,
+        "route_false_positive": 5,
+        "route_false_positive_rate": 0.03125,
+        "token_exact_preserved": 157,
+        "token_exact_preservation_rate": 0.98125,
+        "positive_latency": {
+          "mean_seconds": 0.30549652655747195,
+          "median_seconds": 0.28324554200662533,
+          "minimum_seconds": 0.06914424999558832,
+          "maximum_seconds": 0.7873467080062255
+        },
+        "negative_latency": {
+          "mean_seconds": 0.5674180901313776,
+          "median_seconds": 0.6325285834973329,
+          "minimum_seconds": 0.09929629099497106,
+          "maximum_seconds": 0.6810308330022963
+        }
+      }
+    },
+    {
+      "condition": "adapter",
+      "seed": 10702,
+      "path": "phase5_results/confirmation_raw_v1/adapter_seed_10702.json",
+      "sha256": "1918e976ccbdebf88d877c5e1a5e484071e0cf0bc9615eebcf68eb727501abbf",
+      "summary": {
+        "positive_examples": 400,
+        "mathematical_correct": 10,
+        "mathematical_accuracy": 0.025,
+        "exact_format_correct": 9,
+        "exact_format_accuracy": 0.0225,
+        "route_true_positive": 400,
+        "route_true_positive_rate": 1.0,
+        "active_positive_mathematical_correct": 10,
+        "active_positive_mathematical_accuracy": 0.025,
+        "negative_examples": 160,
+        "route_false_positive": 6,
+        "route_false_positive_rate": 0.0375,
+        "token_exact_preserved": 155,
+        "token_exact_preservation_rate": 0.96875,
+        "positive_latency": {
+          "mean_seconds": 0.3177367253072225,
+          "median_seconds": 0.28430889599985676,
+          "minimum_seconds": 0.06916808299138211,
+          "maximum_seconds": 0.7906804160011234
+        },
+        "negative_latency": {
+          "mean_seconds": 0.5737244977123737,
+          "median_seconds": 0.6335538335042656,
+          "minimum_seconds": 0.10016950000135694,
+          "maximum_seconds": 0.7273026250040857
+        }
+      }
+    },
+    {
+      "condition": "adapter",
+      "seed": 10703,
+      "path": "phase5_results/confirmation_raw_v1/adapter_seed_10703.json",
+      "sha256": "5ecccc0d5ce183ca3078c9cd7e9524f1949fdb5f7913c19514df245bf0d82bb3",
+      "summary": {
+        "positive_examples": 400,
+        "mathematical_correct": 10,
+        "mathematical_accuracy": 0.025,
+        "exact_format_correct": 10,
+        "exact_format_accuracy": 0.025,
+        "route_true_positive": 400,
+        "route_true_positive_rate": 1.0,
+        "active_positive_mathematical_correct": 10,
+        "active_positive_mathematical_accuracy": 0.025,
+        "negative_examples": 160,
+        "route_false_positive": 7,
+        "route_false_positive_rate": 0.04375,
+        "token_exact_preserved": 156,
+        "token_exact_preservation_rate": 0.975,
+        "positive_latency": {
+          "mean_seconds": 0.3346696278050513,
+          "median_seconds": 0.2895779169994057,
+          "minimum_seconds": 0.0709975000063423,
+          "maximum_seconds": 0.8163742079923395
+        },
+        "negative_latency": {
+          "mean_seconds": 0.5654568440187177,
+          "median_seconds": 0.6323204789950978,
+          "minimum_seconds": 0.10048166700289585,
+          "maximum_seconds": 0.6609397499996703
+        }
+      }
+    },
+    {
+      "condition": "igc_matched",
+      "seed": 10701,
+      "path": "phase5_results/confirmation_raw_v1/igc_matched_seed_10701.json",
+      "sha256": "53257e5496e2ccfeb820b0cf97f0485872dde59346ece286310e3cc791e56a91",
+      "summary": {
+        "positive_examples": 400,
+        "mathematical_correct": 0,
+        "mathematical_accuracy": 0.0,
+        "exact_format_correct": 0,
+        "exact_format_accuracy": 0.0,
+        "route_true_positive": 400,
+        "route_true_positive_rate": 1.0,
+        "active_positive_mathematical_correct": 0,
+        "active_positive_mathematical_accuracy": 0.0,
+        "negative_examples": 160,
+        "route_false_positive": 7,
+        "route_false_positive_rate": 0.04375,
+        "token_exact_preserved": 153,
+        "token_exact_preservation_rate": 0.95625,
+        "positive_latency": {
+          "mean_seconds": 0.3132146104099593,
+          "median_seconds": 0.3079327915038448,
+          "minimum_seconds": 0.0822994999907678,
+          "maximum_seconds": 0.46729387500090525
+        },
+        "negative_latency": {
+          "mean_seconds": 0.5845202096625144,
+          "median_seconds": 0.6517055210060789,
+          "minimum_seconds": 0.1203460420074407,
+          "maximum_seconds": 0.6817236250062706
+        },
+        "register_examples": 400,
+        "registers_exact": 0,
+        "register_accuracy": 0.0,
+        "route_and_register_eligible": 0,
+        "eligible_mathematical_correct": 0,
+        "eligible_mathematical_accuracy": null
+      }
+    },
+    {
+      "condition": "igc_matched",
+      "seed": 10702,
+      "path": "phase5_results/confirmation_raw_v1/igc_matched_seed_10702.json",
+      "sha256": "5de95b62f66cb4c53216bcd2bdf1c56d5c5bc89280a629e6587195b659dcd141",
+      "summary": {
+        "positive_examples": 400,
+        "mathematical_correct": 0,
+        "mathematical_accuracy": 0.0,
+        "exact_format_correct": 0,
+        "exact_format_accuracy": 0.0,
+        "route_true_positive": 400,
+        "route_true_positive_rate": 1.0,
+        "active_positive_mathematical_correct": 0,
+        "active_positive_mathematical_accuracy": 0.0,
+        "negative_examples": 160,
+        "route_false_positive": 10,
+        "route_false_positive_rate": 0.0625,
+        "token_exact_preserved": 150,
+        "token_exact_preservation_rate": 0.9375,
+        "positive_latency": {
+          "mean_seconds": 0.2817935706249045,
+          "median_seconds": 0.2764325000025565,
+          "minimum_seconds": 0.11212458299996797,
+          "maximum_seconds": 0.6637333329999819
+        },
+        "negative_latency": {
+          "mean_seconds": 0.5818804369557256,
+          "median_seconds": 0.6509018959986861,
+          "minimum_seconds": 0.11370012500265148,
+          "maximum_seconds": 0.7133279999980005
+        },
+        "register_examples": 400,
+        "registers_exact": 0,
+        "register_accuracy": 0.0,
+        "route_and_register_eligible": 0,
+        "eligible_mathematical_correct": 0,
+        "eligible_mathematical_accuracy": null
+      }
+    },
+    {
+      "condition": "igc_matched",
+      "seed": 10703,
+      "path": "phase5_results/confirmation_raw_v1/igc_matched_seed_10703.json",
+      "sha256": "83f50814ca56748a29df159637cf5439636cc426f660641c6e450cb15c4bcc95",
+      "summary": {
+        "positive_examples": 400,
+        "mathematical_correct": 1,
+        "mathematical_accuracy": 0.0025,
+        "exact_format_correct": 1,
+        "exact_format_accuracy": 0.0025,
+        "route_true_positive": 400,
+        "route_true_positive_rate": 1.0,
+        "active_positive_mathematical_correct": 1,
+        "active_positive_mathematical_accuracy": 0.0025,
+        "negative_examples": 160,
+        "route_false_positive": 7,
+        "route_false_positive_rate": 0.04375,
+        "token_exact_preserved": 153,
+        "token_exact_preservation_rate": 0.95625,
+        "positive_latency": {
+          "mean_seconds": 0.27116906885530623,
+          "median_seconds": 0.27203943749918835,
+          "minimum_seconds": 0.11192812499939464,
+          "maximum_seconds": 0.4713991669996176
+        },
+        "negative_latency": {
+          "mean_seconds": 0.5796580286310018,
+          "median_seconds": 0.6475366045124247,
+          "minimum_seconds": 0.11252587499620859,
+          "maximum_seconds": 0.682033417004277
+        },
+        "register_examples": 400,
+        "registers_exact": 0,
+        "register_accuracy": 0.0,
+        "route_and_register_eligible": 0,
+        "eligible_mathematical_correct": 0,
+        "eligible_mathematical_accuracy": null
+      }
+    },
+    {
+      "condition": "igc_native",
+      "seed": 10701,
+      "path": "phase5_results/confirmation_raw_v1/igc_native_seed_10701.json",
+      "sha256": "350edd2856ba80884104282aa3298d55eb340825a32bd9be414c6dde7a322eff",
+      "summary": {
+        "positive_examples": 400,
+        "mathematical_correct": 384,
+        "mathematical_accuracy": 0.96,
+        "exact_format_correct": 384,
+        "exact_format_accuracy": 0.96,
+        "route_true_positive": 400,
+        "route_true_positive_rate": 1.0,
+        "active_positive_mathematical_correct": 384,
+        "active_positive_mathematical_accuracy": 0.96,
+        "negative_examples": 160,
+        "route_false_positive": 5,
+        "route_false_positive_rate": 0.03125,
+        "token_exact_preserved": 155,
+        "token_exact_preservation_rate": 0.96875,
+        "positive_latency": {
+          "mean_seconds": 0.2889799741727984,
+          "median_seconds": 0.29220768800587393,
+          "minimum_seconds": 0.0823702920024516,
+          "maximum_seconds": 0.6202122079994297
+        },
+        "negative_latency": {
+          "mean_seconds": 0.5860291505499845,
+          "median_seconds": 0.6516661454952555,
+          "minimum_seconds": 0.12048591701022815,
+          "maximum_seconds": 0.6890231660072459
+        },
+        "register_examples": 400,
+        "registers_exact": 384,
+        "register_accuracy": 0.96,
+        "route_and_register_eligible": 384,
+        "eligible_mathematical_correct": 384,
+        "eligible_mathematical_accuracy": 1.0
+      }
+    },
+    {
+      "condition": "igc_native",
+      "seed": 10702,
+      "path": "phase5_results/confirmation_raw_v1/igc_native_seed_10702.json",
+      "sha256": "e4caad4a99900de2308370c2e0c7eb912bf43988db1f5b9276c65f671cba5177",
+      "summary": {
+        "positive_examples": 400,
+        "mathematical_correct": 340,
+        "mathematical_accuracy": 0.85,
+        "exact_format_correct": 340,
+        "exact_format_accuracy": 0.85,
+        "route_true_positive": 400,
+        "route_true_positive_rate": 1.0,
+        "active_positive_mathematical_correct": 340,
+        "active_positive_mathematical_accuracy": 0.85,
+        "negative_examples": 160,
+        "route_false_positive": 6,
+        "route_false_positive_rate": 0.0375,
+        "token_exact_preserved": 154,
+        "token_exact_preservation_rate": 0.9625,
+        "positive_latency": {
+          "mean_seconds": 0.29104280356958045,
+          "median_seconds": 0.30173747899971204,
+          "minimum_seconds": 0.0864825829921756,
+          "maximum_seconds": 0.4845658750127768
+        },
+        "negative_latency": {
+          "mean_seconds": 0.5854596224314264,
+          "median_seconds": 0.6518054165062495,
+          "minimum_seconds": 0.11431958399771247,
+          "maximum_seconds": 0.6829087090009125
+        },
+        "register_examples": 400,
+        "registers_exact": 340,
+        "register_accuracy": 0.85,
+        "route_and_register_eligible": 340,
+        "eligible_mathematical_correct": 340,
+        "eligible_mathematical_accuracy": 1.0
+      }
+    },
+    {
+      "condition": "igc_native",
+      "seed": 10703,
+      "path": "phase5_results/confirmation_raw_v1/igc_native_seed_10703.json",
+      "sha256": "dcaf608dbaf519456cef79902eda471a11c7c9f6839df44abbc3e03e8330d362",
+      "summary": {
+        "positive_examples": 400,
+        "mathematical_correct": 360,
+        "mathematical_accuracy": 0.9,
+        "exact_format_correct": 360,
+        "exact_format_accuracy": 0.9,
+        "route_true_positive": 400,
+        "route_true_positive_rate": 1.0,
+        "active_positive_mathematical_correct": 360,
+        "active_positive_mathematical_accuracy": 0.9,
+        "negative_examples": 160,
+        "route_false_positive": 7,
+        "route_false_positive_rate": 0.04375,
+        "token_exact_preserved": 153,
+        "token_exact_preservation_rate": 0.95625,
+        "positive_latency": {
+          "mean_seconds": 0.2856133208398387,
+          "median_seconds": 0.28135254199878545,
+          "minimum_seconds": 0.08337512500293087,
+          "maximum_seconds": 0.4857836250012042
+        },
+        "negative_latency": {
+          "mean_seconds": 0.5820251742061373,
+          "median_seconds": 0.650243167001463,
+          "minimum_seconds": 0.11532104200159665,
+          "maximum_seconds": 0.6839480829949025
+        },
+        "register_examples": 400,
+        "registers_exact": 359,
+        "register_accuracy": 0.8975,
+        "route_and_register_eligible": 359,
+        "eligible_mathematical_correct": 359,
+        "eligible_mathematical_accuracy": 1.0
+      }
+    }
+  ],
+  "wall_time_seconds": 2909.724263625001
+}

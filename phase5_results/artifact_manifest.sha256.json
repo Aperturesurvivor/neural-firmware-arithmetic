@@ -1,0 +1,357 @@
+{
+  "algorithm": "SHA-256",
+  "files": 58,
+  "bytes": 16073057,
+  "tracked_files": 46,
+  "local_checkpoint_files": 12,
+  "entries": [
+    {
+      "path": "PHASE5_CONFIRMATORY_PROTOCOL.md",
+      "bytes": 8756,
+      "sha256": "720cbd8dad8205f6a04017dd5a26d64b991c7f5541a82fcd00f1ebe85e4d92e8",
+      "tracked": true
+    },
+    {
+      "path": "PHASE5_EXECUTIVE_SUMMARY.md",
+      "bytes": 6237,
+      "sha256": "4650c763862b4b0d7479c0730a9fe6db7ff8e7b6a07c2c4f07270c0fcd5754ac",
+      "tracked": true
+    },
+    {
+      "path": "PHASE5_LAB_NOTEBOOK.md",
+      "bytes": 11011,
+      "sha256": "0ee9be702649eb648b847282e0c07b6faab3c9cc8ffebd4bc04a487064dc4884",
+      "tracked": true
+    },
+    {
+      "path": "PHASE5_PILOT_LOG.md",
+      "bytes": 3507,
+      "sha256": "1e3ded90576afd7930cdd2dbcd1ee72f9e6dc992c9d144e852edccb9188dbf60",
+      "tracked": true
+    },
+    {
+      "path": "paper_phase5/figures/accuracy_by_split.pdf",
+      "bytes": 17359,
+      "sha256": "fb5ddefd8481dc400b3621916b18acd31c19bd801eaa88a8b5b2fc87fb9c8ee7",
+      "tracked": true
+    },
+    {
+      "path": "paper_phase5/figures/accuracy_by_split.png",
+      "bytes": 33062,
+      "sha256": "172d99968660fa0a2bc212552c906a846b2bb81e68215329b1dd147bed9bd708",
+      "tracked": true
+    },
+    {
+      "path": "paper_phase5/figures/accuracy_vs_parameters.pdf",
+      "bytes": 17855,
+      "sha256": "3ca9f6ced5e9b8b82c45a4540cbf206cca6b03f368ca0dd4c33ca809a2ee0242",
+      "tracked": true
+    },
+    {
+      "path": "paper_phase5/figures/accuracy_vs_parameters.png",
+      "bytes": 41106,
+      "sha256": "7360b1158ee8d5c5e7c2de803bfe18948f71035de4ca81f4f73ae8e8dc19750e",
+      "tracked": true
+    },
+    {
+      "path": "paper_phase5/figures/aggregate_accuracy.pdf",
+      "bytes": 16517,
+      "sha256": "061de5766f0f70c02e6e4a9e8418b98034c52244896f3312afa431b6e87cd9d1",
+      "tracked": true
+    },
+    {
+      "path": "paper_phase5/figures/aggregate_accuracy.png",
+      "bytes": 37092,
+      "sha256": "34a4bb9303b7552492f892627ec44ac53b71a97e41cee40e22707767ec347fc8",
+      "tracked": true
+    },
+    {
+      "path": "paper_phase5/main.tex",
+      "bytes": 29678,
+      "sha256": "2b9cd02f1516f857bfe4b1edf56090063b14c444fbb68609b79e6d3a67d7e002",
+      "tracked": true
+    },
+    {
+      "path": "paper_phase5/neural-firmware-versus-igc.pdf",
+      "bytes": 125524,
+      "sha256": "1c854371a9ce54fd8f870e0ceb294519b1a1e808c3541654e23d7d29f1d013ba",
+      "tracked": true
+    },
+    {
+      "path": "phase5_artifacts/confirmatory_v2/adapter_seed_10701.pt",
+      "bytes": 100512,
+      "sha256": "3706b9b297417a14e8a124f165895d228dae826c2e261a3e244ce67df2ec5955",
+      "tracked": false
+    },
+    {
+      "path": "phase5_artifacts/confirmatory_v2/adapter_seed_10702.pt",
+      "bytes": 100512,
+      "sha256": "7f6f5783fff009a34bac25905aed9c9341bf661135ff7be08e1c8e347fc2552b",
+      "tracked": false
+    },
+    {
+      "path": "phase5_artifacts/confirmatory_v2/adapter_seed_10703.pt",
+      "bytes": 100512,
+      "sha256": "6dd500403c6adae50770c1f707bb7037f588ae8126149c3cbdc2eb325130e62a",
+      "tracked": false
+    },
+    {
+      "path": "phase5_artifacts/confirmatory_v2/igc_matched_seed_10701.pt",
+      "bytes": 109049,
+      "sha256": "7cc50d1135d1c0dbfbd4c129002639b1e65d7d1646e9479f2308893118719090",
+      "tracked": false
+    },
+    {
+      "path": "phase5_artifacts/confirmatory_v2/igc_matched_seed_10702.pt",
+      "bytes": 109049,
+      "sha256": "e6c9ad5b86191d52b25760dcc9f693ba37840c020000f2ce19bd4f577c5905e8",
+      "tracked": false
+    },
+    {
+      "path": "phase5_artifacts/confirmatory_v2/igc_matched_seed_10703.pt",
+      "bytes": 109049,
+      "sha256": "dd865ca29cca720482f0abecea666f19e12ff718f7f7b589703991065a4abc09",
+      "tracked": false
+    },
+    {
+      "path": "phase5_artifacts/confirmatory_v2/igc_native_seed_10701.pt",
+      "bytes": 2404644,
+      "sha256": "dce545b6ee4ed91fd31596270efe2febfb547d4e112910a9bda7dcd1eae93399",
+      "tracked": false
+    },
+    {
+      "path": "phase5_artifacts/confirmatory_v2/igc_native_seed_10702.pt",
+      "bytes": 2404644,
+      "sha256": "1560399981959503c64e6f0c1562bd0ea86a9743f5ef558bdca80a2b9bb3ae79",
+      "tracked": false
+    },
+    {
+      "path": "phase5_artifacts/confirmatory_v2/igc_native_seed_10703.pt",
+      "bytes": 2404644,
+      "sha256": "f19e7a0a0d521c06ab0eac8a67a251e6cbc1495ada0bc118920246b5a3806830",
+      "tracked": false
+    },
+    {
+      "path": "phase5_artifacts/confirmatory_v2/typed_firmware_seed_10701.pt",
+      "bytes": 103995,
+      "sha256": "2f6c1f7cc60035f1d4da00290e2a6635ed4607edefc73235b7ce3926f0dc0209",
+      "tracked": false
+    },
+    {
+      "path": "phase5_artifacts/confirmatory_v2/typed_firmware_seed_10702.pt",
+      "bytes": 103995,
+      "sha256": "28a57094d2d56f232372f2ddeaec0450b1b98b1158cd09e3aa04225fa7f60bd0",
+      "tracked": false
+    },
+    {
+      "path": "phase5_artifacts/confirmatory_v2/typed_firmware_seed_10703.pt",
+      "bytes": 103995,
+      "sha256": "c316d118d74bb61d77d276d7c6cc9789e447f4df88e876991983e6af6b3c9cfc",
+      "tracked": false
+    },
+    {
+      "path": "phase5_results/confirmation_analysis_v1.json",
+      "bytes": 66220,
+      "sha256": "a1037086584c00990fd6514fef8fa78f67e55f305d0291a8847daeac9c5f166a",
+      "tracked": true
+    },
+    {
+      "path": "phase5_results/confirmation_by_family_v1.csv",
+      "bytes": 4680,
+      "sha256": "60cdc4d335f40fcb6c0578201444a3c7d69959e720476e6e082646e31ab34216",
+      "tracked": true
+    },
+    {
+      "path": "phase5_results/confirmation_comparisons_v1.csv",
+      "bytes": 385,
+      "sha256": "395aa14a4372d43cd8363846f8d5f720d3c8e090ea52fc8d4b278a4cfcd61d4e",
+      "tracked": true
+    },
+    {
+      "path": "phase5_results/confirmation_raw_v1/adapter_seed_10701.json",
+      "bytes": 453532,
+      "sha256": "7673d53f1464b7cdd9e37feb7b52751ae63c06299e6b3ba3e0460199cfce19e3",
+      "tracked": true
+    },
+    {
+      "path": "phase5_results/confirmation_raw_v1/adapter_seed_10702.json",
+      "bytes": 454998,
+      "sha256": "1918e976ccbdebf88d877c5e1a5e484071e0cf0bc9615eebcf68eb727501abbf",
+      "tracked": true
+    },
+    {
+      "path": "phase5_results/confirmation_raw_v1/adapter_seed_10703.json",
+      "bytes": 456942,
+      "sha256": "5ecccc0d5ce183ca3078c9cd7e9524f1949fdb5f7913c19514df245bf0d82bb3",
+      "tracked": true
+    },
+    {
+      "path": "phase5_results/confirmation_raw_v1/base.json",
+      "bytes": 516461,
+      "sha256": "d63e5d1a3c3ddcc18053549ed953f669cf3b7ac19c80fe95fbca0f0a99f8c7b9",
+      "tracked": true
+    },
+    {
+      "path": "phase5_results/confirmation_raw_v1/igc_matched_seed_10701.json",
+      "bytes": 659950,
+      "sha256": "53257e5496e2ccfeb820b0cf97f0485872dde59346ece286310e3cc791e56a91",
+      "tracked": true
+    },
+    {
+      "path": "phase5_results/confirmation_raw_v1/igc_matched_seed_10702.json",
+      "bytes": 656028,
+      "sha256": "5de95b62f66cb4c53216bcd2bdf1c56d5c5bc89280a629e6587195b659dcd141",
+      "tracked": true
+    },
+    {
+      "path": "phase5_results/confirmation_raw_v1/igc_matched_seed_10703.json",
+      "bytes": 653947,
+      "sha256": "83f50814ca56748a29df159637cf5439636cc426f660641c6e450cb15c4bcc95",
+      "tracked": true
+    },
+    {
+      "path": "phase5_results/confirmation_raw_v1/igc_native_seed_10701.json",
+      "bytes": 653932,
+      "sha256": "350edd2856ba80884104282aa3298d55eb340825a32bd9be414c6dde7a322eff",
+      "tracked": true
+    },
+    {
+      "path": "phase5_results/confirmation_raw_v1/igc_native_seed_10702.json",
+      "bytes": 654071,
+      "sha256": "e4caad4a99900de2308370c2e0c7eb912bf43988db1f5b9276c65f671cba5177",
+      "tracked": true
+    },
+    {
+      "path": "phase5_results/confirmation_raw_v1/igc_native_seed_10703.json",
+      "bytes": 653524,
+      "sha256": "dcaf608dbaf519456cef79902eda471a11c7c9f6839df44abbc3e03e8330d362",
+      "tracked": true
+    },
+    {
+      "path": "phase5_results/confirmation_raw_v1/manifest.json",
+      "bytes": 18395,
+      "sha256": "468ec27bb0081b4ddd7fd8a1bbf7d9cb22bdfe133ce030bf84d68d4c9697bf89",
+      "tracked": true
+    },
+    {
+      "path": "phase5_results/confirmation_raw_v1/rendered_data.json",
+      "bytes": 217656,
+      "sha256": "7bdd97cb8ac68c8673aca4662c2eef83ffb182373dd2db92508ee6cd07f3c015",
+      "tracked": true
+    },
+    {
+      "path": "phase5_results/confirmation_raw_v1/typed_firmware_seed_10701.json",
+      "bytes": 445559,
+      "sha256": "c650b29445e193fe6eb52eb0ac909aa50f474152fb3c673af122287c5195eefc",
+      "tracked": true
+    },
+    {
+      "path": "phase5_results/confirmation_raw_v1/typed_firmware_seed_10702.json",
+      "bytes": 445219,
+      "sha256": "61d1f04b0770e2e84b0121eef8698d731a5f92d3ccbd2c4b160b4f93b8548798",
+      "tracked": true
+    },
+    {
+      "path": "phase5_results/confirmation_raw_v1/typed_firmware_seed_10703.json",
+      "bytes": 445217,
+      "sha256": "60e2d8cae6af587d5322fa86fdd10fc3e246abbf3657bed3fada7ca9358ff416",
+      "tracked": true
+    },
+    {
+      "path": "phase5_results/confirmation_summary_v1.csv",
+      "bytes": 5371,
+      "sha256": "8b831cc92a0f623fbd9a257642de581265aa3af2a2535ca846064834703790e1",
+      "tracked": true
+    },
+    {
+      "path": "phase5_results/training_v2/adapter_seed_10701.json",
+      "bytes": 1927,
+      "sha256": "70577a1b3eb7bdb722a4a0b5666b8d56e60b0fae474ad64bb81916ec2799a903",
+      "tracked": true
+    },
+    {
+      "path": "phase5_results/training_v2/adapter_seed_10702.json",
+      "bytes": 1927,
+      "sha256": "9fcbaa45d0b9a1ccc02843cf45e5267f31e48e183d207446e5b08a218c97a886",
+      "tracked": true
+    },
+    {
+      "path": "phase5_results/training_v2/adapter_seed_10703.json",
+      "bytes": 1905,
+      "sha256": "7e340a665ffe5eec6e09444cd376e8d82a46e15a52189d7953d1e9879031fe75",
+      "tracked": true
+    },
+    {
+      "path": "phase5_results/training_v2/igc_matched_seed_10701.json",
+      "bytes": 2900,
+      "sha256": "f4b09115f189c4502e524512b83c1d59b5358c903d0f1046861a9afb31c576c7",
+      "tracked": true
+    },
+    {
+      "path": "phase5_results/training_v2/igc_matched_seed_10702.json",
+      "bytes": 2924,
+      "sha256": "bdb3a6510b6fcc07cdfac6ac8ca344eba672bdad618223ddd5a17976b307026d",
+      "tracked": true
+    },
+    {
+      "path": "phase5_results/training_v2/igc_matched_seed_10703.json",
+      "bytes": 2886,
+      "sha256": "de747700d1ed589323f467936782d5b2e22cba83954dd9140d09c222c4853696",
+      "tracked": true
+    },
+    {
+      "path": "phase5_results/training_v2/igc_native_seed_10701.json",
+      "bytes": 2924,
+      "sha256": "52dd63e08dce89424c140a26c846154c89510342321b1dad6cef5f45273297d5",
+      "tracked": true
+    },
+    {
+      "path": "phase5_results/training_v2/igc_native_seed_10702.json",
+      "bytes": 2928,
+      "sha256": "0ea3c51cbe09824e8cbb7a192fc70cb9589ba88c0d70d7d049c36d07d0de8daf",
+      "tracked": true
+    },
+    {
+      "path": "phase5_results/training_v2/igc_native_seed_10703.json",
+      "bytes": 2913,
+      "sha256": "8ea761627334d90285d6642e0687c27ff1b5c96e18d13e8552fc4172c2fd8b89",
+      "tracked": true
+    },
+    {
+      "path": "phase5_results/training_v2/manifest.json",
+      "bytes": 33302,
+      "sha256": "d56c172939534167ff92533bfd7008f0d50ef0da11fa0d9c867298db9521c24f",
+      "tracked": true
+    },
+    {
+      "path": "phase5_results/training_v2/typed_firmware_seed_10701.json",
+      "bytes": 1950,
+      "sha256": "ebd3c0e3dc26c2dc8b77fe84ec643129ec1bd74896ed83d8973a7e36d5fe3047",
+      "tracked": true
+    },
+    {
+      "path": "phase5_results/training_v2/typed_firmware_seed_10702.json",
+      "bytes": 1952,
+      "sha256": "d956a2c39c420d9572adf297cd85ae4a920d1e5622aaa94d45c40f09200f0b55",
+      "tracked": true
+    },
+    {
+      "path": "phase5_results/training_v2/typed_firmware_seed_10703.json",
+      "bytes": 1931,
+      "sha256": "a748abe314598ade99d3da24ce95e267853cd0266f3bf789f68d8eb4317f1b51",
+      "tracked": true
+    },
+    {
+      "path": "scripts/analyze_phase5_confirmation.py",
+      "bytes": 30470,
+      "sha256": "86936852dfc36c51bb1d702182b777fef18123696ca5c099941c5498b481357d",
+      "tracked": true
+    },
+    {
+      "path": "scripts/run_phase5_confirmation.py",
+      "bytes": 15827,
+      "sha256": "6573c3fd69513d3f25cf424c85daa12fb14e836078a24928806aabc91b1df92e",
+      "tracked": true
+    }
+  ]
+}

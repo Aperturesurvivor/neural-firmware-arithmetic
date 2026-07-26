@@ -148,6 +148,47 @@ protocol and chronological record are
 [`PHASE4_CONFIRMATORY_PROTOCOL.md`](PHASE4_CONFIRMATORY_PROTOCOL.md) and
 [`PHASE4_LAB_NOTEBOOK.md`](PHASE4_LAB_NOTEBOOK.md).
 
+## Typed firmware versus IGC-style study
+
+The fifth experiment directly compared the fixed-parser typed architecture
+with an independently implemented learned-input/calculator/output
+architecture inspired by IGC. Every condition used the same frozen
+Qwen2.5-0.5B-Instruct revision, addition data, three paired training seeds,
+400 held-out positive prompts per seed, and 160 adversarial negatives per
+seed.
+
+Confirmatory mathematical accuracy was:
+
+- untouched base: 68/400 (17.0%);
+- ordinary 24,225-parameter adapter: 33/1,200 (2.75%);
+- 24,225-parameter typed firmware: 1,200/1,200 (100%);
+- matched 24,225-parameter IGC-style model: 1/1,200 (0.083%);
+- native 597,819-parameter IGC-style model: 1,084/1,200 (90.33%).
+
+Typed minus native accuracy was +9.67 percentage points, with a frozen paired
+crossed seed/prompt bootstrap 95% interval of +4.33 to +15.25 points. Typed
+therefore passed the precommitted parameter-efficiency rule: it was more
+accurate, used 24.68 times fewer learned parameters, and had equal
+preservation.
+
+The boundary is important. Typed firmware received its operands from a fixed
+decimal parser. Native IGC learned operand extraction and recovered exact
+registers on 1,083/1,200 prompts; all 1,083 eligible calculator executions
+were correct. The matched-budget IGC result shows that the selected tiny input
+mapper failed, not that learned parsing is impossible at that budget.
+
+This phase was not a compound safety success. Typed and native IGC each
+falsely activated on 18/480 multiplication prompts and preserved only
+462/480 (96.25%) negative outputs token-for-token, below the frozen 99% gate.
+The arithmetic mechanism passed; robust operation routing did not.
+
+The full phase-5 paper is
+[`paper_phase5/neural-firmware-versus-igc.pdf`](paper_phase5/neural-firmware-versus-igc.pdf).
+The concise result, frozen protocol, and chronology are
+[`PHASE5_EXECUTIVE_SUMMARY.md`](PHASE5_EXECUTIVE_SUMMARY.md),
+[`PHASE5_CONFIRMATORY_PROTOCOL.md`](PHASE5_CONFIRMATORY_PROTOCOL.md), and
+[`PHASE5_LAB_NOTEBOOK.md`](PHASE5_LAB_NOTEBOOK.md).
+
 ## Reproduction
 
 ```bash
@@ -174,8 +215,13 @@ uv run python scripts/hash_phase3_artifacts.py
 # Natural-language same-prompt confirmation
 uv run python scripts/run_phase4_confirmation.py
 uv run python scripts/analyze_phase4_confirmation.py
+
+# Typed firmware versus IGC-style confirmation
+uv run python scripts/run_phase5_confirmation.py
+uv run python scripts/analyze_phase5_confirmation.py
+uv run python scripts/hash_phase5_artifacts.py
 ```
 
-Compact metrics, raw phase-4 predictions, configuration files, figures, and
-compiled papers are tracked in Git. Large checkpoints remain local under
-ignored artifact directories.
+Compact metrics, raw predictions, configuration files, figures, and compiled
+papers are tracked in Git. Large checkpoints remain local under ignored
+artifact directories.
