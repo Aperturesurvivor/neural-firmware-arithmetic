@@ -350,3 +350,14 @@ under the ignored `phase2_artifacts/` directory.
     warnings from the phase-1 transformer;
   - `uv run ruff check .`: all checks passed;
   - `git diff --check`: no whitespace errors.
+- Committed the reporting package as
+  `3c1031abe0de5ec4fa30d296e4eea2d3bb8e247c`.
+- Sent the requested notification-length result to Josiah through the macOS
+  Messages service using the phone-bearing `Josiah Wilson` contact record. The
+  automation returned `sent`; no phone number is stored in this repository.
+  Message: “Not fully successful: arithmetic passed (100% OOD vs 21% LoRA),
+  but preservation was 96.3%, below the 99% target.”
+- Did not automatically create the proposed transformer-block follow-up goal.
+  Josiah conditioned that follow-up on phase-2 success, while the frozen
+  all-criteria verdict is unsuccessful. The architecture specification remains
+  preserved in `FUTURE_ARCHITECTURE_GOAL.md` for an explicit future decision.
