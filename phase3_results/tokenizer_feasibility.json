@@ -1,0 +1,11 @@
+{
+  "model_id": "Qwen/Qwen2.5-0.5B-Instruct",
+  "revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "seed": 31415,
+  "examples": 1000,
+  "exact_digit_position_recoveries": 1000,
+  "quoted_prompt_rejections": 1000,
+  "minimum_chat_tokens": 50,
+  "maximum_chat_tokens": 126,
+  "failures": []
+}
