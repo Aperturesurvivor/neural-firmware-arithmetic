@@ -23,7 +23,7 @@
 0.5-Billion-Parameter Language Model}\\
 \large A Preregistered Neural-Firmware Experiment}
 \author{Josiah Wilson\\Independent Researcher}
-\date{July 25, 2026}
+\date{July 26, 2026}
 
 \begin{document}
 \maketitle
@@ -95,6 +95,15 @@ position representations \cite{trask2018,jelassi2023,cho2024}. Another line of
 work compiles programs into neural networks or combines learned
 representations with algorithmic reasoners \cite{lindner2023,bounsi2024,
 saldyt2024}.
+
+The closest prior work is Dietz and Klakow's Integrated Gated Calculator
+(IGC) \cite{dietz2025}. IGC attaches learned input and output mappings and a
+non-differentiable four-operation calculator to a frozen Llama 3.1 8B model,
+reporting 98--99\% on BIG-Bench Arithmetic. It is direct prior art for the
+broad integrated-calculator concept. This experiment does not claim that
+concept as novel; it asks a narrower question about a 0.5B model, a
+10,753-parameter residual bridge, length extrapolation, a LoRA comparison, and
+strict token-level preservation.
 
 The motivating proposal here is different from merely giving a language model
 an external calculator tool. If an operation is known exactly, perhaps the
@@ -492,6 +501,12 @@ not merely for correlated activation. The current result says this direction
 is plausible, but the preservation failure means it should not be started
 under an automatic ``phase 2 succeeded'' rule without an explicit decision.
 
+IGC had already established the more general feasibility of a learned,
+internally gated calculator on a larger frozen model. The incremental evidence
+here is therefore the small-model residual interface, the explicit learned
+LoRA comparator, and the preservation failure that exposes sequence-level
+routing as a separate requirement.
+
 \section{Limitations}
 
 \begin{enumerate}
@@ -666,7 +681,19 @@ correct transition function. A true calculator unit inside the repeated
 transformer stack remains plausible, but the next design should first make
 eligibility a sequence-level invariant.
 
-\begin{thebibliography}{9}
+This is a controlled replication and extension within an existing
+integrated-calculator design family, not the first such architecture.
+
+\section*{Acknowledgments and Attribution}
+
+Josiah Wilson originated this project's neural-firmware research direction and
+specified the architectural question. OpenAI Codex assisted with literature
+discovery, experimental design, implementation, execution, statistical
+analysis, validation, visualization, and manuscript drafting under Wilson's
+direction. All claims remain bounded to the archived artifacts and observed
+results.
+
+\begin{thebibliography}{10}
 
 \bibitem{trask2018}
 A. Trask, F. Hill, S. Reed, J. Rae, C. Dyer, and P. Blunsom.
@@ -724,6 +751,13 @@ T. Vergara-Browne and A. Soto.
 Models.
 \newblock 2025.
 \newblock \url{https://arxiv.org/abs/2505.10719}.
+
+\bibitem{dietz2025}
+F. Dietz and D. Klakow.
+\newblock IGC: Integrating a Gated Calculator into an LLM to Solve Arithmetic
+Tasks Reliably and Efficiently.
+\newblock 2025.
+\newblock \url{https://arxiv.org/abs/2501.00684}.
 
 \end{thebibliography}
 

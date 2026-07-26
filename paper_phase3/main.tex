@@ -22,7 +22,7 @@
 Transformer Stack of a Pretrained Language Model}\\
 \large A Preregistered, Causally Intervened 0.5B-Parameter Experiment}
 \author{Josiah Wilson\\Independent Researcher}
-\date{July 25, 2026}
+\date{July 26, 2026}
 
 \begin{document}
 \maketitle
@@ -106,6 +106,16 @@ modules and arithmetic-specific training can improve extrapolation
 \cite{trask2018,jelassi2023,cho2024}. Program compilation and neural
 algorithmic reasoning instead explore how explicit computation can coexist
 with neural representations \cite{lindner2023,bounsi2024,saldyt2024}.
+
+Dietz and Klakow's Integrated Gated Calculator (IGC) is the closest prior
+integrated-calculator architecture \cite{dietz2025}. It freezes Llama 3.1 8B
+and trains learned input/output mappings around a non-differentiable
+four-operation calculator, reporting 98--99\% on BIG-Bench Arithmetic. IGC
+therefore predates this experiment as evidence for the broad concept. The
+question here is narrower: whether a typed unit can be placed after block 6 of
+a much smaller pretrained model, survive eighteen downstream transformer
+blocks, beat an exactly parameter-matched learned control, and pass direct
+internal-state interventions.
 
 The motivating hypothesis, proposed by Josiah Wilson, is that deterministic
 processes should sometimes be installed as locked internal structure rather
@@ -532,6 +542,12 @@ the remaining research question. Future work could ask whether a compiler can
 map such a typed process into a fixed differentiable subnetwork or transformer
 weights while retaining the same causal and preservation guarantees.
 
+The broad integrated-calculator idea is not new; IGC is direct prior art. The
+incremental contribution of this experiment is its deep insertion point,
+eighteen-block survival evidence, exactly parameter-matched same-depth
+control, learned residual-to-register recovery, and causal wrong-state and
+donor-state interventions on a 0.5B model.
+
 \subsection{Why this does not eliminate mathematical hallucination generally}
 
 The system cannot decide whether an arbitrary natural-language problem calls
@@ -733,9 +749,20 @@ module ran inside a transformer-layer wrapper and communicated through learned
 residual interfaces. This architectural proof supports the broader neural
 firmware hypothesis: known exact processes can be embedded within generative
 models so that learning handles translation and composition while selected
-state transitions remain deterministic.
+state transitions remain deterministic. It should be read as a controlled
+small-model replication and architectural extension of an existing
+integrated-calculator research direction, not a claim of first invention.
 
-\begin{thebibliography}{9}
+\section*{Acknowledgments and Attribution}
+
+Josiah Wilson originated this project's neural-firmware research direction and
+specified the internal-transformer architectural question. OpenAI Codex
+assisted with literature discovery, experimental design, implementation,
+execution, statistical analysis, validation, visualization, and manuscript
+drafting under Wilson's direction. All claims remain bounded to the archived
+artifacts and observed results.
+
+\begin{thebibliography}{10}
 
 \bibitem{trask2018}
 A. Trask, F. Hill, S. Reed, J. Rae, C. Dyer, and P. Blunsom.
@@ -793,6 +820,13 @@ T. Vergara-Browne and A. Soto.
 Models.
 \newblock 2025.
 \newblock \url{https://arxiv.org/abs/2505.10719}.
+
+\bibitem{dietz2025}
+F. Dietz and D. Klakow.
+\newblock IGC: Integrating a Gated Calculator into an LLM to Solve Arithmetic
+Tasks Reliably and Efficiently.
+\newblock 2025.
+\newblock \url{https://arxiv.org/abs/2501.00684}.
 
 \end{thebibliography}
 

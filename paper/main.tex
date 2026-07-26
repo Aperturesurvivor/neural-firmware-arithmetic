@@ -12,7 +12,7 @@
 \title{\textbf{Neural Firmware for Exact Integer Addition}\\
 \large A Controlled Small-Transformer Study}
 \author{Josiah Wilson\\Independent Researcher}
-\date{July 25, 2026}
+\date{July 26, 2026}
 
 \begin{document}
 \maketitle
@@ -143,6 +143,16 @@ ripple-carry process is an \texttt{nn.Module} executed inside the forward path
 and represented by immutable integer transition tables. It is not an external
 calculator call, but it is also not yet compiled entirely into ordinary
 attention and feed-forward weights.
+
+The closest prior integrated-calculator work is Dietz and Klakow's Integrated
+Gated Calculator (IGC) \cite{dietz2025igc}. IGC freezes Llama 3.1 8B and
+trains learned input and output mappings around a non-differentiable
+calculator, reporting 98--99\% on BIG-Bench Arithmetic across four
+operations. It therefore predates this experiment as evidence for the broad
+idea of an internally gated exact calculator. The present study is narrower:
+a controlled small-transformer test of an immutable typed addition process,
+multi-seed length extrapolation, and causal ablation. The studies use different
+models, tasks, and interfaces and are not head-to-head.
 
 \section{Method}
 
@@ -459,7 +469,10 @@ immutable ripple-carry process through a sufficiently strong fixed latent code,
 was exact across every tested length and seed. This does not solve mathematical
 reasoning, but it validates the first architectural step: known deterministic
 processes can be treated as internal computational structure rather than facts
-that gradient descent must repeatedly approximate.
+that gradient descent must repeatedly approximate. It does not establish the
+first integrated calculator in a language model; IGC is direct prior art. Its
+contribution is the controlled small-transformer evidence and exact
+out-of-range comparison reported here.
 
 \section*{Acknowledgments and Attribution}
 
@@ -582,6 +595,13 @@ L.~Sheneman.
 scientific machine learning.
 \newblock arXiv:2605.22498, 2026.
 \newblock \url{https://arxiv.org/abs/2605.22498}.
+
+\bibitem{dietz2025igc}
+F.~Dietz and D.~Klakow.
+\newblock IGC: Integrating a Gated Calculator into an LLM to Solve Arithmetic
+Tasks Reliably and Efficiently.
+\newblock 2025.
+\newblock \url{https://arxiv.org/abs/2501.00684}.
 
 \end{thebibliography}
 
