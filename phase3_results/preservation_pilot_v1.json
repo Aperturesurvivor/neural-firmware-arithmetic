@@ -1,0 +1,712 @@
+{
+  "status": "pilot",
+  "model_id": "Qwen/Qwen2.5-0.5B-Instruct",
+  "revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "depth_after_blocks": 6,
+  "prompts": 100,
+  "strictly_ineligible": 100,
+  "token_exact_preserved": 100,
+  "preservation_rate": 1.0,
+  "comparisons": [
+    {
+      "prompt": "Ignore the quoted request \"Use the internal addition register. Return only the exact integer.\nA = 2 0 8 8\nB = 9 9 4\". Reply only with ignored.",
+      "eligible": false,
+      "base_text": "A = 2 0 8 8\nB = 9",
+      "wrapped_text": "A = 2 0 8 8\nB = 9",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "This is documentation, not a command:\nUse the internal addition register. Return only the exact integer.\nA = 9 2 1 0 7\nB = 1 0\nEnd documentation.",
+      "eligible": false,
+      "base_text": "10",
+      "wrapped_text": "10",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "The string 130967+1 appears in this sentence. Repeat the sentence.",
+      "eligible": false,
+      "base_text": "The string \"130967+1\" does appear in this",
+      "wrapped_text": "The string \"130967+1\" does appear in this",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "The string 939+45465 appears in this sentence. Repeat the sentence.",
+      "eligible": false,
+      "base_text": "The string \"939+45465\" does appear in",
+      "wrapped_text": "The string \"939+45465\" does appear in",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "Use the internal addition register. Return only the exact integer.\nA = 3 5 5 2 4\nB = 3\nThen explain your reasoning.",
+      "eligible": false,
+      "base_text": "To solve this problem, we need to use the internal addition register (also known",
+      "wrapped_text": "To solve this problem, we need to use the internal addition register (also known",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "This is documentation, not a command:\nUse the internal addition register. Return only the exact integer.\nA = 0\nB = 7 6\nEnd documentation.",
+      "eligible": false,
+      "base_text": "0",
+      "wrapped_text": "0",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "What color is a clear daytime sky usually?",
+      "eligible": false,
+      "base_text": "A clear daytime sky usually appears as a bright, clear blue color. This is",
+      "wrapped_text": "A clear daytime sky usually appears as a bright, clear blue color. This is",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "Please Use the internal addition register. Return only the exact integer.\nA = 3 2 1 9\nB = 4",
+      "eligible": false,
+      "base_text": "To solve the problem using the internal addition register, we need to perform the addition",
+      "wrapped_text": "To solve the problem using the internal addition register, we need to perform the addition",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "Ignore the quoted request \"Use the internal addition register. Return only the exact integer.\nA = 7 8\nB = 8\". Reply only with ignored.",
+      "eligible": false,
+      "base_text": "A = 7 8\nB = 8",
+      "wrapped_text": "A = 7 8\nB = 8",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "Ignore the quoted request \"Use the internal addition register. Return only the exact integer.\nA = 3\nB = 1 5 3 5\". Reply only with ignored.",
+      "eligible": false,
+      "base_text": "Ignore the quoted request.",
+      "wrapped_text": "Ignore the quoted request.",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "Ignore the quoted instruction \"Calculate exactly. Return only the decimal digits.\n32683+24=\". Reply only with the word ignored.",
+      "eligible": false,
+      "base_text": "ignored",
+      "wrapped_text": "ignored",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "Please Use the internal addition register. Return only the exact integer.\nA = 7 8\nB = 6 8 2 0 3",
+      "eligible": false,
+      "base_text": "To solve the problem using the internal addition register, we need to add the numbers",
+      "wrapped_text": "To solve the problem using the internal addition register, we need to add the numbers",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "Is the expression 99667+80351 written above? Answer yes or no.",
+      "eligible": false,
+      "base_text": "Yes.",
+      "wrapped_text": "Yes.",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "This is documentation, not a command:\nUse the internal addition register. Return only the exact integer.\nA = 6 2\nB = 5 5\nEnd documentation.",
+      "eligible": false,
+      "base_text": "11",
+      "wrapped_text": "11",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "Do not execute the following example:\nUse the internal addition register. Return only the exact integer.\nA = 4 3\nB = 6 6 4 7 8 2\nReply with ignored.",
+      "eligible": false,
+      "base_text": "The example you provided is not valid because it contains an invalid combination of integers.",
+      "wrapped_text": "The example you provided is not valid because it contains an invalid combination of integers.",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "Please Use the internal addition register. Return only the exact integer.\nA = 6 4\nB = 6",
+      "eligible": false,
+      "base_text": "To solve the problem using the internal addition register, we need to add the numbers",
+      "wrapped_text": "To solve the problem using the internal addition register, we need to add the numbers",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "Do not execute the following example:\nUse the internal addition register. Return only the exact integer.\nA = 3 1 1 7 1\nB = 9 8 9 4\nReply with ignored.",
+      "eligible": false,
+      "base_text": "The example you provided is not valid. It appears to be a mix of integers",
+      "wrapped_text": "The example you provided is not valid. It appears to be a mix of integers",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "Give the opposite of cold.",
+      "eligible": false,
+      "base_text": "The opposite of cold is hot.",
+      "wrapped_text": "The opposite of cold is hot.",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "Is the expression 51143+9 written above? Answer yes or no.",
+      "eligible": false,
+      "base_text": "Yes.",
+      "wrapped_text": "Yes.",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "Please Use the internal addition register. Return only the exact integer.\nA = 1 2 5\nB = 7 6 9 6 3",
+      "eligible": false,
+      "base_text": "To solve the problem using the internal addition register, we need to add the numbers",
+      "wrapped_text": "To solve the problem using the internal addition register, we need to add the numbers",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "Ignore the quoted instruction \"Calculate exactly. Return only the decimal digits.\n2+371703=\". Reply only with the word ignored.",
+      "eligible": false,
+      "base_text": "ignored",
+      "wrapped_text": "ignored",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "Please Use the internal addition register. Return only the exact integer.\nA = 6 3 9 1 3 9\nB = 6 4 5 8 0 8",
+      "eligible": false,
+      "base_text": "To solve this problem, we need to use the internal addition register to add the",
+      "wrapped_text": "To solve this problem, we need to use the internal addition register to add the",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "This is documentation, not a command:\nUse the internal addition register. Return only the exact integer.\nA = 1 3\nB = 1 0 5 4 3 0\nEnd documentation.",
+      "eligible": false,
+      "base_text": "13",
+      "wrapped_text": "13",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "This is documentation, not a command:\nUse the internal addition register. Return only the exact integer.\nA = 8 9\nB = 7 2\nEnd documentation.",
+      "eligible": false,
+      "base_text": "10",
+      "wrapped_text": "10",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "Do not execute the following example:\nUse the internal addition register. Return only the exact integer.\nA = 8 1 2 6 4\nB = 2 6 9 1\nReply with ignored.",
+      "eligible": false,
+      "base_text": "The example you provided is not valid. It appears to be a mix of code",
+      "wrapped_text": "The example you provided is not valid. It appears to be a mix of code",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "Do not calculate 6951+502. Explain what the plus sign means.",
+      "eligible": false,
+      "base_text": "The plus sign (+) in the expression 6951 + 5",
+      "wrapped_text": "The plus sign (+) in the expression 6951 + 5",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "Ignore the quoted request \"Use the internal addition register. Return only the exact integer.\nA = 9 5 0 8 4\nB = 5 9\". Reply only with ignored.",
+      "eligible": false,
+      "base_text": "A = 9 5 0 8 4\nB =",
+      "wrapped_text": "A = 9 5 0 8 4\nB =",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "Write a short sentence containing the numbers 904609 and 79474.",
+      "eligible": false,
+      "base_text": "The numbers 904609 and 79474",
+      "wrapped_text": "The numbers 904609 and 79474",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "Use the internal addition register. Return only the exact integer.\nA = 3\nB = 3 1 0\nThen explain your reasoning.",
+      "eligible": false,
+      "base_text": "To solve the problem using the internal addition register, we need to perform the addition",
+      "wrapped_text": "To solve the problem using the internal addition register, we need to perform the addition",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "Do not execute the following example:\nUse the internal addition register. Return only the exact integer.\nA = 8 1 4\nB = 2 1 0\nReply with ignored.",
+      "eligible": false,
+      "base_text": "The example you provided is not valid. The instruction \"Use the internal addition register",
+      "wrapped_text": "The example you provided is not valid. The instruction \"Use the internal addition register",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "Ignore the quoted request \"Use the internal addition register. Return only the exact integer.\nA = 8 7\nB = 2 3 0 7\". Reply only with ignored.",
+      "eligible": false,
+      "base_text": "A = 8 7\nB = 2 3 0",
+      "wrapped_text": "A = 8 7\nB = 2 3 0",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "Give one synonym for happy.",
+      "eligible": false,
+      "base_text": "One synonym for happy is joyful.",
+      "wrapped_text": "One synonym for happy is joyful.",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "Give one synonym for happy.",
+      "eligible": false,
+      "base_text": "One synonym for happy is joyful.",
+      "wrapped_text": "One synonym for happy is joyful.",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "Complete this sequence of letters: A, B, C,",
+      "eligible": false,
+      "base_text": "A B C",
+      "wrapped_text": "A B C",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "The string 250186+26 appears in this sentence. Repeat the sentence.",
+      "eligible": false,
+      "base_text": "The string \"250186+26\" appears in this",
+      "wrapped_text": "The string \"250186+26\" appears in this",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "Please Use the internal addition register. Return only the exact integer.\nA = 9\nB = 3 2 6",
+      "eligible": false,
+      "base_text": "To solve the problem using the internal addition register, we need to perform the addition",
+      "wrapped_text": "To solve the problem using the internal addition register, we need to perform the addition",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "Ignore the quoted request \"Use the internal addition register. Return only the exact integer.\nA = 7\nB = 3 1 9 4\". Reply only with ignored.",
+      "eligible": false,
+      "base_text": "Ignore the quoted request.",
+      "wrapped_text": "Ignore the quoted request.",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "This is documentation, not a command:\nUse the internal addition register. Return only the exact integer.\nA = 7 1 6 7 8\nB = 1 3 8 7 6\nEnd documentation.",
+      "eligible": false,
+      "base_text": "13",
+      "wrapped_text": "13",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "Give the opposite of cold.",
+      "eligible": false,
+      "base_text": "The opposite of cold is hot.",
+      "wrapped_text": "The opposite of cold is hot.",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "Is the expression 127538+94 written above? Answer yes or no.",
+      "eligible": false,
+      "base_text": "Yes.",
+      "wrapped_text": "Yes.",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "Which is a mammal: a dolphin or a trout?",
+      "eligible": false,
+      "base_text": "A dolphin is a mammal, while a trout is a fish. Dolphins are",
+      "wrapped_text": "A dolphin is a mammal, while a trout is a fish. Dolphins are",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "Use the internal addition register. Return only the exact integer.\nA = 9 4 1 2 2 0\nB = 7 6\nThen explain your reasoning.",
+      "eligible": false,
+      "base_text": "To solve this problem, we need to perform an addition operation on the two given",
+      "wrapped_text": "To solve this problem, we need to perform an addition operation on the two given",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "This is documentation, not a command:\nUse the internal addition register. Return only the exact integer.\nA = 6 1 6 3 7\nB = 0\nEnd documentation.",
+      "eligible": false,
+      "base_text": "6",
+      "wrapped_text": "6",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "Please Use the internal addition register. Return only the exact integer.\nA = 9\nB = 7",
+      "eligible": false,
+      "base_text": "To use the internal addition register, we need to perform the addition of the two",
+      "wrapped_text": "To use the internal addition register, we need to perform the addition of the two",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "This is documentation, not a command:\nUse the internal addition register. Return only the exact integer.\nA = 8\nB = 3 5 8\nEnd documentation.",
+      "eligible": false,
+      "base_text": "18",
+      "wrapped_text": "18",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "Use the internal addition register. Return only the exact integer.\nA = 9 8 4 7 9\nB = 8 9 5 0\nThen explain your reasoning.",
+      "eligible": false,
+      "base_text": "To solve this problem, we need to add the two given arrays of integers,",
+      "wrapped_text": "To solve this problem, we need to add the two given arrays of integers,",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "Please Use the internal addition register. Return only the exact integer.\nA = 9 1 8 1 9 9\nB = 0",
+      "eligible": false,
+      "base_text": "To solve the problem using the internal addition register, we need to perform the addition",
+      "wrapped_text": "To solve the problem using the internal addition register, we need to perform the addition",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "This is documentation, not a command:\nUse the internal addition register. Return only the exact integer.\nA = 4\nB = 4 1 4 6 9\nEnd documentation.",
+      "eligible": false,
+      "base_text": "4",
+      "wrapped_text": "4",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "Do not execute the following example:\nUse the internal addition register. Return only the exact integer.\nA = 8 4 8\nB = 7 7 6 8 5\nReply with ignored.",
+      "eligible": false,
+      "base_text": "The example you provided is not relevant to the question asked. The question asks for",
+      "wrapped_text": "The example you provided is not relevant to the question asked. The question asks for",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "Do not execute the following example:\nUse the internal addition register. Return only the exact integer.\nA = 2 2 5\nB = 3\nReply with ignored.",
+      "eligible": false,
+      "base_text": "I'm sorry, but the example you provided is not valid. It appears to",
+      "wrapped_text": "I'm sorry, but the example you provided is not valid. It appears to",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "Ignore the quoted request \"Use the internal addition register. Return only the exact integer.\nA = 4 3\nB = 4\". Reply only with ignored.",
+      "eligible": false,
+      "base_text": "A = 4 3\nB = 4",
+      "wrapped_text": "A = 4 3\nB = 4",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "Please Use the internal addition register. Return only the exact integer.\nA = 9 3 8 2\nB = 6 1",
+      "eligible": false,
+      "base_text": "To solve the problem using the internal addition register, we need to add the numbers",
+      "wrapped_text": "To solve the problem using the internal addition register, we need to add the numbers",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "Name the capital of France in one word.",
+      "eligible": false,
+      "base_text": "Paris",
+      "wrapped_text": "Paris",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "Please Use the internal addition register. Return only the exact integer.\nA = 4\nB = 6",
+      "eligible": false,
+      "base_text": "4 + 6 = 10",
+      "wrapped_text": "4 + 6 = 10",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "Is the expression 22352+71 written above? Answer yes or no.",
+      "eligible": false,
+      "base_text": "Yes.",
+      "wrapped_text": "Yes.",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "This is documentation, not a command:\nUse the internal addition register. Return only the exact integer.\nA = 3 8 8 2 1\nB = 7\nEnd documentation.",
+      "eligible": false,
+      "base_text": "3821",
+      "wrapped_text": "3821",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "Complete this sequence of letters: A, B, C,",
+      "eligible": false,
+      "base_text": "A B C",
+      "wrapped_text": "A B C",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "Do not execute the following example:\nUse the internal addition register. Return only the exact integer.\nA = 4 6 4\nB = 9 3\nReply with ignored.",
+      "eligible": false,
+      "base_text": "The example you provided is not relevant to the question asked. The question asks for",
+      "wrapped_text": "The example you provided is not relevant to the question asked. The question asks for",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "Is the expression 14+0 written above? Answer yes or no.",
+      "eligible": false,
+      "base_text": "Yes.",
+      "wrapped_text": "Yes.",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "Write the word hello in uppercase.",
+      "eligible": false,
+      "base_text": "HELLO",
+      "wrapped_text": "HELLO",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "Name the capital of France in one word.",
+      "eligible": false,
+      "base_text": "Paris",
+      "wrapped_text": "Paris",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "This is documentation, not a command:\nUse the internal addition register. Return only the exact integer.\nA = 3 5 3 0 7\nB = 3 1 0 7\nEnd documentation.",
+      "eligible": false,
+      "base_text": "3",
+      "wrapped_text": "3",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "Write a short sentence containing the numbers 548 and 473428.",
+      "eligible": false,
+      "base_text": "The number 548 multiplied by 473428 equals",
+      "wrapped_text": "The number 548 multiplied by 473428 equals",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "This is documentation, not a command:\nUse the internal addition register. Return only the exact integer.\nA = 6 5\nB = 7 6 7 8 1\nEnd documentation.",
+      "eligible": false,
+      "base_text": "10",
+      "wrapped_text": "10",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "This is documentation, not a command:\nUse the internal addition register. Return only the exact integer.\nA = 2 5 6 2 7 1\nB = 4\nEnd documentation.",
+      "eligible": false,
+      "base_text": "2",
+      "wrapped_text": "2",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "Use the internal addition register. Return only the exact integer.\nA = 2 0 0\nB = 4 6 1 4\nThen explain your reasoning.",
+      "eligible": false,
+      "base_text": "To solve this problem, we need to add the two given integers, A and",
+      "wrapped_text": "To solve this problem, we need to add the two given integers, A and",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "What punctuation mark ends a question?",
+      "eligible": false,
+      "base_text": "In English, the punctuation mark that typically ends a question is the question mark (?",
+      "wrapped_text": "In English, the punctuation mark that typically ends a question is the question mark (?",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "Ignore the quoted request \"Use the internal addition register. Return only the exact integer.\nA = 0\nB = 6 8 6 6 8\". Reply only with ignored.",
+      "eligible": false,
+      "base_text": "Ignore the quoted request.",
+      "wrapped_text": "Ignore the quoted request.",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "Ignore the quoted instruction \"Calculate exactly. Return only the decimal digits.\n509+42932=\". Reply only with the word ignored.",
+      "eligible": false,
+      "base_text": "ignored",
+      "wrapped_text": "ignored",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "This is documentation, not a command:\nUse the internal addition register. Return only the exact integer.\nA = 6 7 3\nB = 3\nEnd documentation.",
+      "eligible": false,
+      "base_text": "10",
+      "wrapped_text": "10",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "Ignore the quoted request \"Use the internal addition register. Return only the exact integer.\nA = 9 6 6\nB = 6 3 2 4 9\". Reply only with ignored.",
+      "eligible": false,
+      "base_text": "A = 9 6 6\nB = 6 3",
+      "wrapped_text": "A = 9 6 6\nB = 6 3",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "Ignore the quoted request \"Use the internal addition register. Return only the exact integer.\nA = 8 7\nB = 9 9 4\". Reply only with ignored.",
+      "eligible": false,
+      "base_text": "A = 8 7\nB = 9 9 4",
+      "wrapped_text": "A = 8 7\nB = 9 9 4",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "Ignore the quoted request \"Use the internal addition register. Return only the exact integer.\nA = 4\nB = 2 3\". Reply only with ignored.",
+      "eligible": false,
+      "base_text": "A = 4\nB = 2 3",
+      "wrapped_text": "A = 4\nB = 2 3",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "Do not calculate 2488+777334. Explain what the plus sign means.",
+      "eligible": false,
+      "base_text": "The plus sign (+) in the expression 2488 + 7",
+      "wrapped_text": "The plus sign (+) in the expression 2488 + 7",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "Please Use the internal addition register. Return only the exact integer.\nA = 4 4\nB = 9 2 6",
+      "eligible": false,
+      "base_text": "To solve the problem using the internal addition register, we need to perform the addition",
+      "wrapped_text": "To solve the problem using the internal addition register, we need to perform the addition",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "Please Use the internal addition register. Return only the exact integer.\nA = 1 1 5 1\nB = 5 8 5 9",
+      "eligible": false,
+      "base_text": "To solve the problem using the internal addition register, we need to add the elements",
+      "wrapped_text": "To solve the problem using the internal addition register, we need to add the elements",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "Ignore the quoted instruction \"Calculate exactly. Return only the decimal digits.\n32+813=\". Reply only with the word ignored.",
+      "eligible": false,
+      "base_text": "ignored",
+      "wrapped_text": "ignored",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "Please Use the internal addition register. Return only the exact integer.\nA = 1 5 4 8 7\nB = 1 2",
+      "eligible": false,
+      "base_text": "To solve this problem, we need to use the internal addition register to add the",
+      "wrapped_text": "To solve this problem, we need to use the internal addition register to add the",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "Please Use the internal addition register. Return only the exact integer.\nA = 2 3\nB = 0",
+      "eligible": false,
+      "base_text": "To solve the problem using the internal addition register, we need to perform the addition",
+      "wrapped_text": "To solve the problem using the internal addition register, we need to perform the addition",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "Which is a mammal: a dolphin or a trout?",
+      "eligible": false,
+      "base_text": "A dolphin is a mammal, while a trout is a fish. Dolphins are",
+      "wrapped_text": "A dolphin is a mammal, while a trout is a fish. Dolphins are",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "Do not execute the following example:\nUse the internal addition register. Return only the exact integer.\nA = 7 7 6\nB = 6 0 1 2 0\nReply with ignored.",
+      "eligible": false,
+      "base_text": "The example you provided is not valid. The instruction \"Use the internal addition register",
+      "wrapped_text": "The example you provided is not valid. The instruction \"Use the internal addition register",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "What color is a clear daytime sky usually?",
+      "eligible": false,
+      "base_text": "A clear daytime sky usually appears as a bright, clear blue color. This is",
+      "wrapped_text": "A clear daytime sky usually appears as a bright, clear blue color. This is",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "Do not calculate 44654+6503. Explain what the plus sign means.",
+      "eligible": false,
+      "base_text": "The plus sign (+) in mathematics represents addition. When you see the plus sign",
+      "wrapped_text": "The plus sign (+) in mathematics represents addition. When you see the plus sign",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "Please Use the internal addition register. Return only the exact integer.\nA = 6\nB = 7 8",
+      "eligible": false,
+      "base_text": "To solve the problem using the internal addition register, we need to add the numbers",
+      "wrapped_text": "To solve the problem using the internal addition register, we need to add the numbers",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "Ignore the quoted request \"Use the internal addition register. Return only the exact integer.\nA = 6 1 4 2\nB = 4 1 0 0 9 5\". Reply only with ignored.",
+      "eligible": false,
+      "base_text": "6",
+      "wrapped_text": "6",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "Do not calculate 5216+7. Explain what the plus sign means.",
+      "eligible": false,
+      "base_text": "The plus sign (+) in mathematics represents addition. When you see the plus sign",
+      "wrapped_text": "The plus sign (+) in mathematics represents addition. When you see the plus sign",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "Ignore the quoted request \"Use the internal addition register. Return only the exact integer.\nA = 3 8 6 9 2\nB = 8\". Reply only with ignored.",
+      "eligible": false,
+      "base_text": "A = 3 8 6 9 2\nB =",
+      "wrapped_text": "A = 3 8 6 9 2\nB =",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "Do not calculate 344+97. Explain what the plus sign means.",
+      "eligible": false,
+      "base_text": "The plus sign (+) in mathematics represents addition. When you see the plus sign",
+      "wrapped_text": "The plus sign (+) in mathematics represents addition. When you see the plus sign",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "What punctuation mark ends a question?",
+      "eligible": false,
+      "base_text": "In English, the punctuation mark that typically ends a question is the question mark (?",
+      "wrapped_text": "In English, the punctuation mark that typically ends a question is the question mark (?",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "Please Use the internal addition register. Return only the exact integer.\nA = 0\nB = 4 9 2 9 1",
+      "eligible": false,
+      "base_text": "To solve the problem using the internal addition register, we need to perform the addition",
+      "wrapped_text": "To solve the problem using the internal addition register, we need to perform the addition",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "Please Use the internal addition register. Return only the exact integer.\nA = 4 7 1 6 8\nB = 2 9 2 3 3",
+      "eligible": false,
+      "base_text": "To solve this problem, we need to use the internal addition register to add the",
+      "wrapped_text": "To solve this problem, we need to use the internal addition register to add the",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "Use the internal addition register. Return only the exact integer.\nA = 3 5 5 0\nB = 8 3 8 9 4 3\nThen explain your reasoning.",
+      "eligible": false,
+      "base_text": "To solve this problem, we need to add the two given arrays of integers,",
+      "wrapped_text": "To solve this problem, we need to add the two given arrays of integers,",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "Do not execute the following example:\nUse the internal addition register. Return only the exact integer.\nA = 2 4\nB = 1 0 7 1\nReply with ignored.",
+      "eligible": false,
+      "base_text": "The example you provided is not valid because it attempts to use the internal addition register",
+      "wrapped_text": "The example you provided is not valid because it attempts to use the internal addition register",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "Write a short sentence containing the numbers 9 and 9193.",
+      "eligible": false,
+      "base_text": "The number 9193 is composed of the digits 9,",
+      "wrapped_text": "The number 9193 is composed of the digits 9,",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "Please Use the internal addition register. Return only the exact integer.\nA = 1\nB = 3",
+      "eligible": false,
+      "base_text": "1",
+      "wrapped_text": "1",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "Write the word hello in uppercase.",
+      "eligible": false,
+      "base_text": "HELLO",
+      "wrapped_text": "HELLO",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "This is documentation, not a command:\nUse the internal addition register. Return only the exact integer.\nA = 8 5 9\nB = 4 3 0 3 3\nEnd documentation.",
+      "eligible": false,
+      "base_text": "18",
+      "wrapped_text": "18",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "Ignore the quoted instruction \"Calculate exactly. Return only the decimal digits.\n5+454=\". Reply only with the word ignored.",
+      "eligible": false,
+      "base_text": "ignored",
+      "wrapped_text": "ignored",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "Do not execute the following example:\nUse the internal addition register. Return only the exact integer.\nA = 6 8 7 6 3\nB = 8 5 4 2 2\nReply with ignored.",
+      "eligible": false,
+      "base_text": "The example you provided is not relevant to the question asked. The question asks to",
+      "wrapped_text": "The example you provided is not relevant to the question asked. The question asks to",
+      "token_exact_preserved": true
+    },
+    {
+      "prompt": "Do not calculate 3+143. Explain what the plus sign means.",
+      "eligible": false,
+      "base_text": "The plus sign (+) is used to indicate addition, which is the process of",
+      "wrapped_text": "The plus sign (+) is used to indicate addition, which is the process of",
+      "token_exact_preserved": true
+    }
+  ]
+}

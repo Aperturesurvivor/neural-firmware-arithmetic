@@ -146,3 +146,32 @@ def make_internal_addition_examples(
             )
         )
     return examples
+
+
+def make_internal_carry_examples(
+    *,
+    count: int,
+    min_digits: int,
+    max_digits: int,
+    seed: int,
+    split: str = "carry_chain",
+) -> list[InternalAdditionExample]:
+    rng = random.Random(seed)
+    examples: list[InternalAdditionExample] = []
+    for _ in range(count):
+        digits = rng.randint(min_digits, max_digits)
+        trailing_nines = rng.randint(max(1, digits // 2), digits)
+        prefix_digits = digits - trailing_nines
+        prefix = _sample_integer(rng, prefix_digits) if prefix_digits else ""
+        a = prefix + ("9" * trailing_nines)
+        b = str(rng.randint(1, 9))
+        examples.append(
+            InternalAdditionExample(
+                prompt=internal_prompt(a, b),
+                a=a,
+                b=b,
+                answer=str(int(a) + int(b)),
+                split=split,
+            )
+        )
+    return examples

@@ -1,0 +1,52 @@
+{
+  "experiment_name": "phase3_confirmatory_v1",
+  "model_id": "Qwen/Qwen2.5-0.5B-Instruct",
+  "model_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "train_seeds": [2101, 2203, 2309],
+  "eval_seed": 884321,
+  "depth_after_blocks": 6,
+  "strength": 64.0,
+  "train_examples": 1000,
+  "train_min_digits": 1,
+  "train_max_digits": 4,
+  "feature_batch_size": 8,
+  "digit_encoder": {
+    "steps": 300,
+    "batch_size": 512,
+    "learning_rate": 0.01
+  },
+  "internal_decoder": {
+    "steps": 120,
+    "batch_size": 2,
+    "learning_rate": 0.01
+  },
+  "learned_control": {
+    "steps": 1000,
+    "batch_size": 2,
+    "learning_rate": 0.001,
+    "rank": 10
+  },
+  "evaluation": {
+    "examples_per_random_split": 150,
+    "carry_examples": 75,
+    "preservation_examples": 100,
+    "intervention_examples": 30,
+    "trace_examples": 10,
+    "splits": {
+      "id_1_4": [1, 4],
+      "ood_primary_5_8": [5, 8],
+      "ood_long_9_12": [9, 12],
+      "carry_chain": [5, 12]
+    }
+  },
+  "success_thresholds": {
+    "internal_primary_mean_accuracy": 0.99,
+    "internal_minus_control_primary_points": 0.75,
+    "exact_register_mean_accuracy": 0.995,
+    "language_preservation_rate": 0.99,
+    "wrong_state_causal_rate": 0.95,
+    "state_substitution_causal_rate": 0.95,
+    "unit_off_primary_drop_points": 0.8,
+    "minimum_post_unit_mean_logit_margin": 0.0
+  }
+}

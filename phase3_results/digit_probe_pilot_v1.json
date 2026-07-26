@@ -1,0 +1,219 @@
+{
+  "status": "pilot",
+  "model_id": "Qwen/Qwen2.5-0.5B-Instruct",
+  "revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "dataset_sha256": "c19239cd1b0395de4bf220be7daeda7501a6cf1d03a34f386069c0502ac13904",
+  "configuration": {
+    "depths": [
+      6,
+      12,
+      18,
+      22
+    ],
+    "train_examples": 1000,
+    "eval_examples": 300,
+    "train_seed": 43211,
+    "eval_seed": 97013,
+    "probe_seed": 701,
+    "steps": 300,
+    "feature_batch_size": 8,
+    "probe_batch_size": 512,
+    "learning_rate": 0.01
+  },
+  "feature_extraction_seconds": {
+    "train_1_4": 22.574222564697266,
+    "id_1_4": 6.6988725662231445,
+    "ood_5_8": 8.092706680297852,
+    "ood_9_12": 9.833579063415527
+  },
+  "depth_results": [
+    {
+      "depth_after_blocks": 6,
+      "training": {
+        "seed": 707,
+        "steps": 300,
+        "batch_size": 512,
+        "learning_rate": 0.01,
+        "trainable_parameters": 8970,
+        "initial_loss": 2.3230834007263184,
+        "final_loss": 0.0005532189970836043,
+        "wall_time_seconds": 0.5719981250003912
+      },
+      "evaluations": {
+        "train_1_4": {
+          "digits": 4978,
+          "correct_digits": 4978,
+          "digit_accuracy": 1.0,
+          "examples": 1000,
+          "exact_registers": 1000,
+          "exact_register_accuracy": 1.0
+        },
+        "id_1_4": {
+          "digits": 1539,
+          "correct_digits": 1539,
+          "digit_accuracy": 1.0,
+          "examples": 300,
+          "exact_registers": 300,
+          "exact_register_accuracy": 1.0
+        },
+        "ood_5_8": {
+          "digits": 3930,
+          "correct_digits": 3930,
+          "digit_accuracy": 1.0,
+          "examples": 300,
+          "exact_registers": 300,
+          "exact_register_accuracy": 1.0
+        },
+        "ood_9_12": {
+          "digits": 6350,
+          "correct_digits": 6350,
+          "digit_accuracy": 1.0,
+          "examples": 300,
+          "exact_registers": 300,
+          "exact_register_accuracy": 1.0
+        }
+      }
+    },
+    {
+      "depth_after_blocks": 12,
+      "training": {
+        "seed": 713,
+        "steps": 300,
+        "batch_size": 512,
+        "learning_rate": 0.01,
+        "trainable_parameters": 8970,
+        "initial_loss": 2.2668027877807617,
+        "final_loss": 0.0008345491369254887,
+        "wall_time_seconds": 0.3193856669968227
+      },
+      "evaluations": {
+        "train_1_4": {
+          "digits": 4978,
+          "correct_digits": 4978,
+          "digit_accuracy": 1.0,
+          "examples": 1000,
+          "exact_registers": 1000,
+          "exact_register_accuracy": 1.0
+        },
+        "id_1_4": {
+          "digits": 1539,
+          "correct_digits": 1539,
+          "digit_accuracy": 1.0,
+          "examples": 300,
+          "exact_registers": 300,
+          "exact_register_accuracy": 1.0
+        },
+        "ood_5_8": {
+          "digits": 3930,
+          "correct_digits": 3930,
+          "digit_accuracy": 1.0,
+          "examples": 300,
+          "exact_registers": 300,
+          "exact_register_accuracy": 1.0
+        },
+        "ood_9_12": {
+          "digits": 6350,
+          "correct_digits": 6350,
+          "digit_accuracy": 1.0,
+          "examples": 300,
+          "exact_registers": 300,
+          "exact_register_accuracy": 1.0
+        }
+      }
+    },
+    {
+      "depth_after_blocks": 18,
+      "training": {
+        "seed": 719,
+        "steps": 300,
+        "batch_size": 512,
+        "learning_rate": 0.01,
+        "trainable_parameters": 8970,
+        "initial_loss": 2.376457929611206,
+        "final_loss": 0.0001824322243919596,
+        "wall_time_seconds": 0.3178332910028985
+      },
+      "evaluations": {
+        "train_1_4": {
+          "digits": 4978,
+          "correct_digits": 4978,
+          "digit_accuracy": 1.0,
+          "examples": 1000,
+          "exact_registers": 1000,
+          "exact_register_accuracy": 1.0
+        },
+        "id_1_4": {
+          "digits": 1539,
+          "correct_digits": 1539,
+          "digit_accuracy": 1.0,
+          "examples": 300,
+          "exact_registers": 300,
+          "exact_register_accuracy": 1.0
+        },
+        "ood_5_8": {
+          "digits": 3930,
+          "correct_digits": 3930,
+          "digit_accuracy": 1.0,
+          "examples": 300,
+          "exact_registers": 300,
+          "exact_register_accuracy": 1.0
+        },
+        "ood_9_12": {
+          "digits": 6350,
+          "correct_digits": 6350,
+          "digit_accuracy": 1.0,
+          "examples": 300,
+          "exact_registers": 300,
+          "exact_register_accuracy": 1.0
+        }
+      }
+    },
+    {
+      "depth_after_blocks": 22,
+      "training": {
+        "seed": 723,
+        "steps": 300,
+        "batch_size": 512,
+        "learning_rate": 0.01,
+        "trainable_parameters": 8970,
+        "initial_loss": 2.9695677757263184,
+        "final_loss": 1.6442781998193823e-05,
+        "wall_time_seconds": 0.3086398340019514
+      },
+      "evaluations": {
+        "train_1_4": {
+          "digits": 4978,
+          "correct_digits": 4978,
+          "digit_accuracy": 1.0,
+          "examples": 1000,
+          "exact_registers": 1000,
+          "exact_register_accuracy": 1.0
+        },
+        "id_1_4": {
+          "digits": 1539,
+          "correct_digits": 1539,
+          "digit_accuracy": 1.0,
+          "examples": 300,
+          "exact_registers": 300,
+          "exact_register_accuracy": 1.0
+        },
+        "ood_5_8": {
+          "digits": 3930,
+          "correct_digits": 3930,
+          "digit_accuracy": 1.0,
+          "examples": 300,
+          "exact_registers": 300,
+          "exact_register_accuracy": 1.0
+        },
+        "ood_9_12": {
+          "digits": 6350,
+          "correct_digits": 6350,
+          "digit_accuracy": 1.0,
+          "examples": 300,
+          "exact_registers": 300,
+          "exact_register_accuracy": 1.0
+        }
+      }
+    }
+  ]
+}

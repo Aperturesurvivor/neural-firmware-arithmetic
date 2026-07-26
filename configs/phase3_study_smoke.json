@@ -1,0 +1,42 @@
+{
+  "experiment_name": "phase3_study_smoke",
+  "model_id": "Qwen/Qwen2.5-0.5B-Instruct",
+  "model_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "train_seeds": [211],
+  "eval_seed": 884321,
+  "depth_after_blocks": 6,
+  "strength": 64.0,
+  "train_examples": 12,
+  "train_min_digits": 1,
+  "train_max_digits": 4,
+  "feature_batch_size": 4,
+  "digit_encoder": {
+    "steps": 2,
+    "batch_size": 16,
+    "learning_rate": 0.01
+  },
+  "internal_decoder": {
+    "steps": 2,
+    "batch_size": 2,
+    "learning_rate": 0.01
+  },
+  "learned_control": {
+    "steps": 2,
+    "batch_size": 2,
+    "learning_rate": 0.001,
+    "rank": 10
+  },
+  "evaluation": {
+    "examples_per_random_split": 3,
+    "carry_examples": 2,
+    "preservation_examples": 4,
+    "intervention_examples": 2,
+    "trace_examples": 1,
+    "splits": {
+      "id_1_4": [1, 4],
+      "ood_primary_5_8": [5, 8],
+      "ood_long_9_12": [9, 12],
+      "carry_chain": [5, 12]
+    }
+  }
+}

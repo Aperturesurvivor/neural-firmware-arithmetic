@@ -1,0 +1,2987 @@
+{
+  "status": "pilot",
+  "model_id": "Qwen/Qwen2.5-0.5B-Instruct",
+  "revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "depth_after_blocks": 6,
+  "rank": 10,
+  "train_result": {
+    "config": {
+      "seed": 1301,
+      "steps": 1000,
+      "batch_size": 2,
+      "learning_rate": 0.001
+    },
+    "trainable_parameters": 18826,
+    "initial_loss": 3.332494020462036,
+    "final_loss": 1.5822874307632446,
+    "wall_time_seconds": 161.43899624999904
+  },
+  "splits": {
+    "id_1_4": {
+      "examples": 60,
+      "correct": 18,
+      "exact_match_accuracy": 0.3,
+      "predictions": [
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 9 8 9\nB = 3 0",
+          "expected": "1019",
+          "generated_text": "1019",
+          "generated_token_ids": [
+            16,
+            15,
+            16,
+            24,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": true,
+          "latency_seconds": 0.31133945799956564
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 3 0 4 8\nB = 6 6 6",
+          "expected": "3714",
+          "generated_text": "3044",
+          "generated_token_ids": [
+            18,
+            15,
+            19,
+            19,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.1668757919978816
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 9 7 7\nB = 2 9 3",
+          "expected": "1270",
+          "generated_text": "1260",
+          "generated_token_ids": [
+            16,
+            17,
+            21,
+            15,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.16701158299838426
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 9 6 4 8\nB = 8",
+          "expected": "9656",
+          "generated_text": "9696",
+          "generated_token_ids": [
+            24,
+            21,
+            24,
+            21,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.1764802499965299
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 7 4 2 1\nB = 5 2",
+          "expected": "7473",
+          "generated_text": "7473",
+          "generated_token_ids": [
+            22,
+            19,
+            22,
+            18,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": true,
+          "latency_seconds": 0.16457787500257837
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 1 9\nB = 0",
+          "expected": "19",
+          "generated_text": "19",
+          "generated_token_ids": [
+            16,
+            24,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": true,
+          "latency_seconds": 0.10905216600076528
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 8 2 1\nB = 7 3",
+          "expected": "894",
+          "generated_text": "824",
+          "generated_token_ids": [
+            23,
+            17,
+            19,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.13485962500271853
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 7 7\nB = 9 7",
+          "expected": "174",
+          "generated_text": "164",
+          "generated_token_ids": [
+            16,
+            21,
+            19,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.13840162499400321
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 5 9\nB = 3 1 2 3",
+          "expected": "3182",
+          "generated_text": "3545",
+          "generated_token_ids": [
+            18,
+            20,
+            19,
+            20,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.1643237090029288
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 1 6 2\nB = 5",
+          "expected": "167",
+          "generated_text": "167",
+          "generated_token_ids": [
+            16,
+            21,
+            22,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": true,
+          "latency_seconds": 0.1319594170054188
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 4 3 0\nB = 6",
+          "expected": "436",
+          "generated_text": "436",
+          "generated_token_ids": [
+            19,
+            18,
+            21,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": true,
+          "latency_seconds": 0.1351264170007198
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 7 3 0\nB = 6 6 6 7",
+          "expected": "7397",
+          "generated_text": "7307",
+          "generated_token_ids": [
+            22,
+            18,
+            15,
+            22,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.1636204170063138
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 0\nB = 3 7",
+          "expected": "37",
+          "generated_text": "37",
+          "generated_token_ids": [
+            18,
+            22,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": true,
+          "latency_seconds": 0.10204220799641917
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 2 5\nB = 8 1",
+          "expected": "106",
+          "generated_text": "106",
+          "generated_token_ids": [
+            16,
+            15,
+            21,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": true,
+          "latency_seconds": 0.13392941700294614
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 5\nB = 7",
+          "expected": "12",
+          "generated_text": "12",
+          "generated_token_ids": [
+            16,
+            17,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": true,
+          "latency_seconds": 0.1101314999978058
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 2 6\nB = 9 8 9",
+          "expected": "1015",
+          "generated_text": "998",
+          "generated_token_ids": [
+            24,
+            24,
+            23,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.13119058400479844
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 5\nB = 1 7 4",
+          "expected": "179",
+          "generated_text": "179",
+          "generated_token_ids": [
+            16,
+            22,
+            24,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": true,
+          "latency_seconds": 0.13109541699668625
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 9\nB = 3 8 9 5",
+          "expected": "3904",
+          "generated_text": "9884",
+          "generated_token_ids": [
+            24,
+            23,
+            23,
+            19,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.16666941599396523
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 4 4\nB = 6 9",
+          "expected": "113",
+          "generated_text": "103",
+          "generated_token_ids": [
+            16,
+            15,
+            18,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.13282845800131327
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 0\nB = 7 3",
+          "expected": "73",
+          "generated_text": "73",
+          "generated_token_ids": [
+            22,
+            18,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": true,
+          "latency_seconds": 0.10172616699856007
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 5 3 6\nB = 9 8 5",
+          "expected": "1521",
+          "generated_text": "539",
+          "generated_token_ids": [
+            20,
+            18,
+            24,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.13102124999568332
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 5 4 8 1\nB = 4 4",
+          "expected": "5525",
+          "generated_text": "583",
+          "generated_token_ids": [
+            20,
+            23,
+            18,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.13955895799881546
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 3\nB = 7 6 3 4",
+          "expected": "7637",
+          "generated_text": "7667",
+          "generated_token_ids": [
+            22,
+            21,
+            21,
+            22,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.16480345900345128
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 4 9 5 3\nB = 4 4",
+          "expected": "4997",
+          "generated_text": "540",
+          "generated_token_ids": [
+            20,
+            19,
+            15,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.13335266699868953
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 4\nB = 1 0 9",
+          "expected": "113",
+          "generated_text": "1003",
+          "generated_token_ids": [
+            16,
+            15,
+            15,
+            18,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.16289883299759822
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 8 7 5 2\nB = 7 2 8",
+          "expected": "9480",
+          "generated_text": "8770",
+          "generated_token_ids": [
+            23,
+            22,
+            22,
+            15,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.16231779100053245
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 1\nB = 6 0 8",
+          "expected": "609",
+          "generated_text": "608",
+          "generated_token_ids": [
+            21,
+            15,
+            23,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.1332862089984701
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 2 7\nB = 8 7",
+          "expected": "114",
+          "generated_text": "104",
+          "generated_token_ids": [
+            16,
+            15,
+            19,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.13348983300238615
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 6 2 7 9\nB = 4",
+          "expected": "6283",
+          "generated_text": "6273",
+          "generated_token_ids": [
+            21,
+            17,
+            22,
+            18,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.16613949999737088
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 9 0 4\nB = 2 9",
+          "expected": "933",
+          "generated_text": "1193",
+          "generated_token_ids": [
+            16,
+            16,
+            24,
+            18,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.1633130420013913
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 5 8 5\nB = 3 4 9 0",
+          "expected": "4075",
+          "generated_text": "5853",
+          "generated_token_ids": [
+            20,
+            23,
+            20,
+            18,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.16750629199668765
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 5\nB = 6 5 8 0",
+          "expected": "6585",
+          "generated_text": "5805",
+          "generated_token_ids": [
+            20,
+            23,
+            15,
+            20,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.17024983300507301
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 5 0 0\nB = 7",
+          "expected": "507",
+          "generated_text": "507",
+          "generated_token_ids": [
+            20,
+            15,
+            22,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": true,
+          "latency_seconds": 0.1376455839999835
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 5\nB = 8 2",
+          "expected": "87",
+          "generated_text": "87",
+          "generated_token_ids": [
+            23,
+            22,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": true,
+          "latency_seconds": 0.10493324999697506
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 1 8 2 1\nB = 7 2",
+          "expected": "1893",
+          "generated_text": "1943",
+          "generated_token_ids": [
+            16,
+            24,
+            19,
+            18,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.16835499999433523
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 7 8 6\nB = 1 6 3 8",
+          "expected": "2424",
+          "generated_text": "8011",
+          "generated_token_ids": [
+            23,
+            15,
+            16,
+            16,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.1649272920039948
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 7\nB = 4 1 2",
+          "expected": "419",
+          "generated_text": "417",
+          "generated_token_ids": [
+            19,
+            16,
+            22,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.13242020799953025
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 1\nB = 6 8",
+          "expected": "69",
+          "generated_text": "75",
+          "generated_token_ids": [
+            22,
+            20,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.10179749999952037
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 5 0 7 4\nB = 0",
+          "expected": "5074",
+          "generated_text": "5074",
+          "generated_token_ids": [
+            20,
+            15,
+            22,
+            19,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": true,
+          "latency_seconds": 0.16307095900265267
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 5 1 0 4\nB = 8 1",
+          "expected": "5185",
+          "generated_text": "5145",
+          "generated_token_ids": [
+            20,
+            16,
+            19,
+            20,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.16295841700048186
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 6 2 0\nB = 0",
+          "expected": "620",
+          "generated_text": "620",
+          "generated_token_ids": [
+            21,
+            17,
+            15,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": true,
+          "latency_seconds": 0.13313070800359128
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 4\nB = 2 6",
+          "expected": "30",
+          "generated_text": "28",
+          "generated_token_ids": [
+            17,
+            23,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.10165491600491805
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 4 7 5 4\nB = 5 3 4 8",
+          "expected": "10102",
+          "generated_text": "5212",
+          "generated_token_ids": [
+            20,
+            17,
+            16,
+            17,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.1667930410039844
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 5 1 9\nB = 7 5",
+          "expected": "594",
+          "generated_text": "625",
+          "generated_token_ids": [
+            21,
+            17,
+            20,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.13245387499773642
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 8 7\nB = 5 3 8 4",
+          "expected": "5471",
+          "generated_text": "6252",
+          "generated_token_ids": [
+            21,
+            17,
+            20,
+            17,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.162852458000998
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 7 2 6\nB = 5 8 8",
+          "expected": "1314",
+          "generated_text": "7269",
+          "generated_token_ids": [
+            22,
+            17,
+            21,
+            24,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.16477137499896344
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 7\nB = 3 7 5 4",
+          "expected": "3761",
+          "generated_text": "759",
+          "generated_token_ids": [
+            22,
+            20,
+            24,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.13363954100350384
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 2\nB = 7 1 2",
+          "expected": "714",
+          "generated_text": "739",
+          "generated_token_ids": [
+            22,
+            18,
+            24,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.13258158299868228
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 3\nB = 1 9 9",
+          "expected": "202",
+          "generated_text": "199",
+          "generated_token_ids": [
+            16,
+            24,
+            24,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.13515975000336766
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 4 7 5 0\nB = 6 0 0",
+          "expected": "5350",
+          "generated_text": "4750",
+          "generated_token_ids": [
+            19,
+            22,
+            20,
+            15,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.16495812499488238
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 9 0\nB = 3 5",
+          "expected": "125",
+          "generated_text": "125",
+          "generated_token_ids": [
+            16,
+            17,
+            20,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": true,
+          "latency_seconds": 0.13240812499861931
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 5\nB = 3 1",
+          "expected": "36",
+          "generated_text": "54",
+          "generated_token_ids": [
+            20,
+            19,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.10268654199899174
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 3\nB = 3 4",
+          "expected": "37",
+          "generated_text": "37",
+          "generated_token_ids": [
+            18,
+            22,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": true,
+          "latency_seconds": 0.10168066699407063
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 0\nB = 8 2",
+          "expected": "82",
+          "generated_text": "82",
+          "generated_token_ids": [
+            23,
+            17,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": true,
+          "latency_seconds": 0.10074025000358233
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 2 0\nB = 7 8",
+          "expected": "98",
+          "generated_text": "98",
+          "generated_token_ids": [
+            24,
+            23,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": true,
+          "latency_seconds": 0.09988058300223202
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 7 4 0 1\nB = 5 2 4 1",
+          "expected": "12642",
+          "generated_text": "1264",
+          "generated_token_ids": [
+            16,
+            17,
+            21,
+            19,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.16266729200287955
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 5 1 7\nB = 1 3 5",
+          "expected": "652",
+          "generated_text": "618",
+          "generated_token_ids": [
+            21,
+            16,
+            23,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.13423362500179792
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 8 4 9 7\nB = 1 4 9 2",
+          "expected": "9989",
+          "generated_text": "9549",
+          "generated_token_ids": [
+            24,
+            20,
+            19,
+            24,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.16332687500107568
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 9\nB = 9 5 7",
+          "expected": "966",
+          "generated_text": "997",
+          "generated_token_ids": [
+            24,
+            24,
+            22,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.1350763750015176
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 1 2 7 9\nB = 2 1 0",
+          "expected": "1489",
+          "generated_text": "1439",
+          "generated_token_ids": [
+            16,
+            19,
+            18,
+            24,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.17616779099626
+        }
+      ]
+    },
+    "ood_5_8": {
+      "examples": 60,
+      "correct": 0,
+      "exact_match_accuracy": 0.0,
+      "predictions": [
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 4 7 3 5 6\nB = 3 7 9 9 4",
+          "expected": "85350",
+          "generated_text": "48140",
+          "generated_token_ids": [
+            19,
+            23,
+            16,
+            19,
+            15,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.2033063749986468
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 4 4 4 2 2 8 3 9\nB = 3 3 9 7 8 9",
+          "expected": "44762628",
+          "generated_text": "444222",
+          "generated_token_ids": [
+            19,
+            19,
+            19,
+            17,
+            17,
+            17,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.23595066700363532
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 3 9 7 2 2 3\nB = 5 9 6 7 8 4 7",
+          "expected": "6365070",
+          "generated_text": "94655",
+          "generated_token_ids": [
+            24,
+            19,
+            21,
+            20,
+            20,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.20753904199955286
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 6 7 5 6 7 4 9 2\nB = 3 8 1 3 7 6 4",
+          "expected": "71381256",
+          "generated_text": "67569",
+          "generated_token_ids": [
+            21,
+            22,
+            20,
+            21,
+            24,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.2078503329976229
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 8 6 9 3 6 4 7\nB = 8 7 2 3 9 4",
+          "expected": "9566041",
+          "generated_text": "86957",
+          "generated_token_ids": [
+            23,
+            21,
+            24,
+            20,
+            22,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.20353470900590764
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 9 9 6 7 9 7 0\nB = 1 6 6 7 6 8 3",
+          "expected": "11635653",
+          "generated_text": "99679",
+          "generated_token_ids": [
+            24,
+            24,
+            21,
+            22,
+            24,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.200222791005217
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 2 7 4 9 2 8 9 5\nB = 6 1 2 4 5",
+          "expected": "27554140",
+          "generated_text": "28069",
+          "generated_token_ids": [
+            17,
+            23,
+            15,
+            21,
+            24,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.1993066249997355
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 1 6 1 8 1 3\nB = 2 8 6 3 3 2",
+          "expected": "448145",
+          "generated_text": "19855",
+          "generated_token_ids": [
+            16,
+            24,
+            23,
+            20,
+            20,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.21296679200168
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 2 7 5 5 4 9 5 6\nB = 6 3 7 9 3 4",
+          "expected": "28192890",
+          "generated_text": "27598",
+          "generated_token_ids": [
+            17,
+            22,
+            20,
+            24,
+            23,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.20230441699823132
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 9 1 4 5 6\nB = 7 3 1 5 4 0",
+          "expected": "822996",
+          "generated_text": "91469",
+          "generated_token_ids": [
+            24,
+            16,
+            19,
+            21,
+            24,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.2123547500013956
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 4 3 5 1 1 0\nB = 6 2 5 9 7 8",
+          "expected": "1061088",
+          "generated_text": "64566",
+          "generated_token_ids": [
+            21,
+            19,
+            20,
+            21,
+            21,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.19704241699946579
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 5 5 7 1 1 9 0\nB = 2 3 1 3 6 9 8",
+          "expected": "7884888",
+          "generated_text": "557447",
+          "generated_token_ids": [
+            20,
+            20,
+            22,
+            19,
+            19,
+            22,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.231187208002666
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 2 9 3 9 7 8 7\nB = 2 5 8 4 6 8 8 3",
+          "expected": "28786670",
+          "generated_text": "29522",
+          "generated_token_ids": [
+            17,
+            24,
+            20,
+            17,
+            17,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.20021491599618457
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 9 6 7 1 5 3 6\nB = 6 0 2 3 7 1",
+          "expected": "10273907",
+          "generated_text": "97948",
+          "generated_token_ids": [
+            24,
+            22,
+            24,
+            19,
+            23,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.19810912499815458
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 9 9 4 7 3 5 8\nB = 6 2 6 0 5 6 0 6",
+          "expected": "72552964",
+          "generated_text": "9947311",
+          "generated_token_ids": [
+            24,
+            24,
+            19,
+            22,
+            18,
+            16,
+            16,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.26120950000040466
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 9 9 8 1 7\nB = 2 4 6 6 1",
+          "expected": "124478",
+          "generated_text": "9987",
+          "generated_token_ids": [
+            24,
+            24,
+            23,
+            22,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.17206383300072048
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 6 3 6 0 3\nB = 8 9 1 0 5",
+          "expected": "152708",
+          "generated_text": "63655",
+          "generated_token_ids": [
+            21,
+            18,
+            21,
+            20,
+            20,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.19923487499909243
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 5 8 9 3 6 7 5\nB = 1 7 0 3 7 7",
+          "expected": "6064052",
+          "generated_text": "58960",
+          "generated_token_ids": [
+            20,
+            23,
+            24,
+            21,
+            15,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.1963656669977354
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 3 5 6 4 6 5 6\nB = 9 5 0 8 0 3 2 0",
+          "expected": "98644976",
+          "generated_text": "356483",
+          "generated_token_ids": [
+            18,
+            20,
+            21,
+            19,
+            23,
+            18,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.23001795800519176
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 5 1 0 7 2\nB = 8 0 6 6 3 1 7",
+          "expected": "8117389",
+          "generated_text": "510766",
+          "generated_token_ids": [
+            20,
+            16,
+            15,
+            22,
+            21,
+            21,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.23091974999988452
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 8 3 9 4 1\nB = 6 1 5 3 8 3 1 2",
+          "expected": "61622253",
+          "generated_text": "8399",
+          "generated_token_ids": [
+            23,
+            18,
+            24,
+            24,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.1685835840034997
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 1 8 5 2 2 8\nB = 5 1 5 3 5 8 8 9",
+          "expected": "51721117",
+          "generated_text": "1907613",
+          "generated_token_ids": [
+            16,
+            24,
+            15,
+            22,
+            21,
+            16,
+            18,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.2625890000053914
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 5 7 7 2 7 5 6 8\nB = 1 3 9 9 0 4 3",
+          "expected": "59126611",
+          "generated_text": "580113",
+          "generated_token_ids": [
+            20,
+            23,
+            15,
+            16,
+            16,
+            18,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.22919566599739483
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 1 6 4 8 5 7 5 5\nB = 7 1 7 6 6 4 3 0",
+          "expected": "88252185",
+          "generated_text": "1648569",
+          "generated_token_ids": [
+            16,
+            21,
+            19,
+            23,
+            20,
+            21,
+            24,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.27002312499826076
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 2 9 1 7 0 6\nB = 5 5 7 8 8",
+          "expected": "347494",
+          "generated_text": "29156",
+          "generated_token_ids": [
+            17,
+            24,
+            16,
+            20,
+            21,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.19996620799793163
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 4 7 1 0 9\nB = 3 0 3 4 0",
+          "expected": "77449",
+          "generated_text": "47134",
+          "generated_token_ids": [
+            19,
+            22,
+            16,
+            18,
+            19,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.20074258399836253
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 2 9 2 8 4 4\nB = 1 7 6 4 4 7 6 1",
+          "expected": "17937605",
+          "generated_text": "29321",
+          "generated_token_ids": [
+            17,
+            24,
+            18,
+            17,
+            16,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.19818212500103982
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 1 6 7 6 7 0\nB = 2 2 3 5 5",
+          "expected": "190025",
+          "generated_text": "19927",
+          "generated_token_ids": [
+            16,
+            24,
+            24,
+            17,
+            22,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.19954937500006054
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 3 2 6 1 2\nB = 2 3 6 4 7 6",
+          "expected": "269088",
+          "generated_text": "32900",
+          "generated_token_ids": [
+            18,
+            17,
+            24,
+            15,
+            15,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.19929104200127767
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 7 2 5 3 9 6 6 4\nB = 1 2 0 9 6",
+          "expected": "72551760",
+          "generated_text": "72535",
+          "generated_token_ids": [
+            22,
+            17,
+            20,
+            18,
+            20,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.20100954199733678
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 8 4 8 6 8 0 1 6\nB = 9 0 5 6 0 1 5 9",
+          "expected": "175428175",
+          "generated_text": "8486666",
+          "generated_token_ids": [
+            23,
+            19,
+            23,
+            21,
+            21,
+            21,
+            21,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.2710485829957179
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 1 5 5 4 7 1 9 6\nB = 8 4 8 0 5",
+          "expected": "15632001",
+          "generated_text": "15543",
+          "generated_token_ids": [
+            16,
+            20,
+            20,
+            19,
+            18,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.2034774159983499
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 2 8 2 4 9 9 4 1\nB = 9 3 2 0 6 2",
+          "expected": "29182003",
+          "generated_text": "282464",
+          "generated_token_ids": [
+            17,
+            23,
+            17,
+            19,
+            21,
+            19,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.23041625000041677
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 4 5 0 5 3 7 5 1\nB = 4 1 6 4 5 0 5 2",
+          "expected": "86698803",
+          "generated_text": "45099",
+          "generated_token_ids": [
+            19,
+            20,
+            15,
+            24,
+            24,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.2010460410019732
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 8 1 2 2 5 4 4 6\nB = 6 1 2 1 8",
+          "expected": "81286664",
+          "generated_text": "8127",
+          "generated_token_ids": [
+            23,
+            16,
+            17,
+            22,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.16722945799847366
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 6 5 7 2 6 5 5 7\nB = 9 7 5 0 9 7 6",
+          "expected": "75477533",
+          "generated_text": "6572 6572",
+          "generated_token_ids": [
+            21,
+            20,
+            22,
+            17,
+            220,
+            21,
+            20,
+            22,
+            17,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.32126391700148815
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 1 2 5 2 0 3 0 7\nB = 9 9 8 8 4",
+          "expected": "12620191",
+          "generated_text": "13736",
+          "generated_token_ids": [
+            16,
+            18,
+            22,
+            18,
+            21,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.19956962500145892
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 4 6 8 2 5 3\nB = 8 5 1 3 7 6",
+          "expected": "1319629",
+          "generated_text": "46950",
+          "generated_token_ids": [
+            19,
+            21,
+            24,
+            20,
+            15,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.2000325420012814
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 1 2 3 5 8 6 7 6\nB = 8 6 7 6 5 4 3 0",
+          "expected": "99124106",
+          "generated_text": "124939",
+          "generated_token_ids": [
+            16,
+            17,
+            19,
+            24,
+            18,
+            24,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.2284940000026836
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 4 2 8 7 8\nB = 5 7 2 8 3 1 3 8",
+          "expected": "57326016",
+          "generated_text": "520511",
+          "generated_token_ids": [
+            20,
+            17,
+            15,
+            20,
+            16,
+            16,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.22968458299874328
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 9 7 8 7 3\nB = 2 9 6 8 3 7 8 7",
+          "expected": "29781660",
+          "generated_text": "979111111",
+          "generated_token_ids": [
+            24,
+            22,
+            24,
+            16,
+            16,
+            16,
+            16,
+            16,
+            16,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.31715504200110445
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 7 5 6 7 2\nB = 6 5 1 7 9 5 0",
+          "expected": "6593622",
+          "generated_text": "756867",
+          "generated_token_ids": [
+            22,
+            20,
+            21,
+            23,
+            21,
+            22,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.2289394170002197
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 7 1 3 8 7\nB = 7 3 9 2 9 8 5",
+          "expected": "7464372",
+          "generated_text": "739117",
+          "generated_token_ids": [
+            22,
+            18,
+            24,
+            16,
+            16,
+            22,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.22685745899798349
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 9 7 8 0 0 4 3 2\nB = 4 5 1 1 2",
+          "expected": "97845544",
+          "generated_text": "9780432",
+          "generated_token_ids": [
+            24,
+            22,
+            23,
+            15,
+            19,
+            18,
+            17,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.2633931250020396
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 6 1 6 1 3 2 3\nB = 9 7 6 5 9 0 5",
+          "expected": "15927228",
+          "generated_text": "616184",
+          "generated_token_ids": [
+            21,
+            16,
+            21,
+            16,
+            23,
+            19,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.22936408299574396
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 7 9 2 1 7\nB = 5 4 7 3 8",
+          "expected": "133955",
+          "generated_text": "79201",
+          "generated_token_ids": [
+            22,
+            24,
+            17,
+            15,
+            16,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.19980999999825144
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 7 8 6 9 6 1\nB = 8 7 6 1 5 7",
+          "expected": "1663118",
+          "generated_text": "78666",
+          "generated_token_ids": [
+            22,
+            23,
+            21,
+            21,
+            21,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.19808062499942025
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 4 3 6 6 5 9\nB = 4 1 0 9 0 8",
+          "expected": "847567",
+          "generated_text": "43659",
+          "generated_token_ids": [
+            19,
+            18,
+            21,
+            20,
+            24,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.19548262500029523
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 7 0 7 2 3\nB = 7 2 1 6 9 6",
+          "expected": "792419",
+          "generated_text": "70787",
+          "generated_token_ids": [
+            22,
+            15,
+            22,
+            23,
+            22,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.19911187500110827
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 2 9 6 1 6 8 6 7\nB = 8 2 1 1 3",
+          "expected": "29698980",
+          "generated_text": "29699",
+          "generated_token_ids": [
+            17,
+            24,
+            21,
+            24,
+            24,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.19758474999980535
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 4 9 7 6 7 3 6 1\nB = 1 3 1 4 4 8 1 8",
+          "expected": "62912179",
+          "generated_text": "4976735",
+          "generated_token_ids": [
+            19,
+            24,
+            22,
+            21,
+            22,
+            18,
+            20,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.26297204200091073
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 2 8 4 1 2\nB = 6 8 5 4 5 9",
+          "expected": "713871",
+          "generated_text": "28499",
+          "generated_token_ids": [
+            17,
+            23,
+            19,
+            24,
+            24,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.1999000000068918
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 2 5 8 1 1 8 0 1\nB = 2 0 1 0 8 0 8",
+          "expected": "27822609",
+          "generated_text": "258188",
+          "generated_token_ids": [
+            17,
+            20,
+            23,
+            16,
+            23,
+            23,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.23162266700092005
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 4 9 8 7 4\nB = 4 7 4 0 5",
+          "expected": "97279",
+          "generated_text": "49874",
+          "generated_token_ids": [
+            19,
+            24,
+            23,
+            22,
+            19,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.19668341700162273
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 8 2 1 0 0 1\nB = 2 1 8 8 0 8 4",
+          "expected": "3009085",
+          "generated_text": "821888",
+          "generated_token_ids": [
+            23,
+            17,
+            16,
+            23,
+            23,
+            23,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.2270467499984079
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 7 2 8 3 9 7\nB = 8 1 4 7 8",
+          "expected": "809875",
+          "generated_text": "8233",
+          "generated_token_ids": [
+            23,
+            17,
+            18,
+            18,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.16927695799677167
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 8 8 6 4 6 0 1 6\nB = 8 8 8 9 0 8 2 6",
+          "expected": "177536842",
+          "generated_text": "886468",
+          "generated_token_ids": [
+            23,
+            23,
+            21,
+            19,
+            21,
+            23,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.22820816700550495
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 2 5 3 1 0\nB = 9 4 5 3 8",
+          "expected": "119848",
+          "generated_text": "25383",
+          "generated_token_ids": [
+            17,
+            20,
+            18,
+            23,
+            18,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.19969816700177034
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 9 7 9 4 5 5 8 2\nB = 4 8 6 5 2 5 5 7",
+          "expected": "146598139",
+          "generated_text": "97999",
+          "generated_token_ids": [
+            24,
+            22,
+            24,
+            24,
+            24,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.19927341699803947
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 9 2 4 6 0 3 8 0\nB = 8 0 8 0 0 0 2 1",
+          "expected": "173260401",
+          "generated_text": "924604",
+          "generated_token_ids": [
+            24,
+            17,
+            19,
+            21,
+            15,
+            19,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.22949408300337382
+        }
+      ]
+    },
+    "ood_9_12": {
+      "examples": 60,
+      "correct": 0,
+      "exact_match_accuracy": 0.0,
+      "predictions": [
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 1 8 5 7 6 5 0 3 5\nB = 9 1 7 6 7 6 6 4 3 5 9 2",
+          "expected": "917862408627",
+          "generated_text": "185764787",
+          "generated_token_ids": [
+            16,
+            23,
+            20,
+            22,
+            21,
+            19,
+            22,
+            23,
+            22,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.33446954200189793
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 1 3 7 2 7 1 1 7 1\nB = 2 6 9 0 4 0 4 3 8 7 0",
+          "expected": "27041315041",
+          "generated_text": "1591243",
+          "generated_token_ids": [
+            16,
+            20,
+            24,
+            16,
+            17,
+            19,
+            18,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.2720584999988205
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 1 1 7 4 5 5 4 5 7\nB = 8 0 1 1 9 6 2 1 2",
+          "expected": "918651669",
+          "generated_text": "1181567",
+          "generated_token_ids": [
+            16,
+            16,
+            23,
+            16,
+            20,
+            21,
+            22,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.2690784590013209
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 8 7 1 0 6 2 8 9 2 7 9\nB = 9 3 9 9 9 7 4 5 7 2",
+          "expected": "96506263851",
+          "generated_text": "8716876",
+          "generated_token_ids": [
+            23,
+            22,
+            16,
+            21,
+            23,
+            22,
+            21,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.2642659169941908
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 2 7 0 9 7 0 4 3 1\nB = 4 2 9 8 4 9 3 5 0 8 1 2",
+          "expected": "430120321243",
+          "generated_text": "2704311113",
+          "generated_token_ids": [
+            17,
+            22,
+            15,
+            19,
+            18,
+            16,
+            16,
+            16,
+            16,
+            18,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.3502185830002418
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 6 8 1 0 5 4 1 3 6 0 1\nB = 6 2 9 8 2 6 1 9 1 1 1",
+          "expected": "131088032712",
+          "generated_text": "6811111",
+          "generated_token_ids": [
+            21,
+            23,
+            16,
+            16,
+            16,
+            16,
+            16,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.26749349999590777
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 4 1 4 8 9 4 6 4 0 1 6 3\nB = 1 1 3 3 7 5 0 2 9 0 9",
+          "expected": "426232143072",
+          "generated_text": "4149494",
+          "generated_token_ids": [
+            19,
+            16,
+            19,
+            24,
+            19,
+            24,
+            19,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.27189745900250273
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 2 4 4 2 6 4 2 9 9 7 2\nB = 5 5 5 9 9 8 1 9 6 3",
+          "expected": "29986411935",
+          "generated_text": "244299",
+          "generated_token_ids": [
+            17,
+            19,
+            19,
+            17,
+            24,
+            24,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.2316302920007729
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 6 4 4 0 8 5 2 5 5 5\nB = 4 0 7 4 3 0 6 6 0 7 7",
+          "expected": "47183918632",
+          "generated_text": "6440855",
+          "generated_token_ids": [
+            21,
+            19,
+            19,
+            15,
+            23,
+            20,
+            20,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.2656265830009943
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 8 8 1 5 3 7 6 7 6\nB = 3 9 7 7 8 4 0 5 8 0 1",
+          "expected": "40659943477",
+          "generated_text": "8818913",
+          "generated_token_ids": [
+            23,
+            23,
+            16,
+            23,
+            24,
+            16,
+            18,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.26206058399839094
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 4 2 6 9 4 6 2 5 8 9 0 0\nB = 4 4 1 4 1 6 4 3 8 5 8",
+          "expected": "471087902758",
+          "generated_text": "4269449",
+          "generated_token_ids": [
+            19,
+            17,
+            21,
+            24,
+            19,
+            19,
+            24,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.2660877910020645
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 6 3 9 5 5 6 8 6 2 5\nB = 4 8 7 4 7 7 6 1 7 4 6 3",
+          "expected": "493873186088",
+          "generated_text": "639555",
+          "generated_token_ids": [
+            21,
+            18,
+            24,
+            20,
+            20,
+            20,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.23062429199489998
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 1 3 9 0 2 7 8 5 8 3\nB = 8 9 1 3 8 1 1 3 7 6 0 3",
+          "expected": "892771416186",
+          "generated_text": "132341616",
+          "generated_token_ids": [
+            16,
+            18,
+            17,
+            18,
+            19,
+            16,
+            21,
+            16,
+            21,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.32427650000317954
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 4 4 6 5 0 7 7 3 7 0\nB = 4 6 7 8 5 0 0 8 7 2",
+          "expected": "9143578242",
+          "generated_text": "4465087",
+          "generated_token_ids": [
+            19,
+            19,
+            21,
+            20,
+            15,
+            23,
+            22,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.2672435829954338
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 2 6 3 6 3 8 5 8 8\nB = 8 5 8 7 8 2 8 5 0 1 7",
+          "expected": "86141923605",
+          "generated_text": "2638583",
+          "generated_token_ids": [
+            17,
+            21,
+            18,
+            23,
+            20,
+            23,
+            18,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.28200125000148546
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 8 9 3 8 1 4 4 6 6\nB = 6 6 2 1 3 0 7 5 1 1",
+          "expected": "7515121977",
+          "generated_text": "8938677",
+          "generated_token_ids": [
+            23,
+            24,
+            18,
+            23,
+            21,
+            22,
+            22,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.27331237500038696
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 1 4 7 5 5 8 2 7 2 0\nB = 3 5 4 9 5 4 7 5 7",
+          "expected": "1830537477",
+          "generated_text": "14121217",
+          "generated_token_ids": [
+            16,
+            19,
+            16,
+            17,
+            16,
+            17,
+            16,
+            22,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.2928994159956346
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 8 4 3 7 6 9 1 5 0 0\nB = 7 5 8 9 8 9 8 7 1 6 7",
+          "expected": "84336678667",
+          "generated_text": "84379157",
+          "generated_token_ids": [
+            23,
+            19,
+            18,
+            22,
+            24,
+            16,
+            20,
+            22,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.29449266699521104
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 2 3 6 3 5 3 9 6 0 0 0\nB = 8 3 4 6 6 8 2 7 4 5 3 8",
+          "expected": "858303670538",
+          "generated_text": "23639689",
+          "generated_token_ids": [
+            17,
+            18,
+            21,
+            18,
+            24,
+            21,
+            23,
+            24,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.31910462499945424
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 4 3 1 5 1 1 9 5 2 0 9\nB = 5 8 3 7 8 6 9 3 9 2 9",
+          "expected": "101529889138",
+          "generated_text": "4318888",
+          "generated_token_ids": [
+            19,
+            18,
+            16,
+            23,
+            23,
+            23,
+            23,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.2875265420007054
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 2 6 9 1 1 0 8 1 4 0 5 9\nB = 6 6 3 4 2 1 3 4 3 9",
+          "expected": "275745027498",
+          "generated_text": "2704667",
+          "generated_token_ids": [
+            17,
+            22,
+            15,
+            19,
+            21,
+            21,
+            22,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.26014062500325963
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 4 9 5 1 0 2 9 5 1\nB = 4 3 1 2 5 6 1 6 6 5 2",
+          "expected": "43620719603",
+          "generated_text": "4951 2566",
+          "generated_token_ids": [
+            19,
+            24,
+            20,
+            16,
+            220,
+            17,
+            20,
+            21,
+            21,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.32556591700267745
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 5 9 0 5 4 0 5 3 8\nB = 4 4 6 2 1 1 5 4 7 9 2",
+          "expected": "45211695330",
+          "generated_text": "5909999",
+          "generated_token_ids": [
+            20,
+            24,
+            15,
+            24,
+            24,
+            24,
+            24,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.26082599999790546
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 3 2 1 9 4 5 8 8 4\nB = 8 2 1 0 1 6 0 8 6",
+          "expected": "1142961970",
+          "generated_text": "323394",
+          "generated_token_ids": [
+            18,
+            17,
+            18,
+            18,
+            24,
+            19,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.23194054100167705
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 7 9 2 1 7 4 3 4 0 6 6 1\nB = 2 6 9 5 2 6 5 8 2 0 4 7",
+          "expected": "1061700922708",
+          "generated_text": "7923788",
+          "generated_token_ids": [
+            22,
+            24,
+            17,
+            18,
+            22,
+            23,
+            23,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.2697602500047651
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 3 9 2 5 4 6 5 5 1 4 3\nB = 6 6 3 8 4 3 3 4 1 8",
+          "expected": "45893088561",
+          "generated_text": "3925497",
+          "generated_token_ids": [
+            18,
+            24,
+            17,
+            20,
+            19,
+            24,
+            22,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.2617141660011839
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 6 5 3 6 9 1 7 3 2 5\nB = 1 1 8 8 2 4 2 4 3 9 5",
+          "expected": "18419341720",
+          "generated_text": "653911719",
+          "generated_token_ids": [
+            21,
+            20,
+            18,
+            24,
+            16,
+            16,
+            22,
+            16,
+            24,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.3241875839958084
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 3 7 0 8 7 0 7 3 9 8\nB = 5 7 5 2 5 6 5 6 4 7 4",
+          "expected": "61234363872",
+          "generated_text": "3703374",
+          "generated_token_ids": [
+            18,
+            22,
+            15,
+            18,
+            18,
+            22,
+            19,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.25932574999751523
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 5 5 6 1 5 0 7 9 2 2 7 4\nB = 4 5 2 5 4 5 0 7 1 2 2",
+          "expected": "601405299396",
+          "generated_text": "55615799",
+          "generated_token_ids": [
+            20,
+            20,
+            21,
+            16,
+            20,
+            22,
+            24,
+            24,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.29546845800359733
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 9 5 6 3 8 4 7 5 2 5\nB = 6 2 1 2 7 2 2 7 7 6 0",
+          "expected": "71691075285",
+          "generated_text": "9563849",
+          "generated_token_ids": [
+            24,
+            20,
+            21,
+            18,
+            23,
+            19,
+            24,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.26232175000041025
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 7 0 8 6 4 0 4 6 9\nB = 6 2 1 3 7 0 8 2 6 9",
+          "expected": "6922348738",
+          "generated_text": "70869",
+          "generated_token_ids": [
+            22,
+            15,
+            23,
+            21,
+            24,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.20352920800360152
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 8 4 4 3 5 7 9 6 5 5\nB = 2 0 5 0 5 7 1 2 2",
+          "expected": "8648636777",
+          "generated_text": "844877",
+          "generated_token_ids": [
+            23,
+            19,
+            19,
+            23,
+            22,
+            22,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.2320032909992733
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 1 4 0 1 2 4 8 8 7 6 3\nB = 7 3 2 2 3 1 7 7 2",
+          "expected": "14744720535",
+          "generated_text": "144240",
+          "generated_token_ids": [
+            16,
+            19,
+            19,
+            17,
+            19,
+            15,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.23270283400051994
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 1 0 1 1 8 5 6 8 8 9\nB = 7 5 6 6 9 8 4 5 9 1 0",
+          "expected": "76681702799",
+          "generated_text": "10119354459",
+          "generated_token_ids": [
+            16,
+            15,
+            16,
+            16,
+            24,
+            18,
+            20,
+            19,
+            19,
+            20,
+            24,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.3796633749952889
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 4 4 6 8 8 3 8 7 7 3 2 6\nB = 9 4 9 2 3 7 5 5 7 8",
+          "expected": "456376252904",
+          "generated_text": "94688",
+          "generated_token_ids": [
+            24,
+            19,
+            21,
+            23,
+            23,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.203536000000895
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 1 4 9 0 3 4 5 5 3 9\nB = 9 3 9 4 4 1 1 7 3 7",
+          "expected": "10884757276",
+          "generated_text": "1493454",
+          "generated_token_ids": [
+            16,
+            19,
+            24,
+            18,
+            19,
+            20,
+            19,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.2587830420015962
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 1 9 3 8 4 1 6 7 4 8 5 9\nB = 5 6 9 2 6 4 4 9 7 0",
+          "expected": "199534319829",
+          "generated_text": "1983313",
+          "generated_token_ids": [
+            16,
+            24,
+            23,
+            18,
+            18,
+            16,
+            18,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.266283458993712
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 2 6 6 0 3 6 3 2 6\nB = 2 9 6 9 2 5 0 6 1",
+          "expected": "562961387",
+          "generated_text": "2986367",
+          "generated_token_ids": [
+            17,
+            24,
+            23,
+            21,
+            18,
+            21,
+            22,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.2601312920014607
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 6 6 6 6 5 7 0 4 5 0 0 4\nB = 3 2 6 1 1 4 0 9 9 1 4",
+          "expected": "699268454918",
+          "generated_text": "6666574",
+          "generated_token_ids": [
+            21,
+            21,
+            21,
+            21,
+            20,
+            22,
+            19,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.2629467500009923
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 7 4 0 7 5 3 4 8 0 6 1 3\nB = 5 0 9 1 2 3 2 7 5 7",
+          "expected": "745844713370",
+          "generated_text": "7407555",
+          "generated_token_ids": [
+            22,
+            19,
+            15,
+            22,
+            20,
+            20,
+            20,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.2616449589986587
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 4 2 7 3 9 4 2 6 1 8\nB = 7 9 1 6 3 7 4 0 0",
+          "expected": "5065580018",
+          "generated_text": "4273942",
+          "generated_token_ids": [
+            19,
+            17,
+            22,
+            18,
+            24,
+            19,
+            17,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.26298804100224515
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 3 6 1 3 8 1 4 2 5\nB = 4 4 5 7 1 8 2 5 6 5 0 1",
+          "expected": "446079637926",
+          "generated_text": "361382565",
+          "generated_token_ids": [
+            18,
+            21,
+            16,
+            18,
+            23,
+            17,
+            20,
+            21,
+            20,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.3235549169985461
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 6 1 1 4 0 9 9 8 8 5\nB = 9 1 0 5 0 1 3 7 5 9",
+          "expected": "15219113644",
+          "generated_text": "6114984",
+          "generated_token_ids": [
+            21,
+            16,
+            16,
+            19,
+            24,
+            23,
+            19,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.2617170419980539
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 9 4 5 0 8 9 5 3 1 9 5 6\nB = 9 1 2 4 0 0 3 8 0 0 8 8",
+          "expected": "1857489912044",
+          "generated_text": "945089588",
+          "generated_token_ids": [
+            24,
+            19,
+            20,
+            15,
+            23,
+            24,
+            20,
+            23,
+            23,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.3267145409990917
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 4 7 0 0 9 9 2 6 3 5 3\nB = 7 9 9 6 6 5 0 3 5 1 8 4",
+          "expected": "846674961537",
+          "generated_text": "470966999",
+          "generated_token_ids": [
+            19,
+            22,
+            15,
+            24,
+            21,
+            21,
+            24,
+            24,
+            24,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.32246287500311155
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 8 2 0 1 6 9 9 2 2 9 4\nB = 7 0 0 5 9 2 1 6 5 9 2 0",
+          "expected": "782609158214",
+          "generated_text": "82066419",
+          "generated_token_ids": [
+            23,
+            17,
+            15,
+            21,
+            21,
+            19,
+            16,
+            24,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.29316316599579295
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 8 6 3 2 7 9 1 5 6 9 3\nB = 7 1 6 9 2 0 9 6 7",
+          "expected": "87044836660",
+          "generated_text": "863297",
+          "generated_token_ids": [
+            23,
+            21,
+            18,
+            17,
+            24,
+            22,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.2375686669984134
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 7 9 4 2 1 1 3 0 7 1\nB = 9 3 9 4 0 0 6 1 3 7 4",
+          "expected": "101882174445",
+          "generated_text": "7942133",
+          "generated_token_ids": [
+            22,
+            24,
+            19,
+            17,
+            16,
+            18,
+            18,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.2649788329945295
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 9 5 6 3 5 0 1 1 4 4\nB = 7 9 8 6 3 8 1 9 9 8",
+          "expected": "17549883142",
+          "generated_text": "9563437",
+          "generated_token_ids": [
+            24,
+            20,
+            21,
+            18,
+            19,
+            18,
+            22,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.26071474999480415
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 9 0 0 7 7 7 1 4 9 7\nB = 8 8 6 6 5 1 0 0 2 5 3",
+          "expected": "97672871750",
+          "generated_text": "9073477",
+          "generated_token_ids": [
+            24,
+            15,
+            22,
+            18,
+            19,
+            22,
+            22,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.26153058300405974
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 7 8 9 4 0 7 6 4 3 9 3 3\nB = 8 3 2 9 2 9 0 5 9 9",
+          "expected": "797736934532",
+          "generated_text": "7894949",
+          "generated_token_ids": [
+            22,
+            23,
+            24,
+            19,
+            24,
+            19,
+            24,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.265942999998515
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 2 4 7 8 7 6 5 6 4 9 9 4\nB = 1 3 8 6 4 2 8 5 8 6 8 9",
+          "expected": "386519423683",
+          "generated_text": "2478744",
+          "generated_token_ids": [
+            17,
+            19,
+            22,
+            23,
+            22,
+            19,
+            19,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.26717604100122117
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 5 1 6 5 4 6 8 2 3\nB = 3 9 9 4 1 9 9 7 1 7",
+          "expected": "4510746540",
+          "generated_text": "5165416",
+          "generated_token_ids": [
+            20,
+            16,
+            21,
+            20,
+            19,
+            16,
+            21,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.27520908400038024
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 3 0 6 3 3 2 8 5 1 8 9 6\nB = 3 1 2 9 7 0 4 2 6 6 0",
+          "expected": "337629894556",
+          "generated_text": "3063576",
+          "generated_token_ids": [
+            18,
+            15,
+            21,
+            18,
+            20,
+            22,
+            21,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.26297404099750565
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 6 7 3 1 4 5 6 2 8 5 3\nB = 7 3 7 7 1 3 2 9 2 3 4 4",
+          "expected": "805027855197",
+          "generated_text": "6731455",
+          "generated_token_ids": [
+            21,
+            22,
+            18,
+            16,
+            19,
+            20,
+            20,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.26614579199667787
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 6 6 8 1 5 4 6 9 4 7 7\nB = 6 3 9 8 1 8 5 0 1 9 5 2",
+          "expected": "706633971429",
+          "generated_text": "668154644",
+          "generated_token_ids": [
+            21,
+            21,
+            23,
+            16,
+            20,
+            19,
+            21,
+            19,
+            19,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.3243383749941131
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 9 5 1 3 5 6 3 1 4 9\nB = 1 3 0 5 7 5 8 4 2 5 9",
+          "expected": "22571147408",
+          "generated_text": "951853449",
+          "generated_token_ids": [
+            24,
+            20,
+            16,
+            23,
+            20,
+            18,
+            19,
+            19,
+            24,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.3232293750043027
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 4 3 3 0 3 9 0 6 2 5 6\nB = 1 8 8 8 8 3 0 8 6 8 7",
+          "expected": "62192214943",
+          "generated_text": "433888",
+          "generated_token_ids": [
+            19,
+            18,
+            18,
+            23,
+            23,
+            23,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.24838270899635972
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 9 4 0 2 3 0 7 9 7 9 3 7\nB = 3 2 4 5 4 7 2 6 0 0 9 4",
+          "expected": "1264778058031",
+          "generated_text": "9409799",
+          "generated_token_ids": [
+            24,
+            19,
+            15,
+            24,
+            22,
+            24,
+            24,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.27978616600012174
+        },
+        {
+          "prompt": "Use the internal addition register. Return only the exact integer.\nA = 2 6 2 7 2 3 7 4 4 6\nB = 2 3 5 5 4 9 6 2 7",
+          "expected": "2862787073",
+          "generated_text": "2627594",
+          "generated_token_ids": [
+            17,
+            21,
+            17,
+            22,
+            20,
+            24,
+            19,
+            151645
+          ],
+          "route_probabilities": [],
+          "exact": false,
+          "latency_seconds": 0.2649532499999623
+        }
+      ]
+    }
+  }
+}

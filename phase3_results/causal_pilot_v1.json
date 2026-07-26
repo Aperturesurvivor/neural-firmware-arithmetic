@@ -1,0 +1,3259 @@
+{
+  "status": "pilot",
+  "model_id": "Qwen/Qwen2.5-0.5B-Instruct",
+  "revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "depth_after_blocks": 6,
+  "normal": {
+    "examples": 30,
+    "correct": 30,
+    "predictions": [
+      {
+        "prompt": "Use the internal addition register. Return only the exact integer.\nA = 9 2 1 6 7 1 1 6 1 9 7\nB = 7 2 1 1 6 7 1 0 0",
+        "expected": "92888283297",
+        "generated_text": "92888283297",
+        "generated_token_ids": [
+          24,
+          17,
+          23,
+          23,
+          23,
+          17,
+          23,
+          18,
+          17,
+          24,
+          22,
+          151645
+        ],
+        "route_probabilities": [],
+        "exact": true,
+        "latency_seconds": 0.54224479199911
+      },
+      {
+        "prompt": "Use the internal addition register. Return only the exact integer.\nA = 8 1 3 5 4 2 3 0 3 9 7 2\nB = 8 9 0 3 9 8 8 2 3 2",
+        "expected": "822446292204",
+        "generated_text": "822446292204",
+        "generated_token_ids": [
+          23,
+          17,
+          17,
+          19,
+          19,
+          21,
+          17,
+          24,
+          17,
+          17,
+          15,
+          19,
+          151645
+        ],
+        "route_probabilities": [],
+        "exact": true,
+        "latency_seconds": 0.43909929099754663
+      },
+      {
+        "prompt": "Use the internal addition register. Return only the exact integer.\nA = 9 3 1 1 3 2 4 1 5\nB = 1 4 2 0 2 4 2 7 5",
+        "expected": "1073156690",
+        "generated_text": "1073156690",
+        "generated_token_ids": [
+          16,
+          15,
+          22,
+          18,
+          16,
+          20,
+          21,
+          21,
+          24,
+          15,
+          151645
+        ],
+        "route_probabilities": [],
+        "exact": true,
+        "latency_seconds": 0.378474749995803
+      },
+      {
+        "prompt": "Use the internal addition register. Return only the exact integer.\nA = 2 1 7 0 1 9 4 2 9\nB = 2 7 6 1 7 5 7 6 8 2 8 5",
+        "expected": "276392787714",
+        "generated_text": "276392787714",
+        "generated_token_ids": [
+          17,
+          22,
+          21,
+          18,
+          24,
+          17,
+          22,
+          23,
+          22,
+          22,
+          16,
+          19,
+          151645
+        ],
+        "route_probabilities": [],
+        "exact": true,
+        "latency_seconds": 0.43042670900467783
+      },
+      {
+        "prompt": "Use the internal addition register. Return only the exact integer.\nA = 4 4 4 5 3 4 3 1 7\nB = 9 9 1 5 6 7 4 3 5",
+        "expected": "1436101752",
+        "generated_text": "1436101752",
+        "generated_token_ids": [
+          16,
+          19,
+          18,
+          21,
+          16,
+          15,
+          16,
+          22,
+          20,
+          17,
+          151645
+        ],
+        "route_probabilities": [],
+        "exact": true,
+        "latency_seconds": 0.3720558749992051
+      },
+      {
+        "prompt": "Use the internal addition register. Return only the exact integer.\nA = 4 9 3 5 8 4 1 1 7 0 7 1\nB = 2 4 9 6 3 9 9 9 5 9",
+        "expected": "496080517030",
+        "generated_text": "496080517030",
+        "generated_token_ids": [
+          19,
+          24,
+          21,
+          15,
+          23,
+          15,
+          20,
+          16,
+          22,
+          15,
+          18,
+          15,
+          151645
+        ],
+        "route_probabilities": [],
+        "exact": true,
+        "latency_seconds": 0.45737312500568805
+      },
+      {
+        "prompt": "Use the internal addition register. Return only the exact integer.\nA = 3 7 7 4 0 5 3 5 9 8 7 5\nB = 6 8 3 4 1 6 4 2 9",
+        "expected": "378088776304",
+        "generated_text": "378088776304",
+        "generated_token_ids": [
+          18,
+          22,
+          23,
+          15,
+          23,
+          23,
+          22,
+          22,
+          21,
+          18,
+          15,
+          19,
+          151645
+        ],
+        "route_probabilities": [],
+        "exact": true,
+        "latency_seconds": 0.4670912910005427
+      },
+      {
+        "prompt": "Use the internal addition register. Return only the exact integer.\nA = 2 2 5 9 1 5 6 7 7 0 1 0\nB = 3 5 9 7 4 7 7 2 1 1",
+        "expected": "229513154221",
+        "generated_text": "229513154221",
+        "generated_token_ids": [
+          17,
+          17,
+          24,
+          20,
+          16,
+          18,
+          16,
+          20,
+          19,
+          17,
+          17,
+          16,
+          151645
+        ],
+        "route_probabilities": [],
+        "exact": true,
+        "latency_seconds": 0.44217745900095906
+      },
+      {
+        "prompt": "Use the internal addition register. Return only the exact integer.\nA = 8 7 3 1 9 1 5 9 2 6 5\nB = 1 3 6 9 1 0 4 0 6 6 1",
+        "expected": "101010199926",
+        "generated_text": "101010199926",
+        "generated_token_ids": [
+          16,
+          15,
+          16,
+          15,
+          16,
+          15,
+          16,
+          24,
+          24,
+          24,
+          17,
+          21,
+          151645
+        ],
+        "route_probabilities": [],
+        "exact": true,
+        "latency_seconds": 0.42670150000049034
+      },
+      {
+        "prompt": "Use the internal addition register. Return only the exact integer.\nA = 6 0 6 1 7 0 4 1 3\nB = 9 9 6 3 0 0 9 9 2 2 7",
+        "expected": "100236269640",
+        "generated_text": "100236269640",
+        "generated_token_ids": [
+          16,
+          15,
+          15,
+          17,
+          18,
+          21,
+          17,
+          21,
+          24,
+          21,
+          19,
+          15,
+          151645
+        ],
+        "route_probabilities": [],
+        "exact": true,
+        "latency_seconds": 0.4210767089971341
+      },
+      {
+        "prompt": "Use the internal addition register. Return only the exact integer.\nA = 6 1 5 0 9 5 3 8 7 3 9\nB = 2 2 4 2 2 7 3 3 5 3 7 3",
+        "expected": "285736874112",
+        "generated_text": "285736874112",
+        "generated_token_ids": [
+          17,
+          23,
+          20,
+          22,
+          18,
+          21,
+          23,
+          22,
+          19,
+          16,
+          16,
+          17,
+          151645
+        ],
+        "route_probabilities": [],
+        "exact": true,
+        "latency_seconds": 0.4338908749996335
+      },
+      {
+        "prompt": "Use the internal addition register. Return only the exact integer.\nA = 5 0 5 2 8 3 1 8 3 9 8 7\nB = 9 6 2 4 9 5 9 0 8 0",
+        "expected": "514908143067",
+        "generated_text": "514908143067",
+        "generated_token_ids": [
+          20,
+          16,
+          19,
+          24,
+          15,
+          23,
+          16,
+          19,
+          18,
+          15,
+          21,
+          22,
+          151645
+        ],
+        "route_probabilities": [],
+        "exact": true,
+        "latency_seconds": 0.4286232909944374
+      },
+      {
+        "prompt": "Use the internal addition register. Return only the exact integer.\nA = 8 5 6 7 3 5 4 4 0\nB = 9 5 8 6 0 6 2 7 0",
+        "expected": "1815341710",
+        "generated_text": "1815341710",
+        "generated_token_ids": [
+          16,
+          23,
+          16,
+          20,
+          18,
+          19,
+          16,
+          22,
+          16,
+          15,
+          151645
+        ],
+        "route_probabilities": [],
+        "exact": true,
+        "latency_seconds": 0.3601605000003474
+      },
+      {
+        "prompt": "Use the internal addition register. Return only the exact integer.\nA = 9 2 6 7 4 4 7 2 3 8 4 7\nB = 4 5 7 8 7 2 5 3 0",
+        "expected": "927202596377",
+        "generated_text": "927202596377",
+        "generated_token_ids": [
+          24,
+          17,
+          22,
+          17,
+          15,
+          17,
+          20,
+          24,
+          21,
+          18,
+          22,
+          22,
+          151645
+        ],
+        "route_probabilities": [],
+        "exact": true,
+        "latency_seconds": 0.42488983400107827
+      },
+      {
+        "prompt": "Use the internal addition register. Return only the exact integer.\nA = 9 0 1 5 8 0 8 0 5\nB = 4 6 9 2 5 2 9 9 5 8",
+        "expected": "5594110763",
+        "generated_text": "5594110763",
+        "generated_token_ids": [
+          20,
+          20,
+          24,
+          19,
+          16,
+          16,
+          15,
+          22,
+          21,
+          18,
+          151645
+        ],
+        "route_probabilities": [],
+        "exact": true,
+        "latency_seconds": 0.3716601670021191
+      },
+      {
+        "prompt": "Use the internal addition register. Return only the exact integer.\nA = 2 0 8 9 2 7 8 3 3 1 7 6\nB = 2 1 3 7 8 9 3 4 8 6 6 1",
+        "expected": "422717181837",
+        "generated_text": "422717181837",
+        "generated_token_ids": [
+          19,
+          17,
+          17,
+          22,
+          16,
+          22,
+          16,
+          23,
+          16,
+          23,
+          18,
+          22,
+          151645
+        ],
+        "route_probabilities": [],
+        "exact": true,
+        "latency_seconds": 0.44128174999787007
+      },
+      {
+        "prompt": "Use the internal addition register. Return only the exact integer.\nA = 7 8 3 3 1 1 9 8 5 7\nB = 8 0 3 6 1 6 0 2 4 2 5",
+        "expected": "88194722282",
+        "generated_text": "88194722282",
+        "generated_token_ids": [
+          23,
+          23,
+          16,
+          24,
+          19,
+          22,
+          17,
+          17,
+          17,
+          23,
+          17,
+          151645
+        ],
+        "route_probabilities": [],
+        "exact": true,
+        "latency_seconds": 0.39637166600005
+      },
+      {
+        "prompt": "Use the internal addition register. Return only the exact integer.\nA = 3 2 2 9 8 2 5 7 5 9 7 0\nB = 9 3 9 9 8 3 1 5 5 3",
+        "expected": "332382407523",
+        "generated_text": "332382407523",
+        "generated_token_ids": [
+          18,
+          18,
+          17,
+          18,
+          23,
+          17,
+          19,
+          15,
+          22,
+          20,
+          17,
+          18,
+          151645
+        ],
+        "route_probabilities": [],
+        "exact": true,
+        "latency_seconds": 0.4474928749987157
+      },
+      {
+        "prompt": "Use the internal addition register. Return only the exact integer.\nA = 6 4 8 9 7 9 3 5 9 8 7\nB = 1 6 8 5 9 3 9 2 2",
+        "expected": "65066529909",
+        "generated_text": "65066529909",
+        "generated_token_ids": [
+          21,
+          20,
+          15,
+          21,
+          21,
+          20,
+          17,
+          24,
+          24,
+          15,
+          24,
+          151645
+        ],
+        "route_probabilities": [],
+        "exact": true,
+        "latency_seconds": 0.41283049999765353
+      },
+      {
+        "prompt": "Use the internal addition register. Return only the exact integer.\nA = 6 3 3 3 8 2 0 8 0 7\nB = 8 2 1 1 3 3 4 6 5 5 7 6",
+        "expected": "827467286383",
+        "generated_text": "827467286383",
+        "generated_token_ids": [
+          23,
+          17,
+          22,
+          19,
+          21,
+          22,
+          17,
+          23,
+          21,
+          18,
+          23,
+          18,
+          151645
+        ],
+        "route_probabilities": [],
+        "exact": true,
+        "latency_seconds": 0.42947266699775355
+      },
+      {
+        "prompt": "Use the internal addition register. Return only the exact integer.\nA = 5 1 2 9 8 0 6 3 4 0\nB = 4 0 3 7 1 4 3 4 5 6 2 2",
+        "expected": "408844151962",
+        "generated_text": "408844151962",
+        "generated_token_ids": [
+          19,
+          15,
+          23,
+          23,
+          19,
+          19,
+          16,
+          20,
+          16,
+          24,
+          21,
+          17,
+          151645
+        ],
+        "route_probabilities": [],
+        "exact": true,
+        "latency_seconds": 0.4297451669990551
+      },
+      {
+        "prompt": "Use the internal addition register. Return only the exact integer.\nA = 2 1 6 7 5 3 0 6 8 1 7 2\nB = 4 9 7 6 3 9 4 1 2 6",
+        "expected": "221729462298",
+        "generated_text": "221729462298",
+        "generated_token_ids": [
+          17,
+          17,
+          16,
+          22,
+          17,
+          24,
+          19,
+          21,
+          17,
+          17,
+          24,
+          23,
+          151645
+        ],
+        "route_probabilities": [],
+        "exact": true,
+        "latency_seconds": 0.4250362500024494
+      },
+      {
+        "prompt": "Use the internal addition register. Return only the exact integer.\nA = 4 8 5 2 0 5 5 8 4\nB = 2 4 6 3 9 3 9 8 9 1 8 1",
+        "expected": "246879194765",
+        "generated_text": "246879194765",
+        "generated_token_ids": [
+          17,
+          19,
+          21,
+          23,
+          22,
+          24,
+          16,
+          24,
+          19,
+          22,
+          21,
+          20,
+          151645
+        ],
+        "route_probabilities": [],
+        "exact": true,
+        "latency_seconds": 0.428493042003538
+      },
+      {
+        "prompt": "Use the internal addition register. Return only the exact integer.\nA = 2 8 2 3 1 4 6 4 6 4 2 7\nB = 9 2 3 8 9 5 7 1 3 1 3 1",
+        "expected": "1206210359558",
+        "generated_text": "1206210359558",
+        "generated_token_ids": [
+          16,
+          17,
+          15,
+          21,
+          17,
+          16,
+          15,
+          18,
+          20,
+          24,
+          20,
+          20,
+          23,
+          151645
+        ],
+        "route_probabilities": [],
+        "exact": true,
+        "latency_seconds": 0.4625951249981881
+      },
+      {
+        "prompt": "Use the internal addition register. Return only the exact integer.\nA = 6 7 3 2 6 4 9 2 8\nB = 7 1 8 6 0 4 4 5 8 1",
+        "expected": "7859309509",
+        "generated_text": "7859309509",
+        "generated_token_ids": [
+          22,
+          23,
+          20,
+          24,
+          18,
+          15,
+          24,
+          20,
+          15,
+          24,
+          151645
+        ],
+        "route_probabilities": [],
+        "exact": true,
+        "latency_seconds": 0.3664273750036955
+      },
+      {
+        "prompt": "Use the internal addition register. Return only the exact integer.\nA = 5 5 1 6 3 6 3 9 5 9\nB = 9 2 7 3 4 3 0 1 0 7 2 2",
+        "expected": "932859374681",
+        "generated_text": "932859374681",
+        "generated_token_ids": [
+          24,
+          18,
+          17,
+          23,
+          20,
+          24,
+          18,
+          22,
+          19,
+          21,
+          23,
+          16,
+          151645
+        ],
+        "route_probabilities": [],
+        "exact": true,
+        "latency_seconds": 0.4247662079942529
+      },
+      {
+        "prompt": "Use the internal addition register. Return only the exact integer.\nA = 9 9 7 2 5 4 5 8 5 5 3 2\nB = 1 7 2 6 7 6 4 1 3 9",
+        "expected": "998981349671",
+        "generated_text": "998981349671",
+        "generated_token_ids": [
+          24,
+          24,
+          23,
+          24,
+          23,
+          16,
+          18,
+          19,
+          24,
+          21,
+          22,
+          16,
+          151645
+        ],
+        "route_probabilities": [],
+        "exact": true,
+        "latency_seconds": 0.4257001250007306
+      },
+      {
+        "prompt": "Use the internal addition register. Return only the exact integer.\nA = 6 7 6 2 1 0 6 4 4 3\nB = 8 3 2 2 9 7 9 7 2",
+        "expected": "7594404415",
+        "generated_text": "7594404415",
+        "generated_token_ids": [
+          22,
+          20,
+          24,
+          19,
+          19,
+          15,
+          19,
+          19,
+          16,
+          20,
+          151645
+        ],
+        "route_probabilities": [],
+        "exact": true,
+        "latency_seconds": 0.36541533400304615
+      },
+      {
+        "prompt": "Use the internal addition register. Return only the exact integer.\nA = 9 6 8 5 8 6 1 0 4 7\nB = 5 3 9 9 7 7 6 9 0 4 7 2",
+        "expected": "549663551519",
+        "generated_text": "549663551519",
+        "generated_token_ids": [
+          20,
+          19,
+          24,
+          21,
+          21,
+          18,
+          20,
+          20,
+          16,
+          20,
+          16,
+          24,
+          151645
+        ],
+        "route_probabilities": [],
+        "exact": true,
+        "latency_seconds": 0.42905941599747166
+      },
+      {
+        "prompt": "Use the internal addition register. Return only the exact integer.\nA = 4 9 8 6 5 9 7 4 9\nB = 6 9 0 4 8 6 7 3 3",
+        "expected": "1189146482",
+        "generated_text": "1189146482",
+        "generated_token_ids": [
+          16,
+          16,
+          23,
+          24,
+          16,
+          19,
+          21,
+          19,
+          23,
+          17,
+          151645
+        ],
+        "route_probabilities": [],
+        "exact": true,
+        "latency_seconds": 0.36464287499984493
+      }
+    ]
+  },
+  "wrong_symbol_intervention": {
+    "examples": 20,
+    "matches_intervened_state": 20,
+    "predictions": [
+      {
+        "prompt": "Use the internal addition register. Return only the exact integer.\nA = 9 2 1 6 7 1 1 6 1 9 7\nB = 7 2 1 1 6 7 1 0 0",
+        "expected": "92888283297",
+        "generated_text": "02888283297",
+        "generated_token_ids": [
+          15,
+          17,
+          23,
+          23,
+          23,
+          17,
+          23,
+          18,
+          17,
+          24,
+          22,
+          151645
+        ],
+        "route_probabilities": [],
+        "exact": false,
+        "latency_seconds": 0.4593234579951968,
+        "original_answer": "92888283297",
+        "intervened_answer": "02888283297",
+        "matches_intervened_state": true
+      },
+      {
+        "prompt": "Use the internal addition register. Return only the exact integer.\nA = 8 1 3 5 4 2 3 0 3 9 7 2\nB = 8 9 0 3 9 8 8 2 3 2",
+        "expected": "822446292204",
+        "generated_text": "922446292204",
+        "generated_token_ids": [
+          24,
+          17,
+          17,
+          19,
+          19,
+          21,
+          17,
+          24,
+          17,
+          17,
+          15,
+          19,
+          151645
+        ],
+        "route_probabilities": [],
+        "exact": false,
+        "latency_seconds": 0.429756332996476,
+        "original_answer": "822446292204",
+        "intervened_answer": "922446292204",
+        "matches_intervened_state": true
+      },
+      {
+        "prompt": "Use the internal addition register. Return only the exact integer.\nA = 9 3 1 1 3 2 4 1 5\nB = 1 4 2 0 2 4 2 7 5",
+        "expected": "1073156690",
+        "generated_text": "2073156690",
+        "generated_token_ids": [
+          17,
+          15,
+          22,
+          18,
+          16,
+          20,
+          21,
+          21,
+          24,
+          15,
+          151645
+        ],
+        "route_probabilities": [],
+        "exact": false,
+        "latency_seconds": 0.370574000000488,
+        "original_answer": "1073156690",
+        "intervened_answer": "2073156690",
+        "matches_intervened_state": true
+      },
+      {
+        "prompt": "Use the internal addition register. Return only the exact integer.\nA = 2 1 7 0 1 9 4 2 9\nB = 2 7 6 1 7 5 7 6 8 2 8 5",
+        "expected": "276392787714",
+        "generated_text": "376392787714",
+        "generated_token_ids": [
+          18,
+          22,
+          21,
+          18,
+          24,
+          17,
+          22,
+          23,
+          22,
+          22,
+          16,
+          19,
+          151645
+        ],
+        "route_probabilities": [],
+        "exact": false,
+        "latency_seconds": 0.4333885000014561,
+        "original_answer": "276392787714",
+        "intervened_answer": "376392787714",
+        "matches_intervened_state": true
+      },
+      {
+        "prompt": "Use the internal addition register. Return only the exact integer.\nA = 4 4 4 5 3 4 3 1 7\nB = 9 9 1 5 6 7 4 3 5",
+        "expected": "1436101752",
+        "generated_text": "2436101752",
+        "generated_token_ids": [
+          17,
+          19,
+          18,
+          21,
+          16,
+          15,
+          16,
+          22,
+          20,
+          17,
+          151645
+        ],
+        "route_probabilities": [],
+        "exact": false,
+        "latency_seconds": 0.3652392080039135,
+        "original_answer": "1436101752",
+        "intervened_answer": "2436101752",
+        "matches_intervened_state": true
+      },
+      {
+        "prompt": "Use the internal addition register. Return only the exact integer.\nA = 4 9 3 5 8 4 1 1 7 0 7 1\nB = 2 4 9 6 3 9 9 9 5 9",
+        "expected": "496080517030",
+        "generated_text": "596080517030",
+        "generated_token_ids": [
+          20,
+          24,
+          21,
+          15,
+          23,
+          15,
+          20,
+          16,
+          22,
+          15,
+          18,
+          15,
+          151645
+        ],
+        "route_probabilities": [],
+        "exact": false,
+        "latency_seconds": 0.4256223339980352,
+        "original_answer": "496080517030",
+        "intervened_answer": "596080517030",
+        "matches_intervened_state": true
+      },
+      {
+        "prompt": "Use the internal addition register. Return only the exact integer.\nA = 3 7 7 4 0 5 3 5 9 8 7 5\nB = 6 8 3 4 1 6 4 2 9",
+        "expected": "378088776304",
+        "generated_text": "478088776304",
+        "generated_token_ids": [
+          19,
+          22,
+          23,
+          15,
+          23,
+          23,
+          22,
+          22,
+          21,
+          18,
+          15,
+          19,
+          151645
+        ],
+        "route_probabilities": [],
+        "exact": false,
+        "latency_seconds": 0.4252481249932316,
+        "original_answer": "378088776304",
+        "intervened_answer": "478088776304",
+        "matches_intervened_state": true
+      },
+      {
+        "prompt": "Use the internal addition register. Return only the exact integer.\nA = 2 2 5 9 1 5 6 7 7 0 1 0\nB = 3 5 9 7 4 7 7 2 1 1",
+        "expected": "229513154221",
+        "generated_text": "329513154221",
+        "generated_token_ids": [
+          18,
+          17,
+          24,
+          20,
+          16,
+          18,
+          16,
+          20,
+          19,
+          17,
+          17,
+          16,
+          151645
+        ],
+        "route_probabilities": [],
+        "exact": false,
+        "latency_seconds": 0.42582799999945564,
+        "original_answer": "229513154221",
+        "intervened_answer": "329513154221",
+        "matches_intervened_state": true
+      },
+      {
+        "prompt": "Use the internal addition register. Return only the exact integer.\nA = 8 7 3 1 9 1 5 9 2 6 5\nB = 1 3 6 9 1 0 4 0 6 6 1",
+        "expected": "101010199926",
+        "generated_text": "201010199926",
+        "generated_token_ids": [
+          17,
+          15,
+          16,
+          15,
+          16,
+          15,
+          16,
+          24,
+          24,
+          24,
+          17,
+          21,
+          151645
+        ],
+        "route_probabilities": [],
+        "exact": false,
+        "latency_seconds": 0.42722187499748543,
+        "original_answer": "101010199926",
+        "intervened_answer": "201010199926",
+        "matches_intervened_state": true
+      },
+      {
+        "prompt": "Use the internal addition register. Return only the exact integer.\nA = 6 0 6 1 7 0 4 1 3\nB = 9 9 6 3 0 0 9 9 2 2 7",
+        "expected": "100236269640",
+        "generated_text": "200236269640",
+        "generated_token_ids": [
+          17,
+          15,
+          15,
+          17,
+          18,
+          21,
+          17,
+          21,
+          24,
+          21,
+          19,
+          15,
+          151645
+        ],
+        "route_probabilities": [],
+        "exact": false,
+        "latency_seconds": 0.4258918339983211,
+        "original_answer": "100236269640",
+        "intervened_answer": "200236269640",
+        "matches_intervened_state": true
+      },
+      {
+        "prompt": "Use the internal addition register. Return only the exact integer.\nA = 6 1 5 0 9 5 3 8 7 3 9\nB = 2 2 4 2 2 7 3 3 5 3 7 3",
+        "expected": "285736874112",
+        "generated_text": "385736874112",
+        "generated_token_ids": [
+          18,
+          23,
+          20,
+          22,
+          18,
+          21,
+          23,
+          22,
+          19,
+          16,
+          16,
+          17,
+          151645
+        ],
+        "route_probabilities": [],
+        "exact": false,
+        "latency_seconds": 0.42923191700538155,
+        "original_answer": "285736874112",
+        "intervened_answer": "385736874112",
+        "matches_intervened_state": true
+      },
+      {
+        "prompt": "Use the internal addition register. Return only the exact integer.\nA = 5 0 5 2 8 3 1 8 3 9 8 7\nB = 9 6 2 4 9 5 9 0 8 0",
+        "expected": "514908143067",
+        "generated_text": "614908143067",
+        "generated_token_ids": [
+          21,
+          16,
+          19,
+          24,
+          15,
+          23,
+          16,
+          19,
+          18,
+          15,
+          21,
+          22,
+          151645
+        ],
+        "route_probabilities": [],
+        "exact": false,
+        "latency_seconds": 0.4291300409968244,
+        "original_answer": "514908143067",
+        "intervened_answer": "614908143067",
+        "matches_intervened_state": true
+      },
+      {
+        "prompt": "Use the internal addition register. Return only the exact integer.\nA = 8 5 6 7 3 5 4 4 0\nB = 9 5 8 6 0 6 2 7 0",
+        "expected": "1815341710",
+        "generated_text": "2815341710",
+        "generated_token_ids": [
+          17,
+          23,
+          16,
+          20,
+          18,
+          19,
+          16,
+          22,
+          16,
+          15,
+          151645
+        ],
+        "route_probabilities": [],
+        "exact": false,
+        "latency_seconds": 0.3635179170014453,
+        "original_answer": "1815341710",
+        "intervened_answer": "2815341710",
+        "matches_intervened_state": true
+      },
+      {
+        "prompt": "Use the internal addition register. Return only the exact integer.\nA = 9 2 6 7 4 4 7 2 3 8 4 7\nB = 4 5 7 8 7 2 5 3 0",
+        "expected": "927202596377",
+        "generated_text": "027202596377",
+        "generated_token_ids": [
+          15,
+          17,
+          22,
+          17,
+          15,
+          17,
+          20,
+          24,
+          21,
+          18,
+          22,
+          22,
+          151645
+        ],
+        "route_probabilities": [],
+        "exact": false,
+        "latency_seconds": 0.42807820799498586,
+        "original_answer": "927202596377",
+        "intervened_answer": "027202596377",
+        "matches_intervened_state": true
+      },
+      {
+        "prompt": "Use the internal addition register. Return only the exact integer.\nA = 9 0 1 5 8 0 8 0 5\nB = 4 6 9 2 5 2 9 9 5 8",
+        "expected": "5594110763",
+        "generated_text": "6594110763",
+        "generated_token_ids": [
+          21,
+          20,
+          24,
+          19,
+          16,
+          16,
+          15,
+          22,
+          21,
+          18,
+          151645
+        ],
+        "route_probabilities": [],
+        "exact": false,
+        "latency_seconds": 0.36802904199430486,
+        "original_answer": "5594110763",
+        "intervened_answer": "6594110763",
+        "matches_intervened_state": true
+      },
+      {
+        "prompt": "Use the internal addition register. Return only the exact integer.\nA = 2 0 8 9 2 7 8 3 3 1 7 6\nB = 2 1 3 7 8 9 3 4 8 6 6 1",
+        "expected": "422717181837",
+        "generated_text": "522717181837",
+        "generated_token_ids": [
+          20,
+          17,
+          17,
+          22,
+          16,
+          22,
+          16,
+          23,
+          16,
+          23,
+          18,
+          22,
+          151645
+        ],
+        "route_probabilities": [],
+        "exact": false,
+        "latency_seconds": 0.42764291600178694,
+        "original_answer": "422717181837",
+        "intervened_answer": "522717181837",
+        "matches_intervened_state": true
+      },
+      {
+        "prompt": "Use the internal addition register. Return only the exact integer.\nA = 7 8 3 3 1 1 9 8 5 7\nB = 8 0 3 6 1 6 0 2 4 2 5",
+        "expected": "88194722282",
+        "generated_text": "98194722282",
+        "generated_token_ids": [
+          24,
+          23,
+          16,
+          24,
+          19,
+          22,
+          17,
+          17,
+          17,
+          23,
+          17,
+          151645
+        ],
+        "route_probabilities": [],
+        "exact": false,
+        "latency_seconds": 0.3972997079981724,
+        "original_answer": "88194722282",
+        "intervened_answer": "98194722282",
+        "matches_intervened_state": true
+      },
+      {
+        "prompt": "Use the internal addition register. Return only the exact integer.\nA = 3 2 2 9 8 2 5 7 5 9 7 0\nB = 9 3 9 9 8 3 1 5 5 3",
+        "expected": "332382407523",
+        "generated_text": "432382407523",
+        "generated_token_ids": [
+          19,
+          18,
+          17,
+          18,
+          23,
+          17,
+          19,
+          15,
+          22,
+          20,
+          17,
+          18,
+          151645
+        ],
+        "route_probabilities": [],
+        "exact": false,
+        "latency_seconds": 0.42610954200063134,
+        "original_answer": "332382407523",
+        "intervened_answer": "432382407523",
+        "matches_intervened_state": true
+      },
+      {
+        "prompt": "Use the internal addition register. Return only the exact integer.\nA = 6 4 8 9 7 9 3 5 9 8 7\nB = 1 6 8 5 9 3 9 2 2",
+        "expected": "65066529909",
+        "generated_text": "75066529909",
+        "generated_token_ids": [
+          22,
+          20,
+          15,
+          21,
+          21,
+          20,
+          17,
+          24,
+          24,
+          15,
+          24,
+          151645
+        ],
+        "route_probabilities": [],
+        "exact": false,
+        "latency_seconds": 0.39664141699904576,
+        "original_answer": "65066529909",
+        "intervened_answer": "75066529909",
+        "matches_intervened_state": true
+      },
+      {
+        "prompt": "Use the internal addition register. Return only the exact integer.\nA = 6 3 3 3 8 2 0 8 0 7\nB = 8 2 1 1 3 3 4 6 5 5 7 6",
+        "expected": "827467286383",
+        "generated_text": "927467286383",
+        "generated_token_ids": [
+          24,
+          17,
+          22,
+          19,
+          21,
+          22,
+          17,
+          23,
+          21,
+          18,
+          23,
+          18,
+          151645
+        ],
+        "route_probabilities": [],
+        "exact": false,
+        "latency_seconds": 0.42897645800258033,
+        "original_answer": "827467286383",
+        "intervened_answer": "927467286383",
+        "matches_intervened_state": true
+      }
+    ]
+  },
+  "state_substitution": {
+    "examples": 10,
+    "matches_donor_state": 10,
+    "predictions": [
+      {
+        "prompt": "Use the internal addition register. Return only the exact integer.\nA = 8 1 0 7\nB = 2 4 1 2",
+        "expected": "10519",
+        "generated_text": "13589",
+        "generated_token_ids": [
+          16,
+          18,
+          20,
+          23,
+          24,
+          151645
+        ],
+        "route_probabilities": [],
+        "exact": false,
+        "latency_seconds": 0.21311408300243784,
+        "recipient_answer": "10519",
+        "donor_answer": "13589",
+        "matches_donor_state": true
+      },
+      {
+        "prompt": "Use the internal addition register. Return only the exact integer.\nA = 6 9 6 5\nB = 4 1 0 3",
+        "expected": "11068",
+        "generated_text": "12619",
+        "generated_token_ids": [
+          16,
+          17,
+          21,
+          16,
+          24,
+          151645
+        ],
+        "route_probabilities": [],
+        "exact": false,
+        "latency_seconds": 0.20027045900496887,
+        "recipient_answer": "11068",
+        "donor_answer": "12619",
+        "matches_donor_state": true
+      },
+      {
+        "prompt": "Use the internal addition register. Return only the exact integer.\nA = 9 5 7 0\nB = 7 9 3 4",
+        "expected": "17504",
+        "generated_text": "15105",
+        "generated_token_ids": [
+          16,
+          20,
+          16,
+          15,
+          20,
+          151645
+        ],
+        "route_probabilities": [],
+        "exact": false,
+        "latency_seconds": 0.19821820899960585,
+        "recipient_answer": "17504",
+        "donor_answer": "15105",
+        "matches_donor_state": true
+      },
+      {
+        "prompt": "Use the internal addition register. Return only the exact integer.\nA = 7 3 6 7\nB = 2 8 0 1",
+        "expected": "10168",
+        "generated_text": "14518",
+        "generated_token_ids": [
+          16,
+          19,
+          20,
+          16,
+          23,
+          151645
+        ],
+        "route_probabilities": [],
+        "exact": false,
+        "latency_seconds": 0.20114166699931957,
+        "recipient_answer": "10168",
+        "donor_answer": "14518",
+        "matches_donor_state": true
+      },
+      {
+        "prompt": "Use the internal addition register. Return only the exact integer.\nA = 9 0 4 1\nB = 4 2 5 9",
+        "expected": "13300",
+        "generated_text": "13392",
+        "generated_token_ids": [
+          16,
+          18,
+          18,
+          24,
+          17,
+          151645
+        ],
+        "route_probabilities": [],
+        "exact": false,
+        "latency_seconds": 0.19881229200109374,
+        "recipient_answer": "13300",
+        "donor_answer": "13392",
+        "matches_donor_state": true
+      },
+      {
+        "prompt": "Use the internal addition register. Return only the exact integer.\nA = 8 5 8 1\nB = 8 6 5 3",
+        "expected": "17234",
+        "generated_text": "10868",
+        "generated_token_ids": [
+          16,
+          15,
+          23,
+          21,
+          23,
+          151645
+        ],
+        "route_probabilities": [],
+        "exact": false,
+        "latency_seconds": 0.20303279200015822,
+        "recipient_answer": "17234",
+        "donor_answer": "10868",
+        "matches_donor_state": true
+      },
+      {
+        "prompt": "Use the internal addition register. Return only the exact integer.\nA = 6 9 2 7\nB = 9 3 6 9",
+        "expected": "16296",
+        "generated_text": "15792",
+        "generated_token_ids": [
+          16,
+          20,
+          22,
+          24,
+          17,
+          151645
+        ],
+        "route_probabilities": [],
+        "exact": false,
+        "latency_seconds": 0.19757158400170738,
+        "recipient_answer": "16296",
+        "donor_answer": "15792",
+        "matches_donor_state": true
+      },
+      {
+        "prompt": "Use the internal addition register. Return only the exact integer.\nA = 6 1 9 1\nB = 4 8 0 4",
+        "expected": "10995",
+        "generated_text": "16283",
+        "generated_token_ids": [
+          16,
+          21,
+          17,
+          23,
+          18,
+          151645
+        ],
+        "route_probabilities": [],
+        "exact": false,
+        "latency_seconds": 0.19873608300258638,
+        "recipient_answer": "10995",
+        "donor_answer": "16283",
+        "matches_donor_state": true
+      },
+      {
+        "prompt": "Use the internal addition register. Return only the exact integer.\nA = 9 2 8 8\nB = 3 6 3 6",
+        "expected": "12924",
+        "generated_text": "13394",
+        "generated_token_ids": [
+          16,
+          18,
+          18,
+          24,
+          19,
+          151645
+        ],
+        "route_probabilities": [],
+        "exact": false,
+        "latency_seconds": 0.20161883299442707,
+        "recipient_answer": "12924",
+        "donor_answer": "13394",
+        "matches_donor_state": true
+      },
+      {
+        "prompt": "Use the internal addition register. Return only the exact integer.\nA = 2 4 1 9\nB = 7 7 4 5",
+        "expected": "10164",
+        "generated_text": "15971",
+        "generated_token_ids": [
+          16,
+          20,
+          24,
+          22,
+          16,
+          151645
+        ],
+        "route_probabilities": [],
+        "exact": false,
+        "latency_seconds": 0.1988333330009482,
+        "recipient_answer": "10164",
+        "donor_answer": "15971",
+        "matches_donor_state": true
+      }
+    ]
+  },
+  "downstream_logit_lens": [
+    {
+      "prompt": "Use the internal addition register. Return only the exact integer.\nA = 9 2 1 6 7 1 1 6 1 9 7\nB = 7 2 1 1 6 7 1 0 0",
+      "answer": "92888283297",
+      "layers": [
+        {
+          "depth_after_blocks": 5,
+          "target_token_id": 24,
+          "target_logit": -4.831176280975342,
+          "target_rank": 151215,
+          "best_other_token_id": 71471,
+          "best_other_text": "\")));",
+          "target_margin": -23.729721069335938
+        },
+        {
+          "depth_after_blocks": 6,
+          "target_token_id": 24,
+          "target_logit": 50.1234130859375,
+          "target_rank": 1,
+          "best_other_token_id": 23,
+          "best_other_text": "8",
+          "target_margin": 8.963695526123047
+        },
+        {
+          "depth_after_blocks": 7,
+          "target_token_id": 24,
+          "target_logit": 47.70880889892578,
+          "target_rank": 1,
+          "best_other_token_id": 23,
+          "best_other_text": "8",
+          "target_margin": 8.412181854248047
+        },
+        {
+          "depth_after_blocks": 8,
+          "target_token_id": 24,
+          "target_logit": 45.92176055908203,
+          "target_rank": 1,
+          "best_other_token_id": 23,
+          "best_other_text": "8",
+          "target_margin": 8.265708923339844
+        },
+        {
+          "depth_after_blocks": 9,
+          "target_token_id": 24,
+          "target_logit": 44.497154235839844,
+          "target_rank": 1,
+          "best_other_token_id": 23,
+          "best_other_text": "8",
+          "target_margin": 8.190128326416016
+        },
+        {
+          "depth_after_blocks": 10,
+          "target_token_id": 24,
+          "target_logit": 43.750999450683594,
+          "target_rank": 1,
+          "best_other_token_id": 23,
+          "best_other_text": "8",
+          "target_margin": 7.957439422607422
+        },
+        {
+          "depth_after_blocks": 11,
+          "target_token_id": 24,
+          "target_logit": 41.697364807128906,
+          "target_rank": 1,
+          "best_other_token_id": 23,
+          "best_other_text": "8",
+          "target_margin": 8.282783508300781
+        },
+        {
+          "depth_after_blocks": 12,
+          "target_token_id": 24,
+          "target_logit": 40.891395568847656,
+          "target_rank": 1,
+          "best_other_token_id": 23,
+          "best_other_text": "8",
+          "target_margin": 8.361438751220703
+        },
+        {
+          "depth_after_blocks": 13,
+          "target_token_id": 24,
+          "target_logit": 40.05052947998047,
+          "target_rank": 1,
+          "best_other_token_id": 23,
+          "best_other_text": "8",
+          "target_margin": 8.365550994873047
+        },
+        {
+          "depth_after_blocks": 14,
+          "target_token_id": 24,
+          "target_logit": 39.620445251464844,
+          "target_rank": 1,
+          "best_other_token_id": 23,
+          "best_other_text": "8",
+          "target_margin": 8.055990219116211
+        },
+        {
+          "depth_after_blocks": 15,
+          "target_token_id": 24,
+          "target_logit": 39.12747573852539,
+          "target_rank": 1,
+          "best_other_token_id": 23,
+          "best_other_text": "8",
+          "target_margin": 7.566432952880859
+        },
+        {
+          "depth_after_blocks": 16,
+          "target_token_id": 24,
+          "target_logit": 38.98524475097656,
+          "target_rank": 1,
+          "best_other_token_id": 23,
+          "best_other_text": "8",
+          "target_margin": 7.7265777587890625
+        },
+        {
+          "depth_after_blocks": 17,
+          "target_token_id": 24,
+          "target_logit": 38.29323959350586,
+          "target_rank": 1,
+          "best_other_token_id": 23,
+          "best_other_text": "8",
+          "target_margin": 7.611745834350586
+        },
+        {
+          "depth_after_blocks": 18,
+          "target_token_id": 24,
+          "target_logit": 37.036293029785156,
+          "target_rank": 1,
+          "best_other_token_id": 23,
+          "best_other_text": "8",
+          "target_margin": 7.5079803466796875
+        },
+        {
+          "depth_after_blocks": 19,
+          "target_token_id": 24,
+          "target_logit": 35.612213134765625,
+          "target_rank": 1,
+          "best_other_token_id": 23,
+          "best_other_text": "8",
+          "target_margin": 6.766288757324219
+        },
+        {
+          "depth_after_blocks": 20,
+          "target_token_id": 24,
+          "target_logit": 35.457157135009766,
+          "target_rank": 1,
+          "best_other_token_id": 23,
+          "best_other_text": "8",
+          "target_margin": 7.922519683837891
+        },
+        {
+          "depth_after_blocks": 21,
+          "target_token_id": 24,
+          "target_logit": 34.529579162597656,
+          "target_rank": 1,
+          "best_other_token_id": 23,
+          "best_other_text": "8",
+          "target_margin": 8.518352508544922
+        },
+        {
+          "depth_after_blocks": 22,
+          "target_token_id": 24,
+          "target_logit": 33.987464904785156,
+          "target_rank": 1,
+          "best_other_token_id": 23,
+          "best_other_text": "8",
+          "target_margin": 8.370697021484375
+        },
+        {
+          "depth_after_blocks": 23,
+          "target_token_id": 24,
+          "target_logit": 32.461456298828125,
+          "target_rank": 1,
+          "best_other_token_id": 23,
+          "best_other_text": "8",
+          "target_margin": 8.759193420410156
+        },
+        {
+          "depth_after_blocks": 24,
+          "target_token_id": 24,
+          "target_logit": 30.598878860473633,
+          "target_rank": 1,
+          "best_other_token_id": 23,
+          "best_other_text": "8",
+          "target_margin": 11.44648551940918
+        }
+      ]
+    },
+    {
+      "prompt": "Use the internal addition register. Return only the exact integer.\nA = 8 1 3 5 4 2 3 0 3 9 7 2\nB = 8 9 0 3 9 8 8 2 3 2",
+      "answer": "822446292204",
+      "layers": [
+        {
+          "depth_after_blocks": 5,
+          "target_token_id": 23,
+          "target_logit": -5.424262046813965,
+          "target_rank": 151532,
+          "best_other_token_id": 71471,
+          "best_other_text": "\")));",
+          "target_margin": -24.216594696044922
+        },
+        {
+          "depth_after_blocks": 6,
+          "target_token_id": 23,
+          "target_logit": 51.45582580566406,
+          "target_rank": 1,
+          "best_other_token_id": 22,
+          "best_other_text": "7",
+          "target_margin": 10.163280487060547
+        },
+        {
+          "depth_after_blocks": 7,
+          "target_token_id": 23,
+          "target_logit": 49.5536003112793,
+          "target_rank": 1,
+          "best_other_token_id": 22,
+          "best_other_text": "7",
+          "target_margin": 10.265621185302734
+        },
+        {
+          "depth_after_blocks": 8,
+          "target_token_id": 23,
+          "target_logit": 47.714927673339844,
+          "target_rank": 1,
+          "best_other_token_id": 16,
+          "best_other_text": "1",
+          "target_margin": 9.466270446777344
+        },
+        {
+          "depth_after_blocks": 9,
+          "target_token_id": 23,
+          "target_logit": 45.259212493896484,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 8.776287078857422
+        },
+        {
+          "depth_after_blocks": 10,
+          "target_token_id": 23,
+          "target_logit": 43.60066223144531,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 7.687961578369141
+        },
+        {
+          "depth_after_blocks": 11,
+          "target_token_id": 23,
+          "target_logit": 41.55378723144531,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 7.8915863037109375
+        },
+        {
+          "depth_after_blocks": 12,
+          "target_token_id": 23,
+          "target_logit": 39.31792449951172,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 6.484066009521484
+        },
+        {
+          "depth_after_blocks": 13,
+          "target_token_id": 23,
+          "target_logit": 38.151939392089844,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 6.575471878051758
+        },
+        {
+          "depth_after_blocks": 14,
+          "target_token_id": 23,
+          "target_logit": 38.26686096191406,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 7.126625061035156
+        },
+        {
+          "depth_after_blocks": 15,
+          "target_token_id": 23,
+          "target_logit": 36.61874771118164,
+          "target_rank": 1,
+          "best_other_token_id": 22,
+          "best_other_text": "7",
+          "target_margin": 7.017120361328125
+        },
+        {
+          "depth_after_blocks": 16,
+          "target_token_id": 23,
+          "target_logit": 36.03623962402344,
+          "target_rank": 1,
+          "best_other_token_id": 22,
+          "best_other_text": "7",
+          "target_margin": 7.036699295043945
+        },
+        {
+          "depth_after_blocks": 17,
+          "target_token_id": 23,
+          "target_logit": 35.600921630859375,
+          "target_rank": 1,
+          "best_other_token_id": 22,
+          "best_other_text": "7",
+          "target_margin": 7.353240966796875
+        },
+        {
+          "depth_after_blocks": 18,
+          "target_token_id": 23,
+          "target_logit": 34.67795944213867,
+          "target_rank": 1,
+          "best_other_token_id": 22,
+          "best_other_text": "7",
+          "target_margin": 7.105522155761719
+        },
+        {
+          "depth_after_blocks": 19,
+          "target_token_id": 23,
+          "target_logit": 35.250244140625,
+          "target_rank": 1,
+          "best_other_token_id": 22,
+          "best_other_text": "7",
+          "target_margin": 7.293523788452148
+        },
+        {
+          "depth_after_blocks": 20,
+          "target_token_id": 23,
+          "target_logit": 33.977874755859375,
+          "target_rank": 1,
+          "best_other_token_id": 22,
+          "best_other_text": "7",
+          "target_margin": 8.080665588378906
+        },
+        {
+          "depth_after_blocks": 21,
+          "target_token_id": 23,
+          "target_logit": 32.048851013183594,
+          "target_rank": 1,
+          "best_other_token_id": 22,
+          "best_other_text": "7",
+          "target_margin": 8.391998291015625
+        },
+        {
+          "depth_after_blocks": 22,
+          "target_token_id": 23,
+          "target_logit": 31.991214752197266,
+          "target_rank": 1,
+          "best_other_token_id": 22,
+          "best_other_text": "7",
+          "target_margin": 7.88563346862793
+        },
+        {
+          "depth_after_blocks": 23,
+          "target_token_id": 23,
+          "target_logit": 30.28672981262207,
+          "target_rank": 1,
+          "best_other_token_id": 22,
+          "best_other_text": "7",
+          "target_margin": 9.738065719604492
+        },
+        {
+          "depth_after_blocks": 24,
+          "target_token_id": 23,
+          "target_logit": 28.44698715209961,
+          "target_rank": 1,
+          "best_other_token_id": 22,
+          "best_other_text": "7",
+          "target_margin": 12.507879257202148
+        }
+      ]
+    },
+    {
+      "prompt": "Use the internal addition register. Return only the exact integer.\nA = 9 3 1 1 3 2 4 1 5\nB = 1 4 2 0 2 4 2 7 5",
+      "answer": "1073156690",
+      "layers": [
+        {
+          "depth_after_blocks": 5,
+          "target_token_id": 16,
+          "target_logit": -6.274990081787109,
+          "target_rank": 151783,
+          "best_other_token_id": 71471,
+          "best_other_text": "\")));",
+          "target_margin": -25.087366104125977
+        },
+        {
+          "depth_after_blocks": 6,
+          "target_token_id": 16,
+          "target_logit": 54.269569396972656,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 9.039783477783203
+        },
+        {
+          "depth_after_blocks": 7,
+          "target_token_id": 16,
+          "target_logit": 50.82561111450195,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 8.094738006591797
+        },
+        {
+          "depth_after_blocks": 8,
+          "target_token_id": 16,
+          "target_logit": 49.700992584228516,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 8.01871109008789
+        },
+        {
+          "depth_after_blocks": 9,
+          "target_token_id": 16,
+          "target_logit": 47.79420471191406,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 7.669589996337891
+        },
+        {
+          "depth_after_blocks": 10,
+          "target_token_id": 16,
+          "target_logit": 46.8541374206543,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 7.846561431884766
+        },
+        {
+          "depth_after_blocks": 11,
+          "target_token_id": 16,
+          "target_logit": 44.60834503173828,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 8.060432434082031
+        },
+        {
+          "depth_after_blocks": 12,
+          "target_token_id": 16,
+          "target_logit": 42.409027099609375,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 8.0120849609375
+        },
+        {
+          "depth_after_blocks": 13,
+          "target_token_id": 16,
+          "target_logit": 41.958927154541016,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 8.833438873291016
+        },
+        {
+          "depth_after_blocks": 14,
+          "target_token_id": 16,
+          "target_logit": 42.28607940673828,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 8.89041519165039
+        },
+        {
+          "depth_after_blocks": 15,
+          "target_token_id": 16,
+          "target_logit": 42.73160934448242,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 8.966312408447266
+        },
+        {
+          "depth_after_blocks": 16,
+          "target_token_id": 16,
+          "target_logit": 42.139015197753906,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 9.184188842773438
+        },
+        {
+          "depth_after_blocks": 17,
+          "target_token_id": 16,
+          "target_logit": 41.40058898925781,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 8.941455841064453
+        },
+        {
+          "depth_after_blocks": 18,
+          "target_token_id": 16,
+          "target_logit": 39.9725341796875,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 8.825183868408203
+        },
+        {
+          "depth_after_blocks": 19,
+          "target_token_id": 16,
+          "target_logit": 39.47716522216797,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 8.287628173828125
+        },
+        {
+          "depth_after_blocks": 20,
+          "target_token_id": 16,
+          "target_logit": 39.027503967285156,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 8.329727172851562
+        },
+        {
+          "depth_after_blocks": 21,
+          "target_token_id": 16,
+          "target_logit": 35.852603912353516,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 7.473394393920898
+        },
+        {
+          "depth_after_blocks": 22,
+          "target_token_id": 16,
+          "target_logit": 34.95958709716797,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 7.8051605224609375
+        },
+        {
+          "depth_after_blocks": 23,
+          "target_token_id": 16,
+          "target_logit": 34.49486541748047,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 11.80146598815918
+        },
+        {
+          "depth_after_blocks": 24,
+          "target_token_id": 16,
+          "target_logit": 30.123180389404297,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 14.455577850341797
+        }
+      ]
+    },
+    {
+      "prompt": "Use the internal addition register. Return only the exact integer.\nA = 2 1 7 0 1 9 4 2 9\nB = 2 7 6 1 7 5 7 6 8 2 8 5",
+      "answer": "276392787714",
+      "layers": [
+        {
+          "depth_after_blocks": 5,
+          "target_token_id": 17,
+          "target_logit": -7.172226905822754,
+          "target_rank": 151884,
+          "best_other_token_id": 71471,
+          "best_other_text": "\")));",
+          "target_margin": -26.160411834716797
+        },
+        {
+          "depth_after_blocks": 6,
+          "target_token_id": 17,
+          "target_logit": 55.65626525878906,
+          "target_rank": 1,
+          "best_other_token_id": 16,
+          "best_other_text": "1",
+          "target_margin": 11.411048889160156
+        },
+        {
+          "depth_after_blocks": 7,
+          "target_token_id": 17,
+          "target_logit": 53.77308654785156,
+          "target_rank": 1,
+          "best_other_token_id": 16,
+          "best_other_text": "1",
+          "target_margin": 11.351547241210938
+        },
+        {
+          "depth_after_blocks": 8,
+          "target_token_id": 17,
+          "target_logit": 51.968589782714844,
+          "target_rank": 1,
+          "best_other_token_id": 16,
+          "best_other_text": "1",
+          "target_margin": 10.43612289428711
+        },
+        {
+          "depth_after_blocks": 9,
+          "target_token_id": 17,
+          "target_logit": 50.786865234375,
+          "target_rank": 1,
+          "best_other_token_id": 16,
+          "best_other_text": "1",
+          "target_margin": 10.677352905273438
+        },
+        {
+          "depth_after_blocks": 10,
+          "target_token_id": 17,
+          "target_logit": 49.57969665527344,
+          "target_rank": 1,
+          "best_other_token_id": 16,
+          "best_other_text": "1",
+          "target_margin": 10.532844543457031
+        },
+        {
+          "depth_after_blocks": 11,
+          "target_token_id": 17,
+          "target_logit": 48.02158737182617,
+          "target_rank": 1,
+          "best_other_token_id": 16,
+          "best_other_text": "1",
+          "target_margin": 9.3822021484375
+        },
+        {
+          "depth_after_blocks": 12,
+          "target_token_id": 17,
+          "target_logit": 45.38796615600586,
+          "target_rank": 1,
+          "best_other_token_id": 16,
+          "best_other_text": "1",
+          "target_margin": 9.34792709350586
+        },
+        {
+          "depth_after_blocks": 13,
+          "target_token_id": 17,
+          "target_logit": 43.15464782714844,
+          "target_rank": 1,
+          "best_other_token_id": 16,
+          "best_other_text": "1",
+          "target_margin": 8.682846069335938
+        },
+        {
+          "depth_after_blocks": 14,
+          "target_token_id": 17,
+          "target_logit": 42.557830810546875,
+          "target_rank": 1,
+          "best_other_token_id": 16,
+          "best_other_text": "1",
+          "target_margin": 8.285030364990234
+        },
+        {
+          "depth_after_blocks": 15,
+          "target_token_id": 17,
+          "target_logit": 40.47589111328125,
+          "target_rank": 1,
+          "best_other_token_id": 16,
+          "best_other_text": "1",
+          "target_margin": 8.150402069091797
+        },
+        {
+          "depth_after_blocks": 16,
+          "target_token_id": 17,
+          "target_logit": 40.405799865722656,
+          "target_rank": 1,
+          "best_other_token_id": 16,
+          "best_other_text": "1",
+          "target_margin": 7.918010711669922
+        },
+        {
+          "depth_after_blocks": 17,
+          "target_token_id": 17,
+          "target_logit": 39.4424934387207,
+          "target_rank": 1,
+          "best_other_token_id": 16,
+          "best_other_text": "1",
+          "target_margin": 8.286008834838867
+        },
+        {
+          "depth_after_blocks": 18,
+          "target_token_id": 17,
+          "target_logit": 36.11066436767578,
+          "target_rank": 1,
+          "best_other_token_id": 16,
+          "best_other_text": "1",
+          "target_margin": 7.164791107177734
+        },
+        {
+          "depth_after_blocks": 19,
+          "target_token_id": 17,
+          "target_logit": 36.15131759643555,
+          "target_rank": 1,
+          "best_other_token_id": 18,
+          "best_other_text": "3",
+          "target_margin": 8.479141235351562
+        },
+        {
+          "depth_after_blocks": 20,
+          "target_token_id": 17,
+          "target_logit": 35.3558349609375,
+          "target_rank": 1,
+          "best_other_token_id": 18,
+          "best_other_text": "3",
+          "target_margin": 7.12434196472168
+        },
+        {
+          "depth_after_blocks": 21,
+          "target_token_id": 17,
+          "target_logit": 34.26361846923828,
+          "target_rank": 1,
+          "best_other_token_id": 18,
+          "best_other_text": "3",
+          "target_margin": 7.89640998840332
+        },
+        {
+          "depth_after_blocks": 22,
+          "target_token_id": 17,
+          "target_logit": 32.8314323425293,
+          "target_rank": 1,
+          "best_other_token_id": 18,
+          "best_other_text": "3",
+          "target_margin": 10.069499969482422
+        },
+        {
+          "depth_after_blocks": 23,
+          "target_token_id": 17,
+          "target_logit": 29.74208641052246,
+          "target_rank": 1,
+          "best_other_token_id": 24918,
+          "best_other_text": "\uff12",
+          "target_margin": 13.519149780273438
+        },
+        {
+          "depth_after_blocks": 24,
+          "target_token_id": 17,
+          "target_logit": 28.859033584594727,
+          "target_rank": 1,
+          "best_other_token_id": 24918,
+          "best_other_text": "\uff12",
+          "target_margin": 13.05100154876709
+        }
+      ]
+    },
+    {
+      "prompt": "Use the internal addition register. Return only the exact integer.\nA = 4 4 4 5 3 4 3 1 7\nB = 9 9 1 5 6 7 4 3 5",
+      "answer": "1436101752",
+      "layers": [
+        {
+          "depth_after_blocks": 5,
+          "target_token_id": 16,
+          "target_logit": -6.335227012634277,
+          "target_rank": 151806,
+          "best_other_token_id": 71471,
+          "best_other_text": "\")));",
+          "target_margin": -25.144641876220703
+        },
+        {
+          "depth_after_blocks": 6,
+          "target_token_id": 16,
+          "target_logit": 54.277496337890625,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 9.038585662841797
+        },
+        {
+          "depth_after_blocks": 7,
+          "target_token_id": 16,
+          "target_logit": 50.82935333251953,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 8.094924926757812
+        },
+        {
+          "depth_after_blocks": 8,
+          "target_token_id": 16,
+          "target_logit": 49.705322265625,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 8.009777069091797
+        },
+        {
+          "depth_after_blocks": 9,
+          "target_token_id": 16,
+          "target_logit": 47.77177429199219,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 7.659152984619141
+        },
+        {
+          "depth_after_blocks": 10,
+          "target_token_id": 16,
+          "target_logit": 46.851966857910156,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 7.840198516845703
+        },
+        {
+          "depth_after_blocks": 11,
+          "target_token_id": 16,
+          "target_logit": 44.593772888183594,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 8.051124572753906
+        },
+        {
+          "depth_after_blocks": 12,
+          "target_token_id": 16,
+          "target_logit": 42.37742233276367,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 8.011043548583984
+        },
+        {
+          "depth_after_blocks": 13,
+          "target_token_id": 16,
+          "target_logit": 41.902137756347656,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 8.831165313720703
+        },
+        {
+          "depth_after_blocks": 14,
+          "target_token_id": 16,
+          "target_logit": 42.24427032470703,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 8.887496948242188
+        },
+        {
+          "depth_after_blocks": 15,
+          "target_token_id": 16,
+          "target_logit": 42.69038391113281,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 8.957504272460938
+        },
+        {
+          "depth_after_blocks": 16,
+          "target_token_id": 16,
+          "target_logit": 42.102561950683594,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 9.172496795654297
+        },
+        {
+          "depth_after_blocks": 17,
+          "target_token_id": 16,
+          "target_logit": 41.334442138671875,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 8.948692321777344
+        },
+        {
+          "depth_after_blocks": 18,
+          "target_token_id": 16,
+          "target_logit": 39.900634765625,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 8.839832305908203
+        },
+        {
+          "depth_after_blocks": 19,
+          "target_token_id": 16,
+          "target_logit": 39.38465881347656,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 8.31182861328125
+        },
+        {
+          "depth_after_blocks": 20,
+          "target_token_id": 16,
+          "target_logit": 38.91742706298828,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 8.333599090576172
+        },
+        {
+          "depth_after_blocks": 21,
+          "target_token_id": 16,
+          "target_logit": 35.810081481933594,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 7.495269775390625
+        },
+        {
+          "depth_after_blocks": 22,
+          "target_token_id": 16,
+          "target_logit": 34.949684143066406,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 7.830253601074219
+        },
+        {
+          "depth_after_blocks": 23,
+          "target_token_id": 16,
+          "target_logit": 34.49013137817383,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 11.835655212402344
+        },
+        {
+          "depth_after_blocks": 24,
+          "target_token_id": 16,
+          "target_logit": 30.092777252197266,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 14.470442771911621
+        }
+      ]
+    },
+    {
+      "prompt": "Use the internal addition register. Return only the exact integer.\nA = 4 9 3 5 8 4 1 1 7 0 7 1\nB = 2 4 9 6 3 9 9 9 5 9",
+      "answer": "496080517030",
+      "layers": [
+        {
+          "depth_after_blocks": 5,
+          "target_token_id": 19,
+          "target_logit": -6.304298400878906,
+          "target_rank": 151781,
+          "best_other_token_id": 71471,
+          "best_other_text": "\")));",
+          "target_margin": -25.093507766723633
+        },
+        {
+          "depth_after_blocks": 6,
+          "target_token_id": 19,
+          "target_logit": 55.66806411743164,
+          "target_rank": 1,
+          "best_other_token_id": 18,
+          "best_other_text": "3",
+          "target_margin": 10.053386688232422
+        },
+        {
+          "depth_after_blocks": 7,
+          "target_token_id": 19,
+          "target_logit": 54.17675018310547,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 9.081016540527344
+        },
+        {
+          "depth_after_blocks": 8,
+          "target_token_id": 19,
+          "target_logit": 51.36393737792969,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 9.001075744628906
+        },
+        {
+          "depth_after_blocks": 9,
+          "target_token_id": 19,
+          "target_logit": 48.538169860839844,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 7.94921875
+        },
+        {
+          "depth_after_blocks": 10,
+          "target_token_id": 19,
+          "target_logit": 46.84630584716797,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 8.080589294433594
+        },
+        {
+          "depth_after_blocks": 11,
+          "target_token_id": 19,
+          "target_logit": 45.413185119628906,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 7.946342468261719
+        },
+        {
+          "depth_after_blocks": 12,
+          "target_token_id": 19,
+          "target_logit": 43.570068359375,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 7.61724853515625
+        },
+        {
+          "depth_after_blocks": 13,
+          "target_token_id": 19,
+          "target_logit": 42.37198257446289,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 7.614768981933594
+        },
+        {
+          "depth_after_blocks": 14,
+          "target_token_id": 19,
+          "target_logit": 41.902923583984375,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 7.325740814208984
+        },
+        {
+          "depth_after_blocks": 15,
+          "target_token_id": 19,
+          "target_logit": 40.228336334228516,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 6.945903778076172
+        },
+        {
+          "depth_after_blocks": 16,
+          "target_token_id": 19,
+          "target_logit": 38.31081008911133,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 7.440319061279297
+        },
+        {
+          "depth_after_blocks": 17,
+          "target_token_id": 19,
+          "target_logit": 37.60068893432617,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 7.531375885009766
+        },
+        {
+          "depth_after_blocks": 18,
+          "target_token_id": 19,
+          "target_logit": 36.71124267578125,
+          "target_rank": 1,
+          "best_other_token_id": 18,
+          "best_other_text": "3",
+          "target_margin": 8.409984588623047
+        },
+        {
+          "depth_after_blocks": 19,
+          "target_token_id": 19,
+          "target_logit": 34.171669006347656,
+          "target_rank": 1,
+          "best_other_token_id": 16,
+          "best_other_text": "1",
+          "target_margin": 8.099672317504883
+        },
+        {
+          "depth_after_blocks": 20,
+          "target_token_id": 19,
+          "target_logit": 33.26409912109375,
+          "target_rank": 1,
+          "best_other_token_id": 16,
+          "best_other_text": "1",
+          "target_margin": 7.500995635986328
+        },
+        {
+          "depth_after_blocks": 21,
+          "target_token_id": 19,
+          "target_logit": 28.69965362548828,
+          "target_rank": 1,
+          "best_other_token_id": 23,
+          "best_other_text": "8",
+          "target_margin": 7.938262939453125
+        },
+        {
+          "depth_after_blocks": 22,
+          "target_token_id": 19,
+          "target_logit": 25.158123016357422,
+          "target_rank": 1,
+          "best_other_token_id": 18,
+          "best_other_text": "3",
+          "target_margin": 7.256702423095703
+        },
+        {
+          "depth_after_blocks": 23,
+          "target_token_id": 19,
+          "target_logit": 25.118858337402344,
+          "target_rank": 1,
+          "best_other_token_id": 11,
+          "best_other_text": ",",
+          "target_margin": 11.855766296386719
+        },
+        {
+          "depth_after_blocks": 24,
+          "target_token_id": 19,
+          "target_logit": 30.218669891357422,
+          "target_rank": 1,
+          "best_other_token_id": 45602,
+          "best_other_text": "\uff14",
+          "target_margin": 12.87799072265625
+        }
+      ]
+    },
+    {
+      "prompt": "Use the internal addition register. Return only the exact integer.\nA = 3 7 7 4 0 5 3 5 9 8 7 5\nB = 6 8 3 4 1 6 4 2 9",
+      "answer": "378088776304",
+      "layers": [
+        {
+          "depth_after_blocks": 5,
+          "target_token_id": 18,
+          "target_logit": -7.81561279296875,
+          "target_rank": 151910,
+          "best_other_token_id": 71471,
+          "best_other_text": "\")));",
+          "target_margin": -26.66659164428711
+        },
+        {
+          "depth_after_blocks": 6,
+          "target_token_id": 18,
+          "target_logit": 55.184288024902344,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 8.607505798339844
+        },
+        {
+          "depth_after_blocks": 7,
+          "target_token_id": 18,
+          "target_logit": 52.83189392089844,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 8.236583709716797
+        },
+        {
+          "depth_after_blocks": 8,
+          "target_token_id": 18,
+          "target_logit": 52.17908477783203,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 7.8296966552734375
+        },
+        {
+          "depth_after_blocks": 9,
+          "target_token_id": 18,
+          "target_logit": 51.0086669921875,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 6.781986236572266
+        },
+        {
+          "depth_after_blocks": 10,
+          "target_token_id": 18,
+          "target_logit": 49.217201232910156,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 6.776622772216797
+        },
+        {
+          "depth_after_blocks": 11,
+          "target_token_id": 18,
+          "target_logit": 47.504154205322266,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 6.160102844238281
+        },
+        {
+          "depth_after_blocks": 12,
+          "target_token_id": 18,
+          "target_logit": 45.79906463623047,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 5.3049468994140625
+        },
+        {
+          "depth_after_blocks": 13,
+          "target_token_id": 18,
+          "target_logit": 44.893211364746094,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 5.3417510986328125
+        },
+        {
+          "depth_after_blocks": 14,
+          "target_token_id": 18,
+          "target_logit": 43.82229995727539,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 4.842571258544922
+        },
+        {
+          "depth_after_blocks": 15,
+          "target_token_id": 18,
+          "target_logit": 42.18560028076172,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 4.3247528076171875
+        },
+        {
+          "depth_after_blocks": 16,
+          "target_token_id": 18,
+          "target_logit": 40.11772537231445,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 4.571739196777344
+        },
+        {
+          "depth_after_blocks": 17,
+          "target_token_id": 18,
+          "target_logit": 40.2200927734375,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 4.4842376708984375
+        },
+        {
+          "depth_after_blocks": 18,
+          "target_token_id": 18,
+          "target_logit": 39.398921966552734,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 2.8530311584472656
+        },
+        {
+          "depth_after_blocks": 19,
+          "target_token_id": 18,
+          "target_logit": 36.95222473144531,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 2.513763427734375
+        },
+        {
+          "depth_after_blocks": 20,
+          "target_token_id": 18,
+          "target_logit": 33.74327850341797,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 2.2970924377441406
+        },
+        {
+          "depth_after_blocks": 21,
+          "target_token_id": 18,
+          "target_logit": 32.51150894165039,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 2.438159942626953
+        },
+        {
+          "depth_after_blocks": 22,
+          "target_token_id": 18,
+          "target_logit": 30.52115821838379,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 1.8702449798583984
+        },
+        {
+          "depth_after_blocks": 23,
+          "target_token_id": 18,
+          "target_logit": 29.03165054321289,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 9.145519256591797
+        },
+        {
+          "depth_after_blocks": 24,
+          "target_token_id": 18,
+          "target_logit": 27.94409942626953,
+          "target_rank": 1,
+          "best_other_token_id": 220,
+          "best_other_text": " ",
+          "target_margin": 12.421106338500977
+        }
+      ]
+    },
+    {
+      "prompt": "Use the internal addition register. Return only the exact integer.\nA = 2 2 5 9 1 5 6 7 7 0 1 0\nB = 3 5 9 7 4 7 7 2 1 1",
+      "answer": "229513154221",
+      "layers": [
+        {
+          "depth_after_blocks": 5,
+          "target_token_id": 17,
+          "target_logit": -7.126929759979248,
+          "target_rank": 151880,
+          "best_other_token_id": 71471,
+          "best_other_text": "\")));",
+          "target_margin": -25.925737380981445
+        },
+        {
+          "depth_after_blocks": 6,
+          "target_token_id": 17,
+          "target_logit": 55.65782165527344,
+          "target_rank": 1,
+          "best_other_token_id": 16,
+          "best_other_text": "1",
+          "target_margin": 11.407005310058594
+        },
+        {
+          "depth_after_blocks": 7,
+          "target_token_id": 17,
+          "target_logit": 53.778564453125,
+          "target_rank": 1,
+          "best_other_token_id": 16,
+          "best_other_text": "1",
+          "target_margin": 11.343940734863281
+        },
+        {
+          "depth_after_blocks": 8,
+          "target_token_id": 17,
+          "target_logit": 51.968605041503906,
+          "target_rank": 1,
+          "best_other_token_id": 16,
+          "best_other_text": "1",
+          "target_margin": 10.423450469970703
+        },
+        {
+          "depth_after_blocks": 9,
+          "target_token_id": 17,
+          "target_logit": 50.808753967285156,
+          "target_rank": 1,
+          "best_other_token_id": 16,
+          "best_other_text": "1",
+          "target_margin": 10.671783447265625
+        },
+        {
+          "depth_after_blocks": 10,
+          "target_token_id": 17,
+          "target_logit": 49.60932159423828,
+          "target_rank": 1,
+          "best_other_token_id": 16,
+          "best_other_text": "1",
+          "target_margin": 10.527183532714844
+        },
+        {
+          "depth_after_blocks": 11,
+          "target_token_id": 17,
+          "target_logit": 48.07521438598633,
+          "target_rank": 1,
+          "best_other_token_id": 16,
+          "best_other_text": "1",
+          "target_margin": 9.364852905273438
+        },
+        {
+          "depth_after_blocks": 12,
+          "target_token_id": 17,
+          "target_logit": 45.42628479003906,
+          "target_rank": 1,
+          "best_other_token_id": 16,
+          "best_other_text": "1",
+          "target_margin": 9.334205627441406
+        },
+        {
+          "depth_after_blocks": 13,
+          "target_token_id": 17,
+          "target_logit": 43.237640380859375,
+          "target_rank": 1,
+          "best_other_token_id": 16,
+          "best_other_text": "1",
+          "target_margin": 8.679252624511719
+        },
+        {
+          "depth_after_blocks": 14,
+          "target_token_id": 17,
+          "target_logit": 42.670860290527344,
+          "target_rank": 1,
+          "best_other_token_id": 16,
+          "best_other_text": "1",
+          "target_margin": 8.28299331665039
+        },
+        {
+          "depth_after_blocks": 15,
+          "target_token_id": 17,
+          "target_logit": 40.574432373046875,
+          "target_rank": 1,
+          "best_other_token_id": 16,
+          "best_other_text": "1",
+          "target_margin": 8.097698211669922
+        },
+        {
+          "depth_after_blocks": 16,
+          "target_token_id": 17,
+          "target_logit": 40.51922607421875,
+          "target_rank": 1,
+          "best_other_token_id": 16,
+          "best_other_text": "1",
+          "target_margin": 7.838043212890625
+        },
+        {
+          "depth_after_blocks": 17,
+          "target_token_id": 17,
+          "target_logit": 39.38887023925781,
+          "target_rank": 1,
+          "best_other_token_id": 16,
+          "best_other_text": "1",
+          "target_margin": 8.159687042236328
+        },
+        {
+          "depth_after_blocks": 18,
+          "target_token_id": 17,
+          "target_logit": 36.08283615112305,
+          "target_rank": 1,
+          "best_other_token_id": 16,
+          "best_other_text": "1",
+          "target_margin": 7.031368255615234
+        },
+        {
+          "depth_after_blocks": 19,
+          "target_token_id": 17,
+          "target_logit": 36.21107482910156,
+          "target_rank": 1,
+          "best_other_token_id": 18,
+          "best_other_text": "3",
+          "target_margin": 8.656866073608398
+        },
+        {
+          "depth_after_blocks": 20,
+          "target_token_id": 17,
+          "target_logit": 35.42903137207031,
+          "target_rank": 1,
+          "best_other_token_id": 18,
+          "best_other_text": "3",
+          "target_margin": 7.3188629150390625
+        },
+        {
+          "depth_after_blocks": 21,
+          "target_token_id": 17,
+          "target_logit": 34.44856262207031,
+          "target_rank": 1,
+          "best_other_token_id": 18,
+          "best_other_text": "3",
+          "target_margin": 8.03387451171875
+        },
+        {
+          "depth_after_blocks": 22,
+          "target_token_id": 17,
+          "target_logit": 33.078495025634766,
+          "target_rank": 1,
+          "best_other_token_id": 18,
+          "best_other_text": "3",
+          "target_margin": 10.18111801147461
+        },
+        {
+          "depth_after_blocks": 23,
+          "target_token_id": 17,
+          "target_logit": 29.784385681152344,
+          "target_rank": 1,
+          "best_other_token_id": 24918,
+          "best_other_text": "\uff12",
+          "target_margin": 13.647331237792969
+        },
+        {
+          "depth_after_blocks": 24,
+          "target_token_id": 17,
+          "target_logit": 28.865459442138672,
+          "target_rank": 1,
+          "best_other_token_id": 24918,
+          "best_other_text": "\uff12",
+          "target_margin": 12.762971878051758
+        }
+      ]
+    },
+    {
+      "prompt": "Use the internal addition register. Return only the exact integer.\nA = 8 7 3 1 9 1 5 9 2 6 5\nB = 1 3 6 9 1 0 4 0 6 6 1",
+      "answer": "101010199926",
+      "layers": [
+        {
+          "depth_after_blocks": 5,
+          "target_token_id": 16,
+          "target_logit": -6.155705451965332,
+          "target_rank": 151761,
+          "best_other_token_id": 71471,
+          "best_other_text": "\")));",
+          "target_margin": -25.022296905517578
+        },
+        {
+          "depth_after_blocks": 6,
+          "target_token_id": 16,
+          "target_logit": 54.2801513671875,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 9.048534393310547
+        },
+        {
+          "depth_after_blocks": 7,
+          "target_token_id": 16,
+          "target_logit": 50.82362747192383,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 8.099288940429688
+        },
+        {
+          "depth_after_blocks": 8,
+          "target_token_id": 16,
+          "target_logit": 49.703765869140625,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 8.026283264160156
+        },
+        {
+          "depth_after_blocks": 9,
+          "target_token_id": 16,
+          "target_logit": 47.76377868652344,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 7.661628723144531
+        },
+        {
+          "depth_after_blocks": 10,
+          "target_token_id": 16,
+          "target_logit": 46.84496307373047,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 7.831836700439453
+        },
+        {
+          "depth_after_blocks": 11,
+          "target_token_id": 16,
+          "target_logit": 44.59574508666992,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 8.04666519165039
+        },
+        {
+          "depth_after_blocks": 12,
+          "target_token_id": 16,
+          "target_logit": 42.28934860229492,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 7.993015289306641
+        },
+        {
+          "depth_after_blocks": 13,
+          "target_token_id": 16,
+          "target_logit": 41.916786193847656,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 8.863059997558594
+        },
+        {
+          "depth_after_blocks": 14,
+          "target_token_id": 16,
+          "target_logit": 42.229270935058594,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 8.891002655029297
+        },
+        {
+          "depth_after_blocks": 15,
+          "target_token_id": 16,
+          "target_logit": 42.613311767578125,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 8.972198486328125
+        },
+        {
+          "depth_after_blocks": 16,
+          "target_token_id": 16,
+          "target_logit": 41.998878479003906,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 9.169593811035156
+        },
+        {
+          "depth_after_blocks": 17,
+          "target_token_id": 16,
+          "target_logit": 41.24812316894531,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 8.899116516113281
+        },
+        {
+          "depth_after_blocks": 18,
+          "target_token_id": 16,
+          "target_logit": 39.762672424316406,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 8.771783828735352
+        },
+        {
+          "depth_after_blocks": 19,
+          "target_token_id": 16,
+          "target_logit": 39.24576950073242,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 8.230796813964844
+        },
+        {
+          "depth_after_blocks": 20,
+          "target_token_id": 16,
+          "target_logit": 38.88075256347656,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 8.332019805908203
+        },
+        {
+          "depth_after_blocks": 21,
+          "target_token_id": 16,
+          "target_logit": 35.68543243408203,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 7.4450225830078125
+        },
+        {
+          "depth_after_blocks": 22,
+          "target_token_id": 16,
+          "target_logit": 34.845455169677734,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 7.804660797119141
+        },
+        {
+          "depth_after_blocks": 23,
+          "target_token_id": 16,
+          "target_logit": 34.50292205810547,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 11.910282135009766
+        },
+        {
+          "depth_after_blocks": 24,
+          "target_token_id": 16,
+          "target_logit": 30.22845458984375,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 14.668264389038086
+        }
+      ]
+    },
+    {
+      "prompt": "Use the internal addition register. Return only the exact integer.\nA = 6 0 6 1 7 0 4 1 3\nB = 9 9 6 3 0 0 9 9 2 2 7",
+      "answer": "100236269640",
+      "layers": [
+        {
+          "depth_after_blocks": 5,
+          "target_token_id": 16,
+          "target_logit": -6.375253677368164,
+          "target_rank": 151809,
+          "best_other_token_id": 71471,
+          "best_other_text": "\")));",
+          "target_margin": -25.3105525970459
+        },
+        {
+          "depth_after_blocks": 6,
+          "target_token_id": 16,
+          "target_logit": 54.27177810668945,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 9.044929504394531
+        },
+        {
+          "depth_after_blocks": 7,
+          "target_token_id": 16,
+          "target_logit": 50.81380844116211,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 8.097492218017578
+        },
+        {
+          "depth_after_blocks": 8,
+          "target_token_id": 16,
+          "target_logit": 49.681270599365234,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 8.013763427734375
+        },
+        {
+          "depth_after_blocks": 9,
+          "target_token_id": 16,
+          "target_logit": 47.77328109741211,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 7.657657623291016
+        },
+        {
+          "depth_after_blocks": 10,
+          "target_token_id": 16,
+          "target_logit": 46.84159851074219,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 7.844089508056641
+        },
+        {
+          "depth_after_blocks": 11,
+          "target_token_id": 16,
+          "target_logit": 44.582130432128906,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 8.07162857055664
+        },
+        {
+          "depth_after_blocks": 12,
+          "target_token_id": 16,
+          "target_logit": 42.32148742675781,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 8.021995544433594
+        },
+        {
+          "depth_after_blocks": 13,
+          "target_token_id": 16,
+          "target_logit": 41.8873291015625,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 8.873279571533203
+        },
+        {
+          "depth_after_blocks": 14,
+          "target_token_id": 16,
+          "target_logit": 42.18296432495117,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 8.884403228759766
+        },
+        {
+          "depth_after_blocks": 15,
+          "target_token_id": 16,
+          "target_logit": 42.551029205322266,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 8.950775146484375
+        },
+        {
+          "depth_after_blocks": 16,
+          "target_token_id": 16,
+          "target_logit": 41.92542266845703,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 9.16000747680664
+        },
+        {
+          "depth_after_blocks": 17,
+          "target_token_id": 16,
+          "target_logit": 41.15019607543945,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 8.9422607421875
+        },
+        {
+          "depth_after_blocks": 18,
+          "target_token_id": 16,
+          "target_logit": 39.712913513183594,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 8.830665588378906
+        },
+        {
+          "depth_after_blocks": 19,
+          "target_token_id": 16,
+          "target_logit": 39.19226837158203,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 8.298807144165039
+        },
+        {
+          "depth_after_blocks": 20,
+          "target_token_id": 16,
+          "target_logit": 38.79521179199219,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 8.373579025268555
+        },
+        {
+          "depth_after_blocks": 21,
+          "target_token_id": 16,
+          "target_logit": 35.58099365234375,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 7.501888275146484
+        },
+        {
+          "depth_after_blocks": 22,
+          "target_token_id": 16,
+          "target_logit": 34.75557327270508,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 7.845226287841797
+        },
+        {
+          "depth_after_blocks": 23,
+          "target_token_id": 16,
+          "target_logit": 34.49592590332031,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 11.927146911621094
+        },
+        {
+          "depth_after_blocks": 24,
+          "target_token_id": 16,
+          "target_logit": 30.20366668701172,
+          "target_rank": 1,
+          "best_other_token_id": 17,
+          "best_other_text": "2",
+          "target_margin": 14.62923812866211
+        }
+      ]
+    }
+  ]
+}

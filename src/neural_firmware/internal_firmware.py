@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from dataclasses import dataclass, field
+
 import torch
 from torch import nn
 
@@ -199,3 +201,258 @@ class InternalArithmeticUnit(nn.Module):
             accumulate=True,
         )
         return hidden + additions
+
+
+@dataclass
+class InternalFirmwareContext:
+    """Per-forward typed-register locations and autoregressive state."""
+
+    a_positions: torch.Tensor
+    a_lengths: torch.Tensor
+    b_positions: torch.Tensor
+    b_lengths: torch.Tensor
+    output_positions: torch.Tensor | None = None
+    generation_index: int | None = None
+    enabled: bool = True
+    symbol_batch_permutation: torch.Tensor | None = None
+    symbol_override: torch.Tensor | None = None
+    planned_symbols: torch.Tensor | None = None
+    planned_symbol_mask: torch.Tensor | None = None
+    diagnostics: dict[str, object] = field(default_factory=dict)
+
+
+class InternalFirmwareLayer(nn.Module):
+    """A Qwen decoder block followed by a native deterministic arithmetic unit."""
+
+    def __init__(
+        self,
+        base_layer: nn.Module,
+        unit: InternalArithmeticUnit,
+        *,
+        depth_after_blocks: int,
+    ) -> None:
+        super().__init__()
+        self.base_layer = base_layer
+        self.unit = unit
+        self.depth_after_blocks = depth_after_blocks
+        self.runtime_context: InternalFirmwareContext | None = None
+
+    @property
+    def attention_type(self) -> str:
+        return self.base_layer.attention_type
+
+    def set_context(self, context: InternalFirmwareContext | None) -> None:
+        self.runtime_context = context
+
+    def _plan(
+        self,
+        hidden: torch.Tensor,
+        context: InternalFirmwareContext,
+    ) -> tuple[torch.Tensor, torch.Tensor]:
+        symbols, mask, a_logits, b_logits = self.unit.plan_from_hidden(
+            hidden,
+            context.a_positions,
+            context.a_lengths,
+            context.b_positions,
+            context.b_lengths,
+        )
+        context.diagnostics["a_predictions"] = a_logits.argmax(dim=-1).detach().cpu()
+        context.diagnostics["b_predictions"] = b_logits.argmax(dim=-1).detach().cpu()
+        if context.symbol_batch_permutation is not None:
+            permutation = context.symbol_batch_permutation
+            symbols = symbols[permutation]
+            mask = mask[permutation]
+        if context.symbol_override is not None:
+            override_mask = context.symbol_override >= 0
+            symbols = torch.where(override_mask, context.symbol_override, symbols)
+        context.planned_symbols = symbols.detach()
+        context.planned_symbol_mask = mask.detach()
+        context.diagnostics["planned_symbols"] = symbols.detach().cpu()
+        context.diagnostics["planned_symbol_mask"] = mask.detach().cpu()
+        return symbols, mask
+
+    def forward(self, hidden_states: torch.Tensor, *args: object, **kwargs: object) -> torch.Tensor:
+        hidden = self.base_layer(hidden_states, *args, **kwargs)
+        context = self.runtime_context
+        if context is None or not context.enabled:
+            return hidden
+
+        if context.planned_symbols is None or context.planned_symbol_mask is None:
+            symbols, symbol_mask = self._plan(hidden, context)
+        else:
+            symbols = context.planned_symbols
+            symbol_mask = context.planned_symbol_mask
+
+        if context.generation_index is None:
+            if context.output_positions is None:
+                raise ValueError("teacher-forced context requires output positions")
+            return self.unit.inject_symbols(
+                hidden,
+                context.output_positions,
+                symbols,
+                symbol_mask,
+            )
+
+        index = context.generation_index
+        if index < 0:
+            raise ValueError("generation index must be nonnegative")
+        if index >= symbols.shape[1]:
+            return hidden
+        active = symbol_mask[:, index]
+        if not bool(active.any()):
+            return hidden
+        step_symbols = symbols[:, index : index + 1]
+        step_mask = active[:, None]
+        step_positions = torch.full(
+            step_symbols.shape,
+            hidden.shape[1] - 1,
+            dtype=torch.long,
+            device=hidden.device,
+        )
+        return self.unit.inject_symbols(
+            hidden,
+            step_positions,
+            step_symbols,
+            step_mask,
+        )
+
+
+def install_internal_firmware_layer(
+    model: nn.Module,
+    *,
+    depth_after_blocks: int,
+    strength: float,
+) -> InternalFirmwareLayer:
+    """Replace one Qwen layer entry with a block-plus-firmware wrapper."""
+
+    layers = model.model.layers
+    if depth_after_blocks < 1 or depth_after_blocks > len(layers):
+        raise ValueError("depth_after_blocks is outside the transformer stack")
+    layer_index = depth_after_blocks - 1
+    base_layer = layers[layer_index]
+    if isinstance(base_layer, InternalFirmwareLayer):
+        raise ValueError("selected layer is already wrapped")
+    for parameter in model.parameters():
+        parameter.requires_grad_(False)
+    unit = InternalArithmeticUnit(
+        hidden_size=model.config.hidden_size,
+        strength=strength,
+    )
+    reference_parameter = next(base_layer.parameters())
+    unit.to(device=reference_parameter.device, dtype=reference_parameter.dtype)
+    wrapper = InternalFirmwareLayer(
+        base_layer,
+        unit,
+        depth_after_blocks=depth_after_blocks,
+    )
+    layers[layer_index] = wrapper
+    return wrapper
+
+
+class ParameterMatchedResidualAdapter(nn.Module):
+    """Learned same-depth control with no access to deterministic state."""
+
+    def __init__(self, hidden_size: int, rank: int = 10) -> None:
+        super().__init__()
+        self.down = nn.Linear(hidden_size, rank)
+        self.up = nn.Linear(rank, hidden_size)
+        nn.init.kaiming_uniform_(self.down.weight, a=5**0.5)
+        nn.init.zeros_(self.up.weight)
+        nn.init.zeros_(self.up.bias)
+
+    def forward(self, hidden: torch.Tensor) -> torch.Tensor:
+        return self.up(nn.functional.silu(self.down(hidden.float()))).to(hidden.dtype)
+
+
+@dataclass
+class LearnedControlContext:
+    output_positions: torch.Tensor | None = None
+    output_mask: torch.Tensor | None = None
+    generation: bool = False
+    enabled: bool = True
+
+
+class InternalLearnedControlLayer(nn.Module):
+    """Original Qwen block followed by a learned bottleneck residual only."""
+
+    def __init__(
+        self,
+        base_layer: nn.Module,
+        adapter: ParameterMatchedResidualAdapter,
+        *,
+        depth_after_blocks: int,
+    ) -> None:
+        super().__init__()
+        self.base_layer = base_layer
+        self.adapter = adapter
+        self.depth_after_blocks = depth_after_blocks
+        self.runtime_context: LearnedControlContext | None = None
+
+    @property
+    def attention_type(self) -> str:
+        return self.base_layer.attention_type
+
+    def set_context(self, context: LearnedControlContext | None) -> None:
+        self.runtime_context = context
+
+    def forward(self, hidden_states: torch.Tensor, *args: object, **kwargs: object) -> torch.Tensor:
+        hidden = self.base_layer(hidden_states, *args, **kwargs)
+        context = self.runtime_context
+        if context is None or not context.enabled:
+            return hidden
+        if context.generation:
+            positions = torch.full(
+                (hidden.shape[0], 1),
+                hidden.shape[1] - 1,
+                dtype=torch.long,
+                device=hidden.device,
+            )
+        else:
+            if context.output_positions is None:
+                raise ValueError("teacher-forced control requires output positions")
+            positions = context.output_positions
+        if context.generation:
+            active = torch.ones_like(positions, dtype=torch.bool)
+        else:
+            if context.output_mask is None:
+                raise ValueError("teacher-forced control requires an output mask")
+            active = context.output_mask
+        batch_grid = torch.arange(hidden.shape[0], device=hidden.device)[:, None]
+        batch_indices = batch_grid.expand_as(positions)[active]
+        token_positions = positions[active]
+        selected = hidden[batch_indices, token_positions]
+        residuals = self.adapter(selected)
+        additions = torch.zeros_like(hidden)
+        additions.index_put_(
+            (batch_indices, token_positions),
+            residuals,
+            accumulate=True,
+        )
+        return hidden + additions
+
+
+def install_internal_learned_control(
+    model: nn.Module,
+    *,
+    depth_after_blocks: int,
+    rank: int = 10,
+) -> InternalLearnedControlLayer:
+    layers = model.model.layers
+    if depth_after_blocks < 1 or depth_after_blocks > len(layers):
+        raise ValueError("depth_after_blocks is outside the transformer stack")
+    layer_index = depth_after_blocks - 1
+    base_layer = layers[layer_index]
+    if isinstance(base_layer, (InternalFirmwareLayer, InternalLearnedControlLayer)):
+        raise ValueError("selected layer is already wrapped")
+    for parameter in model.parameters():
+        parameter.requires_grad_(False)
+    adapter = ParameterMatchedResidualAdapter(model.config.hidden_size, rank=rank)
+    reference_parameter = next(base_layer.parameters())
+    adapter.to(device=reference_parameter.device, dtype=reference_parameter.dtype)
+    wrapper = InternalLearnedControlLayer(
+        base_layer,
+        adapter,
+        depth_after_blocks=depth_after_blocks,
+    )
+    layers[layer_index] = wrapper
+    return wrapper

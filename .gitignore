@@ -10,6 +10,7 @@ checkpoints/
 results/raw/
 models/
 phase2_artifacts/
+phase3_artifacts/
 
 paper/build/
 paper/*.aux
