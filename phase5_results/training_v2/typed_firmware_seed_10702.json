@@ -1,0 +1,63 @@
+{
+  "condition": "typed_firmware",
+  "seed": 10702,
+  "model_id": "Qwen/Qwen2.5-0.5B-Instruct",
+  "model_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "learned_parameters": 24225,
+  "router_training": {
+    "seed": 10802,
+    "steps": 2000,
+    "batch_size": 512,
+    "learning_rate": 0.003,
+    "hidden_width": 16,
+    "trainable_parameters": 14369,
+    "initial_loss": 0.6796908378601074,
+    "final_loss": 7.743998139631003e-06,
+    "wall_time_seconds": 2.365972416999284
+  },
+  "selected_route_threshold": {
+    "threshold": 0.81,
+    "true_positive": 400,
+    "false_positive": 3,
+    "true_positive_rate": 1.0,
+    "false_positive_rate": 0.0075
+  },
+  "router_development": {
+    "examples": 800,
+    "correct": 797,
+    "accuracy": 0.9962499737739563,
+    "true_positive": 400,
+    "false_positive": 3,
+    "true_negative": 397,
+    "false_negative": 0,
+    "true_positive_rate": 1.0,
+    "false_positive_rate": 0.0075
+  },
+  "decoder_training": {
+    "config": {
+      "seed": 10902,
+      "steps": 240,
+      "batch_size": 2,
+      "learning_rate": 0.01
+    },
+    "trainable_parameters": 9856,
+    "initial_loss": 2.2321698665618896,
+    "final_loss": 5.104851425130619e-06,
+    "wall_time_seconds": 30.673646249997546
+  },
+  "development_generation": {
+    "examples": 20,
+    "positive_examples": 10,
+    "mathematical_correct": 10,
+    "route_true_positive": 10,
+    "negative_examples": 10,
+    "route_false_positive": 0,
+    "registers_exact": 0
+  },
+  "checkpoint": "phase5_artifacts/confirmatory_v2/typed_firmware_seed_10702.pt",
+  "checkpoint_sha256": "28a57094d2d56f232372f2ddeaec0450b1b98b1158cd09e3aa04225fa7f60bd0",
+  "wall_time_seconds": 36.72428008299903,
+  "router_feature_point": "block_24_output_before_final_rmsnorm",
+  "supersedes_checkpoint": "phase5_artifacts/confirmatory_v1/typed_firmware_seed_10702.pt",
+  "supersedes_checkpoint_sha256": "2714b819ceddc1a901d0cd772c4753ce13cf0bf3b1ce8ab278d498f5720ef7b2"
+}

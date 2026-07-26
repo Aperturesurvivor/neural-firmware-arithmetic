@@ -1,0 +1,95 @@
+{
+  "condition": "igc_matched",
+  "seed": 10703,
+  "model_id": "Qwen/Qwen2.5-0.5B-Instruct",
+  "model_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "architecture": {
+    "attention_width": 3,
+    "attention_heads": 1,
+    "output_width": 495,
+    "router_hidden_width": 0,
+    "learn_output_strength": false,
+    "expected_parameters": 24225
+  },
+  "learned_parameters": 24225,
+  "input_training": {
+    "config": {
+      "seed": 10703,
+      "steps": 4000,
+      "batch_size": 64,
+      "learning_rate": 0.003,
+      "digit_loss_weight": 1.0,
+      "route_loss_weight": 1.0
+    },
+    "trainable_parameters": 16986,
+    "initial_loss": 3.2759885787963867,
+    "final_loss": 1.1757326126098633,
+    "final_digit_loss": 1.1754909753799438,
+    "final_route_loss": 0.00024168341769836843,
+    "wall_time_seconds": 479.0636302920029
+  },
+  "input_development": {
+    "examples": 800,
+    "registers_exact": 0,
+    "register_accuracy": 0.0,
+    "digit_slot_accuracy": 0.4815625,
+    "nonpad_digit_accuracy": 0.09638781476940489,
+    "true_positive": 263,
+    "false_positive": 156,
+    "true_positive_rate": 0.6575,
+    "false_positive_rate": 0.39
+  },
+  "router_training": {
+    "seed": 10803,
+    "steps": 2000,
+    "batch_size": 512,
+    "learning_rate": 0.003,
+    "hidden_width": 0,
+    "trainable_parameters": 897,
+    "initial_loss": 1.290064811706543,
+    "final_loss": 3.291632674518041e-05,
+    "wall_time_seconds": 1.8065365000074962
+  },
+  "selected_route_threshold": {
+    "threshold": 0.95,
+    "true_positive": 380,
+    "false_positive": 3,
+    "true_positive_rate": 0.95,
+    "false_positive_rate": 0.0075
+  },
+  "router_development": {
+    "examples": 800,
+    "correct": 777,
+    "accuracy": 0.9712499976158142,
+    "true_positive": 380,
+    "false_positive": 3,
+    "true_negative": 397,
+    "false_negative": 20,
+    "true_positive_rate": 0.95,
+    "false_positive_rate": 0.0075
+  },
+  "output_training": {
+    "config": {
+      "seed": 10903,
+      "steps": 240,
+      "batch_size": 2,
+      "learning_rate": 0.01
+    },
+    "trainable_parameters": 6342,
+    "initial_loss": 0.3831993043422699,
+    "final_loss": 4.796332632395206e-06,
+    "wall_time_seconds": 29.367994707994512
+  },
+  "development_generation": {
+    "examples": 20,
+    "mathematical_correct": 0,
+    "positive_examples": 10,
+    "route_true_positive": 5,
+    "route_false_positive": 0,
+    "negative_examples": 10,
+    "registers_exact": 0
+  },
+  "checkpoint": "phase5_artifacts/confirmatory_v1/igc_matched_seed_10703.pt",
+  "checkpoint_sha256": "a19006ae1284d6fc3d65669be5638378f60fd5a499d93167f966d9d1ecb93fc8",
+  "wall_time_seconds": 524.1358021250053
+}

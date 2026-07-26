@@ -1,0 +1,95 @@
+{
+  "condition": "igc_native",
+  "seed": 10701,
+  "model_id": "Qwen/Qwen2.5-0.5B-Instruct",
+  "model_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "architecture": {
+    "attention_width": 64,
+    "attention_heads": 8,
+    "output_width": 896,
+    "router_hidden_width": 16,
+    "learn_output_strength": true,
+    "expected_parameters": 597819
+  },
+  "learned_parameters": 597819,
+  "input_training": {
+    "config": {
+      "seed": 10701,
+      "steps": 4000,
+      "batch_size": 64,
+      "learning_rate": 0.003,
+      "digit_loss_weight": 1.0,
+      "route_loss_weight": 1.0
+    },
+    "trainable_parameters": 572696,
+    "initial_loss": 3.2243740558624268,
+    "final_loss": 2.20732981688343e-05,
+    "final_digit_loss": 1.92867883015424e-05,
+    "final_route_loss": 2.7865107767865993e-06,
+    "wall_time_seconds": 501.8218571250036
+  },
+  "input_development": {
+    "examples": 800,
+    "registers_exact": 777,
+    "register_accuracy": 0.97125,
+    "digit_slot_accuracy": 0.99859375,
+    "nonpad_digit_accuracy": 0.9986796189757616,
+    "true_positive": 255,
+    "false_positive": 112,
+    "true_positive_rate": 0.6375,
+    "false_positive_rate": 0.28
+  },
+  "router_training": {
+    "seed": 10801,
+    "steps": 2000,
+    "batch_size": 512,
+    "learning_rate": 0.003,
+    "hidden_width": 16,
+    "trainable_parameters": 14369,
+    "initial_loss": 0.7944358587265015,
+    "final_loss": 1.0200854376307689e-05,
+    "wall_time_seconds": 2.3582566249970114
+  },
+  "selected_route_threshold": {
+    "threshold": 0.83,
+    "true_positive": 400,
+    "false_positive": 0,
+    "true_positive_rate": 1.0,
+    "false_positive_rate": 0.0
+  },
+  "router_development": {
+    "examples": 800,
+    "correct": 800,
+    "accuracy": 1.0,
+    "true_positive": 400,
+    "false_positive": 0,
+    "true_negative": 400,
+    "false_negative": 0,
+    "true_positive_rate": 1.0,
+    "false_positive_rate": 0.0
+  },
+  "output_training": {
+    "config": {
+      "seed": 10901,
+      "steps": 240,
+      "batch_size": 2,
+      "learning_rate": 0.01
+    },
+    "trainable_parameters": 10754,
+    "initial_loss": 0.254113107919693,
+    "final_loss": 4.752410859509837e-06,
+    "wall_time_seconds": 32.44304499999271
+  },
+  "development_generation": {
+    "examples": 20,
+    "mathematical_correct": 6,
+    "positive_examples": 10,
+    "route_true_positive": 7,
+    "route_false_positive": 0,
+    "negative_examples": 10,
+    "registers_exact": 19
+  },
+  "checkpoint": "phase5_artifacts/confirmatory_v1/igc_native_seed_10701.pt",
+  "checkpoint_sha256": "a03ccfee7dd6176c21e2f7841532ef9b7c5c0ffbcf60f8f364bbc2b12273154e",
+  "wall_time_seconds": 549.7990125409997
+}
