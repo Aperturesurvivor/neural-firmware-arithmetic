@@ -1,0 +1,44 @@
+{
+  "experiment_name": "phase2_confirmatory_v1",
+  "model_id": "Qwen/Qwen2.5-0.5B-Instruct",
+  "model_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "train_seeds": [401, 503, 601],
+  "eval_seed": 771923,
+  "train_examples": 1000,
+  "train_min_digits": 1,
+  "train_max_digits": 4,
+  "routing_negative_train_examples": 400,
+  "hidden_cache_batch_size": 8,
+  "bridge": {
+    "steps": 120,
+    "batch_size": 32,
+    "learning_rate": 0.01,
+    "strength": 64.0,
+    "router_loss_weight": 0.25
+  },
+  "learned_adapter": {
+    "steps": 1000,
+    "batch_size": 1,
+    "learning_rate": 0.0005,
+    "rank": 4,
+    "alpha": 8.0,
+    "all_layers": true
+  },
+  "evaluation": {
+    "examples_per_random_split": 300,
+    "carry_examples": 150,
+    "routing_negative_examples": 100,
+    "splits": {
+      "id_random": [1, 4],
+      "ood_primary": [5, 8],
+      "ood_long": [9, 12],
+      "carry_chain": [5, 12]
+    }
+  },
+  "success_thresholds": {
+    "latent_ood_primary_mean_accuracy": 0.99,
+    "latent_minus_adapter_ood_primary_points": 0.5,
+    "latent_language_preservation_rate": 0.99,
+    "latent_initial_false_route_rate": 0.01
+  }
+}

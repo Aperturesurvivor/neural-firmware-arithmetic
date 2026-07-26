@@ -1,0 +1,96 @@
+{
+  "pilot": true,
+  "artifact_directory": "phase2_artifacts/pilot_v1",
+  "summaries": [
+    {
+      "mode": "latent",
+      "split": "id_random",
+      "examples": 40,
+      "correct": 40,
+      "exact_match_accuracy": 1.0,
+      "mean_latency_seconds": 0.14632186557510068,
+      "strength": 48.0
+    },
+    {
+      "mode": "latent",
+      "split": "ood_primary",
+      "examples": 40,
+      "correct": 40,
+      "exact_match_accuracy": 1.0,
+      "mean_latency_seconds": 0.2551336146494577,
+      "strength": 48.0
+    },
+    {
+      "mode": "latent",
+      "split": "ood_long",
+      "examples": 40,
+      "correct": 40,
+      "exact_match_accuracy": 1.0,
+      "mean_latency_seconds": 0.3850988967752528,
+      "strength": 48.0
+    },
+    {
+      "mode": "latent",
+      "split": "carry_chain",
+      "examples": 30,
+      "correct": 29,
+      "exact_match_accuracy": 0.9666666666666667,
+      "mean_latency_seconds": 0.2919750805333024,
+      "strength": 48.0
+    },
+    {
+      "mode": "latent",
+      "split": "id_random",
+      "examples": 40,
+      "correct": 40,
+      "exact_match_accuracy": 1.0,
+      "mean_latency_seconds": 0.1422790739501579,
+      "strength": 64.0
+    },
+    {
+      "mode": "latent",
+      "split": "ood_primary",
+      "examples": 40,
+      "correct": 40,
+      "exact_match_accuracy": 1.0,
+      "mean_latency_seconds": 0.25283240114995353,
+      "strength": 64.0
+    },
+    {
+      "mode": "latent",
+      "split": "ood_long",
+      "examples": 40,
+      "correct": 40,
+      "exact_match_accuracy": 1.0,
+      "mean_latency_seconds": 0.38316700519972074,
+      "strength": 64.0
+    },
+    {
+      "mode": "latent",
+      "split": "carry_chain",
+      "examples": 30,
+      "correct": 30,
+      "exact_match_accuracy": 1.0,
+      "mean_latency_seconds": 0.29004413473327684,
+      "strength": 64.0
+    }
+  ],
+  "preservation_summaries": [
+    {
+      "prompts": 30,
+      "token_exact_preserved": 30,
+      "preservation_rate": 1.0,
+      "initial_false_routes": 0,
+      "initial_false_route_rate": 0.0,
+      "strength": 48.0
+    },
+    {
+      "prompts": 30,
+      "token_exact_preserved": 30,
+      "preservation_rate": 1.0,
+      "initial_false_routes": 0,
+      "initial_false_route_rate": 0.0,
+      "strength": 64.0
+    }
+  ]
+}

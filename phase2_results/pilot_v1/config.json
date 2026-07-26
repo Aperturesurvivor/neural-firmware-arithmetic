@@ -1,0 +1,41 @@
+{
+  "experiment_name": "phase2_pilot_v1",
+  "model_id": "Qwen/Qwen2.5-0.5B-Instruct",
+  "train_seed": 17,
+  "eval_seed": 260725,
+  "train_examples": 240,
+  "train_min_digits": 1,
+  "train_max_digits": 4,
+  "routing_negative_train_examples": 120,
+  "hidden_cache_batch_size": 8,
+  "bridge": {
+    "steps": 80,
+    "batch_size": 24,
+    "learning_rate": 0.01,
+    "strength": 32.0,
+    "router_loss_weight": 0.25
+  },
+  "evaluation": {
+    "examples_per_random_split": 40,
+    "carry_examples": 30,
+    "routing_negative_examples": 30,
+    "splits": {
+      "id_random": [
+        1,
+        4
+      ],
+      "ood_primary": [
+        5,
+        8
+      ],
+      "ood_long": [
+        9,
+        12
+      ],
+      "carry_chain": [
+        5,
+        12
+      ]
+    }
+  }
+}

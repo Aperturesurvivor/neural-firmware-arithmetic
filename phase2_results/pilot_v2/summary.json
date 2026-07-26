@@ -1,0 +1,165 @@
+{
+  "experiment_name": "phase2_pilot_v2",
+  "pilot": true,
+  "config_path": "configs/phase2_pilot_v2.json",
+  "config_sha256": "b91e493c4c9a3d3c998391b6ca9af3664dc20bae1e3003fce444a71d5aba661d",
+  "logical_dataset_sha256": "1dcaa2fd56fe4ec7be888632e27438e9fa874abae489f27a7befdc4a25d34e48",
+  "source_commit_before_run": "e17eaad14ca92093f1eb15d82ea3be506f93cc73",
+  "source_status_before_run": "M .gitignore\n M pyproject.toml\n M uv.lock\n?? FUTURE_ARCHITECTURE_GOAL.md\n?? PHASE2_LAB_NOTEBOOK.md\n?? PHASE2_PILOT_LOG.md\n?? PHASE2_PROTOCOL_DRAFT.md\n?? configs/phase2_adapter_pilot.json\n?? configs/phase2_adapter_pilot_all_layers.json\n?? configs/phase2_adapter_pilot_long.json\n?? configs/phase2_pilot_v1.json\n?? configs/phase2_pilot_v2.json\n?? phase2_records/\n?? phase2_results/\n?? scripts/capture_phase2_environment.py\n?? scripts/evaluate_phase2_strengths.py\n?? scripts/run_phase2_adapter_pilot.py\n?? scripts/run_phase2_pilot.py\n?? src/neural_firmware/pretrained_data.py\n?? src/neural_firmware/pretrained_evaluation.py\n?? src/neural_firmware/pretrained_firmware.py\n?? src/neural_firmware/pretrained_model.py\n?? src/neural_firmware/pretrained_training.py\n?? tests/test_pretrained_firmware.py",
+  "model_id": "Qwen/Qwen2.5-0.5B-Instruct",
+  "train_result": {
+    "config": {
+      "seed": 17,
+      "steps": 120,
+      "batch_size": 32,
+      "learning_rate": 0.01,
+      "strength": 64.0,
+      "router_loss_weight": 0.25
+    },
+    "trainable_parameters": 10753,
+    "initial_loss": 0.40280401706695557,
+    "final_loss": 1.9906965462723747e-05,
+    "final_token_loss": 1.9906965462723747e-05,
+    "final_router_loss": 0.0,
+    "wall_time_seconds": 3.8801443339980324
+  },
+  "summaries": [
+    {
+      "mode": "base",
+      "split": "id_random",
+      "examples": 60,
+      "correct": 7,
+      "exact_match_accuracy": 0.11666666666666667,
+      "mean_latency_seconds": 0.1983790708667584
+    },
+    {
+      "mode": "firmware_off",
+      "split": "id_random",
+      "examples": 60,
+      "correct": 7,
+      "exact_match_accuracy": 0.11666666666666667,
+      "mean_latency_seconds": 0.1995004040833616
+    },
+    {
+      "mode": "latent",
+      "split": "id_random",
+      "examples": 60,
+      "correct": 60,
+      "exact_match_accuracy": 1.0,
+      "mean_latency_seconds": 0.14575699523344762
+    },
+    {
+      "mode": "direct",
+      "split": "id_random",
+      "examples": 60,
+      "correct": 60,
+      "exact_match_accuracy": 1.0,
+      "mean_latency_seconds": 0.14240937918330018
+    },
+    {
+      "mode": "base",
+      "split": "ood_primary",
+      "examples": 60,
+      "correct": 3,
+      "exact_match_accuracy": 0.05,
+      "mean_latency_seconds": 0.3093505527999393
+    },
+    {
+      "mode": "firmware_off",
+      "split": "ood_primary",
+      "examples": 60,
+      "correct": 3,
+      "exact_match_accuracy": 0.05,
+      "mean_latency_seconds": 0.30964295281664816
+    },
+    {
+      "mode": "latent",
+      "split": "ood_primary",
+      "examples": 60,
+      "correct": 60,
+      "exact_match_accuracy": 1.0,
+      "mean_latency_seconds": 0.25762233745002355
+    },
+    {
+      "mode": "direct",
+      "split": "ood_primary",
+      "examples": 60,
+      "correct": 60,
+      "exact_match_accuracy": 1.0,
+      "mean_latency_seconds": 0.25219702086675777
+    },
+    {
+      "mode": "base",
+      "split": "ood_long",
+      "examples": 60,
+      "correct": 1,
+      "exact_match_accuracy": 0.016666666666666666,
+      "mean_latency_seconds": 0.4281023117336493
+    },
+    {
+      "mode": "firmware_off",
+      "split": "ood_long",
+      "examples": 60,
+      "correct": 1,
+      "exact_match_accuracy": 0.016666666666666666,
+      "mean_latency_seconds": 0.4328493673334985
+    },
+    {
+      "mode": "latent",
+      "split": "ood_long",
+      "examples": 60,
+      "correct": 60,
+      "exact_match_accuracy": 1.0,
+      "mean_latency_seconds": 0.3881167486662889
+    },
+    {
+      "mode": "direct",
+      "split": "ood_long",
+      "examples": 60,
+      "correct": 60,
+      "exact_match_accuracy": 1.0,
+      "mean_latency_seconds": 0.3769602159167941
+    },
+    {
+      "mode": "base",
+      "split": "carry_chain",
+      "examples": 40,
+      "correct": 4,
+      "exact_match_accuracy": 0.1,
+      "mean_latency_seconds": 0.3316096865002692
+    },
+    {
+      "mode": "firmware_off",
+      "split": "carry_chain",
+      "examples": 40,
+      "correct": 4,
+      "exact_match_accuracy": 0.1,
+      "mean_latency_seconds": 0.33484726672495524
+    },
+    {
+      "mode": "latent",
+      "split": "carry_chain",
+      "examples": 40,
+      "correct": 40,
+      "exact_match_accuracy": 1.0,
+      "mean_latency_seconds": 0.2928603989246767
+    },
+    {
+      "mode": "direct",
+      "split": "carry_chain",
+      "examples": 40,
+      "correct": 40,
+      "exact_match_accuracy": 1.0,
+      "mean_latency_seconds": 0.28776565722473607
+    }
+  ],
+  "preservation_summary": {
+    "prompts": 40,
+    "token_exact_preserved": 40,
+    "preservation_rate": 1.0,
+    "initial_false_routes": 0,
+    "initial_false_route_rate": 0.0
+  },
+  "wall_time_seconds": 323.29663766700105,
+  "max_resident_set_size_raw": 3384442880
+}

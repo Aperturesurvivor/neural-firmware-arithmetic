@@ -1,0 +1,32 @@
+{
+  "captured_at": "2026-07-25",
+  "model": {
+    "repo_id": "Qwen/Qwen2.5-0.5B-Instruct",
+    "revision_sha": "7ae557604adf67be50417f59c2c2f167def9a775",
+    "library_name": "transformers"
+  },
+  "platform": {
+    "python": "3.12.12 (main, Feb  4 2026, 01:57:59) [Clang 21.1.4 ]",
+    "platform": "macOS-26.5.2-arm64-arm-64bit",
+    "macos": "ProductName:\t\tmacOS\nProductVersion:\t\t26.5.2\nBuildVersion:\t\t25F84",
+    "machine": "arm64",
+    "processor": "arm",
+    "unified_memory_bytes": 17179869184
+  },
+  "packages": {
+    "accelerate": "1.14.0",
+    "huggingface-hub": "0.36.2",
+    "numpy": "2.5.1",
+    "safetensors": "0.8.0",
+    "torch": "2.13.0",
+    "transformers": "4.57.6"
+  },
+  "torch": {
+    "mps_available": true,
+    "mps_built": true
+  },
+  "git": {
+    "head": "e17eaad14ca92093f1eb15d82ea3be506f93cc73",
+    "status_short": "M .gitignore\n M pyproject.toml\n M uv.lock\n?? FUTURE_ARCHITECTURE_GOAL.md\n?? PHASE2_LAB_NOTEBOOK.md\n?? PHASE2_PILOT_LOG.md\n?? PHASE2_PROTOCOL_DRAFT.md\n?? scripts/capture_phase2_environment.py\n?? src/neural_firmware/pretrained_data.py\n?? src/neural_firmware/pretrained_evaluation.py\n?? src/neural_firmware/pretrained_firmware.py\n?? src/neural_firmware/pretrained_model.py\n?? src/neural_firmware/pretrained_training.py\n?? tests/test_pretrained_firmware.py"
+  }
+}

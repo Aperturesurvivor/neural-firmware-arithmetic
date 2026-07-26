@@ -1,0 +1,75 @@
+{
+  "pilot": true,
+  "config": {
+    "experiment_name": "phase2_adapter_pilot_all_layers_long",
+    "model_id": "Qwen/Qwen2.5-0.5B-Instruct",
+    "train_seed": 17,
+    "eval_seed": 260725,
+    "train_examples": 3000,
+    "train_min_digits": 1,
+    "train_max_digits": 4,
+    "preservation_examples": 30,
+    "adapter": {
+      "steps": 3000,
+      "batch_size": 1,
+      "learning_rate": 0.0005,
+      "rank": 4,
+      "alpha": 8.0,
+      "all_layers": true
+    }
+  },
+  "train_result": {
+    "config": {
+      "seed": 17,
+      "steps": 3000,
+      "batch_size": 1,
+      "learning_rate": 0.0005,
+      "rank": 4,
+      "alpha": 8.0,
+      "all_layers": true
+    },
+    "trainable_parameters": 270336,
+    "initial_loss": 0.801846981048584,
+    "final_loss": 1.8446696996688843,
+    "wall_time_seconds": 243.92250408299878
+  },
+  "summaries": [
+    {
+      "mode": "learned_adapter",
+      "split": "id_random",
+      "examples": 40,
+      "correct": 26,
+      "exact_match_accuracy": 0.65,
+      "mean_latency_seconds": 0.1473090603498349
+    },
+    {
+      "mode": "learned_adapter",
+      "split": "ood_primary",
+      "examples": 40,
+      "correct": 0,
+      "exact_match_accuracy": 0.0,
+      "mean_latency_seconds": 0.2844405886248751
+    },
+    {
+      "mode": "learned_adapter",
+      "split": "ood_long",
+      "examples": 40,
+      "correct": 0,
+      "exact_match_accuracy": 0.0,
+      "mean_latency_seconds": 0.4450071885750731
+    },
+    {
+      "mode": "learned_adapter",
+      "split": "carry_chain",
+      "examples": 30,
+      "correct": 0,
+      "exact_match_accuracy": 0.0,
+      "mean_latency_seconds": 0.2633773707338454
+    }
+  ],
+  "preservation_summary": {
+    "prompts": 30,
+    "token_exact_preserved": 2,
+    "preservation_rate": 0.06666666666666667
+  }
+}

@@ -8,6 +8,8 @@ __pycache__/
 artifacts/
 checkpoints/
 results/raw/
+models/
+phase2_artifacts/
 
 paper/build/
 paper/*.aux
@@ -20,4 +22,3 @@ paper/*.log
 paper/*.out
 paper/*.run.xml
 paper/*.synctex.gz
-

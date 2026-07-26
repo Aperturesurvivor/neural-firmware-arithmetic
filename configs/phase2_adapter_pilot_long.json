@@ -1,0 +1,17 @@
+{
+  "experiment_name": "phase2_adapter_pilot_long",
+  "model_id": "Qwen/Qwen2.5-0.5B-Instruct",
+  "train_seed": 17,
+  "eval_seed": 260725,
+  "train_examples": 240,
+  "train_min_digits": 1,
+  "train_max_digits": 4,
+  "preservation_examples": 30,
+  "adapter": {
+    "steps": 2000,
+    "batch_size": 2,
+    "learning_rate": 0.001,
+    "rank": 8,
+    "alpha": 16.0
+  }
+}
