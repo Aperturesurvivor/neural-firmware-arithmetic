@@ -163,3 +163,65 @@ and same-prompt baseline experiment. Times use America/Los_Angeles.
 - This passed the development gate. Froze
   `PHASE4_CONFIRMATORY_PROTOCOL.md` before any confirmation inference, including
   artifact hashes, seeds, sample sizes, metrics, and success criteria.
+
+## 2026-07-25/26 — Frozen confirmation
+
+- Committed the frozen protocol, source, pilot results, and confirmatory
+  family definitions before inference. Added and separately committed the
+  runner before launch.
+- Confirmatory source commit:
+  `243612aa1ce7f91bb674a11085b24375721b239f`.
+- The runner verified the three checkpoint SHA-256 values against the frozen
+  protocol before loading them.
+- Generated 100 prompts in each of four untouched positive splits and 160
+  untouched negative prompts. No prompt or output was removed.
+- Inference ran locally on Apple arm64/macOS 26.5.2 using Python 3.12.12,
+  PyTorch 2.13.0, and MPS. Wall time was 1,096.43 seconds.
+- Pooled mathematical correctness:
+  - untouched base: 68/400 (17.0%);
+  - matched learned control: 21/400 (5.25%);
+  - learned-router internal: 360/400 (90.0%);
+  - oracle-route internal: 400/400 (100%);
+  - internal forced off: 68/400 (17.0%).
+- Split-level base/control/internal/oracle counts were:
+  - one- to four-digit simple: 59/19/93/100;
+  - five- to eight-digit simple: 3/1/88/100;
+  - nine- to twelve-digit simple: 0/0/79/100;
+  - five- to eight-digit word problems: 6/1/100/100.
+- Paired internal versus base:
+  68 both correct, 292 internal-only, 0 base-only, 40 both wrong;
+  exact McNemar `p = 2.513e-88`.
+- Paired internal versus control:
+  21 both correct, 339 internal-only, 0 control-only, 40 both wrong;
+  exact McNemar `p = 1.786e-102`.
+- The router activated on 349/400 positives (87.25%). Every active execution
+  was mathematically and format exact. Of 51 route misses, the unchanged base
+  path answered 11 correctly and 40 incorrectly.
+- On 160 unseen negatives there were zero false activations and all 160
+  outputs were token-identical to base.
+- Forced-off outputs were token-identical to base on all 400 positives.
+- Five of six frozen criteria passed. Positive routing coverage missed its
+  90% threshold by 2.75 points. The formal compound verdict is therefore not a
+  full pass, even though both primary capability comparisons passed by large
+  margins.
+- Raw archive:
+  `phase4_results/confirmation_raw.json`.
+- Derived analysis:
+  `phase4_results/confirmation_analysis.json`,
+  `confirmation_summary.csv`, and `confirmation_by_family.csv`.
+- Canonical rendered-data SHA-256:
+  `b6d9de587db437f49e4106c6b10b643976e37f6bcffe1cf8adae7994d2bf7f98`.
+
+## 2026-07-26 — Reporting and validation
+
+- Added deterministic statistical analysis and generated PDF/PNG figures.
+- Wrote `PHASE4_EXECUTIVE_SUMMARY.md` and the complete 12-page technical
+  manuscript in `paper_phase4/main.tex`.
+- Compiled the paper successfully with the bundled Tectonic runtime to
+  `paper_phase4/natural-language-deterministic-arithmetic.pdf`.
+- Rendered and visually inspected the title/abstract, result figures, tables,
+  paired-analysis pages, and bibliography. Adjusted float placement and
+  recompiled to remove an isolated table page.
+- Added `scripts/hash_phase4_artifacts.py` to produce a final byte-count and
+  SHA-256 inventory covering protocols, reports, raw/derived results, paper,
+  and the three local ignored checkpoints.

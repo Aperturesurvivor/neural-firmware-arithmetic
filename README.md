@@ -102,6 +102,42 @@ The frozen protocol is [`PHASE3_PROTOCOL.md`](PHASE3_PROTOCOL.md), and the
 replication-oriented chronology is
 [`PHASE3_LAB_NOTEBOOK.md`](PHASE3_LAB_NOTEBOOK.md).
 
+## Natural-language routing and same-prompt study
+
+The fourth experiment replaced the registered command with varied ordinary
+English. A learned request-level router after Qwen's twenty-fourth block chose
+whether to invoke the frozen typed addition cell. A fixed boundary supplied
+the two candidate decimal strings but did not choose the operation. The
+untouched base, an exactly parameter-matched learned residual adapter, and the
+deterministic architecture received identical prompts.
+
+On 400 frozen, never-used confirmatory addition prompts:
+
+- untouched base: 68/400 (17.0%);
+- equal-parameter learned control: 21/400 (5.25%);
+- learned-router deterministic internal model: 360/400 (90.0%);
+- oracle-route deterministic internal model: 400/400 (100%).
+
+Every one of the 349 automatically activated deterministic executions was
+exact. The internal model gained 73.0 percentage points over base and 84.75
+points over the matched learned control. It produced zero false activations on
+160 unseen non-addition prompts and preserved all 160 base outputs
+token-for-token. With the unit forced off, all 400 positive outputs were
+token-identical to base.
+
+The compound preregistered verdict is not a full pass: five of six criteria
+passed, but positive routing coverage was 87.25%, below the fixed 90%
+threshold. The arithmetic mechanism worked without an observed error; semantic
+route recall remains the bottleneck.
+
+The full phase-4 paper is
+[`paper_phase4/natural-language-deterministic-arithmetic.pdf`](paper_phase4/natural-language-deterministic-arithmetic.pdf).
+For a concise explanation, see
+[`PHASE4_EXECUTIVE_SUMMARY.md`](PHASE4_EXECUTIVE_SUMMARY.md). The frozen
+protocol and chronological record are
+[`PHASE4_CONFIRMATORY_PROTOCOL.md`](PHASE4_CONFIRMATORY_PROTOCOL.md) and
+[`PHASE4_LAB_NOTEBOOK.md`](PHASE4_LAB_NOTEBOOK.md).
+
 ## Reproduction
 
 ```bash
@@ -124,8 +160,12 @@ uv run python scripts/run_phase3_study.py \
   --result-directory phase3_results/confirmatory_v1
 uv run python scripts/analyze_phase3.py
 uv run python scripts/hash_phase3_artifacts.py
+
+# Natural-language same-prompt confirmation
+uv run python scripts/run_phase4_confirmation.py
+uv run python scripts/analyze_phase4_confirmation.py
 ```
 
-Compact metrics, configuration files, figures, and the compiled paper are
-tracked in Git. Large checkpoints and full per-example predictions remain
-local under ignored artifact directories.
+Compact metrics, raw phase-4 predictions, configuration files, figures, and
+compiled papers are tracked in Git. Large checkpoints remain local under
+ignored artifact directories.

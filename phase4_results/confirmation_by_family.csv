@@ -1,0 +1,31 @@
+split,family,examples,base_accuracy,control_accuracy,internal_accuracy,route_activation_rate
+confirmatory_id,Add together the integers {a} and {b}; provide nothing but the outcome.,13,0.5384615384615384,0.07692307692307693,1.0,1.0
+confirmatory_id,Compute the additive result for the pair {a} and {b}.,9,0.4444444444444444,0.1111111111111111,0.5555555555555556,0.4444444444444444
+confirmatory_id,Evaluate the sum whose operands are {a} and {b}; omit all explanation.,14,0.9285714285714286,0.07142857142857142,1.0,1.0
+confirmatory_id,"Find their combined arithmetic value: {a}, {b}. Answer only with it.",13,0.3076923076923077,0.15384615384615385,1.0,1.0
+confirmatory_id,Give the number produced by augmenting {a} with {b}.,8,0.0,0.0,1.0,1.0
+confirmatory_id,Return only the integer equal to the total of {a} plus {b}.,18,0.5555555555555556,0.3888888888888889,0.9444444444444444,0.6111111111111112
+confirmatory_id,What does the sum operation yield for {a} alongside {b}? Digits only.,15,0.7333333333333333,0.26666666666666666,0.8666666666666667,0.6
+confirmatory_id,"When {b} is added onto {a}, where do you end up? Number only.",10,1.0,0.3,1.0,1.0
+confirmatory_long,Add together the integers {a} and {b}; provide nothing but the outcome.,12,0.0,0.0,1.0,1.0
+confirmatory_long,Compute the additive result for the pair {a} and {b}.,13,0.0,0.0,0.0,0.0
+confirmatory_long,Evaluate the sum whose operands are {a} and {b}; omit all explanation.,16,0.0,0.0,1.0,1.0
+confirmatory_long,"Find their combined arithmetic value: {a}, {b}. Answer only with it.",11,0.0,0.0,1.0,1.0
+confirmatory_long,Give the number produced by augmenting {a} with {b}.,16,0.0,0.0,1.0,1.0
+confirmatory_long,Return only the integer equal to the total of {a} plus {b}.,8,0.0,0.0,1.0,1.0
+confirmatory_long,What does the sum operation yield for {a} alongside {b}? Digits only.,14,0.0,0.0,0.42857142857142855,0.42857142857142855
+confirmatory_long,"When {b} is added onto {a}, where do you end up? Number only.",10,0.0,0.0,1.0,1.0
+confirmatory_ood,Add together the integers {a} and {b}; provide nothing but the outcome.,14,0.07142857142857142,0.07142857142857142,1.0,1.0
+confirmatory_ood,Compute the additive result for the pair {a} and {b}.,8,0.0,0.0,0.0,0.0
+confirmatory_ood,Evaluate the sum whose operands are {a} and {b}; omit all explanation.,12,0.16666666666666666,0.0,1.0,1.0
+confirmatory_ood,"Find their combined arithmetic value: {a}, {b}. Answer only with it.",11,0.0,0.0,1.0,1.0
+confirmatory_ood,Give the number produced by augmenting {a} with {b}.,16,0.0,0.0,1.0,1.0
+confirmatory_ood,Return only the integer equal to the total of {a} plus {b}.,11,0.0,0.0,1.0,1.0
+confirmatory_ood,What does the sum operation yield for {a} alongside {b}? Digits only.,13,0.0,0.0,0.6923076923076923,0.6923076923076923
+confirmatory_ood,"When {b} is added onto {a}, where do you end up? Number only.",15,0.0,0.0,1.0,1.0
+confirmatory_word,"A device processed {a} jobs, then processed {b} additional jobs. State the complete job count only.",17,0.0,0.0,1.0,1.0
+confirmatory_word,A fund contains {a} dollars and gets a further {b} dollars. What is the balance now? Respond with the integer alone.,15,0.0,0.06666666666666667,1.0,1.0
+confirmatory_word,A ledger shows {a} incoming units and later records {b} more. How many incoming units are recorded altogether? Answer only with digits.,19,0.15789473684210525,0.0,1.0,1.0
+confirmatory_word,A study enrolled {a} people in one cohort and {b} in another. How many people were enrolled in all? Give just the total.,19,0.0,0.0,1.0,1.0
+confirmatory_word,A trail is {a} meters long and receives a {b}-meter extension. What is its new length? Return only the number.,16,0.1875,0.0,1.0,1.0
+confirmatory_word,Two archives hold {a} and {b} records respectively. How many records do they hold together? Use digits only.,14,0.0,0.0,1.0,1.0

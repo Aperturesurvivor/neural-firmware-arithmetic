@@ -1,0 +1,76 @@
+{
+  "files": [
+    {
+      "path": "PHASE4_CONFIRMATORY_PROTOCOL.md",
+      "bytes": 5340,
+      "sha256": "7de1a2436734f05ed3cc7ab26713b87b8689a5c193d00e139a209302675985e3",
+      "tracked": true
+    },
+    {
+      "path": "PHASE4_LAB_NOTEBOOK.md",
+      "bytes": 12058,
+      "sha256": "6813e725a6013fc52d22b06e5de670b2ff5504ff39ad307b1d3309ed5d3583b0",
+      "tracked": true
+    },
+    {
+      "path": "PHASE4_EXECUTIVE_SUMMARY.md",
+      "bytes": 4789,
+      "sha256": "8dc258ce6618cb7a95d4d34d2657de649fb9035785209e4f519cc550e14ad4db",
+      "tracked": true
+    },
+    {
+      "path": "phase4_results/confirmation_raw.json",
+      "bytes": 2326014,
+      "sha256": "23b9cd5146ad2ca48a93645d4d4a5959b37c04d855163cea1b266cb887c07068",
+      "tracked": true
+    },
+    {
+      "path": "phase4_results/confirmation_analysis.json",
+      "bytes": 3657,
+      "sha256": "81fa1a001ccb63eb8ea15f317297005ab92a57c10191aeaa18de1ecf38e54b45",
+      "tracked": true
+    },
+    {
+      "path": "phase4_results/confirmation_summary.csv",
+      "bytes": 1253,
+      "sha256": "76030a073e09a4c55d9493700d6ac611549694972f2319a5f07c11ae64d98e2b",
+      "tracked": true
+    },
+    {
+      "path": "phase4_results/confirmation_by_family.csv",
+      "bytes": 3851,
+      "sha256": "4dbf29907798fe402b6417282d3d0b1ba9f3764c41ea9229b82a5477a181cd3c",
+      "tracked": true
+    },
+    {
+      "path": "paper_phase4/main.tex",
+      "bytes": 33911,
+      "sha256": "ee41821c6aba4c1cbdfc16d67e1e34b561724eeacc1ee48d4a0ada4183ca2e6a",
+      "tracked": true
+    },
+    {
+      "path": "paper_phase4/natural-language-deterministic-arithmetic.pdf",
+      "bytes": 123717,
+      "sha256": "9b29017fe39a9f1e516ae7ab97122309425c9ce1163da25e6750078d77ddd50d",
+      "tracked": true
+    },
+    {
+      "path": "phase4_artifacts/router_pilot_v2.pt",
+      "bytes": 60141,
+      "sha256": "201262b5cf21259977dc8a31e3faa1aa77892f7cbae121ea015f4e69d95f8e66",
+      "tracked": false
+    },
+    {
+      "path": "phase4_artifacts/semantic_pilot_v2/semantic_unit.pt",
+      "bytes": 103775,
+      "sha256": "8079e0c5d723405881c39e47773fb895617d5c4da99b3168996e2861aba9a739",
+      "tracked": false
+    },
+    {
+      "path": "phase4_artifacts/semantic_pilot_v2/semantic_control.pt",
+      "bytes": 100486,
+      "sha256": "7d43f58126fc60bfb68ee2caa479818ce2b13b9b1c8d9f2b4b7adccb9840da94",
+      "tracked": false
+    }
+  ]
+}
