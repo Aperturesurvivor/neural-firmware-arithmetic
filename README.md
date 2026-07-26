@@ -189,6 +189,29 @@ The concise result, frozen protocol, and chronology are
 [`PHASE5_CONFIRMATORY_PROTOCOL.md`](PHASE5_CONFIRMATORY_PROTOCOL.md), and
 [`PHASE5_LAB_NOTEBOOK.md`](PHASE5_LAB_NOTEBOOK.md).
 
+## Fully neural natural-language interface prototype
+
+Phase 6 removes the fixed decimal parser at inference. Early Qwen residuals
+are mapped into three typed digit registers, fused early/late neural heads
+decide whether addition firmware may activate, and learned third-register
+occupancy selects one or two calls. The same frozen ripple-carry cell is reused
+for both calls; its first typed result becomes the second call's input without
+text parsing. A learned residual bridge returns the final digits through
+Qwen's frozen normalization and output head.
+
+Pilot v6 is working end to end, including chained calculation, but is not a
+confirmatory result. On 880 untouched gate examples it achieved 100% exact
+single-call registers, 96% exact chained registers, 92.25% positive routing,
+0/480 false calls, and 70/70 exact outputs conditional on correct extraction
+and routing. Route-off outputs were token-identical to the base model in all
+40 integrated negative checks. The positive routing and chained extraction
+rates remain below the development gates, so the frozen confirmation families
+have not been evaluated.
+
+See [`PHASE6_ARCHITECTURE_DRAFT.md`](PHASE6_ARCHITECTURE_DRAFT.md) and
+[`PHASE6_PILOT_LOG.md`](PHASE6_PILOT_LOG.md) for the architecture and retained
+v1-v6 failures.
+
 ## Reproduction
 
 ```bash
@@ -220,6 +243,11 @@ uv run python scripts/analyze_phase4_confirmation.py
 uv run python scripts/run_phase5_confirmation.py
 uv run python scripts/analyze_phase5_confirmation.py
 uv run python scripts/hash_phase5_artifacts.py
+
+# Phase 6 development pilot and an interactive natural-language prompt
+uv run python scripts/run_phase6_pilot.py
+uv run python scripts/demo_phase6_neural_firmware.py \
+  "Add 123 and 456, then add 7. Return digits only."
 ```
 
 Compact metrics, raw predictions, configuration files, figures, and compiled

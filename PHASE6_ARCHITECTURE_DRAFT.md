@@ -60,16 +60,28 @@ parser-derived locations at inference.
 
 ## Learned semantic controller
 
-A late pre-final-RMSNorm residual predicts:
+The implemented controller fuses two learned views:
 
-- no calculator call;
-- one addition call;
-- two chained addition calls.
+- attention over the full early residual sequence;
+- the late pre-final-RMSNorm residual at the causal anchor.
+
+The fused five-class head distinguishes no call, supported ADD requests, and
+unsupported single- or multi-operation requests. The semantic head determines
+whether firmware is allowed to activate. Once activated, learned third-register
+occupancy determines whether the program makes one or two calls. This ties
+program length to the same neural register representation used for execution
+instead of asking a separate prompt classifier to relearn operand count.
 
 Hard negatives deliberately match positive request syntax while changing the
 operation to multiplication, subtraction, averaging, comparison, quotation,
 or non-evaluation. The controller must learn operation identity rather than
 only imperative request shape.
+
+Pilot v6 is a working development implementation, but it is not yet eligible
+for confirmation. On the untouched gate split it achieved zero false calls at
+the calibrated threshold and exact output on every correctly routed,
+correctly extracted example, but positive routing was 92.25% and chained
+register extraction was 96.0%. These remain below the gates below.
 
 ## Frozen calculator
 

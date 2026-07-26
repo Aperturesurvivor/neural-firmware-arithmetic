@@ -7,6 +7,7 @@ from neural_firmware.phase6_firmware import (
     FrozenAdditionProgram,
     NeuralRegisterMapper,
     install_neural_firmware,
+    register_program_call_counts,
 )
 
 
@@ -51,6 +52,17 @@ def test_zero_call_masks_all_calculator_output() -> None:
     assert not bool(execution.call_masks.any())
 
 
+def test_register_occupancy_selects_program_length() -> None:
+    logits = _register_logits(
+        [
+            [[1], [2], []],
+            [[1], [2], [3]],
+        ],
+        max_digits=2,
+    )
+    assert register_program_call_counts(logits).tolist() == [1, 2]
+
+
 def test_neural_register_mapper_shapes() -> None:
     mapper = NeuralRegisterMapper(
         8,
@@ -64,9 +76,11 @@ def test_neural_register_mapper_shapes() -> None:
         [[1, 1, 1, 1, 0, 0], [1, 1, 1, 1, 1, 1]],
     )
     anchors = torch.tensor([3, 5])
-    logits = mapper(hidden, mask, anchors)
+    logits, control_logits = mapper.forward_with_control(hidden, mask, anchors)
     assert logits.shape == (2, 3, 4, 11)
+    assert control_logits.shape == (2, 5)
     assert torch.isfinite(logits).all()
+    assert torch.isfinite(control_logits).all()
 
 
 class _FakeLayer(nn.Module):

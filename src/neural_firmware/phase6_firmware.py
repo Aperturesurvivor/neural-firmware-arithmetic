@@ -66,11 +66,20 @@ class NeuralRegisterMapper(nn.Module):
             norm=nn.LayerNorm(model_width),
         )
         self.digit_classifier = nn.Linear(model_width, 11)
+        self.control_query = nn.Parameter(torch.empty(1, model_width))
+        self.control_attention = nn.MultiheadAttention(
+            model_width,
+            attention_heads,
+            batch_first=True,
+        )
+        self.control_norm = nn.LayerNorm(model_width)
+        self.control_classifier = nn.Linear(model_width, 5)
         self.position_scale = nn.Parameter(torch.ones(()))
         self.anchor_scale = nn.Parameter(torch.ones(()))
         self.log_temperature = nn.Parameter(torch.zeros(3, 3))
         nn.init.normal_(self.operand_embeddings, std=model_width**-0.5)
         nn.init.normal_(self.digit_embeddings, std=model_width**-0.5)
+        nn.init.normal_(self.control_query, std=model_width**-0.5)
 
     @staticmethod
     def _relative_position_encoding(
@@ -94,12 +103,12 @@ class NeuralRegisterMapper(nn.Module):
             )
         return encoding
 
-    def forward(
+    def _encode_source(
         self,
         hidden: torch.Tensor,
         attention_mask: torch.Tensor,
         anchor_positions: torch.Tensor,
-    ) -> torch.Tensor:
+    ) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor]:
         if hidden.ndim != 3:
             raise ValueError("hidden must have shape [batch, sequence, hidden]")
         if attention_mask.shape != hidden.shape[:2]:
@@ -127,21 +136,30 @@ class NeuralRegisterMapper(nn.Module):
         )
         rows = torch.arange(hidden.shape[0], device=hidden.device)
         anchors = context[rows, anchor_positions]
+        positions = torch.arange(hidden.shape[1], device=hidden.device)[None, :]
+        valid = attention_mask.bool() & (positions <= anchor_positions[:, None])
+        return context, anchors, valid
+
+    def _digit_logits(
+        self,
+        context: torch.Tensor,
+        anchors: torch.Tensor,
+        valid: torch.Tensor,
+    ) -> torch.Tensor:
+        hidden_batch = context.shape[0]
         queries = (
             self.operand_embeddings[:, None, :]
             + self.digit_embeddings[None, :, :]
         ).reshape(3 * self.max_digits, self.model_width)
-        queries = queries[None, :, :].expand(hidden.shape[0], -1, -1)
+        queries = queries[None, :, :].expand(hidden_batch, -1, -1)
         queries = queries + self.anchor_scale * anchors[:, None, :]
-        positions = torch.arange(hidden.shape[1], device=hidden.device)[None, :]
-        valid = attention_mask.bool() & (positions <= anchor_positions[:, None])
         decoded = self.slot_decoder(
             queries,
             context,
             memory_key_padding_mask=~valid,
         )
         logits = self.digit_classifier(decoded).reshape(
-            hidden.shape[0],
+            hidden_batch,
             3,
             self.max_digits,
             11,
@@ -152,6 +170,72 @@ class NeuralRegisterMapper(nn.Module):
             dim=1,
         )[:, : self.max_digits]
         return logits / temperature[None, :, :, None]
+
+    def _control_logits(
+        self,
+        context: torch.Tensor,
+        anchors: torch.Tensor,
+        valid: torch.Tensor,
+    ) -> torch.Tensor:
+        query = self.control_query[None, :, :].expand(
+            context.shape[0],
+            -1,
+            -1,
+        )
+        query = query + self.anchor_scale * anchors[:, None, :]
+        attended, _ = self.control_attention(
+            query,
+            context,
+            context,
+            key_padding_mask=~valid,
+            need_weights=False,
+        )
+        state = self.control_norm(query + attended)[:, 0]
+        return self.control_classifier(state)
+
+    def forward(
+        self,
+        hidden: torch.Tensor,
+        attention_mask: torch.Tensor,
+        anchor_positions: torch.Tensor,
+    ) -> torch.Tensor:
+        context, anchors, valid = self._encode_source(
+            hidden,
+            attention_mask,
+            anchor_positions,
+        )
+        return self._digit_logits(context, anchors, valid)
+
+    def forward_with_control(
+        self,
+        hidden: torch.Tensor,
+        attention_mask: torch.Tensor,
+        anchor_positions: torch.Tensor,
+    ) -> tuple[torch.Tensor, torch.Tensor]:
+        context, anchors, valid = self._encode_source(
+            hidden,
+            attention_mask,
+            anchor_positions,
+        )
+        return (
+            self._digit_logits(context, anchors, valid),
+            self._control_logits(context, anchors, valid),
+        )
+
+    def control(
+        self,
+        hidden: torch.Tensor,
+        attention_mask: torch.Tensor,
+        anchor_positions: torch.Tensor,
+    ) -> torch.Tensor:
+        """Predict call semantics from the full early residual sequence."""
+
+        context, anchors, valid = self._encode_source(
+            hidden,
+            attention_mask,
+            anchor_positions,
+        )
+        return self._control_logits(context, anchors, valid)
 
 
 class NeuralCallController(nn.Module):
@@ -203,6 +287,21 @@ def categorical_registers(
             digits[:, :, 0],
         )
     return digits, lengths
+
+
+def register_program_call_counts(register_logits: torch.Tensor) -> torch.Tensor:
+    """Infer one versus two calls from learned third-register occupancy."""
+
+    if (
+        register_logits.ndim != 4
+        or register_logits.shape[1] != 3
+        or register_logits.shape[-1] != 11
+    ):
+        raise ValueError("register logits must have shape [batch, 3, digits, 11]")
+    third_register_present = (
+        register_logits[:, 2, 0].argmax(dim=-1) != PAD_DIGIT
+    )
+    return third_register_present.long() + 1
 
 
 def symbols_to_register(
@@ -326,6 +425,7 @@ class NeuralFirmwareContext:
     route_mode: Phase6RouteMode = "learned"
     route_threshold: float = 0.5
     register_logits: torch.Tensor | None = None
+    early_control_logits: torch.Tensor | None = None
     call_logits: torch.Tensor | None = None
     call_counts: torch.Tensor | None = None
     route_probabilities: torch.Tensor | None = None
@@ -372,11 +472,13 @@ class NeuralRegisterCaptureLayer(nn.Module):
             and context.teacher_symbols is None
             and context.register_logits is None
         ):
-            context.register_logits = self.mapper(
+            register_logits, control_logits = self.mapper.forward_with_control(
                 hidden,
                 context.attention_mask,
                 context.anchor_positions,
             )
+            context.register_logits = register_logits
+            context.early_control_logits = control_logits
         return hidden
 
 
@@ -411,10 +513,17 @@ class NeuralProgramLayer(nn.Module):
         hidden: torch.Tensor,
         context: NeuralFirmwareContext,
     ) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor]:
-        logits = self.controller(hidden[:, -1, :])
+        late_logits = self.controller(hidden[:, -1, :])
+        logits = late_logits
+        if context.early_control_logits is not None:
+            logits = logits + context.early_control_logits
         probabilities = torch.softmax(logits, dim=-1)
         route_probabilities = probabilities[:, 1:3].sum(dim=-1)
-        positive_counts = probabilities[:, 1:3].argmax(dim=-1) + 1
+        if context.register_logits is None:
+            raise RuntimeError("register logits are required for call selection")
+        positive_counts = register_program_call_counts(
+            context.register_logits
+        )
         if context.route_mode == "force_off":
             counts = torch.zeros_like(positive_counts)
         elif context.route_mode == "force_on":
@@ -427,6 +536,11 @@ class NeuralProgramLayer(nn.Module):
             )
         else:
             raise ValueError(f"unknown route mode: {context.route_mode}")
+        context.diagnostics["late_call_logits"] = late_logits.detach().cpu()
+        if context.early_control_logits is not None:
+            context.diagnostics["early_call_logits"] = (
+                context.early_control_logits.detach().cpu()
+            )
         return counts, route_probabilities, logits
 
     def _plan(

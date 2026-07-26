@@ -10,9 +10,8 @@ import torch
 
 from neural_firmware.phase6_data import (
     Phase6Example,
-    build_phase6_development_examples,
-    build_phase6_output_training_examples,
-    build_phase6_training_examples,
+    build_phase6_calibration_examples,
+    build_phase6_gate_examples,
 )
 from neural_firmware.phase6_firmware import (
     NeuralCallController,
@@ -20,20 +19,14 @@ from neural_firmware.phase6_firmware import (
     install_neural_firmware,
 )
 from neural_firmware.phase6_training import (
-    ControllerTrainConfig,
-    MapperTrainConfig,
-    OutputTrainConfig,
     Phase6FeatureSet,
     collect_phase6_features,
-    evaluate_call_controller,
+    evaluate_fused_controller,
     evaluate_register_mapper,
     generate_neural_firmware,
     register_targets,
-    select_call_threshold,
+    select_fused_threshold,
     set_phase6_seed,
-    train_call_controller,
-    train_output_decoder,
-    train_register_mapper,
 )
 from neural_firmware.pretrained_data import chat_prompt_ids
 from neural_firmware.pretrained_training import ModelBundle, load_model_bundle
@@ -49,11 +42,11 @@ ATTENTION_HEADS = 8
 DECODER_LAYERS = 2
 CONTROLLER_WIDTH = 64
 FEATURE_DIRECTORY = Path("phase6_artifacts/cache")
-V1_CHECKPOINT = Path(
-    "phase6_artifacts/pilot_v1/neural_firmware_seed_11701.pt"
+V5_CHECKPOINT = Path(
+    "phase6_artifacts/pilot_v5/neural_firmware_seed_11701.pt"
 )
-ARTIFACT_DIRECTORY = Path("phase6_artifacts/pilot_v2")
-RESULT_PATH = Path("phase6_results/pilot_v2.json")
+ARTIFACT_DIRECTORY = Path("phase6_artifacts/pilot_v6")
+RESULT_PATH = Path("phase6_results/pilot_v6.json")
 
 
 def sha256(path: Path) -> str:
@@ -130,6 +123,77 @@ def prepare_features(
     if torch.backends.mps.is_available():
         torch.mps.empty_cache()
     return train_features, development_features
+
+
+def prepare_evaluation_features(
+    examples: list[Phase6Example],
+    *,
+    name: str,
+) -> Phase6FeatureSet:
+    path = FEATURE_DIRECTORY / f"phase6_{name}_v1.pt"
+    if path.exists():
+        return load_features(path, examples)
+    bundle = load_model_bundle(MODEL_ID, revision=MODEL_REVISION)
+    features = collect_phase6_features(
+        bundle,
+        examples,
+        input_depth_after_blocks=INPUT_DEPTH,
+        output_depth_after_blocks=OUTPUT_DEPTH,
+        max_digits=MAX_DIGITS,
+        batch_size=8,
+    )
+    save_features(features, path)
+    del bundle
+    if torch.backends.mps.is_available():
+        torch.mps.empty_cache()
+    return features
+
+
+def concatenate_features(
+    feature_sets: tuple[Phase6FeatureSet, ...],
+) -> Phase6FeatureSet:
+    if any(features.controller_targets is None for features in feature_sets):
+        raise ValueError("all feature sets require controller targets")
+    maximum_sequence = max(
+        features.early_hidden.shape[1] for features in feature_sets
+    )
+    early_hidden = [
+        torch.nn.functional.pad(
+            features.early_hidden,
+            (0, 0, 0, maximum_sequence - features.early_hidden.shape[1]),
+        )
+        for features in feature_sets
+    ]
+    attention_mask = [
+        torch.nn.functional.pad(
+            features.attention_mask,
+            (0, maximum_sequence - features.attention_mask.shape[1]),
+        )
+        for features in feature_sets
+    ]
+    return Phase6FeatureSet(
+        early_hidden=torch.cat(early_hidden),
+        attention_mask=torch.cat(attention_mask),
+        anchor_positions=torch.cat(
+            [features.anchor_positions for features in feature_sets]
+        ),
+        late_hidden=torch.cat(
+            [features.late_hidden for features in feature_sets]
+        ),
+        register_targets=torch.cat(
+            [features.register_targets for features in feature_sets]
+        ),
+        call_targets=torch.cat(
+            [features.call_targets for features in feature_sets]
+        ),
+        controller_targets=torch.cat(
+            [
+                features.controller_targets
+                for features in feature_sets
+                if features.controller_targets is not None
+            ]
+        ),
+    )
 
 
 @torch.inference_mode()
@@ -233,12 +297,15 @@ def summarize_generation(
 
 def main() -> None:
     started = time.perf_counter()
-    train_examples = build_phase6_training_examples()
-    development_examples = build_phase6_development_examples()
-    output_examples = build_phase6_output_training_examples()
-    train_features, development_features = prepare_features(
-        train_examples,
-        development_examples,
+    calibration_examples = build_phase6_calibration_examples()
+    gate_examples = build_phase6_gate_examples()
+    calibration_features = prepare_evaluation_features(
+        calibration_examples,
+        name="calibration",
+    )
+    gate_features = prepare_evaluation_features(
+        gate_examples,
+        name="gate",
     )
     bundle = load_model_bundle(MODEL_ID, revision=MODEL_REVISION)
     set_phase6_seed(SEED)
@@ -249,58 +316,41 @@ def main() -> None:
         attention_heads=ATTENTION_HEADS,
         decoder_layers=DECODER_LAYERS,
     )
-    if not V1_CHECKPOINT.exists():
+    if not V5_CHECKPOINT.exists():
         raise FileNotFoundError(
-            "pilot v2 requires the retained pilot-v1 initialization"
+            "pilot v6 requires the retained pilot-v5 checkpoint"
         )
-    v1_state = torch.load(
-        V1_CHECKPOINT,
+    v5_state = torch.load(
+        V5_CHECKPOINT,
         map_location="cpu",
         weights_only=True,
     )
-    mapper.load_state_dict(v1_state["mapper"])
-    mapper_training = train_register_mapper(
+    mapper.load_state_dict(v5_state["mapper"])
+    mapper.to(bundle.device).eval()
+    mapper_gate = evaluate_register_mapper(
         mapper,
-        train_features,
-        MapperTrainConfig(
-            seed=SEED,
-            steps=1_500,
-            batch_size=32,
-            learning_rate=0.0002,
-        ),
-        device=bundle.device,
-    )
-    mapper_development = evaluate_register_mapper(
-        mapper,
-        development_features,
-        development_examples,
+        gate_features,
+        gate_examples,
         device=bundle.device,
     )
     controller = NeuralCallController(
         bundle.model.config.hidden_size,
         hidden_width=CONTROLLER_WIDTH,
     )
-    controller_training = train_call_controller(
+    controller.load_state_dict(v5_state["controller"])
+    controller.to(bundle.device).eval()
+    selected_threshold = select_fused_threshold(
+        mapper,
         controller,
-        train_features,
-        ControllerTrainConfig(
-            seed=SEED + 100,
-            steps=2_500,
-            batch_size=512,
-            learning_rate=0.003,
-        ),
+        calibration_features,
+        calibration_examples,
         device=bundle.device,
     )
-    selected_threshold = select_call_threshold(
+    controller_gate = evaluate_fused_controller(
+        mapper,
         controller,
-        development_features,
-        development_examples,
-        device=bundle.device,
-    )
-    controller_development = evaluate_call_controller(
-        controller,
-        development_features,
-        development_examples,
+        gate_features,
+        gate_examples,
         device=bundle.device,
         threshold=float(selected_threshold["threshold"]),
     )
@@ -317,21 +367,13 @@ def main() -> None:
     )
     installation.capture.mapper.load_state_dict(mapper.state_dict())
     installation.final.controller.load_state_dict(controller.state_dict())
-    output_training = train_output_decoder(
-        bundle,
-        installation,
-        output_examples,
-        OutputTrainConfig(
-            seed=SEED + 200,
-            steps=240,
-            batch_size=2,
-            learning_rate=0.01,
-        ),
+    installation.final.output_decoder.load_state_dict(
+        v5_state["output_decoder"]
     )
     diagnostic_examples = (
-        development_examples[:40]
-        + development_examples[400:440]
-        + development_examples[800:840]
+        gate_examples[:40]
+        + gate_examples[200:240]
+        + gate_examples[400:440]
     )
     negative_examples = [
         example
@@ -359,17 +401,17 @@ def main() -> None:
     torch.save(installation.state_dict(), checkpoint_path)
     compact_mapper = {
         key: value
-        for key, value in mapper_development.items()
+        for key, value in mapper_gate.items()
         if key != "rows"
     }
     compact_controller = {
         key: value
-        for key, value in controller_development.items()
+        for key, value in controller_gate.items()
         if key != "rows"
     }
     result = {
         "status": "development_pilot",
-        "pilot_version": 2,
+        "pilot_version": 6,
         "model_id": MODEL_ID,
         "model_revision": MODEL_REVISION,
         "seed": SEED,
@@ -384,6 +426,8 @@ def main() -> None:
             "controller_width": CONTROLLER_WIDTH,
             "learned_parameters": installation.learned_parameter_count,
             "fixed_parser_at_inference": False,
+            "routing_fusion": "early_sequence_logits_plus_late_anchor_logits",
+            "call_count_source": "typed_third_register_occupancy",
             "controller_classes": (
                 "no_call",
                 "one_add",
@@ -393,16 +437,24 @@ def main() -> None:
             ),
         },
         "data": {
-            "train_examples": len(train_examples),
-            "development_examples": len(development_examples),
-            "output_examples": len(output_examples),
+            "calibration_examples": len(calibration_examples),
+            "gate_examples": len(gate_examples),
         },
-        "mapper_training": mapper_training,
-        "mapper_development": compact_mapper,
-        "controller_training": controller_training,
+        "mapper_training": {
+            "loaded_from": str(V5_CHECKPOINT),
+            "checkpoint_sha256": sha256(V5_CHECKPOINT),
+        },
+        "mapper_gate": compact_mapper,
+        "controller_training": {
+            "loaded_from": str(V5_CHECKPOINT),
+            "checkpoint_sha256": sha256(V5_CHECKPOINT),
+        },
         "selected_threshold": selected_threshold,
-        "controller_development": compact_controller,
-        "output_training": output_training,
+        "controller_gate": compact_controller,
+        "output_training": {
+            "loaded_from": str(V5_CHECKPOINT),
+            "checkpoint_sha256": sha256(V5_CHECKPOINT),
+        },
         "generation_summary": summarize_generation(
             generation_rows,
             base_negative_rows,
@@ -411,8 +463,8 @@ def main() -> None:
         "base_negative_rows": base_negative_rows,
         "checkpoint": str(checkpoint_path),
         "checkpoint_sha256": sha256(checkpoint_path),
-        "mapper_initialization_checkpoint": str(V1_CHECKPOINT),
-        "mapper_initialization_sha256": sha256(V1_CHECKPOINT),
+        "initialization_checkpoint": str(V5_CHECKPOINT),
+        "initialization_checkpoint_sha256": sha256(V5_CHECKPOINT),
         "environment": {
             "platform": platform.platform(),
             "python": platform.python_version(),
@@ -426,8 +478,8 @@ def main() -> None:
         json.dumps(
             {
                 "architecture": result["architecture"],
-                "mapper_development": compact_mapper,
-                "controller_development": compact_controller,
+                "mapper_gate": compact_mapper,
+                "controller_gate": compact_controller,
                 "selected_threshold": selected_threshold,
                 "generation_summary": result["generation_summary"],
                 "checkpoint_sha256": result["checkpoint_sha256"],

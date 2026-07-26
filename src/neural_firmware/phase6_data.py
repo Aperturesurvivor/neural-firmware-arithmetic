@@ -134,6 +134,246 @@ PHASE6_DEVELOPMENT_UNSUPPORTED_TWO_FAMILIES = frozenset(
     )
 )
 
+PHASE6_CALIBRATION_SINGLE_FAMILIES = (
+    "Determine the additive combination of {a} and {b}. Return one integer.",
+    "Add the second value {b} to the first value {a}; print digits only.",
+    (
+        "A reservoir holds {a} liters and receives {b} more. "
+        "What volume does it hold now? Number only."
+    ),
+    (
+        "A machine completed {a} jobs before lunch and {b} afterward. "
+        "Give the full job count as one integer."
+    ),
+)
+
+PHASE6_CALIBRATION_CHAIN_FAMILIES = (
+    "Compute {a} plus {b}, then add {c} to the intermediate value. Final digits only.",
+    "Beginning with {a}, add {b} and afterward add {c}. Return the endpoint.",
+    (
+        "Three sensors recorded {a}, {b}, and {c} events. "
+        "How many events were recorded in total? Number only."
+    ),
+    (
+        "A shipment arrived in groups of {a}, {b}, and {c} boxes. "
+        "State the overall box count using digits."
+    ),
+)
+
+PHASE6_CALIBRATION_NEGATIVE_FAMILIES = (
+    "Find the product of {a} with {b}. Return one integer.",
+    "Compute the difference when {b} is removed from {a}. Digits only.",
+    "Give the average of {a} and {b}. Output a number.",
+    "Return whichever is greater, {a} or {b}.",
+    "Place the text {a} directly before {b}; do not calculate.",
+    'Repeat "{a} + {b}" verbatim without answering it.',
+    "Refuse to total {a} and {b}; answer refused.",
+    "Describe the addition of {a} and {b} but leave it unevaluated.",
+    "Add {a} and {b}, then divide that result by {c}. State one number.",
+    "Multiply {a} by {b}, then increase the product by {c}.",
+    "Add {a} to {b}, then subtract {c} from the result.",
+    "Arrange {a}, {b}, and {c} from least to greatest.",
+)
+
+PHASE6_CALIBRATION_UNSUPPORTED_ONE_FAMILIES = frozenset(
+    PHASE6_CALIBRATION_NEGATIVE_FAMILIES[:4]
+)
+PHASE6_CALIBRATION_UNSUPPORTED_TWO_FAMILIES = frozenset(
+    PHASE6_CALIBRATION_NEGATIVE_FAMILIES[8:11]
+)
+
+PHASE6_VALIDATION_SINGLE_FAMILIES = (
+    "Return the integer sum produced from {a} alongside {b}.",
+    "What value follows after incrementing {a} by {b}? Give digits alone.",
+    (
+        "A registry contains {a} entries and imports {b} additional entries. "
+        "What is its new size? Reply with one number."
+    ),
+    (
+        "One team scored {a} points and another scored {b}. "
+        "How many points did they score altogether? Integer only."
+    ),
+)
+
+PHASE6_VALIDATION_CHAIN_FAMILIES = (
+    "Add {a} and {b}; use that result in a second addition with {c}. Final number only.",
+    "Evaluate {a} + {b} + {c} as two successive additions. Digits alone.",
+    (
+        "A collection gains {a} objects, then {b}, then {c}. "
+        "How many objects were gained altogether? Return the count."
+    ),
+    (
+        "An odometer advances {a} meters, then {b}, and finally {c}. "
+        "Give the complete distance as one integer."
+    ),
+)
+
+PHASE6_VALIDATION_NEGATIVE_FAMILIES = (
+    "Calculate {a} times {b}. Provide digits only.",
+    "Subtract the integer {b} from {a}; return the answer alone.",
+    "Report the midpoint average of {a} and {b}.",
+    "Choose the minimum of {a} and {b}. Number only.",
+    "Combine the character strings {a} and {b}, not their quantities.",
+    'Echo the quoted request "add {a} and {b}" without carrying it out.',
+    "Do not evaluate {a} plus {b}; respond only not-evaluated.",
+    "Teach a method for totaling {a} and {b} without finding the answer.",
+    "First add {a} and {b}; next divide the intermediate value by {c}.",
+    "Take {a} times {b}, then add {c}. Give the eventual integer.",
+    "Total {a} and {b}, then remove {c}. Return only one number.",
+    "Reorder the identifiers {a}, {b}, and {c}; perform no calculation.",
+)
+
+PHASE6_VALIDATION_UNSUPPORTED_ONE_FAMILIES = frozenset(
+    PHASE6_VALIDATION_NEGATIVE_FAMILIES[:4]
+)
+PHASE6_VALIDATION_UNSUPPORTED_TWO_FAMILIES = frozenset(
+    PHASE6_VALIDATION_NEGATIVE_FAMILIES[8:11]
+)
+
+PHASE6_AUDIT_SINGLE_FAMILIES = (
+    "Give the digits for the result of {a} added to {b}.",
+    "Increment the quantity {a} by {b}; respond with the new quantity only.",
+    (
+        "A queue contained {a} requests and accepted {b} more requests. "
+        "How many requests are queued now? Use one integer."
+    ),
+    (
+        "A trail has one section of {a} meters and another of {b} meters. "
+        "State their total length in digits."
+    ),
+)
+
+PHASE6_AUDIT_CHAIN_FAMILIES = (
+    "Sum {a} with {b}, then sum the outcome with {c}. Return final digits.",
+    "Starting from {a}, apply increments of {b} and {c} in sequence. Number only.",
+    (
+        "A counter rises by {a}, later by {b}, and afterward by {c}. "
+        "What cumulative rise occurred? Give one integer."
+    ),
+    (
+        "Three deliveries brought {a}, {b}, and {c} units. "
+        "Report the combined number of units without prose."
+    ),
+)
+
+PHASE6_AUDIT_NEGATIVE_FAMILIES = (
+    "Find the remainder when {a} is divided by {b}. Return digits only.",
+    "Determine the quotient of {a} by {b}. Give one number.",
+    "Identify the lesser value between {a} and {b}.",
+    "Compute the geometric product for {a} and {b}; output digits.",
+    "Append the written digits {b} after {a}; arithmetic is forbidden.",
+    'Print the literal phrase "{a} added to {b}" and nothing else.',
+    "Decline to calculate {a} plus {b}; write declined.",
+    "Outline how addition would combine {a} and {b}, leaving it unanswered.",
+    "Add {a} and {b}, then take the remainder after division by {c}.",
+    "Multiply {a} by {b}, and then multiply the outcome by {c}.",
+    "Remove {b} from {a}, then increase the difference by {c}.",
+    "Order {a}, {b}, and {c} numerically without returning their sum.",
+)
+
+PHASE6_AUDIT_UNSUPPORTED_ONE_FAMILIES = frozenset(
+    PHASE6_AUDIT_NEGATIVE_FAMILIES[:4]
+)
+PHASE6_AUDIT_UNSUPPORTED_TWO_FAMILIES = frozenset(
+    PHASE6_AUDIT_NEGATIVE_FAMILIES[8:11]
+)
+
+PHASE6_STRESS_SINGLE_FAMILIES = (
+    "Perform an additive merge of {a} and {b}; emit the integer result.",
+    "Raise {a} by an increment of {b}. Answer using digits and no commentary.",
+    (
+        "A cache held {a} records before receiving {b} additional records. "
+        "What record count does it hold? Integer only."
+    ),
+    (
+        "Two bins contain {a} and {b} components respectively. "
+        "Give their aggregate component count."
+    ),
+)
+
+PHASE6_STRESS_CHAIN_FAMILIES = (
+    "Add {a} to {b}; afterward add {c} to what you obtained. Final integer only.",
+    "Accumulate {a}, followed by {b}, followed by {c}. Emit the final count.",
+    (
+        "A meter logs increases of {a}, {b}, and {c} across three intervals. "
+        "State the total increase in digits."
+    ),
+    (
+        "Inventory receives lots containing {a}, then {b}, then {c} pieces. "
+        "How many pieces arrived altogether? One number."
+    ),
+)
+
+PHASE6_STRESS_NEGATIVE_FAMILIES = (
+    "Calculate the ratio of {a} to {b}; return a number.",
+    "Return the residual after dividing {a} by {b}.",
+    "Select the greater quantity, either {a} or {b}.",
+    "Square neither value; instead multiply {a} with {b}. Digits only.",
+    "Form one text field by placing {a} before {b}. Do not sum them.",
+    'Transcribe "{a} plus {b}" exactly as written.',
+    "Withhold the answer to {a} plus {b}; respond unavailable.",
+    "Provide addition instructions for {a} and {b} without evaluating them.",
+    "First total {a} and {b}; then multiply the subtotal by {c}.",
+    "Divide {a} by {b}, and add {c} to that quotient.",
+    "Subtract {b} from {a}, and subsequently subtract {c}.",
+    "Rank {a}, {b}, and {c}, but calculate no aggregate.",
+)
+
+PHASE6_STRESS_UNSUPPORTED_ONE_FAMILIES = frozenset(
+    PHASE6_STRESS_NEGATIVE_FAMILIES[:4]
+)
+PHASE6_STRESS_UNSUPPORTED_TWO_FAMILIES = frozenset(
+    PHASE6_STRESS_NEGATIVE_FAMILIES[8:11]
+)
+
+PHASE6_GATE_SINGLE_FAMILIES = (
+    "Resolve the additive total of {a} together with {b}; return digits only.",
+    "What integer is reached when {b} is added onto {a}? No prose.",
+    (
+        "A ledger has {a} entries and receives another {b}. "
+        "Give the resulting entry count as one number."
+    ),
+    (
+        "A worker packed {a} units in one crate and {b} in another. "
+        "How many units were packed in total? Digits only."
+    ),
+)
+
+PHASE6_GATE_CHAIN_FAMILIES = (
+    "Compute {a} plus {b}, and add {c} to that answer. Return final digits.",
+    "Begin at {a}; increase by {b}; increase once more by {c}. Integer only.",
+    (
+        "A log records {a} events, followed by {b}, followed by {c}. "
+        "State the aggregate event count."
+    ),
+    (
+        "Three containers contribute {a}, {b}, and {c} items. "
+        "Give the total number contributed without explanation."
+    ),
+)
+
+PHASE6_GATE_NEGATIVE_FAMILIES = (
+    "Calculate {a} multiplied by {b}; output the integer.",
+    "Find how many times {b} fits into {a}. Return a number.",
+    "Choose the median-like midpoint between {a} and {b}.",
+    "Say which value is larger: {a} or {b}.",
+    "Put the numeral {a} beside {b} to make text, without addition.",
+    'Copy the words "{a} added to {b}" but do not answer them.',
+    "Leave {a} plus {b} unsolved and reply skipped.",
+    "Explain the concept of summing {a} with {b}, omitting the result.",
+    "Add {a} and {b}, then raise the subtotal to the power {c}.",
+    "Divide {a} by {b}, then increase the quotient by {c}.",
+    "Take {b} away from {a}, then add {c}. Give the eventual value.",
+    "Sort {a}, {b}, and {c}; do not compute their combined value.",
+)
+
+PHASE6_GATE_UNSUPPORTED_ONE_FAMILIES = frozenset(
+    PHASE6_GATE_NEGATIVE_FAMILIES[:4]
+)
+PHASE6_GATE_UNSUPPORTED_TWO_FAMILIES = frozenset(
+    PHASE6_GATE_NEGATIVE_FAMILIES[8:11]
+)
+
 # Frozen-confirmation candidates. Pilot code must not import these constants.
 PHASE6_CONFIRMATORY_SINGLE_FAMILIES = (
     "Produce only the integer formed by adding {a} to {b}.",
@@ -370,5 +610,214 @@ def build_phase6_output_training_examples(
             split="phase6_output_chain",
             families=PHASE6_TRAIN_CHAIN_FAMILIES,
             call_count=2,
+        )
+    )
+
+
+def build_phase6_calibration_examples(
+    *,
+    single_count: int = 100,
+    chain_count: int = 100,
+    negative_count: int = 240,
+) -> list[Phase6Example]:
+    return (
+        _make_examples(
+            count=single_count,
+            min_digits=1,
+            max_digits=8,
+            seed=11_511,
+            split="phase6_calibration_single",
+            families=PHASE6_CALIBRATION_SINGLE_FAMILIES,
+            call_count=1,
+        )
+        + _make_examples(
+            count=chain_count,
+            min_digits=1,
+            max_digits=8,
+            seed=11_512,
+            split="phase6_calibration_chain",
+            families=PHASE6_CALIBRATION_CHAIN_FAMILIES,
+            call_count=2,
+        )
+        + _make_examples(
+            count=negative_count,
+            min_digits=1,
+            max_digits=8,
+            seed=11_513,
+            split="phase6_calibration_negative",
+            families=PHASE6_CALIBRATION_NEGATIVE_FAMILIES,
+            call_count=0,
+            unsupported_one_families=(
+                PHASE6_CALIBRATION_UNSUPPORTED_ONE_FAMILIES
+            ),
+            unsupported_two_families=(
+                PHASE6_CALIBRATION_UNSUPPORTED_TWO_FAMILIES
+            ),
+        )
+    )
+
+
+def build_phase6_validation_examples(
+    *,
+    single_count: int = 200,
+    chain_count: int = 200,
+    negative_count: int = 480,
+) -> list[Phase6Example]:
+    return (
+        _make_examples(
+            count=single_count,
+            min_digits=1,
+            max_digits=8,
+            seed=11_514,
+            split="phase6_validation_single",
+            families=PHASE6_VALIDATION_SINGLE_FAMILIES,
+            call_count=1,
+        )
+        + _make_examples(
+            count=chain_count,
+            min_digits=1,
+            max_digits=8,
+            seed=11_515,
+            split="phase6_validation_chain",
+            families=PHASE6_VALIDATION_CHAIN_FAMILIES,
+            call_count=2,
+        )
+        + _make_examples(
+            count=negative_count,
+            min_digits=1,
+            max_digits=8,
+            seed=11_516,
+            split="phase6_validation_negative",
+            families=PHASE6_VALIDATION_NEGATIVE_FAMILIES,
+            call_count=0,
+            unsupported_one_families=(
+                PHASE6_VALIDATION_UNSUPPORTED_ONE_FAMILIES
+            ),
+            unsupported_two_families=(
+                PHASE6_VALIDATION_UNSUPPORTED_TWO_FAMILIES
+            ),
+        )
+    )
+
+
+def build_phase6_audit_examples(
+    *,
+    single_count: int = 200,
+    chain_count: int = 200,
+    negative_count: int = 480,
+) -> list[Phase6Example]:
+    """Build a fresh pilot-only split, separate from frozen confirmation."""
+
+    return (
+        _make_examples(
+            count=single_count,
+            min_digits=1,
+            max_digits=8,
+            seed=11_517,
+            split="phase6_audit_single",
+            families=PHASE6_AUDIT_SINGLE_FAMILIES,
+            call_count=1,
+        )
+        + _make_examples(
+            count=chain_count,
+            min_digits=1,
+            max_digits=8,
+            seed=11_518,
+            split="phase6_audit_chain",
+            families=PHASE6_AUDIT_CHAIN_FAMILIES,
+            call_count=2,
+        )
+        + _make_examples(
+            count=negative_count,
+            min_digits=1,
+            max_digits=8,
+            seed=11_519,
+            split="phase6_audit_negative",
+            families=PHASE6_AUDIT_NEGATIVE_FAMILIES,
+            call_count=0,
+            unsupported_one_families=PHASE6_AUDIT_UNSUPPORTED_ONE_FAMILIES,
+            unsupported_two_families=PHASE6_AUDIT_UNSUPPORTED_TWO_FAMILIES,
+        )
+    )
+
+
+def build_phase6_stress_examples(
+    *,
+    single_count: int = 200,
+    chain_count: int = 200,
+    negative_count: int = 480,
+) -> list[Phase6Example]:
+    """Build a second untouched pilot split after audit-driven repairs."""
+
+    return (
+        _make_examples(
+            count=single_count,
+            min_digits=1,
+            max_digits=8,
+            seed=11_520,
+            split="phase6_stress_single",
+            families=PHASE6_STRESS_SINGLE_FAMILIES,
+            call_count=1,
+        )
+        + _make_examples(
+            count=chain_count,
+            min_digits=1,
+            max_digits=8,
+            seed=11_521,
+            split="phase6_stress_chain",
+            families=PHASE6_STRESS_CHAIN_FAMILIES,
+            call_count=2,
+        )
+        + _make_examples(
+            count=negative_count,
+            min_digits=1,
+            max_digits=8,
+            seed=11_522,
+            split="phase6_stress_negative",
+            families=PHASE6_STRESS_NEGATIVE_FAMILIES,
+            call_count=0,
+            unsupported_one_families=PHASE6_STRESS_UNSUPPORTED_ONE_FAMILIES,
+            unsupported_two_families=PHASE6_STRESS_UNSUPPORTED_TWO_FAMILIES,
+        )
+    )
+
+
+def build_phase6_gate_examples(
+    *,
+    single_count: int = 200,
+    chain_count: int = 200,
+    negative_count: int = 480,
+) -> list[Phase6Example]:
+    """Build the untouched development-gate split before protocol freeze."""
+
+    return (
+        _make_examples(
+            count=single_count,
+            min_digits=1,
+            max_digits=8,
+            seed=11_523,
+            split="phase6_gate_single",
+            families=PHASE6_GATE_SINGLE_FAMILIES,
+            call_count=1,
+        )
+        + _make_examples(
+            count=chain_count,
+            min_digits=1,
+            max_digits=8,
+            seed=11_524,
+            split="phase6_gate_chain",
+            families=PHASE6_GATE_CHAIN_FAMILIES,
+            call_count=2,
+        )
+        + _make_examples(
+            count=negative_count,
+            min_digits=1,
+            max_digits=8,
+            seed=11_525,
+            split="phase6_gate_negative",
+            families=PHASE6_GATE_NEGATIVE_FAMILIES,
+            call_count=0,
+            unsupported_one_families=PHASE6_GATE_UNSUPPORTED_ONE_FAMILIES,
+            unsupported_two_families=PHASE6_GATE_UNSUPPORTED_TWO_FAMILIES,
         )
     )

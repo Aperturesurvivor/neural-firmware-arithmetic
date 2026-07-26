@@ -16,6 +16,7 @@ from neural_firmware.phase6_firmware import (
     NeuralFirmwareInstallation,
     NeuralRegisterMapper,
     Phase6RouteMode,
+    register_program_call_counts,
 )
 from neural_firmware.pretrained_data import answer_token_ids, chat_prompt_ids
 from neural_firmware.pretrained_training import ModelBundle
@@ -328,6 +329,171 @@ class ControllerTrainConfig:
     weight_decay: float = 0.01
 
 
+@dataclass(frozen=True)
+class EarlyControllerTrainConfig:
+    seed: int
+    steps: int
+    batch_size: int
+    learning_rate: float
+    weight_decay: float = 0.01
+
+
+def _early_controller_parameters(
+    mapper: NeuralRegisterMapper,
+) -> list[nn.Parameter]:
+    modules: tuple[nn.Module, ...] = (
+        mapper.control_attention,
+        mapper.control_norm,
+        mapper.control_classifier,
+    )
+    parameters = [mapper.control_query]
+    for module in modules:
+        parameters.extend(module.parameters())
+    return parameters
+
+
+def train_early_controller(
+    mapper: NeuralRegisterMapper,
+    features: Phase6FeatureSet,
+    config: EarlyControllerTrainConfig,
+    *,
+    device: torch.device,
+) -> dict[str, object]:
+    """Train only the sequence-aware routing branch of the register mapper."""
+
+    if features.controller_targets is None:
+        raise ValueError("controller targets are required")
+    set_phase6_seed(config.seed)
+    mapper.to(device)
+    for parameter in mapper.parameters():
+        parameter.requires_grad_(False)
+    parameters = _early_controller_parameters(mapper)
+    for parameter in parameters:
+        parameter.requires_grad_(True)
+    mapper.train()
+    optimizer = torch.optim.AdamW(
+        parameters,
+        lr=config.learning_rate,
+        weight_decay=config.weight_decay,
+    )
+    counts = torch.bincount(features.controller_targets, minlength=5).float()
+    class_weights = (counts.sum() / (5 * counts.clamp_min(1))).to(device)
+    generator = torch.Generator().manual_seed(config.seed)
+    initial_loss = float("nan")
+    final_loss = float("nan")
+    started = time.perf_counter()
+    for step in range(config.steps):
+        indices = torch.randint(
+            features.examples,
+            (config.batch_size,),
+            generator=generator,
+        )
+        logits = mapper.control(
+            features.early_hidden[indices].to(device).float(),
+            features.attention_mask[indices].to(device),
+            features.anchor_positions[indices].to(device),
+        )
+        targets = features.controller_targets[indices].to(device)
+        loss = nn.functional.cross_entropy(
+            logits,
+            targets,
+            weight=class_weights,
+        )
+        if step == 0:
+            initial_loss = float(loss.item())
+        optimizer.zero_grad(set_to_none=True)
+        loss.backward()
+        nn.utils.clip_grad_norm_(parameters, max_norm=1.0)
+        optimizer.step()
+        final_loss = float(loss.item())
+    if device.type == "mps":
+        torch.mps.synchronize()
+    mapper.eval()
+    return {
+        "config": asdict(config),
+        "trainable_parameters": sum(
+            parameter.numel() for parameter in parameters
+        ),
+        "initial_loss": initial_loss,
+        "final_loss": final_loss,
+        "wall_time_seconds": time.perf_counter() - started,
+    }
+
+
+def train_fused_controller(
+    mapper: NeuralRegisterMapper,
+    controller: NeuralCallController,
+    features: Phase6FeatureSet,
+    config: ControllerTrainConfig,
+    *,
+    device: torch.device,
+) -> dict[str, object]:
+    """Jointly calibrate early sequence and late anchor routing logits."""
+
+    if features.controller_targets is None:
+        raise ValueError("controller targets are required")
+    set_phase6_seed(config.seed)
+    mapper.to(device)
+    controller.to(device)
+    for parameter in mapper.parameters():
+        parameter.requires_grad_(False)
+    parameters = _early_controller_parameters(mapper)
+    parameters.extend(controller.parameters())
+    for parameter in parameters:
+        parameter.requires_grad_(True)
+    mapper.train()
+    controller.train()
+    optimizer = torch.optim.AdamW(
+        parameters,
+        lr=config.learning_rate,
+        weight_decay=config.weight_decay,
+    )
+    counts = torch.bincount(features.controller_targets, minlength=5).float()
+    class_weights = (counts.sum() / (5 * counts.clamp_min(1))).to(device)
+    generator = torch.Generator().manual_seed(config.seed)
+    initial_loss = float("nan")
+    final_loss = float("nan")
+    started = time.perf_counter()
+    for step in range(config.steps):
+        indices = torch.randint(
+            features.examples,
+            (config.batch_size,),
+            generator=generator,
+        )
+        early_logits = mapper.control(
+            features.early_hidden[indices].to(device).float(),
+            features.attention_mask[indices].to(device),
+            features.anchor_positions[indices].to(device),
+        )
+        late_logits = controller(features.late_hidden[indices].to(device))
+        targets = features.controller_targets[indices].to(device)
+        loss = nn.functional.cross_entropy(
+            early_logits + late_logits,
+            targets,
+            weight=class_weights,
+        )
+        if step == 0:
+            initial_loss = float(loss.item())
+        optimizer.zero_grad(set_to_none=True)
+        loss.backward()
+        nn.utils.clip_grad_norm_(parameters, max_norm=1.0)
+        optimizer.step()
+        final_loss = float(loss.item())
+    if device.type == "mps":
+        torch.mps.synchronize()
+    mapper.eval()
+    controller.eval()
+    return {
+        "config": asdict(config),
+        "trainable_parameters": sum(
+            parameter.numel() for parameter in parameters
+        ),
+        "initial_loss": initial_loss,
+        "final_loss": final_loss,
+        "wall_time_seconds": time.perf_counter() - started,
+    }
+
+
 def train_call_controller(
     controller: NeuralCallController,
     features: Phase6FeatureSet,
@@ -398,9 +564,20 @@ def evaluate_call_controller(
     if features.controller_targets is None:
         raise ValueError("controller targets are required")
     logits = controller(features.late_hidden.to(device)).cpu()
+    return _evaluate_controller_logits(logits, examples, threshold=threshold)
+
+
+def _evaluate_controller_logits(
+    logits: torch.Tensor,
+    examples: list[Phase6Example],
+    *,
+    threshold: float,
+    positive_counts: torch.Tensor | None = None,
+) -> dict[str, object]:
     probabilities = torch.softmax(logits, dim=-1)
     route_probabilities = probabilities[:, 1:3].sum(dim=-1)
-    positive_counts = probabilities[:, 1:3].argmax(dim=-1) + 1
+    if positive_counts is None:
+        positive_counts = probabilities[:, 1:3].argmax(dim=-1) + 1
     predictions = torch.where(
         route_probabilities >= threshold,
         positive_counts,
@@ -452,6 +629,42 @@ def evaluate_call_controller(
     }
 
 
+@torch.inference_mode()
+def evaluate_fused_controller(
+    mapper: NeuralRegisterMapper,
+    controller: NeuralCallController,
+    features: Phase6FeatureSet,
+    examples: list[Phase6Example],
+    *,
+    device: torch.device,
+    threshold: float,
+    batch_size: int = 32,
+) -> dict[str, object]:
+    if features.controller_targets is None:
+        raise ValueError("controller targets are required")
+    early_logits = []
+    positive_counts = []
+    for start in range(0, features.examples, batch_size):
+        stop = min(start + batch_size, features.examples)
+        register_logits, batch_early_logits = mapper.forward_with_control(
+            features.early_hidden[start:stop].to(device).float(),
+            features.attention_mask[start:stop].to(device),
+            features.anchor_positions[start:stop].to(device),
+        )
+        early_logits.append(batch_early_logits.cpu())
+        positive_counts.append(
+            register_program_call_counts(register_logits).cpu()
+        )
+    late_logits = controller(features.late_hidden.to(device)).cpu()
+    logits = torch.cat(early_logits) + late_logits
+    return _evaluate_controller_logits(
+        logits,
+        examples,
+        threshold=threshold,
+        positive_counts=torch.cat(positive_counts),
+    )
+
+
 def select_call_threshold(
     controller: NeuralCallController,
     features: Phase6FeatureSet,
@@ -461,7 +674,7 @@ def select_call_threshold(
     maximum_false_call_rate: float = 0.01,
 ) -> dict[str, float | int]:
     candidates = []
-    for integer in range(50, 100):
+    for integer in range(1, 100):
         threshold = integer / 100
         evaluation = evaluate_call_controller(
             controller,
@@ -497,6 +710,54 @@ def select_call_threshold(
         ),
     )
     return selected
+
+
+def select_fused_threshold(
+    mapper: NeuralRegisterMapper,
+    controller: NeuralCallController,
+    features: Phase6FeatureSet,
+    examples: list[Phase6Example],
+    *,
+    device: torch.device,
+    maximum_false_call_rate: float = 0.01,
+) -> dict[str, float | int]:
+    candidates = []
+    for integer in range(1, 100):
+        threshold = integer / 100
+        evaluation = evaluate_fused_controller(
+            mapper,
+            controller,
+            features,
+            examples,
+            device=device,
+            threshold=threshold,
+        )
+        candidates.append(
+            {
+                "threshold": threshold,
+                "call_count_accuracy": evaluation["call_count_accuracy"],
+                "positive_call_count_accuracy": evaluation[
+                    "positive_call_count_accuracy"
+                ],
+                "false_calls": evaluation["false_calls"],
+                "false_call_rate": evaluation["false_call_rate"],
+            }
+        )
+    eligible = [
+        row
+        for row in candidates
+        if row["false_call_rate"] <= maximum_false_call_rate
+    ]
+    pool = eligible or candidates
+    return max(
+        pool,
+        key=lambda row: (
+            row["positive_call_count_accuracy"],
+            row["call_count_accuracy"],
+            -row["false_call_rate"],
+            -row["threshold"],
+        ),
+    )
 
 
 @dataclass(frozen=True)
