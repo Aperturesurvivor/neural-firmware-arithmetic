@@ -1,0 +1,13 @@
+seed,split,exact_registers,examples,exact_register_accuracy
+2101,id_1_4,150,150,1.0
+2101,ood_primary_5_8,150,150,1.0
+2101,ood_long_9_12,150,150,1.0
+2101,carry_chain,75,75,1.0
+2203,id_1_4,150,150,1.0
+2203,ood_primary_5_8,150,150,1.0
+2203,ood_long_9_12,150,150,1.0
+2203,carry_chain,75,75,1.0
+2309,id_1_4,150,150,1.0
+2309,ood_primary_5_8,150,150,1.0
+2309,ood_long_9_12,150,150,1.0
+2309,carry_chain,75,75,1.0

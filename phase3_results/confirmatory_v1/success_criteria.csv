@@ -1,0 +1,9 @@
+criterion,observed,comparison,threshold,passed
+internal_primary_mean_accuracy,1.0,>=,0.99,True
+internal_minus_control_primary_points,1.0,>=,0.75,True
+exact_register_mean_accuracy,1.0,>=,0.995,True
+language_preservation_rate,1.0,>=,0.99,True
+wrong_state_causal_rate,1.0,>=,0.95,True
+state_substitution_causal_rate,1.0,>=,0.95,True
+unit_off_primary_drop_points,1.0,>=,0.8,True
+minimum_post_unit_mean_logit_margin,9.796544583638509,>,0.0,True

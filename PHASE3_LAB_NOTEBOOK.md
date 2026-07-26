@@ -286,3 +286,125 @@ otherwise noted. Phase 3 begins after the completed phase-2 reporting commit
   interventions, unit-off dependence, and downstream survival.
 - No confirmatory training or evaluation has begun. Next action is complete
   verification, commit the frozen source, and start from that clean commit.
+
+## 2026-07-25 — Frozen-source verification and confirmatory launch
+
+- Ran the complete pre-confirmation verification suite:
+  - 15/15 tests passed;
+  - Ruff reported no violations.
+- Committed the exact source and protocol before confirmation as
+  `a2cf317d42ace613817d3b609b60e245402e3783`
+  (`Freeze native transformer unit confirmatory study`).
+- Launched exactly:
+
+  ```bash
+  uv run python scripts/run_phase3_study.py \
+    --config configs/phase3_study.json \
+    --artifact-directory phase3_artifacts/confirmatory_v1 \
+    --result-directory phase3_results/confirmatory_v1
+  ```
+
+- The runner wrote `frozen_state.json` before model fitting:
+  - source commit:
+    `a2cf317d42ace613817d3b609b60e245402e3783`;
+  - canonical configuration SHA-256:
+    `30a31563834e35edd0bdd635b452866d26611d25f75f646f5f08f6ddd963c261`;
+  - confirmatory flag: `true`.
+- The fixed logical evaluation set has SHA-256
+  `d217043d5d20bca4f9aade737ee01d62624f91aadeb6ffea9dfd4233ce606ca3`.
+- One long shell session ended at the conversation-turn boundary after
+  retaining complete seed-2101 and seed-2203 summaries. The same frozen command
+  was invoked again. The resumable runner detected and skipped every completed
+  condition, then computed only the missing seed-2309 work. No training seed,
+  prompt, hyperparameter, checkpoint, or result was replaced or recomputed
+  under a different confirmatory label.
+- The assembled study records a 2,274.71-second interval from initial frozen
+  launch to final assembly. This interval includes the boundary interruption
+  and resume and is not presented as a pure benchmark.
+
+## 2026-07-25 — Confirmatory arithmetic and matched-control results
+
+- Every independently trained internal-unit seed scored:
+  - 150/150 on one- to four-digit in-distribution additions;
+  - 150/150 on five- to eight-digit primary OOD additions;
+  - 150/150 on nine- to twelve-digit long OOD additions;
+  - 75/75 on five- to twelve-digit carry chains.
+- Pooled internal arithmetic was 1,575/1,575 whole-sequence exact matches.
+- The frozen unmodified base scored 0/150, 0/150, 0/150, and 0/75 on the four
+  corresponding sets. It generally emitted explanatory prose under this
+  deliberately controlled digit-only response contract.
+- The parameter-matched learned internal controls scored:
+  - seed 2101: 40/150 ID, 0/150 primary OOD, 0/150 long OOD, 0/75 carry;
+  - seed 2203: 29/150 ID, 0/150 primary OOD, 0/150 long OOD, 2/75 carry;
+  - seed 2309: 35/150 ID, 0/150 primary OOD, 0/150 long OOD, 1/75 carry.
+- Mean learned-control ID accuracy was 23.11%; mean primary and long OOD
+  accuracy were both zero; mean carry-chain accuracy was 1.33%.
+- The primary paired internal-minus-control difference was 100 percentage
+  points in all three seeds. A 100,000-draw seed-level paired bootstrap with
+  analysis seed 20260726 consequently yielded the degenerate 95% percentile
+  interval [100, 100] percentage points. With only three seeds, this interval
+  reflects the observed seed-level invariance and is not broad evidence about
+  arbitrary training setups.
+
+## 2026-07-25 — Register, preservation, ablation, and causal results
+
+- The learned, then frozen, residual-to-digit encoders recovered both operand
+  registers exactly on 1,575/1,575 evaluated additions across the three seeds.
+  The deterministic cell therefore consumed predicted internal digits, not
+  ground-truth operands.
+- Disabling the unit after training reduced primary OOD exact match from
+  450/450 to 0/450, a 100-percentage-point drop.
+- On 300 ineligible prompts, the real wrapped model produced exactly the same
+  complete output-token sequence as an independently loaded base model:
+  300/300 preserved.
+- In wrong-state interventions, generation exactly followed the deliberately
+  incorrect typed result in 90/90 cases.
+- In equal-length state substitutions, generation exactly followed the donor
+  state in 39/39 cases.
+- These three checks distinguish an operative internal causal path from a
+  correlated probe or an external post-generation replacement.
+
+## 2026-07-25 — Downstream survival and preregistered verdict
+
+- Collected 30 first-answer-symbol traces: ten fixed long-OOD examples for
+  each of three independently trained units.
+- Under the shared final-norm/tied-head logit lens, the mean correct-digit
+  margin was strongly negative immediately before the unit after block 5,
+  then positive after the wrapped sixth block and after every remaining block.
+- The smallest post-unit mean margin was +9.7965 logits after block 22. The
+  answer state therefore survived all eighteen subsequent unmodified
+  transformer blocks with a positive mean margin.
+- Wrote `scripts/analyze_phase3.py` to reconstruct every tabular result,
+  bootstrap, success criterion, error inventory, and three publication
+  figures from the raw study JSON.
+- Independent analysis found all eight frozen criteria passed:
+  1. internal primary mean 1.000 >= 0.990;
+  2. paired internal-control advantage 1.000 >= 0.750;
+  3. exact-register mean 1.000 >= 0.995;
+  4. preservation 1.000 >= 0.990;
+  5. wrong-state causal rate 1.000 >= 0.950;
+  6. substitution causal rate 1.000 >= 0.950;
+  7. unit-off primary drop 1.000 >= 0.800;
+  8. minimum post-unit mean margin +9.7965 > 0.
+- **Frozen confirmatory verdict: successful.**
+- This verdict is deliberately narrow. It is an architectural proof on a
+  registered, space-separated addition grammar. It does not establish general
+  mathematical understanding, operation selection, natural-language operand
+  extraction, subtraction/multiplication, or a calculator compiled into one
+  ordinary scalar transformer neuron.
+
+## 2026-07-25 — Reproducibility records and reporting environment
+
+- Added `scripts/hash_phase3_artifacts.py`. The raw confirmatory archive
+  currently contains 17 files totaling 6,410,409 bytes; the tracked manifest
+  stores the SHA-256 and byte count of every file relative to the archive root.
+- Added `scripts/capture_phase3_environment.py` and recorded:
+  - Apple arm64 host with 17,179,869,184 bytes (16 GiB) unified memory;
+  - macOS 26.5.2 build 25F84;
+  - Python 3.12.12;
+  - PyTorch 2.13.0 with MPS available;
+  - Transformers 4.57.6;
+  - NumPy 2.5.1 and Matplotlib 3.11.1.
+- Compact analysis tables, figures, environment metadata, and the manifest are
+  tracked. The 6.2 MiB raw archive and checkpoints remain locally retained
+  under the ignored `phase3_artifacts/confirmatory_v1/` directory.

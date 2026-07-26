@@ -1,0 +1,13 @@
+method,method_label,split,split_label,seed_runs,correct_total,examples_total,mean_accuracy,sample_sd
+base,Frozen base,id_1_4,ID 1–4 digits,1,0,150,0.0,0.0
+base,Frozen base,ood_primary_5_8,Primary OOD 5–8 digits,1,0,150,0.0,0.0
+base,Frozen base,ood_long_9_12,Long OOD 9–12 digits,1,0,150,0.0,0.0
+base,Frozen base,carry_chain,Carry chain 5–12 digits,1,0,75,0.0,0.0
+learned_control,Matched learned adapter,id_1_4,ID 1–4 digits,3,104,450,0.23111111111111113,0.036717136981907345
+learned_control,Matched learned adapter,ood_primary_5_8,Primary OOD 5–8 digits,3,0,450,0.0,0.0
+learned_control,Matched learned adapter,ood_long_9_12,Long OOD 9–12 digits,3,0,450,0.0,0.0
+learned_control,Matched learned adapter,carry_chain,Carry chain 5–12 digits,3,3,225,0.013333333333333334,0.013333333333333334
+internal,Internal deterministic unit,id_1_4,ID 1–4 digits,3,450,450,1.0,0.0
+internal,Internal deterministic unit,ood_primary_5_8,Primary OOD 5–8 digits,3,450,450,1.0,0.0
+internal,Internal deterministic unit,ood_long_9_12,Long OOD 9–12 digits,3,450,450,1.0,0.0
+internal,Internal deterministic unit,carry_chain,Carry chain 5–12 digits,3,225,225,1.0,0.0

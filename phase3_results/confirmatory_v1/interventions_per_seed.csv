@@ -1,0 +1,7 @@
+seed,intervention,causal_matches,examples,causal_rate
+2101,wrong_state,30,30,1.0
+2101,state_substitution,13,13,1.0
+2203,wrong_state,30,30,1.0
+2203,state_substitution,13,13,1.0
+2309,wrong_state,30,30,1.0
+2309,state_substitution,13,13,1.0

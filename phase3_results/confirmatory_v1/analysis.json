@@ -1,0 +1,116 @@
+{
+  "source": {
+    "study": "phase3_artifacts/confirmatory_v1/study.json",
+    "source_commit": "a2cf317d42ace613817d3b609b60e245402e3783",
+    "config_sha256": "30a31563834e35edd0bdd635b452866d26611d25f75f646f5f08f6ddd963c261",
+    "evaluation_sha256": "d217043d5d20bca4f9aade737ee01d62624f91aadeb6ffea9dfd4233ce606ca3",
+    "model_id": "Qwen/Qwen2.5-0.5B-Instruct",
+    "model_revision": "7ae557604adf67be50417f59c2c2f167def9a775"
+  },
+  "primary_endpoint": {
+    "internal_accuracy_by_seed": {
+      "2101": 1.0,
+      "2203": 1.0,
+      "2309": 1.0
+    },
+    "control_accuracy_by_seed": {
+      "2101": 0.0,
+      "2203": 0.0,
+      "2309": 0.0
+    },
+    "paired_difference_by_seed": {
+      "2101": 1.0,
+      "2203": 1.0,
+      "2309": 1.0
+    },
+    "mean_internal_accuracy": 1.0,
+    "mean_control_accuracy": 0.0,
+    "mean_paired_difference": 1.0,
+    "bootstrap_draws": 100000,
+    "bootstrap_seed": 20260726,
+    "bootstrap_95_percentile_ci": [
+      1.0,
+      1.0
+    ],
+    "bootstrap_unit": "training seed"
+  },
+  "pooled_counts": {
+    "internal_arithmetic_correct": 1575,
+    "internal_arithmetic_examples": 1575,
+    "exact_registers": 1575,
+    "register_examples": 1575,
+    "preserved_outputs": 300,
+    "preservation_prompts": 300,
+    "wrong_state_matches": 90,
+    "wrong_state_examples": 90,
+    "substitution_matches": 39,
+    "substitution_examples": 39,
+    "unit_off_primary_correct": 0,
+    "unit_off_primary_examples": 450
+  },
+  "trace": {
+    "trace_examples": 30,
+    "minimum_post_unit_mean_margin": 9.796544583638509,
+    "minimum_depth": 22,
+    "all_post_unit_mean_margins_positive": true
+  },
+  "success_criteria": [
+    {
+      "criterion": "internal_primary_mean_accuracy",
+      "observed": 1.0,
+      "comparison": ">=",
+      "threshold": 0.99,
+      "passed": true
+    },
+    {
+      "criterion": "internal_minus_control_primary_points",
+      "observed": 1.0,
+      "comparison": ">=",
+      "threshold": 0.75,
+      "passed": true
+    },
+    {
+      "criterion": "exact_register_mean_accuracy",
+      "observed": 1.0,
+      "comparison": ">=",
+      "threshold": 0.995,
+      "passed": true
+    },
+    {
+      "criterion": "language_preservation_rate",
+      "observed": 1.0,
+      "comparison": ">=",
+      "threshold": 0.99,
+      "passed": true
+    },
+    {
+      "criterion": "wrong_state_causal_rate",
+      "observed": 1.0,
+      "comparison": ">=",
+      "threshold": 0.95,
+      "passed": true
+    },
+    {
+      "criterion": "state_substitution_causal_rate",
+      "observed": 1.0,
+      "comparison": ">=",
+      "threshold": 0.95,
+      "passed": true
+    },
+    {
+      "criterion": "unit_off_primary_drop_points",
+      "observed": 1.0,
+      "comparison": ">=",
+      "threshold": 0.8,
+      "passed": true
+    },
+    {
+      "criterion": "minimum_post_unit_mean_logit_margin",
+      "observed": 9.796544583638509,
+      "comparison": ">",
+      "threshold": 0.0,
+      "passed": true
+    }
+  ],
+  "overall_preregistered_success": true
+}

@@ -1,0 +1,25 @@
+method,method_label,seed,split,correct,examples,exact_match_accuracy,mean_latency_seconds
+internal,Internal deterministic unit,2101,id_1_4,150,150,1.0,0.14353656585997668
+internal,Internal deterministic unit,2101,ood_primary_5_8,150,150,1.0,0.27673522163978004
+internal,Internal deterministic unit,2101,ood_long_9_12,150,150,1.0,0.4108833777734253
+internal,Internal deterministic unit,2101,carry_chain,75,75,1.0,0.3289663344664344
+internal,Internal deterministic unit,2203,id_1_4,150,150,1.0,0.14587445056662546
+internal,Internal deterministic unit,2203,ood_primary_5_8,150,150,1.0,0.2796195919335393
+internal,Internal deterministic unit,2203,ood_long_9_12,150,150,1.0,0.4151213356065273
+internal,Internal deterministic unit,2203,carry_chain,75,75,1.0,0.3330377494131487
+internal,Internal deterministic unit,2309,id_1_4,150,150,1.0,0.29314207303968337
+internal,Internal deterministic unit,2309,ood_primary_5_8,150,150,1.0,0.5536412499665554
+internal,Internal deterministic unit,2309,ood_long_9_12,150,150,1.0,0.7323345380396737
+internal,Internal deterministic unit,2309,carry_chain,75,75,1.0,0.553183950559663
+learned_control,Matched learned adapter,2101,id_1_4,40,150,0.26666666666666666,0.14005005940668827
+learned_control,Matched learned adapter,2101,ood_primary_5_8,0,150,0.0,0.2486045077800615
+learned_control,Matched learned adapter,2101,ood_long_9_12,0,150,0.0,0.3653887922134891
+learned_control,Matched learned adapter,2101,carry_chain,0,75,0.0,0.3096550055468106
+learned_control,Matched learned adapter,2203,id_1_4,29,150,0.19333333333333333,0.13637125915328702
+learned_control,Matched learned adapter,2203,ood_primary_5_8,0,150,0.0,0.2423993075134058
+learned_control,Matched learned adapter,2203,ood_long_9_12,0,150,0.0,0.3164322602795922
+learned_control,Matched learned adapter,2203,carry_chain,2,75,0.02666666666666667,0.27509262722654965
+learned_control,Matched learned adapter,2309,id_1_4,35,150,0.23333333333333334,0.21887966192055805
+learned_control,Matched learned adapter,2309,ood_primary_5_8,0,150,0.0,0.3402857844132329
+learned_control,Matched learned adapter,2309,ood_long_9_12,0,150,0.0,0.43341480106018326
+learned_control,Matched learned adapter,2309,carry_chain,1,75,0.013333333333333334,0.36965011394679703

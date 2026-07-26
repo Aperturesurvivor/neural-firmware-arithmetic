@@ -67,6 +67,41 @@ The frozen protocol is [`PHASE2_PROTOCOL.md`](PHASE2_PROTOCOL.md), and the full
 chronological record is
 [`PHASE2_LAB_NOTEBOOK.md`](PHASE2_LAB_NOTEBOOK.md).
 
+## Internal transformer-unit study
+
+The third experiment implements the closer version of the originating idea:
+the original sixth decoder block is wrapped in-place inside Qwen's repeated
+layer stack with a learned residual-to-digit encoder, a frozen zero-parameter
+ripple-carry cell, and a learned typed-symbol-to-residual decoder. Eighteen
+unchanged transformer blocks and the original output path remain downstream.
+This is neither post-inference correction nor an output-logit tool.
+
+The two learned interfaces contain 18,826 parameters (about 0.0038% of the
+494-million-parameter base). A same-depth learned adapter with exactly 18,826
+parameters served as the control. Both saw only one- to four-digit training
+addition.
+
+Across three frozen confirmatory seeds, the internal deterministic unit
+achieved:
+
+- 450/450 exact on primary five- to eight-digit OOD addition;
+- 450/450 exact on nine- to twelve-digit addition;
+- 225/225 exact on carry chains;
+- 1,575/1,575 exact internal operand-register recoveries;
+- 300/300 token-exact preservation comparisons;
+- 90/90 wrong-state and 39/39 donor-state causal interventions.
+
+The parameter-matched learned control scored 0/450 on both random OOD splits.
+Turning the deterministic unit off reduced primary accuracy to 0/450. The
+correct first-digit logit margin remained positive after all eighteen
+downstream blocks. All eight preregistered criteria passed.
+
+The primary phase-3 report is
+[`paper_phase3/native-deterministic-transformer-unit.pdf`](paper_phase3/native-deterministic-transformer-unit.pdf).
+The frozen protocol is [`PHASE3_PROTOCOL.md`](PHASE3_PROTOCOL.md), and the
+replication-oriented chronology is
+[`PHASE3_LAB_NOTEBOOK.md`](PHASE3_LAB_NOTEBOOK.md).
+
 ## Reproduction
 
 ```bash
@@ -81,6 +116,14 @@ uv run python scripts/run_phase2_study.py \
   --artifact-directory phase2_artifacts/confirmatory_v1 \
   --result-directory phase2_results/confirmatory_v1
 uv run python scripts/analyze_phase2.py
+
+# Internal transformer-unit confirmatory study
+uv run python scripts/run_phase3_study.py \
+  --config configs/phase3_study.json \
+  --artifact-directory phase3_artifacts/confirmatory_v1 \
+  --result-directory phase3_results/confirmatory_v1
+uv run python scripts/analyze_phase3.py
+uv run python scripts/hash_phase3_artifacts.py
 ```
 
 Compact metrics, configuration files, figures, and the compiled paper are

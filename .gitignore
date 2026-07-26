@@ -26,3 +26,5 @@ paper/*.synctex.gz
 
 paper_phase2/build/
 paper_phase2/rendered/
+paper_phase3/build/
+paper_phase3/rendered/
