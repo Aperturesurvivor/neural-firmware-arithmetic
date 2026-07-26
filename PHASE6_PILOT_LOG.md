@@ -63,3 +63,45 @@ protocol is frozen.
 - Checkpoint SHA-256:
   `258556622cb5d940a8f25e00031aade8bce014587358e821c63b62db67412e45`.
 - Decision: retain v1 as a partial success; do not freeze confirmation.
+
+## 2026-07-26 — Pilot v2
+
+- Corrected register targets to textual operand order and fine-tuned the
+  retained v1 mapper for 1,500 steps.
+- Replaced the overloaded three-class controller with five explicit classes:
+  no call, one addition, two additions, one unsupported operation, and an
+  unsupported multi-operation request. Only the two ADD classes can activate
+  firmware.
+- Seeded module construction before v2 controller initialization.
+- Exact development register recovery improved to:
+  - single-call: 99.5%;
+  - two-call: 100.0%;
+  - all positives: 99.75%;
+  - all digit/PAD slots: 99.964%.
+- This passes the development extraction target and establishes a working
+  learned residual-to-register interface without parser inputs at inference.
+- The factorized controller improved operation diagnostics but retained a
+  threshold tradeoff:
+  - threshold 0.50: 95.125% positive call-count accuracy and 9.67% false
+    calls;
+  - selected threshold 0.97: 79.5% positive call-count accuracy and 1.0%
+    false calls.
+- False calls at threshold 0.50 were almost entirely the held-out mixed
+  operation “add A to B, then divide by C.” Single-call count errors also
+  concentrated in one word problem whose two narrative clauses resembled two
+  computational calls.
+- Integrated diagnostics:
+  - 67/80 positive answers exact;
+  - 80/80 positive operand programs exact;
+  - 62/62 examples with a correct call decision exact;
+  - 0/40 negative activations;
+  - 40/40 negative outputs token-identical to a matched manual base decoder.
+- V2 confirms that parsing, repeated deterministic execution, residual return,
+  and route-off preservation work. Semantic call control remains below the
+  frozen-development gate.
+- Raw record: `phase6_results/pilot_v2.json`.
+- Checkpoint SHA-256:
+  `5c33a62fce82b6cf7bab99f7671029f0c9ceca84f804ed368de6afd8bfc12467`.
+- Decision: retain v2; train the controller on the now-consumed development
+  failures, then select its threshold on new calibration families and
+  evaluate on a separate untouched pilot-validation family set.

@@ -76,6 +76,18 @@ PHASE6_TRAIN_NEGATIVE_FAMILIES = (
     "Describe adding {a}, {b}, and {c} without performing either addition.",
 )
 
+PHASE6_TRAIN_UNSUPPORTED_ONE_FAMILIES = frozenset(
+    PHASE6_TRAIN_NEGATIVE_FAMILIES[:5]
+)
+PHASE6_TRAIN_UNSUPPORTED_TWO_FAMILIES = frozenset(
+    (
+        PHASE6_TRAIN_NEGATIVE_FAMILIES[10],
+        PHASE6_TRAIN_NEGATIVE_FAMILIES[11],
+        PHASE6_TRAIN_NEGATIVE_FAMILIES[12],
+        PHASE6_TRAIN_NEGATIVE_FAMILIES[14],
+    )
+)
+
 PHASE6_DEVELOPMENT_SINGLE_FAMILIES = (
     "Supply the exact additive result for {a} together with {b}. Integer only.",
     "By adding {b} onto {a}, what number is obtained? No explanation.",
@@ -110,6 +122,16 @@ PHASE6_DEVELOPMENT_NEGATIVE_FAMILIES = (
     "Add {a} to {b}, then divide the result by {c}. Give one number.",
     "Sort the values {a}, {b}, and {c}; perform no arithmetic.",
     "Discuss a two-step sum of {a}, {b}, and {c} without computing it.",
+)
+
+PHASE6_DEVELOPMENT_UNSUPPORTED_ONE_FAMILIES = frozenset(
+    PHASE6_DEVELOPMENT_NEGATIVE_FAMILIES[:3]
+)
+PHASE6_DEVELOPMENT_UNSUPPORTED_TWO_FAMILIES = frozenset(
+    (
+        PHASE6_DEVELOPMENT_NEGATIVE_FAMILIES[6],
+        PHASE6_DEVELOPMENT_NEGATIVE_FAMILIES[7],
+    )
 )
 
 # Frozen-confirmation candidates. Pilot code must not import these constants.
@@ -155,6 +177,7 @@ class Phase6Example:
     prompt: str
     operands: tuple[str, ...]
     call_count: int
+    controller_target: int
     answer: str | None
     intermediate_answers: tuple[str, ...]
     family: str
@@ -186,6 +209,8 @@ def _make_examples(
     split: str,
     families: tuple[str, ...],
     call_count: int,
+    unsupported_one_families: frozenset[str] = frozenset(),
+    unsupported_two_families: frozenset[str] = frozenset(),
 ) -> list[Phase6Example]:
     if call_count not in (0, 1, 2):
         raise ValueError("call_count must be zero, one, or two")
@@ -195,11 +220,16 @@ def _make_examples(
         family_index = index % len(families)
         family = families[family_index]
         operand_count = 3 if "{c}" in family or call_count == 2 else 2
-        operands = tuple(
-            _random_decimal(rng, rng.randint(min_digits, max_digits))
-            for _ in range(operand_count)
+        named_operands = {
+            name: _random_decimal(rng, rng.randint(min_digits, max_digits))
+            for name in ("a", "b", "c")[:operand_count]
+        }
+        textual_names = sorted(
+            named_operands,
+            key=lambda name: family.index("{" + name + "}"),
         )
-        values = [int(operand) for operand in operands]
+        operands = tuple(named_operands[name] for name in textual_names)
+        values = [int(named_operands[name]) for name in ("a", "b", "c")[:operand_count]]
         intermediates: tuple[str, ...] = ()
         answer: str | None = None
         if call_count == 1:
@@ -210,15 +240,21 @@ def _make_examples(
             answer = str(first + values[2])
             intermediates = (str(first), answer)
         prompt = family.format(
-            a=operands[0],
-            b=operands[1],
-            c=operands[2] if len(operands) == 3 else "",
+            a=named_operands["a"],
+            b=named_operands["b"],
+            c=named_operands.get("c", ""),
         )
+        controller_target = call_count
+        if family in unsupported_one_families:
+            controller_target = 3
+        elif family in unsupported_two_families:
+            controller_target = 4
         examples.append(
             Phase6Example(
                 prompt=prompt,
                 operands=operands,
                 call_count=call_count,
+                controller_target=controller_target,
                 answer=answer,
                 intermediate_answers=intermediates,
                 family=family,
@@ -262,6 +298,8 @@ def build_phase6_training_examples(
             split="phase6_train_negative",
             families=PHASE6_TRAIN_NEGATIVE_FAMILIES,
             call_count=0,
+            unsupported_one_families=PHASE6_TRAIN_UNSUPPORTED_ONE_FAMILIES,
+            unsupported_two_families=PHASE6_TRAIN_UNSUPPORTED_TWO_FAMILIES,
         )
     )
 
@@ -299,6 +337,12 @@ def build_phase6_development_examples(
             split="phase6_development_negative",
             families=PHASE6_DEVELOPMENT_NEGATIVE_FAMILIES,
             call_count=0,
+            unsupported_one_families=(
+                PHASE6_DEVELOPMENT_UNSUPPORTED_ONE_FAMILIES
+            ),
+            unsupported_two_families=(
+                PHASE6_DEVELOPMENT_UNSUPPORTED_TWO_FAMILIES
+            ),
         )
     )
 

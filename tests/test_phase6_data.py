@@ -58,9 +58,23 @@ def test_phase6_examples_are_deterministic_and_label_calls() -> None:
         for example in first
         if example.route_label
     )
+    assert {example.controller_target for example in first[-4:]} <= {0, 3, 4}
     development = build_phase6_development_examples(
         single_count=2,
         chain_count=2,
         negative_count=2,
     )
     assert [example.call_count for example in development] == [1, 1, 2, 2, 0, 0]
+
+
+def test_operand_register_targets_follow_textual_order() -> None:
+    examples = build_phase6_development_examples(
+        single_count=2,
+        chain_count=0,
+        negative_count=0,
+    )
+    reversed_family = examples[1]
+    assert "By adding" in reversed_family.prompt
+    first_position = reversed_family.prompt.index(reversed_family.operands[0])
+    second_position = reversed_family.prompt.index(reversed_family.operands[1])
+    assert first_position < second_position

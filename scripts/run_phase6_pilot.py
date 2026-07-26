@@ -28,7 +28,9 @@ from neural_firmware.phase6_training import (
     evaluate_call_controller,
     evaluate_register_mapper,
     generate_neural_firmware,
+    register_targets,
     select_call_threshold,
+    set_phase6_seed,
     train_call_controller,
     train_output_decoder,
     train_register_mapper,
@@ -47,8 +49,11 @@ ATTENTION_HEADS = 8
 DECODER_LAYERS = 2
 CONTROLLER_WIDTH = 64
 FEATURE_DIRECTORY = Path("phase6_artifacts/cache")
-ARTIFACT_DIRECTORY = Path("phase6_artifacts/pilot_v1")
-RESULT_PATH = Path("phase6_results/pilot_v1.json")
+V1_CHECKPOINT = Path(
+    "phase6_artifacts/pilot_v1/neural_firmware_seed_11701.pt"
+)
+ARTIFACT_DIRECTORY = Path("phase6_artifacts/pilot_v2")
+RESULT_PATH = Path("phase6_results/pilot_v2.json")
 
 
 def sha256(path: Path) -> str:
@@ -71,10 +76,24 @@ def save_features(features: Phase6FeatureSet, path: Path) -> None:
     torch.save(features.state_dict(), path)
 
 
-def load_features(path: Path) -> Phase6FeatureSet:
-    return Phase6FeatureSet(
-        **torch.load(path, map_location="cpu", weights_only=True)
+def load_features(
+    path: Path,
+    examples: list[Phase6Example],
+) -> Phase6FeatureSet:
+    payload = torch.load(path, map_location="cpu", weights_only=True)
+    payload["register_targets"] = register_targets(
+        examples,
+        max_digits=MAX_DIGITS,
     )
+    payload["call_targets"] = torch.tensor(
+        [example.call_count for example in examples],
+        dtype=torch.long,
+    )
+    payload["controller_targets"] = torch.tensor(
+        [example.controller_target for example in examples],
+        dtype=torch.long,
+    )
+    return Phase6FeatureSet(**payload)
 
 
 def prepare_features(
@@ -84,7 +103,10 @@ def prepare_features(
     train_path = FEATURE_DIRECTORY / "phase6_train_v1.pt"
     development_path = FEATURE_DIRECTORY / "phase6_development_v1.pt"
     if train_path.exists() and development_path.exists():
-        return load_features(train_path), load_features(development_path)
+        return (
+            load_features(train_path, train_examples),
+            load_features(development_path, development_examples),
+        )
     bundle = load_model_bundle(MODEL_ID, revision=MODEL_REVISION)
     train_features = collect_phase6_features(
         bundle,
@@ -120,14 +142,39 @@ def generate_base(
     prompt = chat_prompt_ids(bundle.tokenizer, example.prompt)
     input_ids = torch.tensor([prompt], dtype=torch.long, device=bundle.device)
     attention_mask = torch.ones_like(input_ids)
-    generated = bundle.model.generate(
+    outputs = bundle.model.model(
         input_ids=input_ids,
         attention_mask=attention_mask,
-        do_sample=False,
-        max_new_tokens=max_new_tokens,
-        pad_token_id=bundle.tokenizer.pad_token_id,
-        eos_token_id=bundle.tokenizer.eos_token_id,
-    )[0, len(prompt) :].tolist()
+        use_cache=True,
+    )
+    past_key_values = outputs.past_key_values
+    hidden = outputs.last_hidden_state[:, -1, :]
+    generated: list[int] = []
+    for _ in range(max_new_tokens):
+        next_token = bundle.model.lm_head(hidden).argmax(dim=-1)
+        token_id = int(next_token.item())
+        generated.append(token_id)
+        if token_id == bundle.tokenizer.eos_token_id:
+            break
+        attention_mask = torch.cat(
+            (
+                attention_mask,
+                torch.ones(
+                    (1, 1),
+                    dtype=torch.long,
+                    device=bundle.device,
+                ),
+            ),
+            dim=1,
+        )
+        outputs = bundle.model.model(
+            input_ids=next_token.unsqueeze(0),
+            attention_mask=attention_mask,
+            past_key_values=past_key_values,
+            use_cache=True,
+        )
+        past_key_values = outputs.past_key_values
+        hidden = outputs.last_hidden_state[:, -1, :]
     return {
         "generated_token_ids": generated,
         "generated_text": bundle.tokenizer.decode(
@@ -194,6 +241,7 @@ def main() -> None:
         development_examples,
     )
     bundle = load_model_bundle(MODEL_ID, revision=MODEL_REVISION)
+    set_phase6_seed(SEED)
     mapper = NeuralRegisterMapper(
         bundle.model.config.hidden_size,
         max_digits=MAX_DIGITS,
@@ -201,14 +249,24 @@ def main() -> None:
         attention_heads=ATTENTION_HEADS,
         decoder_layers=DECODER_LAYERS,
     )
+    if not V1_CHECKPOINT.exists():
+        raise FileNotFoundError(
+            "pilot v2 requires the retained pilot-v1 initialization"
+        )
+    v1_state = torch.load(
+        V1_CHECKPOINT,
+        map_location="cpu",
+        weights_only=True,
+    )
+    mapper.load_state_dict(v1_state["mapper"])
     mapper_training = train_register_mapper(
         mapper,
         train_features,
         MapperTrainConfig(
             seed=SEED,
-            steps=6_000,
+            steps=1_500,
             batch_size=32,
-            learning_rate=0.001,
+            learning_rate=0.0002,
         ),
         device=bundle.device,
     )
@@ -311,6 +369,7 @@ def main() -> None:
     }
     result = {
         "status": "development_pilot",
+        "pilot_version": 2,
         "model_id": MODEL_ID,
         "model_revision": MODEL_REVISION,
         "seed": SEED,
@@ -325,6 +384,13 @@ def main() -> None:
             "controller_width": CONTROLLER_WIDTH,
             "learned_parameters": installation.learned_parameter_count,
             "fixed_parser_at_inference": False,
+            "controller_classes": (
+                "no_call",
+                "one_add",
+                "two_adds",
+                "unsupported_single",
+                "unsupported_multiple",
+            ),
         },
         "data": {
             "train_examples": len(train_examples),
@@ -345,6 +411,8 @@ def main() -> None:
         "base_negative_rows": base_negative_rows,
         "checkpoint": str(checkpoint_path),
         "checkpoint_sha256": sha256(checkpoint_path),
+        "mapper_initialization_checkpoint": str(V1_CHECKPOINT),
+        "mapper_initialization_sha256": sha256(V1_CHECKPOINT),
         "environment": {
             "platform": platform.platform(),
             "python": platform.python_version(),

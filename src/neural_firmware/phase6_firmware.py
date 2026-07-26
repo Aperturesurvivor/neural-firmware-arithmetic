@@ -155,7 +155,12 @@ class NeuralRegisterMapper(nn.Module):
 
 
 class NeuralCallController(nn.Module):
-    """Classify a request as no call, one addition, or two additions."""
+    """Factor operation identity into no/add/unsupported call classes.
+
+    Classes are no call, one ADD, two ADDs, one unsupported operation, and an
+    unsupported multi-operation request. Only the ADD classes can activate
+    firmware.
+    """
 
     def __init__(self, hidden_size: int, hidden_width: int = 64) -> None:
         super().__init__()
@@ -164,7 +169,7 @@ class NeuralCallController(nn.Module):
         self.classifier = nn.Sequential(
             nn.Linear(hidden_size, hidden_width),
             nn.SiLU(),
-            nn.Linear(hidden_width, 3),
+            nn.Linear(hidden_width, 5),
         )
 
     def forward(self, hidden: torch.Tensor) -> torch.Tensor:
@@ -408,8 +413,8 @@ class NeuralProgramLayer(nn.Module):
     ) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor]:
         logits = self.controller(hidden[:, -1, :])
         probabilities = torch.softmax(logits, dim=-1)
-        route_probabilities = 1.0 - probabilities[:, 0]
-        positive_counts = probabilities[:, 1:].argmax(dim=-1) + 1
+        route_probabilities = probabilities[:, 1:3].sum(dim=-1)
+        positive_counts = probabilities[:, 1:3].argmax(dim=-1) + 1
         if context.route_mode == "force_off":
             counts = torch.zeros_like(positive_counts)
         elif context.route_mode == "force_on":

@@ -83,6 +83,7 @@ class Phase6FeatureSet:
     late_hidden: torch.Tensor
     register_targets: torch.Tensor
     call_targets: torch.Tensor
+    controller_targets: torch.Tensor | None = None
 
     @property
     def examples(self) -> int:
@@ -96,6 +97,7 @@ class Phase6FeatureSet:
             "late_hidden": self.late_hidden,
             "register_targets": self.register_targets,
             "call_targets": self.call_targets,
+            "controller_targets": self.controller_targets,
         }
 
 
@@ -172,6 +174,10 @@ def collect_phase6_features(
         register_targets=register_targets(examples, max_digits=max_digits),
         call_targets=torch.tensor(
             [example.call_count for example in examples],
+            dtype=torch.long,
+        ),
+        controller_targets=torch.tensor(
+            [example.controller_target for example in examples],
             dtype=torch.long,
         ),
     )
@@ -338,8 +344,10 @@ def train_call_controller(
         lr=config.learning_rate,
         weight_decay=config.weight_decay,
     )
-    counts = torch.bincount(features.call_targets, minlength=3).float()
-    class_weights = counts.sum() / (3 * counts.clamp_min(1))
+    if features.controller_targets is None:
+        raise ValueError("controller targets are required")
+    counts = torch.bincount(features.controller_targets, minlength=5).float()
+    class_weights = counts.sum() / (5 * counts.clamp_min(1))
     class_weights = class_weights.to(device)
     generator = torch.Generator().manual_seed(config.seed)
     initial_loss = float("nan")
@@ -352,7 +360,7 @@ def train_call_controller(
             generator=generator,
         )
         logits = controller(features.late_hidden[indices].to(device))
-        targets = features.call_targets[indices].to(device)
+        targets = features.controller_targets[indices].to(device)
         loss = nn.functional.cross_entropy(
             logits,
             targets,
@@ -387,10 +395,12 @@ def evaluate_call_controller(
     device: torch.device,
     threshold: float,
 ) -> dict[str, object]:
+    if features.controller_targets is None:
+        raise ValueError("controller targets are required")
     logits = controller(features.late_hidden.to(device)).cpu()
     probabilities = torch.softmax(logits, dim=-1)
-    route_probabilities = 1 - probabilities[:, 0]
-    positive_counts = probabilities[:, 1:].argmax(dim=-1) + 1
+    route_probabilities = probabilities[:, 1:3].sum(dim=-1)
+    positive_counts = probabilities[:, 1:3].argmax(dim=-1) + 1
     predictions = torch.where(
         route_probabilities >= threshold,
         positive_counts,
@@ -402,10 +412,18 @@ def evaluate_call_controller(
             "family": example.family,
             "split": example.split,
             "target_call_count": example.call_count,
+            "target_controller_class": example.controller_target,
+            "predicted_controller_class": int(
+                probabilities[index].argmax().item()
+            ),
             "predicted_call_count": int(predictions[index].item()),
             "route_probability": float(route_probabilities[index].item()),
             "call_count_exact": (
                 int(predictions[index].item()) == example.call_count
+            ),
+            "controller_class_exact": (
+                int(probabilities[index].argmax().item())
+                == example.controller_target
             ),
         }
         for index, example in enumerate(examples)
@@ -416,6 +434,10 @@ def evaluate_call_controller(
         "examples": len(rows),
         "call_count_exact": sum(row["call_count_exact"] for row in rows),
         "call_count_accuracy": sum(row["call_count_exact"] for row in rows)
+        / len(rows),
+        "controller_class_accuracy": sum(
+            row["controller_class_exact"] for row in rows
+        )
         / len(rows),
         "positive_call_count_accuracy": sum(
             row["call_count_exact"] for row in positives
