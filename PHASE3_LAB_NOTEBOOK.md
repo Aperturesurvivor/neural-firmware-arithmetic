@@ -408,3 +408,22 @@ otherwise noted. Phase 3 begins after the completed phase-2 reporting commit
 - Compact analysis tables, figures, environment metadata, and the manifest are
   tracked. The 6.2 MiB raw archive and checkpoints remain locally retained
   under the ignored `phase3_artifacts/confirmatory_v1/` directory.
+
+## 2026-07-25 — Paper, validation, and completion notification
+
+- Wrote and compiled the 13-page technical report:
+  `paper_phase3/native-deterministic-transformer-unit.pdf`.
+- Visually inspected the compiled title/summary, accuracy evidence, seed table,
+  causal trace, interpretation, and references at rendered PDF resolution.
+- Final repository validation:
+  - 15/15 tests passed;
+  - Ruff passed across the repository;
+  - `git diff --check` passed;
+  - raw manifest regenerated at 17 files and 6,410,409 bytes.
+- Committed the complete reporting package as `396afc7`
+  (`Report successful internal transformer unit study`).
+- Used the saved macOS contact named Josiah Wilson and sent the explicitly
+  authorized notification-length iMessage:
+  “Successful: internal block-6 calculator scored 100% OOD, preserved 100%
+  base outputs, and passed all 8 preregistered tests. Full paper is complete.”
+- Messages returned `sent`. No phone number is stored in this notebook.
