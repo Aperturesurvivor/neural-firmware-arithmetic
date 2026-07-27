@@ -297,3 +297,31 @@ runs remain part of the record. No confirmatory protocol is frozen.
   `phase7_results/sequence_layer16_consumed_audit_v1_pre_handshake.json`.
 - Partial-record SHA-256:
   `823eca36c63469e0b54464d276d282da27ec44c86c89bb64a26c532e09277bcf`.
+
+## 2026-07-26 — Layer-16 typed-handshake consumed evaluation
+
+- Re-evaluated all 80 already-consumed audit prompts with the same learned
+  checkpoint after adding role/digit type agreement and the fixed result
+  counter.
+- Addition results:
+  - mathematical exact: 39/40;
+  - exact digits-only format: 39/40;
+  - calculator-result ablation exact: 0/40;
+  - exact first-step operands: 40/40;
+  - exact calculator trajectory: 39/40.
+- Direct additions reached 19/20 and word problems reached 20/20.
+- The sole addition failure had exact decoded operands but conservatively
+  remained route-off.
+- All 40 adversarial negatives remained route-off and token-for-token
+  identical to untouched Qwen.
+- The checkpoint still contains only 25,088 learned replacement weights and a
+  zero-parameter calculator.
+- This is strong post-audit development evidence, not independent held-out
+  evidence, because audit v1 guided decoder-layer and typed-handshake choices.
+- Raw record:
+  `phase7_results/sequence_layer16_consumed_audit_v2_handshake.json`.
+- Raw-record SHA-256:
+  `3755804bf0dd8c497b42536f25ce69c9ddabd80ecadbf15b51af62ebf27e2911`.
+- Decision: retain the development threshold unchanged and freeze a second,
+  larger audit with new prompt constructions before any further architecture
+  or weight changes.
