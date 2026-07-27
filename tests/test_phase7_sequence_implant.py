@@ -10,6 +10,11 @@ from neural_firmware.phase7_sequence_implant import (
     SequenceInterface,
     SequenceNeuronImplantMLP,
 )
+from neural_firmware.phase7_sequence_training import (
+    FirstStepRouteFeatureSet,
+    RouteRowTrainConfig,
+    train_route_rows,
+)
 
 
 class TinyMLP(nn.Module):
@@ -200,3 +205,37 @@ def test_sequence_implant_exactly_preserves_base_without_runtime_context() -> No
     hidden = torch.randn(2, 4, 8)
     assert implant.runtime_context is None
     assert torch.allclose(implant(hidden), base(hidden), atol=1e-6)
+
+
+def test_route_row_hardening_updates_only_standalone_route_rows() -> None:
+    hidden = torch.tensor(
+        [
+            [2.0, 1.0, 0.0],
+            [1.5, 1.0, 0.0],
+            [-2.0, -1.0, 0.0],
+            [-1.5, -1.0, 0.0],
+        ]
+    )
+    features = FirstStepRouteFeatureSet(
+        hidden=hidden,
+        targets=torch.tensor([1, 1, 0, 0]),
+    )
+    initial = torch.zeros(2, 3)
+    trained, training, development = train_route_rows(
+        initial,
+        features,
+        features,
+        device=torch.device("cpu"),
+        config=RouteRowTrainConfig(
+            seed=12,
+            steps=100,
+            batch_size=4,
+            learning_rate=0.05,
+            maximum_development_false_positive_rate=0.0,
+        ),
+    )
+    assert trained.shape == initial.shape
+    assert not torch.equal(trained, initial)
+    assert training["trainable_parameters"] == 6
+    assert development["true_positive_rate"] == 1.0
+    assert development["false_positive_rate"] == 0.0

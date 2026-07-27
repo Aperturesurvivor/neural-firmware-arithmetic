@@ -136,6 +136,203 @@ class SequenceFeatureSet:
         return cls(**state)
 
 
+@dataclass(frozen=True)
+class FirstStepRouteFeatureSet:
+    hidden: torch.Tensor
+    targets: torch.Tensor
+
+    @property
+    def rows(self) -> int:
+        return self.hidden.shape[0]
+
+    def state_dict(self) -> dict[str, torch.Tensor]:
+        return asdict(self)
+
+    @classmethod
+    def load_state_dict(
+        cls,
+        state: dict[str, torch.Tensor],
+    ) -> FirstStepRouteFeatureSet:
+        return cls(**state)
+
+
+@torch.inference_mode()
+def collect_first_step_route_features(
+    bundle: ModelBundle,
+    examples: list[SemanticPromptExample],
+    *,
+    layer_index: int,
+    batch_size: int = 8,
+) -> FirstStepRouteFeatureSet:
+    mlp = bundle.model.model.layers[layer_index].mlp
+    if isinstance(mlp, SequenceNeuronImplantMLP):
+        raise ValueError("feature collection requires an unmodified MLP")
+    captured: list[torch.Tensor] = []
+    hidden_rows: list[torch.Tensor] = []
+
+    def capture_input(
+        _module: nn.Module,
+        arguments: tuple[torch.Tensor, ...],
+    ) -> None:
+        captured.append(arguments[0].detach())
+
+    handle = mlp.register_forward_pre_hook(capture_input)
+    try:
+        for start in range(0, len(examples), batch_size):
+            batch = examples[start : start + batch_size]
+            prompt_ids = [
+                chat_prompt_ids(bundle.tokenizer, example.prompt) for example in batch
+            ]
+            input_ids, attention_mask = padded_batch(
+                prompt_ids,
+                pad_token_id=bundle.tokenizer.pad_token_id,
+                device=bundle.device,
+            )
+            captured.clear()
+            bundle.model.model(
+                input_ids=input_ids,
+                attention_mask=attention_mask,
+                use_cache=False,
+            )
+            if len(captured) != 1:
+                raise RuntimeError("expected one sequence MLP capture")
+            hidden = captured[0]
+            positions = attention_mask.sum(dim=1) - 1
+            rows = torch.arange(len(batch), device=bundle.device)
+            hidden_rows.append(hidden[rows, positions].float().cpu())
+            captured.clear()
+            del hidden, input_ids, attention_mask
+            if bundle.device.type == "mps" and (start // batch_size) % 32 == 31:
+                torch.mps.empty_cache()
+    finally:
+        handle.remove()
+    return FirstStepRouteFeatureSet(
+        hidden=torch.cat(hidden_rows),
+        targets=torch.tensor(
+            [int(example.route_label) for example in examples],
+            dtype=torch.long,
+        ),
+    )
+
+
+@dataclass(frozen=True)
+class RouteRowTrainConfig:
+    seed: int = 13_501
+    steps: int = 2_000
+    batch_size: int = 256
+    learning_rate: float = 0.001
+    maximum_development_false_positive_rate: float = 0.005
+
+
+def evaluate_route_rows(
+    route_rows: torch.Tensor,
+    features: FirstStepRouteFeatureSet,
+) -> dict[str, object]:
+    with torch.inference_mode():
+        probabilities = nn.functional.linear(
+            features.hidden.float(),
+            route_rows.float(),
+        ).softmax(dim=-1)[..., 1]
+    targets = features.targets
+    selected = select_route_threshold(
+        probabilities,
+        targets,
+        maximum_false_positive_rate=1.0,
+    )
+    return {
+        "rows": features.rows,
+        "positive_rows": int((targets == 1).sum()),
+        "negative_rows": int((targets == 0).sum()),
+        "probabilities": probabilities,
+        "targets": targets,
+        "unconstrained_best_threshold": selected,
+    }
+
+
+def train_route_rows(
+    initial_route_rows: torch.Tensor,
+    train: FirstStepRouteFeatureSet,
+    development: FirstStepRouteFeatureSet,
+    *,
+    device: torch.device,
+    config: RouteRowTrainConfig,
+) -> tuple[torch.Tensor, dict[str, object], dict[str, object]]:
+    if initial_route_rows.shape != (2, train.hidden.shape[1]):
+        raise ValueError("route row shape does not match first-step features")
+    if development.hidden.shape[1] != train.hidden.shape[1]:
+        raise ValueError("training and development hidden widths differ")
+    set_phase7_seed(config.seed)
+    route_rows = nn.Parameter(initial_route_rows.detach().clone().to(device))
+    optimizer = torch.optim.AdamW(
+        [route_rows],
+        lr=config.learning_rate,
+        weight_decay=0.0,
+    )
+    generator = torch.Generator().manual_seed(config.seed)
+    positive = torch.where(train.targets == 1)[0]
+    negative = torch.where(train.targets == 0)[0]
+    initial_loss = float("nan")
+    final_loss = float("nan")
+    started = time.perf_counter()
+    for step in range(config.steps):
+        indices = balanced_sample(
+            positive,
+            negative,
+            count=config.batch_size,
+            generator=generator,
+        )
+        logits = nn.functional.linear(
+            train.hidden[indices].to(device).float(),
+            route_rows.float(),
+        )
+        loss = nn.functional.cross_entropy(
+            logits,
+            train.targets[indices].to(device),
+        )
+        optimizer.zero_grad(set_to_none=True)
+        loss.backward()
+        optimizer.step()
+        if step == 0:
+            initial_loss = float(loss.detach().cpu())
+        final_loss = float(loss.detach().cpu())
+    trained = route_rows.detach().float().cpu()
+    development_metrics = evaluate_route_rows(trained, development)
+    threshold = select_route_threshold(
+        development_metrics["probabilities"],
+        development_metrics["targets"],
+        maximum_false_positive_rate=(
+            config.maximum_development_false_positive_rate
+        ),
+    )
+    probability = development_metrics["probabilities"]
+    target = development_metrics["targets"]
+    prediction = probability >= threshold["threshold"]
+    positive_target = target == 1
+    compact_development = {
+        "rows": development.rows,
+        "positive_rows": int(positive_target.sum()),
+        "negative_rows": int((~positive_target).sum()),
+        "threshold": threshold,
+        "true_positive_rate": float(
+            prediction[positive_target].float().mean()
+        ),
+        "false_positive_rate": float(
+            prediction[~positive_target].float().mean()
+        ),
+        "accuracy": float((prediction == target.to(torch.bool)).float().mean()),
+        "positive_probability_min": float(probability[positive_target].min()),
+        "negative_probability_max": float(probability[~positive_target].max()),
+    }
+    training = {
+        "config": asdict(config),
+        "initial_loss": initial_loss,
+        "final_loss": final_loss,
+        "wall_time_seconds": time.perf_counter() - started,
+        "trainable_parameters": trained.numel(),
+    }
+    return trained, training, compact_development
+
+
 @torch.inference_mode()
 def collect_sequence_features(
     bundle: ModelBundle,
