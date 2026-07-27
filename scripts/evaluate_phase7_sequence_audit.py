@@ -12,6 +12,7 @@ import torch
 from neural_firmware.phase7_data import (
     build_phase7_audit2_examples,
     build_phase7_audit3_examples,
+    build_phase7_audit4_examples,
     build_phase7_audit_examples,
 )
 from neural_firmware.phase7_sequence_implant import (
@@ -135,7 +136,7 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--dataset",
-        choices=("audit1", "audit2", "audit3"),
+        choices=("audit1", "audit2", "audit3", "audit4"),
         default="audit1",
     )
     return parser.parse_args()
@@ -187,6 +188,7 @@ def main() -> None:
         "audit1": build_phase7_audit_examples,
         "audit2": build_phase7_audit2_examples,
         "audit3": build_phase7_audit3_examples,
+        "audit4": build_phase7_audit4_examples,
     }
     examples = builders[args.dataset]()
     rows: list[dict[str, object]] = []
@@ -296,10 +298,13 @@ def main() -> None:
                 "audit1": "PHASE7_AUDIT_PROTOCOL.md",
                 "audit2": "PHASE7_AUDIT2_PROTOCOL.md",
                 "audit3": "PHASE7_MULTISEED_PROTOCOL.md",
+                "audit4": "PHASE7_ROUTER_HARDENING_PROTOCOL.md",
             }[args.dataset],
             "dataset": args.dataset,
             "evaluation_kind": (
-                "frozen_multiseed_audit3"
+                "frozen_router_hardened_audit4"
+                if args.dataset == "audit4"
+                else "frozen_multiseed_audit3"
                 if args.dataset == "audit3"
                 else "frozen_held_out_audit2"
                 if args.dataset == "audit2"
