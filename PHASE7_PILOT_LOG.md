@@ -325,3 +325,43 @@ runs remain part of the record. No confirmatory protocol is frozen.
 - Decision: retain the development threshold unchanged and freeze a second,
   larger audit with new prompt constructions before any further architecture
   or weight changes.
+
+## 2026-07-26 — Independent held-out audit 2
+
+- Froze `PHASE7_AUDIT2_PROTOCOL.md`, 20 new prompt families per route class,
+  three new data seeds, the checkpoint hash, the development threshold, and
+  stricter engineering gates before generation.
+- Evaluated 30 direct additions, 30 word-problem additions, and 60
+  adversarial non-addition prompts.
+- Addition results:
+  - mathematical exact: 54/60 (90%);
+  - digits-only format exact: 54/60;
+  - calculator-result ablation exact: 6/60;
+  - first-step route active: 59/60;
+  - exact first-step operands: 55/60;
+  - exact calculator trajectory: 54/60.
+- Direct additions reached 29/30 and word problems reached 25/30.
+- All 54 cases with both an active route and exact operands produced the exact
+  calculator trajectory and exact formatted answer.
+- Negative results:
+  - any false calculator route: 0/60;
+  - exact eight-token preservation versus untouched Qwen: 60/60.
+- Gate disposition:
+  - passed the 54/60 primary exact-accuracy gate exactly;
+  - passed the conditional deterministic-execution gate;
+  - passed both negative routing/preservation gates;
+  - missed the 57/60 exact-operand gate with 55/60;
+  - missed the absolute ablation and 85-point-drop gate: base Qwen independently
+    solved 6/60, leaving an 80-point drop.
+- Failure inspection:
+  - one direct `ADD` prompt remained route-off;
+  - five word problems admitted one extra false-positive digit into operand B;
+  - no failure occurred after an active route and exact typed operands.
+- Interpretation: the narrow in-place deterministic-neuron mechanism
+  generalizes and is causally used, but the neural operand framing is not yet
+  reliable enough for a broad correctness claim. The absolute ablation cap was
+  also poorly calibrated to base-Qwen competence, though its frozen failure is
+  retained.
+- Raw record: `phase7_results/sequence_audit2_v1.json`.
+- Raw-record SHA-256:
+  `e42bb02a8cbe9bb5554ae74a88eea1d45aa5d52154837bc2d8b17c6fa7d55444`.
