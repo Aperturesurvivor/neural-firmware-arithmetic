@@ -1,0 +1,185 @@
+{
+  "status": "development_complete",
+  "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+  "model_revision": "fe8a4ea1ffedaf415f4da2f062534de366a451e6",
+  "model_architecture": "LlamaForCausalLM",
+  "hidden_size": 2048,
+  "intermediate_size": 5632,
+  "decoder_layers": 22,
+  "layout": {
+    "max_digits": 4,
+    "digit_classes": 11,
+    "result_classes": 12,
+    "learned_step": false
+  },
+  "candidate_layers": [
+    12,
+    15,
+    18
+  ],
+  "probe_examples": {
+    "training": 600,
+    "development": 240
+  },
+  "layers": [
+    {
+      "layer_index": 12,
+      "selection_score": 0.947169840335846,
+      "training": {
+        "config": {
+          "seed": 14112,
+          "steps": 1500,
+          "batch_size": 256,
+          "learning_rate": 0.001,
+          "route_loss_weight": 1.0,
+          "role_loss_weight": 1.0,
+          "digit_loss_weight": 1.0,
+          "step_loss_weight": 0.0
+        },
+        "initial_loss": 4.345211982727051,
+        "final_loss": 0.00915565062314272,
+        "wall_time_seconds": 5.116670374991372,
+        "trainable_parameters": 32768,
+        "selected_route_threshold": {
+          "threshold": 0.8649484515190125,
+          "true_positive_rate": 0.947169840335846,
+          "false_positive_rate": 0.0
+        }
+      },
+      "development": {
+        "rows": 3339,
+        "route_rows": 650,
+        "route_true_positive_rate": 0.947169840335846,
+        "route_false_positive_rate": 0.0,
+        "route_accuracy": 0.9569230675697327,
+        "role_accuracy": 0.9991015195846558,
+        "operand_role_accuracy": 0.9975980520248413,
+        "digit_accuracy_on_operands": 1.0,
+        "step_accuracy": 0.22641509771347046
+      }
+    },
+    {
+      "layer_index": 15,
+      "selection_score": 0.9698113203048706,
+      "training": {
+        "config": {
+          "seed": 14115,
+          "steps": 1500,
+          "batch_size": 256,
+          "learning_rate": 0.001,
+          "route_loss_weight": 1.0,
+          "role_loss_weight": 1.0,
+          "digit_loss_weight": 1.0,
+          "step_loss_weight": 0.0
+        },
+        "initial_loss": 4.203766345977783,
+        "final_loss": 0.003717757761478424,
+        "wall_time_seconds": 5.085485500021605,
+        "trainable_parameters": 32768,
+        "selected_route_threshold": {
+          "threshold": 0.3650267422199249,
+          "true_positive_rate": 0.9698113203048706,
+          "false_positive_rate": 0.008333333767950535
+        }
+      },
+      "development": {
+        "rows": 3339,
+        "route_rows": 650,
+        "route_true_positive_rate": 0.9698113203048706,
+        "route_false_positive_rate": 0.008333333767950535,
+        "route_accuracy": 0.9738461375236511,
+        "role_accuracy": 1.0,
+        "operand_role_accuracy": 1.0,
+        "digit_accuracy_on_operands": 1.0,
+        "step_accuracy": 0.22641509771347046
+      }
+    },
+    {
+      "layer_index": 18,
+      "selection_score": 0.9207547307014465,
+      "training": {
+        "config": {
+          "seed": 14118,
+          "steps": 1500,
+          "batch_size": 256,
+          "learning_rate": 0.001,
+          "route_loss_weight": 1.0,
+          "role_loss_weight": 1.0,
+          "digit_loss_weight": 1.0,
+          "step_loss_weight": 0.0
+        },
+        "initial_loss": 4.2756876945495605,
+        "final_loss": 0.004635456949472427,
+        "wall_time_seconds": 5.009703874995466,
+        "trainable_parameters": 32768,
+        "selected_route_threshold": {
+          "threshold": 0.9896572232246399,
+          "true_positive_rate": 0.9207547307014465,
+          "false_positive_rate": 0.008333333767950535
+        }
+      },
+      "development": {
+        "rows": 3339,
+        "route_rows": 650,
+        "route_true_positive_rate": 0.9207547307014465,
+        "route_false_positive_rate": 0.008333333767950535,
+        "route_accuracy": 0.9338461756706238,
+        "role_accuracy": 0.9982030391693115,
+        "operand_role_accuracy": 0.9959967732429504,
+        "digit_accuracy_on_operands": 1.0,
+        "step_accuracy": 0.22641509771347046
+      }
+    }
+  ],
+  "selected_layer": 15,
+  "selected_indices": [
+    4992,
+    5542,
+    1144,
+    2339,
+    3284,
+    2618,
+    5266,
+    3464,
+    1008,
+    3771,
+    4049,
+    3734,
+    3321,
+    2027,
+    3873,
+    4940,
+    5021,
+    503,
+    1769,
+    4345,
+    3536,
+    4851,
+    2274,
+    1180,
+    4632,
+    5252,
+    4008,
+    3466
+  ],
+  "channel_census": {
+    "positive_selected_score_mean": 0.010624355636537075,
+    "negative_selected_score_mean": 0.0104247210547328,
+    "ablation": {
+      "prompts": 96,
+      "channels": 28,
+      "top1_agreement": 1.0,
+      "mean_kl_divergence": 0.0001709780772216618,
+      "maximum_kl_divergence": 0.0008333232253789902,
+      "mean_logit_rms": 0.021979443728923798
+    }
+  },
+  "environment": {
+    "python": "3.12.12",
+    "torch": "2.13.0",
+    "device": "mps",
+    "mps_available": true
+  },
+  "artifact": "phase8_artifacts/development_selection.pt",
+  "wall_time_seconds": 140.1761422919808
+}

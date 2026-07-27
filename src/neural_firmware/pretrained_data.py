@@ -142,13 +142,35 @@ def chat_prompt_ids(tokenizer: PreTrainedTokenizerBase, prompt: str) -> list[int
     )
 
 
+def decimal_digit_token_id(
+    tokenizer: PreTrainedTokenizerBase,
+    digit: str,
+) -> int:
+    """Return the context-independent vocabulary token for one decimal digit.
+
+    Qwen's tokenizer encodes a bare digit directly. SentencePiece tokenizers
+    such as TinyLlama's prepend a standalone word-boundary token when encoding
+    a bare digit, even though the vocabulary also contains the digit token
+    used inside natural-language numbers. The direct-vocabulary fallback keeps
+    the arithmetic ABI at one digit per activation without changing prompts.
+    """
+    if len(digit) != 1 or digit not in "0123456789":
+        raise ValueError(f"expected one decimal digit, received {digit!r}")
+    ids = tokenizer.encode(digit, add_special_tokens=False)
+    if len(ids) == 1:
+        return int(ids[0])
+    token_id = int(tokenizer.convert_tokens_to_ids(digit))
+    if token_id == tokenizer.unk_token_id:
+        raise ValueError(f"digit {digit!r} has no direct vocabulary token")
+    if tokenizer.decode([token_id]) != digit:
+        raise ValueError(
+            f"digit token {token_id} does not decode exactly to {digit!r}"
+        )
+    return token_id
+
+
 def answer_token_ids(tokenizer: PreTrainedTokenizerBase, answer: str) -> list[int]:
-    digit_ids: list[int] = []
-    for digit in answer:
-        ids = tokenizer.encode(digit, add_special_tokens=False)
-        if len(ids) != 1:
-            raise ValueError(f"digit {digit!r} is not represented by one token: {ids}")
-        digit_ids.append(ids[0])
+    digit_ids = [decimal_digit_token_id(tokenizer, digit) for digit in answer]
     if tokenizer.eos_token_id is None:
         raise ValueError("tokenizer must define eos_token_id")
     return digit_ids + [tokenizer.eos_token_id]

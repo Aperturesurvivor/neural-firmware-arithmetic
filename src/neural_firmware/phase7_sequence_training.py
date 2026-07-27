@@ -18,7 +18,11 @@ from neural_firmware.phase7_training import (
     select_route_threshold,
     set_phase7_seed,
 )
-from neural_firmware.pretrained_data import answer_token_ids, chat_prompt_ids
+from neural_firmware.pretrained_data import (
+    answer_token_ids,
+    chat_prompt_ids,
+    decimal_digit_token_id,
+)
 from neural_firmware.pretrained_training import ModelBundle
 from neural_firmware.semantic_data import SemanticPromptExample
 
@@ -40,13 +44,10 @@ def operand_token_positions(
     b: str,
 ) -> tuple[list[int], list[int]]:
     def digit_ids(value: str) -> list[int]:
-        result: list[int] = []
-        for character in value:
-            ids = tokenizer.encode(character, add_special_tokens=False)
-            if len(ids) != 1:
-                raise ValueError(f"digit {character!r} is not one token")
-            result.append(ids[0])
-        return result
+        return [
+            decimal_digit_token_id(tokenizer, character)
+            for character in value
+        ]
 
     a_ids = digit_ids(a)
     b_ids = digit_ids(b)
