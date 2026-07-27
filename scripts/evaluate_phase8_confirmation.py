@@ -172,7 +172,7 @@ def main() -> None:
     peak_observed = mps_allocated() or 0
     for row in rows:
         output, elapsed, memory = timed(
-            lambda row=row: generate_base(
+            lambda row=row, base_bundle=base_bundle: generate_base(
                 base_bundle,
                 row["prompt"],
                 max_new_tokens=8,
@@ -196,7 +196,7 @@ def main() -> None:
         }
         if row["route_label"]:
             extended, extended_elapsed, memory = timed(
-                lambda row=row: generate_base(
+                lambda row=row, base_bundle=base_bundle: generate_base(
                     base_bundle,
                     row["prompt"],
                     max_new_tokens=64,
@@ -248,7 +248,7 @@ def main() -> None:
         latencies: list[float] = []
         for row in rows:
             output, elapsed, memory = timed(
-                lambda row=row: generate_matched_adapter(
+                lambda row=row, bundle=bundle, adapter=adapter: generate_matched_adapter(
                     bundle,
                     adapter,
                     row["prompt"],
@@ -328,7 +328,7 @@ def main() -> None:
         ablated_times: list[float] = []
         for row in rows:
             output, elapsed, memory = timed(
-                lambda row=row: generate_sequence_implant(
+                lambda row=row, bundle=bundle, implant=implant: generate_sequence_implant(
                     bundle,
                     implant,
                     row["prompt"],
@@ -379,7 +379,7 @@ def main() -> None:
             }
             if row["route_label"]:
                 ablated, ablated_elapsed, memory = timed(
-                    lambda row=row: generate_sequence_implant(
+                    lambda row=row, bundle=bundle, implant=implant: generate_sequence_implant(
                         bundle,
                         implant,
                         row["prompt"],

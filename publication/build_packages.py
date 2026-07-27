@@ -19,12 +19,24 @@ def sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
+def contained_file(path: Path) -> Path:
+    root = ROOT.resolve()
+    if path.is_symlink():
+        raise ValueError(f"Refusing symlinked publication input: {path}")
+    resolved = path.resolve(strict=True)
+    try:
+        resolved.relative_to(root)
+    except ValueError as error:
+        raise ValueError(f"Publication input escapes the repository: {path}") from error
+    if not resolved.is_file():
+        raise FileNotFoundError(path)
+    return resolved
+
+
 def write_zip(destination: Path, members: list[tuple[Path, str]]) -> None:
     with zipfile.ZipFile(destination, "w", compression=zipfile.ZIP_DEFLATED) as archive:
         for source, archive_name in members:
-            if not source.is_file():
-                raise FileNotFoundError(source)
-            archive.write(source, archive_name)
+            archive.write(contained_file(source), archive_name)
 
 
 def main() -> None:
@@ -39,7 +51,7 @@ def main() -> None:
     write_zip(arxiv_zip, [(full_source, "main.tex")])
 
     preprint_pdf = DIST / "deterministic-neurons-qwen-preprint.pdf"
-    shutil.copy2(full_pdf, preprint_pdf)
+    shutil.copy2(contained_file(full_pdf), preprint_pdf)
 
     workshop_zip = DIST / "deterministic-neurons-mathai2026-source.zip"
     write_zip(
@@ -51,9 +63,9 @@ def main() -> None:
     )
 
     generated = [arxiv_zip, preprint_pdf, workshop_zip]
-    if workshop_pdf.is_file():
+    if workshop_pdf.exists():
         workshop_dist_pdf = DIST / "deterministic-neurons-mathai2026-anonymous.pdf"
-        shutil.copy2(workshop_pdf, workshop_dist_pdf)
+        shutil.copy2(contained_file(workshop_pdf), workshop_dist_pdf)
         generated.append(workshop_dist_pdf)
 
     manifest = {

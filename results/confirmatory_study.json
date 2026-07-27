@@ -54,7 +54,7 @@
         "wall_time_seconds": 690.290001417,
         "trainable_parameters": 264480,
         "device": "mps",
-        "checkpoint": "/Users/josiahwilson/Josiah/Project-Workspace/neural-firmware-arithmetic/artifacts/confirmatory_v1/baseline-seed-101/model.pt",
+        "checkpoint": "artifacts/confirmatory_v1/baseline-seed-101/model.pt",
         "history": [
           {
             "step": 1,
@@ -195,7 +195,7 @@
         "wall_time_seconds": 692.1850124160001,
         "trainable_parameters": 264480,
         "device": "mps",
-        "checkpoint": "/Users/josiahwilson/Josiah/Project-Workspace/neural-firmware-arithmetic/artifacts/confirmatory_v1/baseline-seed-211/model.pt",
+        "checkpoint": "artifacts/confirmatory_v1/baseline-seed-211/model.pt",
         "history": [
           {
             "step": 1,
@@ -336,7 +336,7 @@
         "wall_time_seconds": 686.8559405839997,
         "trainable_parameters": 264480,
         "device": "mps",
-        "checkpoint": "/Users/josiahwilson/Josiah/Project-Workspace/neural-firmware-arithmetic/artifacts/confirmatory_v1/baseline-seed-307/model.pt",
+        "checkpoint": "artifacts/confirmatory_v1/baseline-seed-307/model.pt",
         "history": [
           {
             "step": 1,
@@ -477,7 +477,7 @@
         "wall_time_seconds": 222.03162191700176,
         "trainable_parameters": 264480,
         "device": "mps",
-        "checkpoint": "/Users/josiahwilson/Josiah/Project-Workspace/neural-firmware-arithmetic/artifacts/confirmatory_v1/latent_firmware-seed-101/model.pt",
+        "checkpoint": "artifacts/confirmatory_v1/latent_firmware-seed-101/model.pt",
         "history": [
           {
             "step": 1,
@@ -528,7 +528,7 @@
         "wall_time_seconds": 224.21568520799883,
         "trainable_parameters": 264480,
         "device": "mps",
-        "checkpoint": "/Users/josiahwilson/Josiah/Project-Workspace/neural-firmware-arithmetic/artifacts/confirmatory_v1/latent_firmware-seed-211/model.pt",
+        "checkpoint": "artifacts/confirmatory_v1/latent_firmware-seed-211/model.pt",
         "history": [
           {
             "step": 1,
@@ -579,7 +579,7 @@
         "wall_time_seconds": 227.21976620900023,
         "trainable_parameters": 264480,
         "device": "mps",
-        "checkpoint": "/Users/josiahwilson/Josiah/Project-Workspace/neural-firmware-arithmetic/artifacts/confirmatory_v1/latent_firmware-seed-307/model.pt",
+        "checkpoint": "artifacts/confirmatory_v1/latent_firmware-seed-307/model.pt",
         "history": [
           {
             "step": 1,
@@ -630,7 +630,7 @@
         "wall_time_seconds": 0.17265645899897208,
         "trainable_parameters": 264480,
         "device": "mps",
-        "checkpoint": "/Users/josiahwilson/Josiah/Project-Workspace/neural-firmware-arithmetic/artifacts/confirmatory_v1/direct_firmware-seed-101/model.pt",
+        "checkpoint": "artifacts/confirmatory_v1/direct_firmware-seed-101/model.pt",
         "history": [
           {
             "step": 1,
@@ -671,7 +671,7 @@
         "wall_time_seconds": 0.18492058300034842,
         "trainable_parameters": 264480,
         "device": "mps",
-        "checkpoint": "/Users/josiahwilson/Josiah/Project-Workspace/neural-firmware-arithmetic/artifacts/confirmatory_v1/direct_firmware-seed-211/model.pt",
+        "checkpoint": "artifacts/confirmatory_v1/direct_firmware-seed-211/model.pt",
         "history": [
           {
             "step": 1,
@@ -712,7 +712,7 @@
         "wall_time_seconds": 0.1716702499998064,
         "trainable_parameters": 264480,
         "device": "mps",
-        "checkpoint": "/Users/josiahwilson/Josiah/Project-Workspace/neural-firmware-arithmetic/artifacts/confirmatory_v1/direct_firmware-seed-307/model.pt",
+        "checkpoint": "artifacts/confirmatory_v1/direct_firmware-seed-307/model.pt",
         "history": [
           {
             "step": 1,

@@ -27,6 +27,6 @@
   },
   "git": {
     "head": "e17eaad14ca92093f1eb15d82ea3be506f93cc73",
-    "status_short": "M .gitignore\n M pyproject.toml\n M uv.lock\n?? FUTURE_ARCHITECTURE_GOAL.md\n?? PHASE2_LAB_NOTEBOOK.md\n?? PHASE2_PILOT_LOG.md\n?? PHASE2_PROTOCOL_DRAFT.md\n?? scripts/capture_phase2_environment.py\n?? src/neural_firmware/pretrained_data.py\n?? src/neural_firmware/pretrained_evaluation.py\n?? src/neural_firmware/pretrained_firmware.py\n?? src/neural_firmware/pretrained_model.py\n?? src/neural_firmware/pretrained_training.py\n?? tests/test_pretrained_firmware.py"
+    "dirty": true
   }
 }

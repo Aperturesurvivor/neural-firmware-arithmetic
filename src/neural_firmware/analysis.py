@@ -6,7 +6,8 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-import torch
+
+from neural_firmware.training import load_checkpoint
 
 
 def _prediction_frame(artifact_root: Path) -> pd.DataFrame:
@@ -82,7 +83,7 @@ def analyze(study_path: Path, figures_dir: Path, results_dir: Path) -> Path:
         )
         checkpoint = Path(training["checkpoint"])
         if checkpoint.exists():
-            checkpoint_payload = torch.load(checkpoint, map_location="cpu", weights_only=False)
+            checkpoint_payload = load_checkpoint(checkpoint)
             environments.append(checkpoint_payload["environment"])
     pd.DataFrame(run_rows).to_csv(results_dir / "run_manifest.csv", index=False)
     (results_dir / "environment.json").write_text(

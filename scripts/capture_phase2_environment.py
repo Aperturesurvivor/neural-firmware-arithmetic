@@ -56,7 +56,7 @@ def main() -> None:
         },
         "git": {
             "head": command_output(["git", "rev-parse", "HEAD"]),
-            "status_short": command_output(["git", "status", "--short"]),
+            "dirty": bool(command_output(["git", "status", "--porcelain"])),
         },
     }
     output_path.write_text(json.dumps(payload, indent=2) + "\n")

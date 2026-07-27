@@ -21,6 +21,20 @@ It includes the literal in-place deterministic-neuron experiment, the
 untouched-Qwen comparison, negative results, and the remaining gap to
 arbitrary recurrent calculator use.
 
+## Phase 7 at a glance
+
+![Phase 7 architecture and frozen-audit results](assets/neural-firmware-phase7-card.png)
+
+The implant occupies 28 of the 4,864 activation coordinates in Qwen's
+layer-16 MLP: 16 learned operand coordinates feed a frozen, zero-parameter
+ripple-carry adder, which writes 12 result coordinates. In the frozen
+three-seed audit it produced 173/180 exact natural-language additions and
+90/90 exact word problems; ablating the result channel reduced accuracy to
+9/180. The strict preregistered verdict was 3/5 gates passed, so this is a
+narrow causal-feasibility result rather than a claim of solved general
+reasoning. A vector version is available in
+[`assets/neural-firmware-phase7-card.svg`](assets/neural-firmware-phase7-card.svg).
+
 ## First study
 
 The study compares:

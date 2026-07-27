@@ -156,8 +156,17 @@ def train_one(
     return result
 
 
+def load_checkpoint(checkpoint_path: Path) -> dict[str, Any]:
+    safe_globals = [torch.torch_version.TorchVersion]
+    with torch.serialization.safe_globals(safe_globals):
+        payload = torch.load(checkpoint_path, map_location="cpu", weights_only=True)
+    if not isinstance(payload, dict):
+        raise TypeError("checkpoint payload must be a dictionary")
+    return payload
+
+
 def load_model(checkpoint_path: Path, device: torch.device) -> CausalArithmeticTransformer:
-    payload = torch.load(checkpoint_path, map_location="cpu", weights_only=False)
+    payload = load_checkpoint(checkpoint_path)
     tokenizer = ArithmeticTokenizer()
     model = CausalArithmeticTransformer(
         tokenizer=tokenizer,

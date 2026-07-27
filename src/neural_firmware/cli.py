@@ -8,7 +8,13 @@ from neural_firmware.analysis import analyze
 from neural_firmware.data import load_eval_splits
 from neural_firmware.evaluation import evaluate_model, save_evaluation
 from neural_firmware.study import run_study
-from neural_firmware.training import load_config, load_model, resolve_device, train_one
+from neural_firmware.training import (
+    load_checkpoint,
+    load_config,
+    load_model,
+    resolve_device,
+    train_one,
+)
 
 
 def _project_root() -> Path:
@@ -38,7 +44,7 @@ def evaluate_main() -> None:
     splits, eval_hash = load_eval_splits(args.eval_sets)
     device = resolve_device(args.device)
     model = load_model(args.checkpoint, device)
-    payload = __import__("torch").load(args.checkpoint, map_location="cpu", weights_only=False)
+    payload = load_checkpoint(args.checkpoint)
     predictions, metrics = evaluate_model(model, payload["seed"], splits, device)
     save_evaluation(args.output, predictions, metrics, eval_hash)
     print(json.dumps(metrics, indent=2))
@@ -62,4 +68,3 @@ def analyze_main() -> None:
         results_dir=_project_root() / "results",
     )
     print(report)
-

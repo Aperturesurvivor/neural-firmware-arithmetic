@@ -1,0 +1,51 @@
+name: Replication report
+description: Report an independent reproduction, discrepancy, or failed replication.
+title: "[Replication]: "
+labels: ["replication"]
+body:
+  - type: dropdown
+    id: phase
+    attributes:
+      label: Study phase
+      options:
+        - Phase 1
+        - Phase 2
+        - Phase 3
+        - Phase 4
+        - Phase 5
+        - Phase 6
+        - Phase 7
+        - Phase 8
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Include OS, Python, accelerator, dependency lock state, and model revision.
+    validations:
+      required: true
+
+  - type: textarea
+    id: procedure
+    attributes:
+      label: Procedure
+      description: Include the exact command, configuration, and random seed.
+    validations:
+      required: true
+
+  - type: textarea
+    id: result
+    attributes:
+      label: Observed result
+      description: Report successes and failures without selecting only favorable runs.
+    validations:
+      required: true
+
+  - type: textarea
+    id: artifacts
+    attributes:
+      label: Supporting artifacts
+      description: Link logs or machine-readable results. Do not include secrets, private paths, or personal data.
