@@ -1,0 +1,71 @@
+{
+  "status": "confirmatory_matched_adapter_training_complete",
+  "implementation_commit": "495c2f8f28a0df2c60917f47b764b94cc1c90a02",
+  "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+  "model_revision": "fe8a4ea1ffedaf415f4da2f062534de366a451e6",
+  "training_seeds": [
+    14201,
+    14202,
+    14203
+  ],
+  "layer_index": 15,
+  "rank": 14,
+  "learned_parameters": 57344,
+  "seed_records": [
+    {
+      "seed": 14201,
+      "training": {
+        "config": {
+          "seed": 14201,
+          "steps": 800,
+          "batch_size": 4,
+          "learning_rate": 0.002
+        },
+        "initial_loss": 3.057738780975342,
+        "final_loss": 0.6299750804901123,
+        "trainable_parameters": 57344,
+        "wall_time_seconds": 209.78085083301994
+      },
+      "checkpoint": "phase8_artifacts/confirmatory_matched_adapters/adapter_seed_14201.pt",
+      "checkpoint_sha256": "930c8e541be01b374a442d0913450d41e12886dca5fae0de68988e5f646af987",
+      "wall_time_seconds": 259.869908749999
+    },
+    {
+      "seed": 14202,
+      "training": {
+        "config": {
+          "seed": 14202,
+          "steps": 800,
+          "batch_size": 4,
+          "learning_rate": 0.002
+        },
+        "initial_loss": 2.298995018005371,
+        "final_loss": 0.3273346424102783,
+        "trainable_parameters": 57344,
+        "wall_time_seconds": 209.1690428330039
+      },
+      "checkpoint": "phase8_artifacts/confirmatory_matched_adapters/adapter_seed_14202.pt",
+      "checkpoint_sha256": "5c2d25b9bf72bee57fae4b3e1c12a3470c9cbedd434c7de50b8187e7b5cced53",
+      "wall_time_seconds": 214.23654358298518
+    },
+    {
+      "seed": 14203,
+      "training": {
+        "config": {
+          "seed": 14203,
+          "steps": 800,
+          "batch_size": 4,
+          "learning_rate": 0.002
+        },
+        "initial_loss": 1.9924468994140625,
+        "final_loss": 0.8000905513763428,
+        "trainable_parameters": 57344,
+        "wall_time_seconds": 208.39389658300206
+      },
+      "checkpoint": "phase8_artifacts/confirmatory_matched_adapters/adapter_seed_14203.pt",
+      "checkpoint_sha256": "eb689e241fdb0d5cb3d7ed53e3972dfd8fd8382baafde0e0e0049dc6bd57a51c",
+      "wall_time_seconds": 213.68600883398904
+    }
+  ],
+  "wall_time_seconds": 687.9990341249795
+}

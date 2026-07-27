@@ -623,7 +623,7 @@ def main() -> None:
             ]
         )
     with CSV_PATH.open("w", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=fields)
+        writer = csv.DictWriter(handle, fieldnames=fields, lineterminator="\n")
         writer.writeheader()
         for row in rows:
             flat = {

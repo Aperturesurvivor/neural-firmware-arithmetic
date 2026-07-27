@@ -1,0 +1,528 @@
+{
+  "status": "posthoc_analysis_complete",
+  "source": {
+    "path": "phase8_results/confirmation.json",
+    "sha256": "203c72f40d42b7a0901e1ce663bbd29b232963ffc49de4822b3ab14f8af39877"
+  },
+  "completeness": {
+    "rows": 120,
+    "unique_prompts": 120,
+    "positive_rows": 60,
+    "negative_rows": 60,
+    "all_base_present": true,
+    "all_seed_conditions_present": true
+  },
+  "frozen_gate_result": {
+    "accuracy": false,
+    "operands": false,
+    "causal_ablation": true,
+    "routing_and_preservation": false,
+    "calculator_and_decode": true,
+    "beats_base_and_adapter": true,
+    "all_primary_gates": false
+  },
+  "confirmatory_interpretation": "Partial replication; the frozen primary gates did not pass. Deterministic execution and downstream decoding were reliable conditional on a valid interface, but prompt-generalization of routing and operand typing was insufficient.",
+  "effect_sizes": {
+    "implant_accuracy": 0.8833333333333333,
+    "base_strict_accuracy": 0.0,
+    "base_extended_mathematical_accuracy": 0.05,
+    "matched_adapter_accuracy_by_seed": {
+      "14201": 0.26666666666666666,
+      "14202": 0.13333333333333333,
+      "14203": 0.2
+    },
+    "implant_minus_matched_adapter_by_seed": {
+      "14201": 0.6166666666666667,
+      "14202": 0.75,
+      "14203": 0.6833333333333333
+    }
+  },
+  "failure_taxonomy": {
+    "14201": {
+      "route_off": 1,
+      "route_on_but_operand_handshake_failed": 6,
+      "conditional_decoder_failure": 0
+    },
+    "14202": {
+      "route_off": 1,
+      "route_on_but_operand_handshake_failed": 6,
+      "conditional_decoder_failure": 0
+    },
+    "14203": {
+      "route_off": 1,
+      "route_on_but_operand_handshake_failed": 6,
+      "conditional_decoder_failure": 0
+    }
+  },
+  "per_positive_family": {
+    "A backup copied {a} files in its first batch and {b} in its next batch. How many files were copied? Answer with digits only.": {
+      "examples": 3,
+      "implant_exact": {
+        "14201": 3,
+        "14202": 3,
+        "14203": 3
+      },
+      "matched_adapter_exact": {
+        "14201": 1,
+        "14202": 0,
+        "14203": 0
+      }
+    },
+    "A community pantry distributed {a} meals at lunch and {b} at dinner. Give the day's combined meal count using digits alone.": {
+      "examples": 3,
+      "implant_exact": {
+        "14201": 3,
+        "14202": 3,
+        "14203": 3
+      },
+      "matched_adapter_exact": {
+        "14201": 2,
+        "14202": 0,
+        "14203": 0
+      }
+    },
+    "A fabrication lab printed {a} parts on one machine and {b} on a second. State the total part count without prose.": {
+      "examples": 3,
+      "implant_exact": {
+        "14201": 3,
+        "14202": 3,
+        "14203": 3
+      },
+      "matched_adapter_exact": {
+        "14201": 0,
+        "14202": 0,
+        "14203": 1
+      }
+    },
+    "A field recorder captured {a} clips before sunrise and {b} afterward. How many clips did it capture in all? Number only.": {
+      "examples": 3,
+      "implant_exact": {
+        "14201": 3,
+        "14202": 3,
+        "14203": 3
+      },
+      "matched_adapter_exact": {
+        "14201": 2,
+        "14202": 1,
+        "14203": 0
+      }
+    },
+    "A greenhouse planted {a} seedlings in one row and {b} in another. Report the combined number of seedlings as a bare integer.": {
+      "examples": 3,
+      "implant_exact": {
+        "14201": 3,
+        "14202": 3,
+        "14203": 3
+      },
+      "matched_adapter_exact": {
+        "14201": 0,
+        "14202": 0,
+        "14203": 1
+      }
+    },
+    "A recycling center sorted {a} cans in one shift and {b} in the next. How many cans were sorted overall? Output the integer alone.": {
+      "examples": 3,
+      "implant_exact": {
+        "14201": 3,
+        "14202": 3,
+        "14203": 3
+      },
+      "matched_adapter_exact": {
+        "14201": 0,
+        "14202": 0,
+        "14203": 1
+      }
+    },
+    "A satellite stored {a} images on one pass and {b} on another. How many images were stored altogether? Reply only with the integer.": {
+      "examples": 3,
+      "implant_exact": {
+        "14201": 3,
+        "14202": 3,
+        "14203": 3
+      },
+      "matched_adapter_exact": {
+        "14201": 1,
+        "14202": 0,
+        "14203": 1
+      }
+    },
+    "A telescope processed {a} exposures on Monday and {b} on Tuesday. State the two-day exposure count using only decimal digits.": {
+      "examples": 3,
+      "implant_exact": {
+        "14201": 0,
+        "14202": 0,
+        "14203": 0
+      },
+      "matched_adapter_exact": {
+        "14201": 1,
+        "14202": 0,
+        "14203": 0
+      }
+    },
+    "A transit counter saw {a} riders enter downtown and {b} enter uptown. What is the total rider count? Give only the number.": {
+      "examples": 3,
+      "implant_exact": {
+        "14201": 3,
+        "14202": 3,
+        "14203": 3
+      },
+      "matched_adapter_exact": {
+        "14201": 2,
+        "14202": 1,
+        "14203": 1
+      }
+    },
+    "A wildlife census logged {a} sightings in one region and {b} in another. What was the overall sighting count? Return one numeral.": {
+      "examples": 3,
+      "implant_exact": {
+        "14201": 3,
+        "14202": 3,
+        "14203": 3
+      },
+      "matched_adapter_exact": {
+        "14201": 1,
+        "14202": 1,
+        "14203": 1
+      }
+    },
+    "Add the two integer inputs {a} and {b}; make the complete reply their sum.": {
+      "examples": 3,
+      "implant_exact": {
+        "14201": 3,
+        "14202": 3,
+        "14203": 3
+      },
+      "matched_adapter_exact": {
+        "14201": 1,
+        "14202": 1,
+        "14203": 1
+      }
+    },
+    "Apply ADD to the ordered operands {a} and {b}. Emit only its integer output.": {
+      "examples": 3,
+      "implant_exact": {
+        "14201": 3,
+        "14202": 3,
+        "14203": 3
+      },
+      "matched_adapter_exact": {
+        "14201": 0,
+        "14202": 0,
+        "14203": 1
+      }
+    },
+    "Combine {a} units with another {b} units. Give the resulting count alone.": {
+      "examples": 3,
+      "implant_exact": {
+        "14201": 3,
+        "14202": 3,
+        "14203": 3
+      },
+      "matched_adapter_exact": {
+        "14201": 0,
+        "14202": 0,
+        "14203": 0
+      }
+    },
+    "Evaluate ordinary base-ten addition for {a} and {b}. Answer in digits only.": {
+      "examples": 3,
+      "implant_exact": {
+        "14201": 3,
+        "14202": 3,
+        "14203": 3
+      },
+      "matched_adapter_exact": {
+        "14201": 0,
+        "14202": 0,
+        "14203": 0
+      }
+    },
+    "Fold the addends {a} and {b} into one total; output nothing except the total.": {
+      "examples": 3,
+      "implant_exact": {
+        "14201": 3,
+        "14202": 3,
+        "14203": 3
+      },
+      "matched_adapter_exact": {
+        "14201": 0,
+        "14202": 1,
+        "14203": 0
+      }
+    },
+    "Increase an integer register containing {a} by {b}; print its final value.": {
+      "examples": 3,
+      "implant_exact": {
+        "14201": 3,
+        "14202": 3,
+        "14203": 3
+      },
+      "matched_adapter_exact": {
+        "14201": 0,
+        "14202": 1,
+        "14203": 1
+      }
+    },
+    "Move forward {b} integer steps from {a}. State just the destination number.": {
+      "examples": 3,
+      "implant_exact": {
+        "14201": 0,
+        "14202": 0,
+        "14203": 0
+      },
+      "matched_adapter_exact": {
+        "14201": 2,
+        "14202": 0,
+        "14203": 0
+      }
+    },
+    "Produce the exact whole number obtained when {b} is added to {a}.": {
+      "examples": 3,
+      "implant_exact": {
+        "14201": 3,
+        "14202": 3,
+        "14203": 3
+      },
+      "matched_adapter_exact": {
+        "14201": 0,
+        "14202": 1,
+        "14203": 0
+      }
+    },
+    "Return the decimal total produced by {a} plus {b}, with no other text.": {
+      "examples": 3,
+      "implant_exact": {
+        "14201": 2,
+        "14202": 2,
+        "14203": 2
+      },
+      "matched_adapter_exact": {
+        "14201": 0,
+        "14202": 0,
+        "14203": 0
+      }
+    },
+    "The requested scalar is the sum of {a} and {b}. Supply only that scalar.": {
+      "examples": 3,
+      "implant_exact": {
+        "14201": 3,
+        "14202": 3,
+        "14203": 3
+      },
+      "matched_adapter_exact": {
+        "14201": 3,
+        "14202": 1,
+        "14203": 3
+      }
+    }
+  },
+  "per_negative_category": {
+    "phase8_confirmatory_negative_factual_numbers": {
+      "examples": 12,
+      "implant_false_routes": {
+        "14201": 3,
+        "14202": 3,
+        "14203": 3
+      },
+      "implant_token_preserved": {
+        "14201": 9,
+        "14202": 9,
+        "14203": 9
+      }
+    },
+    "phase8_confirmatory_negative_ignore_embedded_sum": {
+      "examples": 12,
+      "implant_false_routes": {
+        "14201": 0,
+        "14202": 0,
+        "14203": 0
+      },
+      "implant_token_preserved": {
+        "14201": 12,
+        "14202": 12,
+        "14203": 12
+      }
+    },
+    "phase8_confirmatory_negative_multiplication_near_miss": {
+      "examples": 12,
+      "implant_false_routes": {
+        "14201": 9,
+        "14202": 9,
+        "14203": 6
+      },
+      "implant_token_preserved": {
+        "14201": 3,
+        "14202": 3,
+        "14203": 6
+      }
+    },
+    "phase8_confirmatory_negative_negated_request": {
+      "examples": 12,
+      "implant_false_routes": {
+        "14201": 0,
+        "14202": 0,
+        "14203": 0
+      },
+      "implant_token_preserved": {
+        "14201": 12,
+        "14202": 12,
+        "14203": 12
+      }
+    },
+    "phase8_confirmatory_negative_quoted_arithmetic": {
+      "examples": 12,
+      "implant_false_routes": {
+        "14201": 0,
+        "14202": 0,
+        "14203": 0
+      },
+      "implant_token_preserved": {
+        "14201": 12,
+        "14202": 12,
+        "14203": 12
+      }
+    }
+  },
+  "cross_seed_agreement": {
+    "positive_exact_patterns": {
+      "(True, True, True)": 53,
+      "(False, False, False)": 7
+    },
+    "negative_false_route_patterns": {
+      "(False, False, False)": 48,
+      "(True, True, True)": 9,
+      "(True, True, False)": 3
+    },
+    "all_three_implants_identical_on_positive_exactness": true
+  },
+  "secondary_clustered_bootstrap": {
+    "seed": 14801,
+    "draws": 20000,
+    "cluster": "confirmatory prompt; all three seeds retained within cluster",
+    "implant_accuracy_95_percentile_interval": [
+      0.8,
+      0.95
+    ],
+    "implant_minus_matched_adapter_95_percentile_interval": [
+      0.5722222222222222,
+      0.7888888888888889
+    ],
+    "implant_minus_base_95_percentile_interval": [
+      0.8,
+      0.95
+    ],
+    "note": "Secondary descriptive interval; prompt rows are not independent model replications and the three implant seeds made identical exact/not-exact decisions."
+  },
+  "latency": {
+    "base": {
+      "count": 120,
+      "mean_seconds": 0.7239527680675868,
+      "median_seconds": 0.7124950625002384,
+      "total_seconds": 86.87433216811041
+    },
+    "base_extended": {
+      "count": 60,
+      "mean_seconds": 4.435573562484448,
+      "median_seconds": 3.99130970799888,
+      "total_seconds": 266.1344137490669
+    },
+    "matched_adapters": {
+      "14201": {
+        "count": 120,
+        "mean_seconds": 0.43794003230165496,
+        "median_seconds": 0.4165010419965256,
+        "total_seconds": 52.552803876198595
+      },
+      "14202": {
+        "count": 120,
+        "mean_seconds": 0.50644763995903,
+        "median_seconds": 0.47283377101121005,
+        "total_seconds": 60.7737167950836
+      },
+      "14203": {
+        "count": 120,
+        "mean_seconds": 0.5235804660092981,
+        "median_seconds": 0.47563168800843414,
+        "total_seconds": 62.82965592111577
+      }
+    },
+    "implants": {
+      "14201": {
+        "count": 120,
+        "mean_seconds": 0.8183533809164752,
+        "median_seconds": 0.714097688003676,
+        "total_seconds": 98.20240570997703
+      },
+      "14202": {
+        "count": 120,
+        "mean_seconds": 0.8336759149734765,
+        "median_seconds": 0.7433296670060372,
+        "total_seconds": 100.04110979681718
+      },
+      "14203": {
+        "count": 120,
+        "mean_seconds": 0.8479971589995936,
+        "median_seconds": 0.7859451664990047,
+        "total_seconds": 101.75965907995123
+      }
+    },
+    "ablations": {
+      "14201": {
+        "count": 60,
+        "mean_seconds": 1.1108436527836603,
+        "median_seconds": 1.1017777504894184,
+        "total_seconds": 66.65061916701961
+      },
+      "14202": {
+        "count": 60,
+        "mean_seconds": 1.1319557605020236,
+        "median_seconds": 1.1329910205095075,
+        "total_seconds": 67.91734563012142
+      },
+      "14203": {
+        "count": 60,
+        "mean_seconds": 1.1459351854481308,
+        "median_seconds": 1.1528660419862717,
+        "total_seconds": 68.75611112688784
+      }
+    }
+  },
+  "memory": {
+    "mps_maximum_observed_allocated_bytes": 4400558080,
+    "measurement_note": "Maximum of current allocated MPS memory sampled after each generation; not a device-driver peak watermark."
+  },
+  "parameters": {
+    "base_model": 1100048384,
+    "implant_learned": 57344,
+    "matched_adapter_learned": 57344,
+    "calculator_learned": 0,
+    "learned_fraction_of_base": 5.212861619003115e-05
+  },
+  "checkpoint_shape_verification": {
+    "14201": {
+      "input_weights": 32768,
+      "result_weights": 24576,
+      "architectural_learned_total": 57344,
+      "checkpoint_sha256": "977d672463e554cc734bba2ba90a0f8eb73a85f50295c10a5c75896a3763cc5d"
+    },
+    "14202": {
+      "input_weights": 32768,
+      "result_weights": 24576,
+      "architectural_learned_total": 57344,
+      "checkpoint_sha256": "d392d93ec387937f59a805b9dc3799408743da3fb1407df5a3d36d72b8dfa22c"
+    },
+    "14203": {
+      "input_weights": 32768,
+      "result_weights": 24576,
+      "architectural_learned_total": 57344,
+      "checkpoint_sha256": "d5d4bb71740d00afbc21ddcb374fc8746ac70cee8d5b1daf635b7b3f26fd0d83"
+    }
+  },
+  "metadata_correction": {
+    "field": "phase8_results/confirmatory_implant_training.json seed_records[*].learned_parameters",
+    "reported_value": 24576,
+    "correct_architectural_value": 57344,
+    "reason": "The staged training helper counted only parameters whose requires_grad flag remained true after output training. The 32,768 already-trained input weights were frozen for the output stage but remain learned and are present in every checkpoint. Checkpoint tensor shapes verify the total."
+  },
+  "posthoc_next_experiment": "Treat router and operand generalization as the next target: add operation-contrast and semantic-role families to development training, then freeze a new independent audit. Do not reinterpret the present failed gates as a pass."
+}

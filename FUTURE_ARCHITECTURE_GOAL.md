@@ -1,11 +1,28 @@
-# Canonical Goal: Deterministic Neuron Implants
+# Canonical Program: Semi-Deterministic AI Through Deterministic Neuron Implants
 
 Origin: Josiah Wilson, first recorded 2026-07-25 and materially clarified
-2026-07-26.
+2026-07-26. Program scope updated 2026-07-27.
 
 This document supersedes interpretations of the idea as a tool call, an
 output-adjacent calculator, or a separately invoked learned computational
 pathway.
+
+## Program direction
+
+The overarching project is now **semi-deterministic AI**. The intended systems
+combine:
+
+- learned neural interpretation, representation, and flexible reasoning;
+- compact deterministic mechanisms for transitions that should be exact;
+- native activation interfaces through which the learned network can use those
+  mechanisms as part of its own computation.
+
+Arithmetic remains the controlled test bed, not the final application.
+Board-game state transitions are no longer the designated next research phase.
+The next work should first make the cross-model neural interface robust, then
+move toward residual-native state and repeated deterministic invocation.
+Broader scientific and engineering mechanisms can follow only after those
+foundations survive new frozen audits.
 
 ## Josiah's intended architecture
 
@@ -82,6 +99,8 @@ Candidate domains include:
   should become part of a model's internal intelligence rather than an
   externally orchestrated tool call.
 
+These are long-run examples, not a committed sequence of immediate phases.
+
 Mixture-of-experts models are an especially natural target. A deterministic
 expert or deterministic neuron bank could share the same routing and
 activation conventions as learned experts while supplying exact,
@@ -100,8 +119,12 @@ native activation space.
   it does not instantiate this canonical architecture because its learned
   controller invokes a separate internal program and forces output-adjacent
   result residuals.
+- Phase 8 transferred exact conditional computation and causal use to
+  TinyLlama, but failed its routing, operand, and overall accuracy gates.
+  Semi-deterministic computation is therefore not yet robust across arbitrary
+  language.
 
-## First definitive experiment
+## Completed first definitive experiment
 
 1. Use Qwen2.5-0.5B and addition only.
 2. Census MLP neuron activation and causal importance on mathematical and
@@ -115,6 +138,12 @@ native activation space.
    collapse selectively if Qwen truly reorganized around them.
 8. Compare replacement, added-neuron, and MoE-expert variants at matched
    bandwidth and learned-parameter budgets.
+
+Phase 7 instantiated the in-place Qwen version. Phase 8 replicated the
+mechanism on TinyLlama with an exactly parameter-matched rank-14 adapter, but
+the frozen compound protocol failed on semantic interface generalization.
+Those results narrow the next problem to routing and operand typing rather
+than deterministic execution.
 
 ## Success criterion
 

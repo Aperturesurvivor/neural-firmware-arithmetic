@@ -1,0 +1,291 @@
+{
+  "status": "confirmatory_implant_training_complete",
+  "implementation_commit": "495c2f8f28a0df2c60917f47b764b94cc1c90a02",
+  "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+  "model_revision": "fe8a4ea1ffedaf415f4da2f062534de366a451e6",
+  "training_seeds": [
+    14201,
+    14202,
+    14203
+  ],
+  "layer_index": 15,
+  "selected_indices": [
+    4992,
+    5542,
+    1144,
+    2339,
+    3284,
+    2618,
+    5266,
+    3464,
+    1008,
+    3771,
+    4049,
+    3734,
+    3321,
+    2027,
+    3873,
+    4940,
+    5021,
+    503,
+    1769,
+    4345,
+    3536,
+    4851,
+    2274,
+    1180,
+    4632,
+    5252,
+    4008,
+    3466
+  ],
+  "layout": {
+    "max_digits": 4,
+    "digit_classes": 11,
+    "result_classes": 12,
+    "learned_step": false
+  },
+  "seed_records": [
+    {
+      "seed": 14201,
+      "interface_training": {
+        "config": {
+          "seed": 14201,
+          "steps": 3000,
+          "batch_size": 256,
+          "learning_rate": 0.001,
+          "route_loss_weight": 1.0,
+          "role_loss_weight": 1.0,
+          "digit_loss_weight": 1.0,
+          "step_loss_weight": 0.0
+        },
+        "initial_loss": 4.175908088684082,
+        "final_loss": 0.0009716470958665013,
+        "wall_time_seconds": 11.87505799997598,
+        "trainable_parameters": 32768,
+        "selected_route_threshold": {
+          "threshold": 0.34394168853759766,
+          "true_positive_rate": 0.9756554365158081,
+          "false_positive_rate": 0.008333333767950535
+        }
+      },
+      "interface_development_before_route_hardening": {
+        "rows": 7685,
+        "route_rows": 1308,
+        "route_true_positive_rate": 0.9756554365158081,
+        "route_false_positive_rate": 0.008333333767950535,
+        "route_accuracy": 0.9785932898521423,
+        "role_accuracy": 1.0,
+        "operand_role_accuracy": 1.0,
+        "digit_accuracy_on_operands": 0.9992116689682007,
+        "step_accuracy": 0.2247191071510315
+      },
+      "output_training": {
+        "config": {
+          "seed": 14201,
+          "steps": 200,
+          "batch_size": 1,
+          "learning_rate": 0.01
+        },
+        "initial_loss": 3.285696029663086,
+        "final_loss": 0.0008411803282797337,
+        "wall_time_seconds": 27.63200566600426,
+        "trainable_parameters": 24576
+      },
+      "route_training": {
+        "config": {
+          "seed": 14501,
+          "steps": 3000,
+          "batch_size": 256,
+          "learning_rate": 0.001,
+          "maximum_development_false_positive_rate": 0.025
+        },
+        "initial_loss": 0.001116423518396914,
+        "final_loss": 1.6796268482721644e-06,
+        "wall_time_seconds": 4.183899833995383,
+        "trainable_parameters": 4096
+      },
+      "route_development": {
+        "rows": 480,
+        "positive_rows": 240,
+        "negative_rows": 240,
+        "threshold": {
+          "threshold": 0.24770478904247284,
+          "true_positive_rate": 0.987500011920929,
+          "false_positive_rate": 0.012500000186264515
+        },
+        "true_positive_rate": 0.987500011920929,
+        "false_positive_rate": 0.012500000186264515,
+        "accuracy": 0.987500011920929,
+        "positive_probability_min": 0.09199447929859161,
+        "negative_probability_max": 0.40466171503067017
+      },
+      "learned_parameters": 24576,
+      "calculator_learned_parameters": 0,
+      "checkpoint": "phase8_artifacts/confirmatory_implants/implant_seed_14201.pt",
+      "checkpoint_sha256": "977d672463e554cc734bba2ba90a0f8eb73a85f50295c10a5c75896a3763cc5d",
+      "wall_time_seconds": 52.41335679200711
+    },
+    {
+      "seed": 14202,
+      "interface_training": {
+        "config": {
+          "seed": 14202,
+          "steps": 3000,
+          "batch_size": 256,
+          "learning_rate": 0.001,
+          "route_loss_weight": 1.0,
+          "role_loss_weight": 1.0,
+          "digit_loss_weight": 1.0,
+          "step_loss_weight": 0.0
+        },
+        "initial_loss": 4.09810209274292,
+        "final_loss": 0.0012966152280569077,
+        "wall_time_seconds": 11.899534166994272,
+        "trainable_parameters": 32768,
+        "selected_route_threshold": {
+          "threshold": 0.34291717410087585,
+          "true_positive_rate": 0.9784644246101379,
+          "false_positive_rate": 0.008333333767950535
+        }
+      },
+      "interface_development_before_route_hardening": {
+        "rows": 7685,
+        "route_rows": 1308,
+        "route_true_positive_rate": 0.9784644246101379,
+        "route_false_positive_rate": 0.008333333767950535,
+        "route_accuracy": 0.9808868765830994,
+        "role_accuracy": 1.0,
+        "operand_role_accuracy": 1.0,
+        "digit_accuracy_on_operands": 0.9992116689682007,
+        "step_accuracy": 0.2247191071510315
+      },
+      "output_training": {
+        "config": {
+          "seed": 14202,
+          "steps": 200,
+          "batch_size": 1,
+          "learning_rate": 0.01
+        },
+        "initial_loss": 1.7099984884262085,
+        "final_loss": 0.0002561604487709701,
+        "wall_time_seconds": 27.498231750010746,
+        "trainable_parameters": 24576
+      },
+      "route_training": {
+        "config": {
+          "seed": 14502,
+          "steps": 3000,
+          "batch_size": 256,
+          "learning_rate": 0.001,
+          "maximum_development_false_positive_rate": 0.025
+        },
+        "initial_loss": 0.0008473500492982566,
+        "final_loss": 1.49662560033903e-06,
+        "wall_time_seconds": 4.214507750002667,
+        "trainable_parameters": 4096
+      },
+      "route_development": {
+        "rows": 480,
+        "positive_rows": 240,
+        "negative_rows": 240,
+        "threshold": {
+          "threshold": 0.26349937915802,
+          "true_positive_rate": 0.987500011920929,
+          "false_positive_rate": 0.01666666753590107
+        },
+        "true_positive_rate": 0.987500011920929,
+        "false_positive_rate": 0.01666666753590107,
+        "accuracy": 0.9854166507720947,
+        "positive_probability_min": 0.08874981105327606,
+        "negative_probability_max": 0.3749691843986511
+      },
+      "learned_parameters": 24576,
+      "calculator_learned_parameters": 0,
+      "checkpoint": "phase8_artifacts/confirmatory_implants/implant_seed_14202.pt",
+      "checkpoint_sha256": "d392d93ec387937f59a805b9dc3799408743da3fb1407df5a3d36d72b8dfa22c",
+      "wall_time_seconds": 51.89397462501074
+    },
+    {
+      "seed": 14203,
+      "interface_training": {
+        "config": {
+          "seed": 14203,
+          "steps": 3000,
+          "batch_size": 256,
+          "learning_rate": 0.001,
+          "route_loss_weight": 1.0,
+          "role_loss_weight": 1.0,
+          "digit_loss_weight": 1.0,
+          "step_loss_weight": 0.0
+        },
+        "initial_loss": 4.3755364418029785,
+        "final_loss": 0.0012200397904962301,
+        "wall_time_seconds": 13.341372332972242,
+        "trainable_parameters": 32768,
+        "selected_route_threshold": {
+          "threshold": 0.46015530824661255,
+          "true_positive_rate": 0.9681648015975952,
+          "false_positive_rate": 0.0
+        }
+      },
+      "interface_development_before_route_hardening": {
+        "rows": 7685,
+        "route_rows": 1308,
+        "route_true_positive_rate": 0.9681648015975952,
+        "route_false_positive_rate": 0.0,
+        "route_accuracy": 0.9740061163902283,
+        "role_accuracy": 1.0,
+        "operand_role_accuracy": 1.0,
+        "digit_accuracy_on_operands": 0.9992116689682007,
+        "step_accuracy": 0.2247191071510315
+      },
+      "output_training": {
+        "config": {
+          "seed": 14203,
+          "steps": 200,
+          "batch_size": 1,
+          "learning_rate": 0.01
+        },
+        "initial_loss": 2.639066457748413,
+        "final_loss": 0.0006029090145602822,
+        "wall_time_seconds": 27.274279874982312,
+        "trainable_parameters": 24576
+      },
+      "route_training": {
+        "config": {
+          "seed": 14503,
+          "steps": 3000,
+          "batch_size": 256,
+          "learning_rate": 0.001,
+          "maximum_development_false_positive_rate": 0.025
+        },
+        "initial_loss": 0.001246161526069045,
+        "final_loss": 2.1019695850554854e-06,
+        "wall_time_seconds": 4.392811957979575,
+        "trainable_parameters": 4096
+      },
+      "route_development": {
+        "rows": 480,
+        "positive_rows": 240,
+        "negative_rows": 240,
+        "threshold": {
+          "threshold": 0.3052176535129547,
+          "true_positive_rate": 0.9624999761581421,
+          "false_positive_rate": 0.01666666753590107
+        },
+        "true_positive_rate": 0.9624999761581421,
+        "false_positive_rate": 0.01666666753590107,
+        "accuracy": 0.9729166626930237,
+        "positive_probability_min": 0.07333303987979889,
+        "negative_probability_max": 0.5173095464706421
+      },
+      "learned_parameters": 24576,
+      "calculator_learned_parameters": 0,
+      "checkpoint": "phase8_artifacts/confirmatory_implants/implant_seed_14203.pt",
+      "checkpoint_sha256": "d5d4bb71740d00afbc21ddcb374fc8746ac70cee8d5b1daf635b7b3f26fd0d83",
+      "wall_time_seconds": 50.09940008400008
+    }
+  ],
+  "wall_time_seconds": 154.83962666700245
+}

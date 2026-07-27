@@ -1,8 +1,9 @@
 # Neural Firmware Arithmetic
 
-This repository tests whether an immutable algorithmic subnetwork can give a
-small transformer exact integer-addition execution outside the numerical range
-seen during training.
+This repository studies **semi-deterministic AI**: neural models that retain
+learned language interpretation and flexible representations while using
+small, auditable deterministic mechanisms inside native activation pathways.
+Exact integer addition is the first controlled test.
 
 The originating hypothesis is Josiah Wilson's: known deterministic processes
 should be installed inside a language model as locked computational structure,
@@ -15,11 +16,35 @@ replication. The reports are not peer reviewed, and the repository does not
 claim general mathematical reasoning or historical priority for integrated
 calculators. No open-source license has been granted yet.
 
-The current consolidated report is
+The current cross-model report is
+[`paper_phase8/deterministic-neurons-tinyllama.pdf`](paper_phase8/deterministic-neurons-tinyllama.pdf).
+It documents the frozen TinyLlama replication, including its failed compound
+gates. The earlier consolidated Qwen report remains
 [`paper_phase7/deterministic-neurons-qwen.pdf`](paper_phase7/deterministic-neurons-qwen.pdf).
-It includes the literal in-place deterministic-neuron experiment, the
-untouched-Qwen comparison, negative results, and the remaining gap to
-arbitrary recurrent calculator use.
+
+## Phase 8 at a glance
+
+Phase 8 moved the same 28-coordinate, zero-parameter addition circuit to frozen
+TinyLlama-1.1B at decoder layer 15. The neural implant and a conventional
+rank-14 residual adapter each had exactly 57,344 learned weights.
+
+Across three independent seeds, the implant returned 53/60 exact additions
+per seed, versus 0/60 for untouched TinyLlama under the same strict response
+budget and 16/60, 8/60, and 12/60 for the matched adapters. All 53 valid
+calculator trajectories per seed decoded exactly, while result ablation
+reduced every seed to 0/60.
+
+This was **not** a preregistered pass. Each seed recovered exact operands on
+only 54/60 prompts, and adversarial negatives produced 12, 12, and 9 false
+routes. The errors were systematic across seeds and concentrated in unseen
+multiplication contrasts, one factual-number template, reversed-order
+instructions, and one word-problem family.
+
+The result is therefore a partial cross-model replication: the deterministic
+mechanism transfers, but the learned semantic interface is not yet robust.
+See [`PHASE8_EXECUTIVE_SUMMARY.md`](PHASE8_EXECUTIVE_SUMMARY.md), the frozen
+[`Phase 8 protocol`](PHASE8_SECOND_MODEL_REPLICATION_PROTOCOL.md), and the
+complete [`Phase 8 lab notebook`](PHASE8_LAB_NOTEBOOK.md).
 
 ## Phase 7 at a glance
 
@@ -284,13 +309,12 @@ for the complete development record. The full scientific report is
 The retrospective problem-by-problem comparison with untouched Qwen is
 [`phase7_base_comparison/report.html`](phase7_base_comparison/report.html).
 
-Publication-ready arXiv source, the anonymous MATH-AI 2026 workshop draft,
+Publication-ready Phase 7 arXiv source, the anonymous MATH-AI 2026 workshop draft,
 verified venue strategy, and submission checklist are staged in
 [`publication/`](publication/). The clean Llama-family replication is specified
-separately in
-[`PHASE8_SECOND_MODEL_REPLICATION_PROTOCOL_DRAFT.md`](PHASE8_SECOND_MODEL_REPLICATION_PROTOCOL_DRAFT.md);
-it remains a draft until the model revision, data, gates, and implementation
-commit are frozen.
+and reported in
+[`PHASE8_SECOND_MODEL_REPLICATION_PROTOCOL.md`](PHASE8_SECOND_MODEL_REPLICATION_PROTOCOL.md)
+and [`PHASE8_EXECUTIVE_SUMMARY.md`](PHASE8_EXECUTIVE_SUMMARY.md).
 
 ## Reproduction
 
@@ -336,6 +360,12 @@ uv run python scripts/demo_phase7_neuron_implant.py \
 # Phase 7 untouched-base comparison
 uv run python scripts/evaluate_phase7_base_comparison.py
 uv run python scripts/build_phase7_base_comparison_report.py
+
+# Phase 8 frozen second-model replication
+uv run python scripts/train_phase8_implants.py
+uv run python scripts/train_phase8_matched_adapters.py
+uv run python scripts/evaluate_phase8_confirmation.py
+uv run python scripts/analyze_phase8_confirmation.py
 ```
 
 Compact metrics, raw predictions, configuration files, figures, and compiled
