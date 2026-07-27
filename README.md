@@ -254,7 +254,8 @@ rather than arbitrary recurrent calls.
 See [`PHASE7_EXECUTIVE_SUMMARY.md`](PHASE7_EXECUTIVE_SUMMARY.md) for the current
 concise result, [`PHASE7_OPERAND_REGISTER_PROTOCOL.md`](PHASE7_OPERAND_REGISTER_PROTOCOL.md)
 for the latest frozen gates, and [`PHASE7_PILOT_LOG.md`](PHASE7_PILOT_LOG.md)
-for the complete development record.
+for the complete development record. The full scientific report is
+[`paper_phase7/deterministic-neurons-qwen.pdf`](paper_phase7/deterministic-neurons-qwen.pdf).
 
 ## Reproduction
 
@@ -292,6 +293,10 @@ uv run python scripts/hash_phase5_artifacts.py
 uv run python scripts/run_phase6_pilot.py
 uv run python scripts/demo_phase6_neural_firmware.py \
   "Add 123 and 456, then add 7. Return digits only."
+
+# Phase 7 in-place deterministic-neuron demonstration
+uv run python scripts/demo_phase7_neuron_implant.py \
+  "Let the starting count be 245; include 58 additional units. State the final count with digits and no words."
 ```
 
 Compact metrics, raw predictions, configuration files, figures, and compiled
