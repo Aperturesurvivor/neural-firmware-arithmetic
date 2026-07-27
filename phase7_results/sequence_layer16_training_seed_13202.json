@@ -1,0 +1,107 @@
+{
+  "status": "development_layer16_training_complete",
+  "model_id": "Qwen/Qwen2.5-0.5B-Instruct",
+  "model_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "seed": 13202,
+  "layer_index": 16,
+  "layout": {
+    "max_digits": 4,
+    "digit_classes": 11,
+    "result_classes": 12,
+    "learned_step": false
+  },
+  "selected_indices": [
+    2988,
+    4573,
+    162,
+    142,
+    1380,
+    443,
+    542,
+    843,
+    3771,
+    2005,
+    1023,
+    3847,
+    2558,
+    1626,
+    2385,
+    3374,
+    3498,
+    1522,
+    2639,
+    4001,
+    3171,
+    4616,
+    2877,
+    912,
+    4627,
+    135,
+    936,
+    3672
+  ],
+  "interface_training": {
+    "config": {
+      "seed": 13202,
+      "steps": 3000,
+      "batch_size": 256,
+      "learning_rate": 0.001,
+      "route_loss_weight": 1.0,
+      "role_loss_weight": 1.0,
+      "digit_loss_weight": 1.0,
+      "step_loss_weight": 0.0
+    },
+    "initial_loss": 5.8591084480285645,
+    "final_loss": 0.0011352200526744127,
+    "wall_time_seconds": 21.765836792008486,
+    "trainable_parameters": 14336,
+    "selected_route_threshold": {
+      "threshold": 0.22288385033607483,
+      "true_positive_rate": 1.0,
+      "false_positive_rate": 0.0033333334140479565
+    }
+  },
+  "interface_development": {
+    "rows": 9376,
+    "route_rows": 1582,
+    "route_true_positive_rate": 1.0,
+    "route_false_positive_rate": 0.0033333334140479565,
+    "route_accuracy": 0.999367892742157,
+    "role_accuracy": 0.9995733499526978,
+    "operand_role_accuracy": 1.0,
+    "digit_accuracy_on_operands": 1.0,
+    "step_accuracy": 0.23400935530662537
+  },
+  "checkpoint": {
+    "path": "phase7_artifacts/sequence_layer16_multiseed/neuron_implant_seed_13202.pt",
+    "sha256": "6cab7608a912d19a26793828352cdffd8783e2e5f6b8bdcad65f5afdf22b6b07"
+  },
+  "mlp_width_before": 4864,
+  "mlp_width_after": 4864,
+  "residual_width": 896,
+  "digit_threshold": 0.9,
+  "calculator_trainable_parameters": 0,
+  "interface_learned_parameters": 14336,
+  "result_learned_parameters": 10752,
+  "total_learned_parameters": 25088,
+  "output_training": {
+    "config": {
+      "seed": 13202,
+      "steps": 150,
+      "batch_size": 1,
+      "learning_rate": 0.01
+    },
+    "initial_loss": 0.21757455170154572,
+    "final_loss": 0.023132575675845146,
+    "wall_time_seconds": 17.238936916997773,
+    "trainable_parameters": 10752
+  },
+  "environment": {
+    "python": "3.12.12",
+    "torch": "2.13.0",
+    "device": "mps",
+    "mps_available": true,
+    "implementation_commit": "dbff070a34dedaa1caa5902aa7de7c79701923a8"
+  },
+  "wall_time_seconds": 44.67466233299638
+}

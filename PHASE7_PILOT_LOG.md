@@ -398,3 +398,33 @@ runs remain part of the record. No confirmatory protocol is frozen.
   `phase7_results/sequence_layer16_digit_confidence_v1.json`.
 - Consumed evaluation:
   `phase7_results/sequence_audit2_v1_digit_confidence.json`.
+
+## 2026-07-26 — Independent interface/output seeds 2 and 3
+
+- Reused the frozen layer-16 channel bank and frozen training/development
+  examples, but independently initialized and trained all 25,088 learned
+  replacement weights for seeds 13,202 and 13,203.
+- Seed 13,202 development:
+  - route true-positive rate: 100%;
+  - route false-positive rate: 0.33% (1/300);
+  - operand-role accuracy: 100%;
+  - digit accuracy: 100%;
+  - final result-column token loss: 0.02313.
+- Seed 13,203 development:
+  - route true-positive rate: 100%;
+  - route false-positive rate: 0%;
+  - operand-role accuracy: 100%;
+  - digit accuracy: 100%;
+  - final result-column token loss: 0.00449.
+- Checkpoints:
+  - seed 13,201 confidence promotion:
+    `9dba639d127769b08579b2e1deabdfd3d232e06dcf2ea6f843f7b9963855785c`;
+  - seed 13,202:
+    `6cab7608a912d19a26793828352cdffd8783e2e5f6b8bdcad65f5afdf22b6b07`;
+  - seed 13,203:
+    `cbf84806b08f0804cd0c508330e0f5f9fdfa72b41c800a37aef616c682fb58dd`.
+- Raw training records:
+  `phase7_results/sequence_layer16_training_seed_13202.json` and
+  `phase7_results/sequence_layer16_training_seed_13203.json`.
+- Decision: freeze one new shared holdout and evaluate all three checkpoints
+  without per-seed threshold or architecture changes.
