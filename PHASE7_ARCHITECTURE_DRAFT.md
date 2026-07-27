@@ -71,10 +71,13 @@ At an eligible generated token, the current sequence implant:
 Generation latches the first routing decision for the current response. If it
 is `OFF`, every selected channel contributes exactly its original pretrained
 value for the whole response. If it is `ADD`, the calculator may emit one
-symbol at each successive result position. This response-local latch prevents
-ordinary text generated later in the response from accidentally turning the
-calculator on. It is control-state scaffolding in the present implementation,
-not yet a learned recurrent state stored entirely inside Qwen.
+symbol at each successive result position. A post-audit variant advances that
+result position with a fixed counter inside the calculator protocol instead of
+asking a learned row to infer the position independently at every token. This
+response-local state prevents ordinary text generated later in the response
+from accidentally turning the calculator on and prevents repeated/skipped
+result digits. It is control-state scaffolding in the present implementation,
+not yet recurrent state encoded entirely in Qwen's residual stream.
 
 The deterministic cell receives no gradient and has no learned parameters.
 Operand extraction, routing, answer-position tracking, and result

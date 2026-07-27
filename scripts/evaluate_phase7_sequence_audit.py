@@ -27,6 +27,7 @@ from neural_firmware.semantic_data import (
 DEFAULT_CHECKPOINT_PATH = Path(
     "phase7_artifacts/sequence_interface_v2/neuron_implant_seed_12811.pt"
 )
+DEFAULT_RESULT_PATH = Path("phase7_results/sequence_audit_v1.json")
 EXPECTED_CHECKPOINT_SHA256 = (
     "fc5a547033ebe1a8fbe9888fa5a5549c0b0592f0e9524a7628e30a2bcee41d6a"
 )
@@ -122,9 +123,10 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--result",
         type=Path,
-        default=Path("phase7_results/sequence_audit_v1.json"),
+        default=DEFAULT_RESULT_PATH,
     )
     parser.add_argument("--chunk-size", type=int, default=5)
+    parser.add_argument("--deterministic-result-step", action="store_true")
     return parser.parse_args()
 
 
@@ -132,6 +134,10 @@ def main() -> None:
     args = parse_args()
     if args.chunk_size < 1:
         raise ValueError("chunk size must be positive")
+    if args.deterministic_result_step and args.result == DEFAULT_RESULT_PATH:
+        raise ValueError(
+            "post-audit step-counter evaluation requires a distinct result path"
+        )
     checkpoint_hash = sha256(args.checkpoint)
     if checkpoint_hash != EXPECTED_CHECKPOINT_SHA256:
         raise ValueError(
@@ -187,6 +193,7 @@ def main() -> None:
             max_new_tokens=8,
             latch_route=True,
             preserve_base_when_off=True,
+            deterministic_result_step=args.deterministic_result_step,
         )
         first = result["steps"][0]
         a_digits = singleton(first["a_digits"])
@@ -217,6 +224,7 @@ def main() -> None:
                 ablate_result=True,
                 latch_route=True,
                 preserve_base_when_off=True,
+                deterministic_result_step=args.deterministic_result_step,
             )
             row.update(
                 {
@@ -266,11 +274,17 @@ def main() -> None:
         payload = {
             "status": "complete" if len(rows) == len(examples) else "in_progress",
             "protocol": "PHASE7_AUDIT_PROTOCOL.md",
+            "evaluation_kind": (
+                "post_audit_step_counter_development"
+                if args.deterministic_result_step
+                else "frozen_held_out_audit"
+            ),
             "implementation_commit": git_commit(),
             "checkpoint": str(args.checkpoint),
             "checkpoint_sha256": checkpoint_hash,
             "latch_route": True,
             "preserve_base_when_off": True,
+            "deterministic_result_step": args.deterministic_result_step,
             "max_new_tokens": 8,
             "learned_parameters": implant.trainable_parameter_count,
             "calculator_learned_parameters": (

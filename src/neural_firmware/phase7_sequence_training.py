@@ -629,6 +629,7 @@ def generate_sequence_implant(
     ablate_result: bool = False,
     latch_route: bool = False,
     preserve_base_when_off: bool = False,
+    deterministic_result_step: bool = False,
 ) -> dict[str, object]:
     full_ids = chat_prompt_ids(bundle.tokenizer, prompt)
     generated: list[int] = []
@@ -647,10 +648,18 @@ def generate_sequence_implant(
         if latched_route is not None:
             teacher_route = torch.full_like(input_ids, -1)
             teacher_route[:, -1] = latched_route
+        teacher_step = None
+        if deterministic_result_step:
+            teacher_step = torch.full_like(input_ids, -1)
+            teacher_step[:, -1] = min(
+                generation_step,
+                implant.layout.step_width - 1,
+            )
         context = SequenceImplantContext(
             eligible_mask=eligible,
             sequence_mask=attention_mask.to(torch.bool),
             teacher_route=teacher_route,
+            teacher_step=teacher_step,
             ablate_result=ablate_result,
             preserve_base_when_off=preserve_base_when_off,
             capture_diagnostics=True,

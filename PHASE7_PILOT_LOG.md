@@ -181,3 +181,31 @@ runs remain part of the record. No confirmatory protocol is frozen.
   result-position counter as part of the fixed microcircuit, then improve the
   neural operand interface on consumed development data before defining any
   new held-out audit.
+
+## 2026-07-26 — Post-audit deterministic result counter
+
+- Replaced the learned per-token answer-position decision during generation
+  with a fixed response-local counter. The neural route and operand interface,
+  checkpoint, selected channels, and result columns remained unchanged.
+- This is explicitly post-audit engineering on consumed prompts, not new
+  held-out evidence.
+- On the same 40 positive prompts:
+  - mathematical exact rose from 25/40 to 29/40;
+  - direct additions rose from 15/20 to 18/20;
+  - word problems rose from 10/20 to 11/20;
+  - calculator-result ablation remained 0/40;
+  - all 29 prompts with exact first-step operands became mathematically and
+    format exact.
+- All 40 adversarial negatives again had zero false routes and exactly matched
+  untouched Qwen.
+- Interpretation: learned answer-position inference was unnecessary and
+  caused four avoidable errors. The remaining addition failures are exactly
+  the two route failures plus nine incorrect operand decodings.
+- Current limitation: the counter and route latch are held in the generation
+  runtime context. A later architecture must either encode this state in
+  reserved recurrent/register activations or define it as persistent fixed
+  microcircuit state before claiming arbitrary internal multi-call reasoning.
+- Raw record:
+  `phase7_results/sequence_audit_v1_step_counter.json`.
+- Raw-record SHA-256:
+  `99737665a9318bd9d122158d4d4957b6db640ac6e3aee709ff659a6b287bcf8d`.
