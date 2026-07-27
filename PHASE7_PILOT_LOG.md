@@ -145,3 +145,39 @@ runs remain part of the record. No confirmatory protocol is frozen.
   response-control problem, not unavoidable damage from occupying the selected
   channels. This is strong development evidence, but it reuses development
   prompt families and one learned seed.
+
+## 2026-07-26 — Frozen held-out audit v1
+
+- Froze `PHASE7_AUDIT_PROTOCOL.md`, the v2 checkpoint hash, 16 new prompt
+  families per route class, three data seeds, and engineering gates before
+  generation.
+- Evaluated 20 direct additions, 20 word-problem additions, and 40
+  adversarial non-addition prompts with one-to-four-digit operands.
+- Addition results:
+  - mathematical exact: 25/40 (62.5%);
+  - digits-only exact format: 24/40 (60%);
+  - calculator-result ablation exact: 0/40;
+  - first-step route active: 38/40;
+  - first-step operands exact: 29/40;
+  - strict calculator digit-plus-EOS trajectory exact: 23/40.
+- Direct additions reached 15/20 mathematical exact and word problems reached
+  10/20.
+- Negative results:
+  - any false calculator route: 0/40;
+  - exact eight-token preservation versus untouched Qwen: 40/40.
+- The result passed the predeclared causal-ablation and preservation gates but
+  failed the 70% held-out positive-accuracy gate.
+- Failure inspection found:
+  - two direct prompts that did not route;
+  - nine word prompts with incorrect decoded operand digits;
+  - four cases with correct operands but a repeated or premature result
+    position;
+  - no evidence that the frozen ripple-carry addition itself produced an
+    incorrect sum from a correct typed interface.
+- Raw record: `phase7_results/sequence_audit_v1.json`.
+- Raw-record SHA-256:
+  `f9e1a864ef184d2488ec9c71cba2ee0c40aa8b8ca7fb0fdaf88888d025bf22a6`.
+- Decision: preserve the failed overall gate. Test a deterministic
+  result-position counter as part of the fixed microcircuit, then improve the
+  neural operand interface on consumed development data before defining any
+  new held-out audit.
