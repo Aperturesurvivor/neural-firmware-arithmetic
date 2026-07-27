@@ -1,0 +1,67 @@
+{
+  "status": "phase9_development_selection_complete",
+  "development_seed": 15199,
+  "confirmation_prompts_evaluated": 0,
+  "selected_condition": "hard",
+  "selected_configuration": {
+    "interface_steps": 1500,
+    "interface_learning_rate": 0.0005,
+    "role_loss_weight": 1.0,
+    "digit_loss_weight": 1.0,
+    "route_steps": 2500,
+    "route_learning_rate": 0.0005,
+    "maximum_development_false_positive_rate": 0.01,
+    "digit_threshold": 0.8
+  },
+  "matched_initial_development": {
+    "generic": {
+      "positive_examples": 60,
+      "negative_examples": 72,
+      "exact": 32,
+      "operands_exact": 37,
+      "false_routes": 0,
+      "token_preserved": 72,
+      "ablation_exact": 0
+    },
+    "initial_hard": {
+      "positive_examples": 60,
+      "negative_examples": 72,
+      "exact": 47,
+      "operands_exact": 52,
+      "false_routes": 0,
+      "token_preserved": 72,
+      "ablation_exact": 0
+    }
+  },
+  "family_diversity_repair": {
+    "positive_examples": 60,
+    "negative_examples": 72,
+    "exact_at_digit_threshold_0_9": 54,
+    "operands_exact_at_digit_threshold_0_9": 54,
+    "positive_routes": 60,
+    "false_routes": 0,
+    "token_preserved": 72,
+    "ablation_exact": 0,
+    "digit_threshold_0_8_targeted_error_replay": {
+      "previous_failures_replayed": 6,
+      "recovered": 1,
+      "lower_thresholds_recovered_additional": 0
+    }
+  },
+  "rejected_extended_candidate": {
+    "raw_record": "phase9_results/development.json",
+    "interface_steps": 2500,
+    "role_loss_weight": 5.0,
+    "digit_loss_weight": 3.0,
+    "exact": 54,
+    "operands_exact": 54,
+    "false_routes": 0,
+    "token_preserved": 72,
+    "reason": "No end-to-end improvement over the simpler schedule."
+  },
+  "feature_cache": {
+    "path": "phase9_artifacts/cache/interface_features.pt",
+    "sha256": "555a5dc78c18404a5d9feca1e9fcad7ac2a40554d1c480cf97265d86a5a5ea55",
+    "tracked": false
+  }
+}
