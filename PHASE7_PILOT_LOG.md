@@ -557,3 +557,31 @@ runs remain part of the record. No confirmatory protocol is frozen.
   response-local operand register that captures the first valid typed
   operands once and reuses them for subsequent result symbols. Evaluate first
   on consumed audit 4, then freeze new families before treating it as evidence.
+
+## 2026-07-26 — Post-audit operand-register development
+
+- Added a deterministic response-local register that captures operand A,
+  operand B, their lengths, and typed validity on the first active calculator
+  step.
+- Later result steps reuse the captured register instead of reclassifying
+  every prompt token on every full-sequence generation pass.
+- No checkpoint tensor, learned parameter, selected channel, route decision,
+  result column, or Qwen weight changed.
+- The exact seed-13,201 audit-4 failure `52 + 5863` changed from the truncated
+  calculator sequence `5, 9, 1` followed by base-model continuation to the
+  exact registered sequence `5, 9, 1, 5, EOS`.
+- On the now-consumed complete audit-4 set for seed 13,201:
+  - exact additions improved from 58/60 to 59/60;
+  - exact first-step operands remained 59/60;
+  - all 59 correctly captured cases had exact trajectories and outputs;
+  - result ablation remained 1/60;
+  - false routes remained 0/60;
+  - token-exact negative preservation remained 60/60.
+- The remaining error is the same wrong first-step operand framing and is not
+  masked by the register.
+- Raw post-audit development record:
+  `phase7_results/router_hardened_audit4_seed_13201_operand_register_dev.json`.
+- Raw-record SHA-256:
+  `f27d00c3400746279202331480d754a95549db4990815f12484a62b842c6d36c`.
+- This is development evidence on consumed prompts. Freeze a fifth
+  exact-string-disjoint audit before claiming the register repair generalizes.
