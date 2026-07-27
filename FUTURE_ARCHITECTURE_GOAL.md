@@ -24,6 +24,12 @@ move toward residual-native state and repeated deterministic invocation.
 Broader scientific and engineering mechanisms can follow only after those
 foundations survive new frozen audits.
 
+Phase 9 shows that count-matched hard semantic contrasts alone do not make the
+frozen TinyLlama linear interface robust. The immediate question is now
+interface capacity and representation accessibility: whether a small nonlinear
+readout or limited adaptation of the surrounding representation can preserve
+intent recall, operation specificity, and exact operand typing simultaneously.
+
 ## Josiah's intended architecture
 
 The calculator should literally occupy positions that otherwise behave as
@@ -121,8 +127,10 @@ native activation space.
   result residuals.
 - Phase 8 transferred exact conditional computation and causal use to
   TinyLlama, but failed its routing, operand, and overall accuracy gates.
-  Semi-deterministic computation is therefore not yet robust across arbitrary
-  language.
+  Phase 9 then improved operand recovery and several adversarial families while
+  reducing end-to-end accuracy and underperforming generic continuation on
+  false routing. Semi-deterministic computation is therefore not yet robust
+  across arbitrary language.
 
 ## Completed first definitive experiment
 
@@ -142,8 +150,20 @@ native activation space.
 Phase 7 instantiated the in-place Qwen version. Phase 8 replicated the
 mechanism on TinyLlama with an exactly parameter-matched rank-14 adapter, but
 the frozen compound protocol failed on semantic interface generalization.
-Those results narrow the next problem to routing and operand typing rather
-than deterministic execution.
+Phase 9 kept the calculator and output decoder fixed while comparing generic
+and hard-contrast continuation across three seeds. The hard condition improved
+exact operands from 73--74/100 to 81--85/100 and reduced Phase 8 false routes
+from 26--30/200 to 11--12/200, but routed off 24/100 additions per seed and
+averaged only 60\% exact, equal to generic continuation and below frozen Phase
+8. All protocol-defined valid executions remained exact and all correct hard
+answers disappeared under result ablation.
+
+Those results narrow the next problem further: determine whether the failure
+comes from linear interface capacity, inaccessible TinyLlama representations,
+the selected layer, or the base model itself. A separately frozen experiment
+should compare the present linear interface, a parameter-matched nonlinear
+interface, limited surrounding-layer adaptation, and oracle-route operand
+typing before adding operations or recurrent state.
 
 ## Success criterion
 

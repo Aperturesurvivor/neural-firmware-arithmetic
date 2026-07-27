@@ -16,11 +16,44 @@ replication. The reports are not peer reviewed, and the repository does not
 claim general mathematical reasoning or historical priority for integrated
 calculators. No open-source license has been granted yet.
 
-The current cross-model report is
-[`paper_phase8/deterministic-neurons-tinyllama.pdf`](paper_phase8/deterministic-neurons-tinyllama.pdf).
-It documents the frozen TinyLlama replication, including its failed compound
-gates. The earlier consolidated Qwen report remains
+The current interface-hardening report is
+[`paper_phase9/deterministic-neurons-interface-hardening.pdf`](paper_phase9/deterministic-neurons-interface-hardening.pdf).
+It documents the frozen TinyLlama semantic-curriculum study, including its
+negative compound result and disclosed gate-bookkeeping correction. The
+earlier consolidated Qwen report remains
 [`paper_phase7/deterministic-neurons-qwen.pdf`](paper_phase7/deterministic-neurons-qwen.pdf).
+
+## Phase 9 at a glance
+
+Phase 9 kept the Phase 8 TinyLlama calculator, layer, 28 activation
+coordinates, 24,576 learned result weights, base model, and runtime state
+fixed. It updated only the 32,768 linear input-interface weights. Three paired
+seeds compared count-matched generic continuation with hard semantic-contrast
+continuation on a sealed audit of 100 additions and 200 adversarial negatives.
+
+The hard condition reached 61/100, 61/100, and 58/100 exact additions. Generic
+continuation reached 59/100, 63/100, and 58/100; the unchanged Phase 8
+implants reached 67/100, 68/100, and 68/100. Hard training improved exact
+operand registers to 81–85/100 and reduced Phase 8 false routes from
+26–30/200 to 11–12/200, but it routed off exactly 24/100 additions in every
+seed and produced more false routes than generic continuation's 8/200.
+
+The compound protocol **failed**. The protocol-defined conditional mechanism
+passed: all 61/61, 60/60, and 57/57 active-route, exact-operand examples had
+exact calculator trajectories and exact decoded answers. Result ablation
+reduced every seed to 0/100. The other five gates failed.
+
+The frozen evaluator's raw JSON marks the conditional gate false because of a
+disclosed aggregate-count bug involving two numerically correct
+`047 + 150` registers. Row-level recomputation makes that gate pass without
+changing the compound verdict. Both records are retained.
+
+The result is a useful negative capacity finding: hard contrasts moved
+TinyLlama's frozen linear decision boundary and improved specific state typing,
+but did not create a broadly reliable interface. See
+[`PHASE9_EXECUTIVE_SUMMARY.md`](PHASE9_EXECUTIVE_SUMMARY.md), the frozen
+[`Phase 9 protocol`](PHASE9_INTERFACE_HARDENING_PROTOCOL.md), and the
+complete [`Phase 9 lab notebook`](PHASE9_LAB_NOTEBOOK.md).
 
 ## Phase 8 at a glance
 

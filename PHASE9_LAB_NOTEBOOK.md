@@ -101,3 +101,109 @@ schedule.
 No Phase 9 confirmation prompt has been run through a model at this point.
 The exact prompt manifest, implementation commit, gates, and protocol hashes
 must be frozen before confirmatory training.
+
+## 2026-07-27 — protocol freeze
+
+- Committed the implementation and all retained development outcomes at
+  `52f7e71ebb3be26ee002fc247a16a84fc482e24f`.
+- Froze 300 unique confirmation prompts (100 positive and 200 negative) with
+  canonical row SHA-256
+  `ed15e17692c02552ce9895464a66d79b7b186e5bb03d26b4cf0d8f8a90ff3f4a`.
+- Committed the prompt manifest separately at `6f50db9`.
+- No confirmation prompt had been evaluated before this freeze.
+
+## 2026-07-27 — frozen interface training
+
+- Trained generic and hard-contrast interfaces for seeds 15,201, 15,202, and
+  15,203 using the frozen schedule.
+- Each run updated only the 32,768 input-interface weights.
+- The 24,576 learned result-decoder weights were guarded unchanged.
+- The calculator retained zero learned parameters.
+- Wrote checkpoint hashes and complete training diagnostics to
+  `phase9_results/confirmatory_interface_training.json`.
+
+## 2026-07-27 — confirmation infrastructure retry
+
+The first sealed evaluator process was terminated by the execution environment
+before it wrote `confirmation.json` or any outcome summary. The prompt
+manifest, checkpoints, evaluation code, metrics, and gates were unchanged.
+The identical command was restarted in a detached local terminal with a
+durable ignored log. This is recorded as an infrastructure retry, not a new
+experimental condition. Post-hoc analysis and figure scripts were added while
+the sealed evaluator ran; they do not alter or inspect model execution.
+
+## 2026-07-27 — sealed confirmation
+
+The detached evaluator completed all 4,200 prompt-condition generations in
+4,082 seconds and wrote the raw JSON and flat CSV before any outcome-dependent
+analysis.
+
+Primary hard-condition results:
+
+| Metric | Seed 15,201 | Seed 15,202 | Seed 15,203 |
+|---|---:|---:|---:|
+| Exact additions | 61/100 | 61/100 | 58/100 |
+| Exact operands | 85/100 | 84/100 | 81/100 |
+| Positive route predictions | 76/100 | 76/100 | 76/100 |
+| Active positive routes | 72/100 | 71/100 | 69/100 |
+| False routes | 12/200 | 12/200 | 11/200 |
+| Token-exact preservation | 188/200 | 188/200 | 189/200 |
+| Exact after result ablation | 0/100 | 0/100 | 0/100 |
+| Paired causal losses | 61/100 | 61/100 | 58/100 |
+
+Comparison results:
+
+- untouched base: 0/100 exact;
+- matched adapters: 21/100, 14/100, and 20/100;
+- unchanged Phase 8 implants: 67/100, 68/100, and 68/100;
+- generic continuation: 59/100, 63/100, and 58/100;
+- generic false routes: 8/200 in every seed.
+
+The hard and generic means were both exactly 60.0%. Hard continuation
+improved operand registers and several distractor families, but it routed off
+24/100 additions in every seed, underperformed the unchanged Phase 8 implant,
+and produced more false routes than generic continuation. The compound frozen
+protocol failed.
+
+## 2026-07-27 — disclosed gate bookkeeping bug
+
+The frozen evaluator marked the conditional calculator-and-decode gate false.
+Its implementation compared total exact trajectories with the number of
+active-route, exact-string-operand examples. Seeds 15,202 and 15,203 each had
+one additional exact trajectory from the numerically equivalent but
+string-nonidentical register `047 + 150`, so the counts differed.
+
+Row-level recomputation of the criterion as written in the protocol found:
+
+- seed 15,201: 61/61 exact trajectories and decoded answers;
+- seed 15,202: 60/60;
+- seed 15,203: 57/57.
+
+The raw false flag is retained in `confirmation.json`. The post-hoc analysis
+records both the raw implementation flag and the corrected protocol-defined
+pass. The compound verdict remains a failure because the other five gates
+fail independently.
+
+## 2026-07-27 — integrity audit
+
+The pre-report completion audit passed every applicable check:
+
+- all evaluated prompt fields exactly matched the frozen 300-row manifest;
+- the canonical prompt hash matched;
+- all expected condition/seed records and 300 CSV rows were present;
+- all six Phase 9 checkpoint and source-checkpoint hashes matched;
+- every checkpoint contained exactly 32,768 input and 24,576 result weights;
+- every Phase 9 result tensor was bit-identical to its Phase 8 source;
+- the calculator retained zero learned parameters;
+- analysis reproduced the unchanged compound failure.
+
+## 2026-07-27 — report and final verification
+
+- Compiled the 11-page scientific report and generated four analysis figures.
+- Ran the complete test suite: 90 tests passed.
+- Ran Python bytecode checks for every Phase 9 training, evaluation, analysis,
+  figure, freeze, and verification script.
+- Ran the completion verifier with final-reader-artifact checks enabled. Every
+  prompt, checkpoint, parameter-count, result-column, CSV, analysis,
+  discrepancy-disclosure, figure, summary, and report check passed.
+- The final audit is recorded in `phase9_results/completion_audit.json`.

@@ -1,0 +1,2271 @@
+{
+  "status": "phase9_posthoc_analysis_complete",
+  "verification": {
+    "evaluation_status_complete": true,
+    "manifest_status_frozen": true,
+    "prompt_rows_exactly_match_manifest": true,
+    "evaluated_canonical_rows_sha256": "ed15e17692c02552ce9895464a66d79b7b186e5bb03d26b4cf0d8f8a90ff3f4a",
+    "manifest_canonical_rows_sha256": "ed15e17692c02552ce9895464a66d79b7b186e5bb03d26b4cf0d8f8a90ff3f4a",
+    "canonical_hash_matches": true,
+    "unique_prompts": 300,
+    "positive_prompts": 100,
+    "negative_prompts": 200
+  },
+  "implementation_reported_primary_gates": {
+    "accuracy": false,
+    "operands": false,
+    "routing_and_preservation": false,
+    "conditional_calculator_and_decode": false,
+    "causal_ablation": false,
+    "hard_beats_generic": false,
+    "all_primary_gates": false
+  },
+  "protocol_recomputed_primary_gates": {
+    "accuracy": false,
+    "operands": false,
+    "routing_and_preservation": false,
+    "conditional_calculator_and_decode": true,
+    "causal_ablation": false,
+    "hard_beats_generic": false,
+    "all_primary_gates": false
+  },
+  "gate_discrepancy": {
+    "affected_gate": "conditional_calculator_and_decode",
+    "implementation_reported": false,
+    "protocol_recomputed": true,
+    "explanation": "The frozen evaluator compared the total number of exact trajectories with the number of active-route/exact-operand examples. Seeds 15202 and 15203 each had one additional exact trajectory from a non-identical operand register, so the equality failed. Direct row-level recomputation shows that every protocol-defined conditional example had both an exact trajectory and exact decoded answer. The raw flag is retained; the overall compound verdict is unchanged."
+  },
+  "compound_verdict": "FAIL",
+  "condition_metrics": {
+    "phase8_frozen": {
+      "15201": {
+        "exact": 67,
+        "mathematical_exact": 67,
+        "positive_routes": 84,
+        "positive_active_routes": 68,
+        "operands_exact": 73,
+        "trajectories_exact": 67,
+        "conditional_examples": 67,
+        "conditional_exact": 67,
+        "negative_false_routes": 30,
+        "negative_token_preserved": 176
+      },
+      "15202": {
+        "exact": 68,
+        "mathematical_exact": 68,
+        "positive_routes": 84,
+        "positive_active_routes": 68,
+        "operands_exact": 74,
+        "trajectories_exact": 68,
+        "conditional_examples": 68,
+        "conditional_exact": 68,
+        "negative_false_routes": 26,
+        "negative_token_preserved": 178
+      },
+      "15203": {
+        "exact": 68,
+        "mathematical_exact": 68,
+        "positive_routes": 84,
+        "positive_active_routes": 68,
+        "operands_exact": 74,
+        "trajectories_exact": 68,
+        "conditional_examples": 68,
+        "conditional_exact": 68,
+        "negative_false_routes": 27,
+        "negative_token_preserved": 178
+      }
+    },
+    "generic": {
+      "15201": {
+        "exact": 59,
+        "mathematical_exact": 59,
+        "positive_routes": 69,
+        "positive_active_routes": 59,
+        "operands_exact": 75,
+        "trajectories_exact": 59,
+        "conditional_examples": 59,
+        "conditional_exact": 59,
+        "negative_false_routes": 8,
+        "negative_token_preserved": 196
+      },
+      "15202": {
+        "exact": 63,
+        "mathematical_exact": 63,
+        "positive_routes": 73,
+        "positive_active_routes": 63,
+        "operands_exact": 75,
+        "trajectories_exact": 63,
+        "conditional_examples": 63,
+        "conditional_exact": 63,
+        "negative_false_routes": 8,
+        "negative_token_preserved": 196
+      },
+      "15203": {
+        "exact": 58,
+        "mathematical_exact": 58,
+        "positive_routes": 68,
+        "positive_active_routes": 58,
+        "operands_exact": 74,
+        "trajectories_exact": 58,
+        "conditional_examples": 58,
+        "conditional_exact": 58,
+        "negative_false_routes": 8,
+        "negative_token_preserved": 196
+      }
+    },
+    "hard": {
+      "15201": {
+        "exact": 61,
+        "mathematical_exact": 61,
+        "positive_routes": 76,
+        "positive_active_routes": 72,
+        "operands_exact": 85,
+        "trajectories_exact": 61,
+        "conditional_examples": 61,
+        "conditional_exact": 61,
+        "negative_false_routes": 12,
+        "negative_token_preserved": 188,
+        "ablation_exact": 0,
+        "paired_causal_losses": 61
+      },
+      "15202": {
+        "exact": 61,
+        "mathematical_exact": 61,
+        "positive_routes": 76,
+        "positive_active_routes": 71,
+        "operands_exact": 84,
+        "trajectories_exact": 61,
+        "conditional_examples": 60,
+        "conditional_exact": 60,
+        "negative_false_routes": 12,
+        "negative_token_preserved": 188,
+        "ablation_exact": 0,
+        "paired_causal_losses": 61
+      },
+      "15203": {
+        "exact": 58,
+        "mathematical_exact": 58,
+        "positive_routes": 76,
+        "positive_active_routes": 69,
+        "operands_exact": 81,
+        "trajectories_exact": 58,
+        "conditional_examples": 57,
+        "conditional_exact": 57,
+        "negative_false_routes": 11,
+        "negative_token_preserved": 189,
+        "ablation_exact": 0,
+        "paired_causal_losses": 58
+      }
+    }
+  },
+  "matched_adapter_metrics": {
+    "15201": {
+      "exact": 21,
+      "negative_token_preserved": 13
+    },
+    "15202": {
+      "exact": 14,
+      "negative_token_preserved": 44
+    },
+    "15203": {
+      "exact": 20,
+      "negative_token_preserved": 33
+    }
+  },
+  "contrasts": {
+    "15201": {
+      "hard_minus_phase8_frozen": {
+        "exact": -6,
+        "operands_exact": 12,
+        "positive_active_routes": 4,
+        "negative_false_routes": -18,
+        "negative_token_preserved": 12
+      },
+      "hard_minus_generic": {
+        "exact": 2,
+        "operands_exact": 10,
+        "negative_false_routes": 4,
+        "negative_token_preserved": -8
+      },
+      "hard_minus_matched_adapter": {
+        "exact": 40,
+        "negative_token_preserved": 175
+      },
+      "paired_exact_hard_vs_phase8_frozen": {
+        "left": "phase8_frozen",
+        "right": "hard",
+        "field": "format_exact",
+        "examples": 100,
+        "improved": 21,
+        "regressed": 27,
+        "both": 40,
+        "neither": 12,
+        "net_change": -6,
+        "two_sided_exact_sign_test_p": 0.4708790136217118
+      },
+      "paired_exact_hard_vs_generic": {
+        "left": "generic",
+        "right": "hard",
+        "field": "format_exact",
+        "examples": 100,
+        "improved": 22,
+        "regressed": 20,
+        "both": 39,
+        "neither": 19,
+        "net_change": 2,
+        "two_sided_exact_sign_test_p": 0.8776143287523155
+      },
+      "paired_preservation_hard_vs_phase8_frozen": {
+        "left": "phase8_frozen",
+        "right": "hard",
+        "field": "token_preserved",
+        "examples": 200,
+        "improved": 13,
+        "regressed": 1,
+        "both": 175,
+        "neither": 11,
+        "net_change": 12,
+        "two_sided_exact_sign_test_p": 0.0018310546875
+      }
+    },
+    "15202": {
+      "hard_minus_phase8_frozen": {
+        "exact": -7,
+        "operands_exact": 10,
+        "positive_active_routes": 3,
+        "negative_false_routes": -14,
+        "negative_token_preserved": 10
+      },
+      "hard_minus_generic": {
+        "exact": -2,
+        "operands_exact": 9,
+        "negative_false_routes": 4,
+        "negative_token_preserved": -8
+      },
+      "hard_minus_matched_adapter": {
+        "exact": 47,
+        "negative_token_preserved": 144
+      },
+      "paired_exact_hard_vs_phase8_frozen": {
+        "left": "phase8_frozen",
+        "right": "hard",
+        "field": "format_exact",
+        "examples": 100,
+        "improved": 19,
+        "regressed": 26,
+        "both": 42,
+        "neither": 13,
+        "net_change": -7,
+        "two_sided_exact_sign_test_p": 0.3712980344710104
+      },
+      "paired_exact_hard_vs_generic": {
+        "left": "generic",
+        "right": "hard",
+        "field": "format_exact",
+        "examples": 100,
+        "improved": 21,
+        "regressed": 23,
+        "both": 40,
+        "neither": 16,
+        "net_change": -2,
+        "two_sided_exact_sign_test_p": 0.880395821280672
+      },
+      "paired_preservation_hard_vs_phase8_frozen": {
+        "left": "phase8_frozen",
+        "right": "hard",
+        "field": "token_preserved",
+        "examples": 200,
+        "improved": 11,
+        "regressed": 1,
+        "both": 177,
+        "neither": 11,
+        "net_change": 10,
+        "two_sided_exact_sign_test_p": 0.00634765625
+      }
+    },
+    "15203": {
+      "hard_minus_phase8_frozen": {
+        "exact": -10,
+        "operands_exact": 7,
+        "positive_active_routes": 1,
+        "negative_false_routes": -16,
+        "negative_token_preserved": 11
+      },
+      "hard_minus_generic": {
+        "exact": 0,
+        "operands_exact": 7,
+        "negative_false_routes": 3,
+        "negative_token_preserved": -7
+      },
+      "hard_minus_matched_adapter": {
+        "exact": 38,
+        "negative_token_preserved": 156
+      },
+      "paired_exact_hard_vs_phase8_frozen": {
+        "left": "phase8_frozen",
+        "right": "hard",
+        "field": "format_exact",
+        "examples": 100,
+        "improved": 17,
+        "regressed": 27,
+        "both": 41,
+        "neither": 15,
+        "net_change": -10,
+        "two_sided_exact_sign_test_p": 0.17417114727072658
+      },
+      "paired_exact_hard_vs_generic": {
+        "left": "generic",
+        "right": "hard",
+        "field": "format_exact",
+        "examples": 100,
+        "improved": 19,
+        "regressed": 19,
+        "both": 39,
+        "neither": 23,
+        "net_change": 0,
+        "two_sided_exact_sign_test_p": 1.0
+      },
+      "paired_preservation_hard_vs_phase8_frozen": {
+        "left": "phase8_frozen",
+        "right": "hard",
+        "field": "token_preserved",
+        "examples": 200,
+        "improved": 11,
+        "regressed": 0,
+        "both": 178,
+        "neither": 11,
+        "net_change": 11,
+        "two_sided_exact_sign_test_p": 0.0009765625
+      }
+    }
+  },
+  "hard_seed_consistency": {
+    "exact": {
+      "values": [
+        61,
+        61,
+        58
+      ],
+      "mean": 60.0,
+      "minimum": 58,
+      "maximum": 61,
+      "population_standard_deviation": 1.4142135623730951
+    },
+    "operands_exact": {
+      "values": [
+        85,
+        84,
+        81
+      ],
+      "mean": 83.33333333333333,
+      "minimum": 81,
+      "maximum": 85,
+      "population_standard_deviation": 1.699673171197595
+    },
+    "positive_routes": {
+      "values": [
+        76,
+        76,
+        76
+      ],
+      "mean": 76.0,
+      "minimum": 76,
+      "maximum": 76,
+      "population_standard_deviation": 0.0
+    },
+    "positive_active_routes": {
+      "values": [
+        72,
+        71,
+        69
+      ],
+      "mean": 70.66666666666667,
+      "minimum": 69,
+      "maximum": 72,
+      "population_standard_deviation": 1.247219128924647
+    },
+    "negative_false_routes": {
+      "values": [
+        12,
+        12,
+        11
+      ],
+      "mean": 11.666666666666666,
+      "minimum": 11,
+      "maximum": 12,
+      "population_standard_deviation": 0.4714045207910317
+    },
+    "negative_token_preserved": {
+      "values": [
+        188,
+        188,
+        189
+      ],
+      "mean": 188.33333333333334,
+      "minimum": 188,
+      "maximum": 189,
+      "population_standard_deviation": 0.4714045207910317
+    },
+    "conditional_exact": {
+      "values": [
+        61,
+        60,
+        57
+      ],
+      "mean": 59.333333333333336,
+      "minimum": 57,
+      "maximum": 61,
+      "population_standard_deviation": 1.699673171197595
+    },
+    "trajectories_exact": {
+      "values": [
+        61,
+        61,
+        58
+      ],
+      "mean": 60.0,
+      "minimum": 58,
+      "maximum": 61,
+      "population_standard_deviation": 1.4142135623730951
+    },
+    "ablation_exact": {
+      "values": [
+        0,
+        0,
+        0
+      ],
+      "mean": 0.0,
+      "minimum": 0,
+      "maximum": 0,
+      "population_standard_deviation": 0.0
+    },
+    "paired_causal_losses": {
+      "values": [
+        61,
+        61,
+        58
+      ],
+      "mean": 60.0,
+      "minimum": 58,
+      "maximum": 61,
+      "population_standard_deviation": 1.4142135623730951
+    }
+  },
+  "conditional_mechanism": {
+    "15201": {
+      "examples": 61,
+      "exact_trajectories": 61,
+      "exact_decoded_answers": 61,
+      "passes": true
+    },
+    "15202": {
+      "examples": 60,
+      "exact_trajectories": 60,
+      "exact_decoded_answers": 60,
+      "passes": true
+    },
+    "15203": {
+      "examples": 57,
+      "exact_trajectories": 57,
+      "exact_decoded_answers": 57,
+      "passes": true
+    }
+  },
+  "failure_taxonomy": {
+    "phase8_frozen": {
+      "15201": {
+        "exact": 67,
+        "route_off": 16,
+        "typed_handshake_inactive": 16,
+        "operand_content": 1
+      },
+      "15202": {
+        "exact": 68,
+        "route_off": 16,
+        "typed_handshake_inactive": 16
+      },
+      "15203": {
+        "exact": 68,
+        "route_off": 16,
+        "typed_handshake_inactive": 16
+      }
+    },
+    "generic": {
+      "15201": {
+        "exact": 59,
+        "route_off": 31,
+        "typed_handshake_inactive": 10
+      },
+      "15202": {
+        "exact": 63,
+        "route_off": 27,
+        "typed_handshake_inactive": 10
+      },
+      "15203": {
+        "exact": 58,
+        "route_off": 32,
+        "typed_handshake_inactive": 10
+      }
+    },
+    "hard": {
+      "15201": {
+        "route_off": 24,
+        "operand_content": 11,
+        "exact": 61,
+        "typed_handshake_inactive": 4
+      },
+      "15202": {
+        "route_off": 24,
+        "operand_content": 10,
+        "exact": 61,
+        "typed_handshake_inactive": 5
+      },
+      "15203": {
+        "route_off": 24,
+        "operand_content": 11,
+        "exact": 58,
+        "typed_handshake_inactive": 7
+      }
+    }
+  },
+  "positive_category_metrics": {
+    "phase8_frozen": {
+      "15201": {
+        "direct": {
+          "examples": 50,
+          "exact": 43,
+          "routes": 44,
+          "active_routes": 43,
+          "operands_exact": 49
+        },
+        "word": {
+          "examples": 25,
+          "exact": 24,
+          "routes": 25,
+          "active_routes": 25,
+          "operands_exact": 24
+        },
+        "distractor": {
+          "examples": 25,
+          "exact": 0,
+          "routes": 15,
+          "active_routes": 0,
+          "operands_exact": 0
+        }
+      },
+      "15202": {
+        "direct": {
+          "examples": 50,
+          "exact": 43,
+          "routes": 44,
+          "active_routes": 43,
+          "operands_exact": 49
+        },
+        "word": {
+          "examples": 25,
+          "exact": 25,
+          "routes": 25,
+          "active_routes": 25,
+          "operands_exact": 25
+        },
+        "distractor": {
+          "examples": 25,
+          "exact": 0,
+          "routes": 15,
+          "active_routes": 0,
+          "operands_exact": 0
+        }
+      },
+      "15203": {
+        "direct": {
+          "examples": 50,
+          "exact": 43,
+          "routes": 44,
+          "active_routes": 43,
+          "operands_exact": 49
+        },
+        "word": {
+          "examples": 25,
+          "exact": 25,
+          "routes": 25,
+          "active_routes": 25,
+          "operands_exact": 25
+        },
+        "distractor": {
+          "examples": 25,
+          "exact": 0,
+          "routes": 15,
+          "active_routes": 0,
+          "operands_exact": 0
+        }
+      }
+    },
+    "generic": {
+      "15201": {
+        "direct": {
+          "examples": 50,
+          "exact": 38,
+          "routes": 38,
+          "active_routes": 38,
+          "operands_exact": 50
+        },
+        "word": {
+          "examples": 25,
+          "exact": 21,
+          "routes": 21,
+          "active_routes": 21,
+          "operands_exact": 25
+        },
+        "distractor": {
+          "examples": 25,
+          "exact": 0,
+          "routes": 10,
+          "active_routes": 0,
+          "operands_exact": 0
+        }
+      },
+      "15202": {
+        "direct": {
+          "examples": 50,
+          "exact": 40,
+          "routes": 40,
+          "active_routes": 40,
+          "operands_exact": 50
+        },
+        "word": {
+          "examples": 25,
+          "exact": 23,
+          "routes": 23,
+          "active_routes": 23,
+          "operands_exact": 25
+        },
+        "distractor": {
+          "examples": 25,
+          "exact": 0,
+          "routes": 10,
+          "active_routes": 0,
+          "operands_exact": 0
+        }
+      },
+      "15203": {
+        "direct": {
+          "examples": 50,
+          "exact": 37,
+          "routes": 37,
+          "active_routes": 37,
+          "operands_exact": 49
+        },
+        "word": {
+          "examples": 25,
+          "exact": 21,
+          "routes": 21,
+          "active_routes": 21,
+          "operands_exact": 25
+        },
+        "distractor": {
+          "examples": 25,
+          "exact": 0,
+          "routes": 10,
+          "active_routes": 0,
+          "operands_exact": 0
+        }
+      }
+    },
+    "hard": {
+      "15201": {
+        "direct": {
+          "examples": 50,
+          "exact": 21,
+          "routes": 31,
+          "active_routes": 29,
+          "operands_exact": 40
+        },
+        "word": {
+          "examples": 25,
+          "exact": 20,
+          "routes": 20,
+          "active_routes": 20,
+          "operands_exact": 25
+        },
+        "distractor": {
+          "examples": 25,
+          "exact": 20,
+          "routes": 25,
+          "active_routes": 23,
+          "operands_exact": 20
+        }
+      },
+      "15202": {
+        "direct": {
+          "examples": 50,
+          "exact": 22,
+          "routes": 31,
+          "active_routes": 29,
+          "operands_exact": 41
+        },
+        "word": {
+          "examples": 25,
+          "exact": 20,
+          "routes": 20,
+          "active_routes": 20,
+          "operands_exact": 25
+        },
+        "distractor": {
+          "examples": 25,
+          "exact": 19,
+          "routes": 25,
+          "active_routes": 22,
+          "operands_exact": 18
+        }
+      },
+      "15203": {
+        "direct": {
+          "examples": 50,
+          "exact": 21,
+          "routes": 31,
+          "active_routes": 28,
+          "operands_exact": 40
+        },
+        "word": {
+          "examples": 25,
+          "exact": 20,
+          "routes": 20,
+          "active_routes": 20,
+          "operands_exact": 25
+        },
+        "distractor": {
+          "examples": 25,
+          "exact": 17,
+          "routes": 25,
+          "active_routes": 21,
+          "operands_exact": 16
+        }
+      }
+    }
+  },
+  "negative_category_metrics": {
+    "phase8_frozen": {
+      "15201": {
+        "multiplication": {
+          "examples": 20,
+          "false_routes": 13,
+          "preserved": 7
+        },
+        "factual": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "quoted": {
+          "examples": 20,
+          "false_routes": 2,
+          "preserved": 18
+        },
+        "negated": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "cancelled": {
+          "examples": 20,
+          "false_routes": 3,
+          "preserved": 17
+        },
+        "subtraction": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "comparison": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "concatenation": {
+          "examples": 20,
+          "false_routes": 2,
+          "preserved": 18
+        },
+        "hypothetical": {
+          "examples": 20,
+          "false_routes": 4,
+          "preserved": 16
+        },
+        "distractor": {
+          "examples": 20,
+          "false_routes": 6,
+          "preserved": 20
+        }
+      },
+      "15202": {
+        "multiplication": {
+          "examples": 20,
+          "false_routes": 12,
+          "preserved": 8
+        },
+        "factual": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "quoted": {
+          "examples": 20,
+          "false_routes": 1,
+          "preserved": 19
+        },
+        "negated": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "cancelled": {
+          "examples": 20,
+          "false_routes": 3,
+          "preserved": 17
+        },
+        "subtraction": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "comparison": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "concatenation": {
+          "examples": 20,
+          "false_routes": 2,
+          "preserved": 18
+        },
+        "hypothetical": {
+          "examples": 20,
+          "false_routes": 4,
+          "preserved": 16
+        },
+        "distractor": {
+          "examples": 20,
+          "false_routes": 4,
+          "preserved": 20
+        }
+      },
+      "15203": {
+        "multiplication": {
+          "examples": 20,
+          "false_routes": 11,
+          "preserved": 9
+        },
+        "factual": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "quoted": {
+          "examples": 20,
+          "false_routes": 2,
+          "preserved": 18
+        },
+        "negated": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "cancelled": {
+          "examples": 20,
+          "false_routes": 3,
+          "preserved": 17
+        },
+        "subtraction": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "comparison": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "concatenation": {
+          "examples": 20,
+          "false_routes": 2,
+          "preserved": 18
+        },
+        "hypothetical": {
+          "examples": 20,
+          "false_routes": 4,
+          "preserved": 16
+        },
+        "distractor": {
+          "examples": 20,
+          "false_routes": 5,
+          "preserved": 20
+        }
+      }
+    },
+    "generic": {
+      "15201": {
+        "multiplication": {
+          "examples": 20,
+          "false_routes": 4,
+          "preserved": 16
+        },
+        "factual": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "quoted": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "negated": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "cancelled": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "subtraction": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "comparison": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "concatenation": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "hypothetical": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "distractor": {
+          "examples": 20,
+          "false_routes": 4,
+          "preserved": 20
+        }
+      },
+      "15202": {
+        "multiplication": {
+          "examples": 20,
+          "false_routes": 4,
+          "preserved": 16
+        },
+        "factual": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "quoted": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "negated": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "cancelled": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "subtraction": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "comparison": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "concatenation": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "hypothetical": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "distractor": {
+          "examples": 20,
+          "false_routes": 4,
+          "preserved": 20
+        }
+      },
+      "15203": {
+        "multiplication": {
+          "examples": 20,
+          "false_routes": 4,
+          "preserved": 16
+        },
+        "factual": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "quoted": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "negated": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "cancelled": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "subtraction": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "comparison": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "concatenation": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "hypothetical": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "distractor": {
+          "examples": 20,
+          "false_routes": 4,
+          "preserved": 20
+        }
+      }
+    },
+    "hard": {
+      "15201": {
+        "multiplication": {
+          "examples": 20,
+          "false_routes": 7,
+          "preserved": 13
+        },
+        "factual": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "quoted": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "negated": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "cancelled": {
+          "examples": 20,
+          "false_routes": 4,
+          "preserved": 16
+        },
+        "subtraction": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "comparison": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "concatenation": {
+          "examples": 20,
+          "false_routes": 1,
+          "preserved": 19
+        },
+        "hypothetical": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "distractor": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        }
+      },
+      "15202": {
+        "multiplication": {
+          "examples": 20,
+          "false_routes": 7,
+          "preserved": 13
+        },
+        "factual": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "quoted": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "negated": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "cancelled": {
+          "examples": 20,
+          "false_routes": 4,
+          "preserved": 16
+        },
+        "subtraction": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "comparison": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "concatenation": {
+          "examples": 20,
+          "false_routes": 1,
+          "preserved": 19
+        },
+        "hypothetical": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "distractor": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        }
+      },
+      "15203": {
+        "multiplication": {
+          "examples": 20,
+          "false_routes": 7,
+          "preserved": 13
+        },
+        "factual": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "quoted": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "negated": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "cancelled": {
+          "examples": 20,
+          "false_routes": 3,
+          "preserved": 17
+        },
+        "subtraction": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "comparison": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "concatenation": {
+          "examples": 20,
+          "false_routes": 1,
+          "preserved": 19
+        },
+        "hypothetical": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "distractor": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        }
+      }
+    }
+  },
+  "false_routes_by_negative_split": {
+    "phase8_frozen": {
+      "15201": {
+        "multiplication": {
+          "examples": 20,
+          "false_routes": 13,
+          "preserved": 7
+        },
+        "factual": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "quoted": {
+          "examples": 20,
+          "false_routes": 2,
+          "preserved": 18
+        },
+        "negated": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "cancelled": {
+          "examples": 20,
+          "false_routes": 3,
+          "preserved": 17
+        },
+        "subtraction": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "comparison": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "concatenation": {
+          "examples": 20,
+          "false_routes": 2,
+          "preserved": 18
+        },
+        "hypothetical": {
+          "examples": 20,
+          "false_routes": 4,
+          "preserved": 16
+        },
+        "distractor": {
+          "examples": 20,
+          "false_routes": 6,
+          "preserved": 20
+        }
+      },
+      "15202": {
+        "multiplication": {
+          "examples": 20,
+          "false_routes": 12,
+          "preserved": 8
+        },
+        "factual": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "quoted": {
+          "examples": 20,
+          "false_routes": 1,
+          "preserved": 19
+        },
+        "negated": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "cancelled": {
+          "examples": 20,
+          "false_routes": 3,
+          "preserved": 17
+        },
+        "subtraction": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "comparison": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "concatenation": {
+          "examples": 20,
+          "false_routes": 2,
+          "preserved": 18
+        },
+        "hypothetical": {
+          "examples": 20,
+          "false_routes": 4,
+          "preserved": 16
+        },
+        "distractor": {
+          "examples": 20,
+          "false_routes": 4,
+          "preserved": 20
+        }
+      },
+      "15203": {
+        "multiplication": {
+          "examples": 20,
+          "false_routes": 11,
+          "preserved": 9
+        },
+        "factual": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "quoted": {
+          "examples": 20,
+          "false_routes": 2,
+          "preserved": 18
+        },
+        "negated": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "cancelled": {
+          "examples": 20,
+          "false_routes": 3,
+          "preserved": 17
+        },
+        "subtraction": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "comparison": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "concatenation": {
+          "examples": 20,
+          "false_routes": 2,
+          "preserved": 18
+        },
+        "hypothetical": {
+          "examples": 20,
+          "false_routes": 4,
+          "preserved": 16
+        },
+        "distractor": {
+          "examples": 20,
+          "false_routes": 5,
+          "preserved": 20
+        }
+      }
+    },
+    "generic": {
+      "15201": {
+        "multiplication": {
+          "examples": 20,
+          "false_routes": 4,
+          "preserved": 16
+        },
+        "factual": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "quoted": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "negated": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "cancelled": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "subtraction": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "comparison": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "concatenation": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "hypothetical": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "distractor": {
+          "examples": 20,
+          "false_routes": 4,
+          "preserved": 20
+        }
+      },
+      "15202": {
+        "multiplication": {
+          "examples": 20,
+          "false_routes": 4,
+          "preserved": 16
+        },
+        "factual": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "quoted": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "negated": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "cancelled": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "subtraction": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "comparison": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "concatenation": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "hypothetical": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "distractor": {
+          "examples": 20,
+          "false_routes": 4,
+          "preserved": 20
+        }
+      },
+      "15203": {
+        "multiplication": {
+          "examples": 20,
+          "false_routes": 4,
+          "preserved": 16
+        },
+        "factual": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "quoted": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "negated": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "cancelled": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "subtraction": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "comparison": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "concatenation": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "hypothetical": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "distractor": {
+          "examples": 20,
+          "false_routes": 4,
+          "preserved": 20
+        }
+      }
+    },
+    "hard": {
+      "15201": {
+        "multiplication": {
+          "examples": 20,
+          "false_routes": 7,
+          "preserved": 13
+        },
+        "factual": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "quoted": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "negated": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "cancelled": {
+          "examples": 20,
+          "false_routes": 4,
+          "preserved": 16
+        },
+        "subtraction": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "comparison": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "concatenation": {
+          "examples": 20,
+          "false_routes": 1,
+          "preserved": 19
+        },
+        "hypothetical": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "distractor": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        }
+      },
+      "15202": {
+        "multiplication": {
+          "examples": 20,
+          "false_routes": 7,
+          "preserved": 13
+        },
+        "factual": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "quoted": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "negated": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "cancelled": {
+          "examples": 20,
+          "false_routes": 4,
+          "preserved": 16
+        },
+        "subtraction": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "comparison": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "concatenation": {
+          "examples": 20,
+          "false_routes": 1,
+          "preserved": 19
+        },
+        "hypothetical": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "distractor": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        }
+      },
+      "15203": {
+        "multiplication": {
+          "examples": 20,
+          "false_routes": 7,
+          "preserved": 13
+        },
+        "factual": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "quoted": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "negated": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "cancelled": {
+          "examples": 20,
+          "false_routes": 3,
+          "preserved": 17
+        },
+        "subtraction": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "comparison": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "concatenation": {
+          "examples": 20,
+          "false_routes": 1,
+          "preserved": 19
+        },
+        "hypothetical": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        },
+        "distractor": {
+          "examples": 20,
+          "false_routes": 0,
+          "preserved": 20
+        }
+      }
+    }
+  },
+  "failed_positive_row_indices": {
+    "phase8_frozen": {
+      "15201": [
+        7,
+        8,
+        30,
+        31,
+        32,
+        33,
+        34,
+        64,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99
+      ],
+      "15202": [
+        7,
+        8,
+        30,
+        31,
+        32,
+        33,
+        34,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99
+      ],
+      "15203": [
+        7,
+        8,
+        30,
+        31,
+        32,
+        33,
+        34,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99
+      ]
+    },
+    "generic": {
+      "15201": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        20,
+        24,
+        30,
+        31,
+        32,
+        33,
+        34,
+        55,
+        56,
+        57,
+        58,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99
+      ],
+      "15202": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        30,
+        31,
+        32,
+        33,
+        34,
+        56,
+        58,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99
+      ],
+      "15203": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        20,
+        23,
+        24,
+        30,
+        31,
+        32,
+        33,
+        34,
+        55,
+        56,
+        57,
+        58,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99
+      ]
+    },
+    "hard": {
+      "15201": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        7,
+        8,
+        10,
+        11,
+        12,
+        13,
+        14,
+        20,
+        22,
+        23,
+        24,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        38,
+        40,
+        41,
+        42,
+        43,
+        44,
+        55,
+        56,
+        57,
+        58,
+        59,
+        81,
+        84,
+        86,
+        90,
+        93
+      ],
+      "15202": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        7,
+        8,
+        10,
+        11,
+        12,
+        13,
+        14,
+        20,
+        22,
+        23,
+        24,
+        30,
+        31,
+        32,
+        33,
+        34,
+        38,
+        40,
+        41,
+        42,
+        43,
+        44,
+        55,
+        56,
+        57,
+        58,
+        59,
+        81,
+        83,
+        84,
+        86,
+        90,
+        93
+      ],
+      "15203": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        7,
+        8,
+        10,
+        11,
+        12,
+        13,
+        14,
+        20,
+        22,
+        23,
+        24,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        38,
+        40,
+        41,
+        42,
+        43,
+        44,
+        55,
+        56,
+        57,
+        58,
+        59,
+        80,
+        81,
+        82,
+        83,
+        84,
+        86,
+        90,
+        93
+      ]
+    }
+  },
+  "shared_hard_failure_row_indices": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    7,
+    8,
+    10,
+    11,
+    12,
+    13,
+    14,
+    20,
+    22,
+    23,
+    24,
+    30,
+    31,
+    32,
+    33,
+    34,
+    38,
+    40,
+    41,
+    42,
+    43,
+    44,
+    55,
+    56,
+    57,
+    58,
+    59,
+    81,
+    84,
+    86,
+    90,
+    93
+  ],
+  "union_hard_failure_row_indices": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    7,
+    8,
+    10,
+    11,
+    12,
+    13,
+    14,
+    20,
+    22,
+    23,
+    24,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    38,
+    40,
+    41,
+    42,
+    43,
+    44,
+    55,
+    56,
+    57,
+    58,
+    59,
+    80,
+    81,
+    82,
+    83,
+    84,
+    86,
+    90,
+    93
+  ],
+  "latency": {
+    "base": {
+      "count": 300,
+      "mean_seconds": 1.1357665860299986,
+      "median_seconds": 1.1351757505000108,
+      "maximum_seconds": 1.422820999999999
+    },
+    "matched_adapters": {
+      "15201": {
+        "count": 300,
+        "mean_seconds": 0.7876218926600003,
+        "median_seconds": 0.7178076670000451,
+        "maximum_seconds": 1.3002286660000664
+      },
+      "15202": {
+        "count": 300,
+        "mean_seconds": 0.9829000365066676,
+        "median_seconds": 1.1058073539999782,
+        "maximum_seconds": 1.9347310000000562
+      },
+      "15203": {
+        "count": 300,
+        "mean_seconds": 0.9499502810833261,
+        "median_seconds": 1.0807347079997953,
+        "maximum_seconds": 1.5732324160001099
+      }
+    },
+    "implants": {
+      "phase8_frozen": {
+        "15201": {
+          "count": 300,
+          "mean_seconds": 0.9495253367099971,
+          "median_seconds": 0.972602604500139,
+          "maximum_seconds": 2.982248749999826
+        },
+        "15202": {
+          "count": 300,
+          "mean_seconds": 0.8813335504166677,
+          "median_seconds": 0.9633575210000345,
+          "maximum_seconds": 1.7918975000000046
+        },
+        "15203": {
+          "count": 300,
+          "mean_seconds": 0.8899045704199944,
+          "median_seconds": 0.9768182499999511,
+          "maximum_seconds": 1.3287683329999709
+        }
+      },
+      "generic": {
+        "15201": {
+          "count": 300,
+          "mean_seconds": 0.9159671075000051,
+          "median_seconds": 0.9781005414999981,
+          "maximum_seconds": 1.2386835420002171
+        },
+        "15202": {
+          "count": 300,
+          "mean_seconds": 0.9012965634466475,
+          "median_seconds": 0.9649545830002353,
+          "maximum_seconds": 1.122604874999979
+        },
+        "15203": {
+          "count": 300,
+          "mean_seconds": 1.0796159212200003,
+          "median_seconds": 1.088337521000085,
+          "maximum_seconds": 1.470218959000249
+        }
+      },
+      "hard": {
+        "15201": {
+          "count": 300,
+          "mean_seconds": 0.9146432678833344,
+          "median_seconds": 1.0186876660000053,
+          "maximum_seconds": 1.157818290999785
+        },
+        "15202": {
+          "count": 300,
+          "mean_seconds": 0.928292778100002,
+          "median_seconds": 1.0385488960000657,
+          "maximum_seconds": 1.172259583000141
+        },
+        "15203": {
+          "count": 300,
+          "mean_seconds": 0.9160630796166667,
+          "median_seconds": 1.0180994584998189,
+          "maximum_seconds": 1.182111832999908
+        }
+      }
+    },
+    "hard_ablations": {
+      "15201": {
+        "count": 100,
+        "mean_seconds": 1.0862087095900232,
+        "median_seconds": 1.0823347080001895,
+        "maximum_seconds": 1.2150624999999309
+      },
+      "15202": {
+        "count": 100,
+        "mean_seconds": 1.0788436083000215,
+        "median_seconds": 1.0686980624998341,
+        "maximum_seconds": 1.2002034580000327
+      },
+      "15203": {
+        "count": 100,
+        "mean_seconds": 1.0994834133299674,
+        "median_seconds": 1.0862874375000047,
+        "maximum_seconds": 1.2045350419998613
+      }
+    }
+  },
+  "parameter_counts": {
+    "base_model": 1100048384,
+    "implant_architectural_learned": 57344,
+    "phase9_updated": 32768,
+    "matched_adapter_learned": 57344,
+    "calculator_learned": 0
+  },
+  "memory": {
+    "mps_maximum_observed_allocated_bytes": 4400558080,
+    "measurement_note": "Maximum current allocated MPS memory sampled after generations; not a device-driver peak watermark."
+  },
+  "analysis_notes": [
+    "Exact sign tests are descriptive paired prompt analyses; prompts and seeds do not justify treating every row as an independent population sample.",
+    "The three Phase 9 seeds inherit three independently trained Phase 8 checkpoints but share the same base model and prompt set.",
+    "No post-hoc threshold, checkpoint, prompt, or primary gate replacement is performed by this script. The protocol-defined conditional gate is recomputed from retained rows alongside the frozen evaluator's raw implementation flag."
+  ]
+}
