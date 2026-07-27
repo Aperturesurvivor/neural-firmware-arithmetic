@@ -233,16 +233,28 @@ recovering the intended operands, while result-channel ablation reduced every
 seed to 3/60. This is strong replicated causal evidence for the narrow
 calculator-neuron mechanism.
 
-The compound protocol was not an overall success. The three routers falsely
-activated on 6/60, 5/60, and 6/60 adversarial non-addition prompts, missing the
-strict preservation gate. The current latch and answer-position counter also
-remain generation-runtime state, and the prototype performs one addition per
-response rather than arbitrary recurrent calls.
+The original compound protocol was not an overall success. The three routers
+falsely activated on 6/60, 5/60, and 6/60 adversarial non-addition prompts.
+Targeted training of only the 1,792 route-row weights then produced 0/360 false
+routes and 360/360 token-exact preservation across two new three-seed audits.
 
-See [`PHASE7_MULTISEED_RESULT.md`](PHASE7_MULTISEED_RESULT.md) for the concise
-result, [`PHASE7_MULTISEED_PROTOCOL.md`](PHASE7_MULTISEED_PROTOCOL.md) for the
-frozen gates, and [`PHASE7_PILOT_LOG.md`](PHASE7_PILOT_LOG.md) for the complete
-development record.
+A deterministic operand register removed later sequence-state drift without
+changing learned weights. On the latest frozen audit, the three seeds produced
+173/180 exact additions, 174/180 exact operand registers and calculator
+trajectories, 90/90 exact word problems, and only 9/180 exact answers after
+calculator-result ablation. One exact calculator trajectory was misdecoded by
+downstream Qwen, and six prompts had wrong initial operand framing. The strict
+compound verdict therefore remained negative: three of five frozen gates
+passed.
+
+The route latch, operand register, and answer-position counter remain
+generation-runtime state, and the prototype performs one addition per response
+rather than arbitrary recurrent calls.
+
+See [`PHASE7_EXECUTIVE_SUMMARY.md`](PHASE7_EXECUTIVE_SUMMARY.md) for the current
+concise result, [`PHASE7_OPERAND_REGISTER_PROTOCOL.md`](PHASE7_OPERAND_REGISTER_PROTOCOL.md)
+for the latest frozen gates, and [`PHASE7_PILOT_LOG.md`](PHASE7_PILOT_LOG.md)
+for the complete development record.
 
 ## Reproduction
 

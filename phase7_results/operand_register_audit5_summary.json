@@ -1,0 +1,513 @@
+{
+  "protocol": "PHASE7_OPERAND_REGISTER_PROTOCOL.md",
+  "status": "complete",
+  "shared_holdout_sha256": "ebbbc905607b7e13f222097b36e7b03921a59460538c31675cbe6d44c8d6a4b8",
+  "per_seed": [
+    {
+      "seed": 13201,
+      "result_path": "phase7_results/operand_register_audit5_seed_13201.json",
+      "result_sha256": "0acbcacd51c67579878a36c7741f96fc4ce87a921701ddc00e06afd29c69082d",
+      "checkpoint_path": "phase7_artifacts/sequence_layer16_router_hardened_v1/neuron_implant_seed_13201.pt",
+      "checkpoint_sha256": "fa6deb3bfa8c7d4cf6af06255e35e777dcc18badc7e7eda0e519eac70c2f91a6",
+      "learned_parameters": 25088,
+      "calculator_learned_parameters": 0,
+      "addition": {
+        "examples": 60,
+        "mathematical_exact": 57,
+        "format_exact": 57,
+        "direct_exact": 27,
+        "word_exact": 30,
+        "route_active": 60,
+        "operands_exact": 58,
+        "trajectory_exact": 58,
+        "ablation_exact": 3,
+        "unpaired_exact_count_difference": 54,
+        "paired_ablation_drop": 55
+      },
+      "conditional_on_route_and_operands": {
+        "examples": 58,
+        "mathematical_exact": 57,
+        "format_exact": 57,
+        "trajectory_exact": 58
+      },
+      "negative": {
+        "examples": 60,
+        "false_routes": 0,
+        "token_preserved": 60
+      },
+      "first_step_route_probability": {
+        "positive_min": 0.9677647352218628,
+        "positive_max": 1.0,
+        "negative_min": 1.2760662523460362e-15,
+        "negative_max": 0.24776673316955566
+      },
+      "gates": {
+        "addition_exact_at_least_57": true,
+        "operands_exact_at_least_57": true,
+        "paired_ablation_drop_at_least_50": true,
+        "false_routes_at_most_2": true,
+        "negative_preserved_at_least_58": true,
+        "conditional_execution_all_exact": false
+      },
+      "register": {
+        "activated": 60,
+        "stable_on_exact_first_step_operands": 58,
+        "eligible_exact_first_step_operands": 58
+      },
+      "addition_failures": [
+        {
+          "prompt": "Let the starting count be 39; include 531 additional units. State the final count with digits and no words.",
+          "expected": "570",
+          "generated": "426",
+          "first_step_operands_exact": false,
+          "first_step_a_digits": [
+            [
+              3,
+              9,
+              5,
+              10
+            ]
+          ],
+          "first_step_b_digits": [
+            [
+              3,
+              1,
+              10,
+              10
+            ]
+          ],
+          "calculator_symbols": [
+            4,
+            2,
+            6,
+            10
+          ],
+          "calculator_trajectory_exact": false,
+          "register_active_by_step": [
+            true,
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "prompt": "Apply an additive update of 0 to the value 0. Print the updated whole number only.",
+          "expected": "0",
+          "generated": "I",
+          "first_step_operands_exact": true,
+          "first_step_a_digits": [
+            [
+              0,
+              10,
+              10,
+              10
+            ]
+          ],
+          "first_step_b_digits": [
+            [
+              0,
+              10,
+              10,
+              10
+            ]
+          ],
+          "calculator_symbols": [
+            0,
+            10
+          ],
+          "calculator_trajectory_exact": true,
+          "register_active_by_step": [
+            true,
+            true
+          ]
+        },
+        {
+          "prompt": "Let the starting count be 72; include 603 additional units. State the final count with digits and no words.",
+          "expected": "675",
+          "generated": "7263",
+          "first_step_operands_exact": false,
+          "first_step_a_digits": [
+            [
+              7,
+              2,
+              6,
+              0
+            ]
+          ],
+          "first_step_b_digits": [
+            [
+              3,
+              10,
+              10,
+              10
+            ]
+          ],
+          "calculator_symbols": [
+            7,
+            2,
+            6,
+            3,
+            10
+          ],
+          "calculator_trajectory_exact": false,
+          "register_active_by_step": [
+            true,
+            true,
+            true,
+            true,
+            true
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 13202,
+      "result_path": "phase7_results/operand_register_audit5_seed_13202.json",
+      "result_sha256": "79861af7af101139049ab7632793eb3b0e19a8f9c27861d1bfb195684b9d460e",
+      "checkpoint_path": "phase7_artifacts/sequence_layer16_router_hardened_v1/neuron_implant_seed_13202.pt",
+      "checkpoint_sha256": "b483c3fbcec274cdf2f1b23acff33ae63966575c4d0f491eed3f182a73f24eea",
+      "learned_parameters": 25088,
+      "calculator_learned_parameters": 0,
+      "addition": {
+        "examples": 60,
+        "mathematical_exact": 58,
+        "format_exact": 58,
+        "direct_exact": 28,
+        "word_exact": 30,
+        "route_active": 60,
+        "operands_exact": 58,
+        "trajectory_exact": 58,
+        "ablation_exact": 3,
+        "unpaired_exact_count_difference": 55,
+        "paired_ablation_drop": 55
+      },
+      "conditional_on_route_and_operands": {
+        "examples": 58,
+        "mathematical_exact": 58,
+        "format_exact": 58,
+        "trajectory_exact": 58
+      },
+      "negative": {
+        "examples": 60,
+        "false_routes": 0,
+        "token_preserved": 60
+      },
+      "first_step_route_probability": {
+        "positive_min": 0.9722146391868591,
+        "positive_max": 1.0,
+        "negative_min": 1.098285704596207e-14,
+        "negative_max": 0.4029017984867096
+      },
+      "gates": {
+        "addition_exact_at_least_57": true,
+        "operands_exact_at_least_57": true,
+        "paired_ablation_drop_at_least_50": true,
+        "false_routes_at_most_2": true,
+        "negative_preserved_at_least_58": true,
+        "conditional_execution_all_exact": true
+      },
+      "register": {
+        "activated": 60,
+        "stable_on_exact_first_step_operands": 58,
+        "eligible_exact_first_step_operands": 58
+      },
+      "addition_failures": [
+        {
+          "prompt": "Let the starting count be 39; include 531 additional units. State the final count with digits and no words.",
+          "expected": "570",
+          "generated": "426",
+          "first_step_operands_exact": false,
+          "first_step_a_digits": [
+            [
+              3,
+              9,
+              5,
+              10
+            ]
+          ],
+          "first_step_b_digits": [
+            [
+              3,
+              1,
+              10,
+              10
+            ]
+          ],
+          "calculator_symbols": [
+            4,
+            2,
+            6,
+            10
+          ],
+          "calculator_trajectory_exact": false,
+          "register_active_by_step": [
+            true,
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "prompt": "Let the starting count be 72; include 603 additional units. State the final count with digits and no words.",
+          "expected": "675",
+          "generated": "7263",
+          "first_step_operands_exact": false,
+          "first_step_a_digits": [
+            [
+              7,
+              2,
+              6,
+              0
+            ]
+          ],
+          "first_step_b_digits": [
+            [
+              3,
+              10,
+              10,
+              10
+            ]
+          ],
+          "calculator_symbols": [
+            7,
+            2,
+            6,
+            3,
+            10
+          ],
+          "calculator_trajectory_exact": false,
+          "register_active_by_step": [
+            true,
+            true,
+            true,
+            true,
+            true
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 13203,
+      "result_path": "phase7_results/operand_register_audit5_seed_13203.json",
+      "result_sha256": "2492fee048aef0303294c5c6f1ca03cdf911a008e0c032ca78bb1a500d288372",
+      "checkpoint_path": "phase7_artifacts/sequence_layer16_router_hardened_v1/neuron_implant_seed_13203.pt",
+      "checkpoint_sha256": "26eee38d61dcad97e0c9e4c5252e1d7bdf8073ae667ea29a8e8836125e7edf71",
+      "learned_parameters": 25088,
+      "calculator_learned_parameters": 0,
+      "addition": {
+        "examples": 60,
+        "mathematical_exact": 58,
+        "format_exact": 58,
+        "direct_exact": 28,
+        "word_exact": 30,
+        "route_active": 60,
+        "operands_exact": 58,
+        "trajectory_exact": 58,
+        "ablation_exact": 3,
+        "unpaired_exact_count_difference": 55,
+        "paired_ablation_drop": 55
+      },
+      "conditional_on_route_and_operands": {
+        "examples": 58,
+        "mathematical_exact": 58,
+        "format_exact": 58,
+        "trajectory_exact": 58
+      },
+      "negative": {
+        "examples": 60,
+        "false_routes": 0,
+        "token_preserved": 60
+      },
+      "first_step_route_probability": {
+        "positive_min": 0.977400004863739,
+        "positive_max": 1.0,
+        "negative_min": 1.4353602213187456e-15,
+        "negative_max": 0.46966248750686646
+      },
+      "gates": {
+        "addition_exact_at_least_57": true,
+        "operands_exact_at_least_57": true,
+        "paired_ablation_drop_at_least_50": true,
+        "false_routes_at_most_2": true,
+        "negative_preserved_at_least_58": true,
+        "conditional_execution_all_exact": true
+      },
+      "register": {
+        "activated": 60,
+        "stable_on_exact_first_step_operands": 58,
+        "eligible_exact_first_step_operands": 58
+      },
+      "addition_failures": [
+        {
+          "prompt": "Let the starting count be 39; include 531 additional units. State the final count with digits and no words.",
+          "expected": "570",
+          "generated": "3954",
+          "first_step_operands_exact": false,
+          "first_step_a_digits": [
+            [
+              3,
+              9,
+              5,
+              1
+            ]
+          ],
+          "first_step_b_digits": [
+            [
+              3,
+              10,
+              10,
+              10
+            ]
+          ],
+          "calculator_symbols": [
+            3,
+            9,
+            5,
+            4,
+            10
+          ],
+          "calculator_trajectory_exact": false,
+          "register_active_by_step": [
+            true,
+            true,
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "prompt": "Let the starting count be 72; include 603 additional units. State the final count with digits and no words.",
+          "expected": "675",
+          "generated": "7263",
+          "first_step_operands_exact": false,
+          "first_step_a_digits": [
+            [
+              7,
+              2,
+              6,
+              0
+            ]
+          ],
+          "first_step_b_digits": [
+            [
+              3,
+              10,
+              10,
+              10
+            ]
+          ],
+          "calculator_symbols": [
+            7,
+            2,
+            6,
+            3,
+            10
+          ],
+          "calculator_trajectory_exact": false,
+          "register_active_by_step": [
+            true,
+            true,
+            true,
+            true,
+            true
+          ]
+        }
+      ]
+    }
+  ],
+  "aggregate_mean_min_max": {
+    "addition": {
+      "mathematical_exact": {
+        "mean": 57.666666666666664,
+        "min": 57,
+        "max": 58
+      },
+      "format_exact": {
+        "mean": 57.666666666666664,
+        "min": 57,
+        "max": 58
+      },
+      "direct_exact": {
+        "mean": 27.666666666666668,
+        "min": 27,
+        "max": 28
+      },
+      "word_exact": {
+        "mean": 30,
+        "min": 30,
+        "max": 30
+      },
+      "route_active": {
+        "mean": 60,
+        "min": 60,
+        "max": 60
+      },
+      "operands_exact": {
+        "mean": 58,
+        "min": 58,
+        "max": 58
+      },
+      "trajectory_exact": {
+        "mean": 58,
+        "min": 58,
+        "max": 58
+      },
+      "ablation_exact": {
+        "mean": 3,
+        "min": 3,
+        "max": 3
+      },
+      "paired_ablation_drop": {
+        "mean": 55,
+        "min": 55,
+        "max": 55
+      }
+    },
+    "negative": {
+      "false_routes": {
+        "mean": 0,
+        "min": 0,
+        "max": 0
+      },
+      "token_preserved": {
+        "mean": 60,
+        "min": 60,
+        "max": 60
+      }
+    },
+    "register": {
+      "activated": {
+        "mean": 60,
+        "min": 60,
+        "max": 60
+      },
+      "stable_on_exact_first_step_operands": {
+        "mean": 58,
+        "min": 58,
+        "max": 58
+      },
+      "eligible_exact_first_step_operands": {
+        "mean": 58,
+        "min": 58,
+        "max": 58
+      }
+    }
+  },
+  "gates": {
+    "1_addition_accuracy": false,
+    "2_operand_recovery": true,
+    "3_causal_ablation": true,
+    "4_negative_routing_and_preservation": true,
+    "5_conditional_registered_execution": false
+  },
+  "passed_gate_count": 3,
+  "passed_all_gates": false,
+  "cross_seed": {
+    "total_false_routes": 0,
+    "total_negative_prompts": 180,
+    "total_preserved_negatives": 180,
+    "stable_registers_on_exact_inputs": 174,
+    "exact_input_executions": 174
+  },
+  "interpretation": "The operand register eliminated later state drift and routing/preservation remained exact. The compound protocol failed its mean-accuracy gate by one aggregate correct answer and failed conditional output because one seed had exact registered calculator symbols but an incorrect learned result-decoder token."
+}

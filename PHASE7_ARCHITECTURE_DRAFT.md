@@ -75,10 +75,12 @@ At an eligible generated token, the current sequence implant:
 
 Generation latches the first routing decision for the current response. If it
 is `OFF`, every selected channel contributes exactly its original pretrained
-value for the whole response. If it is `ADD`, the calculator emits one symbol
-at each successive result position. The latch prevents ordinary text generated
-later in the response from accidentally turning the calculator on, and the
-counter prevents repeated or skipped result digits. Both are control-state
+value for the whole response. If it is `ADD`, the first valid typed operands
+are captured into a deterministic register and the calculator emits one symbol
+at each successive result position. The route latch prevents ordinary text
+generated later in the response from turning the calculator on, the operand
+register prevents digit-classification drift as the sequence grows, and the
+counter prevents repeated or skipped result digits. All three are control-state
 scaffolding in the present implementation, not yet recurrent state encoded
 entirely in Qwen's residual stream.
 
@@ -124,6 +126,19 @@ falsely routed 6/60, 5/60, and 6/60 prompts and therefore preserved only
 engineering gates passed. This supports the narrow causal implant mechanism,
 but not a claim of robust arbitrary-prompt routing.
 
+Post-audit training of only the 1,792 route-row weights repaired that specific
+weakness on two later exact-string-disjoint audits: 0/360 false routes and
+360/360 token-exact negative preservation across the three seeds.
+
+The latest frozen operand-register audit produced 173/180 exact additions,
+174/180 exact first-step operands, 174/180 exact calculator trajectories, and
+9/180 exact answers under calculator-result ablation. All 174 exact registers
+remained stable through generation. One exact calculator trajectory was
+misdecoded by the learned result columns and downstream Qwen, and six prompts
+had wrong initial operand framing. That protocol passed three of five gates:
+the mean exact score missed its threshold by one aggregate answer, and the
+single downstream decoder error failed the all-exact conditional gate.
+
 ## Evidence tracked
 
 - Interface:
@@ -147,10 +162,11 @@ but not a claim of robust arbitrary-prompt routing.
 
 ## Claim boundary
 
-The result shows that this pretrained transformer can learn and causally use
+The results show that this pretrained transformer can learn and causally use
 an in-place deterministic activation subspace under supervised interface
 scaffolding. It does not show spontaneous discovery during pretraining,
 unlimited or arbitrary chain-of-thought computation, four-operation reasoning,
-or robust general-purpose intent routing. The route latch and result counter
-also remain external generation-runtime state, so this version is not yet the
-fully recurrent “calculator as an ordinary neuron” end state.
+or robust general-purpose intent routing. The route latch, operand register,
+and result counter also remain external generation-runtime state, so this
+version is not yet the fully recurrent “calculator as an ordinary neuron” end
+state.

@@ -585,3 +585,60 @@ runs remain part of the record. No confirmatory protocol is frozen.
   `f27d00c3400746279202331480d754a95549db4990815f12484a62b842c6d36c`.
 - This is development evidence on consumed prompts. Freeze a fifth
   exact-string-disjoint audit before claiming the register repair generalizes.
+
+## 2026-07-26 — Frozen operand-register audit 5
+
+- Froze `PHASE7_OPERAND_REGISTER_PROTOCOL.md`, the unchanged learned
+  checkpoint hashes, required runtime-state flags, 20 new addition family
+  strings, 30 new negative family strings, three data seeds, and five gates
+  before generation.
+- Addition results by independently learned seed:
+  - seed 13,201: 57/60 exact, 58/60 exact operands, 58/60 exact trajectories,
+    3/60 ablated;
+  - seed 13,202: 58/60 exact, 58/60 exact operands, 58/60 exact trajectories,
+    3/60 ablated;
+  - seed 13,203: 58/60 exact, 58/60 exact operands, 58/60 exact trajectories,
+    3/60 ablated.
+- Across seeds:
+  - exact additions: 173/180 (96.11%);
+  - exact first-step operands: 174/180 (96.67%);
+  - exact calculator trajectories: 174/180;
+  - all 90/90 word problems exact;
+  - result-ablation exact: 9/180;
+  - paired causal drop: 165/180.
+- All 174 examples with exact first-step operands kept identical operand
+  register content across every generated step. No later operand drift
+  occurred.
+- One exact registered trajectory failed downstream decoding: for `0 + 0`,
+  seed 13,201's calculator emitted exact symbols `0, EOS`, but its learned
+  result columns and frozen downstream Qwen emitted `I`.
+- The six operand failures were concentrated in two direct prompt instances
+  using the same family. Every seed mis-framed `39 + 531` and `72 + 603`,
+  showing a systematic learned role/digit interface weakness rather than
+  random calculator error.
+- Router/preservation results remained exact:
+  - 0/180 false routes;
+  - 180/180 negative generations token-identical to untouched Qwen.
+- Gate disposition:
+  - failed the three-seed mean addition gate: 57.67/60 versus the frozen
+    58/60 requirement, although every seed passed its 57/60 floor;
+  - passed operand recovery;
+  - passed causal ablation;
+  - passed routing and preservation;
+  - failed all-exact conditional output due to the single `0 + 0` result
+    decoder miss.
+- The compound protocol passed three of five gates and is not reported as an
+  overall success. The operand register itself behaved exactly as intended.
+- Raw record SHA-256 hashes:
+  - seed 13,201:
+    `0acbcacd51c67579878a36c7741f96fc4ce87a921701ddc00e06afd29c69082d`;
+  - seed 13,202:
+    `79861af7af101139049ab7632793eb3b0e19a8f9c27861d1bfb195684b9d460e`;
+  - seed 13,203:
+    `2492fee048aef0303294c5c6f1ca03cdf911a008e0c032ca78bb1a500d288372`.
+- Compact analysis:
+  `phase7_results/operand_register_audit5_summary.json`.
+- Interpretation: the narrow core hypothesis has strong replicated causal
+  support. Remaining positive errors are learned input/output interface
+  errors, while the deterministic calculator and registered state did not
+  produce an observed wrong trajectory from an exact input.
