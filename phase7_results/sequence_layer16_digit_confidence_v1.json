@@ -1,0 +1,21 @@
+{
+  "status": "post_audit_digit_confidence_promotion",
+  "source_checkpoint": "phase7_artifacts/sequence_layer16_v1/neuron_implant_seed_13201.pt",
+  "source_sha256": "5b76181c2c0f4a74b7482e4856b2b8c92bff637a1e70302bdfbc61ce1aaac41e",
+  "checkpoint": "phase7_artifacts/sequence_layer16_confident_v1/neuron_implant_seed_13201.pt",
+  "checkpoint_sha256": "9dba639d127769b08579b2e1deabdfd3d232e06dcf2ea6f843f7b9963855785c",
+  "digit_threshold": 0.9,
+  "weights_unchanged": true,
+  "calibration": {
+    "status": "post_audit_development",
+    "positive_examples": 100,
+    "true_digit_tokens": 460,
+    "true_digit_probability_minimum": 0.9669705629348755,
+    "false_typed_digit_candidates": 5,
+    "false_digit_probability_maximum": 0.827191174030304,
+    "threshold": 0.9
+  },
+  "learned_parameters": 25088,
+  "calculator_learned_parameters": 0,
+  "implementation_commit": "8f7ae47ee74e5cd831b4af692f376fcf53560289"
+}

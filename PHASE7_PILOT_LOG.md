@@ -365,3 +365,36 @@ runs remain part of the record. No confirmatory protocol is frozen.
 - Raw record: `phase7_results/sequence_audit2_v1.json`.
 - Raw-record SHA-256:
   `e42bb02a8cbe9bb5554ae74a88eea1d45aa5d52154837bc2d8b17c6fa7d55444`.
+
+## 2026-07-26 — Post-audit neural digit-confidence handshake
+
+- Inspected the independent digit softmax activations on all 460 true operand
+  tokens and all five false typed-digit candidates across the now-consumed
+  audits.
+- True digit confidence ranged from 0.96697 to 0.99999.
+- False typed-digit confidence ranged from 0.28681 to 0.82719.
+- Added a fixed 0.90 digit-confidence requirement to the typed handshake. This
+  uses the learned neuron activation, adds zero parameters, and changes no
+  learned weight.
+- Promoted checkpoint:
+  `phase7_artifacts/sequence_layer16_confident_v1/neuron_implant_seed_13201.pt`.
+- Promoted checkpoint SHA-256:
+  `9dba639d127769b08579b2e1deabdfd3d232e06dcf2ea6f843f7b9963855785c`.
+- A bytewise tensor check confirmed that input-row and result-column weights
+  were unchanged from the audit-2 checkpoint.
+- On the consumed audit-2 prompts:
+  - mathematical and format exact: 59/60;
+  - exact operands: 60/60;
+  - direct: 29/30;
+  - word problems: 30/30;
+  - calculator-result ablation: 6/60;
+  - conditional active-route/exact-operand output: 59/59;
+  - false negative routes: 0/60;
+  - exact negative preservation: 60/60.
+- This is post-audit development evidence and cannot replace the frozen audit-2
+  result. It establishes the expected behavior before independent-seed
+  training and a new shared holdout.
+- Promotion manifest:
+  `phase7_results/sequence_layer16_digit_confidence_v1.json`.
+- Consumed evaluation:
+  `phase7_results/sequence_audit2_v1_digit_confidence.json`.

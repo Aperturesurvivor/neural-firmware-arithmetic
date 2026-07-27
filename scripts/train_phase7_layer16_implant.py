@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import argparse
 import hashlib
 import json
 import platform
@@ -36,7 +37,7 @@ from neural_firmware.semantic_data import (
 
 MODEL_ID = "Qwen/Qwen2.5-0.5B-Instruct"
 MODEL_REVISION = "7ae557604adf67be50417f59c2c2f167def9a775"
-SEED = 13_201
+DEFAULT_SEED = 13_201
 LAYER_INDEX = 16
 CENSUS_PATH = Path(
     "phase7_artifacts/sequence_census_layer_16_compact_v1.pt"
@@ -44,10 +45,31 @@ CENSUS_PATH = Path(
 SHARD_DIRECTORY = Path(
     "phase7_artifacts/cache/sequence_v2_layer_16_shards"
 )
-CHECKPOINT_PATH = Path(
-    "phase7_artifacts/sequence_layer16_v1/neuron_implant_seed_13201.pt"
-)
-RESULT_PATH = Path("phase7_results/sequence_layer16_training_v1.json")
+DIGIT_THRESHOLD = 0.9
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--seed", type=int, default=DEFAULT_SEED)
+    return parser.parse_args()
+
+
+def checkpoint_path(seed: int) -> Path:
+    if seed == DEFAULT_SEED:
+        return Path(
+            "phase7_artifacts/sequence_layer16_v1/"
+            "neuron_implant_seed_13201.pt"
+        )
+    return Path(
+        "phase7_artifacts/sequence_layer16_multiseed/"
+        f"neuron_implant_seed_{seed}.pt"
+    )
+
+
+def result_path(seed: int) -> Path:
+    if seed == DEFAULT_SEED:
+        return Path("phase7_results/sequence_layer16_training_v1.json")
+    return Path(f"phase7_results/sequence_layer16_training_seed_{seed}.json")
 
 
 def git_commit() -> str:
@@ -145,15 +167,17 @@ def save_checkpoint(
     selected_indices: torch.Tensor,
     layout: SequenceImplantLayout,
     *,
+    seed: int,
+    path: Path,
     stage: str,
 ) -> None:
-    CHECKPOINT_PATH.parent.mkdir(parents=True, exist_ok=True)
+    path.parent.mkdir(parents=True, exist_ok=True)
     torch.save(
         {
             "stage": stage,
             "model_id": MODEL_ID,
             "model_revision": MODEL_REVISION,
-            "seed": SEED,
+            "seed": seed,
             "implementation_commit": git_commit(),
             "layer_index": LAYER_INDEX,
             "layout": asdict(layout),
@@ -164,11 +188,16 @@ def save_checkpoint(
             "input_rows": implant.input_rows.detach().cpu(),
             "result_columns": implant.result_columns.detach().cpu(),
         },
-        CHECKPOINT_PATH,
+        path,
     )
 
 
 def main() -> None:
+    args = parse_args()
+    if args.seed < 0:
+        raise ValueError("seed must be non-negative")
+    output_checkpoint = checkpoint_path(args.seed)
+    output_result = result_path(args.seed)
     layout = SequenceImplantLayout(max_digits=4, learned_step=False)
     census = torch.load(CENSUS_PATH, map_location="cpu", weights_only=True)
     selected_indices = census["selected_indices"]
@@ -185,6 +214,7 @@ def main() -> None:
         selected_indices=selected_indices,
         layout=layout,
         output_strength=16.0,
+        digit_threshold=DIGIT_THRESHOLD,
     )
     interface_training, interface_development = train_sequence_interface(
         implant,
@@ -192,7 +222,7 @@ def main() -> None:
         development_features,
         device=bundle.device,
         config=SequenceInterfaceTrainConfig(
-            seed=SEED,
+            seed=args.seed,
             steps=3_000,
             batch_size=256,
             learning_rate=0.001,
@@ -210,24 +240,26 @@ def main() -> None:
         implant,
         selected_indices,
         layout,
+        seed=args.seed,
+        path=output_checkpoint,
         stage="layer16_interface_complete",
     )
     partial = {
         "status": "interface_complete_output_pending",
         "model_id": MODEL_ID,
         "model_revision": MODEL_REVISION,
-        "seed": SEED,
+        "seed": args.seed,
         "layer_index": LAYER_INDEX,
         "layout": asdict(layout),
         "selected_indices": selected_indices.tolist(),
         "interface_training": interface_training,
         "interface_development": interface_development,
         "checkpoint": {
-            "path": str(CHECKPOINT_PATH),
-            "sha256": sha256(CHECKPOINT_PATH),
+            "path": str(output_checkpoint),
+            "sha256": sha256(output_checkpoint),
         },
     }
-    write_json(RESULT_PATH, partial)
+    write_json(output_result, partial)
     print(json.dumps(partial["interface_development"], indent=2), flush=True)
 
     output_training = train_sequence_output(
@@ -235,7 +267,7 @@ def main() -> None:
         implant,
         train_examples,
         config=SequenceOutputTrainConfig(
-            seed=SEED,
+            seed=args.seed,
             steps=150,
             batch_size=1,
             learning_rate=0.01,
@@ -245,7 +277,9 @@ def main() -> None:
         implant,
         selected_indices,
         layout,
-        stage="layer16_output_complete",
+        seed=args.seed,
+        path=output_checkpoint,
+        stage="layer16_output_digit_confidence_complete",
     )
     payload = {
         **partial,
@@ -253,6 +287,7 @@ def main() -> None:
         "mlp_width_before": implant.mlp_width,
         "mlp_width_after": implant.mlp_width,
         "residual_width": implant.input_rows.shape[1],
+        "digit_threshold": implant.digit_threshold,
         "calculator_trainable_parameters": (
             implant.calculator.trainable_parameter_count
         ),
@@ -263,8 +298,8 @@ def main() -> None:
         ),
         "output_training": output_training,
         "checkpoint": {
-            "path": str(CHECKPOINT_PATH),
-            "sha256": sha256(CHECKPOINT_PATH),
+            "path": str(output_checkpoint),
+            "sha256": sha256(output_checkpoint),
         },
         "environment": {
             "python": platform.python_version(),
@@ -275,9 +310,9 @@ def main() -> None:
         },
         "wall_time_seconds": time.perf_counter() - started,
     }
-    write_json(RESULT_PATH, payload)
+    write_json(output_result, payload)
     print(json.dumps(output_training, indent=2), flush=True)
-    print(f"wrote {RESULT_PATH}", flush=True)
+    print(f"wrote {output_result}", flush=True)
 
 
 if __name__ == "__main__":
