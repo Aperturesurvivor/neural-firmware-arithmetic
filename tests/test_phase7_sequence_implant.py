@@ -64,6 +64,29 @@ def test_sequence_calculator_scans_roles_and_adds_exactly() -> None:
     assert calculator.trainable_parameter_count == 0
 
 
+def test_sequence_calculator_requires_role_and_digit_type_agreement() -> None:
+    layout = SequenceImplantLayout(max_digits=4)
+    calculator = FrozenSequenceAddition(layout)
+    # The first token is spuriously tagged as operand A, but its digit type is
+    # NON_DIGIT. The typed handshake must ignore it.
+    roles = torch.tensor([[1, 1, 2, 0]])
+    digits = torch.tensor([[10, 7, 5, 10]])
+    route = torch.tensor([[0, 0, 0, 1]])
+    eligible = torch.tensor([[False, False, False, True]])
+    execution = calculator(
+        route=route,
+        roles=roles,
+        digits=digits,
+        step=torch.zeros_like(roles),
+        eligible_mask=eligible,
+        sequence_mask=torch.ones_like(eligible),
+    )
+    assert execution.operands_valid.tolist() == [True]
+    assert execution.a_digits[0].tolist() == [7, 10, 10, 10]
+    assert execution.b_digits[0].tolist() == [5, 10, 10, 10]
+    assert execution.result_symbols[0, -1].item() == 1
+
+
 def test_sequence_calculator_selects_later_result_digit_and_eos() -> None:
     layout = SequenceImplantLayout(max_digits=4)
     calculator = FrozenSequenceAddition(layout)

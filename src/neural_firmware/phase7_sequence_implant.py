@@ -144,7 +144,9 @@ class FrozenSequenceAddition(nn.Module):
                 (2, b, b_lengths),
             ):
                 positions = torch.where(
-                    (roles[row] == role_value) & sequence_mask[row]
+                    (roles[row] == role_value)
+                    & (digits[row] != self.layout.non_digit)
+                    & sequence_mask[row]
                 )[0]
                 count = len(positions)
                 if count < 1 or count > self.layout.max_digits:

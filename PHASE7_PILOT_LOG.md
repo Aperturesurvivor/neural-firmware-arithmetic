@@ -277,3 +277,23 @@ runs remain part of the record. No confirmatory protocol is frozen.
   `5b76181c2c0f4a74b7482e4856b2b8c92bff637a1e70302bdfbc61ce1aaac41e`.
 - Raw training record:
   `phase7_results/sequence_layer16_training_v1.json`.
+
+## 2026-07-26 — Layer-16 consumed-audit diagnostic before typed handshake
+
+- Ran the first 40 positive prompts from the already-consumed audit; stopped
+  before negatives once the failure mechanism was localized.
+- Exact generation reached 30/40, with calculator-result ablation at 0/40.
+- Direct additions reached 18/20; word problems reached 12/20.
+- Every active exact typed interface produced an exact formatted answer.
+- Token-level probes had shown perfect word operand-token classification, but
+  sequence-level exact operands were only 12/20. Inspection found rare
+  ordinary word tokens classified as operand roles while their independent
+  digit type remained `NON_DIGIT`. The original extractor rejected the whole
+  operand on this contradictory state.
+- Decision: require both role and digit-type neurons to agree before a token is
+  admitted to an operand register. This is a deterministic typed-handshake
+  rule and changes no learned weight.
+- Partial raw record retained as
+  `phase7_results/sequence_layer16_consumed_audit_v1_pre_handshake.json`.
+- Partial-record SHA-256:
+  `823eca36c63469e0b54464d276d282da27ec44c86c89bb64a26c532e09277bcf`.
