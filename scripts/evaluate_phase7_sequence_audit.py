@@ -127,6 +127,10 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument("--chunk-size", type=int, default=5)
     parser.add_argument("--deterministic-result-step", action="store_true")
+    parser.add_argument(
+        "--expected-checkpoint-sha256",
+        default=EXPECTED_CHECKPOINT_SHA256,
+    )
     return parser.parse_args()
 
 
@@ -139,7 +143,7 @@ def main() -> None:
             "post-audit step-counter evaluation requires a distinct result path"
         )
     checkpoint_hash = sha256(args.checkpoint)
-    if checkpoint_hash != EXPECTED_CHECKPOINT_SHA256:
+    if checkpoint_hash != args.expected_checkpoint_sha256:
         raise ValueError(
             "checkpoint does not match the frozen Phase 7 audit checkpoint"
         )
