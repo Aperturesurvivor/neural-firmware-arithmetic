@@ -152,7 +152,7 @@ def main() -> None:
         map_location="cpu",
         weights_only=True,
     )
-    if not checkpoint["stage"].startswith("output"):
+    if "output" not in checkpoint["stage"]:
         raise ValueError("evaluation requires an output-trained checkpoint")
     bundle = load_model_bundle(
         checkpoint["model_id"],
