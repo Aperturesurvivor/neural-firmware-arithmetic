@@ -9,7 +9,10 @@ from pathlib import Path
 
 import torch
 
-from neural_firmware.phase7_data import build_phase7_audit_examples
+from neural_firmware.phase7_data import (
+    build_phase7_audit2_examples,
+    build_phase7_audit_examples,
+)
 from neural_firmware.phase7_sequence_implant import (
     SequenceImplantLayout,
     install_sequence_neuron_implant,
@@ -95,10 +98,8 @@ def positive_summary(rows: list[dict[str, object]]) -> dict[str, int]:
 
 def summary(rows: list[dict[str, object]]) -> dict[str, object]:
     positives = [row for row in rows if row["route_label"]]
-    symbolic = [
-        row for row in positives if row["split"] == "phase7_audit_symbolic"
-    ]
-    word = [row for row in positives if row["split"] == "phase7_audit_word"]
+    symbolic = [row for row in positives if row["split"].endswith("_symbolic")]
+    word = [row for row in positives if row["split"].endswith("_word")]
     negatives = [row for row in rows if not row["route_label"]]
     return {
         "completed_rows": len(rows),
@@ -131,6 +132,7 @@ def parse_args() -> argparse.Namespace:
         "--expected-checkpoint-sha256",
         default=EXPECTED_CHECKPOINT_SHA256,
     )
+    parser.add_argument("--dataset", choices=("audit1", "audit2"), default="audit1")
     return parser.parse_args()
 
 
@@ -175,12 +177,18 @@ def main() -> None:
         implant.result_columns.copy_(
             checkpoint["result_columns"].to(bundle.device)
         )
-    examples = build_phase7_audit_examples()
+    examples = (
+        build_phase7_audit_examples()
+        if args.dataset == "audit1"
+        else build_phase7_audit2_examples()
+    )
     rows: list[dict[str, object]] = []
     if args.result.exists():
         existing = json.loads(args.result.read_text())
         if existing.get("checkpoint_sha256") != checkpoint_hash:
             raise ValueError("existing audit record uses a different checkpoint")
+        if existing.get("dataset", "audit1") != args.dataset:
+            raise ValueError("existing audit record uses a different dataset")
         if existing.get("status") == "complete":
             print(json.dumps(existing["summary"], indent=2), flush=True)
             return
@@ -277,11 +285,20 @@ def main() -> None:
         rows.append(row)
         payload = {
             "status": "complete" if len(rows) == len(examples) else "in_progress",
-            "protocol": "PHASE7_AUDIT_PROTOCOL.md",
+            "protocol": (
+                "PHASE7_AUDIT_PROTOCOL.md"
+                if args.dataset == "audit1"
+                else "PHASE7_AUDIT2_PROTOCOL.md"
+            ),
+            "dataset": args.dataset,
             "evaluation_kind": (
-                "post_audit_step_counter_development"
-                if args.deterministic_result_step
-                else "frozen_held_out_audit"
+                "frozen_held_out_audit2"
+                if args.dataset == "audit2"
+                else (
+                    "post_audit_step_counter_development"
+                    if args.deterministic_result_step
+                    else "frozen_held_out_audit"
+                )
             ),
             "implementation_commit": git_commit(),
             "checkpoint": str(args.checkpoint),

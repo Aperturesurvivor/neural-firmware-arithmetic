@@ -107,6 +107,115 @@ PHASE7_AUDIT_NEGATIVE_FAMILIES = (
     "Give the absolute distance from {a} to {b}; output only that distance.",
 )
 
+# Frozen only after audit v1 had been consumed for layer and handshake
+# engineering. Audit v2 must remain disjoint from both prior project families
+# and every audit-v1 construction.
+PHASE7_AUDIT2_ADDITION_FAMILIES = (
+    (
+        "Using ordinary integer arithmetic, combine {a} with {b}. "
+        "Your entire reply must be the resulting numeral."
+    ),
+    (
+        "Advance the value {a} by exactly {b}. "
+        "At what integer do you arrive? Print digits alone."
+    ),
+    (
+        "The two terms of a sum are {a} and {b}. "
+        "Supply only the sum's decimal representation."
+    ),
+    "Perform ADD on inputs {a} and {b}; emit one bare integer.",
+    (
+        "How many units does {a} become after gaining {b} units? "
+        "Give just the final count."
+    ),
+    (
+        "For this prompt, the operation joining {a} and {b} is addition. "
+        "Output its value and no other text."
+    ),
+    (
+        "Accumulate {b} on top of an initial {a}. "
+        "Respond exclusively with the new integer."
+    ),
+    (
+        "Start at {b} and move forward by {a} on the number line. "
+        "Where do you finish? Number only."
+    ),
+    (
+        "An addition operator receives left input {a} and right input {b}. "
+        "Return only its output."
+    ),
+    (
+        "Determine the combined count represented by {a} together with {b}. "
+        "No explanation; use digits."
+    ),
+)
+
+PHASE7_AUDIT2_WORD_FAMILIES = (
+    (
+        "A weather station recorded {a} pulses during daylight and {b} after "
+        "dark. How many pulses were recorded altogether? Reply only in digits."
+    ),
+    (
+        "An orchard packed {a} boxes on Monday and {b} boxes on Tuesday. "
+        "Report the two-day box total as a bare integer."
+    ),
+    (
+        "A train carried {a} riders before a stop and boarded {b} more there. "
+        "How many riders are aboard now? Output the number alone."
+    ),
+    (
+        "A rendering job finished {a} frames, then completed another {b}. "
+        "State the complete frame count using digits only."
+    ),
+    (
+        "A research freezer held {a} vials and received a shipment of {b} "
+        "vials. What is the new vial count? Give only the integer."
+    ),
+    (
+        "A radio sent {a} bytes in one burst and {b} bytes in the next. "
+        "How many bytes did both bursts send? Return just the total."
+    ),
+    (
+        "A stadium admitted {a} guests through the north gate and {b} through "
+        "the south gate. Give the overall guest count, number only."
+    ),
+    (
+        "A workshop assembled {a} devices before lunch and {b} afterward. "
+        "How many devices were assembled that day? Respond with one numeral."
+    ),
+    (
+        "A reservoir contained {a} liters before another {b} liters flowed in. "
+        "What volume does it contain now? Print digits and nothing else."
+    ),
+    (
+        "A compiler reported {a} warnings in one module and {b} in another. "
+        "State the aggregate warning count as an integer alone."
+    ),
+)
+
+PHASE7_AUDIT2_NEGATIVE_FAMILIES = (
+    "Remove {b} units from {a}; return only the signed remainder.",
+    "Find {a} times {b}. Your reply should contain only the product.",
+    "Compute the integer quotient when {a} is divided by {b}.",
+    "Return {a} modulo {b}, not any additive result.",
+    "Select the greater identifier from {a} and {b}; echo that identifier.",
+    "Is {a} no smaller than {b}? Reply true or false.",
+    "Write the pair {a} and {b} inside parentheses without calculating.",
+    "Place the character sequence for {b} immediately before {a}.",
+    "Copy these catalog labels verbatim and separately: {a}; {b}.",
+    'Reproduce the text "{a} plus {b}" but do not answer the expression.',
+    "Politely refuse the request to add {a} and {b}; say only unable.",
+    "Teach the procedure for adding {a} to {b} while withholding its answer.",
+    "Would adding {a} and {b} require a carry? Do not reveal the total.",
+    "Classify {a} + {b} as an arithmetic expression without evaluating it.",
+    "Interpret {a} and {b} as room numbers and list both room numbers.",
+    "Calculate the geometric mean of {a} and {b}, rather than their sum.",
+    "State how many integers lie strictly between {a} and {b}.",
+    "Reverse the decimal digits of {a}; leave {b} unchanged after it.",
+    "Choose whichever of {a} or {b} is closer to zero.",
+    "Say whether {a} and {b} have the same number of decimal digits.",
+)
+
 
 def build_phase7_audit_examples(
     *,
@@ -157,4 +266,47 @@ def phase7_audit_family_sets() -> tuple[set[str], set[str]]:
         + CONFIRMATORY_NEGATIVE_FAMILIES
         + PHASE5_CONFIRMATORY_NEGATIVE_FAMILIES
     )
+    return prior_positive, prior_negative
+
+
+def build_phase7_audit2_examples(
+    *,
+    symbolic_count: int = 30,
+    word_count: int = 30,
+    negative_count: int = 60,
+) -> list[SemanticPromptExample]:
+    return (
+        make_semantic_addition_examples(
+            count=symbolic_count,
+            min_digits=1,
+            max_digits=4,
+            seed=13_301,
+            split="phase7_audit2_symbolic",
+            families=PHASE7_AUDIT2_ADDITION_FAMILIES,
+        )
+        + make_semantic_addition_examples(
+            count=word_count,
+            min_digits=1,
+            max_digits=4,
+            seed=13_302,
+            split="phase7_audit2_word",
+            families=PHASE7_AUDIT2_WORD_FAMILIES,
+        )
+        + make_semantic_routing_negatives(
+            count=negative_count,
+            min_digits=1,
+            max_digits=4,
+            seed=13_303,
+            split="phase7_audit2_negative",
+            families=PHASE7_AUDIT2_NEGATIVE_FAMILIES,
+        )
+    )
+
+
+def phase7_audit2_prior_family_sets() -> tuple[set[str], set[str]]:
+    prior_positive, prior_negative = phase7_audit_family_sets()
+    prior_positive.update(
+        PHASE7_AUDIT_ADDITION_FAMILIES + PHASE7_AUDIT_WORD_FAMILIES
+    )
+    prior_negative.update(PHASE7_AUDIT_NEGATIVE_FAMILIES)
     return prior_positive, prior_negative
