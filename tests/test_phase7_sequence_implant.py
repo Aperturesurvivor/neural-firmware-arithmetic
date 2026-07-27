@@ -7,6 +7,7 @@ from neural_firmware.phase7_sequence_implant import (
     FrozenSequenceAddition,
     SequenceImplantContext,
     SequenceImplantLayout,
+    SequenceInterface,
     SequenceNeuronImplantMLP,
 )
 
@@ -35,6 +36,30 @@ def test_fixed_step_layout_uses_28_existing_channels() -> None:
     assert layout.input_width == 16
     assert layout.result_width == 12
     assert layout.total_width == 28
+
+
+def test_digit_confidence_handshake_rejects_uncertain_digit() -> None:
+    layout = SequenceImplantLayout(max_digits=2)
+    implant = SequenceNeuronImplantMLP(
+        TinyMLP(intermediate_size=64),
+        torch.arange(layout.total_width),
+        layout=layout,
+        digit_threshold=0.9,
+    )
+    digit_logits = torch.zeros(1, 2, layout.digit_width)
+    digit_logits[0, 0, 7] = 20
+    digit_logits[0, 1, 7] = 2
+    hard = implant.hard_interface(
+        SequenceInterface(
+            route_logits=torch.zeros(1, 2, layout.route_width),
+            role_logits=torch.zeros(1, 2, layout.role_width),
+            digit_logits=digit_logits,
+            step_logits=torch.zeros(1, 2, layout.step_width),
+        )
+    )
+    assert hard.digits.tolist() == [[7, layout.non_digit]]
+    assert hard.digit_probability[0, 0] > 0.9
+    assert hard.digit_probability[0, 1] < 0.9
 
 
 def test_sequence_calculator_scans_roles_and_adds_exactly() -> None:

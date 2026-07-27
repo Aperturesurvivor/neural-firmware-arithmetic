@@ -159,6 +159,7 @@ def save_checkpoint(
             "layout": asdict(layout),
             "selected_indices": selected_indices,
             "route_threshold": implant.route_threshold,
+            "digit_threshold": implant.digit_threshold,
             "output_strength": implant.output_strength,
             "input_rows": implant.input_rows.detach().cpu(),
             "result_columns": implant.result_columns.detach().cpu(),

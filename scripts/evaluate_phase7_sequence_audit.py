@@ -168,6 +168,7 @@ def main() -> None:
         layout=layout,
         output_strength=checkpoint["output_strength"],
         route_threshold=checkpoint["route_threshold"],
+        digit_threshold=checkpoint.get("digit_threshold", 0.0),
         use_swiglu_interface=checkpoint.get("use_swiglu_interface", False),
     )
     with torch.no_grad():

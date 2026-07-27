@@ -94,6 +94,7 @@ class HardSequenceInterface:
     route_probability: torch.Tensor
     roles: torch.Tensor
     digits: torch.Tensor
+    digit_probability: torch.Tensor
     step: torch.Tensor
 
 
@@ -256,6 +257,7 @@ class SequenceNeuronImplantMLP(nn.Module):
         layout: SequenceImplantLayout | None = None,
         output_strength: float = 16.0,
         route_threshold: float = 0.5,
+        digit_threshold: float = 0.0,
         use_swiglu_interface: bool = False,
     ) -> None:
         super().__init__()
@@ -291,6 +293,9 @@ class SequenceNeuronImplantMLP(nn.Module):
         self.gate_rows.requires_grad_(self.use_swiglu_interface)
         self.output_strength = float(output_strength)
         self.route_threshold = float(route_threshold)
+        self.digit_threshold = float(digit_threshold)
+        if not 0.0 <= self.digit_threshold <= 1.0:
+            raise ValueError("digit threshold must be in [0, 1]")
         self.calculator = FrozenSequenceAddition(self.layout)
         self.runtime_context: SequenceImplantContext | None = None
         for parameter in self.base_mlp.parameters():
@@ -345,11 +350,19 @@ class SequenceNeuronImplantMLP(nn.Module):
 
     def hard_interface(self, interface: SequenceInterface) -> HardSequenceInterface:
         probability = interface.route_logits.softmax(dim=-1)[..., 1]
+        digit_probabilities = interface.digit_logits.softmax(dim=-1)
+        digit_probability, digits = digit_probabilities.max(dim=-1)
+        digits = torch.where(
+            digit_probability >= self.digit_threshold,
+            digits,
+            torch.full_like(digits, self.layout.non_digit),
+        )
         return HardSequenceInterface(
             route=(probability >= self.route_threshold).to(torch.long),
             route_probability=probability,
             roles=interface.role_logits.argmax(dim=-1),
-            digits=interface.digit_logits.argmax(dim=-1),
+            digits=digits,
+            digit_probability=digit_probability,
             step=interface.step_logits.argmax(dim=-1),
         )
 
@@ -379,6 +392,7 @@ class SequenceNeuronImplantMLP(nn.Module):
             route_probability=hard.route_probability,
             roles=roles,
             digits=digits,
+            digit_probability=hard.digit_probability,
             step=step,
         )
 
@@ -459,6 +473,7 @@ def install_sequence_neuron_implant(
     layout: SequenceImplantLayout | None = None,
     output_strength: float = 16.0,
     route_threshold: float = 0.5,
+    digit_threshold: float = 0.0,
     use_swiglu_interface: bool = False,
 ) -> SequenceNeuronImplantMLP:
     layer = model.model.layers[layer_index]
@@ -471,6 +486,7 @@ def install_sequence_neuron_implant(
         layout=layout,
         output_strength=output_strength,
         route_threshold=route_threshold,
+        digit_threshold=digit_threshold,
         use_swiglu_interface=use_swiglu_interface,
     )
     reference = next(base_mlp.parameters())
