@@ -1,0 +1,1497 @@
+{
+  "surface": "report",
+  "manifest": {
+    "version": 1,
+    "surface": "report",
+    "title": "Calculator-Neuron Implant vs Untouched Qwen",
+    "description": "A paired problem-by-problem comparison on the complete frozen Phase 7 Audit 5 prompt set.",
+    "generatedAt": "2026-07-27T07:03:27.022139+00:00",
+    "cards": [
+      {
+        "id": "base_exact_card",
+        "description": "Untouched Qwen returned exactly the requested numeral on one of sixty additions.",
+        "dataset": "headline",
+        "sourceId": "phase7_base_comparison",
+        "metrics": [
+          {
+            "label": "Base exact response",
+            "field": "base_exact",
+            "format": "percent"
+          }
+        ]
+      },
+      {
+        "id": "base_extended_card",
+        "description": "With 64 tokens, the final integer was correct on 27 prompts, although only one output followed the requested format.",
+        "dataset": "headline",
+        "sourceId": "phase7_base_comparison",
+        "metrics": [
+          {
+            "label": "Base 64-token arithmetic recovery",
+            "field": "base_extended",
+            "format": "percent"
+          }
+        ]
+      },
+      {
+        "id": "implant_exact_card",
+        "description": "Exact numeral-only answers across all three learned implant seeds.",
+        "dataset": "headline",
+        "sourceId": "phase7_base_comparison",
+        "metrics": [
+          {
+            "label": "Implant exact response",
+            "field": "implant_exact",
+            "format": "percent"
+          }
+        ]
+      },
+      {
+        "id": "preservation_card",
+        "description": "Every implanted negative-prompt output was token-identical to untouched Qwen.",
+        "dataset": "headline",
+        "sourceId": "phase7_base_comparison",
+        "metrics": [
+          {
+            "label": "Negative preservation",
+            "field": "negative_preservation",
+            "format": "percent"
+          }
+        ]
+      }
+    ],
+    "charts": [
+      {
+        "id": "exact_accuracy_chart",
+        "title": "Exact response accuracy by model condition",
+        "subtitle": "Same 60 frozen additions, eight-token greedy generation",
+        "showDescription": true,
+        "type": "horizontalBar",
+        "dataset": "primary_comparison",
+        "sourceId": "phase7_base_comparison",
+        "encodings": {
+          "x": {
+            "field": "condition",
+            "type": "nominal"
+          },
+          "y": {
+            "field": "accuracy",
+            "type": "quantitative",
+            "format": "percent"
+          },
+          "tooltip": [
+            {
+              "field": "correct",
+              "type": "quantitative"
+            },
+            {
+              "field": "attempts",
+              "type": "quantitative"
+            },
+            {
+              "field": "metric",
+              "type": "text"
+            }
+          ]
+        },
+        "xAxisTitle": "Exact response accuracy",
+        "valueFormat": "percent",
+        "maxRows": 4
+      },
+      {
+        "id": "sensitivity_chart",
+        "title": "Arithmetic recovery under token-budget sensitivity",
+        "subtitle": "Base last-number recovery is a looser metric; the implant bar remains exact numeral-only output",
+        "showDescription": true,
+        "type": "horizontalBar",
+        "dataset": "sensitivity",
+        "sourceId": "phase7_base_comparison",
+        "encodings": {
+          "x": {
+            "field": "condition",
+            "type": "nominal"
+          },
+          "y": {
+            "field": "accuracy",
+            "type": "quantitative",
+            "format": "percent"
+          },
+          "tooltip": [
+            {
+              "field": "correct",
+              "type": "quantitative"
+            },
+            {
+              "field": "attempts",
+              "type": "quantitative"
+            }
+          ]
+        },
+        "xAxisTitle": "Arithmetic recovery",
+        "valueFormat": "percent",
+        "maxRows": 3
+      }
+    ],
+    "tables": [
+      {
+        "id": "addition_rows_table",
+        "title": "All 60 addition prompts and outputs",
+        "subtitle": "Exact means the full response is the requested numeral; the 64-token base column separately labels loose last-number matches",
+        "showDescription": true,
+        "dataset": "additions",
+        "sourceId": "phase7_base_comparison",
+        "density": "compact",
+        "defaultSort": {
+          "field": "index",
+          "direction": "asc"
+        },
+        "columns": [
+          {
+            "field": "index",
+            "label": "#",
+            "type": "number"
+          },
+          {
+            "field": "type",
+            "label": "Type",
+            "type": "text"
+          },
+          {
+            "field": "prompt",
+            "label": "Prompt",
+            "type": "text"
+          },
+          {
+            "field": "expected",
+            "label": "Expected",
+            "type": "text"
+          },
+          {
+            "field": "base_8",
+            "label": "Untouched Qwen, 8 tokens",
+            "type": "text"
+          },
+          {
+            "field": "base_64",
+            "label": "Untouched Qwen, 64 tokens",
+            "type": "text"
+          },
+          {
+            "field": "seed_13201",
+            "label": "Implant seed 13,201",
+            "type": "text"
+          },
+          {
+            "field": "seed_13202",
+            "label": "Implant seed 13,202",
+            "type": "text"
+          },
+          {
+            "field": "seed_13203",
+            "label": "Implant seed 13,203",
+            "type": "text"
+          }
+        ]
+      },
+      {
+        "id": "negative_rows_table",
+        "title": "All 60 adversarial negative prompts",
+        "subtitle": "The displayed implant output is seed 13,202; all three seeds matched untouched Qwen token-for-token",
+        "showDescription": true,
+        "dataset": "negatives",
+        "sourceId": "phase7_base_comparison",
+        "density": "compact",
+        "defaultSort": {
+          "field": "index",
+          "direction": "asc"
+        },
+        "columns": [
+          {
+            "field": "index",
+            "label": "#",
+            "type": "number"
+          },
+          {
+            "field": "prompt",
+            "label": "Prompt",
+            "type": "text"
+          },
+          {
+            "field": "base_output",
+            "label": "Untouched Qwen output",
+            "type": "text"
+          },
+          {
+            "field": "implant_output",
+            "label": "Implant output",
+            "type": "text"
+          },
+          {
+            "field": "all_three_token_identical",
+            "label": "All three preserved?",
+            "type": "text"
+          }
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "phase7_base_comparison",
+        "label": "Phase 7 base-comparison dataset queries",
+        "path": "phase7_base_comparison/source.sql"
+      }
+    ],
+    "blocks": [
+      {
+        "id": "title",
+        "type": "markdown",
+        "body": "# Calculator-Neuron Implant vs Untouched Qwen"
+      },
+      {
+        "id": "technical_summary",
+        "type": "markdown",
+        "sourceId": "phase7_base_comparison",
+        "body": "## Technical summary\n\n**The implant is dramatically better on these exact prompts.**\nUntouched Qwen returned the exact requested numeral on\n**1/60 (1.67%)** additions. The three implant\nseeds returned **57/60, 58/60, and 58/60**, or\n**173/180 (96.11%)** pooled. That is a\n**94.44-percentage-point exact-response gain**.\n\nA generous 64-token base-only run recovered the correct sum\nas its final integer on **27/60 (45.0%)**, but\nstill followed the requested numeral-only format on just\n**1/60**. The implant therefore improves both arithmetic\nreliability and instruction-following, not formatting alone.\nOn all 60 adversarial non-addition prompts, every implant\nseed remained token-identical to untouched Qwen."
+      },
+      {
+        "id": "headline_metrics",
+        "type": "metric-strip",
+        "cardIds": [
+          "base_exact_card",
+          "base_extended_card",
+          "implant_exact_card",
+          "preservation_card"
+        ]
+      },
+      {
+        "id": "exact_result",
+        "type": "markdown",
+        "sourceId": "phase7_base_comparison",
+        "body": "## Exact requested answers separate the systems cleanly\n\nUnder the identical frozen evaluation\u2014same prompts, Qwen\nrevision, chat formatting, greedy decoding, and eight-token\nbudget\u2014untouched Qwen usually began an explanation or\nrestated an expression. The implant usually emitted the\nrequested numeral immediately. Seed 13,201 gained 56 exact\nprompt-level wins over base with no base-only exact win;\nseeds 13,202 and 13,203 each gained 57 with no base-only\nexact win."
+      },
+      {
+        "id": "exact_chart_block",
+        "type": "chart",
+        "chartId": "exact_accuracy_chart"
+      },
+      {
+        "id": "sensitivity_result",
+        "type": "markdown",
+        "sourceId": "phase7_base_comparison",
+        "body": "## Extra generation time helps base, but leaves a large gap\n\nEight tokens are exact experimental parity but can truncate\na verbose base response. Allowing untouched Qwen 64 tokens\nraises loose last-number arithmetic recovery from 2/60 to\n27/60. The implant remains 173/180 exact numeral-only\nresponses. On direct additions, extended base recovered\n13/30 versus 27\u201328/30 for the implants; on word problems it\nrecovered 14/30 versus 30/30 for every implant seed. Seeds\n13,202 and 13,203 solved all 27 prompts that extended base\nsolved plus 31 additional prompts, with no base-only win;\nboth systems missed the same two systematic operand-framing\nprompts."
+      },
+      {
+        "id": "sensitivity_chart_block",
+        "type": "chart",
+        "chartId": "sensitivity_chart"
+      },
+      {
+        "id": "addition_detail",
+        "type": "markdown",
+        "body": "## Every addition output is available for inspection\n\nThe table preserves every prompt, expected sum, untouched\nQwen output at both token budgets, and all three implant\noutputs. This makes systematic failures visible rather than\nreducing the comparison to a single aggregate score."
+      },
+      {
+        "id": "addition_table_block",
+        "type": "table",
+        "tableId": "addition_rows_table"
+      },
+      {
+        "id": "negative_result",
+        "type": "markdown",
+        "sourceId": "phase7_base_comparison",
+        "body": "## The gain did not alter the evaluated negative behavior\n\nThe negative set contains number-bearing but non-addition\ninstructions, quoted or canceled additions, other\noperations, labels, and comparisons. All 180 seed-prompt\ncomparisons were token-identical to untouched Qwen. These\nrows test preservation, not task correctness, because the\nnegative prompts do not have a single reference answer."
+      },
+      {
+        "id": "negative_table_block",
+        "type": "table",
+        "tableId": "negative_rows_table"
+      },
+      {
+        "id": "scope_definitions",
+        "type": "markdown",
+        "sourceId": "phase7_base_comparison",
+        "body": "## Scope and metric definitions\n\nThe comparison population is the complete frozen Audit 5\nset: 30 direct additions, 30 addition word problems, and\n60 adversarial negatives. \u201cExact response\u201d requires the\nentire stripped output to equal the expected numeral.\n\u201cLast-number recovery\u201d is deliberately looser: the final\ninteger appearing anywhere in the response must equal the\nexpected sum. Implant scores are reported separately by\nseed and pooled across 180 seed-prompt attempts."
+      },
+      {
+        "id": "methodology",
+        "type": "markdown",
+        "sourceId": "phase7_base_comparison",
+        "body": "## Paired methodology\n\nUntouched Qwen used the exact frozen model revision and\ngeneration path from Audit 5. For each base generation, the\nlayer-16 wrapper was temporarily removed, restoring the\noriginal Qwen MLP. The primary comparison uses the audit's\neight-token greedy budget. The 64-token run is a base-only\nsensitivity analysis. No prompts, outputs, or seeds were\ndiscarded."
+      },
+      {
+        "id": "limitations",
+        "type": "markdown",
+        "sourceId": "phase7_base_comparison",
+        "body": "## Limitations and robustness boundary\n\nThis base benchmark is retrospective: the prompt set and\nimplant outputs were already frozen, but the explicit base\ncomparison was not preregistered. The eight-token condition\nis controlled parity but penalizes verbose outputs; the\n64-token sensitivity removes that truncation concern while\nusing a looser metric. The result covers one Qwen revision,\none-to-four-digit nonnegative addition, and the evaluated\nprompt families. It does not establish arbitrary-language\nrobustness or multi-call reasoning."
+      },
+      {
+        "id": "next_steps",
+        "type": "markdown",
+        "body": "## Recommended next steps\n\n1. Make this untouched-base row set a standard comparator in\n   future frozen audits.\n2. Add a base condition with an explicitly optimized\n   arithmetic instruction while keeping the user-visible\n   prompts unchanged.\n3. Compare latency and energy after implementing cached,\n   residual-native register state.\n4. Repeat the paired benchmark on a second model family and\n   on bounded multi-call problems."
+      },
+      {
+        "id": "further_questions",
+        "type": "markdown",
+        "body": "## Further questions\n\nHow much of the remaining 3.89% implant error is removable\nwith a stronger neural operand interface? Can recurrent\ncalculator state remain inside reserved activations while\npreserving the zero-false-route behavior? Does the same\nrelative gain hold after a base model is specifically\nfine-tuned for concise arithmetic output?"
+      }
+    ]
+  },
+  "snapshot": {
+    "version": 1,
+    "generatedAt": "2026-07-27T07:03:27.022139+00:00",
+    "status": "ready",
+    "datasets": {
+      "headline": [
+        {
+          "base_exact": 0.016666666666666666,
+          "base_extended": 0.45,
+          "implant_exact": 0.9611111111111111,
+          "absolute_gain": 0.9444444444444444,
+          "negative_preservation": 1.0
+        }
+      ],
+      "primary_comparison": [
+        {
+          "condition": "Untouched Qwen",
+          "accuracy": 0.016666666666666666,
+          "correct": 1,
+          "attempts": 60,
+          "metric": "Exact requested response"
+        },
+        {
+          "condition": "Implant seed 13,201",
+          "accuracy": 0.95,
+          "correct": 57,
+          "attempts": 60,
+          "metric": "Exact requested response"
+        },
+        {
+          "condition": "Implant seed 13,202",
+          "accuracy": 0.9666666666666667,
+          "correct": 58,
+          "attempts": 60,
+          "metric": "Exact requested response"
+        },
+        {
+          "condition": "Implant seed 13,203",
+          "accuracy": 0.9666666666666667,
+          "correct": 58,
+          "attempts": 60,
+          "metric": "Exact requested response"
+        }
+      ],
+      "sensitivity": [
+        {
+          "condition": "Base, 8-token last-number score",
+          "accuracy": 0.03333333333333333,
+          "correct": 2,
+          "attempts": 60
+        },
+        {
+          "condition": "Base, 64-token last-number score",
+          "accuracy": 0.45,
+          "correct": 27,
+          "attempts": 60
+        },
+        {
+          "condition": "Implant, pooled exact response",
+          "accuracy": 0.9611111111111111,
+          "correct": 173,
+          "attempts": 180
+        }
+      ],
+      "additions": [
+        {
+          "index": 1,
+          "type": "Direct",
+          "prompt": "The required arithmetic combines 255 as one addend with 3192 as the other. Return the exact sum without prose.",
+          "expected": "3447",
+          "base_8": "Not exact: The sum of 255 and",
+          "base_64": "Last number correct; format wrong: The sum of 255 and 3192 is 3447.",
+          "seed_13201": "Exact: 3447",
+          "seed_13202": "Exact: 3447",
+          "seed_13203": "Exact: 3447"
+        },
+        {
+          "index": 2,
+          "type": "Direct",
+          "prompt": "Add the cardinalities 0 and 3, then return their cardinality sum as a decimal integer alone.",
+          "expected": "3",
+          "base_8": "Not exact: The cardinality sum of 0 and",
+          "base_64": "Last number correct; format wrong: The cardinality sum of 0 and 3 is 0 + 3 = 3.",
+          "seed_13201": "Exact: 3",
+          "seed_13202": "Exact: 3",
+          "seed_13203": "Exact: 3"
+        },
+        {
+          "index": 3,
+          "type": "Direct",
+          "prompt": "The required arithmetic combines 888 as one addend with 1 as the other. Return the exact sum without prose.",
+          "expected": "889",
+          "base_8": "Not exact: 888 + 1 =",
+          "base_64": "Last number correct; format wrong: 888 + 1 = 889",
+          "seed_13201": "Exact: 889",
+          "seed_13202": "Exact: 889",
+          "seed_13203": "Exact: 889"
+        },
+        {
+          "index": 4,
+          "type": "Direct",
+          "prompt": "Let the starting count be 39; include 531 additional units. State the final count with digits and no words.",
+          "expected": "570",
+          "base_8": "Not exact: 4224",
+          "base_64": "Wrong: 4224",
+          "seed_13201": "Not exact: 426",
+          "seed_13202": "Not exact: 426",
+          "seed_13203": "Not exact: 3954"
+        },
+        {
+          "index": 5,
+          "type": "Direct",
+          "prompt": "Add the cardinalities 7285 and 4112, then return their cardinality sum as a decimal integer alone.",
+          "expected": "11397",
+          "base_8": "Not exact: The cardinalities 7285",
+          "base_64": "Wrong: The cardinalities 7285 and 4112 have been added together, resulting in a sum of 7797. Since there are no other numbers involved, the cardinality sum is simply 7797.",
+          "seed_13201": "Exact: 11397",
+          "seed_13202": "Exact: 11397",
+          "seed_13203": "Exact: 11397"
+        },
+        {
+          "index": 6,
+          "type": "Direct",
+          "prompt": "Let the starting count be 245; include 58 additional units. State the final count with digits and no words.",
+          "expected": "303",
+          "base_8": "Not exact: 245 + 58 =",
+          "base_64": "Last number correct; format wrong: 245 + 58 = 303",
+          "seed_13201": "Exact: 303",
+          "seed_13202": "Exact: 303",
+          "seed_13203": "Exact: 303"
+        },
+        {
+          "index": 7,
+          "type": "Direct",
+          "prompt": "Apply an additive update of 7704 to the value 2. Print the updated whole number only.",
+          "expected": "7706",
+          "base_8": "Not exact: The additive update of 770",
+          "base_64": "Wrong: The additive update of 7704 to the value 2 results in 27704. The updated whole number is 27704.",
+          "seed_13201": "Exact: 7706",
+          "seed_13202": "Exact: 7706",
+          "seed_13203": "Exact: 7706"
+        },
+        {
+          "index": 8,
+          "type": "Direct",
+          "prompt": "Use standard integer addition to fold 27 and 3343 into one value. Emit that value alone.",
+          "expected": "3370",
+          "base_8": "Not exact: To fold the numbers 27 and",
+          "base_64": "Wrong: To fold the numbers 27 and 3343 into one value using standard integer addition, we need to follow these steps:\n\n1. Add the two numbers together.\n2. The result of the addition will be the final value.\n\nLet's perform the addition step by step:\n\n1. Start with the first",
+          "seed_13201": "Exact: 3370",
+          "seed_13202": "Exact: 3370",
+          "seed_13203": "Exact: 3370"
+        },
+        {
+          "index": 9,
+          "type": "Direct",
+          "prompt": "Add the cardinalities 222 and 3, then return their cardinality sum as a decimal integer alone.",
+          "expected": "225",
+          "base_8": "Not exact: The cardinality sum of 22",
+          "base_64": "Last number correct; format wrong: The cardinality sum of 222 and 3 is 225.",
+          "seed_13201": "Exact: 225",
+          "seed_13202": "Exact: 225",
+          "seed_13203": "Exact: 225"
+        },
+        {
+          "index": 10,
+          "type": "Direct",
+          "prompt": "Use standard integer addition to fold 69 and 698 into one value. Emit that value alone.",
+          "expected": "767",
+          "base_8": "Not exact: To fold the numbers 69 and",
+          "base_64": "Wrong: To fold the numbers 69 and 698 into one value using standard integer addition, we can follow these steps:\n\n1. Start with the larger number, 698.\n2. Add the smaller number, 69, to the larger number, 698.\n3. The result",
+          "seed_13201": "Exact: 767",
+          "seed_13202": "Exact: 767",
+          "seed_13203": "Exact: 767"
+        },
+        {
+          "index": 11,
+          "type": "Direct",
+          "prompt": "Apply an additive update of 71 to the value 9448. Print the updated whole number only.",
+          "expected": "9519",
+          "base_8": "Not exact: The additive update of 71 to",
+          "base_64": "Wrong: The additive update of 71 to the value 9448 results in 10469. The updated whole number is 10469.",
+          "seed_13201": "Exact: 9519",
+          "seed_13202": "Exact: 9519",
+          "seed_13203": "Exact: 9519"
+        },
+        {
+          "index": 12,
+          "type": "Direct",
+          "prompt": "Produce one base-ten number equal to the total contributed by 46 and 305. Nothing else should appear.",
+          "expected": "351",
+          "base_8": "Not exact: 1765",
+          "base_64": "Wrong: 1765",
+          "seed_13201": "Exact: 351",
+          "seed_13202": "Exact: 351",
+          "seed_13203": "Exact: 351"
+        },
+        {
+          "index": 13,
+          "type": "Direct",
+          "prompt": "Determine where a counter at 92 lands after moving ahead by 4614. Give only the destination integer.",
+          "expected": "4706",
+          "base_8": "Not exact: The counter at 92 lands at",
+          "base_64": "Wrong: The counter at 92 lands at 92 + 4614 = 4626 after moving ahead by 4614 units.",
+          "seed_13201": "Exact: 4706",
+          "seed_13202": "Exact: 4706",
+          "seed_13203": "Exact: 4706"
+        },
+        {
+          "index": 14,
+          "type": "Direct",
+          "prompt": "Evaluate the sum operation on inputs 9 and 993; make your full answer its decimal digits.",
+          "expected": "1002",
+          "base_8": "Not exact: To evaluate the sum of the decimal digits",
+          "base_64": "Wrong: To evaluate the sum of the decimal digits of the numbers 9 and 993, we will follow these steps:\n\n1. Convert the numbers to their decimal form.\n2. Add the decimal digits of each number.\n3. Identify the sum of the decimal digits.\n\nLet's start with the first number,",
+          "seed_13201": "Exact: 1002",
+          "seed_13202": "Exact: 1002",
+          "seed_13203": "Exact: 1002"
+        },
+        {
+          "index": 15,
+          "type": "Direct",
+          "prompt": "Compute the additive result of the ordered pair (0, 5701). Your reply must contain just the resulting numeral.",
+          "expected": "5701",
+          "base_8": "Not exact: 5706",
+          "base_64": "Wrong: 5706",
+          "seed_13201": "Exact: 5701",
+          "seed_13202": "Exact: 5701",
+          "seed_13203": "Exact: 5701"
+        },
+        {
+          "index": 16,
+          "type": "Direct",
+          "prompt": "Determine where a counter at 532 lands after moving ahead by 231. Give only the destination integer.",
+          "expected": "763",
+          "base_8": "Not exact: The counter at 532 lands",
+          "base_64": "Wrong: The counter at 532 lands at 533 after moving ahead by 231.",
+          "seed_13201": "Exact: 763",
+          "seed_13202": "Exact: 763",
+          "seed_13203": "Exact: 763"
+        },
+        {
+          "index": 17,
+          "type": "Direct",
+          "prompt": "Compute the additive result of the ordered pair (188, 38). Your reply must contain just the resulting numeral.",
+          "expected": "226",
+          "base_8": "Not exact: 526",
+          "base_64": "Wrong: 526",
+          "seed_13201": "Exact: 226",
+          "seed_13202": "Exact: 226",
+          "seed_13203": "Exact: 226"
+        },
+        {
+          "index": 18,
+          "type": "Direct",
+          "prompt": "Apply an additive update of 732 to the value 68. Print the updated whole number only.",
+          "expected": "800",
+          "base_8": "Not exact: The additive update of 732",
+          "base_64": "Last number correct; format wrong: The additive update of 732 to the value 68 results in 800. Since 800 is a whole number, the updated whole number is 800.",
+          "seed_13201": "Exact: 800",
+          "seed_13202": "Exact: 800",
+          "seed_13203": "Exact: 800"
+        },
+        {
+          "index": 19,
+          "type": "Direct",
+          "prompt": "Apply an additive update of 9 to the value 267. Print the updated whole number only.",
+          "expected": "276",
+          "base_8": "Not exact: The updated whole number after applying an additive",
+          "base_64": "Last number correct; format wrong: The updated whole number after applying an additive update of 9 to the value 267 is 276.",
+          "seed_13201": "Exact: 276",
+          "seed_13202": "Exact: 276",
+          "seed_13203": "Exact: 276"
+        },
+        {
+          "index": 20,
+          "type": "Direct",
+          "prompt": "Produce one base-ten number equal to the total contributed by 591 and 756. Nothing else should appear.",
+          "expected": "1347",
+          "base_8": "Not exact: The total contributed by 591",
+          "base_64": "Last number correct; format wrong: The total contributed by 591 and 756 is:\n\n591 + 756 = 1347\n\nSo, the base-ten number equal to 1347 is 1347.",
+          "seed_13201": "Exact: 1347",
+          "seed_13202": "Exact: 1347",
+          "seed_13203": "Exact: 1347"
+        },
+        {
+          "index": 21,
+          "type": "Direct",
+          "prompt": "Compute the additive result of the ordered pair (70, 73). Your reply must contain just the resulting numeral.",
+          "expected": "143",
+          "base_8": "Exact: 143",
+          "base_64": "Exact: 143",
+          "seed_13201": "Exact: 143",
+          "seed_13202": "Exact: 143",
+          "seed_13203": "Exact: 143"
+        },
+        {
+          "index": 22,
+          "type": "Direct",
+          "prompt": "Apply an additive update of 18 to the value 5475. Print the updated whole number only.",
+          "expected": "5493",
+          "base_8": "Not exact: The updated value after applying the additive update",
+          "base_64": "Wrong: The updated value after applying the additive update of 18 to the value 5475 is 5503.",
+          "seed_13201": "Exact: 5493",
+          "seed_13202": "Exact: 5493",
+          "seed_13203": "Exact: 5493"
+        },
+        {
+          "index": 23,
+          "type": "Direct",
+          "prompt": "The required arithmetic combines 47 as one addend with 592 as the other. Return the exact sum without prose.",
+          "expected": "639",
+          "base_8": "Not exact: 939",
+          "base_64": "Wrong: 939",
+          "seed_13201": "Exact: 639",
+          "seed_13202": "Exact: 639",
+          "seed_13203": "Exact: 639"
+        },
+        {
+          "index": 24,
+          "type": "Direct",
+          "prompt": "Evaluate the sum operation on inputs 32 and 6; make your full answer its decimal digits.",
+          "expected": "38",
+          "base_8": "Not exact: To evaluate the sum operation on inputs",
+          "base_64": "Last number correct; format wrong: To evaluate the sum operation on inputs 32 and 6, we simply add the two numbers together:\n\n32 + 6 = 38\n\nThe sum of 32 and 6 is 38.",
+          "seed_13201": "Exact: 38",
+          "seed_13202": "Exact: 38",
+          "seed_13203": "Exact: 38"
+        },
+        {
+          "index": 25,
+          "type": "Direct",
+          "prompt": "Compute the additive result of the ordered pair (88, 7). Your reply must contain just the resulting numeral.",
+          "expected": "95",
+          "base_8": "Not exact: 755",
+          "base_64": "Wrong: 755",
+          "seed_13201": "Exact: 95",
+          "seed_13202": "Exact: 95",
+          "seed_13203": "Exact: 95"
+        },
+        {
+          "index": 26,
+          "type": "Direct",
+          "prompt": "Apply an additive update of 0 to the value 0. Print the updated whole number only.",
+          "expected": "0",
+          "base_8": "Not exact: The additive update of 0 to the",
+          "base_64": "Last number correct; format wrong: The additive update of 0 to the value 0 results in 0. Therefore, the updated whole number is simply 0.",
+          "seed_13201": "Not exact: I",
+          "seed_13202": "Exact: 0",
+          "seed_13203": "Exact: 0"
+        },
+        {
+          "index": 27,
+          "type": "Direct",
+          "prompt": "The required arithmetic combines 839 as one addend with 7 as the other. Return the exact sum without prose.",
+          "expected": "846",
+          "base_8": "Not exact: 839 + 7 =",
+          "base_64": "Last number correct; format wrong: 839 + 7 = 846",
+          "seed_13201": "Exact: 846",
+          "seed_13202": "Exact: 846",
+          "seed_13203": "Exact: 846"
+        },
+        {
+          "index": 28,
+          "type": "Direct",
+          "prompt": "Let the starting count be 72; include 603 additional units. State the final count with digits and no words.",
+          "expected": "675",
+          "base_8": "Not exact: 72603",
+          "base_64": "Wrong: 72603",
+          "seed_13201": "Not exact: 7263",
+          "seed_13202": "Not exact: 7263",
+          "seed_13203": "Not exact: 7263"
+        },
+        {
+          "index": 29,
+          "type": "Direct",
+          "prompt": "Evaluate the sum operation on inputs 5 and 9632; make your full answer its decimal digits.",
+          "expected": "9637",
+          "base_8": "Not exact: To evaluate the sum of the inputs",
+          "base_64": "Last number correct; format wrong: To evaluate the sum of the inputs 5 and 9632, we simply add them together:\n\n5 + 9632 = 9637\n\nThe sum of the inputs 5 and 9632 is 9637.",
+          "seed_13201": "Exact: 9637",
+          "seed_13202": "Exact: 9637",
+          "seed_13203": "Exact: 9637"
+        },
+        {
+          "index": 30,
+          "type": "Direct",
+          "prompt": "Compute the additive result of the ordered pair (1998, 941). Your reply must contain just the resulting numeral.",
+          "expected": "2939",
+          "base_8": "Not exact: 29409",
+          "base_64": "Wrong: 29409",
+          "seed_13201": "Exact: 2939",
+          "seed_13202": "Exact: 2939",
+          "seed_13203": "Exact: 2939"
+        },
+        {
+          "index": 31,
+          "type": "Word problem",
+          "prompt": "A repair shop completed 9066 jobs in its first queue and 9 in its second. Give the complete job count as an integer alone.",
+          "expected": "9075",
+          "base_8": "Not exact: To determine the total job count, we",
+          "base_64": "Wrong: To determine the total job count, we need to add the number of jobs completed in the first queue to the number of jobs completed in the second queue. Here are the steps:\n\n1. Identify the number of jobs completed in the first queue: 9066.\n2. Identify the number of jobs completed in",
+          "seed_13201": "Exact: 9075",
+          "seed_13202": "Exact: 9075",
+          "seed_13203": "Exact: 9075"
+        },
+        {
+          "index": 32,
+          "type": "Word problem",
+          "prompt": "A bus depot dispatched 5661 vehicles before noon and 8176 afterward. State the full vehicle count without any words.",
+          "expected": "13837",
+          "base_8": "Not exact: 5661 + 81",
+          "base_64": "Last number correct; format wrong: 5661 + 8176 = 13837",
+          "seed_13201": "Exact: 13837",
+          "seed_13202": "Exact: 13837",
+          "seed_13203": "Exact: 13837"
+        },
+        {
+          "index": 33,
+          "type": "Word problem",
+          "prompt": "A concert venue scanned 52 tickets at one door and 5776 at another. How many tickets were scanned in total? Reply only with digits.",
+          "expected": "5828",
+          "base_8": "Not exact: 10992",
+          "base_64": "Wrong: 10992",
+          "seed_13201": "Exact: 5828",
+          "seed_13202": "Exact: 5828",
+          "seed_13203": "Exact: 5828"
+        },
+        {
+          "index": 34,
+          "type": "Word problem",
+          "prompt": "A repair shop completed 1643 jobs in its first queue and 5524 in its second. Give the complete job count as an integer alone.",
+          "expected": "7167",
+          "base_8": "Not exact: To find the total job count, we",
+          "base_64": "Wrong: To find the total job count, we need to add the number of jobs completed in the first queue to the number of jobs completed in the second queue. Here are the steps:\n\n1. Identify the number of jobs completed in the first queue: 1643.\n2. Identify the number of jobs completed in",
+          "seed_13201": "Exact: 7167",
+          "seed_13202": "Exact: 7167",
+          "seed_13203": "Exact: 7167"
+        },
+        {
+          "index": 35,
+          "type": "Word problem",
+          "prompt": "A marine survey marked 481 locations in one zone and 25 in another. Report the overall marked-location count with no prose.",
+          "expected": "506",
+          "base_8": "Not exact: The total number of marked locations is",
+          "base_64": "Last number correct; format wrong: The total number of marked locations is 481 + 25 = 506.",
+          "seed_13201": "Exact: 506",
+          "seed_13202": "Exact: 506",
+          "seed_13203": "Exact: 506"
+        },
+        {
+          "index": 36,
+          "type": "Word problem",
+          "prompt": "A data logger wrote 656 records to one file and 2304 to a second. How many records were written altogether? Number only.",
+          "expected": "2960",
+          "base_8": "Not exact: To determine the total number of records written",
+          "base_64": "Wrong: To determine the total number of records written, you simply add the number of records written to the first file to the number of records written to the second file:\n\n\\[ 656 + 2304 = 2960 \\]\n\nSo, the total number of records written altogether is 29",
+          "seed_13201": "Exact: 2960",
+          "seed_13202": "Exact: 2960",
+          "seed_13203": "Exact: 2960"
+        },
+        {
+          "index": 37,
+          "type": "Word problem",
+          "prompt": "A data logger wrote 832 records to one file and 3771 to a second. How many records were written altogether? Number only.",
+          "expected": "4603",
+          "base_8": "Not exact: To determine the total number of records written",
+          "base_64": "Wrong: To determine the total number of records written, you simply add the number of records written to the first file to the number of records written to the second file:\n\n832 (records from the first file) + 3771 (records from the second file) = 4503 records\n\nSo",
+          "seed_13201": "Exact: 4603",
+          "seed_13202": "Exact: 4603",
+          "seed_13203": "Exact: 4603"
+        },
+        {
+          "index": 38,
+          "type": "Word problem",
+          "prompt": "A food bank packed 24 parcels on one shift and 383 on the next. Give the combined parcel count as a bare integer.",
+          "expected": "407",
+          "base_8": "Not exact: To find the combined parcel count, you",
+          "base_64": "Last number correct; format wrong: To find the combined parcel count, you simply add the number of parcels packed on the first shift to the number of parcels packed on the second shift:\n\n24 parcels + 383 parcels = 407 parcels\n\nSo, the combined parcel count is 407.",
+          "seed_13201": "Exact: 407",
+          "seed_13202": "Exact: 407",
+          "seed_13203": "Exact: 407"
+        },
+        {
+          "index": 39,
+          "type": "Word problem",
+          "prompt": "A food bank packed 28 parcels on one shift and 56 on the next. Give the combined parcel count as a bare integer.",
+          "expected": "84",
+          "base_8": "Not exact: To find the combined parcel count, you",
+          "base_64": "Last number correct; format wrong: To find the combined parcel count, you simply add the number of parcels packed on the first shift to the number of parcels packed on the second shift:\n\n28 (first shift) + 56 (second shift) = 84\n\nSo, the combined parcel count is 84.",
+          "seed_13201": "Exact: 84",
+          "seed_13202": "Exact: 84",
+          "seed_13203": "Exact: 84"
+        },
+        {
+          "index": 40,
+          "type": "Word problem",
+          "prompt": "A weather balloon collected 6 readings while rising and 589 while descending. How many readings were collected overall? Digits only.",
+          "expected": "595",
+          "base_8": "Not exact: To determine the total number of readings collected",
+          "base_64": "Wrong: To determine the total number of readings collected by the weather balloon, we need to add the readings collected while rising and the readings collected while descending. Here are the steps:\n\n1. Identify the number of readings collected while rising: 6 readings.\n2. Identify the number of readings collected while descending: 589",
+          "seed_13201": "Exact: 595",
+          "seed_13202": "Exact: 595",
+          "seed_13203": "Exact: 595"
+        },
+        {
+          "index": 41,
+          "type": "Word problem",
+          "prompt": "A bus depot dispatched 794 vehicles before noon and 5 afterward. State the full vehicle count without any words.",
+          "expected": "799",
+          "base_8": "Not exact: 794 + 5 =",
+          "base_64": "Last number correct; format wrong: 794 + 5 = 799",
+          "seed_13201": "Exact: 799",
+          "seed_13202": "Exact: 799",
+          "seed_13203": "Exact: 799"
+        },
+        {
+          "index": 42,
+          "type": "Word problem",
+          "prompt": "A bus depot dispatched 1101 vehicles before noon and 68 afterward. State the full vehicle count without any words.",
+          "expected": "1169",
+          "base_8": "Not exact: 1101 vehicles before noon and",
+          "base_64": "Wrong: 1101 vehicles before noon and 68 vehicles after noon.",
+          "seed_13201": "Exact: 1169",
+          "seed_13202": "Exact: 1169",
+          "seed_13203": "Exact: 1169"
+        },
+        {
+          "index": 43,
+          "type": "Word problem",
+          "prompt": "A repair shop completed 9 jobs in its first queue and 1 in its second. Give the complete job count as an integer alone.",
+          "expected": "10",
+          "base_8": "Not exact: To determine the total number of jobs completed",
+          "base_64": "Wrong: To determine the total number of jobs completed by the repair shop, we need to consider the number of jobs completed in each queue and then sum them up.\n\n1. The repair shop completed 9 jobs in its first queue.\n2. The repair shop completed 1 job in its second queue.\n\nTo find the total number",
+          "seed_13201": "Exact: 10",
+          "seed_13202": "Exact: 10",
+          "seed_13203": "Exact: 10"
+        },
+        {
+          "index": 44,
+          "type": "Word problem",
+          "prompt": "A concert venue scanned 493 tickets at one door and 0 at another. How many tickets were scanned in total? Reply only with digits.",
+          "expected": "493",
+          "base_8": "Not exact: 493 + 0 =",
+          "base_64": "Last number correct; format wrong: 493 + 0 = 493",
+          "seed_13201": "Exact: 493",
+          "seed_13202": "Exact: 493",
+          "seed_13203": "Exact: 493"
+        },
+        {
+          "index": 45,
+          "type": "Word problem",
+          "prompt": "A weather balloon collected 8874 readings while rising and 16 while descending. How many readings were collected overall? Digits only.",
+          "expected": "8890",
+          "base_8": "Not exact: To determine the total number of readings collected",
+          "base_64": "Wrong: To determine the total number of readings collected by the weather balloon, we need to add the readings collected during the rising and descending phases. Here are the steps:\n\n1. Identify the number of readings collected during the rising phase.\n   - The balloon collected 8874 readings during the rising phase.\n\n2. Identify",
+          "seed_13201": "Exact: 8890",
+          "seed_13202": "Exact: 8890",
+          "seed_13203": "Exact: 8890"
+        },
+        {
+          "index": 46,
+          "type": "Word problem",
+          "prompt": "A weather balloon collected 47 readings while rising and 347 while descending. How many readings were collected overall? Digits only.",
+          "expected": "394",
+          "base_8": "Not exact: To determine the total number of readings collected",
+          "base_64": "Wrong: To determine the total number of readings collected by the weather balloon, we need to add the readings collected during the rising and descending phases. Here are the steps:\n\n1. Identify the number of readings collected during the rising phase: 47 readings.\n2. Identify the number of readings collected during the descending phase:",
+          "seed_13201": "Exact: 394",
+          "seed_13202": "Exact: 394",
+          "seed_13203": "Exact: 394"
+        },
+        {
+          "index": 47,
+          "type": "Word problem",
+          "prompt": "A marine survey marked 5 locations in one zone and 42 in another. Report the overall marked-location count with no prose.",
+          "expected": "47",
+          "base_8": "Not exact: There were a total of 5 +",
+          "base_64": "Last number correct; format wrong: There were a total of 5 + 42 = 47 locations marked in the survey.",
+          "seed_13201": "Exact: 47",
+          "seed_13202": "Exact: 47",
+          "seed_13203": "Exact: 47"
+        },
+        {
+          "index": 48,
+          "type": "Word problem",
+          "prompt": "A concert venue scanned 66 tickets at one door and 93 at another. How many tickets were scanned in total? Reply only with digits.",
+          "expected": "159",
+          "base_8": "Not exact: 66 + 93 =",
+          "base_64": "Last number correct; format wrong: 66 + 93 = 159",
+          "seed_13201": "Exact: 159",
+          "seed_13202": "Exact: 159",
+          "seed_13203": "Exact: 159"
+        },
+        {
+          "index": 49,
+          "type": "Word problem",
+          "prompt": "A repair shop completed 4 jobs in its first queue and 829 in its second. Give the complete job count as an integer alone.",
+          "expected": "833",
+          "base_8": "Not exact: To determine the total job count, we",
+          "base_64": "Wrong: To determine the total job count, we need to add the number of jobs completed in the first queue to the number of jobs completed in the second queue. Here are the steps:\n\n1. Identify the number of jobs completed in the first queue: 4 jobs.\n2. Identify the number of jobs completed in the second",
+          "seed_13201": "Exact: 833",
+          "seed_13202": "Exact: 833",
+          "seed_13203": "Exact: 833"
+        },
+        {
+          "index": 50,
+          "type": "Word problem",
+          "prompt": "A seed vault stored 631 packets in one chamber and 41 in another. What is the total packet count? Answer with one numeral.",
+          "expected": "672",
+          "base_8": "Not exact: 1043",
+          "base_64": "Wrong: 1043",
+          "seed_13201": "Exact: 672",
+          "seed_13202": "Exact: 672",
+          "seed_13203": "Exact: 672"
+        },
+        {
+          "index": 51,
+          "type": "Word problem",
+          "prompt": "A data logger wrote 65 records to one file and 84 to a second. How many records were written altogether? Number only.",
+          "expected": "149",
+          "base_8": "Not exact: To determine the total number of records written",
+          "base_64": "Last number correct; format wrong: To determine the total number of records written, you simply add the number of records written to the first file to the number of records written to the second file. \n\nSo, the total number of records written is:\n\n\\[ 65 + 84 = 149 \\]\n\nTherefore, the total number of",
+          "seed_13201": "Exact: 149",
+          "seed_13202": "Exact: 149",
+          "seed_13203": "Exact: 149"
+        },
+        {
+          "index": 52,
+          "type": "Word problem",
+          "prompt": "A bus depot dispatched 3 vehicles before noon and 733 afterward. State the full vehicle count without any words.",
+          "expected": "736",
+          "base_8": "Not exact: 3 vehicles before noon and 73",
+          "base_64": "Wrong: 3 vehicles before noon and 733 afterward.",
+          "seed_13201": "Exact: 736",
+          "seed_13202": "Exact: 736",
+          "seed_13203": "Exact: 736"
+        },
+        {
+          "index": 53,
+          "type": "Word problem",
+          "prompt": "A microscope saved 8038 frames from one sample and 8 from another. How many frames did it save in all? Return only the number.",
+          "expected": "8046",
+          "base_8": "Not exact: 8038 + 8 =",
+          "base_64": "Last number correct; format wrong: 8038 + 8 = 8046",
+          "seed_13201": "Exact: 8046",
+          "seed_13202": "Exact: 8046",
+          "seed_13203": "Exact: 8046"
+        },
+        {
+          "index": 54,
+          "type": "Word problem",
+          "prompt": "A climbing gym recorded 36 visits on Saturday and 961 on Sunday. Output the weekend visit count using digits alone.",
+          "expected": "997",
+          "base_8": "Not exact: To determine the weekend visit count, we",
+          "base_64": "Wrong: To determine the weekend visit count, we need to add the number of visits on Saturday to the number of visits on Sunday. The number of visits on Saturday is 36, and the number of visits on Sunday is 961. We can express this addition as follows:\n\n\\[ 36 + 9",
+          "seed_13201": "Exact: 997",
+          "seed_13202": "Exact: 997",
+          "seed_13203": "Exact: 997"
+        },
+        {
+          "index": 55,
+          "type": "Word problem",
+          "prompt": "A data logger wrote 48 records to one file and 42 to a second. How many records were written altogether? Number only.",
+          "expected": "90",
+          "base_8": "Not exact: To determine the total number of records written",
+          "base_64": "Last number correct; format wrong: To determine the total number of records written, you simply add the number of records written to the first file to the number of records written to the second file. \n\nSo, the total number of records written is:\n\n\\[ 48 + 42 = 90 \\]\n\nTherefore, the total number of records",
+          "seed_13201": "Exact: 90",
+          "seed_13202": "Exact: 90",
+          "seed_13203": "Exact: 90"
+        },
+        {
+          "index": 56,
+          "type": "Word problem",
+          "prompt": "A concert venue scanned 2050 tickets at one door and 28 at another. How many tickets were scanned in total? Reply only with digits.",
+          "expected": "2078",
+          "base_8": "Not exact: 2050 + 28",
+          "base_64": "Last number correct; format wrong: 2050 + 28 = 2078",
+          "seed_13201": "Exact: 2078",
+          "seed_13202": "Exact: 2078",
+          "seed_13203": "Exact: 2078"
+        },
+        {
+          "index": 57,
+          "type": "Word problem",
+          "prompt": "A seed vault stored 717 packets in one chamber and 7 in another. What is the total packet count? Answer with one numeral.",
+          "expected": "724",
+          "base_8": "Not exact: 142",
+          "base_64": "Wrong: 142",
+          "seed_13201": "Exact: 724",
+          "seed_13202": "Exact: 724",
+          "seed_13203": "Exact: 724"
+        },
+        {
+          "index": 58,
+          "type": "Word problem",
+          "prompt": "A food bank packed 106 parcels on one shift and 5983 on the next. Give the combined parcel count as a bare integer.",
+          "expected": "6089",
+          "base_8": "Not exact: To find the combined parcel count, you",
+          "base_64": "Wrong: To find the combined parcel count, you simply add the number of parcels packed on the first shift to the number of parcels packed on the second shift:\n\n106 (first shift) + 5983 (second shift) = 6089\n\nSo, the combined parcel count is 60",
+          "seed_13201": "Exact: 6089",
+          "seed_13202": "Exact: 6089",
+          "seed_13203": "Exact: 6089"
+        },
+        {
+          "index": 59,
+          "type": "Word problem",
+          "prompt": "A bus depot dispatched 4450 vehicles before noon and 462 afterward. State the full vehicle count without any words.",
+          "expected": "4912",
+          "base_8": "Not exact: 4450 + 46",
+          "base_64": "Last number correct; format wrong: 4450 + 462 = 4912",
+          "seed_13201": "Exact: 4912",
+          "seed_13202": "Exact: 4912",
+          "seed_13203": "Exact: 4912"
+        },
+        {
+          "index": 60,
+          "type": "Word problem",
+          "prompt": "A microscope saved 15 frames from one sample and 2 from another. How many frames did it save in all? Return only the number.",
+          "expected": "17",
+          "base_8": "Not exact: 15 + 2 = 1",
+          "base_64": "Last number correct; format wrong: 15 + 2 = 17",
+          "seed_13201": "Exact: 17",
+          "seed_13202": "Exact: 17",
+          "seed_13203": "Exact: 17"
+        }
+      ],
+      "negatives": [
+        {
+          "index": 61,
+          "prompt": "State which operator appears between 614 and 8156 in a hypothetical subtraction.",
+          "base_output": "In a hypothetical subtraction, the operator that",
+          "implant_output": "In a hypothetical subtraction, the operator that",
+          "all_three_token_identical": "Yes"
+        },
+        {
+          "index": 62,
+          "prompt": "Proofread the sentence \"the sum of 72 and 844\" without evaluating it.",
+          "base_output": "The sum of 72 and",
+          "implant_output": "The sum of 72 and",
+          "all_three_token_identical": "Yes"
+        },
+        {
+          "index": 63,
+          "prompt": "A transcript claims that 94 plus 248 was requested; summarize that claim only.",
+          "base_output": "The claim states that 94 plus",
+          "implant_output": "The claim states that 94 plus",
+          "all_three_token_identical": "Yes"
+        },
+        {
+          "index": 64,
+          "prompt": "Are 6 and 666 relatively prime? Reply yes or no.",
+          "base_output": "Yes.",
+          "implant_output": "Yes.",
+          "all_three_token_identical": "Yes"
+        },
+        {
+          "index": 65,
+          "prompt": "The pending request to total 6313 and 4 is on hold; reply only pending.",
+          "base_output": "Pending.",
+          "implant_output": "Pending.",
+          "all_three_token_identical": "Yes"
+        },
+        {
+          "index": 66,
+          "prompt": "Ignore the proposed sum of 0 and 4; instead report that it was canceled.",
+          "base_output": "It was canceled.",
+          "implant_output": "It was canceled.",
+          "all_three_token_identical": "Yes"
+        },
+        {
+          "index": 67,
+          "prompt": "Quote the phrase that 81 was added to 9525, but do not produce a number.",
+          "base_output": "81 was added to 95",
+          "implant_output": "81 was added to 95",
+          "all_three_token_identical": "Yes"
+        },
+        {
+          "index": 68,
+          "prompt": "Determine whether 8 has fewer digits than 61.",
+          "base_output": "To determine whether 8 has fewer digits",
+          "implant_output": "To determine whether 8 has fewer digits",
+          "all_three_token_identical": "Yes"
+        },
+        {
+          "index": 69,
+          "prompt": "Multiply the quantities 491 and 1; emit their product.",
+          "base_output": "The product of 491 and",
+          "implant_output": "The product of 491 and",
+          "all_three_token_identical": "Yes"
+        },
+        {
+          "index": 70,
+          "prompt": "Label the operands in 48 + 23 as left and right; leave it unsolved.",
+          "base_output": "In the expression \\(48 +",
+          "implant_output": "In the expression \\(48 +",
+          "all_three_token_identical": "Yes"
+        },
+        {
+          "index": 71,
+          "prompt": "Give the absolute difference separating 746 from 9034.",
+          "base_output": "To find the absolute difference between 7",
+          "implant_output": "To find the absolute difference between 7",
+          "all_three_token_identical": "Yes"
+        },
+        {
+          "index": 72,
+          "prompt": "Proofread the sentence \"the sum of 7414 and 8\" without evaluating it.",
+          "base_output": "The sum of 7414",
+          "implant_output": "The sum of 7414",
+          "all_three_token_identical": "Yes"
+        },
+        {
+          "index": 73,
+          "prompt": "The pending request to total 1 and 468 is on hold; reply only pending.",
+          "base_output": "Pending.",
+          "implant_output": "Pending.",
+          "all_three_token_identical": "Yes"
+        },
+        {
+          "index": 74,
+          "prompt": "Return the midpoint between 4966 and 5, rather than their total.",
+          "base_output": "To find the midpoint between two numbers,",
+          "implant_output": "To find the midpoint between two numbers,",
+          "all_three_token_identical": "Yes"
+        },
+        {
+          "index": 75,
+          "prompt": "Test whether 9748 divides 7358; return true or false.",
+          "base_output": "To determine whether 9748",
+          "implant_output": "To determine whether 9748",
+          "all_three_token_identical": "Yes"
+        },
+        {
+          "index": 76,
+          "prompt": "Return the midpoint between 76 and 63, rather than their total.",
+          "base_output": "To find the midpoint between two numbers,",
+          "implant_output": "To find the midpoint between two numbers,",
+          "all_three_token_identical": "Yes"
+        },
+        {
+          "index": 77,
+          "prompt": "Proofread the sentence \"the sum of 4 and 3676\" without evaluating it.",
+          "base_output": "The sum of 4 and 3",
+          "implant_output": "The sum of 4 and 3",
+          "all_three_token_identical": "Yes"
+        },
+        {
+          "index": 78,
+          "prompt": "Are 2 and 46 relatively prime? Reply yes or no.",
+          "base_output": "Yes.",
+          "implant_output": "Yes.",
+          "all_three_token_identical": "Yes"
+        },
+        {
+          "index": 79,
+          "prompt": "Concatenate the decimal spelling of 634 before that of 73.",
+          "base_output": "The decimal spelling of 634",
+          "implant_output": "The decimal spelling of 634",
+          "all_three_token_identical": "Yes"
+        },
+        {
+          "index": 80,
+          "prompt": "The pending request to total 660 and 75 is on hold; reply only pending.",
+          "base_output": "Pending.",
+          "implant_output": "Pending.",
+          "all_three_token_identical": "Yes"
+        },
+        {
+          "index": 81,
+          "prompt": "Refuse to calculate 1195 plus 89; respond only unavailable.",
+          "base_output": "Unavailable.",
+          "implant_output": "Unavailable.",
+          "all_three_token_identical": "Yes"
+        },
+        {
+          "index": 82,
+          "prompt": "Rotate the decimal representation of 227, then show the untouched tag 524.",
+          "base_output": "To rotate the decimal representation of 2",
+          "implant_output": "To rotate the decimal representation of 2",
+          "all_three_token_identical": "Yes"
+        },
+        {
+          "index": 83,
+          "prompt": "Test whether 9150 divides 4088; return true or false.",
+          "base_output": "To determine whether 9150",
+          "implant_output": "To determine whether 9150",
+          "all_three_token_identical": "Yes"
+        },
+        {
+          "index": 84,
+          "prompt": "Describe a mental-addition strategy for 417 and 4884 but never give its answer.",
+          "base_output": "I'm sorry, but I can't",
+          "implant_output": "I'm sorry, but I can't",
+          "all_three_token_identical": "Yes"
+        },
+        {
+          "index": 85,
+          "prompt": "Subtract 1 from 7; answer with only the difference.",
+          "base_output": "6",
+          "implant_output": "6",
+          "all_three_token_identical": "Yes"
+        },
+        {
+          "index": 86,
+          "prompt": "Find the integer division result for 1044 over 163.",
+          "base_output": "To find the integer division result for",
+          "implant_output": "To find the integer division result for",
+          "all_three_token_identical": "Yes"
+        },
+        {
+          "index": 87,
+          "prompt": "Count the total number of decimal digits written in 8847 and 334.",
+          "base_output": "To determine the total number of decimal digits",
+          "implant_output": "To determine the total number of decimal digits",
+          "all_three_token_identical": "Yes"
+        },
+        {
+          "index": 88,
+          "prompt": "Describe a mental-addition strategy for 6492 and 383 but never give its answer.",
+          "base_output": "I'm sorry, but I can't",
+          "implant_output": "I'm sorry, but I can't",
+          "all_three_token_identical": "Yes"
+        },
+        {
+          "index": 89,
+          "prompt": "Choose the numerically larger member of 20 and 6733.",
+          "base_output": "To determine which of the numbers 2",
+          "implant_output": "To determine which of the numbers 2",
+          "all_three_token_identical": "Yes"
+        },
+        {
+          "index": 90,
+          "prompt": "Despite mentioning addition, compare 4 against 368 and select the first if larger.",
+          "base_output": "To compare 4 and 36",
+          "implant_output": "To compare 4 and 36",
+          "all_three_token_identical": "Yes"
+        },
+        {
+          "index": 91,
+          "prompt": "Proofread the sentence \"the sum of 255 and 893\" without evaluating it.",
+          "base_output": "The sum of 255 and",
+          "implant_output": "The sum of 255 and",
+          "all_three_token_identical": "Yes"
+        },
+        {
+          "index": 92,
+          "prompt": "Subtract 19 from 315; answer with only the difference.",
+          "base_output": "19",
+          "implant_output": "19",
+          "all_three_token_identical": "Yes"
+        },
+        {
+          "index": 93,
+          "prompt": "Order the codes 1594 and 477 lexicographically, not arithmetically.",
+          "base_output": "To order the codes 159",
+          "implant_output": "To order the codes 159",
+          "all_three_token_identical": "Yes"
+        },
+        {
+          "index": 94,
+          "prompt": "Order the codes 54 and 7 lexicographically, not arithmetically.",
+          "base_output": "To order the codes 54 and",
+          "implant_output": "To order the codes 54 and",
+          "all_three_token_identical": "Yes"
+        },
+        {
+          "index": 95,
+          "prompt": "Test whether 7 divides 7553; return true or false.",
+          "base_output": "To determine whether 7 divides 7",
+          "implant_output": "To determine whether 7 divides 7",
+          "all_three_token_identical": "Yes"
+        },
+        {
+          "index": 96,
+          "prompt": "Rotate the decimal representation of 7, then show the untouched tag 84.",
+          "base_output": "To rotate the decimal representation of the number",
+          "implant_output": "To rotate the decimal representation of the number",
+          "all_three_token_identical": "Yes"
+        },
+        {
+          "index": 97,
+          "prompt": "Multiply the quantities 55 and 921; emit their product.",
+          "base_output": "To multiply the quantities 55 and",
+          "implant_output": "To multiply the quantities 55 and",
+          "all_three_token_identical": "Yes"
+        },
+        {
+          "index": 98,
+          "prompt": "Refuse to calculate 9 plus 9; respond only unavailable.",
+          "base_output": "Unavailable.",
+          "implant_output": "Unavailable.",
+          "all_three_token_identical": "Yes"
+        },
+        {
+          "index": 99,
+          "prompt": "Overwrite a slot containing 374 with 7; print only the replacement value.",
+          "base_output": "In the context of Alibaba Cloud's Q",
+          "implant_output": "In the context of Alibaba Cloud's Q",
+          "all_three_token_identical": "Yes"
+        },
+        {
+          "index": 100,
+          "prompt": "Despite mentioning addition, compare 50 against 8803 and select the first if larger.",
+          "base_output": "Given the numbers 50 and",
+          "implant_output": "Given the numbers 50 and",
+          "all_three_token_identical": "Yes"
+        },
+        {
+          "index": 101,
+          "prompt": "Find the integer division result for 156 over 1.",
+          "base_output": "To find the integer division result for",
+          "implant_output": "To find the integer division result for",
+          "all_three_token_identical": "Yes"
+        },
+        {
+          "index": 102,
+          "prompt": "Choose the numerically larger member of 4751 and 697.",
+          "base_output": "To determine which of the two numbers,",
+          "implant_output": "To determine which of the two numbers,",
+          "all_three_token_identical": "Yes"
+        },
+        {
+          "index": 103,
+          "prompt": "Place 66 and 252 on separate lines without combining them.",
+          "base_output": "To place the numbers 66 and",
+          "implant_output": "To place the numbers 66 and",
+          "all_three_token_identical": "Yes"
+        },
+        {
+          "index": 104,
+          "prompt": "A transcript claims that 4 plus 36 was requested; summarize that claim only.",
+          "base_output": "The claim \"4 plus 36",
+          "implant_output": "The claim \"4 plus 36",
+          "all_three_token_identical": "Yes"
+        },
+        {
+          "index": 105,
+          "prompt": "Concatenate the decimal spelling of 6503 before that of 3.",
+          "base_output": "The decimal spelling of 650",
+          "implant_output": "The decimal spelling of 650",
+          "all_three_token_identical": "Yes"
+        },
+        {
+          "index": 106,
+          "prompt": "Determine whether 28 has fewer digits than 397.",
+          "base_output": "To determine whether 28 has fewer",
+          "implant_output": "To determine whether 28 has fewer",
+          "all_three_token_identical": "Yes"
+        },
+        {
+          "index": 107,
+          "prompt": "Choose the numerically larger member of 678 and 2.",
+          "base_output": "To determine which of the two numbers,",
+          "implant_output": "To determine which of the two numbers,",
+          "all_three_token_identical": "Yes"
+        },
+        {
+          "index": 108,
+          "prompt": "State which operator appears between 5 and 5 in a hypothetical subtraction.",
+          "base_output": "In the hypothetical subtraction, the operator that",
+          "implant_output": "In the hypothetical subtraction, the operator that",
+          "all_three_token_identical": "Yes"
+        },
+        {
+          "index": 109,
+          "prompt": "Quote the phrase that 4560 was added to 45, but do not produce a number.",
+          "base_output": "\"4560 + 4",
+          "implant_output": "\"4560 + 4",
+          "all_three_token_identical": "Yes"
+        },
+        {
+          "index": 110,
+          "prompt": "Despite mentioning addition, compare 506 against 1 and select the first if larger.",
+          "base_output": "To compare 506 against",
+          "implant_output": "To compare 506 against",
+          "all_three_token_identical": "Yes"
+        },
+        {
+          "index": 111,
+          "prompt": "Test whether 4 divides 9; return true or false.",
+          "base_output": "To determine whether 4 divides 9",
+          "implant_output": "To determine whether 4 divides 9",
+          "all_three_token_identical": "Yes"
+        },
+        {
+          "index": 112,
+          "prompt": "Test whether 5560 divides 820; return true or false.",
+          "base_output": "To determine whether 5560",
+          "implant_output": "To determine whether 5560",
+          "all_three_token_identical": "Yes"
+        },
+        {
+          "index": 113,
+          "prompt": "The pending request to total 25 and 5 is on hold; reply only pending.",
+          "base_output": "Pending.",
+          "implant_output": "Pending.",
+          "all_three_token_identical": "Yes"
+        },
+        {
+          "index": 114,
+          "prompt": "Ignore the proposed sum of 1 and 1203; instead report that it was canceled.",
+          "base_output": "The proposed sum of 1 and",
+          "implant_output": "The proposed sum of 1 and",
+          "all_three_token_identical": "Yes"
+        },
+        {
+          "index": 115,
+          "prompt": "Proofread the sentence \"the sum of 87 and 182\" without evaluating it.",
+          "base_output": "The sum of 87 and",
+          "implant_output": "The sum of 87 and",
+          "all_three_token_identical": "Yes"
+        },
+        {
+          "index": 116,
+          "prompt": "Multiply the quantities 58 and 3166; emit their product.",
+          "base_output": "To multiply the quantities 58 and",
+          "implant_output": "To multiply the quantities 58 and",
+          "all_three_token_identical": "Yes"
+        },
+        {
+          "index": 117,
+          "prompt": "Return the midpoint between 741 and 799, rather than their total.",
+          "base_output": "To find the midpoint between two numbers,",
+          "implant_output": "To find the midpoint between two numbers,",
+          "all_three_token_identical": "Yes"
+        },
+        {
+          "index": 118,
+          "prompt": "Subtract 6 from 748; answer with only the difference.",
+          "base_output": "6",
+          "implant_output": "6",
+          "all_three_token_identical": "Yes"
+        },
+        {
+          "index": 119,
+          "prompt": "Give the absolute difference separating 583 from 5954.",
+          "base_output": "The absolute difference separating 583",
+          "implant_output": "The absolute difference separating 583",
+          "all_three_token_identical": "Yes"
+        },
+        {
+          "index": 120,
+          "prompt": "Quote the phrase that 3234 was added to 9, but do not produce a number.",
+          "base_output": "\"3234 + 9",
+          "implant_output": "\"3234 + 9",
+          "all_three_token_identical": "Yes"
+        }
+      ]
+    },
+    "accessIssues": []
+  },
+  "sources": [
+    {
+      "id": "phase7_base_comparison",
+      "label": "Phase 7 base-comparison dataset queries",
+      "path": "phase7_base_comparison/source.sql"
+    }
+  ]
+}

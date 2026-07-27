@@ -256,6 +256,8 @@ concise result, [`PHASE7_OPERAND_REGISTER_PROTOCOL.md`](PHASE7_OPERAND_REGISTER_
 for the latest frozen gates, and [`PHASE7_PILOT_LOG.md`](PHASE7_PILOT_LOG.md)
 for the complete development record. The full scientific report is
 [`paper_phase7/deterministic-neurons-qwen.pdf`](paper_phase7/deterministic-neurons-qwen.pdf).
+The retrospective problem-by-problem comparison with untouched Qwen is
+[`phase7_base_comparison/report.html`](phase7_base_comparison/report.html).
 
 ## Reproduction
 
@@ -297,6 +299,10 @@ uv run python scripts/demo_phase6_neural_firmware.py \
 # Phase 7 in-place deterministic-neuron demonstration
 uv run python scripts/demo_phase7_neuron_implant.py \
   "Let the starting count be 245; include 58 additional units. State the final count with digits and no words."
+
+# Phase 7 untouched-base comparison
+uv run python scripts/evaluate_phase7_base_comparison.py
+uv run python scripts/build_phase7_base_comparison_report.py
 ```
 
 Compact metrics, raw predictions, configuration files, figures, and compiled

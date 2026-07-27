@@ -1,0 +1,209 @@
+row_index,split,prompt,expected_answer,base_output,base_mathematical_correct,base_format_correct,base_extended_output,base_extended_mathematical_correct,base_extended_format_correct,seed_13201_output,seed_13201_mathematical_correct,seed_13201_format_correct,seed_13201_route_active,seed_13201_token_identical_to_base,seed_13202_output,seed_13202_mathematical_correct,seed_13202_format_correct,seed_13202_route_active,seed_13202_token_identical_to_base,seed_13203_output,seed_13203_mathematical_correct,seed_13203_format_correct,seed_13203_route_active,seed_13203_token_identical_to_base
+0,phase7_audit5_symbolic,The required arithmetic combines 255 as one addend with 3192 as the other. Return the exact sum without prose.,3447,The sum of 255 and,False,False,The sum of 255 and 3192 is 3447.,True,False,3447,True,True,True,False,3447,True,True,True,False,3447,True,True,True,False
+1,phase7_audit5_symbolic,"Add the cardinalities 0 and 3, then return their cardinality sum as a decimal integer alone.",3,The cardinality sum of 0 and,False,False,The cardinality sum of 0 and 3 is 0 + 3 = 3.,True,False,3,True,True,True,False,3,True,True,True,False,3,True,True,True,False
+2,phase7_audit5_symbolic,The required arithmetic combines 888 as one addend with 1 as the other. Return the exact sum without prose.,889,888 + 1 =,False,False,888 + 1 = 889,True,False,889,True,True,True,False,889,True,True,True,False,889,True,True,True,False
+3,phase7_audit5_symbolic,Let the starting count be 39; include 531 additional units. State the final count with digits and no words.,570,4224,False,False,4224,False,False,426,False,False,True,False,426,False,False,True,False,3954,False,False,True,False
+4,phase7_audit5_symbolic,"Add the cardinalities 7285 and 4112, then return their cardinality sum as a decimal integer alone.",11397,The cardinalities 7285,False,False,"The cardinalities 7285 and 4112 have been added together, resulting in a sum of 7797. Since there are no other numbers involved, the cardinality sum is simply 7797.",False,False,11397,True,True,True,False,11397,True,True,True,False,11397,True,True,True,False
+5,phase7_audit5_symbolic,Let the starting count be 245; include 58 additional units. State the final count with digits and no words.,303,245 + 58 =,False,False,245 + 58 = 303,True,False,303,True,True,True,False,303,True,True,True,False,303,True,True,True,False
+6,phase7_audit5_symbolic,Apply an additive update of 7704 to the value 2. Print the updated whole number only.,7706,The additive update of 770,False,False,The additive update of 7704 to the value 2 results in 27704. The updated whole number is 27704.,False,False,7706,True,True,True,False,7706,True,True,True,False,7706,True,True,True,False
+7,phase7_audit5_symbolic,Use standard integer addition to fold 27 and 3343 into one value. Emit that value alone.,3370,To fold the numbers 27 and,False,False,"To fold the numbers 27 and 3343 into one value using standard integer addition, we need to follow these steps:
+
+1. Add the two numbers together.
+2. The result of the addition will be the final value.
+
+Let's perform the addition step by step:
+
+1. Start with the first",False,False,3370,True,True,True,False,3370,True,True,True,False,3370,True,True,True,False
+8,phase7_audit5_symbolic,"Add the cardinalities 222 and 3, then return their cardinality sum as a decimal integer alone.",225,The cardinality sum of 22,False,False,The cardinality sum of 222 and 3 is 225.,True,False,225,True,True,True,False,225,True,True,True,False,225,True,True,True,False
+9,phase7_audit5_symbolic,Use standard integer addition to fold 69 and 698 into one value. Emit that value alone.,767,To fold the numbers 69 and,False,False,"To fold the numbers 69 and 698 into one value using standard integer addition, we can follow these steps:
+
+1. Start with the larger number, 698.
+2. Add the smaller number, 69, to the larger number, 698.
+3. The result",False,False,767,True,True,True,False,767,True,True,True,False,767,True,True,True,False
+10,phase7_audit5_symbolic,Apply an additive update of 71 to the value 9448. Print the updated whole number only.,9519,The additive update of 71 to,False,False,The additive update of 71 to the value 9448 results in 10469. The updated whole number is 10469.,False,False,9519,True,True,True,False,9519,True,True,True,False,9519,True,True,True,False
+11,phase7_audit5_symbolic,Produce one base-ten number equal to the total contributed by 46 and 305. Nothing else should appear.,351,1765,False,False,1765,False,False,351,True,True,True,False,351,True,True,True,False,351,True,True,True,False
+12,phase7_audit5_symbolic,Determine where a counter at 92 lands after moving ahead by 4614. Give only the destination integer.,4706,The counter at 92 lands at,False,False,The counter at 92 lands at 92 + 4614 = 4626 after moving ahead by 4614 units.,False,False,4706,True,True,True,False,4706,True,True,True,False,4706,True,True,True,False
+13,phase7_audit5_symbolic,Evaluate the sum operation on inputs 9 and 993; make your full answer its decimal digits.,1002,To evaluate the sum of the decimal digits,False,False,"To evaluate the sum of the decimal digits of the numbers 9 and 993, we will follow these steps:
+
+1. Convert the numbers to their decimal form.
+2. Add the decimal digits of each number.
+3. Identify the sum of the decimal digits.
+
+Let's start with the first number,",False,False,1002,True,True,True,False,1002,True,True,True,False,1002,True,True,True,False
+14,phase7_audit5_symbolic,"Compute the additive result of the ordered pair (0, 5701). Your reply must contain just the resulting numeral.",5701,5706,False,False,5706,False,False,5701,True,True,True,False,5701,True,True,True,False,5701,True,True,True,False
+15,phase7_audit5_symbolic,Determine where a counter at 532 lands after moving ahead by 231. Give only the destination integer.,763,The counter at 532 lands,False,False,The counter at 532 lands at 533 after moving ahead by 231.,False,False,763,True,True,True,False,763,True,True,True,False,763,True,True,True,False
+16,phase7_audit5_symbolic,"Compute the additive result of the ordered pair (188, 38). Your reply must contain just the resulting numeral.",226,526,False,False,526,False,False,226,True,True,True,False,226,True,True,True,False,226,True,True,True,False
+17,phase7_audit5_symbolic,Apply an additive update of 732 to the value 68. Print the updated whole number only.,800,The additive update of 732,False,False,"The additive update of 732 to the value 68 results in 800. Since 800 is a whole number, the updated whole number is 800.",True,False,800,True,True,True,False,800,True,True,True,False,800,True,True,True,False
+18,phase7_audit5_symbolic,Apply an additive update of 9 to the value 267. Print the updated whole number only.,276,The updated whole number after applying an additive,False,False,The updated whole number after applying an additive update of 9 to the value 267 is 276.,True,False,276,True,True,True,False,276,True,True,True,False,276,True,True,True,False
+19,phase7_audit5_symbolic,Produce one base-ten number equal to the total contributed by 591 and 756. Nothing else should appear.,1347,The total contributed by 591,False,False,"The total contributed by 591 and 756 is:
+
+591 + 756 = 1347
+
+So, the base-ten number equal to 1347 is 1347.",True,False,1347,True,True,True,False,1347,True,True,True,False,1347,True,True,True,False
+20,phase7_audit5_symbolic,"Compute the additive result of the ordered pair (70, 73). Your reply must contain just the resulting numeral.",143,143,True,True,143,True,True,143,True,True,True,True,143,True,True,True,True,143,True,True,True,True
+21,phase7_audit5_symbolic,Apply an additive update of 18 to the value 5475. Print the updated whole number only.,5493,The updated value after applying the additive update,False,False,The updated value after applying the additive update of 18 to the value 5475 is 5503.,False,False,5493,True,True,True,False,5493,True,True,True,False,5493,True,True,True,False
+22,phase7_audit5_symbolic,The required arithmetic combines 47 as one addend with 592 as the other. Return the exact sum without prose.,639,939,False,False,939,False,False,639,True,True,True,False,639,True,True,True,False,639,True,True,True,False
+23,phase7_audit5_symbolic,Evaluate the sum operation on inputs 32 and 6; make your full answer its decimal digits.,38,To evaluate the sum operation on inputs,False,False,"To evaluate the sum operation on inputs 32 and 6, we simply add the two numbers together:
+
+32 + 6 = 38
+
+The sum of 32 and 6 is 38.",True,False,38,True,True,True,False,38,True,True,True,False,38,True,True,True,False
+24,phase7_audit5_symbolic,"Compute the additive result of the ordered pair (88, 7). Your reply must contain just the resulting numeral.",95,755,False,False,755,False,False,95,True,True,True,False,95,True,True,True,False,95,True,True,True,False
+25,phase7_audit5_symbolic,Apply an additive update of 0 to the value 0. Print the updated whole number only.,0,The additive update of 0 to the,True,False,"The additive update of 0 to the value 0 results in 0. Therefore, the updated whole number is simply 0.",True,False,I,False,False,True,False,0,True,True,True,False,0,True,True,True,False
+26,phase7_audit5_symbolic,The required arithmetic combines 839 as one addend with 7 as the other. Return the exact sum without prose.,846,839 + 7 =,False,False,839 + 7 = 846,True,False,846,True,True,True,False,846,True,True,True,False,846,True,True,True,False
+27,phase7_audit5_symbolic,Let the starting count be 72; include 603 additional units. State the final count with digits and no words.,675,72603,False,False,72603,False,False,7263,False,False,True,False,7263,False,False,True,False,7263,False,False,True,False
+28,phase7_audit5_symbolic,Evaluate the sum operation on inputs 5 and 9632; make your full answer its decimal digits.,9637,To evaluate the sum of the inputs,False,False,"To evaluate the sum of the inputs 5 and 9632, we simply add them together:
+
+5 + 9632 = 9637
+
+The sum of the inputs 5 and 9632 is 9637.",True,False,9637,True,True,True,False,9637,True,True,True,False,9637,True,True,True,False
+29,phase7_audit5_symbolic,"Compute the additive result of the ordered pair (1998, 941). Your reply must contain just the resulting numeral.",2939,29409,False,False,29409,False,False,2939,True,True,True,False,2939,True,True,True,False,2939,True,True,True,False
+30,phase7_audit5_word,A repair shop completed 9066 jobs in its first queue and 9 in its second. Give the complete job count as an integer alone.,9075,"To determine the total job count, we",False,False,"To determine the total job count, we need to add the number of jobs completed in the first queue to the number of jobs completed in the second queue. Here are the steps:
+
+1. Identify the number of jobs completed in the first queue: 9066.
+2. Identify the number of jobs completed in",False,False,9075,True,True,True,False,9075,True,True,True,False,9075,True,True,True,False
+31,phase7_audit5_word,A bus depot dispatched 5661 vehicles before noon and 8176 afterward. State the full vehicle count without any words.,13837,5661 + 81,False,False,5661 + 8176 = 13837,True,False,13837,True,True,True,False,13837,True,True,True,False,13837,True,True,True,False
+32,phase7_audit5_word,A concert venue scanned 52 tickets at one door and 5776 at another. How many tickets were scanned in total? Reply only with digits.,5828,10992,False,False,10992,False,False,5828,True,True,True,False,5828,True,True,True,False,5828,True,True,True,False
+33,phase7_audit5_word,A repair shop completed 1643 jobs in its first queue and 5524 in its second. Give the complete job count as an integer alone.,7167,"To find the total job count, we",False,False,"To find the total job count, we need to add the number of jobs completed in the first queue to the number of jobs completed in the second queue. Here are the steps:
+
+1. Identify the number of jobs completed in the first queue: 1643.
+2. Identify the number of jobs completed in",False,False,7167,True,True,True,False,7167,True,True,True,False,7167,True,True,True,False
+34,phase7_audit5_word,A marine survey marked 481 locations in one zone and 25 in another. Report the overall marked-location count with no prose.,506,The total number of marked locations is,False,False,The total number of marked locations is 481 + 25 = 506.,True,False,506,True,True,True,False,506,True,True,True,False,506,True,True,True,False
+35,phase7_audit5_word,A data logger wrote 656 records to one file and 2304 to a second. How many records were written altogether? Number only.,2960,To determine the total number of records written,False,False,"To determine the total number of records written, you simply add the number of records written to the first file to the number of records written to the second file:
+
+\[ 656 + 2304 = 2960 \]
+
+So, the total number of records written altogether is 29",False,False,2960,True,True,True,False,2960,True,True,True,False,2960,True,True,True,False
+36,phase7_audit5_word,A data logger wrote 832 records to one file and 3771 to a second. How many records were written altogether? Number only.,4603,To determine the total number of records written,False,False,"To determine the total number of records written, you simply add the number of records written to the first file to the number of records written to the second file:
+
+832 (records from the first file) + 3771 (records from the second file) = 4503 records
+
+So",False,False,4603,True,True,True,False,4603,True,True,True,False,4603,True,True,True,False
+37,phase7_audit5_word,A food bank packed 24 parcels on one shift and 383 on the next. Give the combined parcel count as a bare integer.,407,"To find the combined parcel count, you",False,False,"To find the combined parcel count, you simply add the number of parcels packed on the first shift to the number of parcels packed on the second shift:
+
+24 parcels + 383 parcels = 407 parcels
+
+So, the combined parcel count is 407.",True,False,407,True,True,True,False,407,True,True,True,False,407,True,True,True,False
+38,phase7_audit5_word,A food bank packed 28 parcels on one shift and 56 on the next. Give the combined parcel count as a bare integer.,84,"To find the combined parcel count, you",False,False,"To find the combined parcel count, you simply add the number of parcels packed on the first shift to the number of parcels packed on the second shift:
+
+28 (first shift) + 56 (second shift) = 84
+
+So, the combined parcel count is 84.",True,False,84,True,True,True,False,84,True,True,True,False,84,True,True,True,False
+39,phase7_audit5_word,A weather balloon collected 6 readings while rising and 589 while descending. How many readings were collected overall? Digits only.,595,To determine the total number of readings collected,False,False,"To determine the total number of readings collected by the weather balloon, we need to add the readings collected while rising and the readings collected while descending. Here are the steps:
+
+1. Identify the number of readings collected while rising: 6 readings.
+2. Identify the number of readings collected while descending: 589",False,False,595,True,True,True,False,595,True,True,True,False,595,True,True,True,False
+40,phase7_audit5_word,A bus depot dispatched 794 vehicles before noon and 5 afterward. State the full vehicle count without any words.,799,794 + 5 =,False,False,794 + 5 = 799,True,False,799,True,True,True,False,799,True,True,True,False,799,True,True,True,False
+41,phase7_audit5_word,A bus depot dispatched 1101 vehicles before noon and 68 afterward. State the full vehicle count without any words.,1169,1101 vehicles before noon and,False,False,1101 vehicles before noon and 68 vehicles after noon.,False,False,1169,True,True,True,False,1169,True,True,True,False,1169,True,True,True,False
+42,phase7_audit5_word,A repair shop completed 9 jobs in its first queue and 1 in its second. Give the complete job count as an integer alone.,10,To determine the total number of jobs completed,False,False,"To determine the total number of jobs completed by the repair shop, we need to consider the number of jobs completed in each queue and then sum them up.
+
+1. The repair shop completed 9 jobs in its first queue.
+2. The repair shop completed 1 job in its second queue.
+
+To find the total number",False,False,10,True,True,True,False,10,True,True,True,False,10,True,True,True,False
+43,phase7_audit5_word,A concert venue scanned 493 tickets at one door and 0 at another. How many tickets were scanned in total? Reply only with digits.,493,493 + 0 =,False,False,493 + 0 = 493,True,False,493,True,True,True,False,493,True,True,True,False,493,True,True,True,False
+44,phase7_audit5_word,A weather balloon collected 8874 readings while rising and 16 while descending. How many readings were collected overall? Digits only.,8890,To determine the total number of readings collected,False,False,"To determine the total number of readings collected by the weather balloon, we need to add the readings collected during the rising and descending phases. Here are the steps:
+
+1. Identify the number of readings collected during the rising phase.
+   - The balloon collected 8874 readings during the rising phase.
+
+2. Identify",False,False,8890,True,True,True,False,8890,True,True,True,False,8890,True,True,True,False
+45,phase7_audit5_word,A weather balloon collected 47 readings while rising and 347 while descending. How many readings were collected overall? Digits only.,394,To determine the total number of readings collected,False,False,"To determine the total number of readings collected by the weather balloon, we need to add the readings collected during the rising and descending phases. Here are the steps:
+
+1. Identify the number of readings collected during the rising phase: 47 readings.
+2. Identify the number of readings collected during the descending phase:",False,False,394,True,True,True,False,394,True,True,True,False,394,True,True,True,False
+46,phase7_audit5_word,A marine survey marked 5 locations in one zone and 42 in another. Report the overall marked-location count with no prose.,47,There were a total of 5 +,False,False,There were a total of 5 + 42 = 47 locations marked in the survey.,True,False,47,True,True,True,False,47,True,True,True,False,47,True,True,True,False
+47,phase7_audit5_word,A concert venue scanned 66 tickets at one door and 93 at another. How many tickets were scanned in total? Reply only with digits.,159,66 + 93 =,False,False,66 + 93 = 159,True,False,159,True,True,True,False,159,True,True,True,False,159,True,True,True,False
+48,phase7_audit5_word,A repair shop completed 4 jobs in its first queue and 829 in its second. Give the complete job count as an integer alone.,833,"To determine the total job count, we",False,False,"To determine the total job count, we need to add the number of jobs completed in the first queue to the number of jobs completed in the second queue. Here are the steps:
+
+1. Identify the number of jobs completed in the first queue: 4 jobs.
+2. Identify the number of jobs completed in the second",False,False,833,True,True,True,False,833,True,True,True,False,833,True,True,True,False
+49,phase7_audit5_word,A seed vault stored 631 packets in one chamber and 41 in another. What is the total packet count? Answer with one numeral.,672,1043,False,False,1043,False,False,672,True,True,True,False,672,True,True,True,False,672,True,True,True,False
+50,phase7_audit5_word,A data logger wrote 65 records to one file and 84 to a second. How many records were written altogether? Number only.,149,To determine the total number of records written,False,False,"To determine the total number of records written, you simply add the number of records written to the first file to the number of records written to the second file. 
+
+So, the total number of records written is:
+
+\[ 65 + 84 = 149 \]
+
+Therefore, the total number of",True,False,149,True,True,True,False,149,True,True,True,False,149,True,True,True,False
+51,phase7_audit5_word,A bus depot dispatched 3 vehicles before noon and 733 afterward. State the full vehicle count without any words.,736,3 vehicles before noon and 73,False,False,3 vehicles before noon and 733 afterward.,False,False,736,True,True,True,False,736,True,True,True,False,736,True,True,True,False
+52,phase7_audit5_word,A microscope saved 8038 frames from one sample and 8 from another. How many frames did it save in all? Return only the number.,8046,8038 + 8 =,False,False,8038 + 8 = 8046,True,False,8046,True,True,True,False,8046,True,True,True,False,8046,True,True,True,False
+53,phase7_audit5_word,A climbing gym recorded 36 visits on Saturday and 961 on Sunday. Output the weekend visit count using digits alone.,997,"To determine the weekend visit count, we",False,False,"To determine the weekend visit count, we need to add the number of visits on Saturday to the number of visits on Sunday. The number of visits on Saturday is 36, and the number of visits on Sunday is 961. We can express this addition as follows:
+
+\[ 36 + 9",False,False,997,True,True,True,False,997,True,True,True,False,997,True,True,True,False
+54,phase7_audit5_word,A data logger wrote 48 records to one file and 42 to a second. How many records were written altogether? Number only.,90,To determine the total number of records written,False,False,"To determine the total number of records written, you simply add the number of records written to the first file to the number of records written to the second file. 
+
+So, the total number of records written is:
+
+\[ 48 + 42 = 90 \]
+
+Therefore, the total number of records",True,False,90,True,True,True,False,90,True,True,True,False,90,True,True,True,False
+55,phase7_audit5_word,A concert venue scanned 2050 tickets at one door and 28 at another. How many tickets were scanned in total? Reply only with digits.,2078,2050 + 28,False,False,2050 + 28 = 2078,True,False,2078,True,True,True,False,2078,True,True,True,False,2078,True,True,True,False
+56,phase7_audit5_word,A seed vault stored 717 packets in one chamber and 7 in another. What is the total packet count? Answer with one numeral.,724,142,False,False,142,False,False,724,True,True,True,False,724,True,True,True,False,724,True,True,True,False
+57,phase7_audit5_word,A food bank packed 106 parcels on one shift and 5983 on the next. Give the combined parcel count as a bare integer.,6089,"To find the combined parcel count, you",False,False,"To find the combined parcel count, you simply add the number of parcels packed on the first shift to the number of parcels packed on the second shift:
+
+106 (first shift) + 5983 (second shift) = 6089
+
+So, the combined parcel count is 60",False,False,6089,True,True,True,False,6089,True,True,True,False,6089,True,True,True,False
+58,phase7_audit5_word,A bus depot dispatched 4450 vehicles before noon and 462 afterward. State the full vehicle count without any words.,4912,4450 + 46,False,False,4450 + 462 = 4912,True,False,4912,True,True,True,False,4912,True,True,True,False,4912,True,True,True,False
+59,phase7_audit5_word,A microscope saved 15 frames from one sample and 2 from another. How many frames did it save in all? Return only the number.,17,15 + 2 = 1,False,False,15 + 2 = 17,True,False,17,True,True,True,False,17,True,True,True,False,17,True,True,True,False
+60,phase7_audit5_negative,State which operator appears between 614 and 8156 in a hypothetical subtraction.,,"In a hypothetical subtraction, the operator that",False,False,,,,"In a hypothetical subtraction, the operator that",False,False,False,True,"In a hypothetical subtraction, the operator that",False,False,False,True,"In a hypothetical subtraction, the operator that",False,False,False,True
+61,phase7_audit5_negative,"Proofread the sentence ""the sum of 72 and 844"" without evaluating it.",,The sum of 72 and,False,False,,,,The sum of 72 and,False,False,False,True,The sum of 72 and,False,False,False,True,The sum of 72 and,False,False,False,True
+62,phase7_audit5_negative,A transcript claims that 94 plus 248 was requested; summarize that claim only.,,The claim states that 94 plus,False,False,,,,The claim states that 94 plus,False,False,False,True,The claim states that 94 plus,False,False,False,True,The claim states that 94 plus,False,False,False,True
+63,phase7_audit5_negative,Are 6 and 666 relatively prime? Reply yes or no.,,Yes.,False,False,,,,Yes.,False,False,False,True,Yes.,False,False,False,True,Yes.,False,False,False,True
+64,phase7_audit5_negative,The pending request to total 6313 and 4 is on hold; reply only pending.,,Pending.,False,False,,,,Pending.,False,False,False,True,Pending.,False,False,False,True,Pending.,False,False,False,True
+65,phase7_audit5_negative,Ignore the proposed sum of 0 and 4; instead report that it was canceled.,,It was canceled.,False,False,,,,It was canceled.,False,False,False,True,It was canceled.,False,False,False,True,It was canceled.,False,False,False,True
+66,phase7_audit5_negative,"Quote the phrase that 81 was added to 9525, but do not produce a number.",,81 was added to 95,False,False,,,,81 was added to 95,False,False,False,True,81 was added to 95,False,False,False,True,81 was added to 95,False,False,False,True
+67,phase7_audit5_negative,Determine whether 8 has fewer digits than 61.,,To determine whether 8 has fewer digits,False,False,,,,To determine whether 8 has fewer digits,False,False,False,True,To determine whether 8 has fewer digits,False,False,False,True,To determine whether 8 has fewer digits,False,False,False,True
+68,phase7_audit5_negative,Multiply the quantities 491 and 1; emit their product.,,The product of 491 and,False,False,,,,The product of 491 and,False,False,False,True,The product of 491 and,False,False,False,True,The product of 491 and,False,False,False,True
+69,phase7_audit5_negative,Label the operands in 48 + 23 as left and right; leave it unsolved.,,In the expression \(48 +,False,False,,,,In the expression \(48 +,False,False,False,True,In the expression \(48 +,False,False,False,True,In the expression \(48 +,False,False,False,True
+70,phase7_audit5_negative,Give the absolute difference separating 746 from 9034.,,To find the absolute difference between 7,False,False,,,,To find the absolute difference between 7,False,False,False,True,To find the absolute difference between 7,False,False,False,True,To find the absolute difference between 7,False,False,False,True
+71,phase7_audit5_negative,"Proofread the sentence ""the sum of 7414 and 8"" without evaluating it.",,The sum of 7414,False,False,,,,The sum of 7414,False,False,False,True,The sum of 7414,False,False,False,True,The sum of 7414,False,False,False,True
+72,phase7_audit5_negative,The pending request to total 1 and 468 is on hold; reply only pending.,,Pending.,False,False,,,,Pending.,False,False,False,True,Pending.,False,False,False,True,Pending.,False,False,False,True
+73,phase7_audit5_negative,"Return the midpoint between 4966 and 5, rather than their total.",,"To find the midpoint between two numbers,",False,False,,,,"To find the midpoint between two numbers,",False,False,False,True,"To find the midpoint between two numbers,",False,False,False,True,"To find the midpoint between two numbers,",False,False,False,True
+74,phase7_audit5_negative,Test whether 9748 divides 7358; return true or false.,,To determine whether 9748,False,False,,,,To determine whether 9748,False,False,False,True,To determine whether 9748,False,False,False,True,To determine whether 9748,False,False,False,True
+75,phase7_audit5_negative,"Return the midpoint between 76 and 63, rather than their total.",,"To find the midpoint between two numbers,",False,False,,,,"To find the midpoint between two numbers,",False,False,False,True,"To find the midpoint between two numbers,",False,False,False,True,"To find the midpoint between two numbers,",False,False,False,True
+76,phase7_audit5_negative,"Proofread the sentence ""the sum of 4 and 3676"" without evaluating it.",,The sum of 4 and 3,False,False,,,,The sum of 4 and 3,False,False,False,True,The sum of 4 and 3,False,False,False,True,The sum of 4 and 3,False,False,False,True
+77,phase7_audit5_negative,Are 2 and 46 relatively prime? Reply yes or no.,,Yes.,False,False,,,,Yes.,False,False,False,True,Yes.,False,False,False,True,Yes.,False,False,False,True
+78,phase7_audit5_negative,Concatenate the decimal spelling of 634 before that of 73.,,The decimal spelling of 634,False,False,,,,The decimal spelling of 634,False,False,False,True,The decimal spelling of 634,False,False,False,True,The decimal spelling of 634,False,False,False,True
+79,phase7_audit5_negative,The pending request to total 660 and 75 is on hold; reply only pending.,,Pending.,False,False,,,,Pending.,False,False,False,True,Pending.,False,False,False,True,Pending.,False,False,False,True
+80,phase7_audit5_negative,Refuse to calculate 1195 plus 89; respond only unavailable.,,Unavailable.,False,False,,,,Unavailable.,False,False,False,True,Unavailable.,False,False,False,True,Unavailable.,False,False,False,True
+81,phase7_audit5_negative,"Rotate the decimal representation of 227, then show the untouched tag 524.",,To rotate the decimal representation of 2,False,False,,,,To rotate the decimal representation of 2,False,False,False,True,To rotate the decimal representation of 2,False,False,False,True,To rotate the decimal representation of 2,False,False,False,True
+82,phase7_audit5_negative,Test whether 9150 divides 4088; return true or false.,,To determine whether 9150,False,False,,,,To determine whether 9150,False,False,False,True,To determine whether 9150,False,False,False,True,To determine whether 9150,False,False,False,True
+83,phase7_audit5_negative,Describe a mental-addition strategy for 417 and 4884 but never give its answer.,,"I'm sorry, but I can't",False,False,,,,"I'm sorry, but I can't",False,False,False,True,"I'm sorry, but I can't",False,False,False,True,"I'm sorry, but I can't",False,False,False,True
+84,phase7_audit5_negative,Subtract 1 from 7; answer with only the difference.,,6,False,False,,,,6,False,False,False,True,6,False,False,False,True,6,False,False,False,True
+85,phase7_audit5_negative,Find the integer division result for 1044 over 163.,,To find the integer division result for,False,False,,,,To find the integer division result for,False,False,False,True,To find the integer division result for,False,False,False,True,To find the integer division result for,False,False,False,True
+86,phase7_audit5_negative,Count the total number of decimal digits written in 8847 and 334.,,To determine the total number of decimal digits,False,False,,,,To determine the total number of decimal digits,False,False,False,True,To determine the total number of decimal digits,False,False,False,True,To determine the total number of decimal digits,False,False,False,True
+87,phase7_audit5_negative,Describe a mental-addition strategy for 6492 and 383 but never give its answer.,,"I'm sorry, but I can't",False,False,,,,"I'm sorry, but I can't",False,False,False,True,"I'm sorry, but I can't",False,False,False,True,"I'm sorry, but I can't",False,False,False,True
+88,phase7_audit5_negative,Choose the numerically larger member of 20 and 6733.,,To determine which of the numbers 2,False,False,,,,To determine which of the numbers 2,False,False,False,True,To determine which of the numbers 2,False,False,False,True,To determine which of the numbers 2,False,False,False,True
+89,phase7_audit5_negative,"Despite mentioning addition, compare 4 against 368 and select the first if larger.",,To compare 4 and 36,False,False,,,,To compare 4 and 36,False,False,False,True,To compare 4 and 36,False,False,False,True,To compare 4 and 36,False,False,False,True
+90,phase7_audit5_negative,"Proofread the sentence ""the sum of 255 and 893"" without evaluating it.",,The sum of 255 and,False,False,,,,The sum of 255 and,False,False,False,True,The sum of 255 and,False,False,False,True,The sum of 255 and,False,False,False,True
+91,phase7_audit5_negative,Subtract 19 from 315; answer with only the difference.,,19,False,False,,,,19,False,False,False,True,19,False,False,False,True,19,False,False,False,True
+92,phase7_audit5_negative,"Order the codes 1594 and 477 lexicographically, not arithmetically.",,To order the codes 159,False,False,,,,To order the codes 159,False,False,False,True,To order the codes 159,False,False,False,True,To order the codes 159,False,False,False,True
+93,phase7_audit5_negative,"Order the codes 54 and 7 lexicographically, not arithmetically.",,To order the codes 54 and,False,False,,,,To order the codes 54 and,False,False,False,True,To order the codes 54 and,False,False,False,True,To order the codes 54 and,False,False,False,True
+94,phase7_audit5_negative,Test whether 7 divides 7553; return true or false.,,To determine whether 7 divides 7,False,False,,,,To determine whether 7 divides 7,False,False,False,True,To determine whether 7 divides 7,False,False,False,True,To determine whether 7 divides 7,False,False,False,True
+95,phase7_audit5_negative,"Rotate the decimal representation of 7, then show the untouched tag 84.",,To rotate the decimal representation of the number,False,False,,,,To rotate the decimal representation of the number,False,False,False,True,To rotate the decimal representation of the number,False,False,False,True,To rotate the decimal representation of the number,False,False,False,True
+96,phase7_audit5_negative,Multiply the quantities 55 and 921; emit their product.,,To multiply the quantities 55 and,False,False,,,,To multiply the quantities 55 and,False,False,False,True,To multiply the quantities 55 and,False,False,False,True,To multiply the quantities 55 and,False,False,False,True
+97,phase7_audit5_negative,Refuse to calculate 9 plus 9; respond only unavailable.,,Unavailable.,False,False,,,,Unavailable.,False,False,False,True,Unavailable.,False,False,False,True,Unavailable.,False,False,False,True
+98,phase7_audit5_negative,Overwrite a slot containing 374 with 7; print only the replacement value.,,In the context of Alibaba Cloud's Q,False,False,,,,In the context of Alibaba Cloud's Q,False,False,False,True,In the context of Alibaba Cloud's Q,False,False,False,True,In the context of Alibaba Cloud's Q,False,False,False,True
+99,phase7_audit5_negative,"Despite mentioning addition, compare 50 against 8803 and select the first if larger.",,Given the numbers 50 and,False,False,,,,Given the numbers 50 and,False,False,False,True,Given the numbers 50 and,False,False,False,True,Given the numbers 50 and,False,False,False,True
+100,phase7_audit5_negative,Find the integer division result for 156 over 1.,,To find the integer division result for,False,False,,,,To find the integer division result for,False,False,False,True,To find the integer division result for,False,False,False,True,To find the integer division result for,False,False,False,True
+101,phase7_audit5_negative,Choose the numerically larger member of 4751 and 697.,,"To determine which of the two numbers,",False,False,,,,"To determine which of the two numbers,",False,False,False,True,"To determine which of the two numbers,",False,False,False,True,"To determine which of the two numbers,",False,False,False,True
+102,phase7_audit5_negative,Place 66 and 252 on separate lines without combining them.,,To place the numbers 66 and,False,False,,,,To place the numbers 66 and,False,False,False,True,To place the numbers 66 and,False,False,False,True,To place the numbers 66 and,False,False,False,True
+103,phase7_audit5_negative,A transcript claims that 4 plus 36 was requested; summarize that claim only.,,"The claim ""4 plus 36",False,False,,,,"The claim ""4 plus 36",False,False,False,True,"The claim ""4 plus 36",False,False,False,True,"The claim ""4 plus 36",False,False,False,True
+104,phase7_audit5_negative,Concatenate the decimal spelling of 6503 before that of 3.,,The decimal spelling of 650,False,False,,,,The decimal spelling of 650,False,False,False,True,The decimal spelling of 650,False,False,False,True,The decimal spelling of 650,False,False,False,True
+105,phase7_audit5_negative,Determine whether 28 has fewer digits than 397.,,To determine whether 28 has fewer,False,False,,,,To determine whether 28 has fewer,False,False,False,True,To determine whether 28 has fewer,False,False,False,True,To determine whether 28 has fewer,False,False,False,True
+106,phase7_audit5_negative,Choose the numerically larger member of 678 and 2.,,"To determine which of the two numbers,",False,False,,,,"To determine which of the two numbers,",False,False,False,True,"To determine which of the two numbers,",False,False,False,True,"To determine which of the two numbers,",False,False,False,True
+107,phase7_audit5_negative,State which operator appears between 5 and 5 in a hypothetical subtraction.,,"In the hypothetical subtraction, the operator that",False,False,,,,"In the hypothetical subtraction, the operator that",False,False,False,True,"In the hypothetical subtraction, the operator that",False,False,False,True,"In the hypothetical subtraction, the operator that",False,False,False,True
+108,phase7_audit5_negative,"Quote the phrase that 4560 was added to 45, but do not produce a number.",,"""4560 + 4",False,False,,,,"""4560 + 4",False,False,False,True,"""4560 + 4",False,False,False,True,"""4560 + 4",False,False,False,True
+109,phase7_audit5_negative,"Despite mentioning addition, compare 506 against 1 and select the first if larger.",,To compare 506 against,False,False,,,,To compare 506 against,False,False,False,True,To compare 506 against,False,False,False,True,To compare 506 against,False,False,False,True
+110,phase7_audit5_negative,Test whether 4 divides 9; return true or false.,,To determine whether 4 divides 9,False,False,,,,To determine whether 4 divides 9,False,False,False,True,To determine whether 4 divides 9,False,False,False,True,To determine whether 4 divides 9,False,False,False,True
+111,phase7_audit5_negative,Test whether 5560 divides 820; return true or false.,,To determine whether 5560,False,False,,,,To determine whether 5560,False,False,False,True,To determine whether 5560,False,False,False,True,To determine whether 5560,False,False,False,True
+112,phase7_audit5_negative,The pending request to total 25 and 5 is on hold; reply only pending.,,Pending.,False,False,,,,Pending.,False,False,False,True,Pending.,False,False,False,True,Pending.,False,False,False,True
+113,phase7_audit5_negative,Ignore the proposed sum of 1 and 1203; instead report that it was canceled.,,The proposed sum of 1 and,False,False,,,,The proposed sum of 1 and,False,False,False,True,The proposed sum of 1 and,False,False,False,True,The proposed sum of 1 and,False,False,False,True
+114,phase7_audit5_negative,"Proofread the sentence ""the sum of 87 and 182"" without evaluating it.",,The sum of 87 and,False,False,,,,The sum of 87 and,False,False,False,True,The sum of 87 and,False,False,False,True,The sum of 87 and,False,False,False,True
+115,phase7_audit5_negative,Multiply the quantities 58 and 3166; emit their product.,,To multiply the quantities 58 and,False,False,,,,To multiply the quantities 58 and,False,False,False,True,To multiply the quantities 58 and,False,False,False,True,To multiply the quantities 58 and,False,False,False,True
+116,phase7_audit5_negative,"Return the midpoint between 741 and 799, rather than their total.",,"To find the midpoint between two numbers,",False,False,,,,"To find the midpoint between two numbers,",False,False,False,True,"To find the midpoint between two numbers,",False,False,False,True,"To find the midpoint between two numbers,",False,False,False,True
+117,phase7_audit5_negative,Subtract 6 from 748; answer with only the difference.,,6,False,False,,,,6,False,False,False,True,6,False,False,False,True,6,False,False,False,True
+118,phase7_audit5_negative,Give the absolute difference separating 583 from 5954.,,The absolute difference separating 583,False,False,,,,The absolute difference separating 583,False,False,False,True,The absolute difference separating 583,False,False,False,True,The absolute difference separating 583,False,False,False,True
+119,phase7_audit5_negative,"Quote the phrase that 3234 was added to 9, but do not produce a number.",,"""3234 + 9",False,False,,,,"""3234 + 9",False,False,False,True,"""3234 + 9",False,False,False,True,"""3234 + 9",False,False,False,True

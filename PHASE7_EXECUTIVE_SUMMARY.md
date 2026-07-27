@@ -76,3 +76,18 @@ It is not yet a finished general neural calculator:
 The complete chronological record is `PHASE7_PILOT_LOG.md`. Frozen protocols,
 raw per-token traces, hashes, unsuccessful runs, and machine-generated analyses
 are retained in the repository.
+
+## Retrospective untouched-base comparison
+
+After Audit 5 was complete, untouched Qwen was run on the identical 60
+addition prompts with the identical eight-token greedy budget. It returned
+exactly the requested numeral on 1/60 prompts, compared with 57/60, 58/60, and
+58/60 for the three implant seeds. A generous 64-token base-only sensitivity
+run recovered the correct sum as the final integer on 27/60 prompts, but still
+followed the requested numeral-only format on only 1/60.
+
+On the 60 adversarial negatives, all three implants remained token-identical
+to untouched Qwen. This comparison is retrospective rather than preregistered;
+the prompt set and implant outputs were already frozen before the base
+benchmark was generated. The complete problem-by-problem comparison is in
+`phase7_base_comparison/report.html`.
