@@ -1,0 +1,409 @@
+from __future__ import annotations
+
+import hashlib
+import json
+import platform
+import subprocess
+import time
+from dataclasses import asdict
+from pathlib import Path
+
+import torch
+
+from neural_firmware.phase5_data import (
+    PHASE5_TRAIN_ADDITION_FAMILIES,
+    PHASE5_TRAIN_NEGATIVE_FAMILIES,
+)
+from neural_firmware.phase7_implant import (
+    NeuronImplantLayout,
+    install_neuron_implant,
+)
+from neural_firmware.phase7_training import (
+    ImplantFeatureSet,
+    InterfaceTrainConfig,
+    OutputTrainConfig,
+    collect_implant_features,
+    evaluate_implant_interface,
+    generate_untouched,
+    generate_with_implant,
+    train_implant_interface,
+    train_implant_output,
+)
+from neural_firmware.pretrained_training import load_model_bundle
+from neural_firmware.semantic_data import (
+    DEVELOPMENT_ADDITION_FAMILIES,
+    DEVELOPMENT_NEGATIVE_FAMILIES,
+    SemanticPromptExample,
+    make_semantic_addition_examples,
+    make_semantic_routing_negatives,
+    mathematical_correct,
+)
+
+MODEL_ID = "Qwen/Qwen2.5-0.5B-Instruct"
+MODEL_REVISION = "7ae557604adf67be50417f59c2c2f167def9a775"
+SEED = 12_701
+LAYER_INDEX = 12
+CENSUS_PATH = Path("phase7_artifacts/census_v2.pt")
+CACHE_DIRECTORY = Path("phase7_artifacts/cache")
+CHECKPOINT_PATH = Path("phase7_artifacts/pilot_v2/neuron_implant_seed_12701.pt")
+RESULT_PATH = Path("phase7_results/pilot_v2.json")
+
+
+def git_commit() -> str:
+    return subprocess.check_output(
+        ("git", "rev-parse", "HEAD"),
+        text=True,
+    ).strip()
+
+
+def sha256(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for block in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(block)
+    return digest.hexdigest()
+
+
+def save_features(features: ImplantFeatureSet, path: Path) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    torch.save(features.state_dict(), path)
+
+
+def load_features(path: Path) -> ImplantFeatureSet:
+    return ImplantFeatureSet.load_state_dict(
+        torch.load(path, map_location="cpu", weights_only=True)
+    )
+
+
+def make_data() -> tuple[
+    list[SemanticPromptExample],
+    list[SemanticPromptExample],
+    list[SemanticPromptExample],
+]:
+    train = (
+        make_semantic_addition_examples(
+            count=600,
+            min_digits=1,
+            max_digits=4,
+            seed=12_701,
+            split="phase7_pilot_train_positive",
+            families=PHASE5_TRAIN_ADDITION_FAMILIES,
+        )
+        + make_semantic_routing_negatives(
+            count=600,
+            min_digits=1,
+            max_digits=4,
+            seed=12_702,
+            split="phase7_pilot_train_negative",
+            families=PHASE5_TRAIN_NEGATIVE_FAMILIES,
+        )
+    )
+    development = (
+        make_semantic_addition_examples(
+            count=120,
+            min_digits=1,
+            max_digits=4,
+            seed=12_703,
+            split="phase7_pilot_development_positive",
+            families=DEVELOPMENT_ADDITION_FAMILIES,
+        )
+        + make_semantic_routing_negatives(
+            count=120,
+            min_digits=1,
+            max_digits=4,
+            seed=12_704,
+            split="phase7_pilot_development_negative",
+            families=DEVELOPMENT_NEGATIVE_FAMILIES,
+        )
+    )
+    evaluation = (
+        make_semantic_addition_examples(
+            count=20,
+            min_digits=1,
+            max_digits=4,
+            seed=12_751,
+            split="phase7_pilot_evaluation_positive",
+            families=DEVELOPMENT_ADDITION_FAMILIES,
+        )
+        + make_semantic_routing_negatives(
+            count=20,
+            min_digits=1,
+            max_digits=4,
+            seed=12_752,
+            split="phase7_pilot_evaluation_negative",
+            families=DEVELOPMENT_NEGATIVE_FAMILIES,
+        )
+    )
+    return train, development, evaluation
+
+
+def prepare_features(
+    bundle: object,
+    train: list[SemanticPromptExample],
+    development: list[SemanticPromptExample],
+    layout: NeuronImplantLayout,
+) -> tuple[ImplantFeatureSet, ImplantFeatureSet]:
+    train_path = CACHE_DIRECTORY / "interface_train_v1.pt"
+    development_path = CACHE_DIRECTORY / "interface_development_v1.pt"
+    if train_path.exists():
+        train_features = load_features(train_path)
+    else:
+        train_features = collect_implant_features(
+            bundle,
+            train,
+            layer_index=LAYER_INDEX,
+            layout=layout,
+            batch_size=8,
+        )
+        save_features(train_features, train_path)
+    if torch.backends.mps.is_available():
+        torch.mps.empty_cache()
+    if development_path.exists():
+        development_features = load_features(development_path)
+    else:
+        development_features = collect_implant_features(
+            bundle,
+            development,
+            layer_index=LAYER_INDEX,
+            layout=layout,
+            batch_size=8,
+        )
+        save_features(development_features, development_path)
+    if torch.backends.mps.is_available():
+        torch.mps.empty_cache()
+    return train_features, development_features
+
+
+def first_step_value(row: dict[str, object], key: str) -> object:
+    steps = row["steps"]
+    if not steps:
+        return None
+    values = steps[0].get(key, [])
+    if isinstance(values, list) and len(values) == 1:
+        return values[0]
+    return values
+
+
+def compact_generation(rows: list[dict[str, object]]) -> dict[str, object]:
+    positives = [row for row in rows if row["route_label"]]
+    negatives = [row for row in rows if not row["route_label"]]
+    return {
+        "positive_examples": len(positives),
+        "positive_exact": sum(row["mathematical_correct"] for row in positives),
+        "positive_ablation_exact": sum(
+            row["ablation_mathematical_correct"] for row in positives
+        ),
+        "positive_first_step_route_active": sum(
+            first_step_value(row["implant"], "route_active") is True
+            for row in positives
+        ),
+        "positive_first_step_operands_exact": sum(
+            row["first_step_operands_exact"] for row in positives
+        ),
+        "negative_examples": len(negatives),
+        "negative_false_routes": sum(row["any_route_active"] for row in negatives),
+        "negative_token_preservation": sum(row["token_preserved"] for row in negatives),
+    }
+
+
+def main() -> None:
+    if not CENSUS_PATH.exists():
+        raise FileNotFoundError("run scripts/run_phase7_census.py first")
+    layout = NeuronImplantLayout(max_digits=4)
+    census = torch.load(CENSUS_PATH, map_location="cpu", weights_only=True)
+    selected_indices = census[str(LAYER_INDEX)]["selected_indices"]
+    train_examples, development_examples, evaluation_examples = make_data()
+    bundle = load_model_bundle(MODEL_ID, revision=MODEL_REVISION)
+    started = time.perf_counter()
+    train_features, development_features = prepare_features(
+        bundle,
+        train_examples,
+        development_examples,
+        layout,
+    )
+    implant = install_neuron_implant(
+        bundle.model,
+        layer_index=LAYER_INDEX,
+        selected_indices=selected_indices,
+        layout=layout,
+        output_strength=16.0,
+    )
+    interface_training, interface_development = train_implant_interface(
+        implant,
+        train_features,
+        development_features,
+        device=bundle.device,
+        config=InterfaceTrainConfig(
+            seed=SEED,
+            steps=1_500,
+            batch_size=256,
+            learning_rate=0.003,
+        ),
+    )
+    print(
+        "interface "
+        f"route_tpr={interface_development['route_true_positive_rate']:.4f} "
+        f"route_fpr={interface_development['route_false_positive_rate']:.4f} "
+        f"operands={interface_development['operand_exact_rate']:.4f} "
+        f"step={interface_development['step_accuracy']:.4f}",
+        flush=True,
+    )
+    output_training = train_implant_output(
+        bundle,
+        implant,
+        train_examples,
+        config=OutputTrainConfig(
+            seed=SEED,
+            steps=300,
+            batch_size=1,
+            learning_rate=0.01,
+        ),
+    )
+    print(
+        "output "
+        f"initial={output_training['initial_loss']:.4f} "
+        f"final={output_training['final_loss']:.4f}",
+        flush=True,
+    )
+
+    rows: list[dict[str, object]] = []
+    for index, example in enumerate(evaluation_examples):
+        implant_result = generate_with_implant(
+            bundle,
+            implant,
+            example.prompt,
+            max_new_tokens=8,
+        )
+        ablated_result = generate_with_implant(
+            bundle,
+            implant,
+            example.prompt,
+            max_new_tokens=8,
+            ablate_result=True,
+        )
+        row = {
+            **example.to_dict(),
+            "implant": implant_result,
+            "ablated": ablated_result,
+            "mathematical_correct": (
+                mathematical_correct(
+                    implant_result["generated_text"],
+                    example.answer,
+                )
+                if example.answer is not None
+                else False
+            ),
+            "ablation_mathematical_correct": (
+                mathematical_correct(
+                    ablated_result["generated_text"],
+                    example.answer,
+                )
+                if example.answer is not None
+                else False
+            ),
+        }
+        first_a = first_step_value(row["implant"], "a_digits")
+        first_b = first_step_value(row["implant"], "b_digits")
+        expected_a = [int(value) for value in example.a] + [
+            layout.pad_digit
+        ] * (layout.max_digits - len(example.a))
+        expected_b = [int(value) for value in example.b] + [
+            layout.pad_digit
+        ] * (layout.max_digits - len(example.b))
+        row["first_step_operands_exact"] = (
+            first_a == expected_a and first_b == expected_b
+        )
+        row["any_route_active"] = any(
+            any(step.get("route_active", []))
+            for step in implant_result["steps"]
+        )
+        if not example.route_label:
+            untouched = generate_untouched(
+                bundle,
+                implant,
+                example.prompt,
+                layer_index=LAYER_INDEX,
+                max_new_tokens=8,
+            )
+            row["untouched"] = untouched
+            row["token_preserved"] = (
+                implant_result["generated_token_ids"]
+                == untouched["generated_token_ids"]
+            )
+        else:
+            row["token_preserved"] = False
+        rows.append(row)
+        print(
+            f"evaluate={index + 1}/{len(evaluation_examples)} "
+            f"route={example.route_label} "
+            f"text={implant_result['generated_text']!r}",
+            flush=True,
+        )
+
+    final_interface = evaluate_implant_interface(
+        implant,
+        development_features,
+        device=bundle.device,
+    )
+    compact_interface = {
+        key: value
+        for key, value in final_interface.items()
+        if key not in {"route_probabilities", "route_targets"}
+    }
+    CHECKPOINT_PATH.parent.mkdir(parents=True, exist_ok=True)
+    torch.save(
+        {
+            "model_id": MODEL_ID,
+            "model_revision": MODEL_REVISION,
+            "layer_index": LAYER_INDEX,
+            "layout": asdict(layout),
+            "selected_indices": selected_indices,
+            "route_threshold": implant.route_threshold,
+            "output_strength": implant.output_strength,
+            "input_rows": implant.input_rows.detach().cpu(),
+            "result_columns": implant.result_columns.detach().cpu(),
+        },
+        CHECKPOINT_PATH,
+    )
+    payload = {
+        "status": "development_pilot_v2",
+        "model_id": MODEL_ID,
+        "model_revision": MODEL_REVISION,
+        "seed": SEED,
+        "layer_index": LAYER_INDEX,
+        "layout": asdict(layout),
+        "selected_indices": selected_indices.tolist(),
+        "mlp_width_before": 4864,
+        "mlp_width_after": implant.mlp_width,
+        "calculator_trainable_parameters": (
+            implant.calculator.trainable_parameter_count
+        ),
+        "interface_trainable_parameters": implant.input_rows.numel(),
+        "result_trainable_parameters": implant.result_columns.numel(),
+        "total_trainable_parameters": implant.trainable_parameter_count,
+        "interface_training": interface_training,
+        "interface_development": compact_interface,
+        "output_training": output_training,
+        "generation_summary": compact_generation(rows),
+        "generation_rows": rows,
+        "checkpoint": {
+            "path": str(CHECKPOINT_PATH),
+            "sha256": sha256(CHECKPOINT_PATH),
+        },
+        "wall_time_seconds": time.perf_counter() - started,
+        "environment": {
+            "python": platform.python_version(),
+            "torch": torch.__version__,
+            "device": str(bundle.device),
+            "mps_available": torch.backends.mps.is_available(),
+            "git_commit_before_phase7_changes": git_commit(),
+        },
+    }
+    RESULT_PATH.parent.mkdir(parents=True, exist_ok=True)
+    RESULT_PATH.write_text(json.dumps(payload, indent=2) + "\n")
+    print(json.dumps(payload["generation_summary"], indent=2), flush=True)
+    print(f"wrote {RESULT_PATH}", flush=True)
+
+
+if __name__ == "__main__":
+    main()

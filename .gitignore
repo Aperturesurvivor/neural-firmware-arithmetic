@@ -14,6 +14,7 @@ phase3_artifacts/
 phase4_artifacts/
 phase5_artifacts/
 phase6_artifacts/
+phase7_artifacts/
 
 paper/build/
 paper/*.aux

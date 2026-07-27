@@ -1,0 +1,45 @@
+{
+  "status": "development",
+  "source_checkpoint": "phase7_artifacts/sequence_pilot_v2/neuron_implant_seed_12801.pt",
+  "checkpoint": "phase7_artifacts/sequence_interface_v2/neuron_implant_seed_12811.pt",
+  "layout": {
+    "max_digits": 4,
+    "digit_classes": 11,
+    "result_classes": 12
+  },
+  "train_rows": 62654,
+  "development_rows": 9376,
+  "training": {
+    "config": {
+      "seed": 12811,
+      "steps": 3000,
+      "batch_size": 256,
+      "learning_rate": 0.001,
+      "route_loss_weight": 1.0,
+      "role_loss_weight": 1.0,
+      "digit_loss_weight": 1.0,
+      "step_loss_weight": 0.5
+    },
+    "initial_loss": 0.10777038335800171,
+    "final_loss": 0.0019468131940811872,
+    "wall_time_seconds": 8.863186874994426,
+    "trainable_parameters": 19712,
+    "selected_route_threshold": {
+      "threshold": 0.5,
+      "true_positive_rate": 1.0,
+      "false_positive_rate": 0.0
+    }
+  },
+  "development": {
+    "rows": 9376,
+    "route_rows": 1582,
+    "route_true_positive_rate": 1.0,
+    "route_false_positive_rate": 0.0,
+    "route_accuracy": 1.0,
+    "role_accuracy": 0.9924274682998657,
+    "operand_role_accuracy": 0.9856379628181458,
+    "digit_accuracy_on_operands": 0.9829659461975098,
+    "step_accuracy": 0.9711388349533081
+  },
+  "wall_time_seconds": 8.977909083012491
+}

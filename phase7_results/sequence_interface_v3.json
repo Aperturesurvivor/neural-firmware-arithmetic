@@ -1,0 +1,46 @@
+{
+  "status": "development",
+  "source_checkpoint": "phase7_artifacts/sequence_pilot_v2/neuron_implant_seed_12801.pt",
+  "checkpoint": "phase7_artifacts/sequence_interface_v3/neuron_implant_seed_12821.pt",
+  "layout": {
+    "max_digits": 4,
+    "digit_classes": 11,
+    "result_classes": 12
+  },
+  "interface_type": "native_swiglu_replacement_rows",
+  "train_rows": 62654,
+  "development_rows": 9376,
+  "training": {
+    "config": {
+      "seed": 12821,
+      "steps": 5000,
+      "batch_size": 256,
+      "learning_rate": 0.002,
+      "route_loss_weight": 1.0,
+      "role_loss_weight": 1.0,
+      "digit_loss_weight": 1.0,
+      "step_loss_weight": 0.5
+    },
+    "initial_loss": 6.805530548095703,
+    "final_loss": 1.354090690612793,
+    "wall_time_seconds": 20.84788254200248,
+    "trainable_parameters": 39424,
+    "selected_route_threshold": {
+      "threshold": 0.9996482133865356,
+      "true_positive_rate": 0.9976599216461182,
+      "false_positive_rate": 0.0
+    }
+  },
+  "development": {
+    "rows": 9376,
+    "route_rows": 1582,
+    "route_true_positive_rate": 0.9976599216461182,
+    "route_false_positive_rate": 0.0,
+    "route_accuracy": 0.998103678226471,
+    "role_accuracy": 0.9784556031227112,
+    "operand_role_accuracy": 0.9846359491348267,
+    "digit_accuracy_on_operands": 0.3991315960884094,
+    "step_accuracy": 0.7862714529037476
+  },
+  "wall_time_seconds": 20.857670792000135
+}
