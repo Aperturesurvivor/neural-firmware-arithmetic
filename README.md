@@ -212,6 +212,12 @@ See [`PHASE6_ARCHITECTURE_DRAFT.md`](PHASE6_ARCHITECTURE_DRAFT.md) and
 [`PHASE6_PILOT_LOG.md`](PHASE6_PILOT_LOG.md) for the architecture and retained
 v1-v6 failures.
 
+The canonical follow-up is not an internal tool-call controller. It is the
+[`deterministic neuron implant`](FUTURE_ARCHITECTURE_GOAL.md): replace a
+low-importance MLP activation subspace with a frozen calculator-neuron bank,
+then fine-tune Qwen's surrounding weights so mathematical representations
+naturally organize around those neuron-shaped deterministic activations.
+
 ## Reproduction
 
 ```bash

@@ -1,56 +1,125 @@
-# Follow-up Goal: A Native Deterministic Transformer Unit
+# Canonical Goal: Deterministic Neuron Implants
 
-Origin: Josiah Wilson, clarified 2026-07-25.
+Origin: Josiah Wilson, first recorded 2026-07-25 and materially clarified
+2026-07-26.
 
-Start this as a new `/goal` after the phase 2 pretrained-LLM residual-bridge
-experiment is complete, but only if phase 2 is successful.
+This document supersedes interpretations of the idea as a tool call, an
+output-adjacent calculator, or a separately invoked learned computational
+pathway.
 
 ## Josiah's intended architecture
 
-The long-term idea is not merely a calculator tool called after generation and
-not merely a correction applied to output logits. It is a redesigned
-transformer architecture containing a native deterministic computational unit:
+The calculator should literally occupy positions that otherwise behave as
+ordinary neurons in a transformer MLP or expert. To the surrounding network,
+its inputs and outputs are activation channels in the same internal tensor as
+other neurons. Functionally, however, those selected activations are produced
+by frozen deterministic computation rather than a learned scalar
+approximation.
 
-1. Select or add an internal unit within the repeated transformer computation.
-2. Make that unit implement an exact calculator operation rather than a
-   statistically learned approximation.
-3. Add a learned input interface that translates token/residual
-   representations into a typed representation the deterministic unit can
-   consume.
-4. Add a learned output interface that writes the exact result back into the
-   transformer's residual stream.
-5. Preserve the deterministic unit's weights or transition rules while
-   training the interfaces and surrounding model.
-6. Test whether later layers preserve or corrupt the exact internal result.
+In a model trained from scratch, the deterministic neurons would exist from
+initialization. Ordinary gradient descent would shape the rest of the network
+so mathematical internal representations increasingly align with those
+neurons, because routing correctly encoded operands through them reliably
+reduces prediction loss.
 
-“Extra neuron” is conceptual shorthand. A practical implementation may need a
-small group of fixed units, a recurrent state machine, a typed register, or a
-compiled attention/MLP circuit because decimal addition requires digit state,
-position, and carry.
+For a pretrained-model retrofit:
 
-## Required distinction from phase 2
+1. Measure activation frequency and causal importance of Qwen MLP neurons.
+2. Select a low-use, low-importance activation subspace with enough bandwidth.
+3. Replace those ordinary activation slots with a frozen calculator-neuron
+   bank.
+4. Preserve the bank's normal neuron-shaped tensor interface.
+5. Fine-tune incoming, outgoing, and surrounding Qwen weights so mathematical
+   vectors are naturally encoded into the implant and its results become
+   useful native internal representations.
+6. Preserve ordinary capabilities with nonmathematical distillation and causal
+   ablations.
 
-Phase 2 injects a deterministic sidecar through a learned residual bridge
-immediately before the existing output head. The follow-up must move the
-deterministic computation into or between repeated transformer blocks and pass
-its result through subsequent native layers. It should therefore test an
-architectural change rather than an output-adjacent interface.
+A single scalar neuron is unlikely to carry two arbitrary operands and an
+exact result. The faithful practical form is therefore a compact bank of
+activation channels whose required width is treated as an empirical bandwidth
+question. “Calculator neuron” remains the conceptual unit; “calculator-neuron
+bank” is the implementation term.
 
-## Candidate experimental ladder
+The defining property is not merely that a deterministic module sits between
+blocks. It is that the computation occupies neuron activation slots and is
+learned around as part of the model's native representational substrate.
 
-1. Insert a frozen typed register/carry cell between two transformer blocks.
-2. Train only token-to-register and register-to-residual projections.
-3. Compare injection at early, middle, and late blocks.
-4. Measure exactness immediately after the deterministic unit and after every
-   subsequent block.
-5. Add an invariant-preserving residual channel or protected subspace if
-   ordinary layers corrupt the value.
-6. Attempt to compile the fixed cell into ordinary attention/MLP weights as a
-   more ambitious final variant.
+## Training hypothesis
+
+The calculator remains frozen while the surrounding neural network remains
+normally trainable. Early training may require register supervision, smooth
+surrogates, or straight-through gradients so the network can discover the
+implant's typed interface. Those scaffolds should later be reduced so final
+behavior is driven primarily by normal language-model or task loss.
+
+The central empirical question is whether deep learning will reorganize
+mathematical representations around a small deterministic subspace because
+that subspace is consistently more reliable than approximate learned
+arithmetic.
+
+## Reuse and repeated computation
+
+The same calculator-neuron bank can appear at one or more recurrent depths or
+autoregressive reasoning steps. Repeated calculations should arise from
+ordinary mathematical states passing through the same neuron-shaped
+computation again, not from explicit calculator-call tokens or an external
+tool protocol.
+
+## General deterministic-neuron thesis
+
+Arithmetic is the first controlled test, not the full scope. The same
+architectural style could implant domain-specific deterministic computation
+with an activation interface sized for the necessary information bandwidth.
+
+Candidate domains include:
+
+- exact arithmetic and symbolic transforms;
+- formal logic, constraints, and state transitions;
+- units, geometry, and physical invariants;
+- molecular chemistry calculations and chemically valid transformations;
+- other scientific or engineering computations where a trusted algorithm
+  should become part of a model's internal intelligence rather than an
+  externally orchestrated tool call.
+
+Mixture-of-experts models are an especially natural target. A deterministic
+expert or deterministic neuron bank could share the same routing and
+activation conventions as learned experts while supplying exact,
+domain-specific transformations. The research question is whether models
+learn more fluid, reliable use when deterministic programs inhabit their
+native activation space.
+
+## Boundaries
+
+- This is a research hypothesis, not yet a demonstrated general architecture.
+- Correct deterministic execution does not guarantee correct operand
+  representation, routing, decomposition, or scientific interpretation.
+- “Optimal bandwidth” must be measured rather than assumed.
+- Related work and prior art must be reviewed before claiming novelty.
+- The Phase 6 residual-to-register prototype provides useful components, but
+  it does not instantiate this canonical architecture because its learned
+  controller invokes a separate internal program and forces output-adjacent
+  result residuals.
+
+## First definitive experiment
+
+1. Use Qwen2.5-0.5B and addition only.
+2. Census MLP neuron activation and causal importance on mathematical and
+   nonmathematical corpora.
+3. Reserve several candidate subspace widths.
+4. Implant the same frozen typed addition circuit into those activation slots.
+5. Fine-tune surrounding weights under mixed arithmetic and preservation loss.
+6. Evaluate unseen operand lengths, natural-language generalization,
+   nonmathematical preservation, and activation selectivity.
+7. Ablate or zero only the implanted neurons. Arithmetic performance should
+   collapse selectively if Qwen truly reorganized around them.
+8. Compare replacement, added-neuron, and MoE-expert variants at matched
+   bandwidth and learned-parameter budgets.
 
 ## Success criterion
 
-An arithmetic result is computed by a fixed unit within the repeated
-transformer stack, survives downstream transformer computation, and improves
-end-to-end exact-match accuracy outside trained operand lengths without
-post-generation correction.
+Qwen learns to encode supported mathematical subproblems into the implanted
+activation slots, the frozen neuron bank computes exact results, downstream
+ordinary layers use those results, and selectively removing the implanted
+neurons causes a large arithmetic-specific loss without broad capability
+damage.
