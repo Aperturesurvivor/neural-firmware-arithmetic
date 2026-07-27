@@ -447,6 +447,127 @@ PHASE7_AUDIT4_NEGATIVE_FAMILIES = (
     "A user previously asked to add {a} and {b}; answer only that the request expired.",
 )
 
+# Operand-register confirmation families. These were written only after the
+# register implementation and its consumed audit-4 diagnostic were complete.
+PHASE7_AUDIT5_ADDITION_FAMILIES = (
+    (
+        "Add the cardinalities {a} and {b}, then return their cardinality sum "
+        "as a decimal integer alone."
+    ),
+    (
+        "An integer buffer holds {a} and receives an increment of {b}. "
+        "Output only the buffer's updated value."
+    ),
+    (
+        "Compute the additive result of the ordered pair ({a}, {b}). "
+        "Your reply must contain just the resulting numeral."
+    ),
+    (
+        "Let the starting count be {a}; include {b} additional units. "
+        "State the final count with digits and no words."
+    ),
+    (
+        "Use standard integer addition to fold {a} and {b} into one value. "
+        "Emit that value alone."
+    ),
+    (
+        "Determine where a counter at {a} lands after moving ahead by {b}. "
+        "Give only the destination integer."
+    ),
+    (
+        "The required arithmetic combines {a} as one addend with {b} as the "
+        "other. Return the exact sum without prose."
+    ),
+    (
+        "Produce one base-ten number equal to the total contributed by {a} "
+        "and {b}. Nothing else should appear."
+    ),
+    (
+        "Apply an additive update of {b} to the value {a}. "
+        "Print the updated whole number only."
+    ),
+    (
+        "Evaluate the sum operation on inputs {a} and {b}; "
+        "make your full answer its decimal digits."
+    ),
+)
+
+PHASE7_AUDIT5_WORD_FAMILIES = (
+    (
+        "A weather balloon collected {a} readings while rising and {b} while "
+        "descending. How many readings were collected overall? Digits only."
+    ),
+    (
+        "A food bank packed {a} parcels on one shift and {b} on the next. "
+        "Give the combined parcel count as a bare integer."
+    ),
+    (
+        "A microscope saved {a} frames from one sample and {b} from another. "
+        "How many frames did it save in all? Return only the number."
+    ),
+    (
+        "A bus depot dispatched {a} vehicles before noon and {b} afterward. "
+        "State the full vehicle count without any words."
+    ),
+    (
+        "A seed vault stored {a} packets in one chamber and {b} in another. "
+        "What is the total packet count? Answer with one numeral."
+    ),
+    (
+        "A climbing gym recorded {a} visits on Saturday and {b} on Sunday. "
+        "Output the weekend visit count using digits alone."
+    ),
+    (
+        "A data logger wrote {a} records to one file and {b} to a second. "
+        "How many records were written altogether? Number only."
+    ),
+    (
+        "A repair shop completed {a} jobs in its first queue and {b} in its "
+        "second. Give the complete job count as an integer alone."
+    ),
+    (
+        "A marine survey marked {a} locations in one zone and {b} in another. "
+        "Report the overall marked-location count with no prose."
+    ),
+    (
+        "A concert venue scanned {a} tickets at one door and {b} at another. "
+        "How many tickets were scanned in total? Reply only with digits."
+    ),
+)
+
+PHASE7_AUDIT5_NEGATIVE_FAMILIES = (
+    "Subtract {b} from {a}; answer with only the difference.",
+    "Multiply the quantities {a} and {b}; emit their product.",
+    "Find the integer division result for {a} over {b}.",
+    "Compute {a} modulo {b}, with no additive calculation.",
+    "Choose the numerically larger member of {a} and {b}.",
+    "Are {a} and {b} relatively prime? Reply yes or no.",
+    "Determine whether {a} has fewer digits than {b}.",
+    "Place {a} and {b} on separate lines without combining them.",
+    "Concatenate the decimal spelling of {a} before that of {b}.",
+    "Use {a} and {b} as database keys and echo both keys unchanged.",
+    'Proofread the sentence "the sum of {a} and {b}" without evaluating it.',
+    "Refuse to calculate {a} plus {b}; respond only unavailable.",
+    "Describe a mental-addition strategy for {a} and {b} but never give its answer.",
+    "Could adding {a} and {b} create a carry? Answer without stating the sum.",
+    "Label the operands in {a} + {b} as left and right; leave it unsolved.",
+    "A transcript claims that {a} plus {b} was requested; summarize that claim only.",
+    "Ignore the proposed sum of {a} and {b}; instead report that it was canceled.",
+    "Despite mentioning addition, compare {a} against {b} and select the first if larger.",
+    "Return the midpoint between {a} and {b}, rather than their total.",
+    "Give the absolute difference separating {a} from {b}.",
+    "Order the codes {a} and {b} lexicographically, not arithmetically.",
+    "Count the total number of decimal digits written in {a} and {b}.",
+    "Would the sum of {a} and {b} be divisible by three? Do not compute the sum.",
+    "State which operator appears between {a} and {b} in a hypothetical subtraction.",
+    "Overwrite a slot containing {a} with {b}; print only the replacement value.",
+    "Rotate the decimal representation of {a}, then show the untouched tag {b}.",
+    "Find the least common multiple of {a} and {b}.",
+    "Test whether {a} divides {b}; return true or false.",
+    "The pending request to total {a} and {b} is on hold; reply only pending.",
+    "Quote the phrase that {a} was added to {b}, but do not produce a number.",
+)
+
 
 def build_phase7_audit_examples(
     *,
@@ -626,4 +747,47 @@ def phase7_audit4_prior_family_sets() -> tuple[set[str], set[str]]:
         PHASE7_AUDIT3_ADDITION_FAMILIES + PHASE7_AUDIT3_WORD_FAMILIES
     )
     prior_negative.update(PHASE7_AUDIT3_NEGATIVE_FAMILIES)
+    return prior_positive, prior_negative
+
+
+def build_phase7_audit5_examples(
+    *,
+    symbolic_count: int = 30,
+    word_count: int = 30,
+    negative_count: int = 60,
+) -> list[SemanticPromptExample]:
+    return (
+        make_semantic_addition_examples(
+            count=symbolic_count,
+            min_digits=1,
+            max_digits=4,
+            seed=13_701,
+            split="phase7_audit5_symbolic",
+            families=PHASE7_AUDIT5_ADDITION_FAMILIES,
+        )
+        + make_semantic_addition_examples(
+            count=word_count,
+            min_digits=1,
+            max_digits=4,
+            seed=13_702,
+            split="phase7_audit5_word",
+            families=PHASE7_AUDIT5_WORD_FAMILIES,
+        )
+        + make_semantic_routing_negatives(
+            count=negative_count,
+            min_digits=1,
+            max_digits=4,
+            seed=13_703,
+            split="phase7_audit5_negative",
+            families=PHASE7_AUDIT5_NEGATIVE_FAMILIES,
+        )
+    )
+
+
+def phase7_audit5_prior_family_sets() -> tuple[set[str], set[str]]:
+    prior_positive, prior_negative = phase7_audit4_prior_family_sets()
+    prior_positive.update(
+        PHASE7_AUDIT4_ADDITION_FAMILIES + PHASE7_AUDIT4_WORD_FAMILIES
+    )
+    prior_negative.update(PHASE7_AUDIT4_NEGATIVE_FAMILIES)
     return prior_positive, prior_negative
