@@ -130,6 +130,7 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument("--chunk-size", type=int, default=5)
     parser.add_argument("--deterministic-result-step", action="store_true")
+    parser.add_argument("--latch-operands", action="store_true")
     parser.add_argument(
         "--expected-checkpoint-sha256",
         default=EXPECTED_CHECKPOINT_SHA256,
@@ -215,6 +216,7 @@ def main() -> None:
             latch_route=True,
             preserve_base_when_off=True,
             deterministic_result_step=args.deterministic_result_step,
+            latch_operands=args.latch_operands,
         )
         first = result["steps"][0]
         a_digits = singleton(first["a_digits"])
@@ -246,6 +248,7 @@ def main() -> None:
                 latch_route=True,
                 preserve_base_when_off=True,
                 deterministic_result_step=args.deterministic_result_step,
+                latch_operands=args.latch_operands,
             )
             row.update(
                 {
@@ -320,6 +323,7 @@ def main() -> None:
             "latch_route": True,
             "preserve_base_when_off": True,
             "deterministic_result_step": args.deterministic_result_step,
+            "latch_operands": args.latch_operands,
             "max_new_tokens": 8,
             "learned_parameters": implant.trainable_parameter_count,
             "calculator_learned_parameters": (

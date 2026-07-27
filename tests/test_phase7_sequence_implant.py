@@ -147,6 +147,33 @@ def test_sequence_calculator_selects_later_result_digit_and_eos() -> None:
     assert execution.result_symbols[:, -1].tolist() == [0, 10]
 
 
+def test_sequence_calculator_reuses_registered_operands() -> None:
+    layout = SequenceImplantLayout(max_digits=4)
+    calculator = FrozenSequenceAddition(layout)
+    roles = torch.zeros((1, 2), dtype=torch.long)
+    digits = torch.full_like(roles, layout.non_digit)
+    route = torch.tensor([[0, 1]])
+    eligible = torch.tensor([[False, True]])
+    execution = calculator(
+        route=route,
+        roles=roles,
+        digits=digits,
+        step=torch.tensor([[0, 2]]),
+        eligible_mask=eligible,
+        sequence_mask=torch.ones_like(eligible),
+        register_a_digits=torch.tensor([[9, 9, 10, 10]]),
+        register_b_digits=torch.tensor([[1, 10, 10, 10]]),
+        register_a_lengths=torch.tensor([2]),
+        register_b_lengths=torch.tensor([1]),
+        register_valid=torch.tensor([True]),
+    )
+    assert execution.operands_valid.tolist() == [True]
+    assert execution.a_digits.tolist() == [[9, 9, 10, 10]]
+    assert execution.b_digits.tolist() == [[1, 10, 10, 10]]
+    assert execution.result_symbols[0, -1].item() == 0
+    assert execution.route_active[0, -1].item() is True
+
+
 def test_sequence_calculator_rejects_overwide_or_missing_operands() -> None:
     layout = SequenceImplantLayout(max_digits=2)
     calculator = FrozenSequenceAddition(layout)

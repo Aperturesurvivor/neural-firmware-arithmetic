@@ -827,11 +827,13 @@ def generate_sequence_implant(
     latch_route: bool = False,
     preserve_base_when_off: bool = False,
     deterministic_result_step: bool = False,
+    latch_operands: bool = False,
 ) -> dict[str, object]:
     full_ids = chat_prompt_ids(bundle.tokenizer, prompt)
     generated: list[int] = []
     diagnostics: list[dict[str, object]] = []
     latched_route: int | None = None
+    operand_register: dict[str, list[int] | int | bool] | None = None
     for generation_step in range(max_new_tokens):
         input_ids = torch.tensor(
             [full_ids],
@@ -852,6 +854,41 @@ def generate_sequence_implant(
                 generation_step,
                 implant.layout.step_width - 1,
             )
+        register_tensors: dict[str, torch.Tensor | None] = {
+            "register_a_digits": None,
+            "register_b_digits": None,
+            "register_a_lengths": None,
+            "register_b_lengths": None,
+            "register_valid": None,
+        }
+        if operand_register is not None:
+            register_tensors = {
+                "register_a_digits": torch.tensor(
+                    [operand_register["a_digits"]],
+                    dtype=torch.long,
+                    device=bundle.device,
+                ),
+                "register_b_digits": torch.tensor(
+                    [operand_register["b_digits"]],
+                    dtype=torch.long,
+                    device=bundle.device,
+                ),
+                "register_a_lengths": torch.tensor(
+                    [operand_register["a_length"]],
+                    dtype=torch.long,
+                    device=bundle.device,
+                ),
+                "register_b_lengths": torch.tensor(
+                    [operand_register["b_length"]],
+                    dtype=torch.long,
+                    device=bundle.device,
+                ),
+                "register_valid": torch.tensor(
+                    [operand_register["valid"]],
+                    dtype=torch.bool,
+                    device=bundle.device,
+                ),
+            }
         context = SequenceImplantContext(
             eligible_mask=eligible,
             sequence_mask=attention_mask.to(torch.bool),
@@ -860,6 +897,7 @@ def generate_sequence_implant(
             ablate_result=ablate_result,
             preserve_base_when_off=preserve_base_when_off,
             capture_diagnostics=True,
+            **register_tensors,
         )
         implant.set_context(context)
         hidden = bundle.model.model(
@@ -877,6 +915,20 @@ def generate_sequence_implant(
         if latch_route and latched_route is None:
             predicted_route = row.get("route", [0])
             latched_route = int(predicted_route[0])
+        if (
+            latch_operands
+            and generation_step == 0
+            and row.get("route_active") == [True]
+            and row.get("operands_valid") == [True]
+        ):
+            operand_register = {
+                "a_digits": row["a_digits"][0],
+                "b_digits": row["b_digits"][0],
+                "a_length": row["a_lengths"][0],
+                "b_length": row["b_lengths"][0],
+                "valid": True,
+            }
+        row["operand_register_active"] = operand_register is not None
         row["token_id"] = token_id
         row["token_text"] = bundle.tokenizer.decode([token_id])
         diagnostics.append(row)

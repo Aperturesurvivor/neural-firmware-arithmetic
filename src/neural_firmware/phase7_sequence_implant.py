@@ -77,6 +77,11 @@ class SequenceImplantContext:
     ablate_result: bool = False
     preserve_base_when_off: bool = False
     capture_diagnostics: bool = False
+    register_a_digits: torch.Tensor | None = None
+    register_b_digits: torch.Tensor | None = None
+    register_a_lengths: torch.Tensor | None = None
+    register_b_lengths: torch.Tensor | None = None
+    register_valid: torch.Tensor | None = None
     diagnostics: dict[str, object] = field(default_factory=dict)
 
 
@@ -170,6 +175,11 @@ class FrozenSequenceAddition(nn.Module):
         step: torch.Tensor,
         eligible_mask: torch.Tensor,
         sequence_mask: torch.Tensor,
+        register_a_digits: torch.Tensor | None = None,
+        register_b_digits: torch.Tensor | None = None,
+        register_a_lengths: torch.Tensor | None = None,
+        register_b_lengths: torch.Tensor | None = None,
+        register_valid: torch.Tensor | None = None,
     ) -> SequenceExecution:
         if not (
             route.shape
@@ -180,11 +190,37 @@ class FrozenSequenceAddition(nn.Module):
             == sequence_mask.shape
         ):
             raise ValueError("all sequence interface tensors must share [B,S]")
-        a, a_lengths, b, b_lengths, operands_valid = self._extract_operands(
-            roles,
-            digits,
-            sequence_mask,
+        register_values = (
+            register_a_digits,
+            register_b_digits,
+            register_a_lengths,
+            register_b_lengths,
+            register_valid,
         )
+        if any(value is not None for value in register_values):
+            if not all(value is not None for value in register_values):
+                raise ValueError("operand register must provide all five tensors")
+            a = register_a_digits
+            b = register_b_digits
+            a_lengths = register_a_lengths
+            b_lengths = register_b_lengths
+            operands_valid = register_valid
+            if a.shape != (roles.shape[0], self.layout.max_digits):
+                raise ValueError("registered operand A has the wrong shape")
+            if b.shape != a.shape:
+                raise ValueError("registered operand B has the wrong shape")
+            if a_lengths.shape != (roles.shape[0],):
+                raise ValueError("registered operand A lengths have the wrong shape")
+            if b_lengths.shape != a_lengths.shape:
+                raise ValueError("registered operand B lengths have the wrong shape")
+            if operands_valid.shape != a_lengths.shape:
+                raise ValueError("registered validity has the wrong shape")
+        else:
+            a, a_lengths, b, b_lengths, operands_valid = self._extract_operands(
+                roles,
+                digits,
+                sequence_mask,
+            )
         safe_a_lengths = a_lengths.clamp_min(1)
         safe_b_lengths = b_lengths.clamp_min(1)
         safe_a = torch.where(
@@ -433,6 +469,11 @@ class SequenceNeuronImplantMLP(nn.Module):
             step=hard.step,
             eligible_mask=context.eligible_mask,
             sequence_mask=context.sequence_mask,
+            register_a_digits=context.register_a_digits,
+            register_b_digits=context.register_b_digits,
+            register_a_lengths=context.register_a_lengths,
+            register_b_lengths=context.register_b_lengths,
+            register_valid=context.register_valid,
         )
         activations = execution.result_activations
         if context.ablate_result:
