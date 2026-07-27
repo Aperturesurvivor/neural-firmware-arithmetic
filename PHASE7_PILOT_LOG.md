@@ -509,3 +509,51 @@ runs remain part of the record. No confirmatory protocol is frozen.
   `phase7_results/sequence_layer16_router_hardening_v1.json`.
 - These are post-audit development results. They do not repair the frozen
   audit-3 failure. The hashes are frozen before defining audit-4 families.
+
+## 2026-07-26 — Frozen router-hardening audit 4
+
+- Froze `PHASE7_ROUTER_HARDENING_PROTOCOL.md`, all three hardened checkpoint
+  hashes, 20 new addition family strings, 30 new adversarial negative family
+  strings, three new data seeds, and five gates before generation.
+- Per-seed addition results:
+  - seed 13,201: 58/60 exact, 59/60 exact first-step operands, 1/60 ablated;
+  - seed 13,202: 60/60 exact, 60/60 exact first-step operands, 1/60 ablated;
+  - seed 13,203: 59/60 exact, 59/60 exact first-step operands, 1/60 ablated.
+- The three-seed mean was 59/60 exact. Paired causal drops were 57/60,
+  59/60, and 58/60.
+- Router hardening fully repaired the targeted held-out failure:
+  - 0/180 false routes across the three independent seeds;
+  - 180/180 negative generations token-identical to untouched Qwen.
+- Gate disposition:
+  - passed addition accuracy;
+  - passed operand recovery;
+  - passed causal ablation;
+  - passed adversarial routing and preservation;
+  - failed exact execution conditional on initial route and operands.
+- The conditional gate failure occurred only for seed 13,201 on one prompt.
+  Its first-step registers were exactly `52` and `5863`, and the calculator
+  emitted the correct first three symbols of `5915`. On the fourth generation
+  pass, the learned digit confidence for operand B fell below admission and
+  the calculator became inactive, after which base Qwen continued with
+  unrelated digits. Seed 13,202 completed the same case exactly.
+- This exposes a protocol design flaw rather than an addition error: the
+  implementation re-decodes immutable prompt operands on every output token
+  even though calculator operands should be captured once in a register.
+- The other two addition failures were ordinary first-step framing errors:
+  seed 13,201 decoded `6120` and `7` as `612` and `07`; seed 13,203 admitted
+  an extra digit into the second operand of `32 + 27`.
+- The revised architecture therefore passed four of five frozen gates and is
+  not reported as an overall compound success.
+- Raw record SHA-256 hashes:
+  - seed 13,201:
+    `bc259236b370e6f04be7a62baac7fa6846ae808fd3f8c15604eddd25fca0cd96`;
+  - seed 13,202:
+    `8022fb9f2319edf077efef7296c67e6230896c3e148983c9ef2941c2a6802b36`;
+  - seed 13,203:
+    `3f1be55849e368bdbb2230df4e288e869de224759e1f55f6bf89bee99ea76bf0`.
+- Compact analysis:
+  `phase7_results/router_hardened_audit4_summary.json`.
+- Decision: preserve the failed conditional gate. Add a deterministic
+  response-local operand register that captures the first valid typed
+  operands once and reuses them for subsequent result symbols. Evaluate first
+  on consumed audit 4, then freeze new families before treating it as evidence.

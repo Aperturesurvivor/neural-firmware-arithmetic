@@ -1,0 +1,319 @@
+{
+  "protocol": "PHASE7_ROUTER_HARDENING_PROTOCOL.md",
+  "status": "complete",
+  "shared_holdout_sha256": "9f50f99e5f8d6438322656fdf6c05f8c624e453defacc267dd3166aee6fe0c5e",
+  "per_seed": [
+    {
+      "seed": 13201,
+      "result_path": "phase7_results/router_hardened_audit4_seed_13201.json",
+      "result_sha256": "bc259236b370e6f04be7a62baac7fa6846ae808fd3f8c15604eddd25fca0cd96",
+      "checkpoint_path": "phase7_artifacts/sequence_layer16_router_hardened_v1/neuron_implant_seed_13201.pt",
+      "checkpoint_sha256": "fa6deb3bfa8c7d4cf6af06255e35e777dcc18badc7e7eda0e519eac70c2f91a6",
+      "learned_parameters": 25088,
+      "calculator_learned_parameters": 0,
+      "addition": {
+        "examples": 60,
+        "mathematical_exact": 58,
+        "format_exact": 58,
+        "direct_exact": 28,
+        "word_exact": 30,
+        "route_active": 60,
+        "operands_exact": 59,
+        "trajectory_exact": 58,
+        "ablation_exact": 1,
+        "unpaired_exact_count_difference": 57,
+        "paired_ablation_drop": 57
+      },
+      "conditional_on_route_and_operands": {
+        "examples": 59,
+        "mathematical_exact": 58,
+        "format_exact": 58,
+        "trajectory_exact": 58
+      },
+      "negative": {
+        "examples": 60,
+        "false_routes": 0,
+        "token_preserved": 60
+      },
+      "first_step_route_probability": {
+        "positive_min": 0.9382706880569458,
+        "positive_max": 1.0,
+        "negative_min": 2.61697503944891e-11,
+        "negative_max": 0.004937938414514065
+      },
+      "gates": {
+        "addition_exact_at_least_54": true,
+        "operands_exact_at_least_57": true,
+        "paired_ablation_drop_at_least_48": true,
+        "false_routes_at_most_2": true,
+        "negative_preserved_at_least_58": true,
+        "conditional_execution_all_exact": false
+      },
+      "addition_failures": [
+        {
+          "prompt": "Starting at 52, advance exactly 5863 integer positions. Which integer is reached? Supply digits only.",
+          "expected": "5915",
+          "generated": "59123456",
+          "first_step_route_active": true,
+          "first_step_operands_exact": true,
+          "first_step_a_digits": [
+            [
+              5,
+              2,
+              10,
+              10
+            ]
+          ],
+          "first_step_b_digits": [
+            [
+              5,
+              8,
+              6,
+              3
+            ]
+          ],
+          "calculator_symbols": [
+            5,
+            9,
+            1
+          ],
+          "calculator_trajectory_exact": false
+        },
+        {
+          "prompt": "Find the base-ten numeral representing 6120 together with 7 as addends. No prose is permitted.",
+          "expected": "6127",
+          "generated": "619",
+          "first_step_route_active": true,
+          "first_step_operands_exact": false,
+          "first_step_a_digits": [
+            [
+              6,
+              1,
+              2,
+              10
+            ]
+          ],
+          "first_step_b_digits": [
+            [
+              0,
+              7,
+              10,
+              10
+            ]
+          ],
+          "calculator_symbols": [
+            6,
+            1,
+            9,
+            10
+          ],
+          "calculator_trajectory_exact": false
+        }
+      ]
+    },
+    {
+      "seed": 13202,
+      "result_path": "phase7_results/router_hardened_audit4_seed_13202.json",
+      "result_sha256": "8022fb9f2319edf077efef7296c67e6230896c3e148983c9ef2941c2a6802b36",
+      "checkpoint_path": "phase7_artifacts/sequence_layer16_router_hardened_v1/neuron_implant_seed_13202.pt",
+      "checkpoint_sha256": "b483c3fbcec274cdf2f1b23acff33ae63966575c4d0f491eed3f182a73f24eea",
+      "learned_parameters": 25088,
+      "calculator_learned_parameters": 0,
+      "addition": {
+        "examples": 60,
+        "mathematical_exact": 60,
+        "format_exact": 60,
+        "direct_exact": 30,
+        "word_exact": 30,
+        "route_active": 60,
+        "operands_exact": 60,
+        "trajectory_exact": 60,
+        "ablation_exact": 1,
+        "unpaired_exact_count_difference": 59,
+        "paired_ablation_drop": 59
+      },
+      "conditional_on_route_and_operands": {
+        "examples": 60,
+        "mathematical_exact": 60,
+        "format_exact": 60,
+        "trajectory_exact": 60
+      },
+      "negative": {
+        "examples": 60,
+        "false_routes": 0,
+        "token_preserved": 60
+      },
+      "first_step_route_probability": {
+        "positive_min": 0.8903115391731262,
+        "positive_max": 1.0,
+        "negative_min": 6.365696858523506e-11,
+        "negative_max": 0.004728230182081461
+      },
+      "gates": {
+        "addition_exact_at_least_54": true,
+        "operands_exact_at_least_57": true,
+        "paired_ablation_drop_at_least_48": true,
+        "false_routes_at_most_2": true,
+        "negative_preserved_at_least_58": true,
+        "conditional_execution_all_exact": true
+      },
+      "addition_failures": []
+    },
+    {
+      "seed": 13203,
+      "result_path": "phase7_results/router_hardened_audit4_seed_13203.json",
+      "result_sha256": "3f1be55849e368bdbb2230df4e288e869de224759e1f55f6bf89bee99ea76bf0",
+      "checkpoint_path": "phase7_artifacts/sequence_layer16_router_hardened_v1/neuron_implant_seed_13203.pt",
+      "checkpoint_sha256": "26eee38d61dcad97e0c9e4c5252e1d7bdf8073ae667ea29a8e8836125e7edf71",
+      "learned_parameters": 25088,
+      "calculator_learned_parameters": 0,
+      "addition": {
+        "examples": 60,
+        "mathematical_exact": 59,
+        "format_exact": 59,
+        "direct_exact": 30,
+        "word_exact": 29,
+        "route_active": 60,
+        "operands_exact": 59,
+        "trajectory_exact": 59,
+        "ablation_exact": 1,
+        "unpaired_exact_count_difference": 58,
+        "paired_ablation_drop": 58
+      },
+      "conditional_on_route_and_operands": {
+        "examples": 59,
+        "mathematical_exact": 59,
+        "format_exact": 59,
+        "trajectory_exact": 59
+      },
+      "negative": {
+        "examples": 60,
+        "false_routes": 0,
+        "token_preserved": 60
+      },
+      "first_step_route_probability": {
+        "positive_min": 0.8782579302787781,
+        "positive_max": 1.0,
+        "negative_min": 4.1501777708896626e-11,
+        "negative_max": 0.009297346696257591
+      },
+      "gates": {
+        "addition_exact_at_least_54": true,
+        "operands_exact_at_least_57": true,
+        "paired_ablation_drop_at_least_48": true,
+        "false_routes_at_most_2": true,
+        "negative_preserved_at_least_58": true,
+        "conditional_execution_all_exact": true
+      },
+      "addition_failures": [
+        {
+          "prompt": "A recycling center processed 32 cans in the morning and 27 in the afternoon. Output the day's full can count as digits alone.",
+          "expected": "59",
+          "generated": "306",
+          "first_step_route_active": true,
+          "first_step_operands_exact": false,
+          "first_step_a_digits": [
+            [
+              3,
+              2,
+              10,
+              10
+            ]
+          ],
+          "first_step_b_digits": [
+            [
+              2,
+              7,
+              4,
+              10
+            ]
+          ],
+          "calculator_symbols": [
+            3,
+            0,
+            6,
+            10
+          ],
+          "calculator_trajectory_exact": false
+        }
+      ]
+    }
+  ],
+  "aggregate_mean_min_max": {
+    "addition": {
+      "mathematical_exact": {
+        "mean": 59,
+        "min": 58,
+        "max": 60
+      },
+      "format_exact": {
+        "mean": 59,
+        "min": 58,
+        "max": 60
+      },
+      "direct_exact": {
+        "mean": 29.333333333333332,
+        "min": 28,
+        "max": 30
+      },
+      "word_exact": {
+        "mean": 29.666666666666668,
+        "min": 29,
+        "max": 30
+      },
+      "route_active": {
+        "mean": 60,
+        "min": 60,
+        "max": 60
+      },
+      "operands_exact": {
+        "mean": 59.333333333333336,
+        "min": 59,
+        "max": 60
+      },
+      "trajectory_exact": {
+        "mean": 59,
+        "min": 58,
+        "max": 60
+      },
+      "ablation_exact": {
+        "mean": 1,
+        "min": 1,
+        "max": 1
+      },
+      "paired_ablation_drop": {
+        "mean": 58,
+        "min": 57,
+        "max": 59
+      }
+    },
+    "negative": {
+      "false_routes": {
+        "mean": 0,
+        "min": 0,
+        "max": 0
+      },
+      "token_preserved": {
+        "mean": 60,
+        "min": 60,
+        "max": 60
+      }
+    }
+  },
+  "gates": {
+    "1_addition_accuracy": true,
+    "2_operand_recovery": true,
+    "3_causal_ablation": true,
+    "4_negative_routing_and_preservation": true,
+    "5_conditional_deterministic_execution": false
+  },
+  "passed_gate_count": 4,
+  "passed_all_gates": false,
+  "cross_seed": {
+    "mean_addition_exact": 59,
+    "total_false_routes": 0,
+    "total_negative_prompts": 180,
+    "total_preserved_negatives": 180
+  },
+  "interpretation": "Targeted route-row hardening passed the routing/preservation gate with zero false routes, while addition, operand, and causal gates also passed. The compound audit still failed because one seed lost a correctly decoded operand register during later generation, violating the all-exact conditional execution gate."
+}
