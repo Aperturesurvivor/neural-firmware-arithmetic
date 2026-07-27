@@ -478,3 +478,34 @@ runs remain part of the record. No confirmatory protocol is frozen.
   broader set of now-consumed semantic negatives, leave the other 25,088
   tensor values fixed except those 1,792 route weights, then define a new
   exact-string-disjoint audit before evaluating the revised router.
+
+## 2026-07-26 — Targeted first-step router hardening
+
+- Built a family-balanced post-audit development corpus from all prompt
+  families consumed through audit 3:
+  - 126 positive families and 128 adversarial negative families;
+  - 4,064 training prompts and 1,016 exact-string-disjoint development
+    prompts;
+  - direct additions, word problems, other operations, quotations, refusals,
+    explanations, labels, concatenation, and meta-arithmetic prompts.
+- Re-trained only the two first-step route rows, or 1,792 weights per seed.
+  The remaining 23,296 learned interface weights, the selected channel bank,
+  the result columns, the deterministic calculator, and all Qwen weights
+  remained fixed.
+- All three seeds reached 504/504 positive and 512/512 negative route
+  decisions on the development prompts at a fixed 0.5 threshold.
+- Development confidence ranges:
+  - seed 13,201: positive minimum 0.99555, negative maximum 0.00542;
+  - seed 13,202: positive minimum 0.99499, negative maximum 0.00570;
+  - seed 13,203: positive minimum 0.99651, negative maximum 0.00581.
+- Hardened checkpoint SHA-256 hashes:
+  - seed 13,201:
+    `fa6deb3bfa8c7d4cf6af06255e35e777dcc18badc7e7eda0e519eac70c2f91a6`;
+  - seed 13,202:
+    `b483c3fbcec274cdf2f1b23acff33ae63966575c4d0f491eed3f182a73f24eea`;
+  - seed 13,203:
+    `26eee38d61dcad97e0c9e4c5252e1d7bdf8073ae667ea29a8e8836125e7edf71`.
+- Raw development record:
+  `phase7_results/sequence_layer16_router_hardening_v1.json`.
+- These are post-audit development results. They do not repair the frozen
+  audit-3 failure. The hashes are frozen before defining audit-4 families.

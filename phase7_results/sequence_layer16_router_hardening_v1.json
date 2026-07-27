@@ -1,0 +1,159 @@
+{
+  "status": "development_router_hardening_complete",
+  "model_id": "Qwen/Qwen2.5-0.5B-Instruct",
+  "model_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "layer_index": 16,
+  "method": "Train only the two first-step route rows on a family-balanced union of all consumed positive and adversarial-negative prompt families.",
+  "data": {
+    "positive_family_count": 126,
+    "negative_family_count": 128,
+    "train_examples": 4064,
+    "development_examples": 1016,
+    "train_examples_per_family": 16,
+    "development_examples_per_family": 4,
+    "train_seeds": {
+      "positive": 13511,
+      "negative": 13512
+    },
+    "development_seeds": {
+      "positive": 13513,
+      "negative": 13514
+    }
+  },
+  "feature_cache": {
+    "path": "phase7_artifacts/cache/route_hardening_v1_first_step_features.pt",
+    "sha256": "839ce39f31f0d69943754fe7a89d63596d723d0472e1bfe98ee4b099ee0e3ca7"
+  },
+  "updated_parameters_per_seed": 1792,
+  "unchanged_learned_parameters_per_seed": 23296,
+  "seeds": [
+    {
+      "seed": 13201,
+      "parent_checkpoint": "phase7_artifacts/sequence_layer16_confident_v1/neuron_implant_seed_13201.pt",
+      "parent_checkpoint_sha256": "9dba639d127769b08579b2e1deabdfd3d232e06dcf2ea6f843f7b9963855785c",
+      "checkpoint": "phase7_artifacts/sequence_layer16_router_hardened_v1/neuron_implant_seed_13201.pt",
+      "checkpoint_sha256": "fa6deb3bfa8c7d4cf6af06255e35e777dcc18badc7e7eda0e519eac70c2f91a6",
+      "route_row_l2_change": 3.5772249698638916,
+      "non_route_input_rows_byte_identical": true,
+      "result_columns_byte_identical": true,
+      "route_threshold_before": 0.23538999259471893,
+      "route_threshold_after": 0.5,
+      "training": {
+        "config": {
+          "seed": 13501,
+          "steps": 3000,
+          "batch_size": 256,
+          "learning_rate": 0.001,
+          "maximum_development_false_positive_rate": 0.002
+        },
+        "initial_loss": 0.04375571385025978,
+        "final_loss": 7.700273999944329e-05,
+        "wall_time_seconds": 16.340645250005764,
+        "trainable_parameters": 1792
+      },
+      "development": {
+        "rows": 1016,
+        "positive_rows": 504,
+        "negative_rows": 512,
+        "threshold": {
+          "threshold": 0.5,
+          "true_positive_rate": 1.0,
+          "false_positive_rate": 0.0
+        },
+        "true_positive_rate": 1.0,
+        "false_positive_rate": 0.0,
+        "accuracy": 1.0,
+        "positive_probability_min": 0.9955516457557678,
+        "negative_probability_max": 0.005420985631644726
+      }
+    },
+    {
+      "seed": 13202,
+      "parent_checkpoint": "phase7_artifacts/sequence_layer16_multiseed/neuron_implant_seed_13202.pt",
+      "parent_checkpoint_sha256": "6cab7608a912d19a26793828352cdffd8783e2e5f6b8bdcad65f5afdf22b6b07",
+      "checkpoint": "phase7_artifacts/sequence_layer16_router_hardened_v1/neuron_implant_seed_13202.pt",
+      "checkpoint_sha256": "b483c3fbcec274cdf2f1b23acff33ae63966575c4d0f491eed3f182a73f24eea",
+      "route_row_l2_change": 3.5303399562835693,
+      "non_route_input_rows_byte_identical": true,
+      "result_columns_byte_identical": true,
+      "route_threshold_before": 0.22288385033607483,
+      "route_threshold_after": 0.5,
+      "training": {
+        "config": {
+          "seed": 13502,
+          "steps": 3000,
+          "batch_size": 256,
+          "learning_rate": 0.001,
+          "maximum_development_false_positive_rate": 0.002
+        },
+        "initial_loss": 0.06335026025772095,
+        "final_loss": 8.691506081959233e-05,
+        "wall_time_seconds": 15.240675499997451,
+        "trainable_parameters": 1792
+      },
+      "development": {
+        "rows": 1016,
+        "positive_rows": 504,
+        "negative_rows": 512,
+        "threshold": {
+          "threshold": 0.5,
+          "true_positive_rate": 1.0,
+          "false_positive_rate": 0.0
+        },
+        "true_positive_rate": 1.0,
+        "false_positive_rate": 0.0,
+        "accuracy": 1.0,
+        "positive_probability_min": 0.9949910044670105,
+        "negative_probability_max": 0.005699423607438803
+      }
+    },
+    {
+      "seed": 13203,
+      "parent_checkpoint": "phase7_artifacts/sequence_layer16_multiseed/neuron_implant_seed_13203.pt",
+      "parent_checkpoint_sha256": "cbf84806b08f0804cd0c508330e0f5f9fdfa72b41c800a37aef616c682fb58dd",
+      "checkpoint": "phase7_artifacts/sequence_layer16_router_hardened_v1/neuron_implant_seed_13203.pt",
+      "checkpoint_sha256": "26eee38d61dcad97e0c9e4c5252e1d7bdf8073ae667ea29a8e8836125e7edf71",
+      "route_row_l2_change": 3.4891371726989746,
+      "non_route_input_rows_byte_identical": true,
+      "result_columns_byte_identical": true,
+      "route_threshold_before": 0.1698814481496811,
+      "route_threshold_after": 0.5,
+      "training": {
+        "config": {
+          "seed": 13503,
+          "steps": 3000,
+          "batch_size": 256,
+          "learning_rate": 0.001,
+          "maximum_development_false_positive_rate": 0.002
+        },
+        "initial_loss": 0.04356296360492706,
+        "final_loss": 8.443831757176667e-05,
+        "wall_time_seconds": 15.847562916998868,
+        "trainable_parameters": 1792
+      },
+      "development": {
+        "rows": 1016,
+        "positive_rows": 504,
+        "negative_rows": 512,
+        "threshold": {
+          "threshold": 0.5,
+          "true_positive_rate": 1.0,
+          "false_positive_rate": 0.0
+        },
+        "true_positive_rate": 1.0,
+        "false_positive_rate": 0.0,
+        "accuracy": 1.0,
+        "positive_probability_min": 0.9965052604675293,
+        "negative_probability_max": 0.005812139715999365
+      }
+    }
+  ],
+  "environment": {
+    "python": "3.12.12",
+    "torch": "2.13.0",
+    "device": "mps",
+    "mps_available": true,
+    "implementation_commit": "061cbf42d212eefc942b676d04395c7363e1bb93"
+  },
+  "wall_time_seconds": 183.64704329200322
+}
