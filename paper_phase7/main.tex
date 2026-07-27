@@ -22,7 +22,7 @@
 \large A Three-Seed Causal Study of Natural-Language Addition,
 Routing, Preservation, and Registered State in Qwen2.5-0.5B}
 \author{Josiah Wilson\\Independent Researcher}
-\date{July 26, 2026}
+\date{July 27, 2026}
 
 \begin{document}
 \maketitle
@@ -53,13 +53,17 @@ They recovered 174/180 exact operand registers; all 174 remained stable and
 produced exact calculator digit-plus-end trajectories. Calculator-result
 ablation left 9/180 correct, a paired causal loss on 165/180 examples. All
 180/180 adversarial negatives remained route-off and token-identical to
-untouched Qwen. The compound protocol nevertheless failed: mean exact accuracy
-was 57.67/60 against a frozen 58/60 threshold, and one seed decoded exact
-calculator symbols for $0+0$ as the token ``I.'' The result strongly supports
-the narrow causal implant hypothesis while locating remaining failures in
-learned input/output interfaces. Route, operand, and position state remain
-generation-runtime microcircuit state; arbitrary recurrent multi-call
-reasoning is not established.
+untouched Qwen. In a retrospective same-prompt comparison, untouched Qwen
+returned the exact requested numeral on 1/60 additions under the same
+eight-token budget, versus 57/60, 58/60, and 58/60 for the three implants. A
+64-token base-only sensitivity recovered the correct sum as its final integer
+on 27/60 prompts but still produced only 1/60 exact numeral-only responses.
+The compound protocol nevertheless failed: mean exact accuracy was 57.67/60
+against a frozen 58/60 threshold, and one seed decoded exact calculator symbols
+for $0+0$ as the token ``I.'' The result strongly supports the narrow causal
+implant hypothesis while locating remaining failures in learned input/output
+interfaces. Route, operand, and position state remain generation-runtime
+microcircuit state; arbitrary recurrent multi-call reasoning is not established.
 \end{abstract}
 
 \section*{Technical summary}
@@ -79,6 +83,9 @@ Paired correct-to-incorrect ablations & 165/180\\
 Stable registers given exact first-step operands & 174/174\\
 False routes on adversarial negatives & 0/180\\
 Token-exact negative preservation & 180/180\\
+\midrule
+Untouched Qwen exact response (retrospective, 8 tokens) & 1/60 (1.67\%)\\
+Untouched Qwen last-integer recovery (64 tokens) & 27/60 (45.00\%)\\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -369,6 +376,90 @@ Every exact registered execution exact externally & 173/174 & \fail\\
 The mean-accuracy gate missed by one aggregate correct answer. This is retained
 as a failure rather than rounded to 58.
 
+\section{Retrospective comparison with untouched Qwen}
+
+\subsection{Design and metric boundary}
+
+After audit 5 was complete, untouched Qwen was run on the identical 60
+addition prompts and 60 adversarial negatives. The prompt set, implant
+checkpoints, and implant outputs were already frozen. For each base generation,
+the layer-16 wrapper was temporarily uninstalled, restoring the original Qwen
+MLP. Model revision, chat formatting, greedy decoding, and the primary
+eight-token response budget matched audit 5.
+
+This comparison was not specified in the frozen audit-5 protocol and is
+therefore retrospective, not a preregistered endpoint. Two metrics are kept
+separate:
+
+\begin{itemize}
+\item \textbf{Exact response} requires the complete stripped output to equal
+      the requested numeral.
+\item \textbf{Last-integer recovery} requires only the final integer appearing
+      anywhere in the response to equal the expected sum.
+\end{itemize}
+
+Exact response is the primary descriptive comparison because every positive
+prompt explicitly requested the numeral without prose. Last-integer recovery
+is a deliberately generous sensitivity measure for verbose base responses.
+
+\subsection{Same-budget result and extended-generation sensitivity}
+
+\begin{center}
+\small
+\begin{tabular}{lrr}
+\toprule
+Condition & Exact response & Last-integer recovery\\
+\midrule
+Untouched Qwen, 8 tokens & 1/60 & 2/60\\
+Untouched Qwen, 64 tokens & 1/60 & 27/60\\
+Implant seed 13,201, 8 tokens & 57/60 & 57/60\\
+Implant seed 13,202, 8 tokens & 58/60 & 58/60\\
+Implant seed 13,203, 8 tokens & 58/60 & 58/60\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Under identical decoding, the pooled implant exact-response rate was
+173/180 (96.11\%), compared with 1/60 (1.67\%) for untouched Qwen, a
+94.44-percentage-point difference. The base model often began an explanation
+or restated the expression instead of emitting a numeral. Its 2/60
+last-integer score at eight tokens includes one truncated response that ended
+in the operand \code{0}; thus 1/60 is the more faithful strict score.
+
+The 64-token sensitivity addresses the possibility that the shared
+eight-token budget merely cut off explanations before their answers. Base
+last-integer recovery rose to 27/60, while exact numeral-only response remained
+1/60. The larger budget therefore revealed genuine arithmetic ability in base
+Qwen but did not erase the implant advantage.
+
+\begin{center}
+\small
+\begin{tabular}{lrrr}
+\toprule
+Prompt subset & Base 8-token exact & Base 64-token last integer
+  & Implant exact\\
+\midrule
+Direct additions & 1/30 & 13/30 & 83/90\\
+Word problems & 0/30 & 14/30 & 90/90\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+For strict exact response, seed 13,201 had 56 implant-only correct prompts and
+no base-only prompt; seeds 13,202 and 13,203 each had 57 implant-only prompts
+and no base-only prompt. Against the generous 64-token last-integer base
+metric, seeds 13,202 and 13,203 solved all 27 prompts solved by base plus 31
+additional prompts, with no base-only success. Both systems missed the same
+two systematic operand-framing prompts. Seed 13,201 had 31 implant-only and
+one base-only success, the latter being its known downstream \code{0+0}
+decoding failure.
+
+On the 60 adversarial negatives, every implant seed remained token-identical
+to untouched Qwen (180/180 seed-prompt comparisons). These rows measure
+preservation rather than task correctness because they do not have a single
+reference answer. Full prompt-level outputs are retained in the supplementary
+HTML report and CSV.
+
 \section{Causal evidence}
 
 The principal causal intervention zeros only the twelve calculator-result
@@ -491,6 +582,9 @@ registers, and invoke the same calculator again.
 \item \textbf{Adaptive research sequence.} Later audits followed observed
       failures. They are honest new holdouts for changed architectures, not
       independent replications.
+\item \textbf{Retrospective base benchmark.} The audit-5 prompts and implant
+      outputs were frozen before untouched-base generation, but the comparison
+      itself was not specified in the audit-5 protocol.
 \item \textbf{Prompt-family scope.} Exact family-string disjointness does not
       imply unrestricted linguistic robustness.
 \item \textbf{Inference efficiency.} Full-sequence recomputation without a
@@ -533,6 +627,19 @@ Audit-5 raw result SHA-256 values are:
 \end{itemize}
 \end{sloppypar}
 
+The retrospective untouched-base comparison is retained as
+\code{phase7\_results/base\_vs\_implant\_audit5.json} (SHA-256
+\begin{sloppypar}
+\code{b233e38b67f1b8165fa6b0b3131ba4254e5634ed1053cd5efdec198a179c826f})
+\end{sloppypar}
+and \code{phase7\_results/base\_vs\_implant\_audit5\_rows.csv} (SHA-256
+\begin{sloppypar}
+\code{236668b5a3fe0218078d82dc5768d9195950d861f663ce62a00c515877e8c2d8}).
+\end{sloppypar}
+The complete problem-by-problem reader is
+\code{phase7\_base\_comparison/report.html}. The comparison implementation and
+outputs were committed at \code{43a5787}.
+
 Audit-5 was frozen at commit \code{4996db6}; the compact result record was
 committed at \code{e6dc5f2}. Experiments ran on macOS 26.5.2 arm64 with
 Python 3.12.12, PyTorch 2.13.0, Transformers 4.57.6, and Apple MPS. Large
@@ -548,6 +655,14 @@ zero-parameter deterministic subspace occupying 28 existing MLP coordinates.
 The calculator and its registered state were exact on every correctly framed
 final-audit execution; route hardening preserved every evaluated negative;
 ablation removed 165 otherwise correct answers.
+
+The retrospective untouched-base comparison supplies practical context for
+that causal result. Under identical eight-token generation, untouched Qwen
+returned 1/60 exact requested numerals versus 173/180 pooled implant responses.
+Even with 64 tokens and the looser last-integer measure, base recovered 27/60;
+the two best implant seeds recovered every one of those prompts plus 31 more.
+This is strong comparative evidence, while its post-hoc status prevents it
+from being treated as a frozen protocol gate.
 
 The remaining errors are informative. Six are learned operand framing, one is
 downstream result decoding, and none is observed incorrect addition from exact
