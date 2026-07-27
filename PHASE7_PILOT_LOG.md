@@ -252,3 +252,28 @@ runs remain part of the record. No confirmatory protocol is frozen.
   `phase7_results/sequence_census_layer_16_compact_v1.json`.
 - Tensor artifact:
   `phase7_artifacts/sequence_census_layer_16_compact_v1.pt`.
+
+## 2026-07-26 — Compact layer-16 implant training v1
+
+- Trained the 28-channel fixed-step implant at decoder layer 16 using the same
+  4,000 training and 600 development prompts as the layer-23 v2 interface.
+- Qwen remained frozen.
+- Development neural-interface metrics:
+  - route true-positive rate: 100%;
+  - route false-positive rate: 0%;
+  - operand-role token accuracy: 99.93%;
+  - digit accuracy at operand tokens: 100%.
+- Trained the 10,752 result-column weights for 150 teacher-forced updates
+  through Qwen's remaining decoder layers. Token loss fell from 1.36451 to
+  0.00002499.
+- Learned replacement weights:
+  - input rows: 14,336;
+  - result columns: 10,752;
+  - total: 25,088.
+- Frozen calculator learned parameters: zero.
+- Checkpoint:
+  `phase7_artifacts/sequence_layer16_v1/neuron_implant_seed_13201.pt`.
+- Checkpoint SHA-256:
+  `5b76181c2c0f4a74b7482e4856b2b8c92bff637a1e70302bdfbc61ce1aaac41e`.
+- Raw training record:
+  `phase7_results/sequence_layer16_training_v1.json`.
