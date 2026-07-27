@@ -259,6 +259,14 @@ for the complete development record. The full scientific report is
 The retrospective problem-by-problem comparison with untouched Qwen is
 [`phase7_base_comparison/report.html`](phase7_base_comparison/report.html).
 
+Publication-ready arXiv source, the anonymous MATH-AI 2026 workshop draft,
+verified venue strategy, and submission checklist are staged in
+[`publication/`](publication/). The clean Llama-family replication is specified
+separately in
+[`PHASE8_SECOND_MODEL_REPLICATION_PROTOCOL_DRAFT.md`](PHASE8_SECOND_MODEL_REPLICATION_PROTOCOL_DRAFT.md);
+it remains a draft until the model revision, data, gates, and implementation
+commit are frozen.
+
 ## Reproduction
 
 ```bash

@@ -1,0 +1,284 @@
+\documentclass{article}
+
+\usepackage[dblblindworkshop]{neurips_2026}
+\workshoptitle{The 6th Workshop on Mathematical Reasoning and AI}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{microtype}
+\usepackage{xcolor}
+\hypersetup{hidelinks}
+
+\title{Deterministic ``Neurons'' Inside a Frozen Language Model}
+
+\author{Anonymous Author(s)}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Can a language model learn to use exact machinery as neuron-shaped internal
+computation rather than as an external tool? We replace 28 existing
+intermediate coordinates in one frozen Qwen2.5-0.5B MLP with a typed interface
+to a zero-parameter decimal adder. A 25,088-weight interface learns route,
+operand, digit, and result representations; the model width and all pretrained
+weights remain unchanged. Across three independently trained interfaces, a
+frozen final audit yields 173/180 exact natural-language additions, 174/180
+exact calculator trajectories, and 180/180 token-exact preserved adversarial
+negatives. Ablating calculator-result coordinates leaves 9/180 correct.
+Untouched Qwen returns 1/60 exact requested numerals on the same prompts and
+token budget. The compound protocol still fails two prespecified gates due to
+six operand-framing errors and one downstream decoding error. These results
+provide causal evidence for a narrow deterministic-neuron mechanism while
+separating exact execution from fallible learned routing and decoding.
+\end{abstract}
+
+\section{Introduction}
+
+Language models are flexible probabilistic predictors; arithmetic is a rigid
+state-transition process. Neural arithmetic units and structured training can
+improve extrapolation \citep{trask2018,jelassi2023,cho2024}, while compiled
+transformers and neural algorithmic reasoners study how known algorithms can
+coexist with learned representations \citep{lindner2023,bounsi2024}. The
+Integrated Gated Calculator (IGC) is the closest direct precedent: it learns
+input, routing, and output maps around a non-differentiable four-operation
+calculator in a frozen Llama 3.1 8B model \citep{dietz2025}. We therefore do
+\emph{not} claim the broad integrated-calculator idea as novel.
+
+We test a narrower architectural question: can deterministic semantics occupy
+selected coordinates of an existing transformer MLP, with surrounding learned
+computation treating them like an internal neural interface? Unlike an
+output-side correction, the result must pass through the model's ordinary MLP
+down projection and seven downstream decoder blocks. Our contributions are:
+(i) an in-place 28-coordinate calculator interface in frozen
+Qwen2.5-0.5B-Instruct \citep{qwen2024}; (ii) three-seed, same-prompt evaluation
+of arithmetic, routing, preservation, and causality; and (iii) explicit
+retention of failed audits and a negative compound verdict.
+
+\section{In-place calculator coordinates}
+
+Qwen's gated MLP at decoder layer 16 produces
+\[
+y_{\mathrm{MLP}}=W_{\mathrm{down}}
+\bigl(\operatorname{SiLU}(W_{\mathrm{gate}}h)\odot W_{\mathrm{up}}h\bigr).
+\]
+We reserve 28 of its 4,864 intermediate coordinates after a non-arithmetic
+impact census. Sixteen learned rows classify a hidden vector into route
+(2 coordinates), token role (3), and digit/non-digit type (11). Consistent
+high-confidence role and digit symbols populate two operand registers. A
+frozen decimal ripple-carry cell returns one of 12 result symbols
+(digits 0--9, end, pad), represented by 12 learned columns of
+$W_{\mathrm{down}}$. The remaining 4,836 channels and every pretrained weight
+are frozen. Table~\ref{tab:params} gives the exact learned budget.
+
+\begin{table}[t]
+\caption{The calculator changes semantics, not model width.}
+\label{tab:params}
+\centering
+\small
+\begin{tabular}{lrr}
+\toprule
+Interface group & Coordinates & Learned weights\\
+\midrule
+Route & 2 & 1,792\\
+Role & 3 & 2,688\\
+Digit/non-digit & 11 & 9,856\\
+Result symbol & 12 & 10,752\\
+\midrule
+Total & 28 & 25,088\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Generation-time microcircuit state latches the first route, captures the first
+valid operands, and advances a result-position counter. This makes registered
+state exact after capture, but it is \emph{not} residual-native recurrent
+memory. Each response supports one addition call.
+
+\section{Controlled evaluation}
+
+\paragraph{Model and training.}
+We pin Qwen2.5-0.5B-Instruct to a recorded immutable revision, freeze all
+494,032,768 pretrained parameters, and greedily decode. Three interface
+initializations use seeds 13,201--13,203 and identical data. Supervised labels
+teach route, role, digit, and result columns; the system does not discover the
+ABI from answer reward alone.
+
+\paragraph{Adaptive development and frozen audit.}
+An initial frozen audit obtained 58/60 correct additions per seed but falsely
+routed 17/180 adversarial negatives. Retraining only the 1,792 route-row
+weights eliminated false routes on two new exact-string-disjoint audits. A
+later audit exposed sequence-time operand drift; adding the deterministic
+response-local register fixed that failure. All unsuccessful runs remain in
+the record. The final register audit was frozen before generation and uses, per
+seed, 30 direct additions, 30 word problems, and 60 adversarial negatives from
+new families. This is a post-audit confirmation of a revised architecture,
+not an independent external replication.
+
+\paragraph{Measures.}
+We score exact numeral-only response, first-step operand register, exact
+digit-plus-end calculator trajectory, paired result ablation, false routing,
+and token-exact preservation relative to untouched Qwen. A retrospective base
+comparison uses the identical 60 prompts and eight-token greedy budget; a
+base-only 64-token sensitivity also records the final integer.
+
+\paragraph{Research-process disclosure.}
+An AI coding agent assisted with experimental design, implementation, local
+execution orchestration, analysis, and manuscript drafting under human
+direction. The human author is responsible for the reported content, verified
+citations, retained raw results, and submission.
+
+\section{Results}
+
+\begin{table}[t]
+\caption{Final frozen audit, pooled only for compact reporting. Seed-level
+outcomes are the units of replication.}
+\label{tab:results}
+\centering
+\small
+\begin{tabular}{lrrrr}
+\toprule
+Outcome & Seed 1 & Seed 2 & Seed 3 & Pooled\\
+\midrule
+Exact additions & 57/60 & 58/60 & 58/60 & 173/180\\
+Exact operands/trajectory & 58/60 & 58/60 & 58/60 & 174/180\\
+Exact word problems & 30/30 & 30/30 & 30/30 & 90/90\\
+Exact after result ablation & 3/60 & 3/60 & 3/60 & 9/180\\
+Causal correct-to-wrong loss & 54/60 & 55/60 & 56/60 & 165/180\\
+Negative false routes & 0/60 & 0/60 & 0/60 & 0/180\\
+Token-exact preservation & 60/60 & 60/60 & 60/60 & 180/180\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Table~\ref{tab:results} shows replicated high accuracy and strong causal
+dependence. All 174 exact first-step registers remained stable and generated
+the exact deterministic calculator trajectory. The six input failures came
+from two direct prompt instances shared across all seeds, indicating a prompt
+representation weakness rather than arithmetic error. Seed 1 had one further
+output error: exact internal symbols for $0+0$ were decoded downstream as
+``I.'' Thus no observed calculator transition was wrong given exact typed
+state, but the learned interface was not infallible.
+
+Untouched Qwen returned the requested numeral on 1/60 prompts under the same
+eight-token budget. With 64 tokens and the looser last-integer measure, it
+recovered 27/60. The implant seeds solved 57/60, 58/60, and 58/60; the two best
+seeds solved every prompt recovered by the loose base measure plus 31 more.
+This comparison is retrospective and is not a frozen protocol gate.
+
+The compound verdict is negative. Three of five final gates pass. Mean exact
+accuracy is 57.67/60 against a frozen 58/60 threshold, and the single
+downstream decoding error violates the all-exact conditional-output gate.
+
+\section{Discussion}
+
+The narrow mechanism works: learned language-model activations can supply
+typed inputs to deterministic coordinates inside an existing MLP; exact result
+symbols can survive ordinary frozen downstream computation; and causal
+ablation removes 165 otherwise correct responses. The result is stronger than
+showing that a Python calculator returns sums, but weaker than a general neural
+calculator.
+
+Limitations are substantial: one model revision, nonnegative one-to-four-digit
+addition, explicit ABI supervision, adaptive engineering before the final
+audit, runtime-managed state, and one call per response. A clean next test is
+the identical protocol on a Llama-family model with untouched-base and
+parameter-matched controls. Separately, a bounded controller with explicit
+\texttt{IDLE}, \texttt{CAPTURE}, \texttt{EMIT}, and \texttt{RESET} states could
+test multiple calls without unbounded loops. The current evidence supports
+continued work on those interfaces; it does not establish spontaneous or
+unlimited calculator use during arbitrary reasoning.
+
+\begin{thebibliography}{7}
+
+\bibitem[Trask et~al.(2018)Trask, Hill, Reed, Rae, Dyer, and Blunsom]{trask2018}
+Andrew Trask, Felix Hill, Scott Reed, Jack Rae, Chris Dyer, and Phil Blunsom.
+\newblock Neural arithmetic logic units.
+\newblock In \emph{Advances in Neural Information Processing Systems}, 2018.
+
+\bibitem[Jelassi et~al.(2023)Jelassi, d'Ascoli, Domingo-Enrich, Wu, Li, and
+  Charton]{jelassi2023}
+Samy Jelassi, St{\'e}phane d'Ascoli, Carles Domingo-Enrich, Yuhuai Wu,
+Yuanzhi Li, and Fran{\c{c}}ois Charton.
+\newblock Length generalization in arithmetic transformers.
+\newblock arXiv:2306.15400, 2023.
+
+\bibitem[Cho et~al.(2024)Cho, Cha, Awasthi, Bhojanapalli, Gupta, and
+  Yun]{cho2024}
+Hanseul Cho, Jaeyoung Cha, Pranjal Awasthi, Srinadh Bhojanapalli, Anupam Gupta,
+and Chulhee Yun.
+\newblock Position coupling: Improving length generalization of arithmetic
+transformers using task structure.
+\newblock arXiv:2405.20671, 2024.
+
+\bibitem[Lindner et~al.(2023)Lindner, Kram{\'a}r, Farquhar, Rahtz, McGrath,
+  and Mikulik]{lindner2023}
+David Lindner, J{\'a}nos Kram{\'a}r, Sebastian Farquhar, Matthew Rahtz,
+Thomas McGrath, and Vladimir Mikulik.
+\newblock Tracr: Compiled transformers as a laboratory for interpretability.
+\newblock In \emph{Advances in Neural Information Processing Systems}, 2023.
+
+\bibitem[Bounsi et~al.(2024)Bounsi, Ibarz, Dudzik, Hamrick, Markeeva,
+  Vitvitskyi, Pascanu, and Veli{\v{c}}kovi{\'c}]{bounsi2024}
+Wilfried Bounsi, Borja Ibarz, Andrew Dudzik, Jessica Hamrick, Larisa Markeeva,
+Alex Vitvitskyi, Razvan Pascanu, and Petar Veli{\v{c}}kovi{\'c}.
+\newblock Transformers meet neural algorithmic reasoners.
+\newblock arXiv:2406.09308, 2024.
+
+\bibitem[Qwen Team(2024)]{qwen2024}
+Qwen Team.
+\newblock Qwen2.5 technical report.
+\newblock arXiv:2412.15115, 2024.
+
+\bibitem[Dietz and Klakow(2025)]{dietz2025}
+Florian Dietz and Dietrich Klakow.
+\newblock IGC: Integrating a gated calculator into an LLM to solve arithmetic
+tasks reliably and efficiently.
+\newblock arXiv:2501.00684, 2025.
+
+\end{thebibliography}
+
+\clearpage
+\appendix
+\section{Frozen gates and failure decomposition}
+
+The final protocol required: (1) every seed at least 57/60 exact and mean at
+least 58/60; (2) every seed at least 57/60 exact operands; (3) every seed at
+least 50/60 paired ablation loss; (4) every seed at most 2/60 false routes and
+at least 58/60 exact preservation; and (5) every active route with exact
+operands to have an exact calculator trajectory and exact formatted answer.
+Gates 2--4 passed. Gates 1 and 5 failed as described in the main text.
+
+The exact-result ablation is applied at the 12 reserved result coordinates
+while retaining the rest of the learned interface and frozen base. It leaves
+3/60 answers correct in each seed. The paired losses are 54, 55, and 56 because
+some examples are already wrong with the calculator active, while a small
+number happen to remain or become correct under ablation.
+
+\section{Reproducibility record}
+
+The final raw JSON files have SHA-256 hashes:
+\begin{itemize}
+\item seed 13,201:
+{\footnotesize\ttfamily
+0acbcacd51c67579878a36c7741f96fc4ce87a921701ddc00e06afd29c69082d};
+\item seed 13,202:
+{\footnotesize\ttfamily
+79861af7af101139049ab7632793eb3b0e19a8f9c27861d1bfb195684b9d460e};
+\item seed 13,203:
+{\footnotesize\ttfamily
+2492fee048aef0303294c5c6f1ca03cdf911a008e0c032ca78bb1a500d288372}.
+\end{itemize}
+The frozen model revision is
+{\footnotesize\ttfamily
+7ae557604adf67be50417f59c2c2f167def9a775}.
+Experiments ran on macOS arm64 with Python 3.12.12, PyTorch 2.13.0,
+Transformers 4.57.6, and Apple MPS. Prompt generators, per-token traces,
+configuration records, compact metrics, and failed audits are retained.
+
+\end{document}
