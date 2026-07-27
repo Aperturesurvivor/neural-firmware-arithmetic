@@ -1,0 +1,67 @@
+{
+  "status": "post_audit_layer_probe",
+  "model_id": "Qwen/Qwen2.5-0.5B-Instruct",
+  "model_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "layer": 12,
+  "data": {
+    "train_examples": 1000,
+    "development_examples": 200,
+    "audit_examples": 80
+  },
+  "training": {
+    "config": {
+      "seed": 13112,
+      "steps": 2000,
+      "batch_size": 256,
+      "learning_rate": 0.001,
+      "route_loss_weight": 1.0,
+      "role_loss_weight": 1.0,
+      "digit_loss_weight": 1.0,
+      "step_loss_weight": 0.0
+    },
+    "initial_loss": 4.409825801849365,
+    "final_loss": 0.006288676522672176,
+    "wall_time_seconds": 27.303556708007818,
+    "trainable_parameters": 19712,
+    "selected_route_threshold": {
+      "threshold": 0.9866144061088562,
+      "true_positive_rate": 0.8676123023033142,
+      "false_positive_rate": 0.0
+    }
+  },
+  "development": {
+    "rows": 3139,
+    "route_rows": 523,
+    "route_true_positive_rate": 0.8676123023033142,
+    "route_false_positive_rate": 0.0,
+    "route_accuracy": 0.8929254412651062,
+    "role_accuracy": 0.9958585500717163,
+    "operand_role_accuracy": 0.998031497001648,
+    "digit_accuracy_on_operands": 1.0,
+    "step_accuracy": 0.1111111119389534
+  },
+  "audit": {
+    "rows": 1247,
+    "route_rows": 208,
+    "route_true_positive_rate": 0.9107142686843872,
+    "route_false_positive_rate": 0.0,
+    "route_accuracy": 0.9278846383094788,
+    "role_accuracy": 0.9991980791091919,
+    "operand_role_accuracy": 1.0,
+    "digit_accuracy_on_operands": 0.9974937438964844,
+    "step_accuracy": 0.1726190447807312
+  },
+  "audit_symbolic_operands": {
+    "operand_tokens": 96,
+    "role_accuracy": 1.0,
+    "digit_accuracy": 1.0,
+    "joint_role_digit_accuracy": 1.0
+  },
+  "audit_word_operands": {
+    "operand_tokens": 96,
+    "role_accuracy": 1.0,
+    "digit_accuracy": 1.0,
+    "joint_role_digit_accuracy": 1.0
+  },
+  "wall_time_seconds": 64.90441829198971
+}

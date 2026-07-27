@@ -30,6 +30,13 @@ def test_sequence_layout_uses_34_existing_channels() -> None:
     assert layout.total_width == 34
 
 
+def test_fixed_step_layout_uses_28_existing_channels() -> None:
+    layout = SequenceImplantLayout(max_digits=4, learned_step=False)
+    assert layout.input_width == 16
+    assert layout.result_width == 12
+    assert layout.total_width == 28
+
+
 def test_sequence_calculator_scans_roles_and_adds_exactly() -> None:
     layout = SequenceImplantLayout(max_digits=4)
     calculator = FrozenSequenceAddition(layout)

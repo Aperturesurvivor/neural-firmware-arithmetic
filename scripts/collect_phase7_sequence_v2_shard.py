@@ -21,14 +21,11 @@ from neural_firmware.semantic_data import (
 
 MODEL_ID = "Qwen/Qwen2.5-0.5B-Instruct"
 MODEL_REVISION = "7ae557604adf67be50417f59c2c2f167def9a775"
-LAYER_INDEX = 23
-SHARD_DIRECTORY = Path("phase7_artifacts/cache/sequence_v2_shards")
-
-
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
     parser.add_argument("--split", choices=("train", "development"), required=True)
     parser.add_argument("--shard-index", type=int, required=True)
+    parser.add_argument("--layer", type=int, default=23)
     return parser.parse_args()
 
 
@@ -76,12 +73,21 @@ def all_examples(split: str) -> tuple[list[object], int]:
 
 def main() -> None:
     args = parse_args()
+    if args.layer < 0 or args.layer >= 24:
+        raise ValueError("Qwen2.5-0.5B layer must be in [0, 23]")
     examples, shard_size = all_examples(args.split)
     start = args.shard_index * shard_size
     stop = min(len(examples), start + shard_size)
     if start >= len(examples):
         raise ValueError("shard index is beyond the dataset")
-    output = SHARD_DIRECTORY / f"{args.split}_{args.shard_index:02d}.pt"
+    shard_directory = (
+        Path("phase7_artifacts/cache/sequence_v2_shards")
+        if args.layer == 23
+        else Path(
+            f"phase7_artifacts/cache/sequence_v2_layer_{args.layer:02d}_shards"
+        )
+    )
+    output = shard_directory / f"{args.split}_{args.shard_index:02d}.pt"
     if output.exists():
         print(f"exists {output}", flush=True)
         return
@@ -89,7 +95,7 @@ def main() -> None:
     features = collect_sequence_features(
         bundle,
         examples[start:stop],
-        layer_index=LAYER_INDEX,
+        layer_index=args.layer,
         layout=SequenceImplantLayout(max_digits=4),
         batch_size=8,
         ordinary_tokens_per_example=8,
@@ -104,4 +110,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

@@ -15,6 +15,7 @@ class SequenceImplantLayout:
     max_digits: int = 4
     digit_classes: int = 11
     result_classes: int = 12
+    learned_step: bool = True
 
     @property
     def route_width(self) -> int:
@@ -40,7 +41,7 @@ class SequenceImplantLayout:
             self.route_width
             + self.role_width
             + self.digit_width
-            + self.step_width
+            + (self.step_width if self.learned_step else 0)
         )
 
     @property
@@ -322,8 +323,15 @@ class SequenceNeuronImplantMLP(nn.Module):
         cursor += self.layout.role_width
         digits = raw[..., cursor : cursor + self.layout.digit_width]
         cursor += self.layout.digit_width
-        step = raw[..., cursor : cursor + self.layout.step_width]
-        cursor += self.layout.step_width
+        if self.layout.learned_step:
+            step = raw[..., cursor : cursor + self.layout.step_width]
+            cursor += self.layout.step_width
+        else:
+            step = torch.zeros(
+                (*raw.shape[:-1], self.layout.step_width),
+                dtype=raw.dtype,
+                device=raw.device,
+            )
         if cursor != self.layout.input_width:
             raise AssertionError("sequence implant layout is inconsistent")
         return SequenceInterface(

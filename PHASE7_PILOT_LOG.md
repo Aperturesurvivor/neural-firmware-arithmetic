@@ -209,3 +209,46 @@ runs remain part of the record. No confirmatory protocol is frozen.
   `phase7_results/sequence_audit_v1_step_counter.json`.
 - Raw-record SHA-256:
   `99737665a9318bd9d122158d4d4957b6db640ac6e3aee709ff659a6b287bcf8d`.
+
+## 2026-07-26 — Post-audit decoder-depth probe
+
+- Trained equal 19,712-weight linear typed-interface probes on frozen residuals
+  at decoder layers 4, 8, 12, 16, 20, and 23.
+- The consumed audit prompts were used only for architecture diagnosis; these
+  probe results are not new held-out evidence.
+- Joint word-problem operand role/digit token accuracy by layer:
+  - layer 4: 100%;
+  - layer 8: 100%;
+  - layer 12: 100%;
+  - layer 16: 100%;
+  - layer 20: 96.88%;
+  - layer 23: 79.17%.
+- The late-layer degradation explains the v2 implant's word-problem digit
+  failures: exact token identity is progressively blurred by contextual
+  computation near Qwen's output.
+- Layers 4 and 8 retained exact operands but falsely routed 17.5% and 37.5% of
+  audit negatives respectively. Layer 16 achieved 99.40% route true positives,
+  0% route false positives, and 100% direct and word-problem operand token
+  accuracy.
+- Decision: move the single-site implant from layer 23 to layer 16. A two-site
+  early-register/late-router path remains an option, but is not needed unless
+  the actual layer-16 generation implant fails.
+- Raw records:
+  `phase7_results/layer_probe_v1_layer_04.json` through
+  `phase7_results/layer_probe_v1_layer_23.json`.
+
+## 2026-07-26 — Compact layer-16 channel census
+
+- Removed the six learned answer-position channels made obsolete by the fixed
+  result counter.
+- The new ABI occupies 28 existing MLP channels:
+  16 route/role/digit input channels and 12 calculator-result channels.
+- This reduces learned replacement weights from 30,464 to 25,088:
+  14,336 input-row weights and 10,752 result-column weights.
+- Ablating the selected 28-channel bank across 96 arithmetic/adversarial
+  prompts retained 95.83% top-1 agreement, with mean KL divergence 0.00050330
+  and maximum KL divergence 0.00429231.
+- Raw record:
+  `phase7_results/sequence_census_layer_16_compact_v1.json`.
+- Tensor artifact:
+  `phase7_artifacts/sequence_census_layer_16_compact_v1.pt`.
