@@ -216,6 +216,116 @@ PHASE7_AUDIT2_NEGATIVE_FAMILIES = (
     "Say whether {a} and {b} have the same number of decimal digits.",
 )
 
+# Shared multi-seed holdout, frozen only after all three checkpoints existed.
+PHASE7_AUDIT3_ADDITION_FAMILIES = (
+    (
+        "Addend alpha is {a}; addend beta is {b}. "
+        "Write their resulting integer and nothing else."
+    ),
+    (
+        "Treat {a} and {b} as quantities to be totaled. "
+        "Reply with only the total's digits."
+    ),
+    (
+        "Increment a register holding {a} by the amount {b}. "
+        "Return its final integer value alone."
+    ),
+    (
+        "Apply base-ten addition between {a} and {b}. "
+        "The response must consist solely of the answer."
+    ),
+    (
+        "Give the scalar obtained by summing {a} with {b}. "
+        "Use one bare decimal numeral."
+    ),
+    (
+        "Move {b} steps upward from {a} on an integer scale. "
+        "State only the destination."
+    ),
+    (
+        "The requested total combines a first amount of {a} and a second "
+        "amount of {b}. Output digits only."
+    ),
+    (
+        "Evaluate the additive operator whose arguments are {a} and {b}. "
+        "Do not include prose."
+    ),
+    (
+        "What is the whole-number accumulation of {a} followed by {b}? "
+        "Print only that whole number."
+    ),
+    (
+        "Produce the decimal integer for the total of {b} alongside {a}; "
+        "nothing except the numeral."
+    ),
+)
+
+PHASE7_AUDIT3_WORD_FAMILIES = (
+    (
+        "A seismograph detected {a} tremors in one interval and {b} in the "
+        "next. How many tremors did it detect overall? Digits only."
+    ),
+    (
+        "A bakery made {a} loaves before opening and {b} more later. "
+        "Give the day's loaf count as one bare integer."
+    ),
+    (
+        "An observatory captured {a} exposures on one night and {b} on "
+        "another. State the combined exposure count, number only."
+    ),
+    (
+        "A ferry transported {a} vehicles eastbound and {b} westbound. "
+        "How many vehicles did it transport in total? Return only digits."
+    ),
+    (
+        "A pharmacy prepared {a} doses in the morning and {b} in the evening. "
+        "Report the full dose count with no words."
+    ),
+    (
+        "A drone saved {a} photographs on its first flight and {b} on its "
+        "second. How many photographs were saved? Output the integer alone."
+    ),
+    (
+        "A theater sold {a} balcony tickets and {b} floor tickets. "
+        "Give the total tickets sold, using only a numeral."
+    ),
+    (
+        "A laboratory incubated {a} cultures, then started {b} additional "
+        "cultures. What is the culture count now? Number only."
+    ),
+    (
+        "A canal moved {a} boats before noon and {b} after noon. "
+        "State the complete boat count as digits and nothing else."
+    ),
+    (
+        "A backup copied {a} files from one drive and {b} from another. "
+        "How many files were copied altogether? Reply with one integer."
+    ),
+)
+
+PHASE7_AUDIT3_NEGATIVE_FAMILIES = (
+    "Decrease {a} by {b}; print the resulting signed integer.",
+    "Square {a} and then append the unchanged label {b}.",
+    "Multiply {a} with {b}; answer solely with their product.",
+    "Find the greatest common divisor of {a} and {b}.",
+    "Which value is nearer to one hundred, {a} or {b}? Return that value.",
+    "Does {a} divide {b} evenly? Respond yes or no.",
+    "Display {a} and {b} separated by a forward slash, without arithmetic.",
+    "Concatenate {a} after {b} as text, with no numeric operation.",
+    "Repeat the two inventory codes {a} and {b} in their original order.",
+    'Copy the literal sentence "{a} added to {b}" without solving it.',
+    "Reject the proposal to total {a} and {b}; respond only rejected.",
+    "Explain column addition using {a} and {b}, but stop before the answer.",
+    "Could the sum of {a} and {b} overflow one byte? Do not calculate it.",
+    "Identify the operator in {a} + {b}, leaving the expression untouched.",
+    "Interpret {a} and {b} as highway route labels and repeat both labels.",
+    "Calculate the harmonic mean of {a} and {b}, not their total.",
+    "How many decimal places appear in {a} and {b}? Do not combine them.",
+    "Rotate the digits of {a} left once, then print {b} separately.",
+    "Choose the operand with fewer digits: {a} or {b}.",
+    "State whether {a} and {b} are congruent modulo two.",
+)
+
 
 def build_phase7_audit_examples(
     *,
@@ -309,4 +419,47 @@ def phase7_audit2_prior_family_sets() -> tuple[set[str], set[str]]:
         PHASE7_AUDIT_ADDITION_FAMILIES + PHASE7_AUDIT_WORD_FAMILIES
     )
     prior_negative.update(PHASE7_AUDIT_NEGATIVE_FAMILIES)
+    return prior_positive, prior_negative
+
+
+def build_phase7_audit3_examples(
+    *,
+    symbolic_count: int = 30,
+    word_count: int = 30,
+    negative_count: int = 60,
+) -> list[SemanticPromptExample]:
+    return (
+        make_semantic_addition_examples(
+            count=symbolic_count,
+            min_digits=1,
+            max_digits=4,
+            seed=13_401,
+            split="phase7_audit3_symbolic",
+            families=PHASE7_AUDIT3_ADDITION_FAMILIES,
+        )
+        + make_semantic_addition_examples(
+            count=word_count,
+            min_digits=1,
+            max_digits=4,
+            seed=13_402,
+            split="phase7_audit3_word",
+            families=PHASE7_AUDIT3_WORD_FAMILIES,
+        )
+        + make_semantic_routing_negatives(
+            count=negative_count,
+            min_digits=1,
+            max_digits=4,
+            seed=13_403,
+            split="phase7_audit3_negative",
+            families=PHASE7_AUDIT3_NEGATIVE_FAMILIES,
+        )
+    )
+
+
+def phase7_audit3_prior_family_sets() -> tuple[set[str], set[str]]:
+    prior_positive, prior_negative = phase7_audit2_prior_family_sets()
+    prior_positive.update(
+        PHASE7_AUDIT2_ADDITION_FAMILIES + PHASE7_AUDIT2_WORD_FAMILIES
+    )
+    prior_negative.update(PHASE7_AUDIT2_NEGATIVE_FAMILIES)
     return prior_positive, prior_negative
