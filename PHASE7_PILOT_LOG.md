@@ -428,3 +428,53 @@ runs remain part of the record. No confirmatory protocol is frozen.
   `phase7_results/sequence_layer16_training_seed_13203.json`.
 - Decision: freeze one new shared holdout and evaluate all three checkpoints
   without per-seed threshold or architecture changes.
+
+## 2026-07-26 — Frozen three-seed shared holdout
+
+- Froze `PHASE7_MULTISEED_PROTOCOL.md`, all three checkpoint hashes, 20 new
+  positive prompt families, 20 new adversarial negative families, three data
+  seeds, and five compound engineering gates before any audit-3 generation.
+- Every independently learned interface produced the same addition result:
+  - mathematical and format exact: 58/60;
+  - direct additions: 30/30;
+  - word problems: 28/30;
+  - first-step route active: 60/60;
+  - exact operands: 58/60;
+  - exact calculator trajectory: 58/60;
+  - calculator-result ablation exact: 3/60;
+  - paired causal drop: 55/60.
+- For every seed, all 58 active-route examples with exact operands produced
+  the exact deterministic digit-plus-EOS trajectory and exact formatted
+  answer. The two common addition failures were operand-framing failures, not
+  incorrect deterministic addition.
+- Adversarial negative results:
+  - seed 13,201: 6/60 false routes, 54/60 token-exact preservation;
+  - seed 13,202: 5/60 false routes, 55/60 token-exact preservation;
+  - seed 13,203: 6/60 false routes, 54/60 token-exact preservation.
+- Gate disposition:
+  - passed per-seed and mean addition accuracy;
+  - passed per-seed operand recovery;
+  - passed per-seed causal ablation;
+  - failed negative routing and preservation;
+  - passed exact execution conditional on an active route and exact operands.
+- The compound result therefore passed four of five gates and is not reported
+  as an overall protocol success. The narrow calculator-neuron mechanism
+  replicated; robust intent routing did not.
+- First-step route confidence overlapped across classes. The minimum positive
+  probabilities were 0.2944, 0.2683, and 0.4426, while maximum negative
+  probabilities were 0.9237, 0.8429, and 0.8277. A cutoff strict enough to
+  remove the false routes would suppress valid additions, so threshold tuning
+  alone is not a valid repair.
+- Raw records and SHA-256 hashes:
+  - `phase7_results/multiseed_audit3_seed_13201.json`:
+    `0ac65f555403cb11e46a8a8587530fe34776d580cc9ee13236332b176dad1104`;
+  - `phase7_results/multiseed_audit3_seed_13202.json`:
+    `84f9423a4cd199cd4f577abdc300f4c56b3842a95803fc7bbea67f6e25bd6fc0`;
+  - `phase7_results/multiseed_audit3_seed_13203.json`:
+    `9e87c3d8dc22a3086a04ef4b545e19fcc18cf2ed82fbafe37ffc2ef95e707b92`.
+- Compact analysis:
+  `phase7_results/multiseed_audit3_summary.json`.
+- Decision: retain the failed router gate. Train only the two route rows on a
+  broader set of now-consumed semantic negatives, leave the other 25,088
+  tensor values fixed except those 1,792 route weights, then define a new
+  exact-string-disjoint audit before evaluating the revised router.

@@ -1,7 +1,9 @@
 # Phase 7 Development Architecture: In-Place Deterministic Neuron Implant
 
-Status: development-only. A causal pilot is positive, but the core hypothesis
-is not yet established across fresh prompt families and independent seeds.
+Status: working narrow prototype. The causal calculator result replicated
+across three independent learned interfaces and a shared fresh holdout, but
+the predeclared compound gate failed because adversarial intent routing was
+not reliable enough.
 
 ## Question
 
@@ -17,7 +19,7 @@ inside one existing Qwen MLP intermediate activation tensor.
 
 ## In-place interface
 
-Qwen2.5-0.5B has 4,864 intermediate MLP channels per decoder layer. The first
+Qwen2.5-0.5B has 4,864 intermediate MLP channels per decoder layer. An early
 anchor-token prototype selected 108 low-use coordinates:
 
 - 2 route channels: `OFF`, `ADD`;
@@ -37,59 +39,60 @@ All 4,756 unselected channels retain the pretrained Qwen computation. The
 selected pretrained channels are zeroed, and the frozen implant generates
 their replacement activations.
 
-That anchor-token prototype recovered the route and answer position but could
-not linearly recover both complete operands from one residual vector. The
-current sequence-distributed implementation therefore occupies 34 channels at
-decoder layer 23:
+That prototype recovered the route and answer position but could not linearly
+recover both complete operands from one residual vector. A later
+sequence-distributed prototype occupied 34 channels at decoder layer 23.
+Held-out failure analysis and a depth probe showed that number identity was
+substantially clearer earlier in Qwen. The current implementation therefore
+occupies 28 existing channels at decoder layer 16:
 
 - 2 route channels: `OFF`, `ADD`;
 - 3 per-token roles: `NONE`, operand A, operand B;
 - 11 per-token digit values: `0`-`9`, `NON_DIGIT`;
-- 6 result positions: positions zero through four plus `EOS`;
 - 12 result channels: `0`-`9`, `EOS`, `PAD`.
 
 Digit and role values are read at the existing number-bearing token positions.
-The deterministic circuit scans those neuron activations, reconstructs the two
-operands, adds them exactly, and writes the requested result symbol back
-through the result channels. This reduces the learned replacement weights to
-30,464: 19,712 input-row weights and 10,752 result-column weights. The
-calculator itself still has zero learned parameters, and neither the 4,864-wide
-MLP activation nor the 896-wide residual stream grows.
+Both classifiers must agree, and the digit class must exceed 0.90 learned
+confidence, before a token enters an operand register. The deterministic
+circuit scans those neuron activations, reconstructs the two operands, adds
+them exactly, and writes the requested result symbol back through the result
+channels. A fixed response-local counter selects successive answer digits.
+The current design contains 25,088 learned replacement weights: 14,336 input
+row weights and 10,752 result-column weights. The calculator itself still has
+zero learned parameters, and neither the 4,864-wide MLP activation nor the
+896-wide residual stream grows.
 
 ## Frozen execution
 
 At an eligible generated token, the current sequence implant:
 
-1. reads the categorical route, operand, and answer-position activations;
+1. reads the categorical route, role, and digit activations;
 2. takes hard categorical decisions;
 3. executes the existing zero-parameter decimal ripple-carry addition cell;
-4. selects the exact result symbol for the internally represented answer
-   position;
+4. selects the exact result symbol for the response-local counter position;
 5. writes a one-hot activation into the twelve result coordinates;
 6. returns through the selected columns of Qwen's ordinary MLP down projection.
 
 Generation latches the first routing decision for the current response. If it
 is `OFF`, every selected channel contributes exactly its original pretrained
-value for the whole response. If it is `ADD`, the calculator may emit one
-symbol at each successive result position. A post-audit variant advances that
-result position with a fixed counter inside the calculator protocol instead of
-asking a learned row to infer the position independently at every token. This
-response-local state prevents ordinary text generated later in the response
-from accidentally turning the calculator on and prevents repeated/skipped
-result digits. It is control-state scaffolding in the present implementation,
-not yet recurrent state encoded entirely in Qwen's residual stream.
+value for the whole response. If it is `ADD`, the calculator emits one symbol
+at each successive result position. The latch prevents ordinary text generated
+later in the response from accidentally turning the calculator on, and the
+counter prevents repeated or skipped result digits. Both are control-state
+scaffolding in the present implementation, not yet recurrent state encoded
+entirely in Qwen's residual stream.
 
 The deterministic cell receives no gradient and has no learned parameters.
-Operand extraction, routing, answer-position tracking, and result
-interpretation remain learned and are reported separately.
+Operand extraction, routing, and result interpretation remain learned and are
+reported separately.
 
 ## Training ladder
 
 The hard calculator blocks gradients between its result and input interface.
 The first development ladder therefore uses explicit scaffolding:
 
-1. Train the selected input rows on route, typed operand, and answer-position
-   supervision from frozen Qwen residuals.
+1. Train the selected input rows on route and typed operand supervision from
+   frozen Qwen residuals.
 2. Train the selected result columns through the normal language-model loss,
    teacher-forcing the typed interface while leaving the calculator exact.
 3. Remove teacher forcing and evaluate the hard predicted interface
@@ -102,7 +105,26 @@ enough information to drive the implanted activation ABI. It does not by
 itself establish that unsupervised language-model loss would discover the ABI
 from scratch.
 
-## Development evidence required
+## Current shared-holdout evidence
+
+Three independently initialized 25,088-weight interfaces received the same
+60 fresh additions and 60 fresh adversarial negatives. Each seed produced:
+
+- 58/60 exact additions;
+- 30/30 direct additions and 28/30 word problems;
+- 58/60 exact operand pairs;
+- 58/58 exact digit-plus-EOS trajectories and formatted answers conditional
+  on an active route and exact operands;
+- 3/60 exact answers after calculator-result ablation, a paired causal drop of
+  55/60.
+
+The adversarial negative result did not meet the frozen gate. The three seeds
+falsely routed 6/60, 5/60, and 6/60 prompts and therefore preserved only
+54/60, 55/60, and 54/60 generations token-for-token. Four of five compound
+engineering gates passed. This supports the narrow causal implant mechanism,
+but not a claim of robust arbitrary-prompt routing.
+
+## Evidence tracked
 
 - Interface:
   - exact ordered operand recovery;
@@ -125,8 +147,10 @@ from scratch.
 
 ## Claim boundary
 
-A positive pilot would show that a pretrained transformer can learn and use an
-in-place deterministic activation subspace under supervised interface
-scaffolding. It would not yet show spontaneous discovery during pretraining,
-unlimited computation, four-operation reasoning, or general scientific
-validity.
+The result shows that this pretrained transformer can learn and causally use
+an in-place deterministic activation subspace under supervised interface
+scaffolding. It does not show spontaneous discovery during pretraining,
+unlimited or arbitrary chain-of-thought computation, four-operation reasoning,
+or robust general-purpose intent routing. The route latch and result counter
+also remain external generation-runtime state, so this version is not yet the
+fully recurrent “calculator as an ordinary neuron” end state.

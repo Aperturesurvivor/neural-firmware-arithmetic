@@ -186,3 +186,17 @@ def test_gated_implant_exactly_preserves_base_when_route_is_off() -> None:
         )
     )
     assert torch.allclose(implant(hidden), base(hidden), atol=1e-6)
+
+
+def test_sequence_implant_exactly_preserves_base_without_runtime_context() -> None:
+    torch.manual_seed(11)
+    layout = SequenceImplantLayout(max_digits=2)
+    base = TinyMLP(intermediate_size=64)
+    implant = SequenceNeuronImplantMLP(
+        base,
+        torch.arange(layout.total_width),
+        layout=layout,
+    )
+    hidden = torch.randn(2, 4, 8)
+    assert implant.runtime_context is None
+    assert torch.allclose(implant(hidden), base(hidden), atol=1e-6)

@@ -1,0 +1,219 @@
+{
+  "protocol": "PHASE7_MULTISEED_PROTOCOL.md",
+  "status": "complete",
+  "shared_holdout_sha256": "b205a774c3603158616e39b2382be4b94f4cbf7cab02f95f90040e6438fe252f",
+  "per_seed": [
+    {
+      "seed": 13201,
+      "result_path": "phase7_results/multiseed_audit3_seed_13201.json",
+      "result_sha256": "0ac65f555403cb11e46a8a8587530fe34776d580cc9ee13236332b176dad1104",
+      "checkpoint_path": "phase7_artifacts/sequence_layer16_confident_v1/neuron_implant_seed_13201.pt",
+      "checkpoint_sha256": "9dba639d127769b08579b2e1deabdfd3d232e06dcf2ea6f843f7b9963855785c",
+      "learned_parameters": 25088,
+      "calculator_learned_parameters": 0,
+      "addition": {
+        "examples": 60,
+        "mathematical_exact": 58,
+        "format_exact": 58,
+        "direct_exact": 30,
+        "word_exact": 28,
+        "route_active": 60,
+        "operands_exact": 58,
+        "trajectory_exact": 58,
+        "ablation_exact": 3,
+        "unpaired_exact_count_difference": 55,
+        "paired_ablation_drop": 55
+      },
+      "conditional_on_route_and_operands": {
+        "examples": 58,
+        "mathematical_exact": 58,
+        "format_exact": 58,
+        "trajectory_exact": 58
+      },
+      "negative": {
+        "examples": 60,
+        "false_routes": 6,
+        "token_preserved": 54
+      },
+      "first_step_route_probability": {
+        "positive_min": 0.2944212555885315,
+        "positive_max": 1.0,
+        "negative_min": 4.4713033275911584e-09,
+        "negative_max": 0.9236942529678345
+      },
+      "gates": {
+        "addition_exact_at_least_51": true,
+        "operands_exact_at_least_57": true,
+        "paired_ablation_drop_at_least_45": true,
+        "false_routes_at_most_2": false,
+        "negative_preserved_at_least_58": false,
+        "conditional_execution_all_exact": true
+      }
+    },
+    {
+      "seed": 13202,
+      "result_path": "phase7_results/multiseed_audit3_seed_13202.json",
+      "result_sha256": "84f9423a4cd199cd4f577abdc300f4c56b3842a95803fc7bbea67f6e25bd6fc0",
+      "checkpoint_path": "phase7_artifacts/sequence_layer16_multiseed/neuron_implant_seed_13202.pt",
+      "checkpoint_sha256": "6cab7608a912d19a26793828352cdffd8783e2e5f6b8bdcad65f5afdf22b6b07",
+      "learned_parameters": 25088,
+      "calculator_learned_parameters": 0,
+      "addition": {
+        "examples": 60,
+        "mathematical_exact": 58,
+        "format_exact": 58,
+        "direct_exact": 30,
+        "word_exact": 28,
+        "route_active": 60,
+        "operands_exact": 58,
+        "trajectory_exact": 58,
+        "ablation_exact": 3,
+        "unpaired_exact_count_difference": 55,
+        "paired_ablation_drop": 55
+      },
+      "conditional_on_route_and_operands": {
+        "examples": 58,
+        "mathematical_exact": 58,
+        "format_exact": 58,
+        "trajectory_exact": 58
+      },
+      "negative": {
+        "examples": 60,
+        "false_routes": 5,
+        "token_preserved": 55
+      },
+      "first_step_route_probability": {
+        "positive_min": 0.26834920048713684,
+        "positive_max": 1.0,
+        "negative_min": 1.1904538865792347e-07,
+        "negative_max": 0.8429003357887268
+      },
+      "gates": {
+        "addition_exact_at_least_51": true,
+        "operands_exact_at_least_57": true,
+        "paired_ablation_drop_at_least_45": true,
+        "false_routes_at_most_2": false,
+        "negative_preserved_at_least_58": false,
+        "conditional_execution_all_exact": true
+      }
+    },
+    {
+      "seed": 13203,
+      "result_path": "phase7_results/multiseed_audit3_seed_13203.json",
+      "result_sha256": "9e87c3d8dc22a3086a04ef4b545e19fcc18cf2ed82fbafe37ffc2ef95e707b92",
+      "checkpoint_path": "phase7_artifacts/sequence_layer16_multiseed/neuron_implant_seed_13203.pt",
+      "checkpoint_sha256": "cbf84806b08f0804cd0c508330e0f5f9fdfa72b41c800a37aef616c682fb58dd",
+      "learned_parameters": 25088,
+      "calculator_learned_parameters": 0,
+      "addition": {
+        "examples": 60,
+        "mathematical_exact": 58,
+        "format_exact": 58,
+        "direct_exact": 30,
+        "word_exact": 28,
+        "route_active": 60,
+        "operands_exact": 58,
+        "trajectory_exact": 58,
+        "ablation_exact": 3,
+        "unpaired_exact_count_difference": 55,
+        "paired_ablation_drop": 55
+      },
+      "conditional_on_route_and_operands": {
+        "examples": 58,
+        "mathematical_exact": 58,
+        "format_exact": 58,
+        "trajectory_exact": 58
+      },
+      "negative": {
+        "examples": 60,
+        "false_routes": 6,
+        "token_preserved": 54
+      },
+      "first_step_route_probability": {
+        "positive_min": 0.44263890385627747,
+        "positive_max": 1.0,
+        "negative_min": 2.180653879690908e-08,
+        "negative_max": 0.8276746869087219
+      },
+      "gates": {
+        "addition_exact_at_least_51": true,
+        "operands_exact_at_least_57": true,
+        "paired_ablation_drop_at_least_45": true,
+        "false_routes_at_most_2": false,
+        "negative_preserved_at_least_58": false,
+        "conditional_execution_all_exact": true
+      }
+    }
+  ],
+  "aggregate_mean_min_max": {
+    "addition": {
+      "mathematical_exact": {
+        "mean": 58,
+        "min": 58,
+        "max": 58
+      },
+      "format_exact": {
+        "mean": 58,
+        "min": 58,
+        "max": 58
+      },
+      "direct_exact": {
+        "mean": 30,
+        "min": 30,
+        "max": 30
+      },
+      "word_exact": {
+        "mean": 28,
+        "min": 28,
+        "max": 28
+      },
+      "route_active": {
+        "mean": 60,
+        "min": 60,
+        "max": 60
+      },
+      "operands_exact": {
+        "mean": 58,
+        "min": 58,
+        "max": 58
+      },
+      "trajectory_exact": {
+        "mean": 58,
+        "min": 58,
+        "max": 58
+      },
+      "ablation_exact": {
+        "mean": 3,
+        "min": 3,
+        "max": 3
+      },
+      "paired_ablation_drop": {
+        "mean": 55,
+        "min": 55,
+        "max": 55
+      }
+    },
+    "negative": {
+      "false_routes": {
+        "mean": 5.666666666666667,
+        "min": 5,
+        "max": 6
+      },
+      "token_preserved": {
+        "mean": 54.333333333333336,
+        "min": 54,
+        "max": 55
+      }
+    }
+  },
+  "gates": {
+    "1_addition_accuracy": true,
+    "2_operand_recovery": true,
+    "3_causal_ablation": true,
+    "4_negative_routing_and_preservation": false,
+    "5_conditional_deterministic_execution": true
+  },
+  "passed_gate_count": 4,
+  "passed_all_gates": false,
+  "interpretation": "Narrow calculator causality and conditional execution replicated, but the predeclared compound hypothesis failed because adversarial negative routing and token preservation missed gate 4."
+}

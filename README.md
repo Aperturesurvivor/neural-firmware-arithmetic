@@ -218,6 +218,32 @@ low-importance MLP activation subspace with a frozen calculator-neuron bank,
 then fine-tune Qwen's surrounding weights so mathematical representations
 naturally organize around those neuron-shaped deterministic activations.
 
+## In-place deterministic-neuron study
+
+Phase 7 implements that follow-up inside 28 existing coordinates of Qwen's
+4,864-wide layer-16 MLP. Sixteen learned route/role/digit coordinates feed a
+frozen zero-parameter addition circuit; twelve deterministic result
+coordinates return the answer through Qwen's ordinary MLP down projection and
+all remaining decoder layers. The model width is unchanged. The learned input
+and output interface contains 25,088 weights.
+
+On a shared fresh holdout, three independently initialized interfaces each
+scored 58/60 exact additions. Each reached 58/58 exact outputs conditional on
+recovering the intended operands, while result-channel ablation reduced every
+seed to 3/60. This is strong replicated causal evidence for the narrow
+calculator-neuron mechanism.
+
+The compound protocol was not an overall success. The three routers falsely
+activated on 6/60, 5/60, and 6/60 adversarial non-addition prompts, missing the
+strict preservation gate. The current latch and answer-position counter also
+remain generation-runtime state, and the prototype performs one addition per
+response rather than arbitrary recurrent calls.
+
+See [`PHASE7_MULTISEED_RESULT.md`](PHASE7_MULTISEED_RESULT.md) for the concise
+result, [`PHASE7_MULTISEED_PROTOCOL.md`](PHASE7_MULTISEED_PROTOCOL.md) for the
+frozen gates, and [`PHASE7_PILOT_LOG.md`](PHASE7_PILOT_LOG.md) for the complete
+development record.
+
 ## Reproduction
 
 ```bash

@@ -419,7 +419,7 @@ class SequenceNeuronImplantMLP(nn.Module):
         base_output, selected_base_contribution = self._base_components(hidden)
         context = self.runtime_context
         if context is None or not context.enabled:
-            return base_output
+            return base_output + selected_base_contribution
         if context.eligible_mask.shape != hidden.shape[:-1]:
             raise ValueError("eligibility mask does not match MLP input")
         if context.sequence_mask.shape != hidden.shape[:-1]:
