@@ -8,9 +8,7 @@ for the natural-language routing and same-prompt comparison experiment.
 Compile from the repository root:
 
 ```bash
-python3 /Users/josiahwilson/.codex/plugins/cache/openai-bundled/latex/0.2.4/scripts/compile_latex.py \
-  "$PWD/paper_phase4/main.tex" \
-  --output-directory "$PWD/paper_phase4/build"
+tectonic paper_phase4/main.tex --outdir paper_phase4/build
 cp paper_phase4/build/main.pdf \
   paper_phase4/natural-language-deterministic-arithmetic.pdf
 ```

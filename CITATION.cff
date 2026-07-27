@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "If you use this research artifact, please cite the repository and its Phase 7 report."
+title: "Neural Firmware Arithmetic"
+type: software
+authors:
+  - family-names: "Wilson"
+    given-names: "Josiah"
+abstract: "Controlled experiments on frozen deterministic arithmetic computation embedded in small language-model activation pathways."
+version: "0.7.0"
+date-released: "2026-07-27"
+repository-code: "https://github.com/Aperturesurvivor/neural-firmware-arithmetic"
+url: "https://josiahwilson.me/projects/neural-firmware/"

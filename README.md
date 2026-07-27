@@ -10,6 +10,17 @@ rather than learned imperfectly from examples. OpenAI Codex is assisting with
 experimental design, implementation, execution, analysis, and manuscript
 preparation under Josiah's direction.
 
+**Status:** independent research artifact, released for inspection and
+replication. The reports are not peer reviewed, and the repository does not
+claim general mathematical reasoning or historical priority for integrated
+calculators. No open-source license has been granted yet.
+
+The current consolidated report is
+[`paper_phase7/deterministic-neurons-qwen.pdf`](paper_phase7/deterministic-neurons-qwen.pdf).
+It includes the literal in-place deterministic-neuron experiment, the
+untouched-Qwen comparison, negative results, and the remaining gap to
+arbitrary recurrent calculator use.
+
 ## First study
 
 The study compares:
