@@ -24,11 +24,14 @@ move toward residual-native state and repeated deterministic invocation.
 Broader scientific and engineering mechanisms can follow only after those
 foundations survive new frozen audits.
 
-Phase 9 shows that count-matched hard semantic contrasts alone do not make the
-frozen TinyLlama linear interface robust. The immediate question is now
-interface capacity and representation accessibility: whether a small nonlinear
-readout or limited adaptation of the surrounding representation can preserve
-intent recall, operation specificity, and exact operand typing simultaneously.
+Phase 9 showed that count-matched hard semantic contrasts alone did not make
+the frozen TinyLlama linear interface robust. Phase 10 then found that a
+rank-four transform local to the implant interface improved exactness over
+linear by +9, +7, and +18 prompts across three frozen seeds while preserving
+all 600 adversarial outputs. An exactly input-budget-matched 16-unit nonlinear
+interface underperformed linear by 4–6 prompts per seed. Oracle routing still
+reached 89–90% while natural exactness reached only 42–53%, so semantic routing
+remains the immediate problem.
 
 ## Josiah's intended architecture
 
@@ -158,12 +161,12 @@ averaged only 60\% exact, equal to generic continuation and below frozen Phase
 8. All protocol-defined valid executions remained exact and all correct hard
 answers disappeared under result ablation.
 
-Those results narrow the next problem further: determine whether the failure
-comes from linear interface capacity, inaccessible TinyLlama representations,
-the selected layer, or the base model itself. A separately frozen experiment
-should compare the present linear interface, a parameter-matched nonlinear
-interface, limited surrounding-layer adaptation, and oracle-route operand
-typing before adding operations or recurrent state.
+Phase 10 narrowed the diagnosis: limited interface-local representation
+adaptation helps, but simple matched nonlinear capacity does not, and neither
+repairs route recall. The next controlled work should isolate routing from
+operand typing architecturally—potentially with a dedicated semantic router,
+another layer or pooled representation, and preservation-constrained training—
+before adding operations or recurrent state.
 
 ## Success criterion
 

@@ -1,0 +1,98 @@
+{
+  "status": "phase10_posthoc_analysis_complete",
+  "representation_vs_linear": {
+    "linear_exact": 107,
+    "representation_exact": 141,
+    "per_seed": {
+      "16201": {
+        "representation_wins": 11,
+        "representation_losses": 2,
+        "ties": 87,
+        "two_sided_exact_mcnemar_p": 0.0224609375
+      },
+      "16202": {
+        "representation_wins": 8,
+        "representation_losses": 1,
+        "ties": 91,
+        "two_sided_exact_mcnemar_p": 0.0390625
+      },
+      "16203": {
+        "representation_wins": 18,
+        "representation_losses": 0,
+        "ties": 82,
+        "two_sided_exact_mcnemar_p": 7.62939453125e-06
+      }
+    },
+    "two_way_bootstrap": {
+      "draws": 100000,
+      "seed": 17001,
+      "mean_paired_difference": 0.11333333333333333,
+      "percentile_95_lower": 0.04,
+      "percentile_95_upper": 0.2
+    }
+  },
+  "nonlinear_vs_linear": {
+    "nonlinear_exact": 92,
+    "linear_exact": 107,
+    "two_way_bootstrap": {
+      "draws": 100000,
+      "seed": 17002,
+      "mean_paired_difference": -0.05,
+      "percentile_95_lower": -0.10333333333333333,
+      "percentile_95_upper": -0.0033333333333333335
+    }
+  },
+  "category_summary": {
+    "direct": {
+      "linear": {
+        "exact": 48,
+        "total": 150,
+        "rate": 0.32
+      },
+      "nonlinear": {
+        "exact": 45,
+        "total": 150,
+        "rate": 0.3
+      },
+      "linear_representation": {
+        "exact": 52,
+        "total": 150,
+        "rate": 0.3466666666666667
+      }
+    },
+    "word": {
+      "linear": {
+        "exact": 30,
+        "total": 75,
+        "rate": 0.4
+      },
+      "nonlinear": {
+        "exact": 30,
+        "total": 75,
+        "rate": 0.4
+      },
+      "linear_representation": {
+        "exact": 44,
+        "total": 75,
+        "rate": 0.5866666666666667
+      }
+    },
+    "distractor": {
+      "linear": {
+        "exact": 29,
+        "total": 75,
+        "rate": 0.38666666666666666
+      },
+      "nonlinear": {
+        "exact": 17,
+        "total": 75,
+        "rate": 0.22666666666666666
+      },
+      "linear_representation": {
+        "exact": 45,
+        "total": 75,
+        "rate": 0.6
+      }
+    }
+  }
+}

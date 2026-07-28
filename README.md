@@ -16,12 +16,41 @@ replication. The reports are not peer reviewed, and the repository does not
 claim general mathematical reasoning or historical priority for integrated
 calculators. No open-source license has been granted yet.
 
-The current interface-hardening report is
+The newest completed experiment is summarized in
+[`PHASE10_EXECUTIVE_SUMMARY.md`](PHASE10_EXECUTIVE_SUMMARY.md). The current
+compiled interface-hardening report remains
 [`paper_phase9/deterministic-neurons-interface-hardening.pdf`](paper_phase9/deterministic-neurons-interface-hardening.pdf).
 It documents the frozen TinyLlama semantic-curriculum study, including its
 negative compound result and disclosed gate-bookkeeping correction. The
 earlier consolidated Qwen report remains
 [`paper_phase7/deterministic-neurons-qwen.pdf`](paper_phase7/deterministic-neurons-qwen.pdf).
+
+## Phase 10 at a glance
+
+Phase 10 compared the existing linear TinyLlama implant interface with an
+exactly input-budget-matched 16-unit nonlinear bottleneck and a linear
+interface augmented by a rank-four representation adapter local to the
+implant. The calculator, result decoder, layer, activation coordinates, base
+model, and runtime remained fixed.
+
+On a new sealed 100-positive/200-negative audit, linear reached 37/100,
+35/100, and 35/100 exact. The local-representation condition reached 46/100,
+42/100, and 53/100: paired gains of +9, +7, and +18. It produced zero false
+routes across all 600 negative seed-prompt evaluations, preserved every
+negative output token-for-token, and fell to 0/100 under result ablation.
+Oracle routing reached 89/100, 90/100, and 89/100.
+
+All frozen representation-access gates passed. The matched nonlinear condition
+reached only 31/100, 30/100, and 31/100, trailing linear in every seed, so its
+separate hypothesis failed.
+
+The narrow result is that a small interface-local transform improved access to
+frozen TinyLlama representations without collateral route-off changes. It did
+not make the system reliable: natural exactness remained 42–53%, far below
+oracle-route exactness. Semantic routing remains the primary bottleneck. See
+the [`Phase 10 summary`](PHASE10_EXECUTIVE_SUMMARY.md), frozen
+[`protocol`](PHASE10_INTERFACE_CAPACITY_PROTOCOL.md), and
+[`lab notebook`](PHASE10_LAB_NOTEBOOK.md).
 
 ## Phase 9 at a glance
 
