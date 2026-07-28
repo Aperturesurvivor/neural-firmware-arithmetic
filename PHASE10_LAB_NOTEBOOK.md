@@ -119,7 +119,7 @@ and -4; the nonlinear hypothesis failed.
 
 ## 2026-07-28 — integrity and post-hoc analysis
 
-- Independent completion audit passed 93/93 checks.
+- The initial independent completion audit passed 93/93 checks.
 - Verified manifest and evaluated rows, all checkpoint/source hashes,
   bit-identical result decoders, parameter counts, zero-parameter calculators,
   row-level metrics, conditional mechanisms, ablations, and gate
@@ -129,3 +129,23 @@ and -4; the nonlinear hypothesis failed.
 - Post-hoc nonlinear minus linear: mean -5.0 points, interval -10.33 to -0.33.
 - Representation gains were concentrated in word problems and
   irrelevant-number distractors.
+
+## 2026-07-28 — completion and environment audit
+
+- Expanded the independent verifier to cover the full frozen protocol,
+  including Git freeze order, dataset and family disjointness, operand-pair
+  disjointness, training schedules, source-seed mappings, model and implant
+  invariants, raw-output metric recomputation, generation bounds, category
+  summaries, retained negative development runs, and report consistency. The
+  expanded audit passed 299/299 checks.
+- Regenerated the post-hoc analysis byte-identically and reran the full test
+  suite: 102 tests passed.
+- Added `phase10_results/environment_audit.json`. This is explicitly a post-hoc
+  provenance reconstruction rather than contemporaneous telemetry. It also
+  records hashes and sizes for all four frozen feature caches used by the
+  committed training implementation.
+- The committed `uv.lock` and `pyproject.toml` are byte-identical across the
+  frozen training and confirmation commits. The unchanged project environment
+  reports Python 3.12.12, PyTorch 2.13.0, Transformers 4.57.6, NumPy 2.5.1,
+  macOS 26.5.2 on an Apple M4 Mac mini with 16 GB memory, and an available MPS
+  backend. The committed model loader selects MPS when available.

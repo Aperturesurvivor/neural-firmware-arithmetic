@@ -1,10 +1,12 @@
 {
   "status": "phase10_completion_audit_passed",
-  "checks_passed": 93,
-  "checks_total": 93,
+  "checks_passed": 299,
+  "checks_total": 299,
   "manifest_sha256": "19fbd866613e2e859fdd8bb97e58aae3ed1c87ac1fbe5b209275af1c4e5f1ed1",
   "training_sha256": "4c8e51b67bd8dd8c0e7214cec69419390a4bfeb39c0af946b2e6590263542cdd",
   "confirmation_sha256": "217af560bf8e45943f780f259b06045d86d7a36c6ed679a30cd1aa21234f6de6",
+  "analysis_sha256": "f0d0cd71c857ca9c4ffe0b1c1d8dffb2daef0de439209b9746f875d71625daf1",
+  "environment_sha256": "582dc31c702fdb047c2676f721e01804d3494351ad2ce6d50b768e6f712d068c",
   "representation_gains": [
     9,
     7,
@@ -29,6 +31,78 @@
       "passed": true
     },
     {
+      "name": "analysis_status",
+      "passed": true
+    },
+    {
+      "name": "environment_status_and_scope",
+      "passed": true
+    },
+    {
+      "name": "dependency_hashes",
+      "passed": true
+    },
+    {
+      "name": "dependencies_unchanged_across_runs",
+      "passed": true
+    },
+    {
+      "name": "audited_runtime_matches_dependency_lock",
+      "passed": true
+    },
+    {
+      "name": "audited_mps_selection_matches_committed_loader",
+      "passed": true
+    },
+    {
+      "name": "training_feature_hashes_and_sizes",
+      "passed": true
+    },
+    {
+      "name": "development_feature_manifest_identity",
+      "passed": true
+    },
+    {
+      "name": "committed_training_uses_frozen_feature_sources",
+      "passed": true
+    },
+    {
+      "name": "protocol_path",
+      "passed": true
+    },
+    {
+      "name": "protocol_hash",
+      "passed": true
+    },
+    {
+      "name": "protocol_frozen_content",
+      "passed": true
+    },
+    {
+      "name": "manifest_committed_before_training",
+      "passed": true
+    },
+    {
+      "name": "training_committed_before_confirmation",
+      "passed": true
+    },
+    {
+      "name": "manifest_unchanged_before_confirmation",
+      "passed": true
+    },
+    {
+      "name": "confirmation_has_single_add_commit",
+      "passed": true
+    },
+    {
+      "name": "confirmation_commit_content",
+      "passed": true
+    },
+    {
+      "name": "freeze_training_confirmation_commit_order",
+      "passed": true
+    },
+    {
       "name": "canonical_prompt_hash",
       "passed": true
     },
@@ -45,7 +119,87 @@
       "passed": true
     },
     {
+      "name": "generated_rows_match_manifest",
+      "passed": true
+    },
+    {
+      "name": "manifest_unique_prompts",
+      "passed": true
+    },
+    {
+      "name": "manifest_positive_negative_counts",
+      "passed": true
+    },
+    {
+      "name": "manifest_split_counts",
+      "passed": true
+    },
+    {
+      "name": "manifest_seed_mapping",
+      "passed": true
+    },
+    {
+      "name": "seventy_unique_phase10_families",
+      "passed": true
+    },
+    {
+      "name": "phase10_families_disjoint_from_phase9",
+      "passed": true
+    },
+    {
+      "name": "phase10_operand_pairs_unique",
+      "passed": true
+    },
+    {
+      "name": "phase10_operand_pairs_disjoint_from_phase8_and_phase9",
+      "passed": true
+    },
+    {
+      "name": "phase10_four_digit_operand_limit",
+      "passed": true
+    },
+    {
+      "name": "phase10_answers_are_exact_sums",
+      "passed": true
+    },
+    {
+      "name": "positive_distractors_have_one_five_digit_context_number",
+      "passed": true
+    },
+    {
+      "name": "frozen_model_identity",
+      "passed": true
+    },
+    {
+      "name": "frozen_conditions",
+      "passed": true
+    },
+    {
+      "name": "frozen_training_seeds",
+      "passed": true
+    },
+    {
+      "name": "confirmation_decoding",
+      "passed": true
+    },
+    {
+      "name": "confirmation_counts",
+      "passed": true
+    },
+    {
+      "name": "confirmation_manifest_identity",
+      "passed": true
+    },
+    {
       "name": "training_record_count",
+      "passed": true
+    },
+    {
+      "name": "base_generation_limit",
+      "passed": true
+    },
+    {
+      "name": "base_exact_recomputed",
       "passed": true
     },
     {
@@ -61,11 +215,63 @@
       "passed": true
     },
     {
+      "name": "linear_16201_result_decoder_width",
+      "passed": true
+    },
+    {
+      "name": "linear_16201_source_mapping",
+      "passed": true
+    },
+    {
+      "name": "linear_16201_model_and_stage",
+      "passed": true
+    },
+    {
+      "name": "linear_16201_frozen_implant_location",
+      "passed": true
+    },
+    {
+      "name": "linear_16201_frozen_layout",
+      "passed": true
+    },
+    {
+      "name": "linear_16201_frozen_runtime",
+      "passed": true
+    },
+    {
       "name": "linear_16201_route_temperature",
       "passed": true
     },
     {
       "name": "linear_16201_interface_local",
+      "passed": true
+    },
+    {
+      "name": "linear_16201_condition_architecture",
+      "passed": true
+    },
+    {
+      "name": "linear_16201_training_schedule",
+      "passed": true
+    },
+    {
+      "name": "linear_16201_threshold_only_calibration",
+      "passed": true
+    },
+    {
+      "name": "linear_16201_input_parameter_budget",
+      "passed": true
+    },
+    {
+      "name": "linear_16201_representation_parameter_budget",
+      "passed": true
+    },
+    {
+      "name": "linear_16201_architectural_parameter_count",
+      "passed": true
+    },
+    {
+      "name": "linear_16201_interface_tensor_shapes",
       "passed": true
     },
     {
@@ -77,11 +283,27 @@
       "passed": true
     },
     {
+      "name": "linear_16201_stored_row_metrics_match_raw_outputs",
+      "passed": true
+    },
+    {
+      "name": "linear_16201_generation_limit",
+      "passed": true
+    },
+    {
       "name": "linear_16201_metrics_recompute",
       "passed": true
     },
     {
       "name": "linear_16201_conditional_mechanism",
+      "passed": true
+    },
+    {
+      "name": "linear_16201_oracle_route_forced",
+      "passed": true
+    },
+    {
+      "name": "linear_16201_categories_recompute",
       "passed": true
     },
     {
@@ -97,11 +319,63 @@
       "passed": true
     },
     {
+      "name": "linear_16202_result_decoder_width",
+      "passed": true
+    },
+    {
+      "name": "linear_16202_source_mapping",
+      "passed": true
+    },
+    {
+      "name": "linear_16202_model_and_stage",
+      "passed": true
+    },
+    {
+      "name": "linear_16202_frozen_implant_location",
+      "passed": true
+    },
+    {
+      "name": "linear_16202_frozen_layout",
+      "passed": true
+    },
+    {
+      "name": "linear_16202_frozen_runtime",
+      "passed": true
+    },
+    {
       "name": "linear_16202_route_temperature",
       "passed": true
     },
     {
       "name": "linear_16202_interface_local",
+      "passed": true
+    },
+    {
+      "name": "linear_16202_condition_architecture",
+      "passed": true
+    },
+    {
+      "name": "linear_16202_training_schedule",
+      "passed": true
+    },
+    {
+      "name": "linear_16202_threshold_only_calibration",
+      "passed": true
+    },
+    {
+      "name": "linear_16202_input_parameter_budget",
+      "passed": true
+    },
+    {
+      "name": "linear_16202_representation_parameter_budget",
+      "passed": true
+    },
+    {
+      "name": "linear_16202_architectural_parameter_count",
+      "passed": true
+    },
+    {
+      "name": "linear_16202_interface_tensor_shapes",
       "passed": true
     },
     {
@@ -113,11 +387,27 @@
       "passed": true
     },
     {
+      "name": "linear_16202_stored_row_metrics_match_raw_outputs",
+      "passed": true
+    },
+    {
+      "name": "linear_16202_generation_limit",
+      "passed": true
+    },
+    {
       "name": "linear_16202_metrics_recompute",
       "passed": true
     },
     {
       "name": "linear_16202_conditional_mechanism",
+      "passed": true
+    },
+    {
+      "name": "linear_16202_oracle_route_forced",
+      "passed": true
+    },
+    {
+      "name": "linear_16202_categories_recompute",
       "passed": true
     },
     {
@@ -133,11 +423,63 @@
       "passed": true
     },
     {
+      "name": "linear_16203_result_decoder_width",
+      "passed": true
+    },
+    {
+      "name": "linear_16203_source_mapping",
+      "passed": true
+    },
+    {
+      "name": "linear_16203_model_and_stage",
+      "passed": true
+    },
+    {
+      "name": "linear_16203_frozen_implant_location",
+      "passed": true
+    },
+    {
+      "name": "linear_16203_frozen_layout",
+      "passed": true
+    },
+    {
+      "name": "linear_16203_frozen_runtime",
+      "passed": true
+    },
+    {
       "name": "linear_16203_route_temperature",
       "passed": true
     },
     {
       "name": "linear_16203_interface_local",
+      "passed": true
+    },
+    {
+      "name": "linear_16203_condition_architecture",
+      "passed": true
+    },
+    {
+      "name": "linear_16203_training_schedule",
+      "passed": true
+    },
+    {
+      "name": "linear_16203_threshold_only_calibration",
+      "passed": true
+    },
+    {
+      "name": "linear_16203_input_parameter_budget",
+      "passed": true
+    },
+    {
+      "name": "linear_16203_representation_parameter_budget",
+      "passed": true
+    },
+    {
+      "name": "linear_16203_architectural_parameter_count",
+      "passed": true
+    },
+    {
+      "name": "linear_16203_interface_tensor_shapes",
       "passed": true
     },
     {
@@ -149,11 +491,27 @@
       "passed": true
     },
     {
+      "name": "linear_16203_stored_row_metrics_match_raw_outputs",
+      "passed": true
+    },
+    {
+      "name": "linear_16203_generation_limit",
+      "passed": true
+    },
+    {
       "name": "linear_16203_metrics_recompute",
       "passed": true
     },
     {
       "name": "linear_16203_conditional_mechanism",
+      "passed": true
+    },
+    {
+      "name": "linear_16203_oracle_route_forced",
+      "passed": true
+    },
+    {
+      "name": "linear_16203_categories_recompute",
       "passed": true
     },
     {
@@ -169,11 +527,63 @@
       "passed": true
     },
     {
+      "name": "nonlinear_16201_result_decoder_width",
+      "passed": true
+    },
+    {
+      "name": "nonlinear_16201_source_mapping",
+      "passed": true
+    },
+    {
+      "name": "nonlinear_16201_model_and_stage",
+      "passed": true
+    },
+    {
+      "name": "nonlinear_16201_frozen_implant_location",
+      "passed": true
+    },
+    {
+      "name": "nonlinear_16201_frozen_layout",
+      "passed": true
+    },
+    {
+      "name": "nonlinear_16201_frozen_runtime",
+      "passed": true
+    },
+    {
       "name": "nonlinear_16201_route_temperature",
       "passed": true
     },
     {
       "name": "nonlinear_16201_interface_local",
+      "passed": true
+    },
+    {
+      "name": "nonlinear_16201_condition_architecture",
+      "passed": true
+    },
+    {
+      "name": "nonlinear_16201_training_schedule",
+      "passed": true
+    },
+    {
+      "name": "nonlinear_16201_threshold_only_calibration",
+      "passed": true
+    },
+    {
+      "name": "nonlinear_16201_input_parameter_budget",
+      "passed": true
+    },
+    {
+      "name": "nonlinear_16201_representation_parameter_budget",
+      "passed": true
+    },
+    {
+      "name": "nonlinear_16201_architectural_parameter_count",
+      "passed": true
+    },
+    {
+      "name": "nonlinear_16201_interface_tensor_shapes",
       "passed": true
     },
     {
@@ -185,11 +595,27 @@
       "passed": true
     },
     {
+      "name": "nonlinear_16201_stored_row_metrics_match_raw_outputs",
+      "passed": true
+    },
+    {
+      "name": "nonlinear_16201_generation_limit",
+      "passed": true
+    },
+    {
       "name": "nonlinear_16201_metrics_recompute",
       "passed": true
     },
     {
       "name": "nonlinear_16201_conditional_mechanism",
+      "passed": true
+    },
+    {
+      "name": "nonlinear_16201_oracle_route_forced",
+      "passed": true
+    },
+    {
+      "name": "nonlinear_16201_categories_recompute",
       "passed": true
     },
     {
@@ -205,11 +631,63 @@
       "passed": true
     },
     {
+      "name": "nonlinear_16202_result_decoder_width",
+      "passed": true
+    },
+    {
+      "name": "nonlinear_16202_source_mapping",
+      "passed": true
+    },
+    {
+      "name": "nonlinear_16202_model_and_stage",
+      "passed": true
+    },
+    {
+      "name": "nonlinear_16202_frozen_implant_location",
+      "passed": true
+    },
+    {
+      "name": "nonlinear_16202_frozen_layout",
+      "passed": true
+    },
+    {
+      "name": "nonlinear_16202_frozen_runtime",
+      "passed": true
+    },
+    {
       "name": "nonlinear_16202_route_temperature",
       "passed": true
     },
     {
       "name": "nonlinear_16202_interface_local",
+      "passed": true
+    },
+    {
+      "name": "nonlinear_16202_condition_architecture",
+      "passed": true
+    },
+    {
+      "name": "nonlinear_16202_training_schedule",
+      "passed": true
+    },
+    {
+      "name": "nonlinear_16202_threshold_only_calibration",
+      "passed": true
+    },
+    {
+      "name": "nonlinear_16202_input_parameter_budget",
+      "passed": true
+    },
+    {
+      "name": "nonlinear_16202_representation_parameter_budget",
+      "passed": true
+    },
+    {
+      "name": "nonlinear_16202_architectural_parameter_count",
+      "passed": true
+    },
+    {
+      "name": "nonlinear_16202_interface_tensor_shapes",
       "passed": true
     },
     {
@@ -221,11 +699,27 @@
       "passed": true
     },
     {
+      "name": "nonlinear_16202_stored_row_metrics_match_raw_outputs",
+      "passed": true
+    },
+    {
+      "name": "nonlinear_16202_generation_limit",
+      "passed": true
+    },
+    {
       "name": "nonlinear_16202_metrics_recompute",
       "passed": true
     },
     {
       "name": "nonlinear_16202_conditional_mechanism",
+      "passed": true
+    },
+    {
+      "name": "nonlinear_16202_oracle_route_forced",
+      "passed": true
+    },
+    {
+      "name": "nonlinear_16202_categories_recompute",
       "passed": true
     },
     {
@@ -241,11 +735,63 @@
       "passed": true
     },
     {
+      "name": "nonlinear_16203_result_decoder_width",
+      "passed": true
+    },
+    {
+      "name": "nonlinear_16203_source_mapping",
+      "passed": true
+    },
+    {
+      "name": "nonlinear_16203_model_and_stage",
+      "passed": true
+    },
+    {
+      "name": "nonlinear_16203_frozen_implant_location",
+      "passed": true
+    },
+    {
+      "name": "nonlinear_16203_frozen_layout",
+      "passed": true
+    },
+    {
+      "name": "nonlinear_16203_frozen_runtime",
+      "passed": true
+    },
+    {
       "name": "nonlinear_16203_route_temperature",
       "passed": true
     },
     {
       "name": "nonlinear_16203_interface_local",
+      "passed": true
+    },
+    {
+      "name": "nonlinear_16203_condition_architecture",
+      "passed": true
+    },
+    {
+      "name": "nonlinear_16203_training_schedule",
+      "passed": true
+    },
+    {
+      "name": "nonlinear_16203_threshold_only_calibration",
+      "passed": true
+    },
+    {
+      "name": "nonlinear_16203_input_parameter_budget",
+      "passed": true
+    },
+    {
+      "name": "nonlinear_16203_representation_parameter_budget",
+      "passed": true
+    },
+    {
+      "name": "nonlinear_16203_architectural_parameter_count",
+      "passed": true
+    },
+    {
+      "name": "nonlinear_16203_interface_tensor_shapes",
       "passed": true
     },
     {
@@ -257,11 +803,27 @@
       "passed": true
     },
     {
+      "name": "nonlinear_16203_stored_row_metrics_match_raw_outputs",
+      "passed": true
+    },
+    {
+      "name": "nonlinear_16203_generation_limit",
+      "passed": true
+    },
+    {
       "name": "nonlinear_16203_metrics_recompute",
       "passed": true
     },
     {
       "name": "nonlinear_16203_conditional_mechanism",
+      "passed": true
+    },
+    {
+      "name": "nonlinear_16203_oracle_route_forced",
+      "passed": true
+    },
+    {
+      "name": "nonlinear_16203_categories_recompute",
       "passed": true
     },
     {
@@ -277,11 +839,63 @@
       "passed": true
     },
     {
+      "name": "linear_representation_16201_result_decoder_width",
+      "passed": true
+    },
+    {
+      "name": "linear_representation_16201_source_mapping",
+      "passed": true
+    },
+    {
+      "name": "linear_representation_16201_model_and_stage",
+      "passed": true
+    },
+    {
+      "name": "linear_representation_16201_frozen_implant_location",
+      "passed": true
+    },
+    {
+      "name": "linear_representation_16201_frozen_layout",
+      "passed": true
+    },
+    {
+      "name": "linear_representation_16201_frozen_runtime",
+      "passed": true
+    },
+    {
       "name": "linear_representation_16201_route_temperature",
       "passed": true
     },
     {
       "name": "linear_representation_16201_interface_local",
+      "passed": true
+    },
+    {
+      "name": "linear_representation_16201_condition_architecture",
+      "passed": true
+    },
+    {
+      "name": "linear_representation_16201_training_schedule",
+      "passed": true
+    },
+    {
+      "name": "linear_representation_16201_threshold_only_calibration",
+      "passed": true
+    },
+    {
+      "name": "linear_representation_16201_input_parameter_budget",
+      "passed": true
+    },
+    {
+      "name": "linear_representation_16201_representation_parameter_budget",
+      "passed": true
+    },
+    {
+      "name": "linear_representation_16201_architectural_parameter_count",
+      "passed": true
+    },
+    {
+      "name": "linear_representation_16201_interface_tensor_shapes",
       "passed": true
     },
     {
@@ -293,11 +907,35 @@
       "passed": true
     },
     {
+      "name": "linear_representation_16201_stored_row_metrics_match_raw_outputs",
+      "passed": true
+    },
+    {
+      "name": "linear_representation_16201_generation_limit",
+      "passed": true
+    },
+    {
+      "name": "linear_representation_16201_stored_ablation_metrics_match_raw_outputs",
+      "passed": true
+    },
+    {
+      "name": "linear_representation_16201_ablation_generation_limit",
+      "passed": true
+    },
+    {
       "name": "linear_representation_16201_metrics_recompute",
       "passed": true
     },
     {
       "name": "linear_representation_16201_conditional_mechanism",
+      "passed": true
+    },
+    {
+      "name": "linear_representation_16201_oracle_route_forced",
+      "passed": true
+    },
+    {
+      "name": "linear_representation_16201_categories_recompute",
       "passed": true
     },
     {
@@ -313,11 +951,63 @@
       "passed": true
     },
     {
+      "name": "linear_representation_16202_result_decoder_width",
+      "passed": true
+    },
+    {
+      "name": "linear_representation_16202_source_mapping",
+      "passed": true
+    },
+    {
+      "name": "linear_representation_16202_model_and_stage",
+      "passed": true
+    },
+    {
+      "name": "linear_representation_16202_frozen_implant_location",
+      "passed": true
+    },
+    {
+      "name": "linear_representation_16202_frozen_layout",
+      "passed": true
+    },
+    {
+      "name": "linear_representation_16202_frozen_runtime",
+      "passed": true
+    },
+    {
       "name": "linear_representation_16202_route_temperature",
       "passed": true
     },
     {
       "name": "linear_representation_16202_interface_local",
+      "passed": true
+    },
+    {
+      "name": "linear_representation_16202_condition_architecture",
+      "passed": true
+    },
+    {
+      "name": "linear_representation_16202_training_schedule",
+      "passed": true
+    },
+    {
+      "name": "linear_representation_16202_threshold_only_calibration",
+      "passed": true
+    },
+    {
+      "name": "linear_representation_16202_input_parameter_budget",
+      "passed": true
+    },
+    {
+      "name": "linear_representation_16202_representation_parameter_budget",
+      "passed": true
+    },
+    {
+      "name": "linear_representation_16202_architectural_parameter_count",
+      "passed": true
+    },
+    {
+      "name": "linear_representation_16202_interface_tensor_shapes",
       "passed": true
     },
     {
@@ -329,11 +1019,35 @@
       "passed": true
     },
     {
+      "name": "linear_representation_16202_stored_row_metrics_match_raw_outputs",
+      "passed": true
+    },
+    {
+      "name": "linear_representation_16202_generation_limit",
+      "passed": true
+    },
+    {
+      "name": "linear_representation_16202_stored_ablation_metrics_match_raw_outputs",
+      "passed": true
+    },
+    {
+      "name": "linear_representation_16202_ablation_generation_limit",
+      "passed": true
+    },
+    {
       "name": "linear_representation_16202_metrics_recompute",
       "passed": true
     },
     {
       "name": "linear_representation_16202_conditional_mechanism",
+      "passed": true
+    },
+    {
+      "name": "linear_representation_16202_oracle_route_forced",
+      "passed": true
+    },
+    {
+      "name": "linear_representation_16202_categories_recompute",
       "passed": true
     },
     {
@@ -349,11 +1063,63 @@
       "passed": true
     },
     {
+      "name": "linear_representation_16203_result_decoder_width",
+      "passed": true
+    },
+    {
+      "name": "linear_representation_16203_source_mapping",
+      "passed": true
+    },
+    {
+      "name": "linear_representation_16203_model_and_stage",
+      "passed": true
+    },
+    {
+      "name": "linear_representation_16203_frozen_implant_location",
+      "passed": true
+    },
+    {
+      "name": "linear_representation_16203_frozen_layout",
+      "passed": true
+    },
+    {
+      "name": "linear_representation_16203_frozen_runtime",
+      "passed": true
+    },
+    {
       "name": "linear_representation_16203_route_temperature",
       "passed": true
     },
     {
       "name": "linear_representation_16203_interface_local",
+      "passed": true
+    },
+    {
+      "name": "linear_representation_16203_condition_architecture",
+      "passed": true
+    },
+    {
+      "name": "linear_representation_16203_training_schedule",
+      "passed": true
+    },
+    {
+      "name": "linear_representation_16203_threshold_only_calibration",
+      "passed": true
+    },
+    {
+      "name": "linear_representation_16203_input_parameter_budget",
+      "passed": true
+    },
+    {
+      "name": "linear_representation_16203_representation_parameter_budget",
+      "passed": true
+    },
+    {
+      "name": "linear_representation_16203_architectural_parameter_count",
+      "passed": true
+    },
+    {
+      "name": "linear_representation_16203_interface_tensor_shapes",
       "passed": true
     },
     {
@@ -365,11 +1131,35 @@
       "passed": true
     },
     {
+      "name": "linear_representation_16203_stored_row_metrics_match_raw_outputs",
+      "passed": true
+    },
+    {
+      "name": "linear_representation_16203_generation_limit",
+      "passed": true
+    },
+    {
+      "name": "linear_representation_16203_stored_ablation_metrics_match_raw_outputs",
+      "passed": true
+    },
+    {
+      "name": "linear_representation_16203_ablation_generation_limit",
+      "passed": true
+    },
+    {
       "name": "linear_representation_16203_metrics_recompute",
       "passed": true
     },
     {
       "name": "linear_representation_16203_conditional_mechanism",
+      "passed": true
+    },
+    {
+      "name": "linear_representation_16203_oracle_route_forced",
+      "passed": true
+    },
+    {
+      "name": "linear_representation_16203_categories_recompute",
       "passed": true
     },
     {
@@ -386,6 +1176,42 @@
     },
     {
       "name": "nonlinear_gate_recompute",
+      "passed": true
+    },
+    {
+      "name": "posthoc_condition_totals",
+      "passed": true
+    },
+    {
+      "name": "posthoc_category_summary",
+      "passed": true
+    },
+    {
+      "name": "selected_development_results_retained",
+      "passed": true
+    },
+    {
+      "name": "rejected_shared_mlp_result_retained",
+      "passed": true
+    },
+    {
+      "name": "rejected_route_hardening_retained",
+      "passed": true
+    },
+    {
+      "name": "rejected_fixed_mix_result_retained",
+      "passed": true
+    },
+    {
+      "name": "reports_present",
+      "passed": true
+    },
+    {
+      "name": "report_claim_boundaries",
+      "passed": true
+    },
+    {
+      "name": "checkpoints_remain_out_of_git",
       "passed": true
     }
   ]

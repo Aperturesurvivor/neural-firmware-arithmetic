@@ -102,4 +102,7 @@ See the frozen
 [`Phase 10 lab notebook`](PHASE10_LAB_NOTEBOOK.md), raw
 [`confirmation metrics`](phase10_results/confirmation.json), post-hoc
 [`analysis`](phase10_results/analysis.json), and independent
-[`completion audit`](phase10_results/completion_audit.json).
+[`completion audit`](phase10_results/completion_audit.json). The post-hoc
+[`environment audit`](phase10_results/environment_audit.json) records the
+dependency and host provenance available during final verification, with its
+non-contemporaneous limitation stated explicitly.

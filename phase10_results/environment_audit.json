@@ -1,0 +1,50 @@
+{
+  "status": "phase10_environment_provenance_audited_posthoc",
+  "audit_date": "2026-07-28",
+  "host": {
+    "model": "Mac mini (Mac16,10)",
+    "chip": "Apple M4",
+    "memory_gb": 16,
+    "architecture": "arm64",
+    "operating_system": "macOS 26.5.2",
+    "operating_system_build": "25F84"
+  },
+  "runtime": {
+    "python": "3.12.12",
+    "torch": "2.13.0",
+    "transformers": "4.57.6",
+    "numpy": "2.5.1",
+    "execution_device": "mps"
+  },
+  "dependency_provenance": {
+    "uv_lock_sha256": "8bdccff54487d51c8d491744a047906792f356e6cae75f6b70ca652afaf2c930",
+    "pyproject_sha256": "ff18c7eef3b23269a39a68cc2366047ce103d0d993733b1bd615f8f82ed3ee80",
+    "unchanged_between_training_and_confirmation_commits": true,
+    "training_commit": "ee1ef31349b564f2f72d3d6e126f637827654115",
+    "confirmation_commit": "492491f891363f5b77113672b32d06a739ca7de0"
+  },
+  "training_feature_provenance": {
+    "scope": "Post-hoc hashes of the four frozen feature caches named by the committed training implementation.",
+    "phase8_sequence": {
+      "path": "phase8_artifacts/cache/layer15_full_features.pt",
+      "sha256": "1ed74a9f132edaf45b37c0adcf62310b7ca778c03e1a9ae3ead6a285dc2311aa",
+      "bytes": 374779941
+    },
+    "phase8_first_step_route": {
+      "path": "phase8_artifacts/cache/first_step_route_features.pt",
+      "sha256": "2ee03f929fb035cbaefa381ce270b78198a2555283094a0c9f621b4233d0ea12",
+      "bytes": 23618833
+    },
+    "phase9_hard_contrast": {
+      "path": "phase9_artifacts/cache/interface_features.pt",
+      "sha256": "555a5dc78c18404a5d9feca1e9fcad7ac2a40554d1c480cf97265d86a5a5ea55",
+      "bytes": 953258573
+    },
+    "phase10_development": {
+      "path": "phase10_artifacts/cache/development_features.pt",
+      "sha256": "300499b686c09dfe0799ca8a2b375cdadd53b3f062332c0fc0d0bf34713755e8",
+      "bytes": 50721850
+    }
+  },
+  "scope_note": "This record was reconstructed during the completion audit, not captured as contemporaneous run telemetry. The committed dependency lock and project file are byte-identical across the training and confirmation commits. The current unchanged project environment reports the versions above, and the committed loader selects MPS whenever it is available. This supports the environment record but does not upgrade it to contemporaneous telemetry."
+}
