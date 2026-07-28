@@ -539,12 +539,28 @@ def train_sequence_interface(
     config: SequenceInterfaceTrainConfig,
 ) -> tuple[dict[str, object], dict[str, object]]:
     set_phase7_seed(config.seed)
-    implant.input_rows.requires_grad_(True)
+    implant.input_rows.requires_grad_(
+        implant.interface_kind != "bottleneck_silu"
+    )
     implant.gate_rows.requires_grad_(implant.use_swiglu_interface)
     implant.result_columns.requires_grad_(False)
-    interface_parameters = [implant.input_rows]
+    if implant.interface_kind == "bottleneck_silu":
+        implant.bottleneck_rows.requires_grad_(True)
+        implant.bottleneck_mix.requires_grad_(True)
+        interface_parameters = [
+            implant.bottleneck_rows,
+            implant.bottleneck_mix,
+        ]
+    else:
+        interface_parameters = [implant.input_rows]
     if implant.use_swiglu_interface:
         interface_parameters.append(implant.gate_rows)
+    if implant.representation_rank:
+        implant.representation_down.requires_grad_(True)
+        implant.representation_up.requires_grad_(True)
+        interface_parameters.extend(
+            (implant.representation_down, implant.representation_up)
+        )
     optimizer = torch.optim.AdamW(
         interface_parameters,
         lr=config.learning_rate,
@@ -829,11 +845,14 @@ def generate_sequence_implant(
     preserve_base_when_off: bool = False,
     deterministic_result_step: bool = False,
     latch_operands: bool = False,
+    force_route: int | None = None,
 ) -> dict[str, object]:
+    if force_route not in {None, 0, 1}:
+        raise ValueError("force_route must be None, 0, or 1")
     full_ids = chat_prompt_ids(bundle.tokenizer, prompt)
     generated: list[int] = []
     diagnostics: list[dict[str, object]] = []
-    latched_route: int | None = None
+    latched_route = force_route
     operand_register: dict[str, list[int] | int | bool] | None = None
     for generation_step in range(max_new_tokens):
         input_ids = torch.tensor(

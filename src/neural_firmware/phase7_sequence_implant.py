@@ -8,6 +8,22 @@ from torch import nn
 from neural_firmware.internal_firmware import FrozenTypedAdditionCell
 
 
+def normalized_hadamard(width: int) -> torch.Tensor:
+    """Return a deterministic orthogonal Hadamard matrix."""
+    if width < 1 or width & (width - 1):
+        raise ValueError("Hadamard width must be a positive power of two")
+    matrix = torch.ones(1, 1)
+    while matrix.shape[0] < width:
+        matrix = torch.cat(
+            (
+                torch.cat((matrix, matrix), dim=1),
+                torch.cat((matrix, -matrix), dim=1),
+            ),
+            dim=0,
+        )
+    return matrix / width**0.5
+
+
 @dataclass(frozen=True)
 class SequenceImplantLayout:
     """Compact sequence-distributed typed ABI for the in-place implant."""
@@ -293,8 +309,12 @@ class SequenceNeuronImplantMLP(nn.Module):
         layout: SequenceImplantLayout | None = None,
         output_strength: float = 16.0,
         route_threshold: float = 0.5,
+        route_temperature: float = 1.0,
         digit_threshold: float = 0.0,
         use_swiglu_interface: bool = False,
+        interface_kind: str = "linear",
+        representation_rank: int = 0,
+        adapt_base_mlp: bool = True,
     ) -> None:
         super().__init__()
         self.base_mlp = base_mlp
@@ -320,15 +340,80 @@ class SequenceNeuronImplantMLP(nn.Module):
         self.gate_rows = nn.Parameter(
             torch.empty(self.layout.input_width, hidden_size)
         )
+        if interface_kind not in {
+            "linear",
+            "swiglu",
+            "fixed_mix_silu",
+            "bottleneck_silu",
+        }:
+            raise ValueError(f"unknown sequence interface kind: {interface_kind}")
+        if use_swiglu_interface:
+            if interface_kind != "linear":
+                raise ValueError(
+                    "legacy use_swiglu_interface cannot be combined with "
+                    "interface_kind"
+                )
+            interface_kind = "swiglu"
+        self.interface_kind = interface_kind
         self.result_columns = nn.Parameter(
             torch.zeros(hidden_size, self.layout.result_width)
         )
         nn.init.normal_(self.input_rows, std=hidden_size**-0.5)
         nn.init.normal_(self.gate_rows, std=hidden_size**-0.5)
-        self.use_swiglu_interface = bool(use_swiglu_interface)
+        self.use_swiglu_interface = self.interface_kind == "swiglu"
         self.gate_rows.requires_grad_(self.use_swiglu_interface)
+        if self.interface_kind == "fixed_mix_silu":
+            fixed_mix = normalized_hadamard(self.layout.input_width)
+        else:
+            fixed_mix = torch.empty(0, 0)
+        self.register_buffer("fixed_interface_mix", fixed_mix, persistent=True)
+        if self.interface_kind == "bottleneck_silu":
+            projected_width = hidden_size - self.layout.input_width
+            if projected_width < 1:
+                raise ValueError(
+                    "hidden width must exceed the bottleneck interface width"
+                )
+            self.bottleneck_rows = nn.Parameter(
+                torch.empty(self.layout.input_width, projected_width)
+            )
+            self.bottleneck_mix = nn.Parameter(
+                torch.empty(
+                    self.layout.input_width,
+                    self.layout.input_width,
+                )
+            )
+            nn.init.normal_(
+                self.bottleneck_rows,
+                std=projected_width**-0.5,
+            )
+            nn.init.eye_(self.bottleneck_mix)
+            self.input_rows.requires_grad_(False)
+        else:
+            self.register_parameter("bottleneck_rows", None)
+            self.register_parameter("bottleneck_mix", None)
+        if representation_rank < 0:
+            raise ValueError("representation rank cannot be negative")
+        self.representation_rank = int(representation_rank)
+        self.adapt_base_mlp = bool(adapt_base_mlp)
+        if self.representation_rank:
+            self.representation_down = nn.Parameter(
+                torch.empty(self.representation_rank, hidden_size)
+            )
+            self.representation_up = nn.Parameter(
+                torch.zeros(hidden_size, self.representation_rank)
+            )
+            nn.init.normal_(
+                self.representation_down,
+                std=hidden_size**-0.5,
+            )
+        else:
+            self.register_parameter("representation_down", None)
+            self.register_parameter("representation_up", None)
         self.output_strength = float(output_strength)
         self.route_threshold = float(route_threshold)
+        self.route_temperature = float(route_temperature)
+        if self.route_temperature <= 0:
+            raise ValueError("route temperature must be positive")
         self.digit_threshold = float(digit_threshold)
         if not 0.0 <= self.digit_threshold <= 1.0:
             raise ValueError("digit threshold must be in [0, 1]")
@@ -352,13 +437,44 @@ class SequenceNeuronImplantMLP(nn.Module):
     def set_context(self, context: SequenceImplantContext | None) -> None:
         self.runtime_context = context
 
-    def interface_logits(self, hidden: torch.Tensor) -> SequenceInterface:
+    def adapted_hidden(self, hidden: torch.Tensor) -> torch.Tensor:
+        if self.representation_rank == 0:
+            return hidden
+        residual = nn.functional.linear(
+            hidden.float(),
+            self.representation_down.float(),
+        )
+        residual = nn.functional.silu(residual)
+        residual = nn.functional.linear(
+            residual,
+            self.representation_up.float(),
+        )
+        return hidden + (residual / self.representation_rank).to(hidden.dtype)
+
+    def _interface_logits_from_adapted(
+        self,
+        hidden: torch.Tensor,
+    ) -> SequenceInterface:
         raw = nn.functional.linear(hidden.float(), self.input_rows.float())
-        if self.use_swiglu_interface:
+        if self.interface_kind == "swiglu":
             gate = nn.functional.silu(
                 nn.functional.linear(hidden.float(), self.gate_rows.float())
             )
             raw = gate * raw
+        elif self.interface_kind == "fixed_mix_silu":
+            raw = nn.functional.linear(
+                nn.functional.silu(raw),
+                self.fixed_interface_mix.float(),
+            )
+        elif self.interface_kind == "bottleneck_silu":
+            bottleneck = nn.functional.linear(
+                hidden.float()[..., : self.bottleneck_rows.shape[1]],
+                self.bottleneck_rows.float(),
+            )
+            raw = nn.functional.linear(
+                nn.functional.silu(bottleneck),
+                self.bottleneck_mix.float(),
+            )
         cursor = 0
         route = raw[..., cursor : cursor + self.layout.route_width]
         cursor += self.layout.route_width
@@ -384,8 +500,13 @@ class SequenceNeuronImplantMLP(nn.Module):
             step_logits=step,
         )
 
+    def interface_logits(self, hidden: torch.Tensor) -> SequenceInterface:
+        return self._interface_logits_from_adapted(self.adapted_hidden(hidden))
+
     def hard_interface(self, interface: SequenceInterface) -> HardSequenceInterface:
-        probability = interface.route_logits.softmax(dim=-1)[..., 1]
+        probability = (
+            interface.route_logits / self.route_temperature
+        ).softmax(dim=-1)[..., 1]
         digit_probabilities = interface.digit_logits.softmax(dim=-1)
         digit_probability, digits = digit_probabilities.max(dim=-1)
         digits = torch.where(
@@ -452,15 +573,19 @@ class SequenceNeuronImplantMLP(nn.Module):
         return full_output - selected_contribution, selected_contribution
 
     def forward(self, hidden: torch.Tensor) -> torch.Tensor:
-        base_output, selected_base_contribution = self._base_components(hidden)
         context = self.runtime_context
         if context is None or not context.enabled:
+            base_output, selected_base_contribution = self._base_components(hidden)
             return base_output + selected_base_contribution
         if context.eligible_mask.shape != hidden.shape[:-1]:
             raise ValueError("eligibility mask does not match MLP input")
         if context.sequence_mask.shape != hidden.shape[:-1]:
             raise ValueError("sequence mask does not match MLP input")
-        interface = self.interface_logits(hidden)
+        adapted_hidden = self.adapted_hidden(hidden)
+        base_output, selected_base_contribution = self._base_components(
+            adapted_hidden if self.adapt_base_mlp else hidden
+        )
+        interface = self._interface_logits_from_adapted(adapted_hidden)
         hard = self._apply_teachers(self.hard_interface(interface), context)
         execution = self.calculator(
             route=hard.route,
@@ -514,8 +639,12 @@ def install_sequence_neuron_implant(
     layout: SequenceImplantLayout | None = None,
     output_strength: float = 16.0,
     route_threshold: float = 0.5,
+    route_temperature: float = 1.0,
     digit_threshold: float = 0.0,
     use_swiglu_interface: bool = False,
+    interface_kind: str = "linear",
+    representation_rank: int = 0,
+    adapt_base_mlp: bool = True,
 ) -> SequenceNeuronImplantMLP:
     layer = model.model.layers[layer_index]
     if isinstance(layer.mlp, SequenceNeuronImplantMLP):
@@ -527,8 +656,12 @@ def install_sequence_neuron_implant(
         layout=layout,
         output_strength=output_strength,
         route_threshold=route_threshold,
+        route_temperature=route_temperature,
         digit_threshold=digit_threshold,
         use_swiglu_interface=use_swiglu_interface,
+        interface_kind=interface_kind,
+        representation_rank=representation_rank,
+        adapt_base_mlp=adapt_base_mlp,
     )
     reference = next(base_mlp.parameters())
     implant.to(device=reference.device, dtype=reference.dtype)

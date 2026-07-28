@@ -1,0 +1,13 @@
+{
+  "status": "phase10_development_features_complete",
+  "implementation_commit": "c999a704ba73ea6a2bb00db965dcad8a276d9c92",
+  "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+  "model_revision": "fe8a4ea1ffedaf415f4da2f062534de366a451e6",
+  "layer_index": 15,
+  "source": "phase9_disclosed_confirmation",
+  "examples": 300,
+  "cache": "phase10_artifacts/cache/development_features.pt",
+  "cache_sha256": "300499b686c09dfe0799ca8a2b375cdadd53b3f062332c0fc0d0bf34713755e8",
+  "cache_bytes": 50721850,
+  "wall_time_seconds": 29.518179541999416
+}

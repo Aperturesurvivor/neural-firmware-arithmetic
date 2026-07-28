@@ -1,0 +1,125 @@
+{
+  "status": "phase10_architecture_development_training_complete",
+  "implementation_commit": "c999a704ba73ea6a2bb00db965dcad8a276d9c92",
+  "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+  "model_revision": "fe8a4ea1ffedaf415f4da2f062534de366a451e6",
+  "phase10_seed": 16199,
+  "source_phase8_seed": 14201,
+  "steps": 2500,
+  "learning_rate": 0.0005,
+  "conditions": [
+    "nonlinear",
+    "nonlinear_representation"
+  ],
+  "records": [
+    {
+      "condition": "nonlinear",
+      "phase10_seed": 16199,
+      "source_phase8_seed": 14201,
+      "training": {
+        "condition": {
+          "name": "nonlinear",
+          "interface_kind": "bottleneck_silu",
+          "representation_rank": 0
+        },
+        "training": {
+          "config": {
+            "seed": 16199,
+            "steps": 2500,
+            "batch_size": 256,
+            "learning_rate": 0.0005,
+            "route_loss_weight": 1.0,
+            "role_loss_weight": 1.0,
+            "digit_loss_weight": 1.0,
+            "step_loss_weight": 0.0
+          },
+          "initial_loss": 0.5285363793373108,
+          "final_loss": 0.0002735308953560889,
+          "wall_time_seconds": 10.82417450000139,
+          "trainable_parameters": 32768,
+          "selected_route_threshold": {
+            "threshold": 0.9999984502792358,
+            "true_positive_rate": 0.8574561476707458,
+            "false_positive_rate": 0.009999999776482582
+          }
+        },
+        "development": {
+          "rows": 5868,
+          "route_rows": 656,
+          "route_true_positive_rate": 0.8574561476707458,
+          "route_false_positive_rate": 0.009999999776482582,
+          "route_accuracy": 0.8978658318519592,
+          "role_accuracy": 0.9935241937637329,
+          "operand_role_accuracy": 0.985111653804779,
+          "digit_accuracy_on_operands": 0.9919354915618896,
+          "step_accuracy": 0.21929824352264404
+        },
+        "input_interface_parameters": 32768,
+        "representation_parameters": 0,
+        "architectural_learned_parameters": 57344,
+        "calculator_learned_parameters": 0,
+        "result_decoder_unchanged": true
+      },
+      "checkpoint": "phase10_artifacts/development/nonlinear.pt",
+      "checkpoint_sha256": "f142be5b2bf0077dccd0f6cf0f05eea253142d22fae73c0e2efee61134fe9257",
+      "route_threshold": 0.9999984502792358,
+      "digit_threshold": 0.8,
+      "wall_time_seconds": 17.985871582997788
+    },
+    {
+      "condition": "nonlinear_representation",
+      "phase10_seed": 16199,
+      "source_phase8_seed": 14201,
+      "training": {
+        "condition": {
+          "name": "nonlinear_representation",
+          "interface_kind": "bottleneck_silu",
+          "representation_rank": 4
+        },
+        "training": {
+          "config": {
+            "seed": 16199,
+            "steps": 2500,
+            "batch_size": 256,
+            "learning_rate": 0.0005,
+            "route_loss_weight": 1.0,
+            "role_loss_weight": 1.0,
+            "digit_loss_weight": 1.0,
+            "step_loss_weight": 0.0
+          },
+          "initial_loss": 0.5285363793373108,
+          "final_loss": 2.1102810933371074e-05,
+          "wall_time_seconds": 25.232528500000626,
+          "trainable_parameters": 49152,
+          "selected_route_threshold": {
+            "threshold": 0.999996542930603,
+            "true_positive_rate": 0.9407894611358643,
+            "false_positive_rate": 0.03500000014901161
+          }
+        },
+        "development": {
+          "rows": 5868,
+          "route_rows": 656,
+          "route_true_positive_rate": 0.9407894611358643,
+          "route_false_positive_rate": 0.03500000014901161,
+          "route_accuracy": 0.9481707215309143,
+          "role_accuracy": 0.994205892086029,
+          "operand_role_accuracy": 0.9869726896286011,
+          "digit_accuracy_on_operands": 0.9937965273857117,
+          "step_accuracy": 0.21929824352264404
+        },
+        "input_interface_parameters": 32768,
+        "representation_parameters": 16384,
+        "architectural_learned_parameters": 73728,
+        "calculator_learned_parameters": 0,
+        "result_decoder_unchanged": true
+      },
+      "checkpoint": "phase10_artifacts/development/nonlinear_representation.pt",
+      "checkpoint_sha256": "4fb787bceea41c917d4408171989090ea0fd09540c1f6b17fdc8e56f45b0d5c4",
+      "route_threshold": 0.999996542930603,
+      "digit_threshold": 0.8,
+      "wall_time_seconds": 30.212131707998196
+    }
+  ],
+  "wall_time_seconds": 49.214906500001234
+}

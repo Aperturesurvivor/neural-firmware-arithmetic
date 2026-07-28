@@ -9,6 +9,7 @@ from neural_firmware.phase7_sequence_implant import (
     SequenceImplantLayout,
     SequenceInterface,
     SequenceNeuronImplantMLP,
+    normalized_hadamard,
 )
 from neural_firmware.phase7_sequence_training import (
     FirstStepRouteFeatureSet,
@@ -41,6 +42,76 @@ def test_fixed_step_layout_uses_28_existing_channels() -> None:
     assert layout.input_width == 16
     assert layout.result_width == 12
     assert layout.total_width == 28
+
+
+def test_fixed_mix_nonlinear_interface_matches_linear_parameter_budget() -> None:
+    layout = SequenceImplantLayout(max_digits=4, learned_step=False)
+    linear = SequenceNeuronImplantMLP(
+        TinyMLP(hidden_size=8, intermediate_size=64),
+        torch.arange(layout.total_width),
+        layout=layout,
+    )
+    nonlinear = SequenceNeuronImplantMLP(
+        TinyMLP(hidden_size=8, intermediate_size=64),
+        torch.arange(layout.total_width),
+        layout=layout,
+        interface_kind="fixed_mix_silu",
+    )
+    assert linear.trainable_parameter_count == nonlinear.trainable_parameter_count
+    assert nonlinear.fixed_interface_mix.shape == (
+        layout.input_width,
+        layout.input_width,
+    )
+    identity = nonlinear.fixed_interface_mix @ nonlinear.fixed_interface_mix.T
+    assert torch.allclose(identity, torch.eye(layout.input_width), atol=1e-6)
+
+
+def test_bottleneck_nonlinear_interface_matches_linear_parameter_budget() -> None:
+    layout = SequenceImplantLayout(max_digits=4, learned_step=False)
+    linear = SequenceNeuronImplantMLP(
+        TinyMLP(hidden_size=32, intermediate_size=64),
+        torch.arange(layout.total_width),
+        layout=layout,
+    )
+    nonlinear = SequenceNeuronImplantMLP(
+        TinyMLP(hidden_size=32, intermediate_size=64),
+        torch.arange(layout.total_width),
+        layout=layout,
+        interface_kind="bottleneck_silu",
+    )
+    nonlinear_parameters = (
+        nonlinear.bottleneck_rows.numel()
+        + nonlinear.bottleneck_mix.numel()
+    )
+    assert nonlinear_parameters == linear.input_rows.numel()
+    assert linear.trainable_parameter_count == nonlinear.trainable_parameter_count
+
+
+def test_normalized_hadamard_rejects_non_power_of_two_width() -> None:
+    try:
+        normalized_hadamard(3)
+    except ValueError:
+        pass
+    else:
+        raise AssertionError("non-power-of-two width should fail")
+
+
+def test_low_rank_representation_adapter_starts_as_identity() -> None:
+    layout = SequenceImplantLayout(max_digits=2)
+    implant = SequenceNeuronImplantMLP(
+        TinyMLP(hidden_size=8, intermediate_size=64),
+        torch.arange(layout.total_width),
+        layout=layout,
+        representation_rank=2,
+    )
+    hidden = torch.randn(2, 3, 8)
+    assert torch.equal(implant.adapted_hidden(hidden), hidden)
+    assert implant.trainable_parameter_count == (
+        layout.input_width * 8
+        + layout.result_width * 8
+        + 2 * 8
+        + 8 * 2
+    )
 
 
 def test_digit_confidence_handshake_rejects_uncertain_digit() -> None:
@@ -217,6 +288,36 @@ def test_gated_implant_exactly_preserves_base_when_route_is_off() -> None:
             preserve_base_when_off=True,
         )
     )
+    assert torch.allclose(implant(hidden), base(hidden), atol=1e-6)
+
+
+def test_interface_local_adapter_preserves_base_when_route_is_off() -> None:
+    torch.manual_seed(12)
+    layout = SequenceImplantLayout(max_digits=2)
+    base = TinyMLP(intermediate_size=64)
+    implant = SequenceNeuronImplantMLP(
+        base,
+        torch.arange(layout.total_width),
+        layout=layout,
+        representation_rank=2,
+        adapt_base_mlp=False,
+    )
+    with torch.no_grad():
+        implant.representation_up.normal_()
+    hidden = torch.randn(1, 5, 8)
+    eligible = torch.zeros(1, 5, dtype=torch.bool)
+    eligible[:, -1] = True
+    teacher_route = torch.full((1, 5), -1, dtype=torch.long)
+    teacher_route[:, -1] = 0
+    implant.set_context(
+        SequenceImplantContext(
+            eligible_mask=eligible,
+            sequence_mask=torch.ones_like(eligible),
+            teacher_route=teacher_route,
+            preserve_base_when_off=True,
+        )
+    )
+    assert not torch.equal(implant.adapted_hidden(hidden), hidden)
     assert torch.allclose(implant(hidden), base(hidden), atol=1e-6)
 
 

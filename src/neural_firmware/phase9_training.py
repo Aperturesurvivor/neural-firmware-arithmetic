@@ -60,20 +60,55 @@ def install_checkpoint_implant(
         layout=layout,
         output_strength=float(checkpoint["output_strength"]),
         route_threshold=float(checkpoint["route_threshold"]),
+        route_temperature=float(checkpoint.get("route_temperature", 1.0)),
         digit_threshold=float(checkpoint["digit_threshold"]),
+        interface_kind=str(checkpoint.get("interface_kind", "linear")),
+        representation_rank=int(checkpoint.get("representation_rank", 0)),
+        adapt_base_mlp=bool(checkpoint.get("adapt_base_mlp", True)),
     )
     with torch.no_grad():
         implant.input_rows.copy_(checkpoint["input_rows"].to(bundle.device))
+        if "gate_rows" in checkpoint:
+            implant.gate_rows.copy_(checkpoint["gate_rows"].to(bundle.device))
+        if implant.interface_kind == "bottleneck_silu":
+            implant.bottleneck_rows.copy_(
+                checkpoint["bottleneck_rows"].to(bundle.device)
+            )
+            implant.bottleneck_mix.copy_(
+                checkpoint["bottleneck_mix"].to(bundle.device)
+            )
         implant.result_columns.copy_(
             checkpoint["result_columns"].to(bundle.device)
         )
+        if implant.representation_rank:
+            implant.representation_down.copy_(
+                checkpoint["representation_down"].to(bundle.device)
+            )
+            implant.representation_up.copy_(
+                checkpoint["representation_up"].to(bundle.device)
+            )
     return implant
 
 
 def architectural_learned_parameter_count(
     implant: SequenceNeuronImplantMLP,
 ) -> int:
-    return implant.input_rows.numel() + implant.result_columns.numel()
+    if implant.interface_kind == "bottleneck_silu":
+        count = (
+            implant.bottleneck_rows.numel()
+            + implant.bottleneck_mix.numel()
+            + implant.result_columns.numel()
+        )
+    else:
+        count = implant.input_rows.numel() + implant.result_columns.numel()
+    if implant.use_swiglu_interface:
+        count += implant.gate_rows.numel()
+    if implant.representation_rank:
+        count += (
+            implant.representation_down.numel()
+            + implant.representation_up.numel()
+        )
+    return count
 
 
 def compact_interface_metrics(metrics: dict[str, object]) -> dict[str, object]:
