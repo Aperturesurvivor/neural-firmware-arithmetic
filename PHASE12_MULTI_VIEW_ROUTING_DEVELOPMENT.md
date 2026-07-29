@@ -188,3 +188,25 @@ steps on the Phase 8 plus Phase 9 hard-routing training bank augmented with
 all disclosed Phase 11 examples. Phase 9 development and disclosed Phase 10
 examples are retained as diagnostic calibration data, but they cannot replace
 the fixed 0.60 threshold. These choices were fixed before deployment training.
+
+## Deployment validation
+
+The three deployment routers separated the disclosed Phase 11 training rows
+perfectly at the fixed cutoff. More importantly, full installed-model
+generation on all 300 disclosed Phase 11 prompts produced:
+
+- 92/98/95 exact positive outputs;
+- 100/100/100 positive request routes;
+- 0/0/0 false routes among 200 negatives;
+- 200/200/200 negative outputs preserved token-for-token;
+- 300/300/300 live route decisions matching cached predictions.
+
+The largest absolute difference between a live and cached route probability
+was below 0.0000005. Conditional output and trajectory exactness were 91/91,
+97/97, and 95/95 whenever routing, execution, and operand capture were valid.
+Every tensor inherited from the Phase 10 checkpoint remained bit-identical.
+All deployment-validation gates passed.
+
+These results remain development evidence because Phase 11 was used in router
+training. They establish that the selected architecture is installed
+correctly and justify freezing a new, disjoint Phase 12 confirmation.
