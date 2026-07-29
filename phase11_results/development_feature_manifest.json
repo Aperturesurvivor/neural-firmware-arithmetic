@@ -1,0 +1,42 @@
+{
+  "status": "phase11_request_features_complete",
+  "implementation_commit": "ebf8d1460a05a510d7cc46dd69cde25a476831d0",
+  "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+  "model_revision": "fe8a4ea1ffedaf415f4da2f062534de366a451e6",
+  "layer_index": 15,
+  "source": {
+    "training": "phase8_training_plus_phase9_hard_training",
+    "calibration": "phase9_development",
+    "selection": "disclosed_phase10_confirmation"
+  },
+  "source_checkpoint_sha256": {
+    "16201": "965853d53e4e14a476bb4777e5163bb56b7089f79bc7d21581322e62d03c872b",
+    "16202": "e32ae121e1373531bd98ae77494c350c04ecfe01c8aff8f237fc2176e463047c",
+    "16203": "3228cdb415c02de385eb43c232e34e20922cc9f5653dc40ed84b035efaf3cca1"
+  },
+  "router_kinds": [
+    "last",
+    "sequence_mean",
+    "user_mean",
+    "user_tail_mean"
+  ],
+  "tail_tokens": 8,
+  "counts": {
+    "training": {
+      "examples": 4800,
+      "positive_examples": 2400
+    },
+    "calibration": {
+      "examples": 720,
+      "positive_examples": 240
+    },
+    "selection": {
+      "examples": 300,
+      "positive_examples": 100
+    }
+  },
+  "cache": "phase11_artifacts/cache/request_route_features.pt",
+  "cache_sha256": "9925dd54d87d3c2cb0fa82569bce358e9709a77912a39ed8ac9285877c0f4c1b",
+  "cache_bytes": 572710173,
+  "wall_time_seconds": 445.58719108300284
+}

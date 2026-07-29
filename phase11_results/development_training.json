@@ -1,0 +1,1520 @@
+{
+  "status": "phase11_request_router_development_complete",
+  "implementation_commit": "ebf8d1460a05a510d7cc46dd69cde25a476831d0",
+  "feature_cache": "phase11_artifacts/cache/request_route_features.pt",
+  "feature_cache_sha256": "9925dd54d87d3c2cb0fa82569bce358e9709a77912a39ed8ac9285877c0f4c1b",
+  "selection_source": "disclosed_phase10_confirmation",
+  "conditions": [
+    "last",
+    "sequence_mean",
+    "user_mean",
+    "user_tail_mean"
+  ],
+  "selection_rule": "among conditions with at most 4/200 Phase 10 false routes in every seed, maximize the worst-seed counterfactual exact count, then the mean",
+  "summaries": {
+    "last": {
+      "counterfactual_exact": [
+        81,
+        83,
+        77
+      ],
+      "paired_counterfactual_gains": [
+        35,
+        41,
+        24
+      ],
+      "false_routes": [
+        2,
+        4,
+        3
+      ],
+      "mean_counterfactual_exact": 80.33333333333333
+    },
+    "sequence_mean": {
+      "counterfactual_exact": [
+        84,
+        90,
+        89
+      ],
+      "paired_counterfactual_gains": [
+        38,
+        48,
+        36
+      ],
+      "false_routes": [
+        13,
+        30,
+        27
+      ],
+      "mean_counterfactual_exact": 87.66666666666667
+    },
+    "user_mean": {
+      "counterfactual_exact": [
+        77,
+        84,
+        81
+      ],
+      "paired_counterfactual_gains": [
+        31,
+        42,
+        28
+      ],
+      "false_routes": [
+        10,
+        19,
+        14
+      ],
+      "mean_counterfactual_exact": 80.66666666666667
+    },
+    "user_tail_mean": {
+      "counterfactual_exact": [
+        83,
+        76,
+        83
+      ],
+      "paired_counterfactual_gains": [
+        37,
+        34,
+        30
+      ],
+      "false_routes": [
+        12,
+        13,
+        7
+      ],
+      "mean_counterfactual_exact": 80.66666666666667
+    }
+  },
+  "selected_router_kind": "last",
+  "records": [
+    {
+      "router_kind": "last",
+      "phase10_seed": 16201,
+      "phase11_router_seed": 17201,
+      "source_phase10_checkpoint": "phase10_artifacts/confirmatory_interfaces/linear_representation_seed_16201.pt",
+      "source_phase10_checkpoint_sha256": "965853d53e4e14a476bb4777e5163bb56b7089f79bc7d21581322e62d03c872b",
+      "training": {
+        "config": {
+          "seed": 17201,
+          "steps": 2500,
+          "batch_size": 256,
+          "learning_rate": 0.0005,
+          "route_temperature": 2.0,
+          "maximum_calibration_false_positive_rate": 0.01
+        },
+        "initial_loss": 2.6055844500660896e-05,
+        "final_loss": 2.728769459281466e-07,
+        "wall_time_seconds": 3.7380562920006923,
+        "trainable_parameters": 4096
+      },
+      "calibration": {
+        "rows": 720,
+        "positive_rows": 240,
+        "negative_rows": 480,
+        "threshold": 0.9749470353126526,
+        "true_positive_rate": 1.0,
+        "false_positive_rate": 0.004166666883975267,
+        "accuracy": 0.9972222447395325,
+        "positive_probability_min": 0.9749470353126526,
+        "positive_probability_median": 0.9998241066932678,
+        "negative_probability_median": 0.0008941243286244571,
+        "negative_probability_max": 0.997055172920227
+      },
+      "selection": {
+        "rows": 300,
+        "positive_rows": 100,
+        "negative_rows": 200,
+        "threshold": 0.9749470353126526,
+        "true_positive_rate": 0.9200000166893005,
+        "false_positive_rate": 0.009999999776482582,
+        "accuracy": 0.9666666388511658,
+        "positive_probability_min": 0.751054584980011,
+        "positive_probability_median": 0.999923586845398,
+        "negative_probability_median": 0.0020792395807802677,
+        "negative_probability_max": 0.9879894256591797
+      },
+      "counterfactual": {
+        "positive_routes": 92,
+        "counterfactual_exact": 81,
+        "phase10_natural_exact": 46,
+        "paired_counterfactual_gain": 35,
+        "false_routes": 2,
+        "predicted_preserved": 198,
+        "categories": {
+          "direct": {
+            "examples": 50,
+            "routes": 42,
+            "counterfactual_exact": 38
+          },
+          "word": {
+            "examples": 25,
+            "routes": 25,
+            "counterfactual_exact": 25
+          },
+          "distractor": {
+            "examples": 45,
+            "routes": 25,
+            "counterfactual_exact": 18
+          },
+          "multiplication": {
+            "examples": 20,
+            "routes": 2,
+            "counterfactual_exact": 0
+          },
+          "factual": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "quoted": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negated": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "cancelled": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "subtraction": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "comparison": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "concatenation": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "hypothetical": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          }
+        }
+      },
+      "checkpoint": "phase11_artifacts/development_routers/last_seed_16201.pt",
+      "checkpoint_sha256": "b1314aaf1aebf960f321d21841c7c149fbf8679e982ea84dcaf9d87662a92ec6"
+    },
+    {
+      "router_kind": "sequence_mean",
+      "phase10_seed": 16201,
+      "phase11_router_seed": 17301,
+      "source_phase10_checkpoint": "phase10_artifacts/confirmatory_interfaces/linear_representation_seed_16201.pt",
+      "source_phase10_checkpoint_sha256": "965853d53e4e14a476bb4777e5163bb56b7089f79bc7d21581322e62d03c872b",
+      "training": {
+        "config": {
+          "seed": 17301,
+          "steps": 2500,
+          "batch_size": 256,
+          "learning_rate": 0.0005,
+          "route_temperature": 2.0,
+          "maximum_calibration_false_positive_rate": 0.01
+        },
+        "initial_loss": 0.8475260734558105,
+        "final_loss": 0.008495815098285675,
+        "wall_time_seconds": 12.538114124996355,
+        "trainable_parameters": 4096
+      },
+      "calibration": {
+        "rows": 720,
+        "positive_rows": 240,
+        "negative_rows": 480,
+        "threshold": 0.6504232287406921,
+        "true_positive_rate": 0.9166666865348816,
+        "false_positive_rate": 0.0,
+        "accuracy": 0.9722222089767456,
+        "positive_probability_min": 0.19940119981765747,
+        "positive_probability_median": 0.9125754237174988,
+        "negative_probability_median": 0.056502342224121094,
+        "negative_probability_max": 0.541826605796814
+      },
+      "selection": {
+        "rows": 300,
+        "positive_rows": 100,
+        "negative_rows": 200,
+        "threshold": 0.6504232287406921,
+        "true_positive_rate": 0.949999988079071,
+        "false_positive_rate": 0.06499999761581421,
+        "accuracy": 0.9399999976158142,
+        "positive_probability_min": 0.4599063992500305,
+        "positive_probability_median": 0.9469467401504517,
+        "negative_probability_median": 0.12478071451187134,
+        "negative_probability_max": 0.9643963575363159
+      },
+      "counterfactual": {
+        "positive_routes": 95,
+        "counterfactual_exact": 84,
+        "phase10_natural_exact": 46,
+        "paired_counterfactual_gain": 38,
+        "false_routes": 13,
+        "predicted_preserved": 187,
+        "categories": {
+          "direct": {
+            "examples": 50,
+            "routes": 45,
+            "counterfactual_exact": 41
+          },
+          "word": {
+            "examples": 25,
+            "routes": 25,
+            "counterfactual_exact": 25
+          },
+          "distractor": {
+            "examples": 45,
+            "routes": 34,
+            "counterfactual_exact": 18
+          },
+          "multiplication": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "factual": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "quoted": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negated": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "cancelled": {
+            "examples": 20,
+            "routes": 4,
+            "counterfactual_exact": 0
+          },
+          "subtraction": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "comparison": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "concatenation": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "hypothetical": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          }
+        }
+      },
+      "checkpoint": "phase11_artifacts/development_routers/sequence_mean_seed_16201.pt",
+      "checkpoint_sha256": "2c196b1f46b1daae48804f2dfbdf983901564abcee42200783266b3acb3f6648"
+    },
+    {
+      "router_kind": "user_mean",
+      "phase10_seed": 16201,
+      "phase11_router_seed": 17401,
+      "source_phase10_checkpoint": "phase10_artifacts/confirmatory_interfaces/linear_representation_seed_16201.pt",
+      "source_phase10_checkpoint_sha256": "965853d53e4e14a476bb4777e5163bb56b7089f79bc7d21581322e62d03c872b",
+      "training": {
+        "config": {
+          "seed": 17401,
+          "steps": 2500,
+          "batch_size": 256,
+          "learning_rate": 0.0005,
+          "route_temperature": 2.0,
+          "maximum_calibration_false_positive_rate": 0.01
+        },
+        "initial_loss": 1.0139445066452026,
+        "final_loss": 0.004057873971760273,
+        "wall_time_seconds": 3.1894062909996137,
+        "trainable_parameters": 4096
+      },
+      "calibration": {
+        "rows": 720,
+        "positive_rows": 240,
+        "negative_rows": 480,
+        "threshold": 0.834131121635437,
+        "true_positive_rate": 0.7916666865348816,
+        "false_positive_rate": 0.008333333767950535,
+        "accuracy": 0.925000011920929,
+        "positive_probability_min": 0.15617509186267853,
+        "positive_probability_median": 0.9213528633117676,
+        "negative_probability_median": 0.04543702304363251,
+        "negative_probability_max": 0.882363498210907
+      },
+      "selection": {
+        "rows": 300,
+        "positive_rows": 100,
+        "negative_rows": 200,
+        "threshold": 0.834131121635437,
+        "true_positive_rate": 0.8700000047683716,
+        "false_positive_rate": 0.05000000074505806,
+        "accuracy": 0.9233333468437195,
+        "positive_probability_min": 0.4428083300590515,
+        "positive_probability_median": 0.9623542428016663,
+        "negative_probability_median": 0.1019257977604866,
+        "negative_probability_max": 0.9891964197158813
+      },
+      "counterfactual": {
+        "positive_routes": 87,
+        "counterfactual_exact": 77,
+        "phase10_natural_exact": 46,
+        "paired_counterfactual_gain": 31,
+        "false_routes": 10,
+        "predicted_preserved": 190,
+        "categories": {
+          "direct": {
+            "examples": 50,
+            "routes": 43,
+            "counterfactual_exact": 39
+          },
+          "word": {
+            "examples": 25,
+            "routes": 25,
+            "counterfactual_exact": 25
+          },
+          "distractor": {
+            "examples": 45,
+            "routes": 25,
+            "counterfactual_exact": 13
+          },
+          "multiplication": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "factual": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "quoted": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negated": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "cancelled": {
+            "examples": 20,
+            "routes": 4,
+            "counterfactual_exact": 0
+          },
+          "subtraction": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "comparison": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "concatenation": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "hypothetical": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          }
+        }
+      },
+      "checkpoint": "phase11_artifacts/development_routers/user_mean_seed_16201.pt",
+      "checkpoint_sha256": "401e28a5dc9d99966ca5f0e43f6c85d5ac36982ae5dfa4a073b134584f426374"
+    },
+    {
+      "router_kind": "user_tail_mean",
+      "phase10_seed": 16201,
+      "phase11_router_seed": 17501,
+      "source_phase10_checkpoint": "phase10_artifacts/confirmatory_interfaces/linear_representation_seed_16201.pt",
+      "source_phase10_checkpoint_sha256": "965853d53e4e14a476bb4777e5163bb56b7089f79bc7d21581322e62d03c872b",
+      "training": {
+        "config": {
+          "seed": 17501,
+          "steps": 2500,
+          "batch_size": 256,
+          "learning_rate": 0.0005,
+          "route_temperature": 2.0,
+          "maximum_calibration_false_positive_rate": 0.01
+        },
+        "initial_loss": 1.0428837537765503,
+        "final_loss": 0.0022867340594530106,
+        "wall_time_seconds": 3.073984750008094,
+        "trainable_parameters": 4096
+      },
+      "calibration": {
+        "rows": 720,
+        "positive_rows": 240,
+        "negative_rows": 480,
+        "threshold": 0.7755540013313293,
+        "true_positive_rate": 0.8916666507720947,
+        "false_positive_rate": 0.008333333767950535,
+        "accuracy": 0.9583333134651184,
+        "positive_probability_min": 0.31925371289253235,
+        "positive_probability_median": 0.9636704921722412,
+        "negative_probability_median": 0.041393931955099106,
+        "negative_probability_max": 0.8421434164047241
+      },
+      "selection": {
+        "rows": 300,
+        "positive_rows": 100,
+        "negative_rows": 200,
+        "threshold": 0.7755540013313293,
+        "true_positive_rate": 0.9399999976158142,
+        "false_positive_rate": 0.05999999865889549,
+        "accuracy": 0.9399999976158142,
+        "positive_probability_min": 0.3873727023601532,
+        "positive_probability_median": 0.9853011965751648,
+        "negative_probability_median": 0.10615259408950806,
+        "negative_probability_max": 0.9758546948432922
+      },
+      "counterfactual": {
+        "positive_routes": 94,
+        "counterfactual_exact": 83,
+        "phase10_natural_exact": 46,
+        "paired_counterfactual_gain": 37,
+        "false_routes": 12,
+        "predicted_preserved": 188,
+        "categories": {
+          "direct": {
+            "examples": 50,
+            "routes": 45,
+            "counterfactual_exact": 41
+          },
+          "word": {
+            "examples": 25,
+            "routes": 25,
+            "counterfactual_exact": 25
+          },
+          "distractor": {
+            "examples": 45,
+            "routes": 29,
+            "counterfactual_exact": 17
+          },
+          "multiplication": {
+            "examples": 20,
+            "routes": 1,
+            "counterfactual_exact": 0
+          },
+          "factual": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "quoted": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negated": {
+            "examples": 20,
+            "routes": 1,
+            "counterfactual_exact": 0
+          },
+          "cancelled": {
+            "examples": 20,
+            "routes": 3,
+            "counterfactual_exact": 0
+          },
+          "subtraction": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "comparison": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "concatenation": {
+            "examples": 20,
+            "routes": 2,
+            "counterfactual_exact": 0
+          },
+          "hypothetical": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          }
+        }
+      },
+      "checkpoint": "phase11_artifacts/development_routers/user_tail_mean_seed_16201.pt",
+      "checkpoint_sha256": "f3f55dfec6e7d0c4825d2879883d09b17502a553b95990a5eb00c332a0bfbb9f"
+    },
+    {
+      "router_kind": "last",
+      "phase10_seed": 16202,
+      "phase11_router_seed": 17202,
+      "source_phase10_checkpoint": "phase10_artifacts/confirmatory_interfaces/linear_representation_seed_16202.pt",
+      "source_phase10_checkpoint_sha256": "e32ae121e1373531bd98ae77494c350c04ecfe01c8aff8f237fc2176e463047c",
+      "training": {
+        "config": {
+          "seed": 17202,
+          "steps": 2500,
+          "batch_size": 256,
+          "learning_rate": 0.0005,
+          "route_temperature": 2.0,
+          "maximum_calibration_false_positive_rate": 0.01
+        },
+        "initial_loss": 3.364535223226994e-05,
+        "final_loss": 2.253796935747232e-07,
+        "wall_time_seconds": 3.7450348339916673,
+        "trainable_parameters": 4096
+      },
+      "calibration": {
+        "rows": 720,
+        "positive_rows": 240,
+        "negative_rows": 480,
+        "threshold": 0.9529616832733154,
+        "true_positive_rate": 1.0,
+        "false_positive_rate": 0.0062500000931322575,
+        "accuracy": 0.9958333373069763,
+        "positive_probability_min": 0.9529616832733154,
+        "positive_probability_median": 0.9994223117828369,
+        "negative_probability_median": 0.000496779044624418,
+        "negative_probability_max": 0.967568039894104
+      },
+      "selection": {
+        "rows": 300,
+        "positive_rows": 100,
+        "negative_rows": 200,
+        "threshold": 0.9529616832733154,
+        "true_positive_rate": 0.9300000071525574,
+        "false_positive_rate": 0.019999999552965164,
+        "accuracy": 0.9633333086967468,
+        "positive_probability_min": 0.3151744604110718,
+        "positive_probability_median": 0.9998236298561096,
+        "negative_probability_median": 0.0013809114461764693,
+        "negative_probability_max": 0.9950423240661621
+      },
+      "counterfactual": {
+        "positive_routes": 93,
+        "counterfactual_exact": 83,
+        "phase10_natural_exact": 42,
+        "paired_counterfactual_gain": 41,
+        "false_routes": 4,
+        "predicted_preserved": 196,
+        "categories": {
+          "direct": {
+            "examples": 50,
+            "routes": 43,
+            "counterfactual_exact": 40
+          },
+          "word": {
+            "examples": 25,
+            "routes": 25,
+            "counterfactual_exact": 25
+          },
+          "distractor": {
+            "examples": 45,
+            "routes": 25,
+            "counterfactual_exact": 18
+          },
+          "multiplication": {
+            "examples": 20,
+            "routes": 4,
+            "counterfactual_exact": 0
+          },
+          "factual": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "quoted": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negated": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "cancelled": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "subtraction": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "comparison": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "concatenation": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "hypothetical": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          }
+        }
+      },
+      "checkpoint": "phase11_artifacts/development_routers/last_seed_16202.pt",
+      "checkpoint_sha256": "375f4068393ed5321ecfc3a4dee70f0eabfbd35dfc177f7bc74e543a9913c687"
+    },
+    {
+      "router_kind": "sequence_mean",
+      "phase10_seed": 16202,
+      "phase11_router_seed": 17302,
+      "source_phase10_checkpoint": "phase10_artifacts/confirmatory_interfaces/linear_representation_seed_16202.pt",
+      "source_phase10_checkpoint_sha256": "e32ae121e1373531bd98ae77494c350c04ecfe01c8aff8f237fc2176e463047c",
+      "training": {
+        "config": {
+          "seed": 17302,
+          "steps": 2500,
+          "batch_size": 256,
+          "learning_rate": 0.0005,
+          "route_temperature": 2.0,
+          "maximum_calibration_false_positive_rate": 0.01
+        },
+        "initial_loss": 3.7882213592529297,
+        "final_loss": 0.017348119989037514,
+        "wall_time_seconds": 3.2172480000008363,
+        "trainable_parameters": 4096
+      },
+      "calibration": {
+        "rows": 720,
+        "positive_rows": 240,
+        "negative_rows": 480,
+        "threshold": 0.4501507878303528,
+        "true_positive_rate": 0.9791666865348816,
+        "false_positive_rate": 0.0062500000931322575,
+        "accuracy": 0.9888888597488403,
+        "positive_probability_min": 0.2689582407474518,
+        "positive_probability_median": 0.8915959596633911,
+        "negative_probability_median": 0.10317990928888321,
+        "negative_probability_max": 0.48258522152900696
+      },
+      "selection": {
+        "rows": 300,
+        "positive_rows": 100,
+        "negative_rows": 200,
+        "threshold": 0.4501507878303528,
+        "true_positive_rate": 1.0,
+        "false_positive_rate": 0.15000000596046448,
+        "accuracy": 0.8999999761581421,
+        "positive_probability_min": 0.46437588334083557,
+        "positive_probability_median": 0.9209738969802856,
+        "negative_probability_median": 0.16342100501060486,
+        "negative_probability_max": 0.9586848020553589
+      },
+      "counterfactual": {
+        "positive_routes": 100,
+        "counterfactual_exact": 90,
+        "phase10_natural_exact": 42,
+        "paired_counterfactual_gain": 48,
+        "false_routes": 30,
+        "predicted_preserved": 170,
+        "categories": {
+          "direct": {
+            "examples": 50,
+            "routes": 50,
+            "counterfactual_exact": 47
+          },
+          "word": {
+            "examples": 25,
+            "routes": 25,
+            "counterfactual_exact": 25
+          },
+          "distractor": {
+            "examples": 45,
+            "routes": 41,
+            "counterfactual_exact": 18
+          },
+          "multiplication": {
+            "examples": 20,
+            "routes": 5,
+            "counterfactual_exact": 0
+          },
+          "factual": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "quoted": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negated": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "cancelled": {
+            "examples": 20,
+            "routes": 5,
+            "counterfactual_exact": 0
+          },
+          "subtraction": {
+            "examples": 20,
+            "routes": 1,
+            "counterfactual_exact": 0
+          },
+          "comparison": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "concatenation": {
+            "examples": 20,
+            "routes": 3,
+            "counterfactual_exact": 0
+          },
+          "hypothetical": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          }
+        }
+      },
+      "checkpoint": "phase11_artifacts/development_routers/sequence_mean_seed_16202.pt",
+      "checkpoint_sha256": "e4b7398f9e8dc998a6d61f6547f20c5f11ef5ad7ca7dbda4ed3ce3704474d7a1"
+    },
+    {
+      "router_kind": "user_mean",
+      "phase10_seed": 16202,
+      "phase11_router_seed": 17402,
+      "source_phase10_checkpoint": "phase10_artifacts/confirmatory_interfaces/linear_representation_seed_16202.pt",
+      "source_phase10_checkpoint_sha256": "e32ae121e1373531bd98ae77494c350c04ecfe01c8aff8f237fc2176e463047c",
+      "training": {
+        "config": {
+          "seed": 17402,
+          "steps": 2500,
+          "batch_size": 256,
+          "learning_rate": 0.0005,
+          "route_temperature": 2.0,
+          "maximum_calibration_false_positive_rate": 0.01
+        },
+        "initial_loss": 6.341591835021973,
+        "final_loss": 0.011171825230121613,
+        "wall_time_seconds": 3.087516166997375,
+        "trainable_parameters": 4096
+      },
+      "calibration": {
+        "rows": 720,
+        "positive_rows": 240,
+        "negative_rows": 480,
+        "threshold": 0.6903216242790222,
+        "true_positive_rate": 0.8791666626930237,
+        "false_positive_rate": 0.004166666883975267,
+        "accuracy": 0.956944465637207,
+        "positive_probability_min": 0.33600282669067383,
+        "positive_probability_median": 0.9324944019317627,
+        "negative_probability_median": 0.06962244212627411,
+        "negative_probability_max": 0.7420493364334106
+      },
+      "selection": {
+        "rows": 300,
+        "positive_rows": 100,
+        "negative_rows": 200,
+        "threshold": 0.6903216242790222,
+        "true_positive_rate": 0.9399999976158142,
+        "false_positive_rate": 0.0949999988079071,
+        "accuracy": 0.9166666865348816,
+        "positive_probability_min": 0.3966830372810364,
+        "positive_probability_median": 0.9381740093231201,
+        "negative_probability_median": 0.16435882449150085,
+        "negative_probability_max": 0.9893532991409302
+      },
+      "counterfactual": {
+        "positive_routes": 94,
+        "counterfactual_exact": 84,
+        "phase10_natural_exact": 42,
+        "paired_counterfactual_gain": 42,
+        "false_routes": 19,
+        "predicted_preserved": 181,
+        "categories": {
+          "direct": {
+            "examples": 50,
+            "routes": 45,
+            "counterfactual_exact": 42
+          },
+          "word": {
+            "examples": 25,
+            "routes": 25,
+            "counterfactual_exact": 25
+          },
+          "distractor": {
+            "examples": 45,
+            "routes": 32,
+            "counterfactual_exact": 17
+          },
+          "multiplication": {
+            "examples": 20,
+            "routes": 4,
+            "counterfactual_exact": 0
+          },
+          "factual": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "quoted": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negated": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "cancelled": {
+            "examples": 20,
+            "routes": 5,
+            "counterfactual_exact": 0
+          },
+          "subtraction": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "comparison": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "concatenation": {
+            "examples": 20,
+            "routes": 2,
+            "counterfactual_exact": 0
+          },
+          "hypothetical": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          }
+        }
+      },
+      "checkpoint": "phase11_artifacts/development_routers/user_mean_seed_16202.pt",
+      "checkpoint_sha256": "17f6c4a91736d31dbce2a8c654d0f66bf1594726d2ea3fc4966c99d65a2057cd"
+    },
+    {
+      "router_kind": "user_tail_mean",
+      "phase10_seed": 16202,
+      "phase11_router_seed": 17502,
+      "source_phase10_checkpoint": "phase10_artifacts/confirmatory_interfaces/linear_representation_seed_16202.pt",
+      "source_phase10_checkpoint_sha256": "e32ae121e1373531bd98ae77494c350c04ecfe01c8aff8f237fc2176e463047c",
+      "training": {
+        "config": {
+          "seed": 17502,
+          "steps": 2500,
+          "batch_size": 256,
+          "learning_rate": 0.0005,
+          "route_temperature": 2.0,
+          "maximum_calibration_false_positive_rate": 0.01
+        },
+        "initial_loss": 4.432523727416992,
+        "final_loss": 0.005257196258753538,
+        "wall_time_seconds": 2.9767681659868686,
+        "trainable_parameters": 4096
+      },
+      "calibration": {
+        "rows": 720,
+        "positive_rows": 240,
+        "negative_rows": 480,
+        "threshold": 0.8743480443954468,
+        "true_positive_rate": 0.7958333492279053,
+        "false_positive_rate": 0.008333333767950535,
+        "accuracy": 0.9263888597488403,
+        "positive_probability_min": 0.42529022693634033,
+        "positive_probability_median": 0.947932243347168,
+        "negative_probability_median": 0.08676602691411972,
+        "negative_probability_max": 0.9422329664230347
+      },
+      "selection": {
+        "rows": 300,
+        "positive_rows": 100,
+        "negative_rows": 200,
+        "threshold": 0.8743480443954468,
+        "true_positive_rate": 0.8299999833106995,
+        "false_positive_rate": 0.06499999761581421,
+        "accuracy": 0.8999999761581421,
+        "positive_probability_min": 0.3568873107433319,
+        "positive_probability_median": 0.9772639274597168,
+        "negative_probability_median": 0.16088427603244781,
+        "negative_probability_max": 0.990149974822998
+      },
+      "counterfactual": {
+        "positive_routes": 83,
+        "counterfactual_exact": 76,
+        "phase10_natural_exact": 42,
+        "paired_counterfactual_gain": 34,
+        "false_routes": 13,
+        "predicted_preserved": 187,
+        "categories": {
+          "direct": {
+            "examples": 50,
+            "routes": 40,
+            "counterfactual_exact": 37
+          },
+          "word": {
+            "examples": 25,
+            "routes": 25,
+            "counterfactual_exact": 25
+          },
+          "distractor": {
+            "examples": 45,
+            "routes": 22,
+            "counterfactual_exact": 14
+          },
+          "multiplication": {
+            "examples": 20,
+            "routes": 1,
+            "counterfactual_exact": 0
+          },
+          "factual": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "quoted": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negated": {
+            "examples": 20,
+            "routes": 3,
+            "counterfactual_exact": 0
+          },
+          "cancelled": {
+            "examples": 20,
+            "routes": 3,
+            "counterfactual_exact": 0
+          },
+          "subtraction": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "comparison": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "concatenation": {
+            "examples": 20,
+            "routes": 2,
+            "counterfactual_exact": 0
+          },
+          "hypothetical": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          }
+        }
+      },
+      "checkpoint": "phase11_artifacts/development_routers/user_tail_mean_seed_16202.pt",
+      "checkpoint_sha256": "aed5fa7470ef742dfa63e731f1d6209d628e0409b6a419fe8f01ea6ac6c5a2b7"
+    },
+    {
+      "router_kind": "last",
+      "phase10_seed": 16203,
+      "phase11_router_seed": 17203,
+      "source_phase10_checkpoint": "phase10_artifacts/confirmatory_interfaces/linear_representation_seed_16203.pt",
+      "source_phase10_checkpoint_sha256": "3228cdb415c02de385eb43c232e34e20922cc9f5653dc40ed84b035efaf3cca1",
+      "training": {
+        "config": {
+          "seed": 17203,
+          "steps": 2500,
+          "batch_size": 256,
+          "learning_rate": 0.0005,
+          "route_temperature": 2.0,
+          "maximum_calibration_false_positive_rate": 0.01
+        },
+        "initial_loss": 2.8884875064250082e-05,
+        "final_loss": 3.5762712968789856e-07,
+        "wall_time_seconds": 3.1725060409953585,
+        "trainable_parameters": 4096
+      },
+      "calibration": {
+        "rows": 720,
+        "positive_rows": 240,
+        "negative_rows": 480,
+        "threshold": 0.9871336221694946,
+        "true_positive_rate": 1.0,
+        "false_positive_rate": 0.0,
+        "accuracy": 1.0,
+        "positive_probability_min": 0.9871336221694946,
+        "positive_probability_median": 0.999778687953949,
+        "negative_probability_median": 0.0017991147469729185,
+        "negative_probability_max": 0.9781307578086853
+      },
+      "selection": {
+        "rows": 300,
+        "positive_rows": 100,
+        "negative_rows": 200,
+        "threshold": 0.9871336221694946,
+        "true_positive_rate": 0.8799999952316284,
+        "false_positive_rate": 0.014999999664723873,
+        "accuracy": 0.949999988079071,
+        "positive_probability_min": 0.44743141531944275,
+        "positive_probability_median": 0.9999215602874756,
+        "negative_probability_median": 0.002308555878698826,
+        "negative_probability_max": 0.9964129328727722
+      },
+      "counterfactual": {
+        "positive_routes": 88,
+        "counterfactual_exact": 77,
+        "phase10_natural_exact": 53,
+        "paired_counterfactual_gain": 24,
+        "false_routes": 3,
+        "predicted_preserved": 197,
+        "categories": {
+          "direct": {
+            "examples": 50,
+            "routes": 38,
+            "counterfactual_exact": 34
+          },
+          "word": {
+            "examples": 25,
+            "routes": 25,
+            "counterfactual_exact": 25
+          },
+          "distractor": {
+            "examples": 45,
+            "routes": 25,
+            "counterfactual_exact": 18
+          },
+          "multiplication": {
+            "examples": 20,
+            "routes": 3,
+            "counterfactual_exact": 0
+          },
+          "factual": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "quoted": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negated": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "cancelled": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "subtraction": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "comparison": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "concatenation": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "hypothetical": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          }
+        }
+      },
+      "checkpoint": "phase11_artifacts/development_routers/last_seed_16203.pt",
+      "checkpoint_sha256": "165b73afa2ab58d554b7b1e993b8a54846468316eea3a87ddb75ca19ad0c11d3"
+    },
+    {
+      "router_kind": "sequence_mean",
+      "phase10_seed": 16203,
+      "phase11_router_seed": 17303,
+      "source_phase10_checkpoint": "phase10_artifacts/confirmatory_interfaces/linear_representation_seed_16203.pt",
+      "source_phase10_checkpoint_sha256": "3228cdb415c02de385eb43c232e34e20922cc9f5653dc40ed84b035efaf3cca1",
+      "training": {
+        "config": {
+          "seed": 17303,
+          "steps": 2500,
+          "batch_size": 256,
+          "learning_rate": 0.0005,
+          "route_temperature": 2.0,
+          "maximum_calibration_false_positive_rate": 0.01
+        },
+        "initial_loss": 1.469472885131836,
+        "final_loss": 0.01079478207975626,
+        "wall_time_seconds": 3.0793323749967385,
+        "trainable_parameters": 4096
+      },
+      "calibration": {
+        "rows": 720,
+        "positive_rows": 240,
+        "negative_rows": 480,
+        "threshold": 0.45846906304359436,
+        "true_positive_rate": 0.949999988079071,
+        "false_positive_rate": 0.0062500000931322575,
+        "accuracy": 0.9791666865348816,
+        "positive_probability_min": 0.26635417342185974,
+        "positive_probability_median": 0.9117391109466553,
+        "negative_probability_median": 0.07226330041885376,
+        "negative_probability_max": 0.4672265350818634
+      },
+      "selection": {
+        "rows": 300,
+        "positive_rows": 100,
+        "negative_rows": 200,
+        "threshold": 0.45846906304359436,
+        "true_positive_rate": 1.0,
+        "false_positive_rate": 0.13500000536441803,
+        "accuracy": 0.9100000262260437,
+        "positive_probability_min": 0.4782564640045166,
+        "positive_probability_median": 0.9390925765037537,
+        "negative_probability_median": 0.13568289577960968,
+        "negative_probability_max": 0.9401125311851501
+      },
+      "counterfactual": {
+        "positive_routes": 100,
+        "counterfactual_exact": 89,
+        "phase10_natural_exact": 53,
+        "paired_counterfactual_gain": 36,
+        "false_routes": 27,
+        "predicted_preserved": 173,
+        "categories": {
+          "direct": {
+            "examples": 50,
+            "routes": 50,
+            "counterfactual_exact": 46
+          },
+          "word": {
+            "examples": 25,
+            "routes": 25,
+            "counterfactual_exact": 25
+          },
+          "distractor": {
+            "examples": 45,
+            "routes": 41,
+            "counterfactual_exact": 18
+          },
+          "multiplication": {
+            "examples": 20,
+            "routes": 4,
+            "counterfactual_exact": 0
+          },
+          "factual": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "quoted": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negated": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "cancelled": {
+            "examples": 20,
+            "routes": 6,
+            "counterfactual_exact": 0
+          },
+          "subtraction": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "comparison": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "concatenation": {
+            "examples": 20,
+            "routes": 1,
+            "counterfactual_exact": 0
+          },
+          "hypothetical": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          }
+        }
+      },
+      "checkpoint": "phase11_artifacts/development_routers/sequence_mean_seed_16203.pt",
+      "checkpoint_sha256": "007e616ab4cc8e3f9e8c61e0d85a5ca93e34beeed2eea2bafa08fe5e8eac6335"
+    },
+    {
+      "router_kind": "user_mean",
+      "phase10_seed": 16203,
+      "phase11_router_seed": 17403,
+      "source_phase10_checkpoint": "phase10_artifacts/confirmatory_interfaces/linear_representation_seed_16203.pt",
+      "source_phase10_checkpoint_sha256": "3228cdb415c02de385eb43c232e34e20922cc9f5653dc40ed84b035efaf3cca1",
+      "training": {
+        "config": {
+          "seed": 17403,
+          "steps": 2500,
+          "batch_size": 256,
+          "learning_rate": 0.0005,
+          "route_temperature": 2.0,
+          "maximum_calibration_false_positive_rate": 0.01
+        },
+        "initial_loss": 2.170010805130005,
+        "final_loss": 0.006081736646592617,
+        "wall_time_seconds": 3.2600196660059737,
+        "trainable_parameters": 4096
+      },
+      "calibration": {
+        "rows": 720,
+        "positive_rows": 240,
+        "negative_rows": 480,
+        "threshold": 0.7805616855621338,
+        "true_positive_rate": 0.9125000238418579,
+        "false_positive_rate": 0.008333333767950535,
+        "accuracy": 0.9652777910232544,
+        "positive_probability_min": 0.24761760234832764,
+        "positive_probability_median": 0.9168171882629395,
+        "negative_probability_median": 0.05925619229674339,
+        "negative_probability_max": 0.826396107673645
+      },
+      "selection": {
+        "rows": 300,
+        "positive_rows": 100,
+        "negative_rows": 200,
+        "threshold": 0.7805616855621338,
+        "true_positive_rate": 0.9200000166893005,
+        "false_positive_rate": 0.07000000029802322,
+        "accuracy": 0.9266666769981384,
+        "positive_probability_min": 0.40669381618499756,
+        "positive_probability_median": 0.9493040442466736,
+        "negative_probability_median": 0.14699546992778778,
+        "negative_probability_max": 0.977529764175415
+      },
+      "counterfactual": {
+        "positive_routes": 92,
+        "counterfactual_exact": 81,
+        "phase10_natural_exact": 53,
+        "paired_counterfactual_gain": 28,
+        "false_routes": 14,
+        "predicted_preserved": 186,
+        "categories": {
+          "direct": {
+            "examples": 50,
+            "routes": 45,
+            "counterfactual_exact": 41
+          },
+          "word": {
+            "examples": 25,
+            "routes": 25,
+            "counterfactual_exact": 25
+          },
+          "distractor": {
+            "examples": 45,
+            "routes": 30,
+            "counterfactual_exact": 15
+          },
+          "multiplication": {
+            "examples": 20,
+            "routes": 1,
+            "counterfactual_exact": 0
+          },
+          "factual": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "quoted": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negated": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "cancelled": {
+            "examples": 20,
+            "routes": 5,
+            "counterfactual_exact": 0
+          },
+          "subtraction": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "comparison": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "concatenation": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "hypothetical": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          }
+        }
+      },
+      "checkpoint": "phase11_artifacts/development_routers/user_mean_seed_16203.pt",
+      "checkpoint_sha256": "e39cafb2ad0eb3e40ec61f38b347eafd04c1b1de74c8e6efd9fc3574a907ea3e"
+    },
+    {
+      "router_kind": "user_tail_mean",
+      "phase10_seed": 16203,
+      "phase11_router_seed": 17503,
+      "source_phase10_checkpoint": "phase10_artifacts/confirmatory_interfaces/linear_representation_seed_16203.pt",
+      "source_phase10_checkpoint_sha256": "3228cdb415c02de385eb43c232e34e20922cc9f5653dc40ed84b035efaf3cca1",
+      "training": {
+        "config": {
+          "seed": 17503,
+          "steps": 2500,
+          "batch_size": 256,
+          "learning_rate": 0.0005,
+          "route_temperature": 2.0,
+          "maximum_calibration_false_positive_rate": 0.01
+        },
+        "initial_loss": 1.7159234285354614,
+        "final_loss": 0.003319176845252514,
+        "wall_time_seconds": 3.173380417007138,
+        "trainable_parameters": 4096
+      },
+      "calibration": {
+        "rows": 720,
+        "positive_rows": 240,
+        "negative_rows": 480,
+        "threshold": 0.8278824090957642,
+        "true_positive_rate": 0.8916666507720947,
+        "false_positive_rate": 0.0062500000931322575,
+        "accuracy": 0.9597222208976746,
+        "positive_probability_min": 0.36478495597839355,
+        "positive_probability_median": 0.9695274233818054,
+        "negative_probability_median": 0.0571913942694664,
+        "negative_probability_max": 0.8682631254196167
+      },
+      "selection": {
+        "rows": 300,
+        "positive_rows": 100,
+        "negative_rows": 200,
+        "threshold": 0.8278824090957642,
+        "true_positive_rate": 0.9399999976158142,
+        "false_positive_rate": 0.03500000014901161,
+        "accuracy": 0.9566666483879089,
+        "positive_probability_min": 0.34658917784690857,
+        "positive_probability_median": 0.9818785786628723,
+        "negative_probability_median": 0.1079651415348053,
+        "negative_probability_max": 0.9400184154510498
+      },
+      "counterfactual": {
+        "positive_routes": 94,
+        "counterfactual_exact": 83,
+        "phase10_natural_exact": 53,
+        "paired_counterfactual_gain": 30,
+        "false_routes": 7,
+        "predicted_preserved": 193,
+        "categories": {
+          "direct": {
+            "examples": 50,
+            "routes": 44,
+            "counterfactual_exact": 40
+          },
+          "word": {
+            "examples": 25,
+            "routes": 25,
+            "counterfactual_exact": 25
+          },
+          "distractor": {
+            "examples": 45,
+            "routes": 29,
+            "counterfactual_exact": 18
+          },
+          "multiplication": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "factual": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "quoted": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negated": {
+            "examples": 20,
+            "routes": 1,
+            "counterfactual_exact": 0
+          },
+          "cancelled": {
+            "examples": 20,
+            "routes": 2,
+            "counterfactual_exact": 0
+          },
+          "subtraction": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "comparison": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "concatenation": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "hypothetical": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          }
+        }
+      },
+      "checkpoint": "phase11_artifacts/development_routers/user_tail_mean_seed_16203.pt",
+      "checkpoint_sha256": "a3e665b54cd9cdef4189fed494c74a427cee1d4586785c67ef467077a3197a5b"
+    }
+  ],
+  "wall_time_seconds": 48.780086792001384
+}

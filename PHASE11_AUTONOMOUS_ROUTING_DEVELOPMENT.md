@@ -1,6 +1,6 @@
 # Phase 11 Autonomous Semantic Routing Development Plan
 
-Status: exploratory development; no Phase 11 confirmation prompts have been
+Status: development complete; no Phase 11 confirmation prompts have been
 generated or evaluated.
 
 Originating research direction: Josiah Wilson. Experimental design,
@@ -76,3 +76,29 @@ The counterfactual is deliberately bounded: a positive is counted exact only
 when the autonomous router activates and the previously recorded Phase 10
 oracle-route generation was exact. It does not replace a sealed end-to-end
 confirmation run.
+
+## Development result
+
+All four parameter-matched conditions were retained. The Phase 10 disclosed
+audit produced the following exact-count / false-route triples across seeds:
+
+- `last`: 81/83/77 exact and 2/4/3 false routes;
+- `sequence_mean`: 84/90/89 exact and 13/30/27 false routes;
+- `user_mean`: 77/84/81 exact and 10/19/14 false routes;
+- `user_tail_mean`: 83/76/83 exact and 12/13/7 false routes.
+
+Only `last` met the predeclared preservation constraint in every seed, so it
+is the selected architecture. This result suggests the principal development
+gain came from giving routing its own route-only weights rather than from
+pooling more tokens. The pooled variants increased recall in some seeds but
+over-routed adversarial negatives.
+
+The selected checkpoint was then installed in the real generation loop and
+run on every disclosed Phase 10 prompt. Its route decision matched the cached
+offline decision on all 900/900 seed-prompt pairs. End-to-end exact counts
+were 81/83/77, false routes were 2/4/3, and token preservation counts were
+198/196/197. These exactly matched the bounded counterfactual. Every example
+with an active route and exact operands had an exact result trajectory and
+exact formatted answer.
+
+These are development findings, not Phase 11 confirmation results.
