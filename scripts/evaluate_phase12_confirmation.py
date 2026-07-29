@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import signal
 import statistics
 import subprocess
 import time
@@ -27,6 +28,9 @@ from neural_firmware.semantic_data import exact_format_correct
 
 MANIFEST_PATH = Path("phase12_results/frozen_prompt_manifest.json")
 RESULT_PATH = Path("phase12_results/confirmation.json")
+PROGRESS_PATH = Path("phase12_artifacts/confirmation_progress.json")
+PROGRESS_VERSION = 1
+PAUSE_REQUESTED = False
 
 
 def git_commit() -> str:
@@ -42,6 +46,137 @@ def sha256(path: Path) -> str:
         for block in iter(lambda: handle.read(1024 * 1024), b""):
             digest.update(block)
     return digest.hexdigest()
+
+
+def request_pause(signum: int, _frame: object) -> None:
+    global PAUSE_REQUESTED
+    PAUSE_REQUESTED = True
+    print(
+        f"received signal {signum}; pausing after the current prompt",
+        flush=True,
+    )
+
+
+def evaluator_sha256() -> str:
+    return sha256(Path(__file__).resolve())
+
+
+def save_progress(
+    rows: list[dict[str, object]],
+    *,
+    manifest_sha256: str,
+    accumulated_before: float,
+    invocation_started: float,
+    status: str = "phase12_confirmation_in_progress",
+) -> None:
+    payload = {
+        "status": status,
+        "progress_version": PROGRESS_VERSION,
+        "manifest_sha256": manifest_sha256,
+        "canonical_rows_sha256": json.loads(
+            MANIFEST_PATH.read_text()
+        )["canonical_rows_sha256"],
+        "evaluator_sha256": evaluator_sha256(),
+        "model_id": PHASE8_MODEL_ID,
+        "model_revision": PHASE8_MODEL_REVISION,
+        "accumulated_wall_time_seconds": (
+            accumulated_before + time.perf_counter() - invocation_started
+        ),
+        "rows": rows,
+    }
+    PROGRESS_PATH.parent.mkdir(parents=True, exist_ok=True)
+    temporary = PROGRESS_PATH.with_suffix(".json.tmp")
+    temporary.write_text(json.dumps(payload, indent=2) + "\n")
+    temporary.replace(PROGRESS_PATH)
+
+
+def load_or_initialize_rows(
+    examples: list[object],
+    *,
+    manifest_sha256: str,
+    canonical_rows_sha256: str,
+) -> tuple[list[dict[str, object]], float]:
+    if not PROGRESS_PATH.exists():
+        return (
+            [
+                {
+                    "row_index": index,
+                    **example.to_dict(),
+                    "base": None,
+                    "conditions": {
+                        "phase11_control": {},
+                        "phase12_candidate": {},
+                    },
+                }
+                for index, example in enumerate(examples)
+            ],
+            0.0,
+        )
+    progress = json.loads(PROGRESS_PATH.read_text())
+    expected = {
+        "progress_version": PROGRESS_VERSION,
+        "manifest_sha256": manifest_sha256,
+        "canonical_rows_sha256": canonical_rows_sha256,
+        "evaluator_sha256": evaluator_sha256(),
+        "model_id": PHASE8_MODEL_ID,
+        "model_revision": PHASE8_MODEL_REVISION,
+    }
+    for key, value in expected.items():
+        if progress.get(key) != value:
+            raise ValueError(
+                f"saved confirmation progress has incompatible {key}"
+            )
+    rows = progress["rows"]
+    frozen = [example.to_dict() for example in examples]
+    if len(rows) != len(frozen):
+        raise ValueError("saved progress has the wrong row count")
+    for index, (row, expected_row) in enumerate(
+        zip(rows, frozen, strict=True)
+    ):
+        observed = {
+            key: row[key]
+            for key in expected_row
+        }
+        if row["row_index"] != index or observed != expected_row:
+            raise ValueError("saved progress does not match frozen rows")
+    print(f"resuming saved progress from {PROGRESS_PATH}", flush=True)
+    return rows, float(progress["accumulated_wall_time_seconds"])
+
+
+def first_missing_base(rows: list[dict[str, object]]) -> int:
+    missing = [index for index, row in enumerate(rows) if row["base"] is None]
+    return missing[0] if missing else len(rows)
+
+
+def first_missing_condition(
+    rows: list[dict[str, object]],
+    *,
+    condition: str,
+    key: str,
+) -> int:
+    missing = [
+        index
+        for index, row in enumerate(rows)
+        if key not in row["conditions"][condition]
+    ]
+    return missing[0] if missing else len(rows)
+
+
+def validate_contiguous_progress(
+    rows: list[dict[str, object]],
+    *,
+    start: int,
+    condition: str | None = None,
+    key: str | None = None,
+) -> None:
+    for index in range(start, len(rows)):
+        present = (
+            rows[index]["base"] is not None
+            if condition is None
+            else key in rows[index]["conditions"][condition]
+        )
+        if present:
+            raise ValueError("saved progress contains a non-contiguous stage")
 
 
 def category_name(row: dict[str, object]) -> str:
@@ -119,8 +254,13 @@ def summarize_condition(
 
 
 def main() -> None:
+    global PAUSE_REQUESTED
+    PAUSE_REQUESTED = False
+    signal.signal(signal.SIGINT, request_pause)
+    signal.signal(signal.SIGTERM, request_pause)
     started = time.perf_counter()
     manifest = json.loads(MANIFEST_PATH.read_text())
+    manifest_sha = sha256(MANIFEST_PATH)
     examples = build_phase12_confirmatory_examples()
     frozen_rows = [example.to_dict() for example in examples]
     canonical = json.dumps(
@@ -132,41 +272,69 @@ def main() -> None:
         "canonical_rows_sha256"
     ]:
         raise ValueError("Phase 12 rows do not match the frozen manifest")
-    rows = [
-        {
-            "row_index": index,
-            **example.to_dict(),
-            "base": None,
-            "conditions": {"phase11_control": {}, "phase12_candidate": {}},
-        }
-        for index, example in enumerate(examples)
-    ]
-
-    base_bundle = load_model_bundle(
-        PHASE8_MODEL_ID,
-        revision=PHASE8_MODEL_REVISION,
+    rows, accumulated_before = load_or_initialize_rows(
+        examples,
+        manifest_sha256=manifest_sha,
+        canonical_rows_sha256=manifest["canonical_rows_sha256"],
     )
-    base_latencies: list[float] = []
-    print("evaluating untouched TinyLlama baseline", flush=True)
-    for index, row in enumerate(rows):
-        row_started = time.perf_counter()
-        output = generate_base(base_bundle, row["prompt"], max_new_tokens=8)
-        elapsed = time.perf_counter() - row_started
-        base_latencies.append(elapsed)
-        row["base"] = {
-            **output,
-            "format_exact": (
-                exact_format_correct(output["generated_text"], row["answer"])
-                if row["route_label"]
-                else False
-            ),
-            "latency_seconds": elapsed,
-        }
-        if (index + 1) % 25 == 0:
-            print(f"base: evaluated {index + 1}/{len(rows)}", flush=True)
-    del base_bundle
-    if torch.backends.mps.is_available():
-        torch.mps.empty_cache()
+
+    base_start = first_missing_base(rows)
+    validate_contiguous_progress(rows, start=base_start)
+    if base_start < len(rows):
+        base_bundle = load_model_bundle(
+            PHASE8_MODEL_ID,
+            revision=PHASE8_MODEL_REVISION,
+        )
+        print(
+            f"evaluating untouched TinyLlama baseline from row {base_start}",
+            flush=True,
+        )
+        for index in range(base_start, len(rows)):
+            row = rows[index]
+            row_started = time.perf_counter()
+            output = generate_base(
+                base_bundle,
+                row["prompt"],
+                max_new_tokens=8,
+            )
+            elapsed = time.perf_counter() - row_started
+            row["base"] = {
+                **output,
+                "format_exact": (
+                    exact_format_correct(
+                        output["generated_text"],
+                        row["answer"],
+                    )
+                    if row["route_label"]
+                    else False
+                ),
+                "latency_seconds": elapsed,
+            }
+            if (index + 1) % 10 == 0 or PAUSE_REQUESTED:
+                save_progress(
+                    rows,
+                    manifest_sha256=manifest_sha,
+                    accumulated_before=accumulated_before,
+                    invocation_started=started,
+                )
+            if (index + 1) % 25 == 0:
+                print(
+                    f"base: evaluated {index + 1}/{len(rows)}",
+                    flush=True,
+                )
+            if PAUSE_REQUESTED:
+                del base_bundle
+                if torch.backends.mps.is_available():
+                    torch.mps.empty_cache()
+                print("Phase 12 confirmation paused safely", flush=True)
+                return
+        del base_bundle
+        if torch.backends.mps.is_available():
+            torch.mps.empty_cache()
+    base_latencies = [
+        float(row["base"]["latency_seconds"])
+        for row in rows
+    ]
 
     checkpoint_metadata: dict[str, dict[str, object]] = {}
     latencies: dict[str, dict[str, object]] = {
@@ -208,6 +376,17 @@ def main() -> None:
             candidate_checkpoint,
         )
 
+        control_start = first_missing_condition(
+            rows,
+            condition="phase11_control",
+            key=key,
+        )
+        validate_contiguous_progress(
+            rows,
+            start=control_start,
+            condition="phase11_control",
+            key=key,
+        )
         control_bundle = load_model_bundle(
             PHASE8_MODEL_ID,
             revision=PHASE8_MODEL_REVISION,
@@ -216,8 +395,17 @@ def main() -> None:
             control_bundle,
             control_checkpoint,
         )
-        control_times: list[float] = []
-        for index, row in enumerate(rows):
+        control_parameters = architectural_learned_parameter_count(
+            control_implant
+        )
+        if control_start < len(rows):
+            print(
+                f"phase11 control seed {seed}: resuming at row "
+                f"{control_start}",
+                flush=True,
+            )
+        for index in range(control_start, len(rows)):
+            row = rows[index]
             row_started = time.perf_counter()
             output = generate_sequence_implant(
                 control_bundle,
@@ -230,21 +418,40 @@ def main() -> None:
                 latch_operands=True,
             )
             elapsed = time.perf_counter() - row_started
-            control_times.append(elapsed)
             row["conditions"]["phase11_control"][key] = implant_record(
                 output,
                 row=row,
                 elapsed=elapsed,
             )
+            if (index + 1) % 10 == 0 or PAUSE_REQUESTED:
+                save_progress(
+                    rows,
+                    manifest_sha256=manifest_sha,
+                    accumulated_before=accumulated_before,
+                    invocation_started=started,
+                )
             if (index + 1) % 25 == 0:
                 print(
                     f"phase11 control seed {seed}: "
                     f"evaluated {index + 1}/{len(rows)}",
                     flush=True,
                 )
-        control_parameters = architectural_learned_parameter_count(
-            control_implant
-        )
+            if PAUSE_REQUESTED:
+                del control_bundle, control_implant
+                del source_checkpoint, control_checkpoint
+                del candidate_checkpoint
+                if torch.backends.mps.is_available():
+                    torch.mps.empty_cache()
+                print("Phase 12 confirmation paused safely", flush=True)
+                return
+        control_times = [
+            float(
+                row["conditions"]["phase11_control"][key][
+                    "latency_seconds"
+                ]
+            )
+            for row in rows
+        ]
         latencies["phase11_control"][key] = latency_summary(control_times)
         del control_bundle, control_implant
         if torch.backends.mps.is_available():
@@ -258,10 +465,25 @@ def main() -> None:
             candidate_bundle,
             candidate_checkpoint,
         )
-        candidate_times: list[float] = []
-        oracle_times: list[float] = []
-        route_off_times: list[float] = []
-        for index, row in enumerate(rows):
+        candidate_start = first_missing_condition(
+            rows,
+            condition="phase12_candidate",
+            key=key,
+        )
+        validate_contiguous_progress(
+            rows,
+            start=candidate_start,
+            condition="phase12_candidate",
+            key=key,
+        )
+        if candidate_start < len(rows):
+            print(
+                f"phase12 candidate seed {seed}: resuming at row "
+                f"{candidate_start}",
+                flush=True,
+            )
+        for index in range(candidate_start, len(rows)):
+            row = rows[index]
             row_started = time.perf_counter()
             output = generate_sequence_implant(
                 candidate_bundle,
@@ -274,7 +496,6 @@ def main() -> None:
                 latch_operands=True,
             )
             elapsed = time.perf_counter() - row_started
-            candidate_times.append(elapsed)
             record = implant_record(output, row=row, elapsed=elapsed)
             if row["route_label"]:
                 oracle_started = time.perf_counter()
@@ -290,7 +511,6 @@ def main() -> None:
                     force_route=1,
                 )
                 oracle_elapsed = time.perf_counter() - oracle_started
-                oracle_times.append(oracle_elapsed)
                 record["oracle_route"] = implant_record(
                     oracle,
                     row=row,
@@ -309,19 +529,59 @@ def main() -> None:
                     force_route=0,
                 )
                 route_off_elapsed = time.perf_counter() - route_off_started
-                route_off_times.append(route_off_elapsed)
                 record["route_off"] = implant_record(
                     route_off,
                     row=row,
                     elapsed=route_off_elapsed,
                 )
             row["conditions"]["phase12_candidate"][key] = record
+            if (index + 1) % 10 == 0 or PAUSE_REQUESTED:
+                save_progress(
+                    rows,
+                    manifest_sha256=manifest_sha,
+                    accumulated_before=accumulated_before,
+                    invocation_started=started,
+                )
             if (index + 1) % 25 == 0:
                 print(
                     f"phase12 candidate seed {seed}: "
                     f"evaluated {index + 1}/{len(rows)}",
                     flush=True,
                 )
+            if PAUSE_REQUESTED:
+                del candidate_bundle, candidate_implant
+                del source_checkpoint, control_checkpoint
+                del candidate_checkpoint
+                if torch.backends.mps.is_available():
+                    torch.mps.empty_cache()
+                print("Phase 12 confirmation paused safely", flush=True)
+                return
+        candidate_times = [
+            float(
+                row["conditions"]["phase12_candidate"][key][
+                    "latency_seconds"
+                ]
+            )
+            for row in rows
+        ]
+        oracle_times = [
+            float(
+                row["conditions"]["phase12_candidate"][key][
+                    "oracle_route"
+                ]["latency_seconds"]
+            )
+            for row in rows
+            if row["route_label"]
+        ]
+        route_off_times = [
+            float(
+                row["conditions"]["phase12_candidate"][key][
+                    "route_off"
+                ]["latency_seconds"]
+            )
+            for row in rows
+            if row["route_label"]
+        ]
         candidate_parameters = architectural_learned_parameter_count(
             candidate_implant
         )
@@ -485,9 +745,18 @@ def main() -> None:
         "checkpoints": checkpoint_metadata,
         "latencies": latencies,
         "rows": rows,
-        "wall_time_seconds": time.perf_counter() - started,
+        "wall_time_seconds": (
+            accumulated_before + time.perf_counter() - started
+        ),
     }
     RESULT_PATH.write_text(json.dumps(payload, indent=2) + "\n")
+    save_progress(
+        rows,
+        manifest_sha256=manifest_sha,
+        accumulated_before=accumulated_before,
+        invocation_started=started,
+        status="phase12_confirmation_complete",
+    )
     print(
         json.dumps(
             {
