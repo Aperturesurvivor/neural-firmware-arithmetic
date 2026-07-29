@@ -1,0 +1,289 @@
+{
+  "status": "phase12_development_deployment_training_complete",
+  "implementation_commit": "d92b40664ceca9137e2d9fbcc0b09d069be6c4f0",
+  "condition": "all_views_silu16",
+  "views": [
+    "last",
+    "sequence_mean",
+    "user_mean",
+    "user_tail_mean"
+  ],
+  "router_seeds": {
+    "16201": 21201,
+    "16202": 21202,
+    "16203": 21203
+  },
+  "fixed_threshold": 0.6,
+  "threshold_provenance": "selected post-hoc on disclosed Phase 11 development data",
+  "route_temperature": 2.0,
+  "training_source": "Phase 8 plus Phase 9 hard training plus disclosed Phase 11",
+  "calibration_source": "Phase 9 development plus disclosed Phase 10 confirmation; reported but not used to replace the fixed threshold",
+  "base_feature_cache": "phase11_artifacts/cache/request_route_features.pt",
+  "base_feature_cache_sha256": "9925dd54d87d3c2cb0fa82569bce358e9709a77912a39ed8ac9285877c0f4c1b",
+  "disclosed_feature_cache": "phase12_artifacts/cache/disclosed_phase11_features.pt",
+  "disclosed_feature_cache_sha256": "3bc1eb99cc3b43c32c6bec9894b6e401759e4a811e178d952d003b253f42a867",
+  "records": [
+    {
+      "condition": "all_views_silu16",
+      "phase10_seed": 16201,
+      "phase12_router_seed": 21201,
+      "views": [
+        "last",
+        "sequence_mean",
+        "user_mean",
+        "user_tail_mean"
+      ],
+      "fixed_threshold": 0.6,
+      "route_temperature": 2.0,
+      "training_rows": 5100,
+      "calibration_rows": 1020,
+      "disclosed_rows": 300,
+      "training": {
+        "config": {
+          "seed": 21201,
+          "bottleneck_width": 16,
+          "steps": 1500,
+          "batch_size": 256,
+          "learning_rate": 0.0005,
+          "route_temperature": 2.0,
+          "maximum_calibration_false_positive_rate": 0.005
+        },
+        "initial_loss": 0.6856050491333008,
+        "final_loss": 7.748302596155554e-05,
+        "wall_time_seconds": 18.375403750003898,
+        "trainable_parameters": 131104
+      },
+      "automatic_calibration_not_used": {
+        "rows": 1020,
+        "positive_rows": 340,
+        "negative_rows": 680,
+        "threshold": 0.5,
+        "true_positive_rate": 0.9852941036224365,
+        "false_positive_rate": 0.0,
+        "accuracy": 0.9950980544090271,
+        "positive_probability_min": 0.060967423021793365,
+        "positive_probability_median": 0.9873260855674744,
+        "negative_probability_median": 0.004515010863542557,
+        "negative_probability_max": 0.49570390582084656
+      },
+      "fixed_threshold_training": {
+        "rows": 5100,
+        "positive_rows": 2500,
+        "negative_rows": 2600,
+        "threshold": 0.6,
+        "true_positive_rate": 1.0,
+        "false_positive_rate": 0.0,
+        "accuracy": 1.0,
+        "positive_probability_min": 0.9448139071464539,
+        "positive_probability_median": 0.9955499172210693,
+        "negative_probability_median": 0.003730525728315115,
+        "negative_probability_max": 0.055015381425619125
+      },
+      "fixed_threshold_calibration": {
+        "rows": 1020,
+        "positive_rows": 340,
+        "negative_rows": 680,
+        "threshold": 0.6,
+        "true_positive_rate": 0.9823529124259949,
+        "false_positive_rate": 0.0,
+        "accuracy": 0.9941176176071167,
+        "positive_probability_min": 0.060967423021793365,
+        "positive_probability_median": 0.9873260855674744,
+        "negative_probability_median": 0.004515010863542557,
+        "negative_probability_max": 0.49570390582084656
+      },
+      "fixed_threshold_disclosed_phase11": {
+        "rows": 300,
+        "positive_rows": 100,
+        "negative_rows": 200,
+        "threshold": 0.6,
+        "true_positive_rate": 1.0,
+        "false_positive_rate": 0.0,
+        "accuracy": 1.0,
+        "positive_probability_min": 0.9448139071464539,
+        "positive_probability_median": 0.9932733774185181,
+        "negative_probability_median": 0.009063453413546085,
+        "negative_probability_max": 0.050997283309698105
+      },
+      "source_phase10_checkpoint": "phase10_artifacts/confirmatory_interfaces/linear_representation_seed_16201.pt",
+      "source_phase10_checkpoint_sha256": "965853d53e4e14a476bb4777e5163bb56b7089f79bc7d21581322e62d03c872b",
+      "checkpoint": "phase12_artifacts/deployment_routers/all_views_silu16_seed_16201.pt",
+      "checkpoint_sha256": "1987332bffe79caf7c6c7b6e7150bded5cfef1f4427502476149bee7131628bb"
+    },
+    {
+      "condition": "all_views_silu16",
+      "phase10_seed": 16202,
+      "phase12_router_seed": 21202,
+      "views": [
+        "last",
+        "sequence_mean",
+        "user_mean",
+        "user_tail_mean"
+      ],
+      "fixed_threshold": 0.6,
+      "route_temperature": 2.0,
+      "training_rows": 5100,
+      "calibration_rows": 1020,
+      "disclosed_rows": 300,
+      "training": {
+        "config": {
+          "seed": 21202,
+          "bottleneck_width": 16,
+          "steps": 1500,
+          "batch_size": 256,
+          "learning_rate": 0.0005,
+          "route_temperature": 2.0,
+          "maximum_calibration_false_positive_rate": 0.005
+        },
+        "initial_loss": 0.6943655610084534,
+        "final_loss": 8.384002285310999e-05,
+        "wall_time_seconds": 18.65268025000114,
+        "trainable_parameters": 131104
+      },
+      "automatic_calibration_not_used": {
+        "rows": 1020,
+        "positive_rows": 340,
+        "negative_rows": 680,
+        "threshold": 0.686587393283844,
+        "true_positive_rate": 0.9852941036224365,
+        "false_positive_rate": 0.0,
+        "accuracy": 0.9950980544090271,
+        "positive_probability_min": 0.028815438970923424,
+        "positive_probability_median": 0.9879867434501648,
+        "negative_probability_median": 0.0051099504344165325,
+        "negative_probability_max": 0.5643169283866882
+      },
+      "fixed_threshold_training": {
+        "rows": 5100,
+        "positive_rows": 2500,
+        "negative_rows": 2600,
+        "threshold": 0.6,
+        "true_positive_rate": 1.0,
+        "false_positive_rate": 0.0,
+        "accuracy": 1.0,
+        "positive_probability_min": 0.940294086933136,
+        "positive_probability_median": 0.994949460029602,
+        "negative_probability_median": 0.0037998019251972437,
+        "negative_probability_max": 0.055280912667512894
+      },
+      "fixed_threshold_calibration": {
+        "rows": 1020,
+        "positive_rows": 340,
+        "negative_rows": 680,
+        "threshold": 0.6,
+        "true_positive_rate": 0.9852941036224365,
+        "false_positive_rate": 0.0,
+        "accuracy": 0.9950980544090271,
+        "positive_probability_min": 0.028815438970923424,
+        "positive_probability_median": 0.9879867434501648,
+        "negative_probability_median": 0.0051099504344165325,
+        "negative_probability_max": 0.5643169283866882
+      },
+      "fixed_threshold_disclosed_phase11": {
+        "rows": 300,
+        "positive_rows": 100,
+        "negative_rows": 200,
+        "threshold": 0.6,
+        "true_positive_rate": 1.0,
+        "false_positive_rate": 0.0,
+        "accuracy": 1.0,
+        "positive_probability_min": 0.940294086933136,
+        "positive_probability_median": 0.9907451868057251,
+        "negative_probability_median": 0.010050461627542973,
+        "negative_probability_max": 0.054752908647060394
+      },
+      "source_phase10_checkpoint": "phase10_artifacts/confirmatory_interfaces/linear_representation_seed_16202.pt",
+      "source_phase10_checkpoint_sha256": "e32ae121e1373531bd98ae77494c350c04ecfe01c8aff8f237fc2176e463047c",
+      "checkpoint": "phase12_artifacts/deployment_routers/all_views_silu16_seed_16202.pt",
+      "checkpoint_sha256": "9b15d29e38b4e4e54804966455b0938c7dd68b5698a7103a09c8f31eb2aac888"
+    },
+    {
+      "condition": "all_views_silu16",
+      "phase10_seed": 16203,
+      "phase12_router_seed": 21203,
+      "views": [
+        "last",
+        "sequence_mean",
+        "user_mean",
+        "user_tail_mean"
+      ],
+      "fixed_threshold": 0.6,
+      "route_temperature": 2.0,
+      "training_rows": 5100,
+      "calibration_rows": 1020,
+      "disclosed_rows": 300,
+      "training": {
+        "config": {
+          "seed": 21203,
+          "bottleneck_width": 16,
+          "steps": 1500,
+          "batch_size": 256,
+          "learning_rate": 0.0005,
+          "route_temperature": 2.0,
+          "maximum_calibration_false_positive_rate": 0.005
+        },
+        "initial_loss": 0.6930745244026184,
+        "final_loss": 5.753073128289543e-05,
+        "wall_time_seconds": 18.635840000002645,
+        "trainable_parameters": 131104
+      },
+      "automatic_calibration_not_used": {
+        "rows": 1020,
+        "positive_rows": 340,
+        "negative_rows": 680,
+        "threshold": 0.647873044013977,
+        "true_positive_rate": 0.9852941036224365,
+        "false_positive_rate": 0.0,
+        "accuracy": 0.9950980544090271,
+        "positive_probability_min": 0.040420424193143845,
+        "positive_probability_median": 0.9901080131530762,
+        "negative_probability_median": 0.004675671458244324,
+        "negative_probability_max": 0.5961891412734985
+      },
+      "fixed_threshold_training": {
+        "rows": 5100,
+        "positive_rows": 2500,
+        "negative_rows": 2600,
+        "threshold": 0.6,
+        "true_positive_rate": 1.0,
+        "false_positive_rate": 0.0,
+        "accuracy": 1.0,
+        "positive_probability_min": 0.9449617862701416,
+        "positive_probability_median": 0.9951202273368835,
+        "negative_probability_median": 0.003609322477132082,
+        "negative_probability_max": 0.06281107664108276
+      },
+      "fixed_threshold_calibration": {
+        "rows": 1020,
+        "positive_rows": 340,
+        "negative_rows": 680,
+        "threshold": 0.6,
+        "true_positive_rate": 0.9852941036224365,
+        "false_positive_rate": 0.0,
+        "accuracy": 0.9950980544090271,
+        "positive_probability_min": 0.040420424193143845,
+        "positive_probability_median": 0.9901080131530762,
+        "negative_probability_median": 0.004675671458244324,
+        "negative_probability_max": 0.5961891412734985
+      },
+      "fixed_threshold_disclosed_phase11": {
+        "rows": 300,
+        "positive_rows": 100,
+        "negative_rows": 200,
+        "threshold": 0.6,
+        "true_positive_rate": 1.0,
+        "false_positive_rate": 0.0,
+        "accuracy": 1.0,
+        "positive_probability_min": 0.9449617862701416,
+        "positive_probability_median": 0.9915914535522461,
+        "negative_probability_median": 0.00970679335296154,
+        "negative_probability_max": 0.04904559254646301
+      },
+      "source_phase10_checkpoint": "phase10_artifacts/confirmatory_interfaces/linear_representation_seed_16203.pt",
+      "source_phase10_checkpoint_sha256": "3228cdb415c02de385eb43c232e34e20922cc9f5653dc40ed84b035efaf3cca1",
+      "checkpoint": "phase12_artifacts/deployment_routers/all_views_silu16_seed_16203.pt",
+      "checkpoint_sha256": "ffb09f542573956ec7d6dfe89cab2b775ab2d85897dbb9c8fb34b5fedfdb007b"
+    }
+  ],
+  "wall_time_seconds": 56.805372167000314
+}
