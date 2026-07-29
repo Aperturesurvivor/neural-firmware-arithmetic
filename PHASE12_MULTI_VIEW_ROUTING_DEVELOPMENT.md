@@ -158,3 +158,27 @@ describe, concatenate, or otherwise mention arithmetic-looking content. The
 next development architecture may use token-level adapted states and an
 order-sensitive neural readout. No Phase 12 confirmation set will be created
 unless that architecture first passes the same family-held-out selection rule.
+
+## Disclosed-data threshold selection
+
+A subsequent diagnostic separated two questions that the nested screen had
+coupled: whether the router scores contain a usable signal, and whether the
+fold-specific calibration procedure finds a stable cutoff. The saved
+out-of-fold probabilities from `all_views_silu16` were evaluated on a fixed
+0.05-spaced threshold grid from 0.50 through 0.95. The pre-existing numerical
+preservation criterion selected the lowest cutoff with at most 4/200 false
+routes in every seed.
+
+The selected cutoff was 0.60. At that fixed cutoff, out-of-fold
+counterfactual exact counts were 78/82/82, positive routes were 86/84/87, and
+false routes were 4/4/4. Thus the nonlinear scores contain a useful operating
+point even though the nested calibration rule failed to discover it.
+
+This cutoff was selected after inspecting all disclosed Phase 11 labels. It is
+an ordinary development hyperparameter, not family-held-out or confirmatory
+evidence. Phase 12 will therefore carry forward `all_views_silu16` with a
+fixed request threshold of 0.60 and judge that complete frozen system only on
+new prompt families and operand pairs. If real-generation validation on
+disclosed data diverges from the offline predictions, or if the new
+confirmation fails preservation, token-level routing remains the next
+architectural revision.

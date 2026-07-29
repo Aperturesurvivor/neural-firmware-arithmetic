@@ -1,0 +1,2591 @@
+{
+  "status": "phase12_disclosed_fixed_threshold_analysis_complete",
+  "interpretation": "post-hoc development hyperparameter analysis; not held-out or confirmatory evidence",
+  "condition": "all_views_silu16",
+  "threshold_grid": [
+    0.5,
+    0.55,
+    0.6,
+    0.65,
+    0.7,
+    0.75,
+    0.8,
+    0.85,
+    0.9,
+    0.95
+  ],
+  "selection_rule": "lowest 0.05-grid threshold with at most 4/200 false routes in every seed",
+  "selected_threshold": 0.6,
+  "selected_seed_metrics": [
+    {
+      "phase10_seed": 16201,
+      "positive_routes": 86,
+      "counterfactual_exact": 78,
+      "phase11_natural_exact": 67,
+      "paired_counterfactual_gain": 11,
+      "false_routes": 4,
+      "predicted_preserved": 196,
+      "categories": {
+        "positive_direct": {
+          "examples": 50,
+          "routes": 37,
+          "counterfactual_exact": 31
+        },
+        "positive_word": {
+          "examples": 25,
+          "routes": 25,
+          "counterfactual_exact": 25
+        },
+        "positive_distractor": {
+          "examples": 25,
+          "routes": 24,
+          "counterfactual_exact": 22
+        },
+        "negative_multiplication": {
+          "examples": 20,
+          "routes": 0,
+          "counterfactual_exact": 0
+        },
+        "negative_factual": {
+          "examples": 20,
+          "routes": 0,
+          "counterfactual_exact": 0
+        },
+        "negative_quoted": {
+          "examples": 20,
+          "routes": 0,
+          "counterfactual_exact": 0
+        },
+        "negative_negated": {
+          "examples": 20,
+          "routes": 0,
+          "counterfactual_exact": 0
+        },
+        "negative_cancelled": {
+          "examples": 20,
+          "routes": 0,
+          "counterfactual_exact": 0
+        },
+        "negative_subtraction": {
+          "examples": 20,
+          "routes": 0,
+          "counterfactual_exact": 0
+        },
+        "negative_comparison": {
+          "examples": 20,
+          "routes": 0,
+          "counterfactual_exact": 0
+        },
+        "negative_concatenation": {
+          "examples": 20,
+          "routes": 0,
+          "counterfactual_exact": 0
+        },
+        "negative_hypothetical": {
+          "examples": 20,
+          "routes": 0,
+          "counterfactual_exact": 0
+        },
+        "negative_distractor": {
+          "examples": 20,
+          "routes": 4,
+          "counterfactual_exact": 0
+        }
+      }
+    },
+    {
+      "phase10_seed": 16202,
+      "positive_routes": 84,
+      "counterfactual_exact": 82,
+      "phase11_natural_exact": 77,
+      "paired_counterfactual_gain": 5,
+      "false_routes": 4,
+      "predicted_preserved": 196,
+      "categories": {
+        "positive_direct": {
+          "examples": 50,
+          "routes": 37,
+          "counterfactual_exact": 36
+        },
+        "positive_word": {
+          "examples": 25,
+          "routes": 25,
+          "counterfactual_exact": 25
+        },
+        "positive_distractor": {
+          "examples": 25,
+          "routes": 22,
+          "counterfactual_exact": 21
+        },
+        "negative_multiplication": {
+          "examples": 20,
+          "routes": 0,
+          "counterfactual_exact": 0
+        },
+        "negative_factual": {
+          "examples": 20,
+          "routes": 0,
+          "counterfactual_exact": 0
+        },
+        "negative_quoted": {
+          "examples": 20,
+          "routes": 0,
+          "counterfactual_exact": 0
+        },
+        "negative_negated": {
+          "examples": 20,
+          "routes": 0,
+          "counterfactual_exact": 0
+        },
+        "negative_cancelled": {
+          "examples": 20,
+          "routes": 0,
+          "counterfactual_exact": 0
+        },
+        "negative_subtraction": {
+          "examples": 20,
+          "routes": 0,
+          "counterfactual_exact": 0
+        },
+        "negative_comparison": {
+          "examples": 20,
+          "routes": 0,
+          "counterfactual_exact": 0
+        },
+        "negative_concatenation": {
+          "examples": 20,
+          "routes": 0,
+          "counterfactual_exact": 0
+        },
+        "negative_hypothetical": {
+          "examples": 20,
+          "routes": 0,
+          "counterfactual_exact": 0
+        },
+        "negative_distractor": {
+          "examples": 20,
+          "routes": 4,
+          "counterfactual_exact": 0
+        }
+      }
+    },
+    {
+      "phase10_seed": 16203,
+      "positive_routes": 87,
+      "counterfactual_exact": 82,
+      "phase11_natural_exact": 68,
+      "paired_counterfactual_gain": 14,
+      "false_routes": 4,
+      "predicted_preserved": 196,
+      "categories": {
+        "positive_direct": {
+          "examples": 50,
+          "routes": 37,
+          "counterfactual_exact": 37
+        },
+        "positive_word": {
+          "examples": 25,
+          "routes": 25,
+          "counterfactual_exact": 25
+        },
+        "positive_distractor": {
+          "examples": 25,
+          "routes": 25,
+          "counterfactual_exact": 20
+        },
+        "negative_multiplication": {
+          "examples": 20,
+          "routes": 0,
+          "counterfactual_exact": 0
+        },
+        "negative_factual": {
+          "examples": 20,
+          "routes": 0,
+          "counterfactual_exact": 0
+        },
+        "negative_quoted": {
+          "examples": 20,
+          "routes": 0,
+          "counterfactual_exact": 0
+        },
+        "negative_negated": {
+          "examples": 20,
+          "routes": 0,
+          "counterfactual_exact": 0
+        },
+        "negative_cancelled": {
+          "examples": 20,
+          "routes": 0,
+          "counterfactual_exact": 0
+        },
+        "negative_subtraction": {
+          "examples": 20,
+          "routes": 0,
+          "counterfactual_exact": 0
+        },
+        "negative_comparison": {
+          "examples": 20,
+          "routes": 0,
+          "counterfactual_exact": 0
+        },
+        "negative_concatenation": {
+          "examples": 20,
+          "routes": 0,
+          "counterfactual_exact": 0
+        },
+        "negative_hypothetical": {
+          "examples": 20,
+          "routes": 0,
+          "counterfactual_exact": 0
+        },
+        "negative_distractor": {
+          "examples": 20,
+          "routes": 4,
+          "counterfactual_exact": 0
+        }
+      }
+    }
+  ],
+  "records": [
+    {
+      "threshold": 0.5,
+      "eligible": false,
+      "seeds": [
+        {
+          "phase10_seed": 16201,
+          "positive_routes": 89,
+          "counterfactual_exact": 81,
+          "phase11_natural_exact": 67,
+          "paired_counterfactual_gain": 14,
+          "false_routes": 6,
+          "predicted_preserved": 194,
+          "categories": {
+            "positive_direct": {
+              "examples": 50,
+              "routes": 39,
+              "counterfactual_exact": 33
+            },
+            "positive_word": {
+              "examples": 25,
+              "routes": 25,
+              "counterfactual_exact": 25
+            },
+            "positive_distractor": {
+              "examples": 25,
+              "routes": 25,
+              "counterfactual_exact": 23
+            },
+            "negative_multiplication": {
+              "examples": 20,
+              "routes": 1,
+              "counterfactual_exact": 0
+            },
+            "negative_factual": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_quoted": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_negated": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_cancelled": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_subtraction": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_comparison": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_concatenation": {
+              "examples": 20,
+              "routes": 1,
+              "counterfactual_exact": 0
+            },
+            "negative_hypothetical": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_distractor": {
+              "examples": 20,
+              "routes": 4,
+              "counterfactual_exact": 0
+            }
+          }
+        },
+        {
+          "phase10_seed": 16202,
+          "positive_routes": 89,
+          "counterfactual_exact": 87,
+          "phase11_natural_exact": 77,
+          "paired_counterfactual_gain": 10,
+          "false_routes": 7,
+          "predicted_preserved": 193,
+          "categories": {
+            "positive_direct": {
+              "examples": 50,
+              "routes": 39,
+              "counterfactual_exact": 38
+            },
+            "positive_word": {
+              "examples": 25,
+              "routes": 25,
+              "counterfactual_exact": 25
+            },
+            "positive_distractor": {
+              "examples": 25,
+              "routes": 25,
+              "counterfactual_exact": 24
+            },
+            "negative_multiplication": {
+              "examples": 20,
+              "routes": 2,
+              "counterfactual_exact": 0
+            },
+            "negative_factual": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_quoted": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_negated": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_cancelled": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_subtraction": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_comparison": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_concatenation": {
+              "examples": 20,
+              "routes": 1,
+              "counterfactual_exact": 0
+            },
+            "negative_hypothetical": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_distractor": {
+              "examples": 20,
+              "routes": 4,
+              "counterfactual_exact": 0
+            }
+          }
+        },
+        {
+          "phase10_seed": 16203,
+          "positive_routes": 89,
+          "counterfactual_exact": 84,
+          "phase11_natural_exact": 68,
+          "paired_counterfactual_gain": 16,
+          "false_routes": 7,
+          "predicted_preserved": 193,
+          "categories": {
+            "positive_direct": {
+              "examples": 50,
+              "routes": 39,
+              "counterfactual_exact": 39
+            },
+            "positive_word": {
+              "examples": 25,
+              "routes": 25,
+              "counterfactual_exact": 25
+            },
+            "positive_distractor": {
+              "examples": 25,
+              "routes": 25,
+              "counterfactual_exact": 20
+            },
+            "negative_multiplication": {
+              "examples": 20,
+              "routes": 2,
+              "counterfactual_exact": 0
+            },
+            "negative_factual": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_quoted": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_negated": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_cancelled": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_subtraction": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_comparison": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_concatenation": {
+              "examples": 20,
+              "routes": 1,
+              "counterfactual_exact": 0
+            },
+            "negative_hypothetical": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_distractor": {
+              "examples": 20,
+              "routes": 4,
+              "counterfactual_exact": 0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "threshold": 0.55,
+      "eligible": false,
+      "seeds": [
+        {
+          "phase10_seed": 16201,
+          "positive_routes": 87,
+          "counterfactual_exact": 79,
+          "phase11_natural_exact": 67,
+          "paired_counterfactual_gain": 12,
+          "false_routes": 5,
+          "predicted_preserved": 195,
+          "categories": {
+            "positive_direct": {
+              "examples": 50,
+              "routes": 37,
+              "counterfactual_exact": 31
+            },
+            "positive_word": {
+              "examples": 25,
+              "routes": 25,
+              "counterfactual_exact": 25
+            },
+            "positive_distractor": {
+              "examples": 25,
+              "routes": 25,
+              "counterfactual_exact": 23
+            },
+            "negative_multiplication": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_factual": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_quoted": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_negated": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_cancelled": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_subtraction": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_comparison": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_concatenation": {
+              "examples": 20,
+              "routes": 1,
+              "counterfactual_exact": 0
+            },
+            "negative_hypothetical": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_distractor": {
+              "examples": 20,
+              "routes": 4,
+              "counterfactual_exact": 0
+            }
+          }
+        },
+        {
+          "phase10_seed": 16202,
+          "positive_routes": 88,
+          "counterfactual_exact": 86,
+          "phase11_natural_exact": 77,
+          "paired_counterfactual_gain": 9,
+          "false_routes": 6,
+          "predicted_preserved": 194,
+          "categories": {
+            "positive_direct": {
+              "examples": 50,
+              "routes": 38,
+              "counterfactual_exact": 37
+            },
+            "positive_word": {
+              "examples": 25,
+              "routes": 25,
+              "counterfactual_exact": 25
+            },
+            "positive_distractor": {
+              "examples": 25,
+              "routes": 25,
+              "counterfactual_exact": 24
+            },
+            "negative_multiplication": {
+              "examples": 20,
+              "routes": 1,
+              "counterfactual_exact": 0
+            },
+            "negative_factual": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_quoted": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_negated": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_cancelled": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_subtraction": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_comparison": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_concatenation": {
+              "examples": 20,
+              "routes": 1,
+              "counterfactual_exact": 0
+            },
+            "negative_hypothetical": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_distractor": {
+              "examples": 20,
+              "routes": 4,
+              "counterfactual_exact": 0
+            }
+          }
+        },
+        {
+          "phase10_seed": 16203,
+          "positive_routes": 89,
+          "counterfactual_exact": 84,
+          "phase11_natural_exact": 68,
+          "paired_counterfactual_gain": 16,
+          "false_routes": 6,
+          "predicted_preserved": 194,
+          "categories": {
+            "positive_direct": {
+              "examples": 50,
+              "routes": 39,
+              "counterfactual_exact": 39
+            },
+            "positive_word": {
+              "examples": 25,
+              "routes": 25,
+              "counterfactual_exact": 25
+            },
+            "positive_distractor": {
+              "examples": 25,
+              "routes": 25,
+              "counterfactual_exact": 20
+            },
+            "negative_multiplication": {
+              "examples": 20,
+              "routes": 1,
+              "counterfactual_exact": 0
+            },
+            "negative_factual": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_quoted": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_negated": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_cancelled": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_subtraction": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_comparison": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_concatenation": {
+              "examples": 20,
+              "routes": 1,
+              "counterfactual_exact": 0
+            },
+            "negative_hypothetical": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_distractor": {
+              "examples": 20,
+              "routes": 4,
+              "counterfactual_exact": 0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "threshold": 0.6,
+      "eligible": true,
+      "seeds": [
+        {
+          "phase10_seed": 16201,
+          "positive_routes": 86,
+          "counterfactual_exact": 78,
+          "phase11_natural_exact": 67,
+          "paired_counterfactual_gain": 11,
+          "false_routes": 4,
+          "predicted_preserved": 196,
+          "categories": {
+            "positive_direct": {
+              "examples": 50,
+              "routes": 37,
+              "counterfactual_exact": 31
+            },
+            "positive_word": {
+              "examples": 25,
+              "routes": 25,
+              "counterfactual_exact": 25
+            },
+            "positive_distractor": {
+              "examples": 25,
+              "routes": 24,
+              "counterfactual_exact": 22
+            },
+            "negative_multiplication": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_factual": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_quoted": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_negated": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_cancelled": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_subtraction": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_comparison": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_concatenation": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_hypothetical": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_distractor": {
+              "examples": 20,
+              "routes": 4,
+              "counterfactual_exact": 0
+            }
+          }
+        },
+        {
+          "phase10_seed": 16202,
+          "positive_routes": 84,
+          "counterfactual_exact": 82,
+          "phase11_natural_exact": 77,
+          "paired_counterfactual_gain": 5,
+          "false_routes": 4,
+          "predicted_preserved": 196,
+          "categories": {
+            "positive_direct": {
+              "examples": 50,
+              "routes": 37,
+              "counterfactual_exact": 36
+            },
+            "positive_word": {
+              "examples": 25,
+              "routes": 25,
+              "counterfactual_exact": 25
+            },
+            "positive_distractor": {
+              "examples": 25,
+              "routes": 22,
+              "counterfactual_exact": 21
+            },
+            "negative_multiplication": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_factual": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_quoted": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_negated": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_cancelled": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_subtraction": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_comparison": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_concatenation": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_hypothetical": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_distractor": {
+              "examples": 20,
+              "routes": 4,
+              "counterfactual_exact": 0
+            }
+          }
+        },
+        {
+          "phase10_seed": 16203,
+          "positive_routes": 87,
+          "counterfactual_exact": 82,
+          "phase11_natural_exact": 68,
+          "paired_counterfactual_gain": 14,
+          "false_routes": 4,
+          "predicted_preserved": 196,
+          "categories": {
+            "positive_direct": {
+              "examples": 50,
+              "routes": 37,
+              "counterfactual_exact": 37
+            },
+            "positive_word": {
+              "examples": 25,
+              "routes": 25,
+              "counterfactual_exact": 25
+            },
+            "positive_distractor": {
+              "examples": 25,
+              "routes": 25,
+              "counterfactual_exact": 20
+            },
+            "negative_multiplication": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_factual": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_quoted": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_negated": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_cancelled": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_subtraction": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_comparison": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_concatenation": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_hypothetical": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_distractor": {
+              "examples": 20,
+              "routes": 4,
+              "counterfactual_exact": 0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "threshold": 0.65,
+      "eligible": true,
+      "seeds": [
+        {
+          "phase10_seed": 16201,
+          "positive_routes": 85,
+          "counterfactual_exact": 77,
+          "phase11_natural_exact": 67,
+          "paired_counterfactual_gain": 10,
+          "false_routes": 3,
+          "predicted_preserved": 197,
+          "categories": {
+            "positive_direct": {
+              "examples": 50,
+              "routes": 37,
+              "counterfactual_exact": 31
+            },
+            "positive_word": {
+              "examples": 25,
+              "routes": 25,
+              "counterfactual_exact": 25
+            },
+            "positive_distractor": {
+              "examples": 25,
+              "routes": 23,
+              "counterfactual_exact": 21
+            },
+            "negative_multiplication": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_factual": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_quoted": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_negated": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_cancelled": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_subtraction": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_comparison": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_concatenation": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_hypothetical": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_distractor": {
+              "examples": 20,
+              "routes": 3,
+              "counterfactual_exact": 0
+            }
+          }
+        },
+        {
+          "phase10_seed": 16202,
+          "positive_routes": 83,
+          "counterfactual_exact": 81,
+          "phase11_natural_exact": 77,
+          "paired_counterfactual_gain": 4,
+          "false_routes": 4,
+          "predicted_preserved": 196,
+          "categories": {
+            "positive_direct": {
+              "examples": 50,
+              "routes": 37,
+              "counterfactual_exact": 36
+            },
+            "positive_word": {
+              "examples": 25,
+              "routes": 25,
+              "counterfactual_exact": 25
+            },
+            "positive_distractor": {
+              "examples": 25,
+              "routes": 21,
+              "counterfactual_exact": 20
+            },
+            "negative_multiplication": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_factual": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_quoted": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_negated": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_cancelled": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_subtraction": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_comparison": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_concatenation": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_hypothetical": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_distractor": {
+              "examples": 20,
+              "routes": 4,
+              "counterfactual_exact": 0
+            }
+          }
+        },
+        {
+          "phase10_seed": 16203,
+          "positive_routes": 84,
+          "counterfactual_exact": 79,
+          "phase11_natural_exact": 68,
+          "paired_counterfactual_gain": 11,
+          "false_routes": 3,
+          "predicted_preserved": 197,
+          "categories": {
+            "positive_direct": {
+              "examples": 50,
+              "routes": 37,
+              "counterfactual_exact": 37
+            },
+            "positive_word": {
+              "examples": 25,
+              "routes": 25,
+              "counterfactual_exact": 25
+            },
+            "positive_distractor": {
+              "examples": 25,
+              "routes": 22,
+              "counterfactual_exact": 17
+            },
+            "negative_multiplication": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_factual": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_quoted": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_negated": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_cancelled": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_subtraction": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_comparison": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_concatenation": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_hypothetical": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_distractor": {
+              "examples": 20,
+              "routes": 3,
+              "counterfactual_exact": 0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "threshold": 0.7,
+      "eligible": true,
+      "seeds": [
+        {
+          "phase10_seed": 16201,
+          "positive_routes": 84,
+          "counterfactual_exact": 76,
+          "phase11_natural_exact": 67,
+          "paired_counterfactual_gain": 9,
+          "false_routes": 1,
+          "predicted_preserved": 199,
+          "categories": {
+            "positive_direct": {
+              "examples": 50,
+              "routes": 37,
+              "counterfactual_exact": 31
+            },
+            "positive_word": {
+              "examples": 25,
+              "routes": 25,
+              "counterfactual_exact": 25
+            },
+            "positive_distractor": {
+              "examples": 25,
+              "routes": 22,
+              "counterfactual_exact": 20
+            },
+            "negative_multiplication": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_factual": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_quoted": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_negated": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_cancelled": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_subtraction": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_comparison": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_concatenation": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_hypothetical": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_distractor": {
+              "examples": 20,
+              "routes": 1,
+              "counterfactual_exact": 0
+            }
+          }
+        },
+        {
+          "phase10_seed": 16202,
+          "positive_routes": 82,
+          "counterfactual_exact": 80,
+          "phase11_natural_exact": 77,
+          "paired_counterfactual_gain": 3,
+          "false_routes": 4,
+          "predicted_preserved": 196,
+          "categories": {
+            "positive_direct": {
+              "examples": 50,
+              "routes": 37,
+              "counterfactual_exact": 36
+            },
+            "positive_word": {
+              "examples": 25,
+              "routes": 25,
+              "counterfactual_exact": 25
+            },
+            "positive_distractor": {
+              "examples": 25,
+              "routes": 20,
+              "counterfactual_exact": 19
+            },
+            "negative_multiplication": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_factual": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_quoted": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_negated": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_cancelled": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_subtraction": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_comparison": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_concatenation": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_hypothetical": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_distractor": {
+              "examples": 20,
+              "routes": 4,
+              "counterfactual_exact": 0
+            }
+          }
+        },
+        {
+          "phase10_seed": 16203,
+          "positive_routes": 83,
+          "counterfactual_exact": 78,
+          "phase11_natural_exact": 68,
+          "paired_counterfactual_gain": 10,
+          "false_routes": 1,
+          "predicted_preserved": 199,
+          "categories": {
+            "positive_direct": {
+              "examples": 50,
+              "routes": 37,
+              "counterfactual_exact": 37
+            },
+            "positive_word": {
+              "examples": 25,
+              "routes": 25,
+              "counterfactual_exact": 25
+            },
+            "positive_distractor": {
+              "examples": 25,
+              "routes": 21,
+              "counterfactual_exact": 16
+            },
+            "negative_multiplication": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_factual": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_quoted": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_negated": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_cancelled": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_subtraction": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_comparison": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_concatenation": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_hypothetical": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_distractor": {
+              "examples": 20,
+              "routes": 1,
+              "counterfactual_exact": 0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "threshold": 0.75,
+      "eligible": true,
+      "seeds": [
+        {
+          "phase10_seed": 16201,
+          "positive_routes": 81,
+          "counterfactual_exact": 73,
+          "phase11_natural_exact": 67,
+          "paired_counterfactual_gain": 6,
+          "false_routes": 1,
+          "predicted_preserved": 199,
+          "categories": {
+            "positive_direct": {
+              "examples": 50,
+              "routes": 36,
+              "counterfactual_exact": 30
+            },
+            "positive_word": {
+              "examples": 25,
+              "routes": 25,
+              "counterfactual_exact": 25
+            },
+            "positive_distractor": {
+              "examples": 25,
+              "routes": 20,
+              "counterfactual_exact": 18
+            },
+            "negative_multiplication": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_factual": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_quoted": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_negated": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_cancelled": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_subtraction": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_comparison": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_concatenation": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_hypothetical": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_distractor": {
+              "examples": 20,
+              "routes": 1,
+              "counterfactual_exact": 0
+            }
+          }
+        },
+        {
+          "phase10_seed": 16202,
+          "positive_routes": 78,
+          "counterfactual_exact": 77,
+          "phase11_natural_exact": 77,
+          "paired_counterfactual_gain": 0,
+          "false_routes": 4,
+          "predicted_preserved": 196,
+          "categories": {
+            "positive_direct": {
+              "examples": 50,
+              "routes": 36,
+              "counterfactual_exact": 35
+            },
+            "positive_word": {
+              "examples": 25,
+              "routes": 25,
+              "counterfactual_exact": 25
+            },
+            "positive_distractor": {
+              "examples": 25,
+              "routes": 17,
+              "counterfactual_exact": 17
+            },
+            "negative_multiplication": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_factual": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_quoted": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_negated": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_cancelled": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_subtraction": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_comparison": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_concatenation": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_hypothetical": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_distractor": {
+              "examples": 20,
+              "routes": 4,
+              "counterfactual_exact": 0
+            }
+          }
+        },
+        {
+          "phase10_seed": 16203,
+          "positive_routes": 82,
+          "counterfactual_exact": 77,
+          "phase11_natural_exact": 68,
+          "paired_counterfactual_gain": 9,
+          "false_routes": 1,
+          "predicted_preserved": 199,
+          "categories": {
+            "positive_direct": {
+              "examples": 50,
+              "routes": 37,
+              "counterfactual_exact": 37
+            },
+            "positive_word": {
+              "examples": 25,
+              "routes": 25,
+              "counterfactual_exact": 25
+            },
+            "positive_distractor": {
+              "examples": 25,
+              "routes": 20,
+              "counterfactual_exact": 15
+            },
+            "negative_multiplication": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_factual": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_quoted": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_negated": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_cancelled": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_subtraction": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_comparison": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_concatenation": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_hypothetical": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_distractor": {
+              "examples": 20,
+              "routes": 1,
+              "counterfactual_exact": 0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "threshold": 0.8,
+      "eligible": true,
+      "seeds": [
+        {
+          "phase10_seed": 16201,
+          "positive_routes": 76,
+          "counterfactual_exact": 70,
+          "phase11_natural_exact": 67,
+          "paired_counterfactual_gain": 3,
+          "false_routes": 0,
+          "predicted_preserved": 200,
+          "categories": {
+            "positive_direct": {
+              "examples": 50,
+              "routes": 35,
+              "counterfactual_exact": 29
+            },
+            "positive_word": {
+              "examples": 25,
+              "routes": 25,
+              "counterfactual_exact": 25
+            },
+            "positive_distractor": {
+              "examples": 25,
+              "routes": 16,
+              "counterfactual_exact": 16
+            },
+            "negative_multiplication": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_factual": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_quoted": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_negated": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_cancelled": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_subtraction": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_comparison": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_concatenation": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_hypothetical": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_distractor": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            }
+          }
+        },
+        {
+          "phase10_seed": 16202,
+          "positive_routes": 73,
+          "counterfactual_exact": 72,
+          "phase11_natural_exact": 77,
+          "paired_counterfactual_gain": -5,
+          "false_routes": 1,
+          "predicted_preserved": 199,
+          "categories": {
+            "positive_direct": {
+              "examples": 50,
+              "routes": 33,
+              "counterfactual_exact": 32
+            },
+            "positive_word": {
+              "examples": 25,
+              "routes": 25,
+              "counterfactual_exact": 25
+            },
+            "positive_distractor": {
+              "examples": 25,
+              "routes": 15,
+              "counterfactual_exact": 15
+            },
+            "negative_multiplication": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_factual": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_quoted": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_negated": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_cancelled": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_subtraction": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_comparison": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_concatenation": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_hypothetical": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_distractor": {
+              "examples": 20,
+              "routes": 1,
+              "counterfactual_exact": 0
+            }
+          }
+        },
+        {
+          "phase10_seed": 16203,
+          "positive_routes": 78,
+          "counterfactual_exact": 74,
+          "phase11_natural_exact": 68,
+          "paired_counterfactual_gain": 6,
+          "false_routes": 0,
+          "predicted_preserved": 200,
+          "categories": {
+            "positive_direct": {
+              "examples": 50,
+              "routes": 35,
+              "counterfactual_exact": 35
+            },
+            "positive_word": {
+              "examples": 25,
+              "routes": 25,
+              "counterfactual_exact": 25
+            },
+            "positive_distractor": {
+              "examples": 25,
+              "routes": 18,
+              "counterfactual_exact": 14
+            },
+            "negative_multiplication": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_factual": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_quoted": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_negated": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_cancelled": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_subtraction": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_comparison": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_concatenation": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_hypothetical": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_distractor": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "threshold": 0.85,
+      "eligible": true,
+      "seeds": [
+        {
+          "phase10_seed": 16201,
+          "positive_routes": 72,
+          "counterfactual_exact": 66,
+          "phase11_natural_exact": 67,
+          "paired_counterfactual_gain": -1,
+          "false_routes": 0,
+          "predicted_preserved": 200,
+          "categories": {
+            "positive_direct": {
+              "examples": 50,
+              "routes": 32,
+              "counterfactual_exact": 26
+            },
+            "positive_word": {
+              "examples": 25,
+              "routes": 25,
+              "counterfactual_exact": 25
+            },
+            "positive_distractor": {
+              "examples": 25,
+              "routes": 15,
+              "counterfactual_exact": 15
+            },
+            "negative_multiplication": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_factual": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_quoted": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_negated": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_cancelled": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_subtraction": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_comparison": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_concatenation": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_hypothetical": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_distractor": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            }
+          }
+        },
+        {
+          "phase10_seed": 16202,
+          "positive_routes": 70,
+          "counterfactual_exact": 69,
+          "phase11_natural_exact": 77,
+          "paired_counterfactual_gain": -8,
+          "false_routes": 0,
+          "predicted_preserved": 200,
+          "categories": {
+            "positive_direct": {
+              "examples": 50,
+              "routes": 30,
+              "counterfactual_exact": 29
+            },
+            "positive_word": {
+              "examples": 25,
+              "routes": 25,
+              "counterfactual_exact": 25
+            },
+            "positive_distractor": {
+              "examples": 25,
+              "routes": 15,
+              "counterfactual_exact": 15
+            },
+            "negative_multiplication": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_factual": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_quoted": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_negated": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_cancelled": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_subtraction": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_comparison": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_concatenation": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_hypothetical": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_distractor": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            }
+          }
+        },
+        {
+          "phase10_seed": 16203,
+          "positive_routes": 72,
+          "counterfactual_exact": 70,
+          "phase11_natural_exact": 68,
+          "paired_counterfactual_gain": 2,
+          "false_routes": 0,
+          "predicted_preserved": 200,
+          "categories": {
+            "positive_direct": {
+              "examples": 50,
+              "routes": 32,
+              "counterfactual_exact": 32
+            },
+            "positive_word": {
+              "examples": 25,
+              "routes": 25,
+              "counterfactual_exact": 25
+            },
+            "positive_distractor": {
+              "examples": 25,
+              "routes": 15,
+              "counterfactual_exact": 13
+            },
+            "negative_multiplication": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_factual": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_quoted": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_negated": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_cancelled": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_subtraction": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_comparison": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_concatenation": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_hypothetical": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_distractor": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "threshold": 0.9,
+      "eligible": true,
+      "seeds": [
+        {
+          "phase10_seed": 16201,
+          "positive_routes": 70,
+          "counterfactual_exact": 64,
+          "phase11_natural_exact": 67,
+          "paired_counterfactual_gain": -3,
+          "false_routes": 0,
+          "predicted_preserved": 200,
+          "categories": {
+            "positive_direct": {
+              "examples": 50,
+              "routes": 30,
+              "counterfactual_exact": 24
+            },
+            "positive_word": {
+              "examples": 25,
+              "routes": 25,
+              "counterfactual_exact": 25
+            },
+            "positive_distractor": {
+              "examples": 25,
+              "routes": 15,
+              "counterfactual_exact": 15
+            },
+            "negative_multiplication": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_factual": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_quoted": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_negated": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_cancelled": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_subtraction": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_comparison": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_concatenation": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_hypothetical": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_distractor": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            }
+          }
+        },
+        {
+          "phase10_seed": 16202,
+          "positive_routes": 70,
+          "counterfactual_exact": 69,
+          "phase11_natural_exact": 77,
+          "paired_counterfactual_gain": -8,
+          "false_routes": 0,
+          "predicted_preserved": 200,
+          "categories": {
+            "positive_direct": {
+              "examples": 50,
+              "routes": 30,
+              "counterfactual_exact": 29
+            },
+            "positive_word": {
+              "examples": 25,
+              "routes": 25,
+              "counterfactual_exact": 25
+            },
+            "positive_distractor": {
+              "examples": 25,
+              "routes": 15,
+              "counterfactual_exact": 15
+            },
+            "negative_multiplication": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_factual": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_quoted": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_negated": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_cancelled": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_subtraction": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_comparison": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_concatenation": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_hypothetical": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_distractor": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            }
+          }
+        },
+        {
+          "phase10_seed": 16203,
+          "positive_routes": 70,
+          "counterfactual_exact": 68,
+          "phase11_natural_exact": 68,
+          "paired_counterfactual_gain": 0,
+          "false_routes": 0,
+          "predicted_preserved": 200,
+          "categories": {
+            "positive_direct": {
+              "examples": 50,
+              "routes": 30,
+              "counterfactual_exact": 30
+            },
+            "positive_word": {
+              "examples": 25,
+              "routes": 25,
+              "counterfactual_exact": 25
+            },
+            "positive_distractor": {
+              "examples": 25,
+              "routes": 15,
+              "counterfactual_exact": 13
+            },
+            "negative_multiplication": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_factual": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_quoted": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_negated": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_cancelled": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_subtraction": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_comparison": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_concatenation": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_hypothetical": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_distractor": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "threshold": 0.95,
+      "eligible": true,
+      "seeds": [
+        {
+          "phase10_seed": 16201,
+          "positive_routes": 70,
+          "counterfactual_exact": 64,
+          "phase11_natural_exact": 67,
+          "paired_counterfactual_gain": -3,
+          "false_routes": 0,
+          "predicted_preserved": 200,
+          "categories": {
+            "positive_direct": {
+              "examples": 50,
+              "routes": 30,
+              "counterfactual_exact": 24
+            },
+            "positive_word": {
+              "examples": 25,
+              "routes": 25,
+              "counterfactual_exact": 25
+            },
+            "positive_distractor": {
+              "examples": 25,
+              "routes": 15,
+              "counterfactual_exact": 15
+            },
+            "negative_multiplication": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_factual": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_quoted": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_negated": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_cancelled": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_subtraction": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_comparison": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_concatenation": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_hypothetical": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_distractor": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            }
+          }
+        },
+        {
+          "phase10_seed": 16202,
+          "positive_routes": 70,
+          "counterfactual_exact": 69,
+          "phase11_natural_exact": 77,
+          "paired_counterfactual_gain": -8,
+          "false_routes": 0,
+          "predicted_preserved": 200,
+          "categories": {
+            "positive_direct": {
+              "examples": 50,
+              "routes": 30,
+              "counterfactual_exact": 29
+            },
+            "positive_word": {
+              "examples": 25,
+              "routes": 25,
+              "counterfactual_exact": 25
+            },
+            "positive_distractor": {
+              "examples": 25,
+              "routes": 15,
+              "counterfactual_exact": 15
+            },
+            "negative_multiplication": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_factual": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_quoted": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_negated": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_cancelled": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_subtraction": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_comparison": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_concatenation": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_hypothetical": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_distractor": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            }
+          }
+        },
+        {
+          "phase10_seed": 16203,
+          "positive_routes": 70,
+          "counterfactual_exact": 68,
+          "phase11_natural_exact": 68,
+          "paired_counterfactual_gain": 0,
+          "false_routes": 0,
+          "predicted_preserved": 200,
+          "categories": {
+            "positive_direct": {
+              "examples": 50,
+              "routes": 30,
+              "counterfactual_exact": 30
+            },
+            "positive_word": {
+              "examples": 25,
+              "routes": 25,
+              "counterfactual_exact": 25
+            },
+            "positive_distractor": {
+              "examples": 25,
+              "routes": 15,
+              "counterfactual_exact": 13
+            },
+            "negative_multiplication": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_factual": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_quoted": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_negated": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_cancelled": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_subtraction": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_comparison": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_concatenation": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_hypothetical": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            },
+            "negative_distractor": {
+              "examples": 20,
+              "routes": 0,
+              "counterfactual_exact": 0
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
