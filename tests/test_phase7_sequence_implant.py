@@ -321,6 +321,64 @@ def test_interface_local_adapter_preserves_base_when_route_is_off() -> None:
     assert torch.allclose(implant(hidden), base(hidden), atol=1e-6)
 
 
+def test_request_router_pools_only_user_content() -> None:
+    layout = SequenceImplantLayout(max_digits=2)
+    implant = SequenceNeuronImplantMLP(
+        TinyMLP(intermediate_size=64),
+        torch.arange(layout.total_width),
+        layout=layout,
+        request_router_kind="user_mean",
+    )
+    hidden = torch.zeros(1, 4, 8)
+    hidden[0, 1, 0] = 2.0
+    hidden[0, 2, 0] = 4.0
+    hidden[0, 3, 0] = -100.0
+    context = SequenceImplantContext(
+        eligible_mask=torch.tensor([[False, False, False, True]]),
+        sequence_mask=torch.ones(1, 4, dtype=torch.bool),
+        request_pool_mask=torch.tensor([[False, True, True, False]]),
+    )
+    features = implant.request_route_features(hidden, context)
+    assert features.shape == (1, 8)
+    assert features[0, 0].item() == 3.0
+
+
+def test_request_router_overrides_token_route_but_teacher_has_priority() -> None:
+    layout = SequenceImplantLayout(max_digits=2)
+    implant = SequenceNeuronImplantMLP(
+        TinyMLP(intermediate_size=64),
+        torch.arange(layout.total_width),
+        layout=layout,
+        request_router_kind="sequence_mean",
+        request_route_threshold=0.5,
+        request_route_temperature=1.0,
+    )
+    with torch.no_grad():
+        implant.request_route_rows.zero_()
+        implant.request_route_rows[1, 0] = 10.0
+    hidden = torch.zeros(1, 3, 8)
+    hidden[..., 0] = 1.0
+    context = SequenceImplantContext(
+        eligible_mask=torch.tensor([[False, False, True]]),
+        sequence_mask=torch.ones(1, 3, dtype=torch.bool),
+    )
+    interface = SequenceInterface(
+        route_logits=torch.tensor([[[10.0, -10.0]] * 3]),
+        role_logits=torch.zeros(1, 3, layout.role_width),
+        digit_logits=torch.zeros(1, 3, layout.digit_width),
+        step_logits=torch.zeros(1, 3, layout.step_width),
+    )
+    routed = implant.apply_request_router(
+        implant.hard_interface(interface),
+        hidden,
+        context,
+    )
+    assert routed.route.tolist() == [[0, 0, 1]]
+    context.teacher_route = torch.tensor([[-1, -1, 0]])
+    taught = implant._apply_teachers(routed, context)
+    assert taught.route.tolist() == [[0, 0, 0]]
+
+
 def test_sequence_implant_exactly_preserves_base_without_runtime_context() -> None:
     torch.manual_seed(11)
     layout = SequenceImplantLayout(max_digits=2)

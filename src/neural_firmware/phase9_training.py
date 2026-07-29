@@ -65,6 +65,19 @@ def install_checkpoint_implant(
         interface_kind=str(checkpoint.get("interface_kind", "linear")),
         representation_rank=int(checkpoint.get("representation_rank", 0)),
         adapt_base_mlp=bool(checkpoint.get("adapt_base_mlp", True)),
+        request_router_kind=str(
+            checkpoint.get("request_router_kind", "interface")
+        ),
+        request_route_threshold=float(
+            checkpoint.get(
+                "request_route_threshold",
+                checkpoint["route_threshold"],
+            )
+        ),
+        request_route_temperature=float(
+            checkpoint.get("request_route_temperature", 2.0)
+        ),
+        request_tail_tokens=int(checkpoint.get("request_tail_tokens", 8)),
     )
     with torch.no_grad():
         implant.input_rows.copy_(checkpoint["input_rows"].to(bundle.device))
@@ -87,6 +100,10 @@ def install_checkpoint_implant(
             implant.representation_up.copy_(
                 checkpoint["representation_up"].to(bundle.device)
             )
+        if implant.request_router_kind != "interface":
+            implant.request_route_rows.copy_(
+                checkpoint["request_route_rows"].to(bundle.device)
+            )
     return implant
 
 
@@ -108,6 +125,8 @@ def architectural_learned_parameter_count(
             implant.representation_down.numel()
             + implant.representation_up.numel()
         )
+    if implant.request_router_kind != "interface":
+        count += implant.request_route_rows.numel()
     return count
 
 

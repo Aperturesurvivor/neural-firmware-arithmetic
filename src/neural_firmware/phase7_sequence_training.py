@@ -21,6 +21,7 @@ from neural_firmware.phase7_training import (
 from neural_firmware.pretrained_data import (
     answer_token_ids,
     chat_prompt_ids,
+    chat_prompt_ids_and_content_mask,
     decimal_digit_token_id,
 )
 from neural_firmware.pretrained_training import ModelBundle
@@ -849,7 +850,14 @@ def generate_sequence_implant(
 ) -> dict[str, object]:
     if force_route not in {None, 0, 1}:
         raise ValueError("force_route must be None, 0, or 1")
-    full_ids = chat_prompt_ids(bundle.tokenizer, prompt)
+    if implant.request_router_kind.startswith("user_"):
+        full_ids, prompt_content_mask = chat_prompt_ids_and_content_mask(
+            bundle.tokenizer,
+            prompt,
+        )
+    else:
+        full_ids = chat_prompt_ids(bundle.tokenizer, prompt)
+        prompt_content_mask = None
     generated: list[int] = []
     diagnostics: list[dict[str, object]] = []
     latched_route = force_route
@@ -863,6 +871,14 @@ def generate_sequence_implant(
         attention_mask = torch.ones_like(input_ids)
         eligible = torch.zeros_like(input_ids, dtype=torch.bool)
         eligible[:, -1] = True
+        request_pool_mask = None
+        if prompt_content_mask is not None:
+            request_pool_mask = torch.zeros_like(input_ids, dtype=torch.bool)
+            request_pool_mask[:, : len(prompt_content_mask)] = torch.tensor(
+                [prompt_content_mask],
+                dtype=torch.bool,
+                device=bundle.device,
+            )
         teacher_route = None
         if latched_route is not None:
             teacher_route = torch.full_like(input_ids, -1)
@@ -912,6 +928,7 @@ def generate_sequence_implant(
         context = SequenceImplantContext(
             eligible_mask=eligible,
             sequence_mask=attention_mask.to(torch.bool),
+            request_pool_mask=request_pool_mask,
             teacher_route=teacher_route,
             teacher_step=teacher_step,
             ablate_result=ablate_result,
@@ -952,7 +969,15 @@ def generate_sequence_implant(
         row["token_id"] = token_id
         row["token_text"] = bundle.tokenizer.decode([token_id])
         diagnostics.append(row)
-        del input_ids, attention_mask, hidden, next_token, context
+        del (
+            input_ids,
+            attention_mask,
+            hidden,
+            next_token,
+            context,
+        )
+        if request_pool_mask is not None:
+            del request_pool_mask
         if bundle.device.type == "mps":
             torch.mps.empty_cache()
         if token_id == bundle.tokenizer.eos_token_id:

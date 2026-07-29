@@ -19,6 +19,7 @@ phase7_artifacts/
 phase8_artifacts/
 phase9_artifacts/
 phase10_artifacts/
+phase11_artifacts/
 
 paper/build/
 paper/*.aux

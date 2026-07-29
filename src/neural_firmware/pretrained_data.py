@@ -142,6 +142,44 @@ def chat_prompt_ids(tokenizer: PreTrainedTokenizerBase, prompt: str) -> list[int
     )
 
 
+def chat_prompt_ids_and_content_mask(
+    tokenizer: PreTrainedTokenizerBase,
+    prompt: str,
+) -> tuple[list[int], list[bool]]:
+    """Return chat IDs and a formatting-independent user-content token mask."""
+    messages = [{"role": "user", "content": prompt}]
+    rendered = tokenizer.apply_chat_template(
+        messages,
+        tokenize=False,
+        add_generation_prompt=True,
+    )
+    content_start = rendered.find(prompt)
+    if content_start < 0:
+        raise ValueError("rendered chat template does not contain user content")
+    if rendered.find(prompt, content_start + 1) >= 0:
+        raise ValueError("user content is ambiguous in rendered chat template")
+    content_end = content_start + len(prompt)
+    encoded = tokenizer(
+        rendered,
+        add_special_tokens=False,
+        return_offsets_mapping=True,
+    )
+    ids = [int(token_id) for token_id in encoded["input_ids"]]
+    offsets = encoded["offset_mapping"]
+    mask = [
+        offset_end > content_start and offset_start < content_end
+        for offset_start, offset_end in offsets
+    ]
+    expected = chat_prompt_ids(tokenizer, prompt)
+    if ids != expected:
+        raise ValueError(
+            "offset-tokenized chat template differs from generation IDs"
+        )
+    if not any(mask):
+        raise ValueError("user content produced no chat tokens")
+    return ids, mask
+
+
 def decimal_digit_token_id(
     tokenizer: PreTrainedTokenizerBase,
     digit: str,
