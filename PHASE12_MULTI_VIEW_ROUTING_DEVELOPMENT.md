@@ -134,3 +134,27 @@ fold, one different Phase 11 family fold will calibrate the threshold and the
 remaining three will join base training. Thus every evaluated family remains
 disjoint from both router training and threshold calibration. This revision
 is development-only and was declared after retaining the failed first screen.
+
+## Nested family-held-out screen
+
+The declared nested screen also selected no condition. Out-of-fold
+counterfactual exact counts and false routes were:
+
+- `last_linear`: 66/76/73 exact, 5/5/4 false routes;
+- `last_user_linear`: 67/75/71 exact, 10/10/11 false routes;
+- `all_views_linear`: 77/74/71 exact, 21/9/14 false routes;
+- `all_views_silu16`: 79/85/82 exact, 12/11/10 false routes.
+
+The nonlinear router again produced the best recall and exactness, routing
+87/100 positives in every seed and improving counterfactual exactness over the
+Phase 11 natural router in every seed. It nevertheless failed the unchanged
+preservation rule in every seed. Calibrating on a separate Phase 11 family did
+not control false routes on the held-out family.
+
+This rules out threshold calibration as the main repair for the current
+representations. The aggregate mean views discard token order and therefore
+cannot reliably distinguish an instruction to add from statements that quote,
+describe, concatenate, or otherwise mention arithmetic-looking content. The
+next development architecture may use token-level adapted states and an
+order-sensitive neural readout. No Phase 12 confirmation set will be created
+unless that architecture first passes the same family-held-out selection rule.
