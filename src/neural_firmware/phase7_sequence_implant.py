@@ -422,6 +422,7 @@ class SequenceNeuronImplantMLP(nn.Module):
             "user_mean",
             "user_max",
             "user_tail_mean",
+            "all_views_silu16",
         }:
             raise ValueError(
                 f"unknown request router kind: {request_router_kind}"
@@ -429,9 +430,24 @@ class SequenceNeuronImplantMLP(nn.Module):
         self.request_router_kind = request_router_kind
         if self.request_router_kind == "interface":
             self.register_parameter("request_route_rows", None)
+            self.register_parameter("request_route_down", None)
+            self.register_parameter("request_route_output", None)
+        elif self.request_router_kind == "all_views_silu16":
+            self.register_parameter("request_route_rows", None)
+            self.request_route_down = nn.Parameter(
+                torch.empty(16, 4 * hidden_size)
+            )
+            self.request_route_output = nn.Parameter(torch.empty(2, 16))
+            nn.init.normal_(
+                self.request_route_down,
+                std=(4 * hidden_size) ** -0.5,
+            )
+            nn.init.normal_(self.request_route_output, std=16**-0.5)
         else:
             self.request_route_rows = nn.Parameter(torch.empty(2, hidden_size))
             nn.init.normal_(self.request_route_rows, std=hidden_size**-0.5)
+            self.register_parameter("request_route_down", None)
+            self.register_parameter("request_route_output", None)
         self.request_route_threshold = float(
             route_threshold
             if request_route_threshold is None
@@ -573,6 +589,48 @@ class SequenceNeuronImplantMLP(nn.Module):
                 device=adapted_hidden.device,
             )
             return adapted_hidden[rows, positions]
+        if self.request_router_kind == "all_views_silu16":
+            if context.request_pool_mask is None:
+                raise ValueError("four-view router requires a request mask")
+            user_mask = (
+                context.request_pool_mask.to(torch.bool) & sequence_mask
+            )
+            if not bool(user_mask.any(dim=-1).all()):
+                raise ValueError(
+                    "every four-view router row needs a user token"
+                )
+            positions = sequence_mask.sum(dim=-1).clamp_min(1) - 1
+            rows = torch.arange(
+                adapted_hidden.shape[0],
+                device=adapted_hidden.device,
+            )
+            last = adapted_hidden[rows, positions].float()
+            sequence_expanded = sequence_mask.unsqueeze(-1)
+            sequence_mean = (
+                (adapted_hidden.float() * sequence_expanded).sum(dim=1)
+                / sequence_mask.sum(dim=1, keepdim=True).clamp_min(1)
+            )
+            user_expanded = user_mask.unsqueeze(-1)
+            user_mean = (
+                (adapted_hidden.float() * user_expanded).sum(dim=1)
+                / user_mask.sum(dim=1, keepdim=True).clamp_min(1)
+            )
+            tail_mask = torch.zeros_like(user_mask)
+            for row in range(user_mask.shape[0]):
+                user_positions = torch.where(user_mask[row])[0]
+                tail_mask[
+                    row,
+                    user_positions[-self.request_tail_tokens :],
+                ] = True
+            tail_expanded = tail_mask.unsqueeze(-1)
+            user_tail_mean = (
+                (adapted_hidden.float() * tail_expanded).sum(dim=1)
+                / tail_mask.sum(dim=1, keepdim=True).clamp_min(1)
+            )
+            return torch.cat(
+                (last, sequence_mean, user_mean, user_tail_mean),
+                dim=-1,
+            )
         if self.request_router_kind.startswith("user_"):
             if context.request_pool_mask is None:
                 raise ValueError("user-pooled router requires a request mask")
@@ -610,10 +668,20 @@ class SequenceNeuronImplantMLP(nn.Module):
         if self.request_router_kind == "interface":
             return hard
         features = self.request_route_features(adapted_hidden, context)
-        logits = nn.functional.linear(
-            features.float(),
-            self.request_route_rows.float(),
-        )
+        if self.request_router_kind == "all_views_silu16":
+            bottleneck = nn.functional.linear(
+                features.float(),
+                self.request_route_down.float(),
+            )
+            logits = nn.functional.linear(
+                nn.functional.silu(bottleneck),
+                self.request_route_output.float(),
+            )
+        else:
+            logits = nn.functional.linear(
+                features.float(),
+                self.request_route_rows.float(),
+            )
         probability = (
             logits / self.request_route_temperature
         ).softmax(dim=-1)[..., 1]

@@ -850,7 +850,10 @@ def generate_sequence_implant(
 ) -> dict[str, object]:
     if force_route not in {None, 0, 1}:
         raise ValueError("force_route must be None, 0, or 1")
-    if implant.request_router_kind.startswith("user_"):
+    if (
+        implant.request_router_kind.startswith("user_")
+        or implant.request_router_kind == "all_views_silu16"
+    ):
         full_ids, prompt_content_mask = chat_prompt_ids_and_content_mask(
             bundle.tokenizer,
             prompt,

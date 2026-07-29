@@ -379,6 +379,38 @@ def test_request_router_overrides_token_route_but_teacher_has_priority() -> None
     assert taught.route.tolist() == [[0, 0, 0]]
 
 
+def test_four_view_silu_router_matches_offline_feature_order() -> None:
+    layout = SequenceImplantLayout(max_digits=2)
+    implant = SequenceNeuronImplantMLP(
+        TinyMLP(intermediate_size=64),
+        torch.arange(layout.total_width),
+        layout=layout,
+        request_router_kind="all_views_silu16",
+        request_tail_tokens=2,
+    )
+    hidden = torch.arange(32, dtype=torch.float32).reshape(1, 4, 8)
+    context = SequenceImplantContext(
+        eligible_mask=torch.tensor([[False, False, False, True]]),
+        sequence_mask=torch.ones(1, 4, dtype=torch.bool),
+        request_pool_mask=torch.tensor([[False, True, True, False]]),
+    )
+    features = implant.request_route_features(hidden, context)
+    expected = torch.cat(
+        (
+            hidden[:, -1],
+            hidden.mean(dim=1),
+            hidden[:, 1:3].mean(dim=1),
+            hidden[:, 1:3].mean(dim=1),
+        ),
+        dim=-1,
+    )
+    assert features.shape == (1, 32)
+    assert torch.equal(features, expected)
+    assert implant.request_route_down.shape == (16, 32)
+    assert implant.request_route_output.shape == (2, 16)
+    assert implant.request_route_rows is None
+
+
 def test_sequence_implant_exactly_preserves_base_without_runtime_context() -> None:
     torch.manual_seed(11)
     layout = SequenceImplantLayout(max_digits=2)

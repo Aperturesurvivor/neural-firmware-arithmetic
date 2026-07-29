@@ -100,7 +100,14 @@ def install_checkpoint_implant(
             implant.representation_up.copy_(
                 checkpoint["representation_up"].to(bundle.device)
             )
-        if implant.request_router_kind != "interface":
+        if implant.request_router_kind == "all_views_silu16":
+            implant.request_route_down.copy_(
+                checkpoint["request_route_down"].to(bundle.device)
+            )
+            implant.request_route_output.copy_(
+                checkpoint["request_route_output"].to(bundle.device)
+            )
+        elif implant.request_router_kind != "interface":
             implant.request_route_rows.copy_(
                 checkpoint["request_route_rows"].to(bundle.device)
             )
@@ -125,7 +132,12 @@ def architectural_learned_parameter_count(
             implant.representation_down.numel()
             + implant.representation_up.numel()
         )
-    if implant.request_router_kind != "interface":
+    if implant.request_router_kind == "all_views_silu16":
+        count += (
+            implant.request_route_down.numel()
+            + implant.request_route_output.numel()
+        )
+    elif implant.request_router_kind != "interface":
         count += implant.request_route_rows.numel()
     return count
 
