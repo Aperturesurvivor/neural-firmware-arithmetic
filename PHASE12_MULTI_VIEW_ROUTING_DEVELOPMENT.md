@@ -182,3 +182,9 @@ new prompt families and operand pairs. If real-generation validation on
 disclosed data diverges from the offline predictions, or if the new
 confirmation fails preservation, token-level routing remains the next
 architectural revision.
+
+Deployment routers use seeds 21,201/21,202/21,203. Each is trained for 1,500
+steps on the Phase 8 plus Phase 9 hard-routing training bank augmented with
+all disclosed Phase 11 examples. Phase 9 development and disclosed Phase 10
+examples are retained as diagnostic calibration data, but they cannot replace
+the fixed 0.60 threshold. These choices were fixed before deployment training.
