@@ -1,0 +1,68 @@
+{
+  "status": "phase11_environment_provenance_audited_posthoc",
+  "scope_note": "Captured immediately after confirmatory evaluation from the same workspace and machine; this was not emitted contemporaneously by the evaluator.",
+  "audit_commit": "a3d8e37a99d7157a853428ceace2b6fbd4edfe43",
+  "protocol_implementation_commit": "a2dbcba446f8a8e9ea00bc64208f04a1458a1c2e",
+  "confirmation_implementation_commit": "a3d8e37a99d7157a853428ceace2b6fbd4edfe43",
+  "model": {
+    "id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "revision": "fe8a4ea1ffedaf415f4da2f062534de366a451e6"
+  },
+  "runtime": {
+    "platform": "macOS-26.5.2-arm64-arm-64bit",
+    "machine": "arm64",
+    "python": "3.12.12 (main, Feb  4 2026, 01:57:59) [Clang 21.1.4 ]",
+    "torch": "2.13.0",
+    "transformers": "4.57.6",
+    "numpy": "2.5.1",
+    "scipy": "1.18.0",
+    "mps_available": true,
+    "execution_device": "mps"
+  },
+  "dependency_provenance": {
+    "uv_lock_sha256": "8bdccff54487d51c8d491744a047906792f356e6cae75f6b70ca652afaf2c930",
+    "pyproject_sha256": "ff18c7eef3b23269a39a68cc2366047ce103d0d993733b1bd615f8f82ed3ee80"
+  },
+  "artifacts": {
+    "manifest_sha256": "6fed42b45d7cb3eaa5f44cf3901d56d2ca4ded5633f15526227449a1be076c47",
+    "confirmation_sha256": "b76db01dff49bfd98e74eb7ad626620b63e15750e57ea82d9d23f5a634cd5871",
+    "checkpoints": {
+      "16201": {
+        "source": {
+          "path": "phase10_artifacts/confirmatory_interfaces/linear_representation_seed_16201.pt",
+          "sha256": "965853d53e4e14a476bb4777e5163bb56b7089f79bc7d21581322e62d03c872b",
+          "bytes": 344044
+        },
+        "candidate": {
+          "path": "phase11_artifacts/development_routers/last_seed_16201.pt",
+          "sha256": "b1314aaf1aebf960f321d21841c7c149fbf8679e982ea84dcaf9d87662a92ec6",
+          "bytes": 360821
+        }
+      },
+      "16202": {
+        "source": {
+          "path": "phase10_artifacts/confirmatory_interfaces/linear_representation_seed_16202.pt",
+          "sha256": "e32ae121e1373531bd98ae77494c350c04ecfe01c8aff8f237fc2176e463047c",
+          "bytes": 344044
+        },
+        "candidate": {
+          "path": "phase11_artifacts/development_routers/last_seed_16202.pt",
+          "sha256": "375f4068393ed5321ecfc3a4dee70f0eabfbd35dfc177f7bc74e543a9913c687",
+          "bytes": 360821
+        }
+      },
+      "16203": {
+        "source": {
+          "path": "phase10_artifacts/confirmatory_interfaces/linear_representation_seed_16203.pt",
+          "sha256": "3228cdb415c02de385eb43c232e34e20922cc9f5653dc40ed84b035efaf3cca1",
+          "bytes": 344044
+        },
+        "candidate": {
+          "path": "phase11_artifacts/development_routers/last_seed_16203.pt",
+          "sha256": "165b73afa2ab58d554b7b1e993b8a54846468316eea3a87ddb75ca19ad0c11d3",
+          "bytes": 360821
+        }
+      }
+    }
+  }
+}

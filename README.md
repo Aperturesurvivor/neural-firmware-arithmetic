@@ -17,13 +17,37 @@ claim general mathematical reasoning or historical priority for integrated
 calculators. No open-source license has been granted yet.
 
 The newest completed experiment is summarized in
-[`PHASE10_EXECUTIVE_SUMMARY.md`](PHASE10_EXECUTIVE_SUMMARY.md). The current
+[`PHASE11_EXECUTIVE_SUMMARY.md`](PHASE11_EXECUTIVE_SUMMARY.md). The current
 compiled interface-hardening report remains
 [`paper_phase9/deterministic-neurons-interface-hardening.pdf`](paper_phase9/deterministic-neurons-interface-hardening.pdf).
 It documents the frozen TinyLlama semantic-curriculum study, including its
 negative compound result and disclosed gate-bookkeeping correction. The
 earlier consolidated Qwen report remains
 [`paper_phase7/deterministic-neurons-qwen.pdf`](paper_phase7/deterministic-neurons-qwen.pdf).
+
+## Phase 11 at a glance
+
+Phase 11 added a dedicated 4,096-weight, final-prompt-state request router to
+each frozen Phase 10 local-representation checkpoint. No inherited interface,
+calculator, decoder, or pretrained-model tensor changed.
+
+On a new sealed 100-positive/200-negative audit, exact answers improved from
+49/46/51 under the Phase 10 control to 67/77/68 under the Phase 11 candidate:
+paired gains of +18, +31, and +17. Oracle routing remained 92/98/95, every
+active-route exact-operand execution was exact, and forcing the route off
+removed every normally correct candidate answer.
+
+The compound protocol **failed**. Positive routing was only 75/79/72, and
+false routes were 8/9/6 of 200. Twenty-one of 23 false routes were concentrated
+in two unseen multiplication templates. Post-hoc thresholding could not
+satisfy both exactness and preservation.
+
+The narrow finding is that route-only architectural separation recovered a
+large, consistent fraction of the routing gap, but a linear readout of only
+the final prompt state remained brittle to new operation phrasing. See the
+[`Phase 11 summary`](PHASE11_EXECUTIVE_SUMMARY.md), frozen
+[`protocol`](PHASE11_AUTONOMOUS_ROUTING_PROTOCOL.md), and
+[`development record`](PHASE11_AUTONOMOUS_ROUTING_DEVELOPMENT.md).
 
 ## Phase 10 at a glance
 

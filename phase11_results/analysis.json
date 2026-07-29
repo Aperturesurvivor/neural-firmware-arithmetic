@@ -1,0 +1,899 @@
+{
+  "status": "phase11_posthoc_analysis_complete",
+  "confirmatory_verdict": {
+    "autonomous_exactness": false,
+    "paired_improvement": true,
+    "route_recognition": false,
+    "preservation": false,
+    "operand_access": true,
+    "conditional_mechanism": true,
+    "causal_routing": true,
+    "checkpoint_integrity": true,
+    "all_gates": false
+  },
+  "paired_candidate_vs_control": {
+    "control_exact": 146,
+    "candidate_exact": 212,
+    "per_seed": {
+      "16201": {
+        "candidate_wins": 18,
+        "candidate_losses": 0,
+        "ties": 82,
+        "two_sided_exact_mcnemar_p": 7.62939453125e-06,
+        "control_exact": 49,
+        "candidate_exact": 67,
+        "oracle_exact": 92,
+        "available_oracle_gap": 43,
+        "recovered_oracle_gap": 18,
+        "fraction_oracle_gap_recovered": 0.4186046511627907,
+        "probabilities": {
+          "positives": {
+            "count": 100,
+            "minimum": 0.03368036076426506,
+            "median": 0.9996999204158783,
+            "maximum": 0.9999991655349731
+          },
+          "all_negatives": {
+            "count": 200,
+            "minimum": 3.6642119893848246e-10,
+            "median": 0.006619074149057269,
+            "maximum": 0.9975525736808777
+          },
+          "multiplication_negatives": {
+            "count": 20,
+            "minimum": 0.005562948994338512,
+            "median": 0.41242267191410065,
+            "maximum": 0.9975525736808777
+          }
+        },
+        "posthoc_best_under_four_false_routes": {
+          "threshold": 0.9871091842651367,
+          "false_routes": 4,
+          "positive_routes": 74,
+          "counterfactual_exact": 66
+        }
+      },
+      "16202": {
+        "candidate_wins": 31,
+        "candidate_losses": 0,
+        "ties": 69,
+        "two_sided_exact_mcnemar_p": 9.313225746154785e-10,
+        "control_exact": 46,
+        "candidate_exact": 77,
+        "oracle_exact": 98,
+        "available_oracle_gap": 52,
+        "recovered_oracle_gap": 31,
+        "fraction_oracle_gap_recovered": 0.5961538461538461,
+        "probabilities": {
+          "positives": {
+            "count": 100,
+            "minimum": 0.006362108513712883,
+            "median": 0.9994875192642212,
+            "maximum": 0.9999972581863403
+          },
+          "all_negatives": {
+            "count": 200,
+            "minimum": 6.392589790849001e-10,
+            "median": 0.005349536892026663,
+            "maximum": 0.9967713952064514
+          },
+          "multiplication_negatives": {
+            "count": 20,
+            "minimum": 0.002571465913206339,
+            "median": 0.19283977895975113,
+            "maximum": 0.9967713952064514
+          }
+        },
+        "posthoc_best_under_four_false_routes": {
+          "threshold": 0.9849758744239807,
+          "false_routes": 4,
+          "positive_routes": 76,
+          "counterfactual_exact": 74
+        }
+      },
+      "16203": {
+        "candidate_wins": 17,
+        "candidate_losses": 0,
+        "ties": 83,
+        "two_sided_exact_mcnemar_p": 1.52587890625e-05,
+        "control_exact": 51,
+        "candidate_exact": 68,
+        "oracle_exact": 95,
+        "available_oracle_gap": 44,
+        "recovered_oracle_gap": 17,
+        "fraction_oracle_gap_recovered": 0.38636363636363635,
+        "probabilities": {
+          "positives": {
+            "count": 100,
+            "minimum": 0.02122459188103676,
+            "median": 0.9996669888496399,
+            "maximum": 0.9999994039535522
+          },
+          "all_negatives": {
+            "count": 200,
+            "minimum": 4.3671569138759025e-10,
+            "median": 0.005973063409328461,
+            "maximum": 0.9983512163162231
+          },
+          "multiplication_negatives": {
+            "count": 20,
+            "minimum": 0.002334358636289835,
+            "median": 0.31078040599823,
+            "maximum": 0.9983512163162231
+          }
+        },
+        "posthoc_best_under_four_false_routes": {
+          "threshold": 0.9925054907798767,
+          "false_routes": 4,
+          "positive_routes": 72,
+          "counterfactual_exact": 68
+        }
+      }
+    },
+    "two_way_bootstrap": {
+      "draws": 100000,
+      "seed": 18001,
+      "mean_paired_difference": 0.22,
+      "percentile_95_lower": 0.12666666666666668,
+      "percentile_95_upper": 0.33
+    }
+  },
+  "category_summary": {
+    "positive_direct": {
+      "positive": true,
+      "prompts": 50,
+      "phase10_control": {
+        "routes": 65,
+        "exact": 60
+      },
+      "phase11_candidate": {
+        "routes": 96,
+        "exact": 89
+      }
+    },
+    "positive_word": {
+      "positive": true,
+      "prompts": 25,
+      "phase10_control": {
+        "routes": 43,
+        "exact": 43
+      },
+      "phase11_candidate": {
+        "routes": 75,
+        "exact": 75
+      }
+    },
+    "positive_distractor": {
+      "positive": true,
+      "prompts": 25,
+      "phase10_control": {
+        "routes": 45,
+        "exact": 43
+      },
+      "phase11_candidate": {
+        "routes": 55,
+        "exact": 48
+      }
+    },
+    "negative_multiplication": {
+      "positive": false,
+      "prompts": 20,
+      "phase10_control": {
+        "routes": 0,
+        "exact": 0
+      },
+      "phase11_candidate": {
+        "routes": 21,
+        "exact": 0
+      }
+    },
+    "negative_factual": {
+      "positive": false,
+      "prompts": 20,
+      "phase10_control": {
+        "routes": 0,
+        "exact": 0
+      },
+      "phase11_candidate": {
+        "routes": 0,
+        "exact": 0
+      }
+    },
+    "negative_quoted": {
+      "positive": false,
+      "prompts": 20,
+      "phase10_control": {
+        "routes": 0,
+        "exact": 0
+      },
+      "phase11_candidate": {
+        "routes": 0,
+        "exact": 0
+      }
+    },
+    "negative_negated": {
+      "positive": false,
+      "prompts": 20,
+      "phase10_control": {
+        "routes": 0,
+        "exact": 0
+      },
+      "phase11_candidate": {
+        "routes": 0,
+        "exact": 0
+      }
+    },
+    "negative_cancelled": {
+      "positive": false,
+      "prompts": 20,
+      "phase10_control": {
+        "routes": 0,
+        "exact": 0
+      },
+      "phase11_candidate": {
+        "routes": 0,
+        "exact": 0
+      }
+    },
+    "negative_subtraction": {
+      "positive": false,
+      "prompts": 20,
+      "phase10_control": {
+        "routes": 0,
+        "exact": 0
+      },
+      "phase11_candidate": {
+        "routes": 0,
+        "exact": 0
+      }
+    },
+    "negative_comparison": {
+      "positive": false,
+      "prompts": 20,
+      "phase10_control": {
+        "routes": 0,
+        "exact": 0
+      },
+      "phase11_candidate": {
+        "routes": 1,
+        "exact": 0
+      }
+    },
+    "negative_concatenation": {
+      "positive": false,
+      "prompts": 20,
+      "phase10_control": {
+        "routes": 0,
+        "exact": 0
+      },
+      "phase11_candidate": {
+        "routes": 0,
+        "exact": 0
+      }
+    },
+    "negative_hypothetical": {
+      "positive": false,
+      "prompts": 20,
+      "phase10_control": {
+        "routes": 0,
+        "exact": 0
+      },
+      "phase11_candidate": {
+        "routes": 0,
+        "exact": 0
+      }
+    },
+    "negative_distractor": {
+      "positive": false,
+      "prompts": 20,
+      "phase10_control": {
+        "routes": 0,
+        "exact": 0
+      },
+      "phase11_candidate": {
+        "routes": 1,
+        "exact": 0
+      }
+    }
+  },
+  "false_route_families": {
+    "Evaluate the product operation on {x} and {y}.": {
+      "split": "phase11_confirmatory_negative_multiplication",
+      "route_label": false,
+      "prompts": 4,
+      "seed_prompt_evaluations": 12,
+      "candidate_routes": 11,
+      "candidate_exact": 0
+    },
+    "Send operands {x}, {y} through a MULTIPLY instruction.": {
+      "split": "phase11_confirmatory_negative_multiplication",
+      "route_label": false,
+      "prompts": 4,
+      "seed_prompt_evaluations": 12,
+      "candidate_routes": 10,
+      "candidate_exact": 0
+    },
+    "Test the equality relation between {x} and {y}.": {
+      "split": "phase11_confirmatory_negative_comparison",
+      "route_label": false,
+      "prompts": 4,
+      "seed_prompt_evaluations": 12,
+      "candidate_routes": 1,
+      "candidate_exact": 0
+    },
+    "Log {c} mentions channels {x} and {y}. Confirm that three numbers occur.": {
+      "split": "phase11_confirmatory_negative_distractor",
+      "route_label": false,
+      "prompts": 4,
+      "seed_prompt_evaluations": 12,
+      "candidate_routes": 1,
+      "candidate_exact": 0
+    }
+  },
+  "family_summary": {
+    "Resolve ADD for decimal inputs {x} and {y}; emit the scalar result alone.": {
+      "split": "phase11_confirmatory_positive_direct",
+      "route_label": true,
+      "prompts": 5,
+      "seed_prompt_evaluations": 15,
+      "candidate_routes": 15,
+      "candidate_exact": 15
+    },
+    "Transform the pair {x}, {y} by integer addition. Return one numeral.": {
+      "split": "phase11_confirmatory_positive_direct",
+      "route_label": true,
+      "prompts": 5,
+      "seed_prompt_evaluations": 15,
+      "candidate_routes": 15,
+      "candidate_exact": 15
+    },
+    "Begin at {x} and advance the count by {y}. Print the attained count.": {
+      "split": "phase11_confirmatory_positive_direct",
+      "route_label": true,
+      "prompts": 5,
+      "seed_prompt_evaluations": 15,
+      "candidate_routes": 15,
+      "candidate_exact": 15
+    },
+    "Fold addend {y} into addend {x}; give only their base-ten total.": {
+      "split": "phase11_confirmatory_positive_direct",
+      "route_label": true,
+      "prompts": 5,
+      "seed_prompt_evaluations": 15,
+      "candidate_routes": 15,
+      "candidate_exact": 12
+    },
+    "The requested binary operation is SUM on {x} and {y}. Output its value.": {
+      "split": "phase11_confirmatory_positive_direct",
+      "route_label": true,
+      "prompts": 5,
+      "seed_prompt_evaluations": 15,
+      "candidate_routes": 15,
+      "candidate_exact": 15
+    },
+    "Set a counter to {x}, increment it {y} times, and state the final integer.": {
+      "split": "phase11_confirmatory_positive_direct",
+      "route_label": true,
+      "prompts": 5,
+      "seed_prompt_evaluations": 15,
+      "candidate_routes": 15,
+      "candidate_exact": 11
+    },
+    "Reduce the additive expression with operands {x} and {y} to digits only.": {
+      "split": "phase11_confirmatory_positive_direct",
+      "route_label": true,
+      "prompts": 5,
+      "seed_prompt_evaluations": 15,
+      "candidate_routes": 6,
+      "candidate_exact": 6
+    },
+    "Return the exact integer reached by increasing {x} through amount {y}.": {
+      "split": "phase11_confirmatory_positive_direct",
+      "route_label": true,
+      "prompts": 5,
+      "seed_prompt_evaluations": 15,
+      "candidate_routes": 0,
+      "candidate_exact": 0
+    },
+    "Compute one combined quantity from {x} and {y} using plus, not times.": {
+      "split": "phase11_confirmatory_positive_direct",
+      "route_label": true,
+      "prompts": 5,
+      "seed_prompt_evaluations": 15,
+      "candidate_routes": 0,
+      "candidate_exact": 0
+    },
+    "Evaluate {x} ADD {y}; the response must contain only the answer.": {
+      "split": "phase11_confirmatory_positive_direct",
+      "route_label": true,
+      "prompts": 5,
+      "seed_prompt_evaluations": 15,
+      "candidate_routes": 0,
+      "candidate_exact": 0
+    },
+    "A radio array detected {x} pulses before a retune and {y} after it. How many pulses did it detect in total?": {
+      "split": "phase11_confirmatory_positive_word",
+      "route_label": true,
+      "prompts": 5,
+      "seed_prompt_evaluations": 15,
+      "candidate_routes": 15,
+      "candidate_exact": 15
+    },
+    "A bioreactor logged {x} cells in one sample and {y} in another. Give the combined cell count as an integer.": {
+      "split": "phase11_confirmatory_positive_word",
+      "route_label": true,
+      "prompts": 5,
+      "seed_prompt_evaluations": 15,
+      "candidate_routes": 15,
+      "candidate_exact": 15
+    },
+    "A satellite downlinked {x} packets on one orbit and {y} on the next. Return the two-orbit packet total.": {
+      "split": "phase11_confirmatory_positive_word",
+      "route_label": true,
+      "prompts": 5,
+      "seed_prompt_evaluations": 15,
+      "candidate_routes": 15,
+      "candidate_exact": 15
+    },
+    "An imaging run produced {x} slices in its first block and {y} in its second. State the complete slice count.": {
+      "split": "phase11_confirmatory_positive_word",
+      "route_label": true,
+      "prompts": 5,
+      "seed_prompt_evaluations": 15,
+      "candidate_routes": 15,
+      "candidate_exact": 15
+    },
+    "A greenhouse counted {x} seedlings in one bay and {y} in a second bay. How many seedlings were counted altogether?": {
+      "split": "phase11_confirmatory_positive_word",
+      "route_label": true,
+      "prompts": 5,
+      "seed_prompt_evaluations": 15,
+      "candidate_routes": 15,
+      "candidate_exact": 15
+    },
+    "Tracking number {c} is not data. Add the observed values {x} and {y}.": {
+      "split": "phase11_confirmatory_positive_distractor",
+      "route_label": true,
+      "prompts": 5,
+      "seed_prompt_evaluations": 15,
+      "candidate_routes": 15,
+      "candidate_exact": 13
+    },
+    "Discard file code {c}; counters A and B read {x} and {y}. Return their sum.": {
+      "split": "phase11_confirmatory_positive_distractor",
+      "route_label": true,
+      "prompts": 5,
+      "seed_prompt_evaluations": 15,
+      "candidate_routes": 15,
+      "candidate_exact": 15
+    },
+    "Run label {c} identifies the trial only. Total measurements {x} and {y}.": {
+      "split": "phase11_confirmatory_positive_distractor",
+      "route_label": true,
+      "prompts": 5,
+      "seed_prompt_evaluations": 15,
+      "candidate_routes": 10,
+      "candidate_exact": 5
+    },
+    "Metadata field {c} must be excluded. The addends are {x} and {y}.": {
+      "split": "phase11_confirmatory_positive_distractor",
+      "route_label": true,
+      "prompts": 5,
+      "seed_prompt_evaluations": 15,
+      "candidate_routes": 0,
+      "candidate_exact": 0
+    },
+    "Ignore specimen ID {c}; batches contained {x} and {y} units. Give the aggregate units.": {
+      "split": "phase11_confirmatory_positive_distractor",
+      "route_label": true,
+      "prompts": 5,
+      "seed_prompt_evaluations": 15,
+      "candidate_routes": 15,
+      "candidate_exact": 15
+    },
+    "Evaluate the product operation on {x} and {y}.": {
+      "split": "phase11_confirmatory_negative_multiplication",
+      "route_label": false,
+      "prompts": 4,
+      "seed_prompt_evaluations": 12,
+      "candidate_routes": 11,
+      "candidate_exact": 0
+    },
+    "Compute {x} times {y}; addition is not requested.": {
+      "split": "phase11_confirmatory_negative_multiplication",
+      "route_label": false,
+      "prompts": 4,
+      "seed_prompt_evaluations": 12,
+      "candidate_routes": 0,
+      "candidate_exact": 0
+    },
+    "Send operands {x}, {y} through a MULTIPLY instruction.": {
+      "split": "phase11_confirmatory_negative_multiplication",
+      "route_label": false,
+      "prompts": 4,
+      "seed_prompt_evaluations": 12,
+      "candidate_routes": 10,
+      "candidate_exact": 0
+    },
+    "Return the value of {x} repeated {y} times multiplicatively.": {
+      "split": "phase11_confirmatory_negative_multiplication",
+      "route_label": false,
+      "prompts": 4,
+      "seed_prompt_evaluations": 12,
+      "candidate_routes": 0,
+      "candidate_exact": 0
+    },
+    "Use factors {x} and {y} to produce a product only.": {
+      "split": "phase11_confirmatory_negative_multiplication",
+      "route_label": false,
+      "prompts": 4,
+      "seed_prompt_evaluations": 12,
+      "candidate_routes": 0,
+      "candidate_exact": 0
+    },
+    "Lockers bear numbers {x} and {y}. Confirm that two lockers are referenced.": {
+      "split": "phase11_confirmatory_negative_factual",
+      "route_label": false,
+      "prompts": 4,
+      "seed_prompt_evaluations": 12,
+      "candidate_routes": 0,
+      "candidate_exact": 0
+    },
+    "The manifest names lots {x} and {y}. Are both lot names numerical?": {
+      "split": "phase11_confirmatory_negative_factual",
+      "route_label": false,
+      "prompts": 4,
+      "seed_prompt_evaluations": 12,
+      "candidate_routes": 0,
+      "candidate_exact": 0
+    },
+    "Pins {x} and {y} are marked on the board. Describe them as pin labels.": {
+      "split": "phase11_confirmatory_negative_factual",
+      "route_label": false,
+      "prompts": 4,
+      "seed_prompt_evaluations": 12,
+      "candidate_routes": 0,
+      "candidate_exact": 0
+    },
+    "Two pages, {x} and {y}, are flagged. State how many pages are flagged.": {
+      "split": "phase11_confirmatory_negative_factual",
+      "route_label": false,
+      "prompts": 4,
+      "seed_prompt_evaluations": 12,
+      "candidate_routes": 0,
+      "candidate_exact": 0
+    },
+    "The form displays reference numbers {x} and {y}. Say whether both appear.": {
+      "split": "phase11_confirmatory_negative_factual",
+      "route_label": false,
+      "prompts": 4,
+      "seed_prompt_evaluations": 12,
+      "candidate_routes": 0,
+      "candidate_exact": 0
+    },
+    "Copy the literal string \"add {x} and {y}\" without acting on it.": {
+      "split": "phase11_confirmatory_negative_quoted",
+      "route_label": false,
+      "prompts": 4,
+      "seed_prompt_evaluations": 12,
+      "candidate_routes": 0,
+      "candidate_exact": 0
+    },
+    "Reproduce the title \"{x} Plus {y}: A History\".": {
+      "split": "phase11_confirmatory_negative_quoted",
+      "route_label": false,
+      "prompts": 4,
+      "seed_prompt_evaluations": 12,
+      "candidate_routes": 0,
+      "candidate_exact": 0
+    },
+    "Echo the unevaluated notation \"SUM({x}, {y})\".": {
+      "split": "phase11_confirmatory_negative_quoted",
+      "route_label": false,
+      "prompts": 4,
+      "seed_prompt_evaluations": 12,
+      "candidate_routes": 0,
+      "candidate_exact": 0
+    },
+    "Quote the sentence \"{x} combined with {y} gives a total.\"": {
+      "split": "phase11_confirmatory_negative_quoted",
+      "route_label": false,
+      "prompts": 4,
+      "seed_prompt_evaluations": 12,
+      "candidate_routes": 0,
+      "candidate_exact": 0
+    },
+    "A transcript contains \u201cincrease {x} by {y}.\u201d Repeat those words only.": {
+      "split": "phase11_confirmatory_negative_quoted",
+      "route_label": false,
+      "prompts": 4,
+      "seed_prompt_evaluations": 12,
+      "candidate_routes": 0,
+      "candidate_exact": 0
+    },
+    "Withhold the additive result for {x} and {y}; reply withheld.": {
+      "split": "phase11_confirmatory_negative_negated",
+      "route_label": false,
+      "prompts": 4,
+      "seed_prompt_evaluations": 12,
+      "candidate_routes": 0,
+      "candidate_exact": 0
+    },
+    "You must not add {x} to {y}. State only prohibited.": {
+      "split": "phase11_confirmatory_negative_negated",
+      "route_label": false,
+      "prompts": 4,
+      "seed_prompt_evaluations": 12,
+      "candidate_routes": 0,
+      "candidate_exact": 0
+    },
+    "Leave {x} + {y} unresolved and answer unresolved.": {
+      "split": "phase11_confirmatory_negative_negated",
+      "route_label": false,
+      "prompts": 4,
+      "seed_prompt_evaluations": 12,
+      "candidate_routes": 0,
+      "candidate_exact": 0
+    },
+    "Reject any attempt to total {x} and {y}; say rejected.": {
+      "split": "phase11_confirmatory_negative_negated",
+      "route_label": false,
+      "prompts": 4,
+      "seed_prompt_evaluations": 12,
+      "candidate_routes": 0,
+      "candidate_exact": 0
+    },
+    "Never output the sum involving {x} and {y}.": {
+      "split": "phase11_confirmatory_negative_negated",
+      "route_label": false,
+      "prompts": 4,
+      "seed_prompt_evaluations": 12,
+      "candidate_routes": 0,
+      "candidate_exact": 0
+    },
+    "A prior ADD request for {x} and {y} has expired. Say expired.": {
+      "split": "phase11_confirmatory_negative_cancelled",
+      "route_label": false,
+      "prompts": 4,
+      "seed_prompt_evaluations": 12,
+      "candidate_routes": 0,
+      "candidate_exact": 0
+    },
+    "Remove the scheduled summation of {x}, {y}; respond removed.": {
+      "split": "phase11_confirmatory_negative_cancelled",
+      "route_label": false,
+      "prompts": 4,
+      "seed_prompt_evaluations": 12,
+      "candidate_routes": 0,
+      "candidate_exact": 0
+    },
+    "The instruction totaling {x} with {y} was revoked.": {
+      "split": "phase11_confirmatory_negative_cancelled",
+      "route_label": false,
+      "prompts": 4,
+      "seed_prompt_evaluations": 12,
+      "candidate_routes": 0,
+      "candidate_exact": 0
+    },
+    "Do not execute the abandoned addition of {x} and {y}.": {
+      "split": "phase11_confirmatory_negative_cancelled",
+      "route_label": false,
+      "prompts": 4,
+      "seed_prompt_evaluations": 12,
+      "candidate_routes": 0,
+      "candidate_exact": 0
+    },
+    "Mark the pending sum for {x} and {y} as canceled.": {
+      "split": "phase11_confirmatory_negative_cancelled",
+      "route_label": false,
+      "prompts": 4,
+      "seed_prompt_evaluations": 12,
+      "candidate_routes": 0,
+      "candidate_exact": 0
+    },
+    "Calculate {x} after decreasing it by {y}.": {
+      "split": "phase11_confirmatory_negative_subtraction",
+      "route_label": false,
+      "prompts": 4,
+      "seed_prompt_evaluations": 12,
+      "candidate_routes": 0,
+      "candidate_exact": 0
+    },
+    "Apply a MINUS operation to ordered inputs {x}, {y}.": {
+      "split": "phase11_confirmatory_negative_subtraction",
+      "route_label": false,
+      "prompts": 4,
+      "seed_prompt_evaluations": 12,
+      "candidate_routes": 0,
+      "candidate_exact": 0
+    },
+    "Return the magnitude of the gap from {x} to {y}.": {
+      "split": "phase11_confirmatory_negative_subtraction",
+      "route_label": false,
+      "prompts": 4,
+      "seed_prompt_evaluations": 12,
+      "candidate_routes": 0,
+      "candidate_exact": 0
+    },
+    "Find what remains when {y} is removed from {x}.": {
+      "split": "phase11_confirmatory_negative_subtraction",
+      "route_label": false,
+      "prompts": 4,
+      "seed_prompt_evaluations": 12,
+      "candidate_routes": 0,
+      "candidate_exact": 0
+    },
+    "Obtain the difference, rather than the sum, of {x} and {y}.": {
+      "split": "phase11_confirmatory_negative_subtraction",
+      "route_label": false,
+      "prompts": 4,
+      "seed_prompt_evaluations": 12,
+      "candidate_routes": 0,
+      "candidate_exact": 0
+    },
+    "Report whether {x} comes before {y} numerically.": {
+      "split": "phase11_confirmatory_negative_comparison",
+      "route_label": false,
+      "prompts": 4,
+      "seed_prompt_evaluations": 12,
+      "candidate_routes": 0,
+      "candidate_exact": 0
+    },
+    "Select the greater member of the pair {x}, {y}.": {
+      "split": "phase11_confirmatory_negative_comparison",
+      "route_label": false,
+      "prompts": 4,
+      "seed_prompt_evaluations": 12,
+      "candidate_routes": 0,
+      "candidate_exact": 0
+    },
+    "Rank {x} and {y} in ascending order.": {
+      "split": "phase11_confirmatory_negative_comparison",
+      "route_label": false,
+      "prompts": 4,
+      "seed_prompt_evaluations": 12,
+      "candidate_routes": 0,
+      "candidate_exact": 0
+    },
+    "Test the equality relation between {x} and {y}.": {
+      "split": "phase11_confirmatory_negative_comparison",
+      "route_label": false,
+      "prompts": 4,
+      "seed_prompt_evaluations": 12,
+      "candidate_routes": 1,
+      "candidate_exact": 0
+    },
+    "Choose the lower value from {x} and {y}; do no addition.": {
+      "split": "phase11_confirmatory_negative_comparison",
+      "route_label": false,
+      "prompts": 4,
+      "seed_prompt_evaluations": 12,
+      "candidate_routes": 0,
+      "candidate_exact": 0
+    },
+    "Form a text token by placing {y} directly after {x}.": {
+      "split": "phase11_confirmatory_negative_concatenation",
+      "route_label": false,
+      "prompts": 4,
+      "seed_prompt_evaluations": 12,
+      "candidate_routes": 0,
+      "candidate_exact": 0
+    },
+    "Render the pair as {x}::{y} with no arithmetic.": {
+      "split": "phase11_confirmatory_negative_concatenation",
+      "route_label": false,
+      "prompts": 4,
+      "seed_prompt_evaluations": 12,
+      "candidate_routes": 0,
+      "candidate_exact": 0
+    },
+    "Write identifier {x} followed by identifier {y}.": {
+      "split": "phase11_confirmatory_negative_concatenation",
+      "route_label": false,
+      "prompts": 4,
+      "seed_prompt_evaluations": 12,
+      "candidate_routes": 0,
+      "candidate_exact": 0
+    },
+    "Output both strings {x} and {y}, separated by a dash.": {
+      "split": "phase11_confirmatory_negative_concatenation",
+      "route_label": false,
+      "prompts": 4,
+      "seed_prompt_evaluations": 12,
+      "candidate_routes": 0,
+      "candidate_exact": 0
+    },
+    "Join the decimal characters in {x} with those in {y}.": {
+      "split": "phase11_confirmatory_negative_concatenation",
+      "route_label": false,
+      "prompts": 4,
+      "seed_prompt_evaluations": 12,
+      "candidate_routes": 0,
+      "candidate_exact": 0
+    },
+    "Imagine a later instruction to total {x} and {y}; identify its operation without evaluating it.": {
+      "split": "phase11_confirmatory_negative_hypothetical",
+      "route_label": false,
+      "prompts": 4,
+      "seed_prompt_evaluations": 12,
+      "candidate_routes": 0,
+      "candidate_exact": 0
+    },
+    "Could {x} and {y} be operands of addition? Answer yes or no, with no result.": {
+      "split": "phase11_confirmatory_negative_hypothetical",
+      "route_label": false,
+      "prompts": 4,
+      "seed_prompt_evaluations": 12,
+      "candidate_routes": 0,
+      "candidate_exact": 0
+    },
+    "Discuss whether adding {x} to {y} might require a carry; calculate nothing.": {
+      "split": "phase11_confirmatory_negative_hypothetical",
+      "route_label": false,
+      "prompts": 4,
+      "seed_prompt_evaluations": 12,
+      "candidate_routes": 0,
+      "candidate_exact": 0
+    },
+    "Name the operator in the expression {x} + {y} but leave it unsolved.": {
+      "split": "phase11_confirmatory_negative_hypothetical",
+      "route_label": false,
+      "prompts": 4,
+      "seed_prompt_evaluations": 12,
+      "candidate_routes": 0,
+      "candidate_exact": 0
+    },
+    "If {x} and {y} were summed, would the output be an integer? Do not sum them.": {
+      "split": "phase11_confirmatory_negative_hypothetical",
+      "route_label": false,
+      "prompts": 4,
+      "seed_prompt_evaluations": 12,
+      "candidate_routes": 0,
+      "candidate_exact": 0
+    },
+    "Asset record {c} lists serials {x} and {y}. State how many serials are listed.": {
+      "split": "phase11_confirmatory_negative_distractor",
+      "route_label": false,
+      "prompts": 4,
+      "seed_prompt_evaluations": 12,
+      "candidate_routes": 0,
+      "candidate_exact": 0
+    },
+    "Log {c} mentions channels {x} and {y}. Confirm that three numbers occur.": {
+      "split": "phase11_confirmatory_negative_distractor",
+      "route_label": false,
+      "prompts": 4,
+      "seed_prompt_evaluations": 12,
+      "candidate_routes": 1,
+      "candidate_exact": 0
+    },
+    "Building {c} contains rooms labeled {x} and {y}. Repeat only room labels.": {
+      "split": "phase11_confirmatory_negative_distractor",
+      "route_label": false,
+      "prompts": 4,
+      "seed_prompt_evaluations": 12,
+      "candidate_routes": 0,
+      "candidate_exact": 0
+    },
+    "Catalog {c} references entries {x} and {y}. Are two entries referenced?": {
+      "split": "phase11_confirmatory_negative_distractor",
+      "route_label": false,
+      "prompts": 4,
+      "seed_prompt_evaluations": 12,
+      "candidate_routes": 0,
+      "candidate_exact": 0
+    },
+    "Survey {c} names sites {x} and {y}. Say whether both site names are numeric.": {
+      "split": "phase11_confirmatory_negative_distractor",
+      "route_label": false,
+      "prompts": 4,
+      "seed_prompt_evaluations": 12,
+      "candidate_routes": 0,
+      "candidate_exact": 0
+    }
+  },
+  "interpretation": {
+    "threshold_only_repair_satisfies_frozen_gates": false,
+    "basis": "Even post hoc, the exactness-maximizing threshold with at most four false routes yields 66/74/68 exact."
+  }
+}
