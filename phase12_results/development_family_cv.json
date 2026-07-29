@@ -1,0 +1,4092 @@
+{
+  "status": "phase12_family_held_out_development_complete",
+  "implementation_commit": "55752694d3b9832ef999394312205d0885035fd0",
+  "base_feature_cache": "phase11_artifacts/cache/request_route_features.pt",
+  "base_feature_cache_sha256": "9925dd54d87d3c2cb0fa82569bce358e9709a77912a39ed8ac9285877c0f4c1b",
+  "disclosed_feature_cache": "phase12_artifacts/cache/disclosed_phase11_features.pt",
+  "disclosed_feature_cache_sha256": "3bc1eb99cc3b43c32c6bec9894b6e401759e4a811e178d952d003b253f42a867",
+  "selection_source": "disclosed_phase11_family_held_out",
+  "fold_rule": "family_index modulo 5 within positive and negative strata; each fold contains 60 prompts from 4 positive and 10 negative families",
+  "conditions": [
+    "last_linear",
+    "last_user_linear",
+    "all_views_linear",
+    "all_views_silu16"
+  ],
+  "selection_rule": "among conditions with at most 4/200 out-of-fold false routes in every seed, maximize worst-seed counterfactual exact, then mean exact, then minimize learned parameters",
+  "summaries": {
+    "last_linear": {
+      "counterfactual_exact": [
+        70,
+        78,
+        73
+      ],
+      "paired_counterfactual_gains": [
+        3,
+        1,
+        5
+      ],
+      "positive_routes": [
+        78,
+        80,
+        78
+      ],
+      "false_routes": [
+        6,
+        6,
+        4
+      ],
+      "mean_counterfactual_exact": 73.66666666666667,
+      "learned_parameters": 4096
+    },
+    "last_user_linear": {
+      "counterfactual_exact": [
+        71,
+        74,
+        75
+      ],
+      "paired_counterfactual_gains": [
+        4,
+        -3,
+        7
+      ],
+      "positive_routes": [
+        79,
+        76,
+        80
+      ],
+      "false_routes": [
+        5,
+        6,
+        11
+      ],
+      "mean_counterfactual_exact": 73.33333333333333,
+      "learned_parameters": 8192
+    },
+    "all_views_linear": {
+      "counterfactual_exact": [
+        69,
+        75,
+        72
+      ],
+      "paired_counterfactual_gains": [
+        2,
+        -2,
+        4
+      ],
+      "positive_routes": [
+        77,
+        77,
+        77
+      ],
+      "false_routes": [
+        11,
+        9,
+        16
+      ],
+      "mean_counterfactual_exact": 72.0,
+      "learned_parameters": 16384
+    },
+    "all_views_silu16": {
+      "counterfactual_exact": [
+        81,
+        86,
+        82
+      ],
+      "paired_counterfactual_gains": [
+        14,
+        9,
+        14
+      ],
+      "positive_routes": [
+        89,
+        88,
+        87
+      ],
+      "false_routes": [
+        10,
+        6,
+        8
+      ],
+      "mean_counterfactual_exact": 83.0,
+      "learned_parameters": 131104
+    }
+  },
+  "selected_condition": null,
+  "records": [
+    {
+      "condition": "last_linear",
+      "phase10_seed": 16201,
+      "views": [
+        "last"
+      ],
+      "learned_parameters": 4096,
+      "folds": [
+        {
+          "fold": 0,
+          "router_seed": 18201,
+          "training_rows": 5040,
+          "held_rows": 60,
+          "training": {
+            "config": {
+              "seed": 18201,
+              "steps": 1500,
+              "batch_size": 256,
+              "learning_rate": 0.0005,
+              "route_temperature": 2.0,
+              "maximum_calibration_false_positive_rate": 0.01
+            },
+            "initial_loss": 0.03233257681131363,
+            "final_loss": 0.00027205859078094363,
+            "wall_time_seconds": 2.223231042007683,
+            "trainable_parameters": 4096
+          },
+          "calibration": {
+            "rows": 720,
+            "positive_rows": 240,
+            "negative_rows": 480,
+            "threshold": 0.8741827011108398,
+            "true_positive_rate": 1.0,
+            "false_positive_rate": 0.004166666883975267,
+            "accuracy": 0.9972222447395325,
+            "positive_probability_min": 0.8741827011108398,
+            "positive_probability_median": 0.9982056617736816,
+            "negative_probability_median": 0.0015902080340310931,
+            "negative_probability_max": 0.9685861468315125
+          },
+          "held": {
+            "rows": 60,
+            "positive_rows": 20,
+            "negative_rows": 40,
+            "threshold": 0.8741827011108398,
+            "true_positive_rate": 1.0,
+            "false_positive_rate": 0.05000000074505806,
+            "accuracy": 0.9666666388511658,
+            "positive_probability_min": 0.9960606694221497,
+            "positive_probability_median": 0.9996098875999451,
+            "negative_probability_median": 0.028413843363523483,
+            "negative_probability_max": 0.9559282660484314
+          },
+          "checkpoint": "phase12_artifacts/development_family_cv/last_linear_seed_16201_fold_0.pt",
+          "checkpoint_sha256": "2b32d15dfa7bb0299cd759f60189d5dbc9de2557f0a4c5d4b0b14b7dcaf7b9e5"
+        },
+        {
+          "fold": 1,
+          "router_seed": 18211,
+          "training_rows": 5040,
+          "held_rows": 60,
+          "training": {
+            "config": {
+              "seed": 18211,
+              "steps": 1500,
+              "batch_size": 256,
+              "learning_rate": 0.0005,
+              "route_temperature": 2.0,
+              "maximum_calibration_false_positive_rate": 0.01
+            },
+            "initial_loss": 0.004293168429285288,
+            "final_loss": 0.0002534850500524044,
+            "wall_time_seconds": 1.8721771249984158,
+            "trainable_parameters": 4096
+          },
+          "calibration": {
+            "rows": 720,
+            "positive_rows": 240,
+            "negative_rows": 480,
+            "threshold": 0.8538649082183838,
+            "true_positive_rate": 1.0,
+            "false_positive_rate": 0.004166666883975267,
+            "accuracy": 0.9972222447395325,
+            "positive_probability_min": 0.8538649082183838,
+            "positive_probability_median": 0.9974675178527832,
+            "negative_probability_median": 0.0015353142516687512,
+            "negative_probability_max": 0.9521912932395935
+          },
+          "held": {
+            "rows": 60,
+            "positive_rows": 20,
+            "negative_rows": 40,
+            "threshold": 0.8538649082183838,
+            "true_positive_rate": 0.949999988079071,
+            "false_positive_rate": 0.0,
+            "accuracy": 0.9833333492279053,
+            "positive_probability_min": 0.8480319380760193,
+            "positive_probability_median": 0.9992805123329163,
+            "negative_probability_median": 0.003919926006346941,
+            "negative_probability_max": 0.49668508768081665
+          },
+          "checkpoint": "phase12_artifacts/development_family_cv/last_linear_seed_16201_fold_1.pt",
+          "checkpoint_sha256": "5fc076ba0b5706567c824a673467c4d1bba2a47d363c464aa15c9ffdc29eb45b"
+        },
+        {
+          "fold": 2,
+          "router_seed": 18221,
+          "training_rows": 5040,
+          "held_rows": 60,
+          "training": {
+            "config": {
+              "seed": 18221,
+              "steps": 1500,
+              "batch_size": 256,
+              "learning_rate": 0.0005,
+              "route_temperature": 2.0,
+              "maximum_calibration_false_positive_rate": 0.01
+            },
+            "initial_loss": 0.00020962538837920874,
+            "final_loss": 0.00014525745064020157,
+            "wall_time_seconds": 1.9644734999892535,
+            "trainable_parameters": 4096
+          },
+          "calibration": {
+            "rows": 720,
+            "positive_rows": 240,
+            "negative_rows": 480,
+            "threshold": 0.8357185125350952,
+            "true_positive_rate": 1.0,
+            "false_positive_rate": 0.004166666883975267,
+            "accuracy": 0.9972222447395325,
+            "positive_probability_min": 0.8357185125350952,
+            "positive_probability_median": 0.9952783584594727,
+            "negative_probability_median": 0.0011382944649085402,
+            "negative_probability_max": 0.9365772604942322
+          },
+          "held": {
+            "rows": 60,
+            "positive_rows": 20,
+            "negative_rows": 40,
+            "threshold": 0.8357185125350952,
+            "true_positive_rate": 0.699999988079071,
+            "false_positive_rate": 0.10000000149011612,
+            "accuracy": 0.8333333134651184,
+            "positive_probability_min": 0.01656346395611763,
+            "positive_probability_median": 0.9451932311058044,
+            "negative_probability_median": 0.0322987325489521,
+            "negative_probability_max": 0.9507267475128174
+          },
+          "checkpoint": "phase12_artifacts/development_family_cv/last_linear_seed_16201_fold_2.pt",
+          "checkpoint_sha256": "d0c5006b45ccb48b943afee2a19f1d1e93992027c8b07402ea7696b29d033f7c"
+        },
+        {
+          "fold": 3,
+          "router_seed": 18231,
+          "training_rows": 5040,
+          "held_rows": 60,
+          "training": {
+            "config": {
+              "seed": 18231,
+              "steps": 1500,
+              "batch_size": 256,
+              "learning_rate": 0.0005,
+              "route_temperature": 2.0,
+              "maximum_calibration_false_positive_rate": 0.01
+            },
+            "initial_loss": 0.0069246916100382805,
+            "final_loss": 0.00022251333575695753,
+            "wall_time_seconds": 2.25632941701042,
+            "trainable_parameters": 4096
+          },
+          "calibration": {
+            "rows": 720,
+            "positive_rows": 240,
+            "negative_rows": 480,
+            "threshold": 0.9078990817070007,
+            "true_positive_rate": 1.0,
+            "false_positive_rate": 0.0,
+            "accuracy": 1.0,
+            "positive_probability_min": 0.9078990817070007,
+            "positive_probability_median": 0.9966566562652588,
+            "negative_probability_median": 0.001120828208513558,
+            "negative_probability_max": 0.780834436416626
+          },
+          "held": {
+            "rows": 60,
+            "positive_rows": 20,
+            "negative_rows": 40,
+            "threshold": 0.9078990817070007,
+            "true_positive_rate": 0.5,
+            "false_positive_rate": 0.0,
+            "accuracy": 0.8333333134651184,
+            "positive_probability_min": 0.007241877261549234,
+            "positive_probability_median": 0.5008437037467957,
+            "negative_probability_median": 0.005470278672873974,
+            "negative_probability_max": 0.7828477025032043
+          },
+          "checkpoint": "phase12_artifacts/development_family_cv/last_linear_seed_16201_fold_3.pt",
+          "checkpoint_sha256": "319c32a75463106a88480de1d082876c24ccfac200dd1aa7ed9dbe5576de810d"
+        },
+        {
+          "fold": 4,
+          "router_seed": 18241,
+          "training_rows": 5040,
+          "held_rows": 60,
+          "training": {
+            "config": {
+              "seed": 18241,
+              "steps": 1500,
+              "batch_size": 256,
+              "learning_rate": 0.0005,
+              "route_temperature": 2.0,
+              "maximum_calibration_false_positive_rate": 0.01
+            },
+            "initial_loss": 0.0018814709037542343,
+            "final_loss": 0.0004313504323363304,
+            "wall_time_seconds": 1.9410207909968449,
+            "trainable_parameters": 4096
+          },
+          "calibration": {
+            "rows": 720,
+            "positive_rows": 240,
+            "negative_rows": 480,
+            "threshold": 0.8530688285827637,
+            "true_positive_rate": 1.0,
+            "false_positive_rate": 0.004166666883975267,
+            "accuracy": 0.9972222447395325,
+            "positive_probability_min": 0.8530688285827637,
+            "positive_probability_median": 0.9978405237197876,
+            "negative_probability_median": 0.0011342031648382545,
+            "negative_probability_max": 0.9599381685256958
+          },
+          "held": {
+            "rows": 60,
+            "positive_rows": 20,
+            "negative_rows": 40,
+            "threshold": 0.8530688285827637,
+            "true_positive_rate": 0.75,
+            "false_positive_rate": 0.0,
+            "accuracy": 0.9166666865348816,
+            "positive_probability_min": 0.15450720489025116,
+            "positive_probability_median": 0.9925031661987305,
+            "negative_probability_median": 0.0020616778638213873,
+            "negative_probability_max": 0.3118109405040741
+          },
+          "checkpoint": "phase12_artifacts/development_family_cv/last_linear_seed_16201_fold_4.pt",
+          "checkpoint_sha256": "34b9a5c4f05787d184c40793aee9db054c1b869e9f99d99865e9135336d1fbe4"
+        }
+      ],
+      "out_of_fold": {
+        "positive_routes": 78,
+        "counterfactual_exact": 70,
+        "phase11_natural_exact": 67,
+        "paired_counterfactual_gain": 3,
+        "false_routes": 6,
+        "predicted_preserved": 194,
+        "categories": {
+          "positive_direct": {
+            "examples": 50,
+            "routes": 34,
+            "counterfactual_exact": 28
+          },
+          "positive_word": {
+            "examples": 25,
+            "routes": 25,
+            "counterfactual_exact": 25
+          },
+          "positive_distractor": {
+            "examples": 25,
+            "routes": 19,
+            "counterfactual_exact": 17
+          },
+          "negative_multiplication": {
+            "examples": 20,
+            "routes": 6,
+            "counterfactual_exact": 0
+          },
+          "negative_factual": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_quoted": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_negated": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_cancelled": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_subtraction": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_comparison": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_concatenation": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_hypothetical": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_distractor": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          }
+        },
+        "probability_positive_median": 0.9973344802856445,
+        "probability_negative_median": 0.011134138330817223,
+        "probability_negative_maximum": 0.9559282660484314
+      }
+    },
+    {
+      "condition": "last_user_linear",
+      "phase10_seed": 16201,
+      "views": [
+        "last",
+        "user_mean"
+      ],
+      "learned_parameters": 8192,
+      "folds": [
+        {
+          "fold": 0,
+          "router_seed": 18301,
+          "training_rows": 5040,
+          "held_rows": 60,
+          "training": {
+            "config": {
+              "seed": 18301,
+              "steps": 1500,
+              "batch_size": 256,
+              "learning_rate": 0.0005,
+              "route_temperature": 2.0,
+              "maximum_calibration_false_positive_rate": 0.01
+            },
+            "initial_loss": 0.026258423924446106,
+            "final_loss": 0.00031473496346734464,
+            "wall_time_seconds": 2.546168959001079,
+            "trainable_parameters": 8192
+          },
+          "calibration": {
+            "rows": 720,
+            "positive_rows": 240,
+            "negative_rows": 480,
+            "threshold": 0.8381245136260986,
+            "true_positive_rate": 1.0,
+            "false_positive_rate": 0.0,
+            "accuracy": 1.0,
+            "positive_probability_min": 0.8381245136260986,
+            "positive_probability_median": 0.9901278614997864,
+            "negative_probability_median": 0.006232572719454765,
+            "negative_probability_max": 0.5247619152069092
+          },
+          "held": {
+            "rows": 60,
+            "positive_rows": 20,
+            "negative_rows": 40,
+            "threshold": 0.8381245136260986,
+            "true_positive_rate": 1.0,
+            "false_positive_rate": 0.0,
+            "accuracy": 1.0,
+            "positive_probability_min": 0.9816753268241882,
+            "positive_probability_median": 0.9957432150840759,
+            "negative_probability_median": 0.027650101110339165,
+            "negative_probability_max": 0.8336256146430969
+          },
+          "checkpoint": "phase12_artifacts/development_family_cv/last_user_linear_seed_16201_fold_0.pt",
+          "checkpoint_sha256": "0d4dce0efa753d4534011edc577cdc4f9711c110588d2f9e054f468eda2b8f5f"
+        },
+        {
+          "fold": 1,
+          "router_seed": 18311,
+          "training_rows": 5040,
+          "held_rows": 60,
+          "training": {
+            "config": {
+              "seed": 18311,
+              "steps": 1500,
+              "batch_size": 256,
+              "learning_rate": 0.0005,
+              "route_temperature": 2.0,
+              "maximum_calibration_false_positive_rate": 0.01
+            },
+            "initial_loss": 0.04297887161374092,
+            "final_loss": 0.0002156419213861227,
+            "wall_time_seconds": 2.223013374998118,
+            "trainable_parameters": 8192
+          },
+          "calibration": {
+            "rows": 720,
+            "positive_rows": 240,
+            "negative_rows": 480,
+            "threshold": 0.5,
+            "true_positive_rate": 1.0,
+            "false_positive_rate": 0.0,
+            "accuracy": 1.0,
+            "positive_probability_min": 0.6823128461837769,
+            "positive_probability_median": 0.9855266809463501,
+            "negative_probability_median": 0.005976804532110691,
+            "negative_probability_max": 0.39072856307029724
+          },
+          "held": {
+            "rows": 60,
+            "positive_rows": 20,
+            "negative_rows": 40,
+            "threshold": 0.5,
+            "true_positive_rate": 0.8999999761581421,
+            "false_positive_rate": 0.0,
+            "accuracy": 0.9666666388511658,
+            "positive_probability_min": 0.4706047773361206,
+            "positive_probability_median": 0.9947840571403503,
+            "negative_probability_median": 0.011790690943598747,
+            "negative_probability_max": 0.34312981367111206
+          },
+          "checkpoint": "phase12_artifacts/development_family_cv/last_user_linear_seed_16201_fold_1.pt",
+          "checkpoint_sha256": "d39ce433e5cb7541bb521118fbf79ee8ad08d1ca6278b9fe286e32fe8cad9fde"
+        },
+        {
+          "fold": 2,
+          "router_seed": 18321,
+          "training_rows": 5040,
+          "held_rows": 60,
+          "training": {
+            "config": {
+              "seed": 18321,
+              "steps": 1500,
+              "batch_size": 256,
+              "learning_rate": 0.0005,
+              "route_temperature": 2.0,
+              "maximum_calibration_false_positive_rate": 0.01
+            },
+            "initial_loss": 0.012000293470919132,
+            "final_loss": 0.00014784147788304836,
+            "wall_time_seconds": 2.090868250001222,
+            "trainable_parameters": 8192
+          },
+          "calibration": {
+            "rows": 720,
+            "positive_rows": 240,
+            "negative_rows": 480,
+            "threshold": 0.5,
+            "true_positive_rate": 1.0,
+            "false_positive_rate": 0.0,
+            "accuracy": 1.0,
+            "positive_probability_min": 0.6470903158187866,
+            "positive_probability_median": 0.9826654195785522,
+            "negative_probability_median": 0.006369280628859997,
+            "negative_probability_max": 0.44542786478996277
+          },
+          "held": {
+            "rows": 60,
+            "positive_rows": 20,
+            "negative_rows": 40,
+            "threshold": 0.5,
+            "true_positive_rate": 0.75,
+            "false_positive_rate": 0.10000000149011612,
+            "accuracy": 0.8500000238418579,
+            "positive_probability_min": 0.08029405772686005,
+            "positive_probability_median": 0.9410715103149414,
+            "negative_probability_median": 0.06762746721506119,
+            "negative_probability_max": 0.824747622013092
+          },
+          "checkpoint": "phase12_artifacts/development_family_cv/last_user_linear_seed_16201_fold_2.pt",
+          "checkpoint_sha256": "3808c494f8256919ea68d9be323c754883bfb3a771fc5da5795b81ffdcb8c80d"
+        },
+        {
+          "fold": 3,
+          "router_seed": 18331,
+          "training_rows": 5040,
+          "held_rows": 60,
+          "training": {
+            "config": {
+              "seed": 18331,
+              "steps": 1500,
+              "batch_size": 256,
+              "learning_rate": 0.0005,
+              "route_temperature": 2.0,
+              "maximum_calibration_false_positive_rate": 0.01
+            },
+            "initial_loss": 0.038802020251750946,
+            "final_loss": 0.00024429065524600446,
+            "wall_time_seconds": 2.1094486670044716,
+            "trainable_parameters": 8192
+          },
+          "calibration": {
+            "rows": 720,
+            "positive_rows": 240,
+            "negative_rows": 480,
+            "threshold": 0.5,
+            "true_positive_rate": 1.0,
+            "false_positive_rate": 0.0,
+            "accuracy": 1.0,
+            "positive_probability_min": 0.655960738658905,
+            "positive_probability_median": 0.9839317798614502,
+            "negative_probability_median": 0.005351879633963108,
+            "negative_probability_max": 0.38289162516593933
+          },
+          "held": {
+            "rows": 60,
+            "positive_rows": 20,
+            "negative_rows": 40,
+            "threshold": 0.5,
+            "true_positive_rate": 0.550000011920929,
+            "false_positive_rate": 0.02500000037252903,
+            "accuracy": 0.8333333134651184,
+            "positive_probability_min": 0.06929071247577667,
+            "positive_probability_median": 0.5100902318954468,
+            "negative_probability_median": 0.014161311089992523,
+            "negative_probability_max": 0.5006701350212097
+          },
+          "checkpoint": "phase12_artifacts/development_family_cv/last_user_linear_seed_16201_fold_3.pt",
+          "checkpoint_sha256": "deecedb21886ad268d3c41583c8d29d240c3dd1c46412b767f9e95d8d6837a37"
+        },
+        {
+          "fold": 4,
+          "router_seed": 18341,
+          "training_rows": 5040,
+          "held_rows": 60,
+          "training": {
+            "config": {
+              "seed": 18341,
+              "steps": 1500,
+              "batch_size": 256,
+              "learning_rate": 0.0005,
+              "route_temperature": 2.0,
+              "maximum_calibration_false_positive_rate": 0.01
+            },
+            "initial_loss": 0.04124918207526207,
+            "final_loss": 0.0002227691002190113,
+            "wall_time_seconds": 2.129672708004364,
+            "trainable_parameters": 8192
+          },
+          "calibration": {
+            "rows": 720,
+            "positive_rows": 240,
+            "negative_rows": 480,
+            "threshold": 0.5,
+            "true_positive_rate": 1.0,
+            "false_positive_rate": 0.0,
+            "accuracy": 1.0,
+            "positive_probability_min": 0.6937220692634583,
+            "positive_probability_median": 0.9863763451576233,
+            "negative_probability_median": 0.004480376373976469,
+            "negative_probability_max": 0.478192538022995
+          },
+          "held": {
+            "rows": 60,
+            "positive_rows": 20,
+            "negative_rows": 40,
+            "threshold": 0.5,
+            "true_positive_rate": 0.75,
+            "false_positive_rate": 0.0,
+            "accuracy": 0.9166666865348816,
+            "positive_probability_min": 0.18655988574028015,
+            "positive_probability_median": 0.9915997982025146,
+            "negative_probability_median": 0.008879374712705612,
+            "negative_probability_max": 0.4456993639469147
+          },
+          "checkpoint": "phase12_artifacts/development_family_cv/last_user_linear_seed_16201_fold_4.pt",
+          "checkpoint_sha256": "5bad709d23734c1dcf3ccf53bb4547c92cb17c94058fa64fa1e563cd524deebb"
+        }
+      ],
+      "out_of_fold": {
+        "positive_routes": 79,
+        "counterfactual_exact": 71,
+        "phase11_natural_exact": 67,
+        "paired_counterfactual_gain": 4,
+        "false_routes": 5,
+        "predicted_preserved": 195,
+        "categories": {
+          "positive_direct": {
+            "examples": 50,
+            "routes": 34,
+            "counterfactual_exact": 28
+          },
+          "positive_word": {
+            "examples": 25,
+            "routes": 25,
+            "counterfactual_exact": 25
+          },
+          "positive_distractor": {
+            "examples": 25,
+            "routes": 20,
+            "counterfactual_exact": 18
+          },
+          "negative_multiplication": {
+            "examples": 20,
+            "routes": 4,
+            "counterfactual_exact": 0
+          },
+          "negative_factual": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_quoted": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_negated": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_cancelled": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_subtraction": {
+            "examples": 20,
+            "routes": 1,
+            "counterfactual_exact": 0
+          },
+          "negative_comparison": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_concatenation": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_hypothetical": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_distractor": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          }
+        },
+        "probability_positive_median": 0.9915997982025146,
+        "probability_negative_median": 0.019688714295625687,
+        "probability_negative_maximum": 0.8336256146430969
+      }
+    },
+    {
+      "condition": "all_views_linear",
+      "phase10_seed": 16201,
+      "views": [
+        "last",
+        "sequence_mean",
+        "user_mean",
+        "user_tail_mean"
+      ],
+      "learned_parameters": 16384,
+      "folds": [
+        {
+          "fold": 0,
+          "router_seed": 18401,
+          "training_rows": 5040,
+          "held_rows": 60,
+          "training": {
+            "config": {
+              "seed": 18401,
+              "steps": 1500,
+              "batch_size": 256,
+              "learning_rate": 0.0005,
+              "route_temperature": 2.0,
+              "maximum_calibration_false_positive_rate": 0.01
+            },
+            "initial_loss": 0.1583808809518814,
+            "final_loss": 0.00023554256767965853,
+            "wall_time_seconds": 2.9590871250111377,
+            "trainable_parameters": 16384
+          },
+          "calibration": {
+            "rows": 720,
+            "positive_rows": 240,
+            "negative_rows": 480,
+            "threshold": 0.5,
+            "true_positive_rate": 1.0,
+            "false_positive_rate": 0.0,
+            "accuracy": 1.0,
+            "positive_probability_min": 0.6804697513580322,
+            "positive_probability_median": 0.9830295443534851,
+            "negative_probability_median": 0.006626564543694258,
+            "negative_probability_max": 0.25953757762908936
+          },
+          "held": {
+            "rows": 60,
+            "positive_rows": 20,
+            "negative_rows": 40,
+            "threshold": 0.5,
+            "true_positive_rate": 1.0,
+            "false_positive_rate": 0.15000000596046448,
+            "accuracy": 0.8999999761581421,
+            "positive_probability_min": 0.977668285369873,
+            "positive_probability_median": 0.9930033087730408,
+            "negative_probability_median": 0.027631953358650208,
+            "negative_probability_max": 0.7288663983345032
+          },
+          "checkpoint": "phase12_artifacts/development_family_cv/all_views_linear_seed_16201_fold_0.pt",
+          "checkpoint_sha256": "935d40fef734d3c59c233486b9cb3905390eb9d76ab0aa336a38925cd2a494c9"
+        },
+        {
+          "fold": 1,
+          "router_seed": 18411,
+          "training_rows": 5040,
+          "held_rows": 60,
+          "training": {
+            "config": {
+              "seed": 18411,
+              "steps": 1500,
+              "batch_size": 256,
+              "learning_rate": 0.0005,
+              "route_temperature": 2.0,
+              "maximum_calibration_false_positive_rate": 0.01
+            },
+            "initial_loss": 0.11656847596168518,
+            "final_loss": 0.0003875888360198587,
+            "wall_time_seconds": 3.126074083003914,
+            "trainable_parameters": 16384
+          },
+          "calibration": {
+            "rows": 720,
+            "positive_rows": 240,
+            "negative_rows": 480,
+            "threshold": 0.5,
+            "true_positive_rate": 1.0,
+            "false_positive_rate": 0.0,
+            "accuracy": 1.0,
+            "positive_probability_min": 0.5568197965621948,
+            "positive_probability_median": 0.9784673452377319,
+            "negative_probability_median": 0.006608718074858189,
+            "negative_probability_max": 0.23258118331432343
+          },
+          "held": {
+            "rows": 60,
+            "positive_rows": 20,
+            "negative_rows": 40,
+            "threshold": 0.5,
+            "true_positive_rate": 0.8500000238418579,
+            "false_positive_rate": 0.0,
+            "accuracy": 0.949999988079071,
+            "positive_probability_min": 0.3637600541114807,
+            "positive_probability_median": 0.9932899475097656,
+            "negative_probability_median": 0.010594428516924381,
+            "negative_probability_max": 0.33172130584716797
+          },
+          "checkpoint": "phase12_artifacts/development_family_cv/all_views_linear_seed_16201_fold_1.pt",
+          "checkpoint_sha256": "0963de4ab9b00cfcd42b8a3d56ac45b0ee933cc412a7341c9c938ba53f4db98f"
+        },
+        {
+          "fold": 2,
+          "router_seed": 18421,
+          "training_rows": 5040,
+          "held_rows": 60,
+          "training": {
+            "config": {
+              "seed": 18421,
+              "steps": 1500,
+              "batch_size": 256,
+              "learning_rate": 0.0005,
+              "route_temperature": 2.0,
+              "maximum_calibration_false_positive_rate": 0.01
+            },
+            "initial_loss": 0.10639415681362152,
+            "final_loss": 0.00036197155714035034,
+            "wall_time_seconds": 2.8677066669915803,
+            "trainable_parameters": 16384
+          },
+          "calibration": {
+            "rows": 720,
+            "positive_rows": 240,
+            "negative_rows": 480,
+            "threshold": 0.5,
+            "true_positive_rate": 1.0,
+            "false_positive_rate": 0.0,
+            "accuracy": 1.0,
+            "positive_probability_min": 0.5023188591003418,
+            "positive_probability_median": 0.9758113622665405,
+            "negative_probability_median": 0.007227650843560696,
+            "negative_probability_max": 0.23647555708885193
+          },
+          "held": {
+            "rows": 60,
+            "positive_rows": 20,
+            "negative_rows": 40,
+            "threshold": 0.5,
+            "true_positive_rate": 0.75,
+            "false_positive_rate": 0.125,
+            "accuracy": 0.8333333134651184,
+            "positive_probability_min": 0.19682155549526215,
+            "positive_probability_median": 0.9507286548614502,
+            "negative_probability_median": 0.03803923726081848,
+            "negative_probability_max": 0.729952871799469
+          },
+          "checkpoint": "phase12_artifacts/development_family_cv/all_views_linear_seed_16201_fold_2.pt",
+          "checkpoint_sha256": "90e184440dae9ba7344578b5d9ab6215d6d9f5a0a837c4a38dbc664f6354c56e"
+        },
+        {
+          "fold": 3,
+          "router_seed": 18431,
+          "training_rows": 5040,
+          "held_rows": 60,
+          "training": {
+            "config": {
+              "seed": 18431,
+              "steps": 1500,
+              "batch_size": 256,
+              "learning_rate": 0.0005,
+              "route_temperature": 2.0,
+              "maximum_calibration_false_positive_rate": 0.01
+            },
+            "initial_loss": 0.15142294764518738,
+            "final_loss": 0.00029126234585419297,
+            "wall_time_seconds": 3.4359530420042574,
+            "trainable_parameters": 16384
+          },
+          "calibration": {
+            "rows": 720,
+            "positive_rows": 240,
+            "negative_rows": 480,
+            "threshold": 0.5,
+            "true_positive_rate": 1.0,
+            "false_positive_rate": 0.0,
+            "accuracy": 1.0,
+            "positive_probability_min": 0.5196577906608582,
+            "positive_probability_median": 0.9788323640823364,
+            "negative_probability_median": 0.004996513482183218,
+            "negative_probability_max": 0.2889770567417145
+          },
+          "held": {
+            "rows": 60,
+            "positive_rows": 20,
+            "negative_rows": 40,
+            "threshold": 0.5,
+            "true_positive_rate": 0.5,
+            "false_positive_rate": 0.0,
+            "accuracy": 0.8333333134651184,
+            "positive_probability_min": 0.08118559420108795,
+            "positive_probability_median": 0.33507734537124634,
+            "negative_probability_median": 0.025269167497754097,
+            "negative_probability_max": 0.48170822858810425
+          },
+          "checkpoint": "phase12_artifacts/development_family_cv/all_views_linear_seed_16201_fold_3.pt",
+          "checkpoint_sha256": "e624ed00619a863b257b25e7b5abd102e0acaebc9f319c5790283d69ba3d3620"
+        },
+        {
+          "fold": 4,
+          "router_seed": 18441,
+          "training_rows": 5040,
+          "held_rows": 60,
+          "training": {
+            "config": {
+              "seed": 18441,
+              "steps": 1500,
+              "batch_size": 256,
+              "learning_rate": 0.0005,
+              "route_temperature": 2.0,
+              "maximum_calibration_false_positive_rate": 0.01
+            },
+            "initial_loss": 0.15152761340141296,
+            "final_loss": 0.00028108229162171483,
+            "wall_time_seconds": 3.2772768339928007,
+            "trainable_parameters": 16384
+          },
+          "calibration": {
+            "rows": 720,
+            "positive_rows": 240,
+            "negative_rows": 480,
+            "threshold": 0.5,
+            "true_positive_rate": 1.0,
+            "false_positive_rate": 0.0,
+            "accuracy": 1.0,
+            "positive_probability_min": 0.5250317454338074,
+            "positive_probability_median": 0.9808334112167358,
+            "negative_probability_median": 0.005010036751627922,
+            "negative_probability_max": 0.3441225588321686
+          },
+          "held": {
+            "rows": 60,
+            "positive_rows": 20,
+            "negative_rows": 40,
+            "threshold": 0.5,
+            "true_positive_rate": 0.75,
+            "false_positive_rate": 0.0,
+            "accuracy": 0.9166666865348816,
+            "positive_probability_min": 0.2966536283493042,
+            "positive_probability_median": 0.9880968332290649,
+            "negative_probability_median": 0.01660425402224064,
+            "negative_probability_max": 0.48095807433128357
+          },
+          "checkpoint": "phase12_artifacts/development_family_cv/all_views_linear_seed_16201_fold_4.pt",
+          "checkpoint_sha256": "d503318c2125a7854f4fc0d71c9d49085c03b20e2e61addcb7d2517be7df6b5e"
+        }
+      ],
+      "out_of_fold": {
+        "positive_routes": 77,
+        "counterfactual_exact": 69,
+        "phase11_natural_exact": 67,
+        "paired_counterfactual_gain": 2,
+        "false_routes": 11,
+        "predicted_preserved": 189,
+        "categories": {
+          "positive_direct": {
+            "examples": 50,
+            "routes": 32,
+            "counterfactual_exact": 26
+          },
+          "positive_word": {
+            "examples": 25,
+            "routes": 25,
+            "counterfactual_exact": 25
+          },
+          "positive_distractor": {
+            "examples": 25,
+            "routes": 20,
+            "counterfactual_exact": 18
+          },
+          "negative_multiplication": {
+            "examples": 20,
+            "routes": 5,
+            "counterfactual_exact": 0
+          },
+          "negative_factual": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_quoted": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_negated": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_cancelled": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_subtraction": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_comparison": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_concatenation": {
+            "examples": 20,
+            "routes": 1,
+            "counterfactual_exact": 0
+          },
+          "negative_hypothetical": {
+            "examples": 20,
+            "routes": 1,
+            "counterfactual_exact": 0
+          },
+          "negative_distractor": {
+            "examples": 20,
+            "routes": 4,
+            "counterfactual_exact": 0
+          }
+        },
+        "probability_positive_median": 0.9882506132125854,
+        "probability_negative_median": 0.022135727107524872,
+        "probability_negative_maximum": 0.729952871799469
+      }
+    },
+    {
+      "condition": "all_views_silu16",
+      "phase10_seed": 16201,
+      "views": [
+        "last",
+        "sequence_mean",
+        "user_mean",
+        "user_tail_mean"
+      ],
+      "learned_parameters": 131104,
+      "folds": [
+        {
+          "fold": 0,
+          "router_seed": 18501,
+          "training_rows": 5040,
+          "held_rows": 60,
+          "training": {
+            "config": {
+              "seed": 18501,
+              "bottleneck_width": 16,
+              "steps": 1500,
+              "batch_size": 256,
+              "learning_rate": 0.0005,
+              "route_temperature": 2.0,
+              "maximum_calibration_false_positive_rate": 0.01
+            },
+            "initial_loss": 0.701754093170166,
+            "final_loss": 7.762997120153159e-05,
+            "wall_time_seconds": 2.8991877090011258,
+            "trainable_parameters": 131104
+          },
+          "calibration": {
+            "rows": 720,
+            "positive_rows": 240,
+            "negative_rows": 480,
+            "threshold": 0.5,
+            "true_positive_rate": 1.0,
+            "false_positive_rate": 0.0,
+            "accuracy": 1.0,
+            "positive_probability_min": 0.6681713461875916,
+            "positive_probability_median": 0.9874409437179565,
+            "negative_probability_median": 0.005542452912777662,
+            "negative_probability_max": 0.1549842208623886
+          },
+          "held": {
+            "rows": 60,
+            "positive_rows": 20,
+            "negative_rows": 40,
+            "threshold": 0.5,
+            "true_positive_rate": 1.0,
+            "false_positive_rate": 0.10000000149011612,
+            "accuracy": 0.9333333373069763,
+            "positive_probability_min": 0.9909248352050781,
+            "positive_probability_median": 0.9967159032821655,
+            "negative_probability_median": 0.03122473694384098,
+            "negative_probability_max": 0.7500355243682861
+          },
+          "checkpoint": "phase12_artifacts/development_family_cv/all_views_silu16_seed_16201_fold_0.pt",
+          "checkpoint_sha256": "1ff95030e7324d67b7a5b551d61638ceb2d4c992090a2448d57fb48bf578d268"
+        },
+        {
+          "fold": 1,
+          "router_seed": 18511,
+          "training_rows": 5040,
+          "held_rows": 60,
+          "training": {
+            "config": {
+              "seed": 18511,
+              "bottleneck_width": 16,
+              "steps": 1500,
+              "batch_size": 256,
+              "learning_rate": 0.0005,
+              "route_temperature": 2.0,
+              "maximum_calibration_false_positive_rate": 0.01
+            },
+            "initial_loss": 0.6945929527282715,
+            "final_loss": 8.285961666842923e-05,
+            "wall_time_seconds": 3.1550629999983357,
+            "trainable_parameters": 131104
+          },
+          "calibration": {
+            "rows": 720,
+            "positive_rows": 240,
+            "negative_rows": 480,
+            "threshold": 0.45467084646224976,
+            "true_positive_rate": 1.0,
+            "false_positive_rate": 0.0,
+            "accuracy": 1.0,
+            "positive_probability_min": 0.45467084646224976,
+            "positive_probability_median": 0.9822853803634644,
+            "negative_probability_median": 0.004904900677502155,
+            "negative_probability_max": 0.16881611943244934
+          },
+          "held": {
+            "rows": 60,
+            "positive_rows": 20,
+            "negative_rows": 40,
+            "threshold": 0.45467084646224976,
+            "true_positive_rate": 0.949999988079071,
+            "false_positive_rate": 0.0,
+            "accuracy": 0.9833333492279053,
+            "positive_probability_min": 0.34682902693748474,
+            "positive_probability_median": 0.9916877150535583,
+            "negative_probability_median": 0.003974974155426025,
+            "negative_probability_max": 0.08658833056688309
+          },
+          "checkpoint": "phase12_artifacts/development_family_cv/all_views_silu16_seed_16201_fold_1.pt",
+          "checkpoint_sha256": "a61e2099cf36df0bc8277781ead0eadd31ad67b3a0a3fdc97544058989a48d0e"
+        },
+        {
+          "fold": 2,
+          "router_seed": 18521,
+          "training_rows": 5040,
+          "held_rows": 60,
+          "training": {
+            "config": {
+              "seed": 18521,
+              "bottleneck_width": 16,
+              "steps": 1500,
+              "batch_size": 256,
+              "learning_rate": 0.0005,
+              "route_temperature": 2.0,
+              "maximum_calibration_false_positive_rate": 0.01
+            },
+            "initial_loss": 0.6946549415588379,
+            "final_loss": 0.00010665373702067882,
+            "wall_time_seconds": 3.191098916999181,
+            "trainable_parameters": 131104
+          },
+          "calibration": {
+            "rows": 720,
+            "positive_rows": 240,
+            "negative_rows": 480,
+            "threshold": 0.4743378162384033,
+            "true_positive_rate": 1.0,
+            "false_positive_rate": 0.0,
+            "accuracy": 1.0,
+            "positive_probability_min": 0.4743378162384033,
+            "positive_probability_median": 0.9767359495162964,
+            "negative_probability_median": 0.0050395699217915535,
+            "negative_probability_max": 0.16449987888336182
+          },
+          "held": {
+            "rows": 60,
+            "positive_rows": 20,
+            "negative_rows": 40,
+            "threshold": 0.4743378162384033,
+            "true_positive_rate": 1.0,
+            "false_positive_rate": 0.125,
+            "accuracy": 0.9166666865348816,
+            "positive_probability_min": 0.6082966923713684,
+            "positive_probability_median": 0.8732268214225769,
+            "negative_probability_median": 0.018637651577591896,
+            "negative_probability_max": 0.5974198579788208
+          },
+          "checkpoint": "phase12_artifacts/development_family_cv/all_views_silu16_seed_16201_fold_2.pt",
+          "checkpoint_sha256": "35f35d1d0823fe92515665104d437961b9e7cc3674bf3f133e6ae1194d58c262"
+        },
+        {
+          "fold": 3,
+          "router_seed": 18531,
+          "training_rows": 5040,
+          "held_rows": 60,
+          "training": {
+            "config": {
+              "seed": 18531,
+              "bottleneck_width": 16,
+              "steps": 1500,
+              "batch_size": 256,
+              "learning_rate": 0.0005,
+              "route_temperature": 2.0,
+              "maximum_calibration_false_positive_rate": 0.01
+            },
+            "initial_loss": 0.6965599060058594,
+            "final_loss": 6.843482697149739e-05,
+            "wall_time_seconds": 3.2327601669967407,
+            "trainable_parameters": 131104
+          },
+          "calibration": {
+            "rows": 720,
+            "positive_rows": 240,
+            "negative_rows": 480,
+            "threshold": 0.42739447951316833,
+            "true_positive_rate": 1.0,
+            "false_positive_rate": 0.0,
+            "accuracy": 1.0,
+            "positive_probability_min": 0.42739447951316833,
+            "positive_probability_median": 0.987032413482666,
+            "negative_probability_median": 0.00368311139754951,
+            "negative_probability_max": 0.20934414863586426
+          },
+          "held": {
+            "rows": 60,
+            "positive_rows": 20,
+            "negative_rows": 40,
+            "threshold": 0.42739447951316833,
+            "true_positive_rate": 0.75,
+            "false_positive_rate": 0.0,
+            "accuracy": 0.9166666865348816,
+            "positive_probability_min": 0.08123676478862762,
+            "positive_probability_median": 0.5956964492797852,
+            "negative_probability_median": 0.017320528626441956,
+            "negative_probability_max": 0.28490766882896423
+          },
+          "checkpoint": "phase12_artifacts/development_family_cv/all_views_silu16_seed_16201_fold_3.pt",
+          "checkpoint_sha256": "73c7d47257c34fb1c051717b5ce517c5528acb3630047f9c3e82e447f1d5ef2c"
+        },
+        {
+          "fold": 4,
+          "router_seed": 18541,
+          "training_rows": 5040,
+          "held_rows": 60,
+          "training": {
+            "config": {
+              "seed": 18541,
+              "bottleneck_width": 16,
+              "steps": 1500,
+              "batch_size": 256,
+              "learning_rate": 0.0005,
+              "route_temperature": 2.0,
+              "maximum_calibration_false_positive_rate": 0.01
+            },
+            "initial_loss": 0.6943774819374084,
+            "final_loss": 7.893552538007498e-05,
+            "wall_time_seconds": 3.173046333002276,
+            "trainable_parameters": 131104
+          },
+          "calibration": {
+            "rows": 720,
+            "positive_rows": 240,
+            "negative_rows": 480,
+            "threshold": 0.43108460307121277,
+            "true_positive_rate": 1.0,
+            "false_positive_rate": 0.0,
+            "accuracy": 1.0,
+            "positive_probability_min": 0.43108460307121277,
+            "positive_probability_median": 0.9830316305160522,
+            "negative_probability_median": 0.002698024269193411,
+            "negative_probability_max": 0.25440847873687744
+          },
+          "held": {
+            "rows": 60,
+            "positive_rows": 20,
+            "negative_rows": 40,
+            "threshold": 0.43108460307121277,
+            "true_positive_rate": 0.75,
+            "false_positive_rate": 0.02500000037252903,
+            "accuracy": 0.8999999761581421,
+            "positive_probability_min": 0.21094612777233124,
+            "positive_probability_median": 0.9874837398529053,
+            "negative_probability_median": 0.0057003856636583805,
+            "negative_probability_max": 0.4487234354019165
+          },
+          "checkpoint": "phase12_artifacts/development_family_cv/all_views_silu16_seed_16201_fold_4.pt",
+          "checkpoint_sha256": "e00d0029a7fdecc63f85c6e42539db3c1fbbc0abc765a7eebad7c02cc099a3b3"
+        }
+      ],
+      "out_of_fold": {
+        "positive_routes": 89,
+        "counterfactual_exact": 81,
+        "phase11_natural_exact": 67,
+        "paired_counterfactual_gain": 14,
+        "false_routes": 10,
+        "predicted_preserved": 190,
+        "categories": {
+          "positive_direct": {
+            "examples": 50,
+            "routes": 39,
+            "counterfactual_exact": 33
+          },
+          "positive_word": {
+            "examples": 25,
+            "routes": 25,
+            "counterfactual_exact": 25
+          },
+          "positive_distractor": {
+            "examples": 25,
+            "routes": 25,
+            "counterfactual_exact": 23
+          },
+          "negative_multiplication": {
+            "examples": 20,
+            "routes": 5,
+            "counterfactual_exact": 0
+          },
+          "negative_factual": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_quoted": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_negated": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_cancelled": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_subtraction": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_comparison": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_concatenation": {
+            "examples": 20,
+            "routes": 1,
+            "counterfactual_exact": 0
+          },
+          "negative_hypothetical": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_distractor": {
+            "examples": 20,
+            "routes": 4,
+            "counterfactual_exact": 0
+          }
+        },
+        "probability_positive_median": 0.9909293055534363,
+        "probability_negative_median": 0.015204541385173798,
+        "probability_negative_maximum": 0.7500355243682861
+      }
+    },
+    {
+      "condition": "last_linear",
+      "phase10_seed": 16202,
+      "views": [
+        "last"
+      ],
+      "learned_parameters": 4096,
+      "folds": [
+        {
+          "fold": 0,
+          "router_seed": 18202,
+          "training_rows": 5040,
+          "held_rows": 60,
+          "training": {
+            "config": {
+              "seed": 18202,
+              "steps": 1500,
+              "batch_size": 256,
+              "learning_rate": 0.0005,
+              "route_temperature": 2.0,
+              "maximum_calibration_false_positive_rate": 0.01
+            },
+            "initial_loss": 0.008712491020560265,
+            "final_loss": 0.00014740446931682527,
+            "wall_time_seconds": 2.057854625003529,
+            "trainable_parameters": 4096
+          },
+          "calibration": {
+            "rows": 720,
+            "positive_rows": 240,
+            "negative_rows": 480,
+            "threshold": 0.8629963994026184,
+            "true_positive_rate": 1.0,
+            "false_positive_rate": 0.0020833334419876337,
+            "accuracy": 0.9986110925674438,
+            "positive_probability_min": 0.8629963994026184,
+            "positive_probability_median": 0.9982717037200928,
+            "negative_probability_median": 0.0015202421927824616,
+            "negative_probability_max": 0.9427979588508606
+          },
+          "held": {
+            "rows": 60,
+            "positive_rows": 20,
+            "negative_rows": 40,
+            "threshold": 0.8629963994026184,
+            "true_positive_rate": 1.0,
+            "false_positive_rate": 0.05000000074505806,
+            "accuracy": 0.9666666388511658,
+            "positive_probability_min": 0.9865201711654663,
+            "positive_probability_median": 0.9994261264801025,
+            "negative_probability_median": 0.04573412612080574,
+            "negative_probability_max": 0.9399474263191223
+          },
+          "checkpoint": "phase12_artifacts/development_family_cv/last_linear_seed_16202_fold_0.pt",
+          "checkpoint_sha256": "ad5d037daa469cb96a790b1277b280acd66b7e9f456e1e5981fd4bd6a1b2e04b"
+        },
+        {
+          "fold": 1,
+          "router_seed": 18212,
+          "training_rows": 5040,
+          "held_rows": 60,
+          "training": {
+            "config": {
+              "seed": 18212,
+              "steps": 1500,
+              "batch_size": 256,
+              "learning_rate": 0.0005,
+              "route_temperature": 2.0,
+              "maximum_calibration_false_positive_rate": 0.01
+            },
+            "initial_loss": 0.04684516042470932,
+            "final_loss": 0.0009216147591359913,
+            "wall_time_seconds": 2.0460274159995606,
+            "trainable_parameters": 4096
+          },
+          "calibration": {
+            "rows": 720,
+            "positive_rows": 240,
+            "negative_rows": 480,
+            "threshold": 0.8233001232147217,
+            "true_positive_rate": 1.0,
+            "false_positive_rate": 0.0020833334419876337,
+            "accuracy": 0.9986110925674438,
+            "positive_probability_min": 0.8233001232147217,
+            "positive_probability_median": 0.9970468878746033,
+            "negative_probability_median": 0.0013770951190963387,
+            "negative_probability_max": 0.8924004435539246
+          },
+          "held": {
+            "rows": 60,
+            "positive_rows": 20,
+            "negative_rows": 40,
+            "threshold": 0.8233001232147217,
+            "true_positive_rate": 1.0,
+            "false_positive_rate": 0.0,
+            "accuracy": 1.0,
+            "positive_probability_min": 0.9681273102760315,
+            "positive_probability_median": 0.9987905621528625,
+            "negative_probability_median": 0.007694434840232134,
+            "negative_probability_max": 0.27883464097976685
+          },
+          "checkpoint": "phase12_artifacts/development_family_cv/last_linear_seed_16202_fold_1.pt",
+          "checkpoint_sha256": "c1e3ce1f9ace3e6122d37e7d1ac8e76b01f9bb0480f5f1a73c48d22a6baba226"
+        },
+        {
+          "fold": 2,
+          "router_seed": 18222,
+          "training_rows": 5040,
+          "held_rows": 60,
+          "training": {
+            "config": {
+              "seed": 18222,
+              "steps": 1500,
+              "batch_size": 256,
+              "learning_rate": 0.0005,
+              "route_temperature": 2.0,
+              "maximum_calibration_false_positive_rate": 0.01
+            },
+            "initial_loss": 0.05266974866390228,
+            "final_loss": 0.00023480277741327882,
+            "wall_time_seconds": 2.0526867500011576,
+            "trainable_parameters": 4096
+          },
+          "calibration": {
+            "rows": 720,
+            "positive_rows": 240,
+            "negative_rows": 480,
+            "threshold": 0.6917868852615356,
+            "true_positive_rate": 1.0,
+            "false_positive_rate": 0.0020833334419876337,
+            "accuracy": 0.9986110925674438,
+            "positive_probability_min": 0.6917868852615356,
+            "positive_probability_median": 0.9949386119842529,
+            "negative_probability_median": 0.0014146555913612247,
+            "negative_probability_max": 0.8833609223365784
+          },
+          "held": {
+            "rows": 60,
+            "positive_rows": 20,
+            "negative_rows": 40,
+            "threshold": 0.6917868852615356,
+            "true_positive_rate": 0.75,
+            "false_positive_rate": 0.10000000149011612,
+            "accuracy": 0.8500000238418579,
+            "positive_probability_min": 0.015705367550253868,
+            "positive_probability_median": 0.9616904258728027,
+            "negative_probability_median": 0.04109565168619156,
+            "negative_probability_max": 0.9378687143325806
+          },
+          "checkpoint": "phase12_artifacts/development_family_cv/last_linear_seed_16202_fold_2.pt",
+          "checkpoint_sha256": "05355f0687e9f73aacf9800a044f1f412fe166314b8dc2acdbe6f6300465989b"
+        },
+        {
+          "fold": 3,
+          "router_seed": 18232,
+          "training_rows": 5040,
+          "held_rows": 60,
+          "training": {
+            "config": {
+              "seed": 18232,
+              "steps": 1500,
+              "batch_size": 256,
+              "learning_rate": 0.0005,
+              "route_temperature": 2.0,
+              "maximum_calibration_false_positive_rate": 0.01
+            },
+            "initial_loss": 0.042703744024038315,
+            "final_loss": 0.0004490858409553766,
+            "wall_time_seconds": 2.056125457995222,
+            "trainable_parameters": 4096
+          },
+          "calibration": {
+            "rows": 720,
+            "positive_rows": 240,
+            "negative_rows": 480,
+            "threshold": 0.8422031402587891,
+            "true_positive_rate": 1.0,
+            "false_positive_rate": 0.0,
+            "accuracy": 1.0,
+            "positive_probability_min": 0.8422031402587891,
+            "positive_probability_median": 0.9955050349235535,
+            "negative_probability_median": 0.0009806017624214292,
+            "negative_probability_max": 0.7998026609420776
+          },
+          "held": {
+            "rows": 60,
+            "positive_rows": 20,
+            "negative_rows": 40,
+            "threshold": 0.8422031402587891,
+            "true_positive_rate": 0.5,
+            "false_positive_rate": 0.0,
+            "accuracy": 0.8333333134651184,
+            "positive_probability_min": 0.002298859879374504,
+            "positive_probability_median": 0.24361608922481537,
+            "negative_probability_median": 0.004099747631698847,
+            "negative_probability_max": 0.7164965867996216
+          },
+          "checkpoint": "phase12_artifacts/development_family_cv/last_linear_seed_16202_fold_3.pt",
+          "checkpoint_sha256": "8da86cd6d494149697fbcf298ab51e30732f6e39cb2ff78864a6e0de66a9f48a"
+        },
+        {
+          "fold": 4,
+          "router_seed": 18242,
+          "training_rows": 5040,
+          "held_rows": 60,
+          "training": {
+            "config": {
+              "seed": 18242,
+              "steps": 1500,
+              "batch_size": 256,
+              "learning_rate": 0.0005,
+              "route_temperature": 2.0,
+              "maximum_calibration_false_positive_rate": 0.01
+            },
+            "initial_loss": 3.678079883684404e-05,
+            "final_loss": 0.0002622568281367421,
+            "wall_time_seconds": 1.8699717499985127,
+            "trainable_parameters": 4096
+          },
+          "calibration": {
+            "rows": 720,
+            "positive_rows": 240,
+            "negative_rows": 480,
+            "threshold": 0.7785463333129883,
+            "true_positive_rate": 1.0,
+            "false_positive_rate": 0.0020833334419876337,
+            "accuracy": 0.9986110925674438,
+            "positive_probability_min": 0.7785463333129883,
+            "positive_probability_median": 0.9970124959945679,
+            "negative_probability_median": 0.0010758154094219208,
+            "negative_probability_max": 0.9026958346366882
+          },
+          "held": {
+            "rows": 60,
+            "positive_rows": 20,
+            "negative_rows": 40,
+            "threshold": 0.7785463333129883,
+            "true_positive_rate": 0.75,
+            "false_positive_rate": 0.0,
+            "accuracy": 0.9166666865348816,
+            "positive_probability_min": 0.10266877710819244,
+            "positive_probability_median": 0.9727867841720581,
+            "negative_probability_median": 0.00636993907392025,
+            "negative_probability_max": 0.16859009861946106
+          },
+          "checkpoint": "phase12_artifacts/development_family_cv/last_linear_seed_16202_fold_4.pt",
+          "checkpoint_sha256": "27e9d8cb786425b7452bf0226bf4ebd989a30d94cbc7534a94f99c4b76278299"
+        }
+      ],
+      "out_of_fold": {
+        "positive_routes": 80,
+        "counterfactual_exact": 78,
+        "phase11_natural_exact": 77,
+        "paired_counterfactual_gain": 1,
+        "false_routes": 6,
+        "predicted_preserved": 194,
+        "categories": {
+          "positive_direct": {
+            "examples": 50,
+            "routes": 35,
+            "counterfactual_exact": 34
+          },
+          "positive_word": {
+            "examples": 25,
+            "routes": 25,
+            "counterfactual_exact": 25
+          },
+          "positive_distractor": {
+            "examples": 25,
+            "routes": 20,
+            "counterfactual_exact": 19
+          },
+          "negative_multiplication": {
+            "examples": 20,
+            "routes": 6,
+            "counterfactual_exact": 0
+          },
+          "negative_factual": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_quoted": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_negated": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_cancelled": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_subtraction": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_comparison": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_concatenation": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_hypothetical": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_distractor": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          }
+        },
+        "probability_positive_median": 0.9963704347610474,
+        "probability_negative_median": 0.010683583095669746,
+        "probability_negative_maximum": 0.9399474263191223
+      }
+    },
+    {
+      "condition": "last_user_linear",
+      "phase10_seed": 16202,
+      "views": [
+        "last",
+        "user_mean"
+      ],
+      "learned_parameters": 8192,
+      "folds": [
+        {
+          "fold": 0,
+          "router_seed": 18302,
+          "training_rows": 5040,
+          "held_rows": 60,
+          "training": {
+            "config": {
+              "seed": 18302,
+              "steps": 1500,
+              "batch_size": 256,
+              "learning_rate": 0.0005,
+              "route_temperature": 2.0,
+              "maximum_calibration_false_positive_rate": 0.01
+            },
+            "initial_loss": 0.3335345983505249,
+            "final_loss": 0.0005629167426377535,
+            "wall_time_seconds": 2.213000292002107,
+            "trainable_parameters": 8192
+          },
+          "calibration": {
+            "rows": 720,
+            "positive_rows": 240,
+            "negative_rows": 480,
+            "threshold": 0.8422561287879944,
+            "true_positive_rate": 1.0,
+            "false_positive_rate": 0.0,
+            "accuracy": 1.0,
+            "positive_probability_min": 0.8422561287879944,
+            "positive_probability_median": 0.9735017418861389,
+            "negative_probability_median": 0.014243667013943195,
+            "negative_probability_max": 0.7071298360824585
+          },
+          "held": {
+            "rows": 60,
+            "positive_rows": 20,
+            "negative_rows": 40,
+            "threshold": 0.8422561287879944,
+            "true_positive_rate": 1.0,
+            "false_positive_rate": 0.05000000074505806,
+            "accuracy": 0.9666666388511658,
+            "positive_probability_min": 0.9421274065971375,
+            "positive_probability_median": 0.9869634509086609,
+            "negative_probability_median": 0.07132486253976822,
+            "negative_probability_max": 0.926076352596283
+          },
+          "checkpoint": "phase12_artifacts/development_family_cv/last_user_linear_seed_16202_fold_0.pt",
+          "checkpoint_sha256": "53ed2e048c84b736e0d0f32d7224b2558d52639173dea32ce99c576ca3982186"
+        },
+        {
+          "fold": 1,
+          "router_seed": 18312,
+          "training_rows": 5040,
+          "held_rows": 60,
+          "training": {
+            "config": {
+              "seed": 18312,
+              "steps": 1500,
+              "batch_size": 256,
+              "learning_rate": 0.0005,
+              "route_temperature": 2.0,
+              "maximum_calibration_false_positive_rate": 0.01
+            },
+            "initial_loss": 0.465752512216568,
+            "final_loss": 0.00042655772995203733,
+            "wall_time_seconds": 2.0819362920010462,
+            "trainable_parameters": 8192
+          },
+          "calibration": {
+            "rows": 720,
+            "positive_rows": 240,
+            "negative_rows": 480,
+            "threshold": 0.7471877932548523,
+            "true_positive_rate": 1.0,
+            "false_positive_rate": 0.0,
+            "accuracy": 1.0,
+            "positive_probability_min": 0.7471877932548523,
+            "positive_probability_median": 0.9678534269332886,
+            "negative_probability_median": 0.014989880844950676,
+            "negative_probability_max": 0.5949174761772156
+          },
+          "held": {
+            "rows": 60,
+            "positive_rows": 20,
+            "negative_rows": 40,
+            "threshold": 0.7471877932548523,
+            "true_positive_rate": 0.800000011920929,
+            "false_positive_rate": 0.0,
+            "accuracy": 0.9333333373069763,
+            "positive_probability_min": 0.613039493560791,
+            "positive_probability_median": 0.9878526926040649,
+            "negative_probability_median": 0.0144349979236722,
+            "negative_probability_max": 0.5137072801589966
+          },
+          "checkpoint": "phase12_artifacts/development_family_cv/last_user_linear_seed_16202_fold_1.pt",
+          "checkpoint_sha256": "a42f9d0b5feceb46d85d3fe7477e091064ea7277cbae23bda2ea5809b1edd2ff"
+        },
+        {
+          "fold": 2,
+          "router_seed": 18322,
+          "training_rows": 5040,
+          "held_rows": 60,
+          "training": {
+            "config": {
+              "seed": 18322,
+              "steps": 1500,
+              "batch_size": 256,
+              "learning_rate": 0.0005,
+              "route_temperature": 2.0,
+              "maximum_calibration_false_positive_rate": 0.01
+            },
+            "initial_loss": 0.45215046405792236,
+            "final_loss": 0.0007442595669999719,
+            "wall_time_seconds": 2.10023666699999,
+            "trainable_parameters": 8192
+          },
+          "calibration": {
+            "rows": 720,
+            "positive_rows": 240,
+            "negative_rows": 480,
+            "threshold": 0.6517758369445801,
+            "true_positive_rate": 1.0,
+            "false_positive_rate": 0.0,
+            "accuracy": 1.0,
+            "positive_probability_min": 0.6517758369445801,
+            "positive_probability_median": 0.9652312994003296,
+            "negative_probability_median": 0.013919063843786716,
+            "negative_probability_max": 0.6312359571456909
+          },
+          "held": {
+            "rows": 60,
+            "positive_rows": 20,
+            "negative_rows": 40,
+            "threshold": 0.6517758369445801,
+            "true_positive_rate": 0.75,
+            "false_positive_rate": 0.10000000149011612,
+            "accuracy": 0.8500000238418579,
+            "positive_probability_min": 0.08385326713323593,
+            "positive_probability_median": 0.906173050403595,
+            "negative_probability_median": 0.07540416717529297,
+            "negative_probability_max": 0.8341290950775146
+          },
+          "checkpoint": "phase12_artifacts/development_family_cv/last_user_linear_seed_16202_fold_2.pt",
+          "checkpoint_sha256": "ac4b7621953e48f671692910692104378f2276c96182e0cd9b6d3dd68755d5af"
+        },
+        {
+          "fold": 3,
+          "router_seed": 18332,
+          "training_rows": 5040,
+          "held_rows": 60,
+          "training": {
+            "config": {
+              "seed": 18332,
+              "steps": 1500,
+              "batch_size": 256,
+              "learning_rate": 0.0005,
+              "route_temperature": 2.0,
+              "maximum_calibration_false_positive_rate": 0.01
+            },
+            "initial_loss": 0.47959083318710327,
+            "final_loss": 0.0007086251862347126,
+            "wall_time_seconds": 2.0807544169947505,
+            "trainable_parameters": 8192
+          },
+          "calibration": {
+            "rows": 720,
+            "positive_rows": 240,
+            "negative_rows": 480,
+            "threshold": 0.6541478633880615,
+            "true_positive_rate": 1.0,
+            "false_positive_rate": 0.0,
+            "accuracy": 1.0,
+            "positive_probability_min": 0.6541478633880615,
+            "positive_probability_median": 0.9712917804718018,
+            "negative_probability_median": 0.009486345574259758,
+            "negative_probability_max": 0.6385961771011353
+          },
+          "held": {
+            "rows": 60,
+            "positive_rows": 20,
+            "negative_rows": 40,
+            "threshold": 0.6541478633880615,
+            "true_positive_rate": 0.5,
+            "false_positive_rate": 0.0,
+            "accuracy": 0.8333333134651184,
+            "positive_probability_min": 0.05350922793149948,
+            "positive_probability_median": 0.29590559005737305,
+            "negative_probability_median": 0.020619366317987442,
+            "negative_probability_max": 0.5808960795402527
+          },
+          "checkpoint": "phase12_artifacts/development_family_cv/last_user_linear_seed_16202_fold_3.pt",
+          "checkpoint_sha256": "62716e74a5d7a9c70547f0c0a0e6d2b2842f6b14e3b74cdf9f703a782a0b3fc9"
+        },
+        {
+          "fold": 4,
+          "router_seed": 18342,
+          "training_rows": 5040,
+          "held_rows": 60,
+          "training": {
+            "config": {
+              "seed": 18342,
+              "steps": 1500,
+              "batch_size": 256,
+              "learning_rate": 0.0005,
+              "route_temperature": 2.0,
+              "maximum_calibration_false_positive_rate": 0.01
+            },
+            "initial_loss": 0.34786754846572876,
+            "final_loss": 0.0006195052992552519,
+            "wall_time_seconds": 2.0908832920104032,
+            "trainable_parameters": 8192
+          },
+          "calibration": {
+            "rows": 720,
+            "positive_rows": 240,
+            "negative_rows": 480,
+            "threshold": 0.6739881634712219,
+            "true_positive_rate": 1.0,
+            "false_positive_rate": 0.0,
+            "accuracy": 1.0,
+            "positive_probability_min": 0.6739881634712219,
+            "positive_probability_median": 0.9691442251205444,
+            "negative_probability_median": 0.009218729101121426,
+            "negative_probability_max": 0.5929718613624573
+          },
+          "held": {
+            "rows": 60,
+            "positive_rows": 20,
+            "negative_rows": 40,
+            "threshold": 0.6739881634712219,
+            "true_positive_rate": 0.75,
+            "false_positive_rate": 0.0,
+            "accuracy": 0.9166666865348816,
+            "positive_probability_min": 0.19013544917106628,
+            "positive_probability_median": 0.9712523221969604,
+            "negative_probability_median": 0.018072335049510002,
+            "negative_probability_max": 0.30991330742836
+          },
+          "checkpoint": "phase12_artifacts/development_family_cv/last_user_linear_seed_16202_fold_4.pt",
+          "checkpoint_sha256": "52e24656d5609d8806c38ffd12f0ef98a753659fbbc8fc681d649af9ce5b74b2"
+        }
+      ],
+      "out_of_fold": {
+        "positive_routes": 76,
+        "counterfactual_exact": 74,
+        "phase11_natural_exact": 77,
+        "paired_counterfactual_gain": -3,
+        "false_routes": 6,
+        "predicted_preserved": 194,
+        "categories": {
+          "positive_direct": {
+            "examples": 50,
+            "routes": 31,
+            "counterfactual_exact": 30
+          },
+          "positive_word": {
+            "examples": 25,
+            "routes": 25,
+            "counterfactual_exact": 25
+          },
+          "positive_distractor": {
+            "examples": 25,
+            "routes": 20,
+            "counterfactual_exact": 19
+          },
+          "negative_multiplication": {
+            "examples": 20,
+            "routes": 6,
+            "counterfactual_exact": 0
+          },
+          "negative_factual": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_quoted": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_negated": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_cancelled": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_subtraction": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_comparison": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_concatenation": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_hypothetical": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_distractor": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          }
+        },
+        "probability_positive_median": 0.9732181429862976,
+        "probability_negative_median": 0.03549935668706894,
+        "probability_negative_maximum": 0.926076352596283
+      }
+    },
+    {
+      "condition": "all_views_linear",
+      "phase10_seed": 16202,
+      "views": [
+        "last",
+        "sequence_mean",
+        "user_mean",
+        "user_tail_mean"
+      ],
+      "learned_parameters": 16384,
+      "folds": [
+        {
+          "fold": 0,
+          "router_seed": 18402,
+          "training_rows": 5040,
+          "held_rows": 60,
+          "training": {
+            "config": {
+              "seed": 18402,
+              "steps": 1500,
+              "batch_size": 256,
+              "learning_rate": 0.0005,
+              "route_temperature": 2.0,
+              "maximum_calibration_false_positive_rate": 0.01
+            },
+            "initial_loss": 1.7858996391296387,
+            "final_loss": 0.000925881031434983,
+            "wall_time_seconds": 3.4258183329948224,
+            "trainable_parameters": 16384
+          },
+          "calibration": {
+            "rows": 720,
+            "positive_rows": 240,
+            "negative_rows": 480,
+            "threshold": 0.7817870378494263,
+            "true_positive_rate": 1.0,
+            "false_positive_rate": 0.0,
+            "accuracy": 1.0,
+            "positive_probability_min": 0.7817870378494263,
+            "positive_probability_median": 0.9650856852531433,
+            "negative_probability_median": 0.01883341185748577,
+            "negative_probability_max": 0.5111149549484253
+          },
+          "held": {
+            "rows": 60,
+            "positive_rows": 20,
+            "negative_rows": 40,
+            "threshold": 0.7817870378494263,
+            "true_positive_rate": 1.0,
+            "false_positive_rate": 0.05000000074505806,
+            "accuracy": 0.9666666388511658,
+            "positive_probability_min": 0.9361308813095093,
+            "positive_probability_median": 0.9787293672561646,
+            "negative_probability_median": 0.053048696368932724,
+            "negative_probability_max": 0.8909628987312317
+          },
+          "checkpoint": "phase12_artifacts/development_family_cv/all_views_linear_seed_16202_fold_0.pt",
+          "checkpoint_sha256": "7e6b082998defb84181be8f46949cb145b75f20daaaf58b7f0d52cbb2b911615"
+        },
+        {
+          "fold": 1,
+          "router_seed": 18412,
+          "training_rows": 5040,
+          "held_rows": 60,
+          "training": {
+            "config": {
+              "seed": 18412,
+              "steps": 1500,
+              "batch_size": 256,
+              "learning_rate": 0.0005,
+              "route_temperature": 2.0,
+              "maximum_calibration_false_positive_rate": 0.01
+            },
+            "initial_loss": 1.6398162841796875,
+            "final_loss": 0.0009746145806275308,
+            "wall_time_seconds": 2.7421471659909002,
+            "trainable_parameters": 16384
+          },
+          "calibration": {
+            "rows": 720,
+            "positive_rows": 240,
+            "negative_rows": 480,
+            "threshold": 0.5,
+            "true_positive_rate": 1.0,
+            "false_positive_rate": 0.0,
+            "accuracy": 1.0,
+            "positive_probability_min": 0.6804564595222473,
+            "positive_probability_median": 0.9591402411460876,
+            "negative_probability_median": 0.018221445381641388,
+            "negative_probability_max": 0.43724873661994934
+          },
+          "held": {
+            "rows": 60,
+            "positive_rows": 20,
+            "negative_rows": 40,
+            "threshold": 0.5,
+            "true_positive_rate": 0.8500000238418579,
+            "false_positive_rate": 0.0,
+            "accuracy": 0.949999988079071,
+            "positive_probability_min": 0.4345589876174927,
+            "positive_probability_median": 0.9816474914550781,
+            "negative_probability_median": 0.01744971051812172,
+            "negative_probability_max": 0.4920887351036072
+          },
+          "checkpoint": "phase12_artifacts/development_family_cv/all_views_linear_seed_16202_fold_1.pt",
+          "checkpoint_sha256": "648eace8fa677de1cc18a48d329e4d597d31db3f36c25f3849ffb3a74ec3d6a6"
+        },
+        {
+          "fold": 2,
+          "router_seed": 18422,
+          "training_rows": 5040,
+          "held_rows": 60,
+          "training": {
+            "config": {
+              "seed": 18422,
+              "steps": 1500,
+              "batch_size": 256,
+              "learning_rate": 0.0005,
+              "route_temperature": 2.0,
+              "maximum_calibration_false_positive_rate": 0.01
+            },
+            "initial_loss": 1.8882602453231812,
+            "final_loss": 0.0011787322582677007,
+            "wall_time_seconds": 3.309352583004511,
+            "trainable_parameters": 16384
+          },
+          "calibration": {
+            "rows": 720,
+            "positive_rows": 240,
+            "negative_rows": 480,
+            "threshold": 0.5,
+            "true_positive_rate": 1.0,
+            "false_positive_rate": 0.0,
+            "accuracy": 1.0,
+            "positive_probability_min": 0.6279604434967041,
+            "positive_probability_median": 0.9514027833938599,
+            "negative_probability_median": 0.019335173070430756,
+            "negative_probability_max": 0.46438825130462646
+          },
+          "held": {
+            "rows": 60,
+            "positive_rows": 20,
+            "negative_rows": 40,
+            "threshold": 0.5,
+            "true_positive_rate": 0.75,
+            "false_positive_rate": 0.125,
+            "accuracy": 0.8333333134651184,
+            "positive_probability_min": 0.19451166689395905,
+            "positive_probability_median": 0.8894839882850647,
+            "negative_probability_median": 0.06336820870637894,
+            "negative_probability_max": 0.7340314984321594
+          },
+          "checkpoint": "phase12_artifacts/development_family_cv/all_views_linear_seed_16202_fold_2.pt",
+          "checkpoint_sha256": "000a635b381f648238b6591787e4f3a2d9e8a713fb0508ef468939c23004d5c4"
+        },
+        {
+          "fold": 3,
+          "router_seed": 18432,
+          "training_rows": 5040,
+          "held_rows": 60,
+          "training": {
+            "config": {
+              "seed": 18432,
+              "steps": 1500,
+              "batch_size": 256,
+              "learning_rate": 0.0005,
+              "route_temperature": 2.0,
+              "maximum_calibration_false_positive_rate": 0.01
+            },
+            "initial_loss": 2.0865001678466797,
+            "final_loss": 0.000895893550477922,
+            "wall_time_seconds": 3.185097207999206,
+            "trainable_parameters": 16384
+          },
+          "calibration": {
+            "rows": 720,
+            "positive_rows": 240,
+            "negative_rows": 480,
+            "threshold": 0.5,
+            "true_positive_rate": 1.0,
+            "false_positive_rate": 0.0,
+            "accuracy": 1.0,
+            "positive_probability_min": 0.6539735794067383,
+            "positive_probability_median": 0.9575278759002686,
+            "negative_probability_median": 0.013997465372085571,
+            "negative_probability_max": 0.49817708134651184
+          },
+          "held": {
+            "rows": 60,
+            "positive_rows": 20,
+            "negative_rows": 40,
+            "threshold": 0.5,
+            "true_positive_rate": 0.5,
+            "false_positive_rate": 0.05000000074505806,
+            "accuracy": 0.800000011920929,
+            "positive_probability_min": 0.08888252079486847,
+            "positive_probability_median": 0.3251444101333618,
+            "negative_probability_median": 0.026823675259947777,
+            "negative_probability_max": 0.5658046007156372
+          },
+          "checkpoint": "phase12_artifacts/development_family_cv/all_views_linear_seed_16202_fold_3.pt",
+          "checkpoint_sha256": "29bba2d577cfef17ee7ad4eee8da8a8c5a2d3b710f014c1af056d5580aaae455"
+        },
+        {
+          "fold": 4,
+          "router_seed": 18442,
+          "training_rows": 5040,
+          "held_rows": 60,
+          "training": {
+            "config": {
+              "seed": 18442,
+              "steps": 1500,
+              "batch_size": 256,
+              "learning_rate": 0.0005,
+              "route_temperature": 2.0,
+              "maximum_calibration_false_positive_rate": 0.01
+            },
+            "initial_loss": 2.0125443935394287,
+            "final_loss": 0.0016991232987493277,
+            "wall_time_seconds": 3.8864837500004796,
+            "trainable_parameters": 16384
+          },
+          "calibration": {
+            "rows": 720,
+            "positive_rows": 240,
+            "negative_rows": 480,
+            "threshold": 0.6646461486816406,
+            "true_positive_rate": 1.0,
+            "false_positive_rate": 0.0,
+            "accuracy": 1.0,
+            "positive_probability_min": 0.6646461486816406,
+            "positive_probability_median": 0.9568973183631897,
+            "negative_probability_median": 0.013348928652703762,
+            "negative_probability_max": 0.5052165985107422
+          },
+          "held": {
+            "rows": 60,
+            "positive_rows": 20,
+            "negative_rows": 40,
+            "threshold": 0.6646461486816406,
+            "true_positive_rate": 0.75,
+            "false_positive_rate": 0.0,
+            "accuracy": 0.9166666865348816,
+            "positive_probability_min": 0.2410353124141693,
+            "positive_probability_median": 0.9647319912910461,
+            "negative_probability_median": 0.03531094640493393,
+            "negative_probability_max": 0.3448038399219513
+          },
+          "checkpoint": "phase12_artifacts/development_family_cv/all_views_linear_seed_16202_fold_4.pt",
+          "checkpoint_sha256": "6b716eabbfb7066d32680863c855258cc4cb0cce4506b2aa0485853eabccf432"
+        }
+      ],
+      "out_of_fold": {
+        "positive_routes": 77,
+        "counterfactual_exact": 75,
+        "phase11_natural_exact": 77,
+        "paired_counterfactual_gain": -2,
+        "false_routes": 9,
+        "predicted_preserved": 191,
+        "categories": {
+          "positive_direct": {
+            "examples": 50,
+            "routes": 32,
+            "counterfactual_exact": 31
+          },
+          "positive_word": {
+            "examples": 25,
+            "routes": 25,
+            "counterfactual_exact": 25
+          },
+          "positive_distractor": {
+            "examples": 25,
+            "routes": 20,
+            "counterfactual_exact": 19
+          },
+          "negative_multiplication": {
+            "examples": 20,
+            "routes": 6,
+            "counterfactual_exact": 0
+          },
+          "negative_factual": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_quoted": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_negated": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_cancelled": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_subtraction": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_comparison": {
+            "examples": 20,
+            "routes": 2,
+            "counterfactual_exact": 0
+          },
+          "negative_concatenation": {
+            "examples": 20,
+            "routes": 1,
+            "counterfactual_exact": 0
+          },
+          "negative_hypothetical": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_distractor": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          }
+        },
+        "probability_positive_median": 0.9666979908943176,
+        "probability_negative_median": 0.03493153676390648,
+        "probability_negative_maximum": 0.8909628987312317
+      }
+    },
+    {
+      "condition": "all_views_silu16",
+      "phase10_seed": 16202,
+      "views": [
+        "last",
+        "sequence_mean",
+        "user_mean",
+        "user_tail_mean"
+      ],
+      "learned_parameters": 131104,
+      "folds": [
+        {
+          "fold": 0,
+          "router_seed": 18502,
+          "training_rows": 5040,
+          "held_rows": 60,
+          "training": {
+            "config": {
+              "seed": 18502,
+              "bottleneck_width": 16,
+              "steps": 1500,
+              "batch_size": 256,
+              "learning_rate": 0.0005,
+              "route_temperature": 2.0,
+              "maximum_calibration_false_positive_rate": 0.01
+            },
+            "initial_loss": 0.6969635486602783,
+            "final_loss": 7.277306576725096e-05,
+            "wall_time_seconds": 4.125323500004015,
+            "trainable_parameters": 131104
+          },
+          "calibration": {
+            "rows": 720,
+            "positive_rows": 240,
+            "negative_rows": 480,
+            "threshold": 0.5,
+            "true_positive_rate": 1.0,
+            "false_positive_rate": 0.0,
+            "accuracy": 1.0,
+            "positive_probability_min": 0.7862426042556763,
+            "positive_probability_median": 0.9880660772323608,
+            "negative_probability_median": 0.005521755199879408,
+            "negative_probability_max": 0.19139231741428375
+          },
+          "held": {
+            "rows": 60,
+            "positive_rows": 20,
+            "negative_rows": 40,
+            "threshold": 0.5,
+            "true_positive_rate": 1.0,
+            "false_positive_rate": 0.10000000149011612,
+            "accuracy": 0.9333333373069763,
+            "positive_probability_min": 0.9894708395004272,
+            "positive_probability_median": 0.995381772518158,
+            "negative_probability_median": 0.03071395866572857,
+            "negative_probability_max": 0.7533155083656311
+          },
+          "checkpoint": "phase12_artifacts/development_family_cv/all_views_silu16_seed_16202_fold_0.pt",
+          "checkpoint_sha256": "7cfeb872fd07b742486dd9e2ba34c0e139426bb525369b0cfe325e6e2a4fe9ad"
+        },
+        {
+          "fold": 1,
+          "router_seed": 18512,
+          "training_rows": 5040,
+          "held_rows": 60,
+          "training": {
+            "config": {
+              "seed": 18512,
+              "bottleneck_width": 16,
+              "steps": 1500,
+              "batch_size": 256,
+              "learning_rate": 0.0005,
+              "route_temperature": 2.0,
+              "maximum_calibration_false_positive_rate": 0.01
+            },
+            "initial_loss": 0.6932170391082764,
+            "final_loss": 0.0001045849421643652,
+            "wall_time_seconds": 4.040911165997386,
+            "trainable_parameters": 131104
+          },
+          "calibration": {
+            "rows": 720,
+            "positive_rows": 240,
+            "negative_rows": 480,
+            "threshold": 0.5,
+            "true_positive_rate": 1.0,
+            "false_positive_rate": 0.0,
+            "accuracy": 1.0,
+            "positive_probability_min": 0.6529849171638489,
+            "positive_probability_median": 0.9858766794204712,
+            "negative_probability_median": 0.004293578676879406,
+            "negative_probability_max": 0.2083810716867447
+          },
+          "held": {
+            "rows": 60,
+            "positive_rows": 20,
+            "negative_rows": 40,
+            "threshold": 0.5,
+            "true_positive_rate": 0.949999988079071,
+            "false_positive_rate": 0.0,
+            "accuracy": 0.9833333492279053,
+            "positive_probability_min": 0.4162183403968811,
+            "positive_probability_median": 0.9879294633865356,
+            "negative_probability_median": 0.0025933661963790655,
+            "negative_probability_max": 0.11533502489328384
+          },
+          "checkpoint": "phase12_artifacts/development_family_cv/all_views_silu16_seed_16202_fold_1.pt",
+          "checkpoint_sha256": "496520b62555ff061b1bb387ec1343ebc3218991d84b79c5268a0da02ca69a14"
+        },
+        {
+          "fold": 2,
+          "router_seed": 18522,
+          "training_rows": 5040,
+          "held_rows": 60,
+          "training": {
+            "config": {
+              "seed": 18522,
+              "bottleneck_width": 16,
+              "steps": 1500,
+              "batch_size": 256,
+              "learning_rate": 0.0005,
+              "route_temperature": 2.0,
+              "maximum_calibration_false_positive_rate": 0.01
+            },
+            "initial_loss": 0.6950972080230713,
+            "final_loss": 7.532283780165017e-05,
+            "wall_time_seconds": 2.8167773750028573,
+            "trainable_parameters": 131104
+          },
+          "calibration": {
+            "rows": 720,
+            "positive_rows": 240,
+            "negative_rows": 480,
+            "threshold": 0.5,
+            "true_positive_rate": 1.0,
+            "false_positive_rate": 0.0,
+            "accuracy": 1.0,
+            "positive_probability_min": 0.5726155638694763,
+            "positive_probability_median": 0.9816299676895142,
+            "negative_probability_median": 0.0051927692256867886,
+            "negative_probability_max": 0.20044225454330444
+          },
+          "held": {
+            "rows": 60,
+            "positive_rows": 20,
+            "negative_rows": 40,
+            "threshold": 0.5,
+            "true_positive_rate": 1.0,
+            "false_positive_rate": 0.05000000074505806,
+            "accuracy": 0.9666666388511658,
+            "positive_probability_min": 0.5960044860839844,
+            "positive_probability_median": 0.8478646874427795,
+            "negative_probability_median": 0.016520118340849876,
+            "negative_probability_max": 0.5674709677696228
+          },
+          "checkpoint": "phase12_artifacts/development_family_cv/all_views_silu16_seed_16202_fold_2.pt",
+          "checkpoint_sha256": "67e48b1f3a1e8a6f01f603f46f6655d25fcb0276dbd5eae003a14884f237b9e5"
+        },
+        {
+          "fold": 3,
+          "router_seed": 18532,
+          "training_rows": 5040,
+          "held_rows": 60,
+          "training": {
+            "config": {
+              "seed": 18532,
+              "bottleneck_width": 16,
+              "steps": 1500,
+              "batch_size": 256,
+              "learning_rate": 0.0005,
+              "route_temperature": 2.0,
+              "maximum_calibration_false_positive_rate": 0.01
+            },
+            "initial_loss": 0.7002066373825073,
+            "final_loss": 8.348879782715812e-05,
+            "wall_time_seconds": 2.765305290988181,
+            "trainable_parameters": 131104
+          },
+          "calibration": {
+            "rows": 720,
+            "positive_rows": 240,
+            "negative_rows": 480,
+            "threshold": 0.5,
+            "true_positive_rate": 1.0,
+            "false_positive_rate": 0.0,
+            "accuracy": 1.0,
+            "positive_probability_min": 0.5272652506828308,
+            "positive_probability_median": 0.9871009588241577,
+            "negative_probability_median": 0.004332518205046654,
+            "negative_probability_max": 0.22560416162014008
+          },
+          "held": {
+            "rows": 60,
+            "positive_rows": 20,
+            "negative_rows": 40,
+            "threshold": 0.5,
+            "true_positive_rate": 0.699999988079071,
+            "false_positive_rate": 0.0,
+            "accuracy": 0.8999999761581421,
+            "positive_probability_min": 0.054051723331213,
+            "positive_probability_median": 0.6438385248184204,
+            "negative_probability_median": 0.017960775643587112,
+            "negative_probability_max": 0.3024445176124573
+          },
+          "checkpoint": "phase12_artifacts/development_family_cv/all_views_silu16_seed_16202_fold_3.pt",
+          "checkpoint_sha256": "e440ac4a83440d107612fe0d83a29ed9a19d05355a53f4a02d8bf37b99d19383"
+        },
+        {
+          "fold": 4,
+          "router_seed": 18542,
+          "training_rows": 5040,
+          "held_rows": 60,
+          "training": {
+            "config": {
+              "seed": 18542,
+              "bottleneck_width": 16,
+              "steps": 1500,
+              "batch_size": 256,
+              "learning_rate": 0.0005,
+              "route_temperature": 2.0,
+              "maximum_calibration_false_positive_rate": 0.01
+            },
+            "initial_loss": 0.6875565052032471,
+            "final_loss": 0.0001068512792699039,
+            "wall_time_seconds": 4.125337374993251,
+            "trainable_parameters": 131104
+          },
+          "calibration": {
+            "rows": 720,
+            "positive_rows": 240,
+            "negative_rows": 480,
+            "threshold": 0.5,
+            "true_positive_rate": 1.0,
+            "false_positive_rate": 0.0,
+            "accuracy": 1.0,
+            "positive_probability_min": 0.5568456053733826,
+            "positive_probability_median": 0.9833114147186279,
+            "negative_probability_median": 0.004683013539761305,
+            "negative_probability_max": 0.25796765089035034
+          },
+          "held": {
+            "rows": 60,
+            "positive_rows": 20,
+            "negative_rows": 40,
+            "threshold": 0.5,
+            "true_positive_rate": 0.75,
+            "false_positive_rate": 0.0,
+            "accuracy": 0.9166666865348816,
+            "positive_probability_min": 0.18205435574054718,
+            "positive_probability_median": 0.9818258285522461,
+            "negative_probability_median": 0.008236113935709,
+            "negative_probability_max": 0.33147740364074707
+          },
+          "checkpoint": "phase12_artifacts/development_family_cv/all_views_silu16_seed_16202_fold_4.pt",
+          "checkpoint_sha256": "c90244618b22179682ceb084207f04b2b5b74c390d378df6e61bb8f0dd4494ff"
+        }
+      ],
+      "out_of_fold": {
+        "positive_routes": 88,
+        "counterfactual_exact": 86,
+        "phase11_natural_exact": 77,
+        "paired_counterfactual_gain": 9,
+        "false_routes": 6,
+        "predicted_preserved": 194,
+        "categories": {
+          "positive_direct": {
+            "examples": 50,
+            "routes": 39,
+            "counterfactual_exact": 38
+          },
+          "positive_word": {
+            "examples": 25,
+            "routes": 25,
+            "counterfactual_exact": 25
+          },
+          "positive_distractor": {
+            "examples": 25,
+            "routes": 24,
+            "counterfactual_exact": 23
+          },
+          "negative_multiplication": {
+            "examples": 20,
+            "routes": 2,
+            "counterfactual_exact": 0
+          },
+          "negative_factual": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_quoted": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_negated": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_cancelled": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_subtraction": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_comparison": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_concatenation": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_hypothetical": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_distractor": {
+            "examples": 20,
+            "routes": 4,
+            "counterfactual_exact": 0
+          }
+        },
+        "probability_positive_median": 0.9893139004707336,
+        "probability_negative_median": 0.01689036563038826,
+        "probability_negative_maximum": 0.7533155083656311
+      }
+    },
+    {
+      "condition": "last_linear",
+      "phase10_seed": 16203,
+      "views": [
+        "last"
+      ],
+      "learned_parameters": 4096,
+      "folds": [
+        {
+          "fold": 0,
+          "router_seed": 18203,
+          "training_rows": 5040,
+          "held_rows": 60,
+          "training": {
+            "config": {
+              "seed": 18203,
+              "steps": 1500,
+              "batch_size": 256,
+              "learning_rate": 0.0005,
+              "route_temperature": 2.0,
+              "maximum_calibration_false_positive_rate": 0.01
+            },
+            "initial_loss": 0.04780571907758713,
+            "final_loss": 0.00021881003340240568,
+            "wall_time_seconds": 2.1491244159988128,
+            "trainable_parameters": 4096
+          },
+          "calibration": {
+            "rows": 720,
+            "positive_rows": 240,
+            "negative_rows": 480,
+            "threshold": 0.9421358704566956,
+            "true_positive_rate": 1.0,
+            "false_positive_rate": 0.0,
+            "accuracy": 1.0,
+            "positive_probability_min": 0.9421358704566956,
+            "positive_probability_median": 0.9983526468276978,
+            "negative_probability_median": 0.002026848029345274,
+            "negative_probability_max": 0.8210340142250061
+          },
+          "held": {
+            "rows": 60,
+            "positive_rows": 20,
+            "negative_rows": 40,
+            "threshold": 0.9421358704566956,
+            "true_positive_rate": 1.0,
+            "false_positive_rate": 0.02500000037252903,
+            "accuracy": 0.9833333492279053,
+            "positive_probability_min": 0.9923670887947083,
+            "positive_probability_median": 0.9996399879455566,
+            "negative_probability_median": 0.05202700197696686,
+            "negative_probability_max": 0.949835479259491
+          },
+          "checkpoint": "phase12_artifacts/development_family_cv/last_linear_seed_16203_fold_0.pt",
+          "checkpoint_sha256": "49ca672f182aaf8e6d2f3b5d6979fdf93a16d0a92a8b9d296afe2e05d3b10322"
+        },
+        {
+          "fold": 1,
+          "router_seed": 18213,
+          "training_rows": 5040,
+          "held_rows": 60,
+          "training": {
+            "config": {
+              "seed": 18213,
+              "steps": 1500,
+              "batch_size": 256,
+              "learning_rate": 0.0005,
+              "route_temperature": 2.0,
+              "maximum_calibration_false_positive_rate": 0.01
+            },
+            "initial_loss": 0.004907328635454178,
+            "final_loss": 0.0002868538722395897,
+            "wall_time_seconds": 1.8631952499999898,
+            "trainable_parameters": 4096
+          },
+          "calibration": {
+            "rows": 720,
+            "positive_rows": 240,
+            "negative_rows": 480,
+            "threshold": 0.9295153021812439,
+            "true_positive_rate": 1.0,
+            "false_positive_rate": 0.0,
+            "accuracy": 1.0,
+            "positive_probability_min": 0.9295153021812439,
+            "positive_probability_median": 0.997016191482544,
+            "negative_probability_median": 0.0018215912859886885,
+            "negative_probability_max": 0.7360702157020569
+          },
+          "held": {
+            "rows": 60,
+            "positive_rows": 20,
+            "negative_rows": 40,
+            "threshold": 0.9295153021812439,
+            "true_positive_rate": 0.949999988079071,
+            "false_positive_rate": 0.0,
+            "accuracy": 0.9833333492279053,
+            "positive_probability_min": 0.9291156530380249,
+            "positive_probability_median": 0.9982068538665771,
+            "negative_probability_median": 0.004859501030296087,
+            "negative_probability_max": 0.41411665081977844
+          },
+          "checkpoint": "phase12_artifacts/development_family_cv/last_linear_seed_16203_fold_1.pt",
+          "checkpoint_sha256": "d9820ee027d516a214a09b9b260bc4e9ff3987188ad8f31669be91186f97c6ce"
+        },
+        {
+          "fold": 2,
+          "router_seed": 18223,
+          "training_rows": 5040,
+          "held_rows": 60,
+          "training": {
+            "config": {
+              "seed": 18223,
+              "steps": 1500,
+              "batch_size": 256,
+              "learning_rate": 0.0005,
+              "route_temperature": 2.0,
+              "maximum_calibration_false_positive_rate": 0.01
+            },
+            "initial_loss": 0.04528815299272537,
+            "final_loss": 8.571783837396652e-05,
+            "wall_time_seconds": 1.8713392920035403,
+            "trainable_parameters": 4096
+          },
+          "calibration": {
+            "rows": 720,
+            "positive_rows": 240,
+            "negative_rows": 480,
+            "threshold": 0.8624037504196167,
+            "true_positive_rate": 1.0,
+            "false_positive_rate": 0.0,
+            "accuracy": 1.0,
+            "positive_probability_min": 0.8624037504196167,
+            "positive_probability_median": 0.9957491159439087,
+            "negative_probability_median": 0.0018238029442727566,
+            "negative_probability_max": 0.7448244094848633
+          },
+          "held": {
+            "rows": 60,
+            "positive_rows": 20,
+            "negative_rows": 40,
+            "threshold": 0.8624037504196167,
+            "true_positive_rate": 0.699999988079071,
+            "false_positive_rate": 0.07500000298023224,
+            "accuracy": 0.8500000238418579,
+            "positive_probability_min": 0.024755632504820824,
+            "positive_probability_median": 0.9605565071105957,
+            "negative_probability_median": 0.029596727341413498,
+            "negative_probability_max": 0.9546416401863098
+          },
+          "checkpoint": "phase12_artifacts/development_family_cv/last_linear_seed_16203_fold_2.pt",
+          "checkpoint_sha256": "309d692a47fda78d0473bd0cc76e01120314dfc4de8e52d363b85a7b0a05770a"
+        },
+        {
+          "fold": 3,
+          "router_seed": 18233,
+          "training_rows": 5040,
+          "held_rows": 60,
+          "training": {
+            "config": {
+              "seed": 18233,
+              "steps": 1500,
+              "batch_size": 256,
+              "learning_rate": 0.0005,
+              "route_temperature": 2.0,
+              "maximum_calibration_false_positive_rate": 0.01
+            },
+            "initial_loss": 0.08968830853700638,
+            "final_loss": 0.00013317179400473833,
+            "wall_time_seconds": 1.9401027919957414,
+            "trainable_parameters": 4096
+          },
+          "calibration": {
+            "rows": 720,
+            "positive_rows": 240,
+            "negative_rows": 480,
+            "threshold": 0.8870781064033508,
+            "true_positive_rate": 1.0,
+            "false_positive_rate": 0.0,
+            "accuracy": 1.0,
+            "positive_probability_min": 0.8870781064033508,
+            "positive_probability_median": 0.9972063899040222,
+            "negative_probability_median": 0.0016109056305140257,
+            "negative_probability_max": 0.7780987620353699
+          },
+          "held": {
+            "rows": 60,
+            "positive_rows": 20,
+            "negative_rows": 40,
+            "threshold": 0.8870781064033508,
+            "true_positive_rate": 0.5,
+            "false_positive_rate": 0.0,
+            "accuracy": 0.8333333134651184,
+            "positive_probability_min": 0.006157061085104942,
+            "positive_probability_median": 0.4144182503223419,
+            "negative_probability_median": 0.014133584685623646,
+            "negative_probability_max": 0.7282600402832031
+          },
+          "checkpoint": "phase12_artifacts/development_family_cv/last_linear_seed_16203_fold_3.pt",
+          "checkpoint_sha256": "765c413149d9caa615f55d3aaafbaaacd0bb9276ff547f5e8b298fe9d800ea82"
+        },
+        {
+          "fold": 4,
+          "router_seed": 18243,
+          "training_rows": 5040,
+          "held_rows": 60,
+          "training": {
+            "config": {
+              "seed": 18243,
+              "steps": 1500,
+              "batch_size": 256,
+              "learning_rate": 0.0005,
+              "route_temperature": 2.0,
+              "maximum_calibration_false_positive_rate": 0.01
+            },
+            "initial_loss": 0.0479484423995018,
+            "final_loss": 0.00018163095228374004,
+            "wall_time_seconds": 1.8130472500051837,
+            "trainable_parameters": 4096
+          },
+          "calibration": {
+            "rows": 720,
+            "positive_rows": 240,
+            "negative_rows": 480,
+            "threshold": 0.906894862651825,
+            "true_positive_rate": 1.0,
+            "false_positive_rate": 0.0,
+            "accuracy": 1.0,
+            "positive_probability_min": 0.906894862651825,
+            "positive_probability_median": 0.9972719550132751,
+            "negative_probability_median": 0.0012574638240039349,
+            "negative_probability_max": 0.7352993488311768
+          },
+          "held": {
+            "rows": 60,
+            "positive_rows": 20,
+            "negative_rows": 40,
+            "threshold": 0.906894862651825,
+            "true_positive_rate": 0.75,
+            "false_positive_rate": 0.0,
+            "accuracy": 0.9166666865348816,
+            "positive_probability_min": 0.15812137722969055,
+            "positive_probability_median": 0.9798403382301331,
+            "negative_probability_median": 0.0061972117982804775,
+            "negative_probability_max": 0.169806569814682
+          },
+          "checkpoint": "phase12_artifacts/development_family_cv/last_linear_seed_16203_fold_4.pt",
+          "checkpoint_sha256": "c9f1e02dd0c80a06c80d6fb32331f894478b3eecbd30aad34cbd9900fd28465d"
+        }
+      ],
+      "out_of_fold": {
+        "positive_routes": 78,
+        "counterfactual_exact": 73,
+        "phase11_natural_exact": 68,
+        "paired_counterfactual_gain": 5,
+        "false_routes": 4,
+        "predicted_preserved": 196,
+        "categories": {
+          "positive_direct": {
+            "examples": 50,
+            "routes": 34,
+            "counterfactual_exact": 34
+          },
+          "positive_word": {
+            "examples": 25,
+            "routes": 25,
+            "counterfactual_exact": 25
+          },
+          "positive_distractor": {
+            "examples": 25,
+            "routes": 19,
+            "counterfactual_exact": 14
+          },
+          "negative_multiplication": {
+            "examples": 20,
+            "routes": 4,
+            "counterfactual_exact": 0
+          },
+          "negative_factual": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_quoted": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_negated": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_cancelled": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_subtraction": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_comparison": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_concatenation": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_hypothetical": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_distractor": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          }
+        },
+        "probability_positive_median": 0.9965271353721619,
+        "probability_negative_median": 0.012227416038513184,
+        "probability_negative_maximum": 0.9546416401863098
+      }
+    },
+    {
+      "condition": "last_user_linear",
+      "phase10_seed": 16203,
+      "views": [
+        "last",
+        "user_mean"
+      ],
+      "learned_parameters": 8192,
+      "folds": [
+        {
+          "fold": 0,
+          "router_seed": 18303,
+          "training_rows": 5040,
+          "held_rows": 60,
+          "training": {
+            "config": {
+              "seed": 18303,
+              "steps": 1500,
+              "batch_size": 256,
+              "learning_rate": 0.0005,
+              "route_temperature": 2.0,
+              "maximum_calibration_false_positive_rate": 0.01
+            },
+            "initial_loss": 0.01544883381575346,
+            "final_loss": 0.0001871521380962804,
+            "wall_time_seconds": 2.065646916991682,
+            "trainable_parameters": 8192
+          },
+          "calibration": {
+            "rows": 720,
+            "positive_rows": 240,
+            "negative_rows": 480,
+            "threshold": 0.5,
+            "true_positive_rate": 1.0,
+            "false_positive_rate": 0.0,
+            "accuracy": 1.0,
+            "positive_probability_min": 0.852073073387146,
+            "positive_probability_median": 0.9891353845596313,
+            "negative_probability_median": 0.010366376489400864,
+            "negative_probability_max": 0.46571552753448486
+          },
+          "held": {
+            "rows": 60,
+            "positive_rows": 20,
+            "negative_rows": 40,
+            "threshold": 0.5,
+            "true_positive_rate": 1.0,
+            "false_positive_rate": 0.17499999701976776,
+            "accuracy": 0.8833333253860474,
+            "positive_probability_min": 0.9822900891304016,
+            "positive_probability_median": 0.9952541589736938,
+            "negative_probability_median": 0.06632543355226517,
+            "negative_probability_max": 0.8812510967254639
+          },
+          "checkpoint": "phase12_artifacts/development_family_cv/last_user_linear_seed_16203_fold_0.pt",
+          "checkpoint_sha256": "5d2b9c9947d47cbc55eb8a3ff36d8d2d7bdcfdb12ac35cfe550960e2dc65fcfc"
+        },
+        {
+          "fold": 1,
+          "router_seed": 18313,
+          "training_rows": 5040,
+          "held_rows": 60,
+          "training": {
+            "config": {
+              "seed": 18313,
+              "steps": 1500,
+              "batch_size": 256,
+              "learning_rate": 0.0005,
+              "route_temperature": 2.0,
+              "maximum_calibration_false_positive_rate": 0.01
+            },
+            "initial_loss": 0.015299740247428417,
+            "final_loss": 0.00024545867927372456,
+            "wall_time_seconds": 2.1757790830015438,
+            "trainable_parameters": 8192
+          },
+          "calibration": {
+            "rows": 720,
+            "positive_rows": 240,
+            "negative_rows": 480,
+            "threshold": 0.5,
+            "true_positive_rate": 1.0,
+            "false_positive_rate": 0.0,
+            "accuracy": 1.0,
+            "positive_probability_min": 0.7782773375511169,
+            "positive_probability_median": 0.9859180450439453,
+            "negative_probability_median": 0.007798096630722284,
+            "negative_probability_max": 0.3824814558029175
+          },
+          "held": {
+            "rows": 60,
+            "positive_rows": 20,
+            "negative_rows": 40,
+            "threshold": 0.5,
+            "true_positive_rate": 1.0,
+            "false_positive_rate": 0.0,
+            "accuracy": 1.0,
+            "positive_probability_min": 0.6140475273132324,
+            "positive_probability_median": 0.9943906664848328,
+            "negative_probability_median": 0.00992533564567566,
+            "negative_probability_max": 0.31333017349243164
+          },
+          "checkpoint": "phase12_artifacts/development_family_cv/last_user_linear_seed_16203_fold_1.pt",
+          "checkpoint_sha256": "79b6683fe221289895fa4894a79408d520e63681e8cf67c414484d0c4b115be8"
+        },
+        {
+          "fold": 2,
+          "router_seed": 18323,
+          "training_rows": 5040,
+          "held_rows": 60,
+          "training": {
+            "config": {
+              "seed": 18323,
+              "steps": 1500,
+              "batch_size": 256,
+              "learning_rate": 0.0005,
+              "route_temperature": 2.0,
+              "maximum_calibration_false_positive_rate": 0.01
+            },
+            "initial_loss": 0.033471401780843735,
+            "final_loss": 0.0001970104203792289,
+            "wall_time_seconds": 2.1295998749992577,
+            "trainable_parameters": 8192
+          },
+          "calibration": {
+            "rows": 720,
+            "positive_rows": 240,
+            "negative_rows": 480,
+            "threshold": 0.5,
+            "true_positive_rate": 1.0,
+            "false_positive_rate": 0.0,
+            "accuracy": 1.0,
+            "positive_probability_min": 0.7514671087265015,
+            "positive_probability_median": 0.9791791439056396,
+            "negative_probability_median": 0.009085436351597309,
+            "negative_probability_max": 0.44878315925598145
+          },
+          "held": {
+            "rows": 60,
+            "positive_rows": 20,
+            "negative_rows": 40,
+            "threshold": 0.5,
+            "true_positive_rate": 0.75,
+            "false_positive_rate": 0.10000000149011612,
+            "accuracy": 0.8500000238418579,
+            "positive_probability_min": 0.0960180014371872,
+            "positive_probability_median": 0.9090480208396912,
+            "negative_probability_median": 0.05829697847366333,
+            "negative_probability_max": 0.819165050983429
+          },
+          "checkpoint": "phase12_artifacts/development_family_cv/last_user_linear_seed_16203_fold_2.pt",
+          "checkpoint_sha256": "44f860b5fd81adfe36ab3af2668dcd8bf1c31de94e5a3a399616444a8f4575ec"
+        },
+        {
+          "fold": 3,
+          "router_seed": 18333,
+          "training_rows": 5040,
+          "held_rows": 60,
+          "training": {
+            "config": {
+              "seed": 18333,
+              "steps": 1500,
+              "batch_size": 256,
+              "learning_rate": 0.0005,
+              "route_temperature": 2.0,
+              "maximum_calibration_false_positive_rate": 0.01
+            },
+            "initial_loss": 0.01742728427052498,
+            "final_loss": 0.00022604039986617863,
+            "wall_time_seconds": 2.141351666999981,
+            "trainable_parameters": 8192
+          },
+          "calibration": {
+            "rows": 720,
+            "positive_rows": 240,
+            "negative_rows": 480,
+            "threshold": 0.7200626730918884,
+            "true_positive_rate": 1.0,
+            "false_positive_rate": 0.0,
+            "accuracy": 1.0,
+            "positive_probability_min": 0.7200626730918884,
+            "positive_probability_median": 0.9845082759857178,
+            "negative_probability_median": 0.006623212248086929,
+            "negative_probability_max": 0.5295723676681519
+          },
+          "held": {
+            "rows": 60,
+            "positive_rows": 20,
+            "negative_rows": 40,
+            "threshold": 0.7200626730918884,
+            "true_positive_rate": 0.5,
+            "false_positive_rate": 0.0,
+            "accuracy": 0.8333333134651184,
+            "positive_probability_min": 0.07008565962314606,
+            "positive_probability_median": 0.4112350642681122,
+            "negative_probability_median": 0.016265004873275757,
+            "negative_probability_max": 0.42642828822135925
+          },
+          "checkpoint": "phase12_artifacts/development_family_cv/last_user_linear_seed_16203_fold_3.pt",
+          "checkpoint_sha256": "840b32b4b7cabc329d6038ac8255964cf8e2c837fd3c4fa5e6a95c92d6ea2aae"
+        },
+        {
+          "fold": 4,
+          "router_seed": 18343,
+          "training_rows": 5040,
+          "held_rows": 60,
+          "training": {
+            "config": {
+              "seed": 18343,
+              "steps": 1500,
+              "batch_size": 256,
+              "learning_rate": 0.0005,
+              "route_temperature": 2.0,
+              "maximum_calibration_false_positive_rate": 0.01
+            },
+            "initial_loss": 0.06088365986943245,
+            "final_loss": 0.00042408949229866266,
+            "wall_time_seconds": 2.072067708999384,
+            "trainable_parameters": 8192
+          },
+          "calibration": {
+            "rows": 720,
+            "positive_rows": 240,
+            "negative_rows": 480,
+            "threshold": 0.7887650728225708,
+            "true_positive_rate": 1.0,
+            "false_positive_rate": 0.0,
+            "accuracy": 1.0,
+            "positive_probability_min": 0.7887650728225708,
+            "positive_probability_median": 0.9852266907691956,
+            "negative_probability_median": 0.0064992886036634445,
+            "negative_probability_max": 0.5779799818992615
+          },
+          "held": {
+            "rows": 60,
+            "positive_rows": 20,
+            "negative_rows": 40,
+            "threshold": 0.7887650728225708,
+            "true_positive_rate": 0.75,
+            "false_positive_rate": 0.0,
+            "accuracy": 0.9166666865348816,
+            "positive_probability_min": 0.20766203105449677,
+            "positive_probability_median": 0.9864252805709839,
+            "negative_probability_median": 0.01248516608029604,
+            "negative_probability_max": 0.3479919731616974
+          },
+          "checkpoint": "phase12_artifacts/development_family_cv/last_user_linear_seed_16203_fold_4.pt",
+          "checkpoint_sha256": "1a5a4a6e902387d4442d6ee73a10f3cd233b127e3a999c60677239a5c87cfbfd"
+        }
+      ],
+      "out_of_fold": {
+        "positive_routes": 80,
+        "counterfactual_exact": 75,
+        "phase11_natural_exact": 68,
+        "paired_counterfactual_gain": 7,
+        "false_routes": 11,
+        "predicted_preserved": 189,
+        "categories": {
+          "positive_direct": {
+            "examples": 50,
+            "routes": 35,
+            "counterfactual_exact": 35
+          },
+          "positive_word": {
+            "examples": 25,
+            "routes": 25,
+            "counterfactual_exact": 25
+          },
+          "positive_distractor": {
+            "examples": 25,
+            "routes": 20,
+            "counterfactual_exact": 15
+          },
+          "negative_multiplication": {
+            "examples": 20,
+            "routes": 8,
+            "counterfactual_exact": 0
+          },
+          "negative_factual": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_quoted": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_negated": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_cancelled": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_subtraction": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_comparison": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_concatenation": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_hypothetical": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_distractor": {
+            "examples": 20,
+            "routes": 3,
+            "counterfactual_exact": 0
+          }
+        },
+        "probability_positive_median": 0.9921574592590332,
+        "probability_negative_median": 0.022576766088604927,
+        "probability_negative_maximum": 0.8812510967254639
+      }
+    },
+    {
+      "condition": "all_views_linear",
+      "phase10_seed": 16203,
+      "views": [
+        "last",
+        "sequence_mean",
+        "user_mean",
+        "user_tail_mean"
+      ],
+      "learned_parameters": 16384,
+      "folds": [
+        {
+          "fold": 0,
+          "router_seed": 18403,
+          "training_rows": 5040,
+          "held_rows": 60,
+          "training": {
+            "config": {
+              "seed": 18403,
+              "steps": 1500,
+              "batch_size": 256,
+              "learning_rate": 0.0005,
+              "route_temperature": 2.0,
+              "maximum_calibration_false_positive_rate": 0.01
+            },
+            "initial_loss": 0.385050505399704,
+            "final_loss": 0.000468072306830436,
+            "wall_time_seconds": 2.665215041008196,
+            "trainable_parameters": 16384
+          },
+          "calibration": {
+            "rows": 720,
+            "positive_rows": 240,
+            "negative_rows": 480,
+            "threshold": 0.5,
+            "true_positive_rate": 1.0,
+            "false_positive_rate": 0.0,
+            "accuracy": 1.0,
+            "positive_probability_min": 0.7694259285926819,
+            "positive_probability_median": 0.9835941195487976,
+            "negative_probability_median": 0.010562760755419731,
+            "negative_probability_max": 0.3448631167411804
+          },
+          "held": {
+            "rows": 60,
+            "positive_rows": 20,
+            "negative_rows": 40,
+            "threshold": 0.5,
+            "true_positive_rate": 1.0,
+            "false_positive_rate": 0.2750000059604645,
+            "accuracy": 0.8166666626930237,
+            "positive_probability_min": 0.9719594717025757,
+            "positive_probability_median": 0.9910503625869751,
+            "negative_probability_median": 0.052387744188308716,
+            "negative_probability_max": 0.7176749110221863
+          },
+          "checkpoint": "phase12_artifacts/development_family_cv/all_views_linear_seed_16203_fold_0.pt",
+          "checkpoint_sha256": "2ece6bcc6bcef1c80b6aa6e8458be45ebaf6e66d3a67e11bedd1ad13b157aaf8"
+        },
+        {
+          "fold": 1,
+          "router_seed": 18413,
+          "training_rows": 5040,
+          "held_rows": 60,
+          "training": {
+            "config": {
+              "seed": 18413,
+              "steps": 1500,
+              "batch_size": 256,
+              "learning_rate": 0.0005,
+              "route_temperature": 2.0,
+              "maximum_calibration_false_positive_rate": 0.01
+            },
+            "initial_loss": 0.26391831040382385,
+            "final_loss": 0.0006123129278421402,
+            "wall_time_seconds": 3.423173624993069,
+            "trainable_parameters": 16384
+          },
+          "calibration": {
+            "rows": 720,
+            "positive_rows": 240,
+            "negative_rows": 480,
+            "threshold": 0.5,
+            "true_positive_rate": 1.0,
+            "false_positive_rate": 0.0,
+            "accuracy": 1.0,
+            "positive_probability_min": 0.638446569442749,
+            "positive_probability_median": 0.9802323579788208,
+            "negative_probability_median": 0.009184558875858784,
+            "negative_probability_max": 0.3164781332015991
+          },
+          "held": {
+            "rows": 60,
+            "positive_rows": 20,
+            "negative_rows": 40,
+            "threshold": 0.5,
+            "true_positive_rate": 0.8500000238418579,
+            "false_positive_rate": 0.0,
+            "accuracy": 0.949999988079071,
+            "positive_probability_min": 0.42112109065055847,
+            "positive_probability_median": 0.9903869032859802,
+            "negative_probability_median": 0.011872846633195877,
+            "negative_probability_max": 0.26322466135025024
+          },
+          "checkpoint": "phase12_artifacts/development_family_cv/all_views_linear_seed_16203_fold_1.pt",
+          "checkpoint_sha256": "16458e953adb9beab1165a933d88f9c7f638ebe53768a8865b54597762301996"
+        },
+        {
+          "fold": 2,
+          "router_seed": 18423,
+          "training_rows": 5040,
+          "held_rows": 60,
+          "training": {
+            "config": {
+              "seed": 18423,
+              "steps": 1500,
+              "batch_size": 256,
+              "learning_rate": 0.0005,
+              "route_temperature": 2.0,
+              "maximum_calibration_false_positive_rate": 0.01
+            },
+            "initial_loss": 0.3274531960487366,
+            "final_loss": 0.0004920182982459664,
+            "wall_time_seconds": 2.6892842090019258,
+            "trainable_parameters": 16384
+          },
+          "calibration": {
+            "rows": 720,
+            "positive_rows": 240,
+            "negative_rows": 480,
+            "threshold": 0.5,
+            "true_positive_rate": 1.0,
+            "false_positive_rate": 0.0,
+            "accuracy": 1.0,
+            "positive_probability_min": 0.6000277996063232,
+            "positive_probability_median": 0.9779807329177856,
+            "negative_probability_median": 0.011579371057450771,
+            "negative_probability_max": 0.3564358353614807
+          },
+          "held": {
+            "rows": 60,
+            "positive_rows": 20,
+            "negative_rows": 40,
+            "threshold": 0.5,
+            "true_positive_rate": 0.75,
+            "false_positive_rate": 0.125,
+            "accuracy": 0.8333333134651184,
+            "positive_probability_min": 0.22422422468662262,
+            "positive_probability_median": 0.9359837174415588,
+            "negative_probability_median": 0.05792912095785141,
+            "negative_probability_max": 0.7189929485321045
+          },
+          "checkpoint": "phase12_artifacts/development_family_cv/all_views_linear_seed_16203_fold_2.pt",
+          "checkpoint_sha256": "a85feb713c58bf043aab2963e85a626ed39537d20d366ac07c542c75f57154ad"
+        },
+        {
+          "fold": 3,
+          "router_seed": 18433,
+          "training_rows": 5040,
+          "held_rows": 60,
+          "training": {
+            "config": {
+              "seed": 18433,
+              "steps": 1500,
+              "batch_size": 256,
+              "learning_rate": 0.0005,
+              "route_temperature": 2.0,
+              "maximum_calibration_false_positive_rate": 0.01
+            },
+            "initial_loss": 0.3212822675704956,
+            "final_loss": 0.00047508851275779307,
+            "wall_time_seconds": 3.183958958994481,
+            "trainable_parameters": 16384
+          },
+          "calibration": {
+            "rows": 720,
+            "positive_rows": 240,
+            "negative_rows": 480,
+            "threshold": 0.5,
+            "true_positive_rate": 1.0,
+            "false_positive_rate": 0.0,
+            "accuracy": 1.0,
+            "positive_probability_min": 0.6152797341346741,
+            "positive_probability_median": 0.9782304763793945,
+            "negative_probability_median": 0.007639419287443161,
+            "negative_probability_max": 0.3859041631221771
+          },
+          "held": {
+            "rows": 60,
+            "positive_rows": 20,
+            "negative_rows": 40,
+            "threshold": 0.5,
+            "true_positive_rate": 0.5,
+            "false_positive_rate": 0.0,
+            "accuracy": 0.8333333134651184,
+            "positive_probability_min": 0.058821920305490494,
+            "positive_probability_median": 0.35407373309135437,
+            "negative_probability_median": 0.031899310648441315,
+            "negative_probability_max": 0.4710506200790405
+          },
+          "checkpoint": "phase12_artifacts/development_family_cv/all_views_linear_seed_16203_fold_3.pt",
+          "checkpoint_sha256": "9ce65c310c4d191dad55799b9dd97ff44eb2b89b0694f1229cfdf324cb2db676"
+        },
+        {
+          "fold": 4,
+          "router_seed": 18443,
+          "training_rows": 5040,
+          "held_rows": 60,
+          "training": {
+            "config": {
+              "seed": 18443,
+              "steps": 1500,
+              "batch_size": 256,
+              "learning_rate": 0.0005,
+              "route_temperature": 2.0,
+              "maximum_calibration_false_positive_rate": 0.01
+            },
+            "initial_loss": 0.33076900243759155,
+            "final_loss": 0.0003702943795360625,
+            "wall_time_seconds": 3.1757055829948513,
+            "trainable_parameters": 16384
+          },
+          "calibration": {
+            "rows": 720,
+            "positive_rows": 240,
+            "negative_rows": 480,
+            "threshold": 0.5,
+            "true_positive_rate": 1.0,
+            "false_positive_rate": 0.0,
+            "accuracy": 1.0,
+            "positive_probability_min": 0.6526821255683899,
+            "positive_probability_median": 0.9810319542884827,
+            "negative_probability_median": 0.008312334306538105,
+            "negative_probability_max": 0.47627389430999756
+          },
+          "held": {
+            "rows": 60,
+            "positive_rows": 20,
+            "negative_rows": 40,
+            "threshold": 0.5,
+            "true_positive_rate": 0.75,
+            "false_positive_rate": 0.0,
+            "accuracy": 0.9166666865348816,
+            "positive_probability_min": 0.3117879331111908,
+            "positive_probability_median": 0.9787036776542664,
+            "negative_probability_median": 0.024751976132392883,
+            "negative_probability_max": 0.47419828176498413
+          },
+          "checkpoint": "phase12_artifacts/development_family_cv/all_views_linear_seed_16203_fold_4.pt",
+          "checkpoint_sha256": "04315ae542345e01f8f80f66931ad602359ef8cb94e4e7ad9b0b87dc09678e8b"
+        }
+      ],
+      "out_of_fold": {
+        "positive_routes": 77,
+        "counterfactual_exact": 72,
+        "phase11_natural_exact": 68,
+        "paired_counterfactual_gain": 4,
+        "false_routes": 16,
+        "predicted_preserved": 184,
+        "categories": {
+          "positive_direct": {
+            "examples": 50,
+            "routes": 32,
+            "counterfactual_exact": 32
+          },
+          "positive_word": {
+            "examples": 25,
+            "routes": 25,
+            "counterfactual_exact": 25
+          },
+          "positive_distractor": {
+            "examples": 25,
+            "routes": 20,
+            "counterfactual_exact": 15
+          },
+          "negative_multiplication": {
+            "examples": 20,
+            "routes": 7,
+            "counterfactual_exact": 0
+          },
+          "negative_factual": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_quoted": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_negated": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_cancelled": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_subtraction": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_comparison": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_concatenation": {
+            "examples": 20,
+            "routes": 1,
+            "counterfactual_exact": 0
+          },
+          "negative_hypothetical": {
+            "examples": 20,
+            "routes": 4,
+            "counterfactual_exact": 0
+          },
+          "negative_distractor": {
+            "examples": 20,
+            "routes": 4,
+            "counterfactual_exact": 0
+          }
+        },
+        "probability_positive_median": 0.9873392581939697,
+        "probability_negative_median": 0.0315258726477623,
+        "probability_negative_maximum": 0.7189929485321045
+      }
+    },
+    {
+      "condition": "all_views_silu16",
+      "phase10_seed": 16203,
+      "views": [
+        "last",
+        "sequence_mean",
+        "user_mean",
+        "user_tail_mean"
+      ],
+      "learned_parameters": 131104,
+      "folds": [
+        {
+          "fold": 0,
+          "router_seed": 18503,
+          "training_rows": 5040,
+          "held_rows": 60,
+          "training": {
+            "config": {
+              "seed": 18503,
+              "bottleneck_width": 16,
+              "steps": 1500,
+              "batch_size": 256,
+              "learning_rate": 0.0005,
+              "route_temperature": 2.0,
+              "maximum_calibration_false_positive_rate": 0.01
+            },
+            "initial_loss": 0.6999918222427368,
+            "final_loss": 6.677332567051053e-05,
+            "wall_time_seconds": 2.7622242079960415,
+            "trainable_parameters": 131104
+          },
+          "calibration": {
+            "rows": 720,
+            "positive_rows": 240,
+            "negative_rows": 480,
+            "threshold": 0.5,
+            "true_positive_rate": 1.0,
+            "false_positive_rate": 0.0,
+            "accuracy": 1.0,
+            "positive_probability_min": 0.7750821709632874,
+            "positive_probability_median": 0.9911434650421143,
+            "negative_probability_median": 0.004354583099484444,
+            "negative_probability_max": 0.14723919332027435
+          },
+          "held": {
+            "rows": 60,
+            "positive_rows": 20,
+            "negative_rows": 40,
+            "threshold": 0.5,
+            "true_positive_rate": 1.0,
+            "false_positive_rate": 0.10000000149011612,
+            "accuracy": 0.9333333373069763,
+            "positive_probability_min": 0.9918606877326965,
+            "positive_probability_median": 0.9964017868041992,
+            "negative_probability_median": 0.02452765218913555,
+            "negative_probability_max": 0.7242757081985474
+          },
+          "checkpoint": "phase12_artifacts/development_family_cv/all_views_silu16_seed_16203_fold_0.pt",
+          "checkpoint_sha256": "ab6b7ea5bc79b704e03d69714c7757d0189e504bd5704dea3b872225b774e461"
+        },
+        {
+          "fold": 1,
+          "router_seed": 18513,
+          "training_rows": 5040,
+          "held_rows": 60,
+          "training": {
+            "config": {
+              "seed": 18513,
+              "bottleneck_width": 16,
+              "steps": 1500,
+              "batch_size": 256,
+              "learning_rate": 0.0005,
+              "route_temperature": 2.0,
+              "maximum_calibration_false_positive_rate": 0.01
+            },
+            "initial_loss": 0.688798189163208,
+            "final_loss": 4.269107375876047e-05,
+            "wall_time_seconds": 3.5389644579991,
+            "trainable_parameters": 131104
+          },
+          "calibration": {
+            "rows": 720,
+            "positive_rows": 240,
+            "negative_rows": 480,
+            "threshold": 0.5,
+            "true_positive_rate": 1.0,
+            "false_positive_rate": 0.0,
+            "accuracy": 1.0,
+            "positive_probability_min": 0.6464633345603943,
+            "positive_probability_median": 0.9899397492408752,
+            "negative_probability_median": 0.003789041191339493,
+            "negative_probability_max": 0.14943444728851318
+          },
+          "held": {
+            "rows": 60,
+            "positive_rows": 20,
+            "negative_rows": 40,
+            "threshold": 0.5,
+            "true_positive_rate": 0.8500000238418579,
+            "false_positive_rate": 0.0,
+            "accuracy": 0.949999988079071,
+            "positive_probability_min": 0.3434196412563324,
+            "positive_probability_median": 0.9922446608543396,
+            "negative_probability_median": 0.002888079732656479,
+            "negative_probability_max": 0.08839716762304306
+          },
+          "checkpoint": "phase12_artifacts/development_family_cv/all_views_silu16_seed_16203_fold_1.pt",
+          "checkpoint_sha256": "1a3e1512c6a6f986878ccea26af56382cc08b796bf565f13d1c2642da0e554e3"
+        },
+        {
+          "fold": 2,
+          "router_seed": 18523,
+          "training_rows": 5040,
+          "held_rows": 60,
+          "training": {
+            "config": {
+              "seed": 18523,
+              "bottleneck_width": 16,
+              "steps": 1500,
+              "batch_size": 256,
+              "learning_rate": 0.0005,
+              "route_temperature": 2.0,
+              "maximum_calibration_false_positive_rate": 0.01
+            },
+            "initial_loss": 0.6820014715194702,
+            "final_loss": 0.00011791277211159468,
+            "wall_time_seconds": 2.9422132920008153,
+            "trainable_parameters": 131104
+          },
+          "calibration": {
+            "rows": 720,
+            "positive_rows": 240,
+            "negative_rows": 480,
+            "threshold": 0.5,
+            "true_positive_rate": 1.0,
+            "false_positive_rate": 0.0,
+            "accuracy": 1.0,
+            "positive_probability_min": 0.6566514372825623,
+            "positive_probability_median": 0.9823581576347351,
+            "negative_probability_median": 0.004849290009588003,
+            "negative_probability_max": 0.19356754422187805
+          },
+          "held": {
+            "rows": 60,
+            "positive_rows": 20,
+            "negative_rows": 40,
+            "threshold": 0.5,
+            "true_positive_rate": 1.0,
+            "false_positive_rate": 0.10000000149011612,
+            "accuracy": 0.9333333373069763,
+            "positive_probability_min": 0.6307586431503296,
+            "positive_probability_median": 0.8840724229812622,
+            "negative_probability_median": 0.020127611234784126,
+            "negative_probability_max": 0.658739447593689
+          },
+          "checkpoint": "phase12_artifacts/development_family_cv/all_views_silu16_seed_16203_fold_2.pt",
+          "checkpoint_sha256": "7c37f52180c8a4509b3d8766f719efb4837453970d67ec5b73f7d105147a2a9c"
+        },
+        {
+          "fold": 3,
+          "router_seed": 18533,
+          "training_rows": 5040,
+          "held_rows": 60,
+          "training": {
+            "config": {
+              "seed": 18533,
+              "bottleneck_width": 16,
+              "steps": 1500,
+              "batch_size": 256,
+              "learning_rate": 0.0005,
+              "route_temperature": 2.0,
+              "maximum_calibration_false_positive_rate": 0.01
+            },
+            "initial_loss": 0.6866414546966553,
+            "final_loss": 9.064594632945955e-05,
+            "wall_time_seconds": 3.0713465000008,
+            "trainable_parameters": 131104
+          },
+          "calibration": {
+            "rows": 720,
+            "positive_rows": 240,
+            "negative_rows": 480,
+            "threshold": 0.5,
+            "true_positive_rate": 1.0,
+            "false_positive_rate": 0.0,
+            "accuracy": 1.0,
+            "positive_probability_min": 0.5278372168540955,
+            "positive_probability_median": 0.9893414378166199,
+            "negative_probability_median": 0.004574919119477272,
+            "negative_probability_max": 0.17412611842155457
+          },
+          "held": {
+            "rows": 60,
+            "positive_rows": 20,
+            "negative_rows": 40,
+            "threshold": 0.5,
+            "true_positive_rate": 0.75,
+            "false_positive_rate": 0.0,
+            "accuracy": 0.9166666865348816,
+            "positive_probability_min": 0.08522401750087738,
+            "positive_probability_median": 0.6610437631607056,
+            "negative_probability_median": 0.021924791857600212,
+            "negative_probability_max": 0.2578786611557007
+          },
+          "checkpoint": "phase12_artifacts/development_family_cv/all_views_silu16_seed_16203_fold_3.pt",
+          "checkpoint_sha256": "9ac335ee174f3fa4dd4c2b2d88f20ca8245f8b7c7394d2ee8792ca276d733f67"
+        },
+        {
+          "fold": 4,
+          "router_seed": 18543,
+          "training_rows": 5040,
+          "held_rows": 60,
+          "training": {
+            "config": {
+              "seed": 18543,
+              "bottleneck_width": 16,
+              "steps": 1500,
+              "batch_size": 256,
+              "learning_rate": 0.0005,
+              "route_temperature": 2.0,
+              "maximum_calibration_false_positive_rate": 0.01
+            },
+            "initial_loss": 0.70624840259552,
+            "final_loss": 9.187820978695527e-05,
+            "wall_time_seconds": 2.8541045839956496,
+            "trainable_parameters": 131104
+          },
+          "calibration": {
+            "rows": 720,
+            "positive_rows": 240,
+            "negative_rows": 480,
+            "threshold": 0.5,
+            "true_positive_rate": 1.0,
+            "false_positive_rate": 0.0,
+            "accuracy": 1.0,
+            "positive_probability_min": 0.5878055095672607,
+            "positive_probability_median": 0.9859043955802917,
+            "negative_probability_median": 0.004284983966499567,
+            "negative_probability_max": 0.25657811760902405
+          },
+          "held": {
+            "rows": 60,
+            "positive_rows": 20,
+            "negative_rows": 40,
+            "threshold": 0.5,
+            "true_positive_rate": 0.75,
+            "false_positive_rate": 0.0,
+            "accuracy": 0.9166666865348816,
+            "positive_probability_min": 0.23049721121788025,
+            "positive_probability_median": 0.9861916303634644,
+            "negative_probability_median": 0.007698160130530596,
+            "negative_probability_max": 0.42902007699012756
+          },
+          "checkpoint": "phase12_artifacts/development_family_cv/all_views_silu16_seed_16203_fold_4.pt",
+          "checkpoint_sha256": "2bb8b3ff2a6a9b63da76ff44fd56ea9eb50dac09dcfc5d086def8001348dc55e"
+        }
+      ],
+      "out_of_fold": {
+        "positive_routes": 87,
+        "counterfactual_exact": 82,
+        "phase11_natural_exact": 68,
+        "paired_counterfactual_gain": 14,
+        "false_routes": 8,
+        "predicted_preserved": 192,
+        "categories": {
+          "positive_direct": {
+            "examples": 50,
+            "routes": 37,
+            "counterfactual_exact": 37
+          },
+          "positive_word": {
+            "examples": 25,
+            "routes": 25,
+            "counterfactual_exact": 25
+          },
+          "positive_distractor": {
+            "examples": 25,
+            "routes": 25,
+            "counterfactual_exact": 20
+          },
+          "negative_multiplication": {
+            "examples": 20,
+            "routes": 4,
+            "counterfactual_exact": 0
+          },
+          "negative_factual": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_quoted": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_negated": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_cancelled": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_subtraction": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_comparison": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_concatenation": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_hypothetical": {
+            "examples": 20,
+            "routes": 0,
+            "counterfactual_exact": 0
+          },
+          "negative_distractor": {
+            "examples": 20,
+            "routes": 4,
+            "counterfactual_exact": 0
+          }
+        },
+        "probability_positive_median": 0.9916087985038757,
+        "probability_negative_median": 0.018923193216323853,
+        "probability_negative_maximum": 0.7242757081985474
+      }
+    }
+  ],
+  "deployment_records": [],
+  "wall_time_seconds": 160.93688633400598
+}

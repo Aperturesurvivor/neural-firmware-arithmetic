@@ -111,3 +111,26 @@ until:
 Passing a future Phase 12 confirmation would remain a narrow result about
 autonomous routing for four-digit addition under the sampled language
 distribution, not general semantic understanding.
+
+## First family-held-out screen
+
+The initial five-fold screen retained all four conditions and selected none.
+Out-of-fold counterfactual exact counts and false routes were:
+
+- `last_linear`: 70/78/73 exact, 6/6/4 false routes;
+- `last_user_linear`: 71/74/75 exact, 5/6/11 false routes;
+- `all_views_linear`: 69/75/72 exact, 11/9/16 false routes;
+- `all_views_silu16`: 81/86/82 exact, 10/6/8 false routes.
+
+The nonlinear four-view condition materially improved family-held-out recall
+and exactness, but no candidate met the predeclared preservation constraint.
+Therefore no deployment router was selected and no Phase 12 confirmation data
+was created.
+
+The pattern also exposed a calibration limitation: fold routers were
+thresholded only on the older Phase 9 development distribution. The next
+development screen will use nested family holdout. For each outer evaluation
+fold, one different Phase 11 family fold will calibrate the threshold and the
+remaining three will join base training. Thus every evaluated family remains
+disjoint from both router training and threshold calibration. This revision
+is development-only and was declared after retaining the failed first screen.

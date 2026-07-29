@@ -1,0 +1,26 @@
+{
+  "status": "phase12_disclosed_phase11_features_complete",
+  "implementation_commit": "55752694d3b9832ef999394312205d0885035fd0",
+  "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+  "model_revision": "fe8a4ea1ffedaf415f4da2f062534de366a451e6",
+  "layer_index": 15,
+  "source": "disclosed_phase11_confirmation",
+  "source_checkpoint_sha256": {
+    "16201": "965853d53e4e14a476bb4777e5163bb56b7089f79bc7d21581322e62d03c872b",
+    "16202": "e32ae121e1373531bd98ae77494c350c04ecfe01c8aff8f237fc2176e463047c",
+    "16203": "3228cdb415c02de385eb43c232e34e20922cc9f5653dc40ed84b035efaf3cca1"
+  },
+  "router_kinds": [
+    "last",
+    "sequence_mean",
+    "user_mean",
+    "user_tail_mean"
+  ],
+  "tail_tokens": 8,
+  "examples": 300,
+  "positive_examples": 100,
+  "cache": "phase12_artifacts/cache/disclosed_phase11_features.pt",
+  "cache_sha256": "3bc1eb99cc3b43c32c6bec9894b6e401759e4a811e178d952d003b253f42a867",
+  "cache_bytes": 29528277,
+  "wall_time_seconds": 80.14625204200274
+}
