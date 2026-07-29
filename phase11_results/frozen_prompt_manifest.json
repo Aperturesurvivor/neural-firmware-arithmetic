@@ -1,0 +1,3067 @@
+{
+  "status": "phase11_protocol_frozen_before_confirmation",
+  "implementation_commit": "a2dbcba446f8a8e9ea00bc64208f04a1458a1c2e",
+  "protocol": "PHASE11_AUTONOMOUS_ROUTING_PROTOCOL.md",
+  "protocol_sha256": "190b9a8668fa4bcb9b2d38cc6d7fb5b57bace2aa98cf16037a8cf3a98dd7f3c6",
+  "development_result": "phase11_results/development_training.json",
+  "development_result_sha256": "cf6a439a739768cf2257d4e6806dc4eac729f1a916b0acfeccabfc84386c7eb5",
+  "selected_router_kind": "last",
+  "source_seeds": [
+    16201,
+    16202,
+    16203
+  ],
+  "router_seed_mapping": {
+    "16201": 17201,
+    "16202": 17202,
+    "16203": 17203
+  },
+  "data_seeds": {
+    "positive": 17701,
+    "negative": 17702
+  },
+  "candidate_checkpoints": {
+    "16201": {
+      "path": "phase11_artifacts/development_routers/last_seed_16201.pt",
+      "sha256": "b1314aaf1aebf960f321d21841c7c149fbf8679e982ea84dcaf9d87662a92ec6",
+      "source_phase10_checkpoint": "phase10_artifacts/confirmatory_interfaces/linear_representation_seed_16201.pt",
+      "source_phase10_checkpoint_sha256": "965853d53e4e14a476bb4777e5163bb56b7089f79bc7d21581322e62d03c872b",
+      "request_route_threshold": 0.9749470353126526
+    },
+    "16202": {
+      "path": "phase11_artifacts/development_routers/last_seed_16202.pt",
+      "sha256": "375f4068393ed5321ecfc3a4dee70f0eabfbd35dfc177f7bc74e543a9913c687",
+      "source_phase10_checkpoint": "phase10_artifacts/confirmatory_interfaces/linear_representation_seed_16202.pt",
+      "source_phase10_checkpoint_sha256": "e32ae121e1373531bd98ae77494c350c04ecfe01c8aff8f237fc2176e463047c",
+      "request_route_threshold": 0.9529616832733154
+    },
+    "16203": {
+      "path": "phase11_artifacts/development_routers/last_seed_16203.pt",
+      "sha256": "165b73afa2ab58d554b7b1e993b8a54846468316eea3a87ddb75ca19ad0c11d3",
+      "source_phase10_checkpoint": "phase10_artifacts/confirmatory_interfaces/linear_representation_seed_16203.pt",
+      "source_phase10_checkpoint_sha256": "3228cdb415c02de385eb43c232e34e20922cc9f5653dc40ed84b035efaf3cca1",
+      "request_route_threshold": 0.9871336221694946
+    }
+  },
+  "unique_prompts": 300,
+  "positive_prompts": 100,
+  "negative_prompts": 200,
+  "split_counts": {
+    "phase11_confirmatory_negative_cancelled": 20,
+    "phase11_confirmatory_negative_comparison": 20,
+    "phase11_confirmatory_negative_concatenation": 20,
+    "phase11_confirmatory_negative_distractor": 20,
+    "phase11_confirmatory_negative_factual": 20,
+    "phase11_confirmatory_negative_hypothetical": 20,
+    "phase11_confirmatory_negative_multiplication": 20,
+    "phase11_confirmatory_negative_negated": 20,
+    "phase11_confirmatory_negative_quoted": 20,
+    "phase11_confirmatory_negative_subtraction": 20,
+    "phase11_confirmatory_positive_direct": 50,
+    "phase11_confirmatory_positive_distractor": 25,
+    "phase11_confirmatory_positive_word": 25
+  },
+  "canonical_rows_sha256": "61acdcb5b451fd7f61c8403fd9fd0a7ff8d24f8af4b77b76180cf9e4fc1b3d80",
+  "rows": [
+    {
+      "prompt": "Resolve ADD for decimal inputs 74 and 14; emit the scalar result alone.",
+      "a": "74",
+      "b": "14",
+      "answer": "88",
+      "route_label": true,
+      "family": "Resolve ADD for decimal inputs {x} and {y}; emit the scalar result alone.",
+      "family_index": 0,
+      "split": "phase11_confirmatory_positive_direct"
+    },
+    {
+      "prompt": "Resolve ADD for decimal inputs 60 and 5028; emit the scalar result alone.",
+      "a": "60",
+      "b": "5028",
+      "answer": "5088",
+      "route_label": true,
+      "family": "Resolve ADD for decimal inputs {x} and {y}; emit the scalar result alone.",
+      "family_index": 0,
+      "split": "phase11_confirmatory_positive_direct"
+    },
+    {
+      "prompt": "Resolve ADD for decimal inputs 95 and 4733; emit the scalar result alone.",
+      "a": "95",
+      "b": "4733",
+      "answer": "4828",
+      "route_label": true,
+      "family": "Resolve ADD for decimal inputs {x} and {y}; emit the scalar result alone.",
+      "family_index": 0,
+      "split": "phase11_confirmatory_positive_direct"
+    },
+    {
+      "prompt": "Resolve ADD for decimal inputs 458 and 1803; emit the scalar result alone.",
+      "a": "458",
+      "b": "1803",
+      "answer": "2261",
+      "route_label": true,
+      "family": "Resolve ADD for decimal inputs {x} and {y}; emit the scalar result alone.",
+      "family_index": 0,
+      "split": "phase11_confirmatory_positive_direct"
+    },
+    {
+      "prompt": "Resolve ADD for decimal inputs 344 and 6746; emit the scalar result alone.",
+      "a": "344",
+      "b": "6746",
+      "answer": "7090",
+      "route_label": true,
+      "family": "Resolve ADD for decimal inputs {x} and {y}; emit the scalar result alone.",
+      "family_index": 0,
+      "split": "phase11_confirmatory_positive_direct"
+    },
+    {
+      "prompt": "Transform the pair 4880, 2 by integer addition. Return one numeral.",
+      "a": "4880",
+      "b": "2",
+      "answer": "4882",
+      "route_label": true,
+      "family": "Transform the pair {x}, {y} by integer addition. Return one numeral.",
+      "family_index": 1,
+      "split": "phase11_confirmatory_positive_direct"
+    },
+    {
+      "prompt": "Transform the pair 7623, 0 by integer addition. Return one numeral.",
+      "a": "7623",
+      "b": "0",
+      "answer": "7623",
+      "route_label": true,
+      "family": "Transform the pair {x}, {y} by integer addition. Return one numeral.",
+      "family_index": 1,
+      "split": "phase11_confirmatory_positive_direct"
+    },
+    {
+      "prompt": "Transform the pair 27, 4776 by integer addition. Return one numeral.",
+      "a": "27",
+      "b": "4776",
+      "answer": "4803",
+      "route_label": true,
+      "family": "Transform the pair {x}, {y} by integer addition. Return one numeral.",
+      "family_index": 1,
+      "split": "phase11_confirmatory_positive_direct"
+    },
+    {
+      "prompt": "Transform the pair 62, 0 by integer addition. Return one numeral.",
+      "a": "62",
+      "b": "0",
+      "answer": "62",
+      "route_label": true,
+      "family": "Transform the pair {x}, {y} by integer addition. Return one numeral.",
+      "family_index": 1,
+      "split": "phase11_confirmatory_positive_direct"
+    },
+    {
+      "prompt": "Transform the pair 51, 945 by integer addition. Return one numeral.",
+      "a": "51",
+      "b": "945",
+      "answer": "996",
+      "route_label": true,
+      "family": "Transform the pair {x}, {y} by integer addition. Return one numeral.",
+      "family_index": 1,
+      "split": "phase11_confirmatory_positive_direct"
+    },
+    {
+      "prompt": "Begin at 991 and advance the count by 3454. Print the attained count.",
+      "a": "991",
+      "b": "3454",
+      "answer": "4445",
+      "route_label": true,
+      "family": "Begin at {x} and advance the count by {y}. Print the attained count.",
+      "family_index": 2,
+      "split": "phase11_confirmatory_positive_direct"
+    },
+    {
+      "prompt": "Begin at 805 and advance the count by 22. Print the attained count.",
+      "a": "805",
+      "b": "22",
+      "answer": "827",
+      "route_label": true,
+      "family": "Begin at {x} and advance the count by {y}. Print the attained count.",
+      "family_index": 2,
+      "split": "phase11_confirmatory_positive_direct"
+    },
+    {
+      "prompt": "Begin at 7564 and advance the count by 8653. Print the attained count.",
+      "a": "7564",
+      "b": "8653",
+      "answer": "16217",
+      "route_label": true,
+      "family": "Begin at {x} and advance the count by {y}. Print the attained count.",
+      "family_index": 2,
+      "split": "phase11_confirmatory_positive_direct"
+    },
+    {
+      "prompt": "Begin at 481 and advance the count by 5. Print the attained count.",
+      "a": "481",
+      "b": "5",
+      "answer": "486",
+      "route_label": true,
+      "family": "Begin at {x} and advance the count by {y}. Print the attained count.",
+      "family_index": 2,
+      "split": "phase11_confirmatory_positive_direct"
+    },
+    {
+      "prompt": "Begin at 4428 and advance the count by 6. Print the attained count.",
+      "a": "4428",
+      "b": "6",
+      "answer": "4434",
+      "route_label": true,
+      "family": "Begin at {x} and advance the count by {y}. Print the attained count.",
+      "family_index": 2,
+      "split": "phase11_confirmatory_positive_direct"
+    },
+    {
+      "prompt": "Fold addend 864 into addend 327; give only their base-ten total.",
+      "a": "864",
+      "b": "327",
+      "answer": "1191",
+      "route_label": true,
+      "family": "Fold addend {y} into addend {x}; give only their base-ten total.",
+      "family_index": 3,
+      "split": "phase11_confirmatory_positive_direct"
+    },
+    {
+      "prompt": "Fold addend 249 into addend 652; give only their base-ten total.",
+      "a": "249",
+      "b": "652",
+      "answer": "901",
+      "route_label": true,
+      "family": "Fold addend {y} into addend {x}; give only their base-ten total.",
+      "family_index": 3,
+      "split": "phase11_confirmatory_positive_direct"
+    },
+    {
+      "prompt": "Fold addend 5496 into addend 9608; give only their base-ten total.",
+      "a": "5496",
+      "b": "9608",
+      "answer": "15104",
+      "route_label": true,
+      "family": "Fold addend {y} into addend {x}; give only their base-ten total.",
+      "family_index": 3,
+      "split": "phase11_confirmatory_positive_direct"
+    },
+    {
+      "prompt": "Fold addend 969 into addend 73; give only their base-ten total.",
+      "a": "969",
+      "b": "73",
+      "answer": "1042",
+      "route_label": true,
+      "family": "Fold addend {y} into addend {x}; give only their base-ten total.",
+      "family_index": 3,
+      "split": "phase11_confirmatory_positive_direct"
+    },
+    {
+      "prompt": "Fold addend 9489 into addend 2232; give only their base-ten total.",
+      "a": "9489",
+      "b": "2232",
+      "answer": "11721",
+      "route_label": true,
+      "family": "Fold addend {y} into addend {x}; give only their base-ten total.",
+      "family_index": 3,
+      "split": "phase11_confirmatory_positive_direct"
+    },
+    {
+      "prompt": "The requested binary operation is SUM on 948 and 19. Output its value.",
+      "a": "948",
+      "b": "19",
+      "answer": "967",
+      "route_label": true,
+      "family": "The requested binary operation is SUM on {x} and {y}. Output its value.",
+      "family_index": 4,
+      "split": "phase11_confirmatory_positive_direct"
+    },
+    {
+      "prompt": "The requested binary operation is SUM on 7 and 48. Output its value.",
+      "a": "7",
+      "b": "48",
+      "answer": "55",
+      "route_label": true,
+      "family": "The requested binary operation is SUM on {x} and {y}. Output its value.",
+      "family_index": 4,
+      "split": "phase11_confirmatory_positive_direct"
+    },
+    {
+      "prompt": "The requested binary operation is SUM on 3036 and 21. Output its value.",
+      "a": "3036",
+      "b": "21",
+      "answer": "3057",
+      "route_label": true,
+      "family": "The requested binary operation is SUM on {x} and {y}. Output its value.",
+      "family_index": 4,
+      "split": "phase11_confirmatory_positive_direct"
+    },
+    {
+      "prompt": "The requested binary operation is SUM on 919 and 331. Output its value.",
+      "a": "919",
+      "b": "331",
+      "answer": "1250",
+      "route_label": true,
+      "family": "The requested binary operation is SUM on {x} and {y}. Output its value.",
+      "family_index": 4,
+      "split": "phase11_confirmatory_positive_direct"
+    },
+    {
+      "prompt": "The requested binary operation is SUM on 866 and 6. Output its value.",
+      "a": "866",
+      "b": "6",
+      "answer": "872",
+      "route_label": true,
+      "family": "The requested binary operation is SUM on {x} and {y}. Output its value.",
+      "family_index": 4,
+      "split": "phase11_confirmatory_positive_direct"
+    },
+    {
+      "prompt": "Set a counter to 6, increment it 64 times, and state the final integer.",
+      "a": "6",
+      "b": "64",
+      "answer": "70",
+      "route_label": true,
+      "family": "Set a counter to {x}, increment it {y} times, and state the final integer.",
+      "family_index": 5,
+      "split": "phase11_confirmatory_positive_direct"
+    },
+    {
+      "prompt": "Set a counter to 92, increment it 94 times, and state the final integer.",
+      "a": "92",
+      "b": "94",
+      "answer": "186",
+      "route_label": true,
+      "family": "Set a counter to {x}, increment it {y} times, and state the final integer.",
+      "family_index": 5,
+      "split": "phase11_confirmatory_positive_direct"
+    },
+    {
+      "prompt": "Set a counter to 361, increment it 52 times, and state the final integer.",
+      "a": "361",
+      "b": "52",
+      "answer": "413",
+      "route_label": true,
+      "family": "Set a counter to {x}, increment it {y} times, and state the final integer.",
+      "family_index": 5,
+      "split": "phase11_confirmatory_positive_direct"
+    },
+    {
+      "prompt": "Set a counter to 766, increment it 3774 times, and state the final integer.",
+      "a": "766",
+      "b": "3774",
+      "answer": "4540",
+      "route_label": true,
+      "family": "Set a counter to {x}, increment it {y} times, and state the final integer.",
+      "family_index": 5,
+      "split": "phase11_confirmatory_positive_direct"
+    },
+    {
+      "prompt": "Set a counter to 9776, increment it 440 times, and state the final integer.",
+      "a": "9776",
+      "b": "440",
+      "answer": "10216",
+      "route_label": true,
+      "family": "Set a counter to {x}, increment it {y} times, and state the final integer.",
+      "family_index": 5,
+      "split": "phase11_confirmatory_positive_direct"
+    },
+    {
+      "prompt": "Reduce the additive expression with operands 2 and 4227 to digits only.",
+      "a": "2",
+      "b": "4227",
+      "answer": "4229",
+      "route_label": true,
+      "family": "Reduce the additive expression with operands {x} and {y} to digits only.",
+      "family_index": 6,
+      "split": "phase11_confirmatory_positive_direct"
+    },
+    {
+      "prompt": "Reduce the additive expression with operands 67 and 566 to digits only.",
+      "a": "67",
+      "b": "566",
+      "answer": "633",
+      "route_label": true,
+      "family": "Reduce the additive expression with operands {x} and {y} to digits only.",
+      "family_index": 6,
+      "split": "phase11_confirmatory_positive_direct"
+    },
+    {
+      "prompt": "Reduce the additive expression with operands 115 and 2 to digits only.",
+      "a": "115",
+      "b": "2",
+      "answer": "117",
+      "route_label": true,
+      "family": "Reduce the additive expression with operands {x} and {y} to digits only.",
+      "family_index": 6,
+      "split": "phase11_confirmatory_positive_direct"
+    },
+    {
+      "prompt": "Reduce the additive expression with operands 462 and 8638 to digits only.",
+      "a": "462",
+      "b": "8638",
+      "answer": "9100",
+      "route_label": true,
+      "family": "Reduce the additive expression with operands {x} and {y} to digits only.",
+      "family_index": 6,
+      "split": "phase11_confirmatory_positive_direct"
+    },
+    {
+      "prompt": "Reduce the additive expression with operands 15 and 42 to digits only.",
+      "a": "15",
+      "b": "42",
+      "answer": "57",
+      "route_label": true,
+      "family": "Reduce the additive expression with operands {x} and {y} to digits only.",
+      "family_index": 6,
+      "split": "phase11_confirmatory_positive_direct"
+    },
+    {
+      "prompt": "Return the exact integer reached by increasing 6856 through amount 1.",
+      "a": "6856",
+      "b": "1",
+      "answer": "6857",
+      "route_label": true,
+      "family": "Return the exact integer reached by increasing {x} through amount {y}.",
+      "family_index": 7,
+      "split": "phase11_confirmatory_positive_direct"
+    },
+    {
+      "prompt": "Return the exact integer reached by increasing 9246 through amount 621.",
+      "a": "9246",
+      "b": "621",
+      "answer": "9867",
+      "route_label": true,
+      "family": "Return the exact integer reached by increasing {x} through amount {y}.",
+      "family_index": 7,
+      "split": "phase11_confirmatory_positive_direct"
+    },
+    {
+      "prompt": "Return the exact integer reached by increasing 67 through amount 162.",
+      "a": "67",
+      "b": "162",
+      "answer": "229",
+      "route_label": true,
+      "family": "Return the exact integer reached by increasing {x} through amount {y}.",
+      "family_index": 7,
+      "split": "phase11_confirmatory_positive_direct"
+    },
+    {
+      "prompt": "Return the exact integer reached by increasing 424 through amount 30.",
+      "a": "424",
+      "b": "30",
+      "answer": "454",
+      "route_label": true,
+      "family": "Return the exact integer reached by increasing {x} through amount {y}.",
+      "family_index": 7,
+      "split": "phase11_confirmatory_positive_direct"
+    },
+    {
+      "prompt": "Return the exact integer reached by increasing 8087 through amount 859.",
+      "a": "8087",
+      "b": "859",
+      "answer": "8946",
+      "route_label": true,
+      "family": "Return the exact integer reached by increasing {x} through amount {y}.",
+      "family_index": 7,
+      "split": "phase11_confirmatory_positive_direct"
+    },
+    {
+      "prompt": "Compute one combined quantity from 47 and 9865 using plus, not times.",
+      "a": "47",
+      "b": "9865",
+      "answer": "9912",
+      "route_label": true,
+      "family": "Compute one combined quantity from {x} and {y} using plus, not times.",
+      "family_index": 8,
+      "split": "phase11_confirmatory_positive_direct"
+    },
+    {
+      "prompt": "Compute one combined quantity from 298 and 354 using plus, not times.",
+      "a": "298",
+      "b": "354",
+      "answer": "652",
+      "route_label": true,
+      "family": "Compute one combined quantity from {x} and {y} using plus, not times.",
+      "family_index": 8,
+      "split": "phase11_confirmatory_positive_direct"
+    },
+    {
+      "prompt": "Compute one combined quantity from 61 and 7 using plus, not times.",
+      "a": "61",
+      "b": "7",
+      "answer": "68",
+      "route_label": true,
+      "family": "Compute one combined quantity from {x} and {y} using plus, not times.",
+      "family_index": 8,
+      "split": "phase11_confirmatory_positive_direct"
+    },
+    {
+      "prompt": "Compute one combined quantity from 552 and 6500 using plus, not times.",
+      "a": "552",
+      "b": "6500",
+      "answer": "7052",
+      "route_label": true,
+      "family": "Compute one combined quantity from {x} and {y} using plus, not times.",
+      "family_index": 8,
+      "split": "phase11_confirmatory_positive_direct"
+    },
+    {
+      "prompt": "Compute one combined quantity from 280 and 794 using plus, not times.",
+      "a": "280",
+      "b": "794",
+      "answer": "1074",
+      "route_label": true,
+      "family": "Compute one combined quantity from {x} and {y} using plus, not times.",
+      "family_index": 8,
+      "split": "phase11_confirmatory_positive_direct"
+    },
+    {
+      "prompt": "Evaluate 46 ADD 3; the response must contain only the answer.",
+      "a": "46",
+      "b": "3",
+      "answer": "49",
+      "route_label": true,
+      "family": "Evaluate {x} ADD {y}; the response must contain only the answer.",
+      "family_index": 9,
+      "split": "phase11_confirmatory_positive_direct"
+    },
+    {
+      "prompt": "Evaluate 0 ADD 3529; the response must contain only the answer.",
+      "a": "0",
+      "b": "3529",
+      "answer": "3529",
+      "route_label": true,
+      "family": "Evaluate {x} ADD {y}; the response must contain only the answer.",
+      "family_index": 9,
+      "split": "phase11_confirmatory_positive_direct"
+    },
+    {
+      "prompt": "Evaluate 32 ADD 2; the response must contain only the answer.",
+      "a": "32",
+      "b": "2",
+      "answer": "34",
+      "route_label": true,
+      "family": "Evaluate {x} ADD {y}; the response must contain only the answer.",
+      "family_index": 9,
+      "split": "phase11_confirmatory_positive_direct"
+    },
+    {
+      "prompt": "Evaluate 8509 ADD 4015; the response must contain only the answer.",
+      "a": "8509",
+      "b": "4015",
+      "answer": "12524",
+      "route_label": true,
+      "family": "Evaluate {x} ADD {y}; the response must contain only the answer.",
+      "family_index": 9,
+      "split": "phase11_confirmatory_positive_direct"
+    },
+    {
+      "prompt": "Evaluate 197 ADD 2598; the response must contain only the answer.",
+      "a": "197",
+      "b": "2598",
+      "answer": "2795",
+      "route_label": true,
+      "family": "Evaluate {x} ADD {y}; the response must contain only the answer.",
+      "family_index": 9,
+      "split": "phase11_confirmatory_positive_direct"
+    },
+    {
+      "prompt": "A radio array detected 8383 pulses before a retune and 7698 after it. How many pulses did it detect in total?",
+      "a": "8383",
+      "b": "7698",
+      "answer": "16081",
+      "route_label": true,
+      "family": "A radio array detected {x} pulses before a retune and {y} after it. How many pulses did it detect in total?",
+      "family_index": 10,
+      "split": "phase11_confirmatory_positive_word"
+    },
+    {
+      "prompt": "A radio array detected 3532 pulses before a retune and 938 after it. How many pulses did it detect in total?",
+      "a": "3532",
+      "b": "938",
+      "answer": "4470",
+      "route_label": true,
+      "family": "A radio array detected {x} pulses before a retune and {y} after it. How many pulses did it detect in total?",
+      "family_index": 10,
+      "split": "phase11_confirmatory_positive_word"
+    },
+    {
+      "prompt": "A radio array detected 25 pulses before a retune and 43 after it. How many pulses did it detect in total?",
+      "a": "25",
+      "b": "43",
+      "answer": "68",
+      "route_label": true,
+      "family": "A radio array detected {x} pulses before a retune and {y} after it. How many pulses did it detect in total?",
+      "family_index": 10,
+      "split": "phase11_confirmatory_positive_word"
+    },
+    {
+      "prompt": "A radio array detected 3359 pulses before a retune and 799 after it. How many pulses did it detect in total?",
+      "a": "3359",
+      "b": "799",
+      "answer": "4158",
+      "route_label": true,
+      "family": "A radio array detected {x} pulses before a retune and {y} after it. How many pulses did it detect in total?",
+      "family_index": 10,
+      "split": "phase11_confirmatory_positive_word"
+    },
+    {
+      "prompt": "A radio array detected 1825 pulses before a retune and 56 after it. How many pulses did it detect in total?",
+      "a": "1825",
+      "b": "56",
+      "answer": "1881",
+      "route_label": true,
+      "family": "A radio array detected {x} pulses before a retune and {y} after it. How many pulses did it detect in total?",
+      "family_index": 10,
+      "split": "phase11_confirmatory_positive_word"
+    },
+    {
+      "prompt": "A bioreactor logged 127 cells in one sample and 51 in another. Give the combined cell count as an integer.",
+      "a": "127",
+      "b": "51",
+      "answer": "178",
+      "route_label": true,
+      "family": "A bioreactor logged {x} cells in one sample and {y} in another. Give the combined cell count as an integer.",
+      "family_index": 11,
+      "split": "phase11_confirmatory_positive_word"
+    },
+    {
+      "prompt": "A bioreactor logged 2737 cells in one sample and 77 in another. Give the combined cell count as an integer.",
+      "a": "2737",
+      "b": "77",
+      "answer": "2814",
+      "route_label": true,
+      "family": "A bioreactor logged {x} cells in one sample and {y} in another. Give the combined cell count as an integer.",
+      "family_index": 11,
+      "split": "phase11_confirmatory_positive_word"
+    },
+    {
+      "prompt": "A bioreactor logged 7 cells in one sample and 160 in another. Give the combined cell count as an integer.",
+      "a": "7",
+      "b": "160",
+      "answer": "167",
+      "route_label": true,
+      "family": "A bioreactor logged {x} cells in one sample and {y} in another. Give the combined cell count as an integer.",
+      "family_index": 11,
+      "split": "phase11_confirmatory_positive_word"
+    },
+    {
+      "prompt": "A bioreactor logged 12 cells in one sample and 411 in another. Give the combined cell count as an integer.",
+      "a": "12",
+      "b": "411",
+      "answer": "423",
+      "route_label": true,
+      "family": "A bioreactor logged {x} cells in one sample and {y} in another. Give the combined cell count as an integer.",
+      "family_index": 11,
+      "split": "phase11_confirmatory_positive_word"
+    },
+    {
+      "prompt": "A bioreactor logged 768 cells in one sample and 647 in another. Give the combined cell count as an integer.",
+      "a": "768",
+      "b": "647",
+      "answer": "1415",
+      "route_label": true,
+      "family": "A bioreactor logged {x} cells in one sample and {y} in another. Give the combined cell count as an integer.",
+      "family_index": 11,
+      "split": "phase11_confirmatory_positive_word"
+    },
+    {
+      "prompt": "A satellite downlinked 0 packets on one orbit and 333 on the next. Return the two-orbit packet total.",
+      "a": "0",
+      "b": "333",
+      "answer": "333",
+      "route_label": true,
+      "family": "A satellite downlinked {x} packets on one orbit and {y} on the next. Return the two-orbit packet total.",
+      "family_index": 12,
+      "split": "phase11_confirmatory_positive_word"
+    },
+    {
+      "prompt": "A satellite downlinked 2914 packets on one orbit and 2 on the next. Return the two-orbit packet total.",
+      "a": "2914",
+      "b": "2",
+      "answer": "2916",
+      "route_label": true,
+      "family": "A satellite downlinked {x} packets on one orbit and {y} on the next. Return the two-orbit packet total.",
+      "family_index": 12,
+      "split": "phase11_confirmatory_positive_word"
+    },
+    {
+      "prompt": "A satellite downlinked 1082 packets on one orbit and 8 on the next. Return the two-orbit packet total.",
+      "a": "1082",
+      "b": "8",
+      "answer": "1090",
+      "route_label": true,
+      "family": "A satellite downlinked {x} packets on one orbit and {y} on the next. Return the two-orbit packet total.",
+      "family_index": 12,
+      "split": "phase11_confirmatory_positive_word"
+    },
+    {
+      "prompt": "A satellite downlinked 32 packets on one orbit and 134 on the next. Return the two-orbit packet total.",
+      "a": "32",
+      "b": "134",
+      "answer": "166",
+      "route_label": true,
+      "family": "A satellite downlinked {x} packets on one orbit and {y} on the next. Return the two-orbit packet total.",
+      "family_index": 12,
+      "split": "phase11_confirmatory_positive_word"
+    },
+    {
+      "prompt": "A satellite downlinked 73 packets on one orbit and 6288 on the next. Return the two-orbit packet total.",
+      "a": "73",
+      "b": "6288",
+      "answer": "6361",
+      "route_label": true,
+      "family": "A satellite downlinked {x} packets on one orbit and {y} on the next. Return the two-orbit packet total.",
+      "family_index": 12,
+      "split": "phase11_confirmatory_positive_word"
+    },
+    {
+      "prompt": "An imaging run produced 9346 slices in its first block and 550 in its second. State the complete slice count.",
+      "a": "9346",
+      "b": "550",
+      "answer": "9896",
+      "route_label": true,
+      "family": "An imaging run produced {x} slices in its first block and {y} in its second. State the complete slice count.",
+      "family_index": 13,
+      "split": "phase11_confirmatory_positive_word"
+    },
+    {
+      "prompt": "An imaging run produced 37 slices in its first block and 686 in its second. State the complete slice count.",
+      "a": "37",
+      "b": "686",
+      "answer": "723",
+      "route_label": true,
+      "family": "An imaging run produced {x} slices in its first block and {y} in its second. State the complete slice count.",
+      "family_index": 13,
+      "split": "phase11_confirmatory_positive_word"
+    },
+    {
+      "prompt": "An imaging run produced 1 slices in its first block and 436 in its second. State the complete slice count.",
+      "a": "1",
+      "b": "436",
+      "answer": "437",
+      "route_label": true,
+      "family": "An imaging run produced {x} slices in its first block and {y} in its second. State the complete slice count.",
+      "family_index": 13,
+      "split": "phase11_confirmatory_positive_word"
+    },
+    {
+      "prompt": "An imaging run produced 3 slices in its first block and 62 in its second. State the complete slice count.",
+      "a": "3",
+      "b": "62",
+      "answer": "65",
+      "route_label": true,
+      "family": "An imaging run produced {x} slices in its first block and {y} in its second. State the complete slice count.",
+      "family_index": 13,
+      "split": "phase11_confirmatory_positive_word"
+    },
+    {
+      "prompt": "An imaging run produced 399 slices in its first block and 6 in its second. State the complete slice count.",
+      "a": "399",
+      "b": "6",
+      "answer": "405",
+      "route_label": true,
+      "family": "An imaging run produced {x} slices in its first block and {y} in its second. State the complete slice count.",
+      "family_index": 13,
+      "split": "phase11_confirmatory_positive_word"
+    },
+    {
+      "prompt": "A greenhouse counted 2113 seedlings in one bay and 5825 in a second bay. How many seedlings were counted altogether?",
+      "a": "2113",
+      "b": "5825",
+      "answer": "7938",
+      "route_label": true,
+      "family": "A greenhouse counted {x} seedlings in one bay and {y} in a second bay. How many seedlings were counted altogether?",
+      "family_index": 14,
+      "split": "phase11_confirmatory_positive_word"
+    },
+    {
+      "prompt": "A greenhouse counted 800 seedlings in one bay and 60 in a second bay. How many seedlings were counted altogether?",
+      "a": "800",
+      "b": "60",
+      "answer": "860",
+      "route_label": true,
+      "family": "A greenhouse counted {x} seedlings in one bay and {y} in a second bay. How many seedlings were counted altogether?",
+      "family_index": 14,
+      "split": "phase11_confirmatory_positive_word"
+    },
+    {
+      "prompt": "A greenhouse counted 114 seedlings in one bay and 24 in a second bay. How many seedlings were counted altogether?",
+      "a": "114",
+      "b": "24",
+      "answer": "138",
+      "route_label": true,
+      "family": "A greenhouse counted {x} seedlings in one bay and {y} in a second bay. How many seedlings were counted altogether?",
+      "family_index": 14,
+      "split": "phase11_confirmatory_positive_word"
+    },
+    {
+      "prompt": "A greenhouse counted 50 seedlings in one bay and 3 in a second bay. How many seedlings were counted altogether?",
+      "a": "50",
+      "b": "3",
+      "answer": "53",
+      "route_label": true,
+      "family": "A greenhouse counted {x} seedlings in one bay and {y} in a second bay. How many seedlings were counted altogether?",
+      "family_index": 14,
+      "split": "phase11_confirmatory_positive_word"
+    },
+    {
+      "prompt": "A greenhouse counted 5214 seedlings in one bay and 4584 in a second bay. How many seedlings were counted altogether?",
+      "a": "5214",
+      "b": "4584",
+      "answer": "9798",
+      "route_label": true,
+      "family": "A greenhouse counted {x} seedlings in one bay and {y} in a second bay. How many seedlings were counted altogether?",
+      "family_index": 14,
+      "split": "phase11_confirmatory_positive_word"
+    },
+    {
+      "prompt": "Tracking number 46386 is not data. Add the observed values 9355 and 50.",
+      "a": "9355",
+      "b": "50",
+      "answer": "9405",
+      "route_label": true,
+      "family": "Tracking number {c} is not data. Add the observed values {x} and {y}.",
+      "family_index": 15,
+      "split": "phase11_confirmatory_positive_distractor"
+    },
+    {
+      "prompt": "Tracking number 86356 is not data. Add the observed values 4 and 474.",
+      "a": "4",
+      "b": "474",
+      "answer": "478",
+      "route_label": true,
+      "family": "Tracking number {c} is not data. Add the observed values {x} and {y}.",
+      "family_index": 15,
+      "split": "phase11_confirmatory_positive_distractor"
+    },
+    {
+      "prompt": "Tracking number 62548 is not data. Add the observed values 473 and 111.",
+      "a": "473",
+      "b": "111",
+      "answer": "584",
+      "route_label": true,
+      "family": "Tracking number {c} is not data. Add the observed values {x} and {y}.",
+      "family_index": 15,
+      "split": "phase11_confirmatory_positive_distractor"
+    },
+    {
+      "prompt": "Tracking number 87772 is not data. Add the observed values 9719 and 93.",
+      "a": "9719",
+      "b": "93",
+      "answer": "9812",
+      "route_label": true,
+      "family": "Tracking number {c} is not data. Add the observed values {x} and {y}.",
+      "family_index": 15,
+      "split": "phase11_confirmatory_positive_distractor"
+    },
+    {
+      "prompt": "Tracking number 12553 is not data. Add the observed values 22 and 1900.",
+      "a": "22",
+      "b": "1900",
+      "answer": "1922",
+      "route_label": true,
+      "family": "Tracking number {c} is not data. Add the observed values {x} and {y}.",
+      "family_index": 15,
+      "split": "phase11_confirmatory_positive_distractor"
+    },
+    {
+      "prompt": "Discard file code 27119; counters A and B read 362 and 3138. Return their sum.",
+      "a": "362",
+      "b": "3138",
+      "answer": "3500",
+      "route_label": true,
+      "family": "Discard file code {c}; counters A and B read {x} and {y}. Return their sum.",
+      "family_index": 16,
+      "split": "phase11_confirmatory_positive_distractor"
+    },
+    {
+      "prompt": "Discard file code 34532; counters A and B read 0 and 393. Return their sum.",
+      "a": "0",
+      "b": "393",
+      "answer": "393",
+      "route_label": true,
+      "family": "Discard file code {c}; counters A and B read {x} and {y}. Return their sum.",
+      "family_index": 16,
+      "split": "phase11_confirmatory_positive_distractor"
+    },
+    {
+      "prompt": "Discard file code 98111; counters A and B read 4335 and 5187. Return their sum.",
+      "a": "4335",
+      "b": "5187",
+      "answer": "9522",
+      "route_label": true,
+      "family": "Discard file code {c}; counters A and B read {x} and {y}. Return their sum.",
+      "family_index": 16,
+      "split": "phase11_confirmatory_positive_distractor"
+    },
+    {
+      "prompt": "Discard file code 52645; counters A and B read 31 and 277. Return their sum.",
+      "a": "31",
+      "b": "277",
+      "answer": "308",
+      "route_label": true,
+      "family": "Discard file code {c}; counters A and B read {x} and {y}. Return their sum.",
+      "family_index": 16,
+      "split": "phase11_confirmatory_positive_distractor"
+    },
+    {
+      "prompt": "Discard file code 68066; counters A and B read 36 and 7065. Return their sum.",
+      "a": "36",
+      "b": "7065",
+      "answer": "7101",
+      "route_label": true,
+      "family": "Discard file code {c}; counters A and B read {x} and {y}. Return their sum.",
+      "family_index": 16,
+      "split": "phase11_confirmatory_positive_distractor"
+    },
+    {
+      "prompt": "Run label 81709 identifies the trial only. Total measurements 6597 and 6.",
+      "a": "6597",
+      "b": "6",
+      "answer": "6603",
+      "route_label": true,
+      "family": "Run label {c} identifies the trial only. Total measurements {x} and {y}.",
+      "family_index": 17,
+      "split": "phase11_confirmatory_positive_distractor"
+    },
+    {
+      "prompt": "Run label 29077 identifies the trial only. Total measurements 12 and 5415.",
+      "a": "12",
+      "b": "5415",
+      "answer": "5427",
+      "route_label": true,
+      "family": "Run label {c} identifies the trial only. Total measurements {x} and {y}.",
+      "family_index": 17,
+      "split": "phase11_confirmatory_positive_distractor"
+    },
+    {
+      "prompt": "Run label 64015 identifies the trial only. Total measurements 83 and 460.",
+      "a": "83",
+      "b": "460",
+      "answer": "543",
+      "route_label": true,
+      "family": "Run label {c} identifies the trial only. Total measurements {x} and {y}.",
+      "family_index": 17,
+      "split": "phase11_confirmatory_positive_distractor"
+    },
+    {
+      "prompt": "Run label 26494 identifies the trial only. Total measurements 0 and 481.",
+      "a": "0",
+      "b": "481",
+      "answer": "481",
+      "route_label": true,
+      "family": "Run label {c} identifies the trial only. Total measurements {x} and {y}.",
+      "family_index": 17,
+      "split": "phase11_confirmatory_positive_distractor"
+    },
+    {
+      "prompt": "Run label 37847 identifies the trial only. Total measurements 875 and 18.",
+      "a": "875",
+      "b": "18",
+      "answer": "893",
+      "route_label": true,
+      "family": "Run label {c} identifies the trial only. Total measurements {x} and {y}.",
+      "family_index": 17,
+      "split": "phase11_confirmatory_positive_distractor"
+    },
+    {
+      "prompt": "Metadata field 97217 must be excluded. The addends are 6 and 336.",
+      "a": "6",
+      "b": "336",
+      "answer": "342",
+      "route_label": true,
+      "family": "Metadata field {c} must be excluded. The addends are {x} and {y}.",
+      "family_index": 18,
+      "split": "phase11_confirmatory_positive_distractor"
+    },
+    {
+      "prompt": "Metadata field 42554 must be excluded. The addends are 33 and 232.",
+      "a": "33",
+      "b": "232",
+      "answer": "265",
+      "route_label": true,
+      "family": "Metadata field {c} must be excluded. The addends are {x} and {y}.",
+      "family_index": 18,
+      "split": "phase11_confirmatory_positive_distractor"
+    },
+    {
+      "prompt": "Metadata field 52506 must be excluded. The addends are 26 and 4.",
+      "a": "26",
+      "b": "4",
+      "answer": "30",
+      "route_label": true,
+      "family": "Metadata field {c} must be excluded. The addends are {x} and {y}.",
+      "family_index": 18,
+      "split": "phase11_confirmatory_positive_distractor"
+    },
+    {
+      "prompt": "Metadata field 34014 must be excluded. The addends are 326 and 797.",
+      "a": "326",
+      "b": "797",
+      "answer": "1123",
+      "route_label": true,
+      "family": "Metadata field {c} must be excluded. The addends are {x} and {y}.",
+      "family_index": 18,
+      "split": "phase11_confirmatory_positive_distractor"
+    },
+    {
+      "prompt": "Metadata field 92491 must be excluded. The addends are 67 and 705.",
+      "a": "67",
+      "b": "705",
+      "answer": "772",
+      "route_label": true,
+      "family": "Metadata field {c} must be excluded. The addends are {x} and {y}.",
+      "family_index": 18,
+      "split": "phase11_confirmatory_positive_distractor"
+    },
+    {
+      "prompt": "Ignore specimen ID 32003; batches contained 2074 and 69 units. Give the aggregate units.",
+      "a": "2074",
+      "b": "69",
+      "answer": "2143",
+      "route_label": true,
+      "family": "Ignore specimen ID {c}; batches contained {x} and {y} units. Give the aggregate units.",
+      "family_index": 19,
+      "split": "phase11_confirmatory_positive_distractor"
+    },
+    {
+      "prompt": "Ignore specimen ID 23247; batches contained 74 and 496 units. Give the aggregate units.",
+      "a": "74",
+      "b": "496",
+      "answer": "570",
+      "route_label": true,
+      "family": "Ignore specimen ID {c}; batches contained {x} and {y} units. Give the aggregate units.",
+      "family_index": 19,
+      "split": "phase11_confirmatory_positive_distractor"
+    },
+    {
+      "prompt": "Ignore specimen ID 82045; batches contained 467 and 697 units. Give the aggregate units.",
+      "a": "467",
+      "b": "697",
+      "answer": "1164",
+      "route_label": true,
+      "family": "Ignore specimen ID {c}; batches contained {x} and {y} units. Give the aggregate units.",
+      "family_index": 19,
+      "split": "phase11_confirmatory_positive_distractor"
+    },
+    {
+      "prompt": "Ignore specimen ID 60592; batches contained 6069 and 3 units. Give the aggregate units.",
+      "a": "6069",
+      "b": "3",
+      "answer": "6072",
+      "route_label": true,
+      "family": "Ignore specimen ID {c}; batches contained {x} and {y} units. Give the aggregate units.",
+      "family_index": 19,
+      "split": "phase11_confirmatory_positive_distractor"
+    },
+    {
+      "prompt": "Ignore specimen ID 75692; batches contained 8181 and 5075 units. Give the aggregate units.",
+      "a": "8181",
+      "b": "5075",
+      "answer": "13256",
+      "route_label": true,
+      "family": "Ignore specimen ID {c}; batches contained {x} and {y} units. Give the aggregate units.",
+      "family_index": 19,
+      "split": "phase11_confirmatory_positive_distractor"
+    },
+    {
+      "prompt": "Evaluate the product operation on 694 and 5457.",
+      "a": "694",
+      "b": "5457",
+      "answer": null,
+      "route_label": false,
+      "family": "Evaluate the product operation on {x} and {y}.",
+      "family_index": 0,
+      "split": "phase11_confirmatory_negative_multiplication"
+    },
+    {
+      "prompt": "Evaluate the product operation on 61 and 5605.",
+      "a": "61",
+      "b": "5605",
+      "answer": null,
+      "route_label": false,
+      "family": "Evaluate the product operation on {x} and {y}.",
+      "family_index": 0,
+      "split": "phase11_confirmatory_negative_multiplication"
+    },
+    {
+      "prompt": "Evaluate the product operation on 326 and 125.",
+      "a": "326",
+      "b": "125",
+      "answer": null,
+      "route_label": false,
+      "family": "Evaluate the product operation on {x} and {y}.",
+      "family_index": 0,
+      "split": "phase11_confirmatory_negative_multiplication"
+    },
+    {
+      "prompt": "Evaluate the product operation on 565 and 2050.",
+      "a": "565",
+      "b": "2050",
+      "answer": null,
+      "route_label": false,
+      "family": "Evaluate the product operation on {x} and {y}.",
+      "family_index": 0,
+      "split": "phase11_confirmatory_negative_multiplication"
+    },
+    {
+      "prompt": "Compute 9 times 759; addition is not requested.",
+      "a": "9",
+      "b": "759",
+      "answer": null,
+      "route_label": false,
+      "family": "Compute {x} times {y}; addition is not requested.",
+      "family_index": 1,
+      "split": "phase11_confirmatory_negative_multiplication"
+    },
+    {
+      "prompt": "Compute 4963 times 1036; addition is not requested.",
+      "a": "4963",
+      "b": "1036",
+      "answer": null,
+      "route_label": false,
+      "family": "Compute {x} times {y}; addition is not requested.",
+      "family_index": 1,
+      "split": "phase11_confirmatory_negative_multiplication"
+    },
+    {
+      "prompt": "Compute 15 times 62; addition is not requested.",
+      "a": "15",
+      "b": "62",
+      "answer": null,
+      "route_label": false,
+      "family": "Compute {x} times {y}; addition is not requested.",
+      "family_index": 1,
+      "split": "phase11_confirmatory_negative_multiplication"
+    },
+    {
+      "prompt": "Compute 4707 times 530; addition is not requested.",
+      "a": "4707",
+      "b": "530",
+      "answer": null,
+      "route_label": false,
+      "family": "Compute {x} times {y}; addition is not requested.",
+      "family_index": 1,
+      "split": "phase11_confirmatory_negative_multiplication"
+    },
+    {
+      "prompt": "Send operands 47, 34 through a MULTIPLY instruction.",
+      "a": "47",
+      "b": "34",
+      "answer": null,
+      "route_label": false,
+      "family": "Send operands {x}, {y} through a MULTIPLY instruction.",
+      "family_index": 2,
+      "split": "phase11_confirmatory_negative_multiplication"
+    },
+    {
+      "prompt": "Send operands 2048, 11 through a MULTIPLY instruction.",
+      "a": "2048",
+      "b": "11",
+      "answer": null,
+      "route_label": false,
+      "family": "Send operands {x}, {y} through a MULTIPLY instruction.",
+      "family_index": 2,
+      "split": "phase11_confirmatory_negative_multiplication"
+    },
+    {
+      "prompt": "Send operands 4269, 3 through a MULTIPLY instruction.",
+      "a": "4269",
+      "b": "3",
+      "answer": null,
+      "route_label": false,
+      "family": "Send operands {x}, {y} through a MULTIPLY instruction.",
+      "family_index": 2,
+      "split": "phase11_confirmatory_negative_multiplication"
+    },
+    {
+      "prompt": "Send operands 0, 6346 through a MULTIPLY instruction.",
+      "a": "0",
+      "b": "6346",
+      "answer": null,
+      "route_label": false,
+      "family": "Send operands {x}, {y} through a MULTIPLY instruction.",
+      "family_index": 2,
+      "split": "phase11_confirmatory_negative_multiplication"
+    },
+    {
+      "prompt": "Return the value of 276 repeated 724 times multiplicatively.",
+      "a": "276",
+      "b": "724",
+      "answer": null,
+      "route_label": false,
+      "family": "Return the value of {x} repeated {y} times multiplicatively.",
+      "family_index": 3,
+      "split": "phase11_confirmatory_negative_multiplication"
+    },
+    {
+      "prompt": "Return the value of 7318 repeated 2 times multiplicatively.",
+      "a": "7318",
+      "b": "2",
+      "answer": null,
+      "route_label": false,
+      "family": "Return the value of {x} repeated {y} times multiplicatively.",
+      "family_index": 3,
+      "split": "phase11_confirmatory_negative_multiplication"
+    },
+    {
+      "prompt": "Return the value of 5337 repeated 9837 times multiplicatively.",
+      "a": "5337",
+      "b": "9837",
+      "answer": null,
+      "route_label": false,
+      "family": "Return the value of {x} repeated {y} times multiplicatively.",
+      "family_index": 3,
+      "split": "phase11_confirmatory_negative_multiplication"
+    },
+    {
+      "prompt": "Return the value of 0 repeated 269 times multiplicatively.",
+      "a": "0",
+      "b": "269",
+      "answer": null,
+      "route_label": false,
+      "family": "Return the value of {x} repeated {y} times multiplicatively.",
+      "family_index": 3,
+      "split": "phase11_confirmatory_negative_multiplication"
+    },
+    {
+      "prompt": "Use factors 7 and 980 to produce a product only.",
+      "a": "7",
+      "b": "980",
+      "answer": null,
+      "route_label": false,
+      "family": "Use factors {x} and {y} to produce a product only.",
+      "family_index": 4,
+      "split": "phase11_confirmatory_negative_multiplication"
+    },
+    {
+      "prompt": "Use factors 4 and 47 to produce a product only.",
+      "a": "4",
+      "b": "47",
+      "answer": null,
+      "route_label": false,
+      "family": "Use factors {x} and {y} to produce a product only.",
+      "family_index": 4,
+      "split": "phase11_confirmatory_negative_multiplication"
+    },
+    {
+      "prompt": "Use factors 791 and 477 to produce a product only.",
+      "a": "791",
+      "b": "477",
+      "answer": null,
+      "route_label": false,
+      "family": "Use factors {x} and {y} to produce a product only.",
+      "family_index": 4,
+      "split": "phase11_confirmatory_negative_multiplication"
+    },
+    {
+      "prompt": "Use factors 9126 and 3 to produce a product only.",
+      "a": "9126",
+      "b": "3",
+      "answer": null,
+      "route_label": false,
+      "family": "Use factors {x} and {y} to produce a product only.",
+      "family_index": 4,
+      "split": "phase11_confirmatory_negative_multiplication"
+    },
+    {
+      "prompt": "Lockers bear numbers 636 and 43. Confirm that two lockers are referenced.",
+      "a": "636",
+      "b": "43",
+      "answer": null,
+      "route_label": false,
+      "family": "Lockers bear numbers {x} and {y}. Confirm that two lockers are referenced.",
+      "family_index": 5,
+      "split": "phase11_confirmatory_negative_factual"
+    },
+    {
+      "prompt": "Lockers bear numbers 134 and 463. Confirm that two lockers are referenced.",
+      "a": "134",
+      "b": "463",
+      "answer": null,
+      "route_label": false,
+      "family": "Lockers bear numbers {x} and {y}. Confirm that two lockers are referenced.",
+      "family_index": 5,
+      "split": "phase11_confirmatory_negative_factual"
+    },
+    {
+      "prompt": "Lockers bear numbers 265 and 51. Confirm that two lockers are referenced.",
+      "a": "265",
+      "b": "51",
+      "answer": null,
+      "route_label": false,
+      "family": "Lockers bear numbers {x} and {y}. Confirm that two lockers are referenced.",
+      "family_index": 5,
+      "split": "phase11_confirmatory_negative_factual"
+    },
+    {
+      "prompt": "Lockers bear numbers 4410 and 7246. Confirm that two lockers are referenced.",
+      "a": "4410",
+      "b": "7246",
+      "answer": null,
+      "route_label": false,
+      "family": "Lockers bear numbers {x} and {y}. Confirm that two lockers are referenced.",
+      "family_index": 5,
+      "split": "phase11_confirmatory_negative_factual"
+    },
+    {
+      "prompt": "The manifest names lots 7682 and 7133. Are both lot names numerical?",
+      "a": "7682",
+      "b": "7133",
+      "answer": null,
+      "route_label": false,
+      "family": "The manifest names lots {x} and {y}. Are both lot names numerical?",
+      "family_index": 6,
+      "split": "phase11_confirmatory_negative_factual"
+    },
+    {
+      "prompt": "The manifest names lots 823 and 664. Are both lot names numerical?",
+      "a": "823",
+      "b": "664",
+      "answer": null,
+      "route_label": false,
+      "family": "The manifest names lots {x} and {y}. Are both lot names numerical?",
+      "family_index": 6,
+      "split": "phase11_confirmatory_negative_factual"
+    },
+    {
+      "prompt": "The manifest names lots 4988 and 540. Are both lot names numerical?",
+      "a": "4988",
+      "b": "540",
+      "answer": null,
+      "route_label": false,
+      "family": "The manifest names lots {x} and {y}. Are both lot names numerical?",
+      "family_index": 6,
+      "split": "phase11_confirmatory_negative_factual"
+    },
+    {
+      "prompt": "The manifest names lots 8627 and 5. Are both lot names numerical?",
+      "a": "8627",
+      "b": "5",
+      "answer": null,
+      "route_label": false,
+      "family": "The manifest names lots {x} and {y}. Are both lot names numerical?",
+      "family_index": 6,
+      "split": "phase11_confirmatory_negative_factual"
+    },
+    {
+      "prompt": "Pins 4 and 3032 are marked on the board. Describe them as pin labels.",
+      "a": "4",
+      "b": "3032",
+      "answer": null,
+      "route_label": false,
+      "family": "Pins {x} and {y} are marked on the board. Describe them as pin labels.",
+      "family_index": 7,
+      "split": "phase11_confirmatory_negative_factual"
+    },
+    {
+      "prompt": "Pins 705 and 675 are marked on the board. Describe them as pin labels.",
+      "a": "705",
+      "b": "675",
+      "answer": null,
+      "route_label": false,
+      "family": "Pins {x} and {y} are marked on the board. Describe them as pin labels.",
+      "family_index": 7,
+      "split": "phase11_confirmatory_negative_factual"
+    },
+    {
+      "prompt": "Pins 78 and 1696 are marked on the board. Describe them as pin labels.",
+      "a": "78",
+      "b": "1696",
+      "answer": null,
+      "route_label": false,
+      "family": "Pins {x} and {y} are marked on the board. Describe them as pin labels.",
+      "family_index": 7,
+      "split": "phase11_confirmatory_negative_factual"
+    },
+    {
+      "prompt": "Pins 3978 and 68 are marked on the board. Describe them as pin labels.",
+      "a": "3978",
+      "b": "68",
+      "answer": null,
+      "route_label": false,
+      "family": "Pins {x} and {y} are marked on the board. Describe them as pin labels.",
+      "family_index": 7,
+      "split": "phase11_confirmatory_negative_factual"
+    },
+    {
+      "prompt": "Two pages, 2183 and 90, are flagged. State how many pages are flagged.",
+      "a": "2183",
+      "b": "90",
+      "answer": null,
+      "route_label": false,
+      "family": "Two pages, {x} and {y}, are flagged. State how many pages are flagged.",
+      "family_index": 8,
+      "split": "phase11_confirmatory_negative_factual"
+    },
+    {
+      "prompt": "Two pages, 9398 and 4, are flagged. State how many pages are flagged.",
+      "a": "9398",
+      "b": "4",
+      "answer": null,
+      "route_label": false,
+      "family": "Two pages, {x} and {y}, are flagged. State how many pages are flagged.",
+      "family_index": 8,
+      "split": "phase11_confirmatory_negative_factual"
+    },
+    {
+      "prompt": "Two pages, 977 and 1493, are flagged. State how many pages are flagged.",
+      "a": "977",
+      "b": "1493",
+      "answer": null,
+      "route_label": false,
+      "family": "Two pages, {x} and {y}, are flagged. State how many pages are flagged.",
+      "family_index": 8,
+      "split": "phase11_confirmatory_negative_factual"
+    },
+    {
+      "prompt": "Two pages, 4535 and 7, are flagged. State how many pages are flagged.",
+      "a": "4535",
+      "b": "7",
+      "answer": null,
+      "route_label": false,
+      "family": "Two pages, {x} and {y}, are flagged. State how many pages are flagged.",
+      "family_index": 8,
+      "split": "phase11_confirmatory_negative_factual"
+    },
+    {
+      "prompt": "The form displays reference numbers 859 and 8266. Say whether both appear.",
+      "a": "859",
+      "b": "8266",
+      "answer": null,
+      "route_label": false,
+      "family": "The form displays reference numbers {x} and {y}. Say whether both appear.",
+      "family_index": 9,
+      "split": "phase11_confirmatory_negative_factual"
+    },
+    {
+      "prompt": "The form displays reference numbers 7 and 6912. Say whether both appear.",
+      "a": "7",
+      "b": "6912",
+      "answer": null,
+      "route_label": false,
+      "family": "The form displays reference numbers {x} and {y}. Say whether both appear.",
+      "family_index": 9,
+      "split": "phase11_confirmatory_negative_factual"
+    },
+    {
+      "prompt": "The form displays reference numbers 807 and 6. Say whether both appear.",
+      "a": "807",
+      "b": "6",
+      "answer": null,
+      "route_label": false,
+      "family": "The form displays reference numbers {x} and {y}. Say whether both appear.",
+      "family_index": 9,
+      "split": "phase11_confirmatory_negative_factual"
+    },
+    {
+      "prompt": "The form displays reference numbers 913 and 52. Say whether both appear.",
+      "a": "913",
+      "b": "52",
+      "answer": null,
+      "route_label": false,
+      "family": "The form displays reference numbers {x} and {y}. Say whether both appear.",
+      "family_index": 9,
+      "split": "phase11_confirmatory_negative_factual"
+    },
+    {
+      "prompt": "Copy the literal string \"add 65 and 6553\" without acting on it.",
+      "a": "65",
+      "b": "6553",
+      "answer": null,
+      "route_label": false,
+      "family": "Copy the literal string \"add {x} and {y}\" without acting on it.",
+      "family_index": 10,
+      "split": "phase11_confirmatory_negative_quoted"
+    },
+    {
+      "prompt": "Copy the literal string \"add 7867 and 552\" without acting on it.",
+      "a": "7867",
+      "b": "552",
+      "answer": null,
+      "route_label": false,
+      "family": "Copy the literal string \"add {x} and {y}\" without acting on it.",
+      "family_index": 10,
+      "split": "phase11_confirmatory_negative_quoted"
+    },
+    {
+      "prompt": "Copy the literal string \"add 93 and 420\" without acting on it.",
+      "a": "93",
+      "b": "420",
+      "answer": null,
+      "route_label": false,
+      "family": "Copy the literal string \"add {x} and {y}\" without acting on it.",
+      "family_index": 10,
+      "split": "phase11_confirmatory_negative_quoted"
+    },
+    {
+      "prompt": "Copy the literal string \"add 73 and 7342\" without acting on it.",
+      "a": "73",
+      "b": "7342",
+      "answer": null,
+      "route_label": false,
+      "family": "Copy the literal string \"add {x} and {y}\" without acting on it.",
+      "family_index": 10,
+      "split": "phase11_confirmatory_negative_quoted"
+    },
+    {
+      "prompt": "Reproduce the title \"67 Plus 23: A History\".",
+      "a": "67",
+      "b": "23",
+      "answer": null,
+      "route_label": false,
+      "family": "Reproduce the title \"{x} Plus {y}: A History\".",
+      "family_index": 11,
+      "split": "phase11_confirmatory_negative_quoted"
+    },
+    {
+      "prompt": "Reproduce the title \"486 Plus 0: A History\".",
+      "a": "486",
+      "b": "0",
+      "answer": null,
+      "route_label": false,
+      "family": "Reproduce the title \"{x} Plus {y}: A History\".",
+      "family_index": 11,
+      "split": "phase11_confirmatory_negative_quoted"
+    },
+    {
+      "prompt": "Reproduce the title \"55 Plus 7: A History\".",
+      "a": "55",
+      "b": "7",
+      "answer": null,
+      "route_label": false,
+      "family": "Reproduce the title \"{x} Plus {y}: A History\".",
+      "family_index": 11,
+      "split": "phase11_confirmatory_negative_quoted"
+    },
+    {
+      "prompt": "Reproduce the title \"7268 Plus 31: A History\".",
+      "a": "7268",
+      "b": "31",
+      "answer": null,
+      "route_label": false,
+      "family": "Reproduce the title \"{x} Plus {y}: A History\".",
+      "family_index": 11,
+      "split": "phase11_confirmatory_negative_quoted"
+    },
+    {
+      "prompt": "Echo the unevaluated notation \"SUM(7509, 6)\".",
+      "a": "7509",
+      "b": "6",
+      "answer": null,
+      "route_label": false,
+      "family": "Echo the unevaluated notation \"SUM({x}, {y})\".",
+      "family_index": 12,
+      "split": "phase11_confirmatory_negative_quoted"
+    },
+    {
+      "prompt": "Echo the unevaluated notation \"SUM(1654, 146)\".",
+      "a": "1654",
+      "b": "146",
+      "answer": null,
+      "route_label": false,
+      "family": "Echo the unevaluated notation \"SUM({x}, {y})\".",
+      "family_index": 12,
+      "split": "phase11_confirmatory_negative_quoted"
+    },
+    {
+      "prompt": "Echo the unevaluated notation \"SUM(670, 16)\".",
+      "a": "670",
+      "b": "16",
+      "answer": null,
+      "route_label": false,
+      "family": "Echo the unevaluated notation \"SUM({x}, {y})\".",
+      "family_index": 12,
+      "split": "phase11_confirmatory_negative_quoted"
+    },
+    {
+      "prompt": "Echo the unevaluated notation \"SUM(881, 9)\".",
+      "a": "881",
+      "b": "9",
+      "answer": null,
+      "route_label": false,
+      "family": "Echo the unevaluated notation \"SUM({x}, {y})\".",
+      "family_index": 12,
+      "split": "phase11_confirmatory_negative_quoted"
+    },
+    {
+      "prompt": "Quote the sentence \"426 combined with 2617 gives a total.\"",
+      "a": "426",
+      "b": "2617",
+      "answer": null,
+      "route_label": false,
+      "family": "Quote the sentence \"{x} combined with {y} gives a total.\"",
+      "family_index": 13,
+      "split": "phase11_confirmatory_negative_quoted"
+    },
+    {
+      "prompt": "Quote the sentence \"34 combined with 7012 gives a total.\"",
+      "a": "34",
+      "b": "7012",
+      "answer": null,
+      "route_label": false,
+      "family": "Quote the sentence \"{x} combined with {y} gives a total.\"",
+      "family_index": 13,
+      "split": "phase11_confirmatory_negative_quoted"
+    },
+    {
+      "prompt": "Quote the sentence \"79 combined with 5170 gives a total.\"",
+      "a": "79",
+      "b": "5170",
+      "answer": null,
+      "route_label": false,
+      "family": "Quote the sentence \"{x} combined with {y} gives a total.\"",
+      "family_index": 13,
+      "split": "phase11_confirmatory_negative_quoted"
+    },
+    {
+      "prompt": "Quote the sentence \"6 combined with 802 gives a total.\"",
+      "a": "6",
+      "b": "802",
+      "answer": null,
+      "route_label": false,
+      "family": "Quote the sentence \"{x} combined with {y} gives a total.\"",
+      "family_index": 13,
+      "split": "phase11_confirmatory_negative_quoted"
+    },
+    {
+      "prompt": "A transcript contains \u201cincrease 7985 by 5033.\u201d Repeat those words only.",
+      "a": "7985",
+      "b": "5033",
+      "answer": null,
+      "route_label": false,
+      "family": "A transcript contains \u201cincrease {x} by {y}.\u201d Repeat those words only.",
+      "family_index": 14,
+      "split": "phase11_confirmatory_negative_quoted"
+    },
+    {
+      "prompt": "A transcript contains \u201cincrease 26 by 5.\u201d Repeat those words only.",
+      "a": "26",
+      "b": "5",
+      "answer": null,
+      "route_label": false,
+      "family": "A transcript contains \u201cincrease {x} by {y}.\u201d Repeat those words only.",
+      "family_index": 14,
+      "split": "phase11_confirmatory_negative_quoted"
+    },
+    {
+      "prompt": "A transcript contains \u201cincrease 331 by 197.\u201d Repeat those words only.",
+      "a": "331",
+      "b": "197",
+      "answer": null,
+      "route_label": false,
+      "family": "A transcript contains \u201cincrease {x} by {y}.\u201d Repeat those words only.",
+      "family_index": 14,
+      "split": "phase11_confirmatory_negative_quoted"
+    },
+    {
+      "prompt": "A transcript contains \u201cincrease 2050 by 3.\u201d Repeat those words only.",
+      "a": "2050",
+      "b": "3",
+      "answer": null,
+      "route_label": false,
+      "family": "A transcript contains \u201cincrease {x} by {y}.\u201d Repeat those words only.",
+      "family_index": 14,
+      "split": "phase11_confirmatory_negative_quoted"
+    },
+    {
+      "prompt": "Withhold the additive result for 230 and 146; reply withheld.",
+      "a": "230",
+      "b": "146",
+      "answer": null,
+      "route_label": false,
+      "family": "Withhold the additive result for {x} and {y}; reply withheld.",
+      "family_index": 15,
+      "split": "phase11_confirmatory_negative_negated"
+    },
+    {
+      "prompt": "Withhold the additive result for 1 and 633; reply withheld.",
+      "a": "1",
+      "b": "633",
+      "answer": null,
+      "route_label": false,
+      "family": "Withhold the additive result for {x} and {y}; reply withheld.",
+      "family_index": 15,
+      "split": "phase11_confirmatory_negative_negated"
+    },
+    {
+      "prompt": "Withhold the additive result for 87 and 68; reply withheld.",
+      "a": "87",
+      "b": "68",
+      "answer": null,
+      "route_label": false,
+      "family": "Withhold the additive result for {x} and {y}; reply withheld.",
+      "family_index": 15,
+      "split": "phase11_confirmatory_negative_negated"
+    },
+    {
+      "prompt": "Withhold the additive result for 48 and 1; reply withheld.",
+      "a": "48",
+      "b": "1",
+      "answer": null,
+      "route_label": false,
+      "family": "Withhold the additive result for {x} and {y}; reply withheld.",
+      "family_index": 15,
+      "split": "phase11_confirmatory_negative_negated"
+    },
+    {
+      "prompt": "You must not add 9670 to 12. State only prohibited.",
+      "a": "9670",
+      "b": "12",
+      "answer": null,
+      "route_label": false,
+      "family": "You must not add {x} to {y}. State only prohibited.",
+      "family_index": 16,
+      "split": "phase11_confirmatory_negative_negated"
+    },
+    {
+      "prompt": "You must not add 2977 to 46. State only prohibited.",
+      "a": "2977",
+      "b": "46",
+      "answer": null,
+      "route_label": false,
+      "family": "You must not add {x} to {y}. State only prohibited.",
+      "family_index": 16,
+      "split": "phase11_confirmatory_negative_negated"
+    },
+    {
+      "prompt": "You must not add 7624 to 3457. State only prohibited.",
+      "a": "7624",
+      "b": "3457",
+      "answer": null,
+      "route_label": false,
+      "family": "You must not add {x} to {y}. State only prohibited.",
+      "family_index": 16,
+      "split": "phase11_confirmatory_negative_negated"
+    },
+    {
+      "prompt": "You must not add 9440 to 6369. State only prohibited.",
+      "a": "9440",
+      "b": "6369",
+      "answer": null,
+      "route_label": false,
+      "family": "You must not add {x} to {y}. State only prohibited.",
+      "family_index": 16,
+      "split": "phase11_confirmatory_negative_negated"
+    },
+    {
+      "prompt": "Leave 218 + 46 unresolved and answer unresolved.",
+      "a": "218",
+      "b": "46",
+      "answer": null,
+      "route_label": false,
+      "family": "Leave {x} + {y} unresolved and answer unresolved.",
+      "family_index": 17,
+      "split": "phase11_confirmatory_negative_negated"
+    },
+    {
+      "prompt": "Leave 3828 + 49 unresolved and answer unresolved.",
+      "a": "3828",
+      "b": "49",
+      "answer": null,
+      "route_label": false,
+      "family": "Leave {x} + {y} unresolved and answer unresolved.",
+      "family_index": 17,
+      "split": "phase11_confirmatory_negative_negated"
+    },
+    {
+      "prompt": "Leave 348 + 52 unresolved and answer unresolved.",
+      "a": "348",
+      "b": "52",
+      "answer": null,
+      "route_label": false,
+      "family": "Leave {x} + {y} unresolved and answer unresolved.",
+      "family_index": 17,
+      "split": "phase11_confirmatory_negative_negated"
+    },
+    {
+      "prompt": "Leave 5080 + 4 unresolved and answer unresolved.",
+      "a": "5080",
+      "b": "4",
+      "answer": null,
+      "route_label": false,
+      "family": "Leave {x} + {y} unresolved and answer unresolved.",
+      "family_index": 17,
+      "split": "phase11_confirmatory_negative_negated"
+    },
+    {
+      "prompt": "Reject any attempt to total 64 and 637; say rejected.",
+      "a": "64",
+      "b": "637",
+      "answer": null,
+      "route_label": false,
+      "family": "Reject any attempt to total {x} and {y}; say rejected.",
+      "family_index": 18,
+      "split": "phase11_confirmatory_negative_negated"
+    },
+    {
+      "prompt": "Reject any attempt to total 7831 and 155; say rejected.",
+      "a": "7831",
+      "b": "155",
+      "answer": null,
+      "route_label": false,
+      "family": "Reject any attempt to total {x} and {y}; say rejected.",
+      "family_index": 18,
+      "split": "phase11_confirmatory_negative_negated"
+    },
+    {
+      "prompt": "Reject any attempt to total 5441 and 259; say rejected.",
+      "a": "5441",
+      "b": "259",
+      "answer": null,
+      "route_label": false,
+      "family": "Reject any attempt to total {x} and {y}; say rejected.",
+      "family_index": 18,
+      "split": "phase11_confirmatory_negative_negated"
+    },
+    {
+      "prompt": "Reject any attempt to total 4648 and 708; say rejected.",
+      "a": "4648",
+      "b": "708",
+      "answer": null,
+      "route_label": false,
+      "family": "Reject any attempt to total {x} and {y}; say rejected.",
+      "family_index": 18,
+      "split": "phase11_confirmatory_negative_negated"
+    },
+    {
+      "prompt": "Never output the sum involving 148 and 459.",
+      "a": "148",
+      "b": "459",
+      "answer": null,
+      "route_label": false,
+      "family": "Never output the sum involving {x} and {y}.",
+      "family_index": 19,
+      "split": "phase11_confirmatory_negative_negated"
+    },
+    {
+      "prompt": "Never output the sum involving 5 and 704.",
+      "a": "5",
+      "b": "704",
+      "answer": null,
+      "route_label": false,
+      "family": "Never output the sum involving {x} and {y}.",
+      "family_index": 19,
+      "split": "phase11_confirmatory_negative_negated"
+    },
+    {
+      "prompt": "Never output the sum involving 7862 and 829.",
+      "a": "7862",
+      "b": "829",
+      "answer": null,
+      "route_label": false,
+      "family": "Never output the sum involving {x} and {y}.",
+      "family_index": 19,
+      "split": "phase11_confirmatory_negative_negated"
+    },
+    {
+      "prompt": "Never output the sum involving 5243 and 4721.",
+      "a": "5243",
+      "b": "4721",
+      "answer": null,
+      "route_label": false,
+      "family": "Never output the sum involving {x} and {y}.",
+      "family_index": 19,
+      "split": "phase11_confirmatory_negative_negated"
+    },
+    {
+      "prompt": "A prior ADD request for 594 and 39 has expired. Say expired.",
+      "a": "594",
+      "b": "39",
+      "answer": null,
+      "route_label": false,
+      "family": "A prior ADD request for {x} and {y} has expired. Say expired.",
+      "family_index": 20,
+      "split": "phase11_confirmatory_negative_cancelled"
+    },
+    {
+      "prompt": "A prior ADD request for 0 and 4285 has expired. Say expired.",
+      "a": "0",
+      "b": "4285",
+      "answer": null,
+      "route_label": false,
+      "family": "A prior ADD request for {x} and {y} has expired. Say expired.",
+      "family_index": 20,
+      "split": "phase11_confirmatory_negative_cancelled"
+    },
+    {
+      "prompt": "A prior ADD request for 6335 and 47 has expired. Say expired.",
+      "a": "6335",
+      "b": "47",
+      "answer": null,
+      "route_label": false,
+      "family": "A prior ADD request for {x} and {y} has expired. Say expired.",
+      "family_index": 20,
+      "split": "phase11_confirmatory_negative_cancelled"
+    },
+    {
+      "prompt": "A prior ADD request for 665 and 4325 has expired. Say expired.",
+      "a": "665",
+      "b": "4325",
+      "answer": null,
+      "route_label": false,
+      "family": "A prior ADD request for {x} and {y} has expired. Say expired.",
+      "family_index": 20,
+      "split": "phase11_confirmatory_negative_cancelled"
+    },
+    {
+      "prompt": "Remove the scheduled summation of 2228, 6; respond removed.",
+      "a": "2228",
+      "b": "6",
+      "answer": null,
+      "route_label": false,
+      "family": "Remove the scheduled summation of {x}, {y}; respond removed.",
+      "family_index": 21,
+      "split": "phase11_confirmatory_negative_cancelled"
+    },
+    {
+      "prompt": "Remove the scheduled summation of 28, 6175; respond removed.",
+      "a": "28",
+      "b": "6175",
+      "answer": null,
+      "route_label": false,
+      "family": "Remove the scheduled summation of {x}, {y}; respond removed.",
+      "family_index": 21,
+      "split": "phase11_confirmatory_negative_cancelled"
+    },
+    {
+      "prompt": "Remove the scheduled summation of 5320, 3364; respond removed.",
+      "a": "5320",
+      "b": "3364",
+      "answer": null,
+      "route_label": false,
+      "family": "Remove the scheduled summation of {x}, {y}; respond removed.",
+      "family_index": 21,
+      "split": "phase11_confirmatory_negative_cancelled"
+    },
+    {
+      "prompt": "Remove the scheduled summation of 6354, 1810; respond removed.",
+      "a": "6354",
+      "b": "1810",
+      "answer": null,
+      "route_label": false,
+      "family": "Remove the scheduled summation of {x}, {y}; respond removed.",
+      "family_index": 21,
+      "split": "phase11_confirmatory_negative_cancelled"
+    },
+    {
+      "prompt": "The instruction totaling 55 with 615 was revoked.",
+      "a": "55",
+      "b": "615",
+      "answer": null,
+      "route_label": false,
+      "family": "The instruction totaling {x} with {y} was revoked.",
+      "family_index": 22,
+      "split": "phase11_confirmatory_negative_cancelled"
+    },
+    {
+      "prompt": "The instruction totaling 6655 with 9 was revoked.",
+      "a": "6655",
+      "b": "9",
+      "answer": null,
+      "route_label": false,
+      "family": "The instruction totaling {x} with {y} was revoked.",
+      "family_index": 22,
+      "split": "phase11_confirmatory_negative_cancelled"
+    },
+    {
+      "prompt": "The instruction totaling 2114 with 49 was revoked.",
+      "a": "2114",
+      "b": "49",
+      "answer": null,
+      "route_label": false,
+      "family": "The instruction totaling {x} with {y} was revoked.",
+      "family_index": 22,
+      "split": "phase11_confirmatory_negative_cancelled"
+    },
+    {
+      "prompt": "The instruction totaling 65 with 2322 was revoked.",
+      "a": "65",
+      "b": "2322",
+      "answer": null,
+      "route_label": false,
+      "family": "The instruction totaling {x} with {y} was revoked.",
+      "family_index": 22,
+      "split": "phase11_confirmatory_negative_cancelled"
+    },
+    {
+      "prompt": "Do not execute the abandoned addition of 7451 and 89.",
+      "a": "7451",
+      "b": "89",
+      "answer": null,
+      "route_label": false,
+      "family": "Do not execute the abandoned addition of {x} and {y}.",
+      "family_index": 23,
+      "split": "phase11_confirmatory_negative_cancelled"
+    },
+    {
+      "prompt": "Do not execute the abandoned addition of 1 and 31.",
+      "a": "1",
+      "b": "31",
+      "answer": null,
+      "route_label": false,
+      "family": "Do not execute the abandoned addition of {x} and {y}.",
+      "family_index": 23,
+      "split": "phase11_confirmatory_negative_cancelled"
+    },
+    {
+      "prompt": "Do not execute the abandoned addition of 36 and 40.",
+      "a": "36",
+      "b": "40",
+      "answer": null,
+      "route_label": false,
+      "family": "Do not execute the abandoned addition of {x} and {y}.",
+      "family_index": 23,
+      "split": "phase11_confirmatory_negative_cancelled"
+    },
+    {
+      "prompt": "Do not execute the abandoned addition of 2871 and 4026.",
+      "a": "2871",
+      "b": "4026",
+      "answer": null,
+      "route_label": false,
+      "family": "Do not execute the abandoned addition of {x} and {y}.",
+      "family_index": 23,
+      "split": "phase11_confirmatory_negative_cancelled"
+    },
+    {
+      "prompt": "Mark the pending sum for 18 and 921 as canceled.",
+      "a": "18",
+      "b": "921",
+      "answer": null,
+      "route_label": false,
+      "family": "Mark the pending sum for {x} and {y} as canceled.",
+      "family_index": 24,
+      "split": "phase11_confirmatory_negative_cancelled"
+    },
+    {
+      "prompt": "Mark the pending sum for 5512 and 59 as canceled.",
+      "a": "5512",
+      "b": "59",
+      "answer": null,
+      "route_label": false,
+      "family": "Mark the pending sum for {x} and {y} as canceled.",
+      "family_index": 24,
+      "split": "phase11_confirmatory_negative_cancelled"
+    },
+    {
+      "prompt": "Mark the pending sum for 629 and 818 as canceled.",
+      "a": "629",
+      "b": "818",
+      "answer": null,
+      "route_label": false,
+      "family": "Mark the pending sum for {x} and {y} as canceled.",
+      "family_index": 24,
+      "split": "phase11_confirmatory_negative_cancelled"
+    },
+    {
+      "prompt": "Mark the pending sum for 3445 and 67 as canceled.",
+      "a": "3445",
+      "b": "67",
+      "answer": null,
+      "route_label": false,
+      "family": "Mark the pending sum for {x} and {y} as canceled.",
+      "family_index": 24,
+      "split": "phase11_confirmatory_negative_cancelled"
+    },
+    {
+      "prompt": "Calculate 85 after decreasing it by 6.",
+      "a": "85",
+      "b": "6",
+      "answer": null,
+      "route_label": false,
+      "family": "Calculate {x} after decreasing it by {y}.",
+      "family_index": 25,
+      "split": "phase11_confirmatory_negative_subtraction"
+    },
+    {
+      "prompt": "Calculate 6 after decreasing it by 356.",
+      "a": "6",
+      "b": "356",
+      "answer": null,
+      "route_label": false,
+      "family": "Calculate {x} after decreasing it by {y}.",
+      "family_index": 25,
+      "split": "phase11_confirmatory_negative_subtraction"
+    },
+    {
+      "prompt": "Calculate 7871 after decreasing it by 45.",
+      "a": "7871",
+      "b": "45",
+      "answer": null,
+      "route_label": false,
+      "family": "Calculate {x} after decreasing it by {y}.",
+      "family_index": 25,
+      "split": "phase11_confirmatory_negative_subtraction"
+    },
+    {
+      "prompt": "Calculate 96 after decreasing it by 1990.",
+      "a": "96",
+      "b": "1990",
+      "answer": null,
+      "route_label": false,
+      "family": "Calculate {x} after decreasing it by {y}.",
+      "family_index": 25,
+      "split": "phase11_confirmatory_negative_subtraction"
+    },
+    {
+      "prompt": "Apply a MINUS operation to ordered inputs 1, 2177.",
+      "a": "1",
+      "b": "2177",
+      "answer": null,
+      "route_label": false,
+      "family": "Apply a MINUS operation to ordered inputs {x}, {y}.",
+      "family_index": 26,
+      "split": "phase11_confirmatory_negative_subtraction"
+    },
+    {
+      "prompt": "Apply a MINUS operation to ordered inputs 70, 1576.",
+      "a": "70",
+      "b": "1576",
+      "answer": null,
+      "route_label": false,
+      "family": "Apply a MINUS operation to ordered inputs {x}, {y}.",
+      "family_index": 26,
+      "split": "phase11_confirmatory_negative_subtraction"
+    },
+    {
+      "prompt": "Apply a MINUS operation to ordered inputs 8, 827.",
+      "a": "8",
+      "b": "827",
+      "answer": null,
+      "route_label": false,
+      "family": "Apply a MINUS operation to ordered inputs {x}, {y}.",
+      "family_index": 26,
+      "split": "phase11_confirmatory_negative_subtraction"
+    },
+    {
+      "prompt": "Apply a MINUS operation to ordered inputs 639, 1.",
+      "a": "639",
+      "b": "1",
+      "answer": null,
+      "route_label": false,
+      "family": "Apply a MINUS operation to ordered inputs {x}, {y}.",
+      "family_index": 26,
+      "split": "phase11_confirmatory_negative_subtraction"
+    },
+    {
+      "prompt": "Return the magnitude of the gap from 5475 to 47.",
+      "a": "5475",
+      "b": "47",
+      "answer": null,
+      "route_label": false,
+      "family": "Return the magnitude of the gap from {x} to {y}.",
+      "family_index": 27,
+      "split": "phase11_confirmatory_negative_subtraction"
+    },
+    {
+      "prompt": "Return the magnitude of the gap from 235 to 2.",
+      "a": "235",
+      "b": "2",
+      "answer": null,
+      "route_label": false,
+      "family": "Return the magnitude of the gap from {x} to {y}.",
+      "family_index": 27,
+      "split": "phase11_confirmatory_negative_subtraction"
+    },
+    {
+      "prompt": "Return the magnitude of the gap from 9270 to 7.",
+      "a": "9270",
+      "b": "7",
+      "answer": null,
+      "route_label": false,
+      "family": "Return the magnitude of the gap from {x} to {y}.",
+      "family_index": 27,
+      "split": "phase11_confirmatory_negative_subtraction"
+    },
+    {
+      "prompt": "Return the magnitude of the gap from 245 to 80.",
+      "a": "245",
+      "b": "80",
+      "answer": null,
+      "route_label": false,
+      "family": "Return the magnitude of the gap from {x} to {y}.",
+      "family_index": 27,
+      "split": "phase11_confirmatory_negative_subtraction"
+    },
+    {
+      "prompt": "Find what remains when 322 is removed from 3407.",
+      "a": "322",
+      "b": "3407",
+      "answer": null,
+      "route_label": false,
+      "family": "Find what remains when {y} is removed from {x}.",
+      "family_index": 28,
+      "split": "phase11_confirmatory_negative_subtraction"
+    },
+    {
+      "prompt": "Find what remains when 4681 is removed from 9.",
+      "a": "4681",
+      "b": "9",
+      "answer": null,
+      "route_label": false,
+      "family": "Find what remains when {y} is removed from {x}.",
+      "family_index": 28,
+      "split": "phase11_confirmatory_negative_subtraction"
+    },
+    {
+      "prompt": "Find what remains when 69 is removed from 447.",
+      "a": "69",
+      "b": "447",
+      "answer": null,
+      "route_label": false,
+      "family": "Find what remains when {y} is removed from {x}.",
+      "family_index": 28,
+      "split": "phase11_confirmatory_negative_subtraction"
+    },
+    {
+      "prompt": "Find what remains when 84 is removed from 4.",
+      "a": "84",
+      "b": "4",
+      "answer": null,
+      "route_label": false,
+      "family": "Find what remains when {y} is removed from {x}.",
+      "family_index": 28,
+      "split": "phase11_confirmatory_negative_subtraction"
+    },
+    {
+      "prompt": "Obtain the difference, rather than the sum, of 36 and 0.",
+      "a": "36",
+      "b": "0",
+      "answer": null,
+      "route_label": false,
+      "family": "Obtain the difference, rather than the sum, of {x} and {y}.",
+      "family_index": 29,
+      "split": "phase11_confirmatory_negative_subtraction"
+    },
+    {
+      "prompt": "Obtain the difference, rather than the sum, of 985 and 6.",
+      "a": "985",
+      "b": "6",
+      "answer": null,
+      "route_label": false,
+      "family": "Obtain the difference, rather than the sum, of {x} and {y}.",
+      "family_index": 29,
+      "split": "phase11_confirmatory_negative_subtraction"
+    },
+    {
+      "prompt": "Obtain the difference, rather than the sum, of 258 and 68.",
+      "a": "258",
+      "b": "68",
+      "answer": null,
+      "route_label": false,
+      "family": "Obtain the difference, rather than the sum, of {x} and {y}.",
+      "family_index": 29,
+      "split": "phase11_confirmatory_negative_subtraction"
+    },
+    {
+      "prompt": "Obtain the difference, rather than the sum, of 99 and 7694.",
+      "a": "99",
+      "b": "7694",
+      "answer": null,
+      "route_label": false,
+      "family": "Obtain the difference, rather than the sum, of {x} and {y}.",
+      "family_index": 29,
+      "split": "phase11_confirmatory_negative_subtraction"
+    },
+    {
+      "prompt": "Report whether 458 comes before 129 numerically.",
+      "a": "458",
+      "b": "129",
+      "answer": null,
+      "route_label": false,
+      "family": "Report whether {x} comes before {y} numerically.",
+      "family_index": 30,
+      "split": "phase11_confirmatory_negative_comparison"
+    },
+    {
+      "prompt": "Report whether 5 comes before 1754 numerically.",
+      "a": "5",
+      "b": "1754",
+      "answer": null,
+      "route_label": false,
+      "family": "Report whether {x} comes before {y} numerically.",
+      "family_index": 30,
+      "split": "phase11_confirmatory_negative_comparison"
+    },
+    {
+      "prompt": "Report whether 57 comes before 1791 numerically.",
+      "a": "57",
+      "b": "1791",
+      "answer": null,
+      "route_label": false,
+      "family": "Report whether {x} comes before {y} numerically.",
+      "family_index": 30,
+      "split": "phase11_confirmatory_negative_comparison"
+    },
+    {
+      "prompt": "Report whether 19 comes before 64 numerically.",
+      "a": "19",
+      "b": "64",
+      "answer": null,
+      "route_label": false,
+      "family": "Report whether {x} comes before {y} numerically.",
+      "family_index": 30,
+      "split": "phase11_confirmatory_negative_comparison"
+    },
+    {
+      "prompt": "Select the greater member of the pair 33, 17.",
+      "a": "33",
+      "b": "17",
+      "answer": null,
+      "route_label": false,
+      "family": "Select the greater member of the pair {x}, {y}.",
+      "family_index": 31,
+      "split": "phase11_confirmatory_negative_comparison"
+    },
+    {
+      "prompt": "Select the greater member of the pair 828, 9.",
+      "a": "828",
+      "b": "9",
+      "answer": null,
+      "route_label": false,
+      "family": "Select the greater member of the pair {x}, {y}.",
+      "family_index": 31,
+      "split": "phase11_confirmatory_negative_comparison"
+    },
+    {
+      "prompt": "Select the greater member of the pair 5, 9840.",
+      "a": "5",
+      "b": "9840",
+      "answer": null,
+      "route_label": false,
+      "family": "Select the greater member of the pair {x}, {y}.",
+      "family_index": 31,
+      "split": "phase11_confirmatory_negative_comparison"
+    },
+    {
+      "prompt": "Select the greater member of the pair 55, 5.",
+      "a": "55",
+      "b": "5",
+      "answer": null,
+      "route_label": false,
+      "family": "Select the greater member of the pair {x}, {y}.",
+      "family_index": 31,
+      "split": "phase11_confirmatory_negative_comparison"
+    },
+    {
+      "prompt": "Rank 71 and 1 in ascending order.",
+      "a": "71",
+      "b": "1",
+      "answer": null,
+      "route_label": false,
+      "family": "Rank {x} and {y} in ascending order.",
+      "family_index": 32,
+      "split": "phase11_confirmatory_negative_comparison"
+    },
+    {
+      "prompt": "Rank 91 and 5106 in ascending order.",
+      "a": "91",
+      "b": "5106",
+      "answer": null,
+      "route_label": false,
+      "family": "Rank {x} and {y} in ascending order.",
+      "family_index": 32,
+      "split": "phase11_confirmatory_negative_comparison"
+    },
+    {
+      "prompt": "Rank 1 and 6724 in ascending order.",
+      "a": "1",
+      "b": "6724",
+      "answer": null,
+      "route_label": false,
+      "family": "Rank {x} and {y} in ascending order.",
+      "family_index": 32,
+      "split": "phase11_confirmatory_negative_comparison"
+    },
+    {
+      "prompt": "Rank 60 and 496 in ascending order.",
+      "a": "60",
+      "b": "496",
+      "answer": null,
+      "route_label": false,
+      "family": "Rank {x} and {y} in ascending order.",
+      "family_index": 32,
+      "split": "phase11_confirmatory_negative_comparison"
+    },
+    {
+      "prompt": "Test the equality relation between 908 and 2.",
+      "a": "908",
+      "b": "2",
+      "answer": null,
+      "route_label": false,
+      "family": "Test the equality relation between {x} and {y}.",
+      "family_index": 33,
+      "split": "phase11_confirmatory_negative_comparison"
+    },
+    {
+      "prompt": "Test the equality relation between 660 and 3.",
+      "a": "660",
+      "b": "3",
+      "answer": null,
+      "route_label": false,
+      "family": "Test the equality relation between {x} and {y}.",
+      "family_index": 33,
+      "split": "phase11_confirmatory_negative_comparison"
+    },
+    {
+      "prompt": "Test the equality relation between 4 and 2248.",
+      "a": "4",
+      "b": "2248",
+      "answer": null,
+      "route_label": false,
+      "family": "Test the equality relation between {x} and {y}.",
+      "family_index": 33,
+      "split": "phase11_confirmatory_negative_comparison"
+    },
+    {
+      "prompt": "Test the equality relation between 165 and 89.",
+      "a": "165",
+      "b": "89",
+      "answer": null,
+      "route_label": false,
+      "family": "Test the equality relation between {x} and {y}.",
+      "family_index": 33,
+      "split": "phase11_confirmatory_negative_comparison"
+    },
+    {
+      "prompt": "Choose the lower value from 1341 and 732; do no addition.",
+      "a": "1341",
+      "b": "732",
+      "answer": null,
+      "route_label": false,
+      "family": "Choose the lower value from {x} and {y}; do no addition.",
+      "family_index": 34,
+      "split": "phase11_confirmatory_negative_comparison"
+    },
+    {
+      "prompt": "Choose the lower value from 9647 and 5; do no addition.",
+      "a": "9647",
+      "b": "5",
+      "answer": null,
+      "route_label": false,
+      "family": "Choose the lower value from {x} and {y}; do no addition.",
+      "family_index": 34,
+      "split": "phase11_confirmatory_negative_comparison"
+    },
+    {
+      "prompt": "Choose the lower value from 2129 and 263; do no addition.",
+      "a": "2129",
+      "b": "263",
+      "answer": null,
+      "route_label": false,
+      "family": "Choose the lower value from {x} and {y}; do no addition.",
+      "family_index": 34,
+      "split": "phase11_confirmatory_negative_comparison"
+    },
+    {
+      "prompt": "Choose the lower value from 91 and 69; do no addition.",
+      "a": "91",
+      "b": "69",
+      "answer": null,
+      "route_label": false,
+      "family": "Choose the lower value from {x} and {y}; do no addition.",
+      "family_index": 34,
+      "split": "phase11_confirmatory_negative_comparison"
+    },
+    {
+      "prompt": "Form a text token by placing 351 directly after 479.",
+      "a": "351",
+      "b": "479",
+      "answer": null,
+      "route_label": false,
+      "family": "Form a text token by placing {y} directly after {x}.",
+      "family_index": 35,
+      "split": "phase11_confirmatory_negative_concatenation"
+    },
+    {
+      "prompt": "Form a text token by placing 3833 directly after 65.",
+      "a": "3833",
+      "b": "65",
+      "answer": null,
+      "route_label": false,
+      "family": "Form a text token by placing {y} directly after {x}.",
+      "family_index": 35,
+      "split": "phase11_confirmatory_negative_concatenation"
+    },
+    {
+      "prompt": "Form a text token by placing 6912 directly after 353.",
+      "a": "6912",
+      "b": "353",
+      "answer": null,
+      "route_label": false,
+      "family": "Form a text token by placing {y} directly after {x}.",
+      "family_index": 35,
+      "split": "phase11_confirmatory_negative_concatenation"
+    },
+    {
+      "prompt": "Form a text token by placing 2464 directly after 5683.",
+      "a": "2464",
+      "b": "5683",
+      "answer": null,
+      "route_label": false,
+      "family": "Form a text token by placing {y} directly after {x}.",
+      "family_index": 35,
+      "split": "phase11_confirmatory_negative_concatenation"
+    },
+    {
+      "prompt": "Render the pair as 4::3985 with no arithmetic.",
+      "a": "4",
+      "b": "3985",
+      "answer": null,
+      "route_label": false,
+      "family": "Render the pair as {x}::{y} with no arithmetic.",
+      "family_index": 36,
+      "split": "phase11_confirmatory_negative_concatenation"
+    },
+    {
+      "prompt": "Render the pair as 97::998 with no arithmetic.",
+      "a": "97",
+      "b": "998",
+      "answer": null,
+      "route_label": false,
+      "family": "Render the pair as {x}::{y} with no arithmetic.",
+      "family_index": 36,
+      "split": "phase11_confirmatory_negative_concatenation"
+    },
+    {
+      "prompt": "Render the pair as 636::215 with no arithmetic.",
+      "a": "636",
+      "b": "215",
+      "answer": null,
+      "route_label": false,
+      "family": "Render the pair as {x}::{y} with no arithmetic.",
+      "family_index": 36,
+      "split": "phase11_confirmatory_negative_concatenation"
+    },
+    {
+      "prompt": "Render the pair as 2::638 with no arithmetic.",
+      "a": "2",
+      "b": "638",
+      "answer": null,
+      "route_label": false,
+      "family": "Render the pair as {x}::{y} with no arithmetic.",
+      "family_index": 36,
+      "split": "phase11_confirmatory_negative_concatenation"
+    },
+    {
+      "prompt": "Write identifier 5748 followed by identifier 672.",
+      "a": "5748",
+      "b": "672",
+      "answer": null,
+      "route_label": false,
+      "family": "Write identifier {x} followed by identifier {y}.",
+      "family_index": 37,
+      "split": "phase11_confirmatory_negative_concatenation"
+    },
+    {
+      "prompt": "Write identifier 557 followed by identifier 31.",
+      "a": "557",
+      "b": "31",
+      "answer": null,
+      "route_label": false,
+      "family": "Write identifier {x} followed by identifier {y}.",
+      "family_index": 37,
+      "split": "phase11_confirmatory_negative_concatenation"
+    },
+    {
+      "prompt": "Write identifier 2358 followed by identifier 7.",
+      "a": "2358",
+      "b": "7",
+      "answer": null,
+      "route_label": false,
+      "family": "Write identifier {x} followed by identifier {y}.",
+      "family_index": 37,
+      "split": "phase11_confirmatory_negative_concatenation"
+    },
+    {
+      "prompt": "Write identifier 250 followed by identifier 382.",
+      "a": "250",
+      "b": "382",
+      "answer": null,
+      "route_label": false,
+      "family": "Write identifier {x} followed by identifier {y}.",
+      "family_index": 37,
+      "split": "phase11_confirmatory_negative_concatenation"
+    },
+    {
+      "prompt": "Output both strings 220 and 795, separated by a dash.",
+      "a": "220",
+      "b": "795",
+      "answer": null,
+      "route_label": false,
+      "family": "Output both strings {x} and {y}, separated by a dash.",
+      "family_index": 38,
+      "split": "phase11_confirmatory_negative_concatenation"
+    },
+    {
+      "prompt": "Output both strings 3 and 238, separated by a dash.",
+      "a": "3",
+      "b": "238",
+      "answer": null,
+      "route_label": false,
+      "family": "Output both strings {x} and {y}, separated by a dash.",
+      "family_index": 38,
+      "split": "phase11_confirmatory_negative_concatenation"
+    },
+    {
+      "prompt": "Output both strings 21 and 87, separated by a dash.",
+      "a": "21",
+      "b": "87",
+      "answer": null,
+      "route_label": false,
+      "family": "Output both strings {x} and {y}, separated by a dash.",
+      "family_index": 38,
+      "split": "phase11_confirmatory_negative_concatenation"
+    },
+    {
+      "prompt": "Output both strings 7 and 7914, separated by a dash.",
+      "a": "7",
+      "b": "7914",
+      "answer": null,
+      "route_label": false,
+      "family": "Output both strings {x} and {y}, separated by a dash.",
+      "family_index": 38,
+      "split": "phase11_confirmatory_negative_concatenation"
+    },
+    {
+      "prompt": "Join the decimal characters in 2 with those in 53.",
+      "a": "2",
+      "b": "53",
+      "answer": null,
+      "route_label": false,
+      "family": "Join the decimal characters in {x} with those in {y}.",
+      "family_index": 39,
+      "split": "phase11_confirmatory_negative_concatenation"
+    },
+    {
+      "prompt": "Join the decimal characters in 424 with those in 64.",
+      "a": "424",
+      "b": "64",
+      "answer": null,
+      "route_label": false,
+      "family": "Join the decimal characters in {x} with those in {y}.",
+      "family_index": 39,
+      "split": "phase11_confirmatory_negative_concatenation"
+    },
+    {
+      "prompt": "Join the decimal characters in 9668 with those in 973.",
+      "a": "9668",
+      "b": "973",
+      "answer": null,
+      "route_label": false,
+      "family": "Join the decimal characters in {x} with those in {y}.",
+      "family_index": 39,
+      "split": "phase11_confirmatory_negative_concatenation"
+    },
+    {
+      "prompt": "Join the decimal characters in 908 with those in 8970.",
+      "a": "908",
+      "b": "8970",
+      "answer": null,
+      "route_label": false,
+      "family": "Join the decimal characters in {x} with those in {y}.",
+      "family_index": 39,
+      "split": "phase11_confirmatory_negative_concatenation"
+    },
+    {
+      "prompt": "Imagine a later instruction to total 9 and 3840; identify its operation without evaluating it.",
+      "a": "9",
+      "b": "3840",
+      "answer": null,
+      "route_label": false,
+      "family": "Imagine a later instruction to total {x} and {y}; identify its operation without evaluating it.",
+      "family_index": 40,
+      "split": "phase11_confirmatory_negative_hypothetical"
+    },
+    {
+      "prompt": "Imagine a later instruction to total 43 and 7; identify its operation without evaluating it.",
+      "a": "43",
+      "b": "7",
+      "answer": null,
+      "route_label": false,
+      "family": "Imagine a later instruction to total {x} and {y}; identify its operation without evaluating it.",
+      "family_index": 40,
+      "split": "phase11_confirmatory_negative_hypothetical"
+    },
+    {
+      "prompt": "Imagine a later instruction to total 42 and 63; identify its operation without evaluating it.",
+      "a": "42",
+      "b": "63",
+      "answer": null,
+      "route_label": false,
+      "family": "Imagine a later instruction to total {x} and {y}; identify its operation without evaluating it.",
+      "family_index": 40,
+      "split": "phase11_confirmatory_negative_hypothetical"
+    },
+    {
+      "prompt": "Imagine a later instruction to total 785 and 9136; identify its operation without evaluating it.",
+      "a": "785",
+      "b": "9136",
+      "answer": null,
+      "route_label": false,
+      "family": "Imagine a later instruction to total {x} and {y}; identify its operation without evaluating it.",
+      "family_index": 40,
+      "split": "phase11_confirmatory_negative_hypothetical"
+    },
+    {
+      "prompt": "Could 3224 and 305 be operands of addition? Answer yes or no, with no result.",
+      "a": "3224",
+      "b": "305",
+      "answer": null,
+      "route_label": false,
+      "family": "Could {x} and {y} be operands of addition? Answer yes or no, with no result.",
+      "family_index": 41,
+      "split": "phase11_confirmatory_negative_hypothetical"
+    },
+    {
+      "prompt": "Could 3 and 76 be operands of addition? Answer yes or no, with no result.",
+      "a": "3",
+      "b": "76",
+      "answer": null,
+      "route_label": false,
+      "family": "Could {x} and {y} be operands of addition? Answer yes or no, with no result.",
+      "family_index": 41,
+      "split": "phase11_confirmatory_negative_hypothetical"
+    },
+    {
+      "prompt": "Could 6 and 56 be operands of addition? Answer yes or no, with no result.",
+      "a": "6",
+      "b": "56",
+      "answer": null,
+      "route_label": false,
+      "family": "Could {x} and {y} be operands of addition? Answer yes or no, with no result.",
+      "family_index": 41,
+      "split": "phase11_confirmatory_negative_hypothetical"
+    },
+    {
+      "prompt": "Could 686 and 38 be operands of addition? Answer yes or no, with no result.",
+      "a": "686",
+      "b": "38",
+      "answer": null,
+      "route_label": false,
+      "family": "Could {x} and {y} be operands of addition? Answer yes or no, with no result.",
+      "family_index": 41,
+      "split": "phase11_confirmatory_negative_hypothetical"
+    },
+    {
+      "prompt": "Discuss whether adding 905 to 7047 might require a carry; calculate nothing.",
+      "a": "905",
+      "b": "7047",
+      "answer": null,
+      "route_label": false,
+      "family": "Discuss whether adding {x} to {y} might require a carry; calculate nothing.",
+      "family_index": 42,
+      "split": "phase11_confirmatory_negative_hypothetical"
+    },
+    {
+      "prompt": "Discuss whether adding 399 to 4244 might require a carry; calculate nothing.",
+      "a": "399",
+      "b": "4244",
+      "answer": null,
+      "route_label": false,
+      "family": "Discuss whether adding {x} to {y} might require a carry; calculate nothing.",
+      "family_index": 42,
+      "split": "phase11_confirmatory_negative_hypothetical"
+    },
+    {
+      "prompt": "Discuss whether adding 403 to 8 might require a carry; calculate nothing.",
+      "a": "403",
+      "b": "8",
+      "answer": null,
+      "route_label": false,
+      "family": "Discuss whether adding {x} to {y} might require a carry; calculate nothing.",
+      "family_index": 42,
+      "split": "phase11_confirmatory_negative_hypothetical"
+    },
+    {
+      "prompt": "Discuss whether adding 747 to 5 might require a carry; calculate nothing.",
+      "a": "747",
+      "b": "5",
+      "answer": null,
+      "route_label": false,
+      "family": "Discuss whether adding {x} to {y} might require a carry; calculate nothing.",
+      "family_index": 42,
+      "split": "phase11_confirmatory_negative_hypothetical"
+    },
+    {
+      "prompt": "Name the operator in the expression 859 + 2574 but leave it unsolved.",
+      "a": "859",
+      "b": "2574",
+      "answer": null,
+      "route_label": false,
+      "family": "Name the operator in the expression {x} + {y} but leave it unsolved.",
+      "family_index": 43,
+      "split": "phase11_confirmatory_negative_hypothetical"
+    },
+    {
+      "prompt": "Name the operator in the expression 6451 + 23 but leave it unsolved.",
+      "a": "6451",
+      "b": "23",
+      "answer": null,
+      "route_label": false,
+      "family": "Name the operator in the expression {x} + {y} but leave it unsolved.",
+      "family_index": 43,
+      "split": "phase11_confirmatory_negative_hypothetical"
+    },
+    {
+      "prompt": "Name the operator in the expression 8 + 519 but leave it unsolved.",
+      "a": "8",
+      "b": "519",
+      "answer": null,
+      "route_label": false,
+      "family": "Name the operator in the expression {x} + {y} but leave it unsolved.",
+      "family_index": 43,
+      "split": "phase11_confirmatory_negative_hypothetical"
+    },
+    {
+      "prompt": "Name the operator in the expression 715 + 80 but leave it unsolved.",
+      "a": "715",
+      "b": "80",
+      "answer": null,
+      "route_label": false,
+      "family": "Name the operator in the expression {x} + {y} but leave it unsolved.",
+      "family_index": 43,
+      "split": "phase11_confirmatory_negative_hypothetical"
+    },
+    {
+      "prompt": "If 86 and 7 were summed, would the output be an integer? Do not sum them.",
+      "a": "86",
+      "b": "7",
+      "answer": null,
+      "route_label": false,
+      "family": "If {x} and {y} were summed, would the output be an integer? Do not sum them.",
+      "family_index": 44,
+      "split": "phase11_confirmatory_negative_hypothetical"
+    },
+    {
+      "prompt": "If 2988 and 170 were summed, would the output be an integer? Do not sum them.",
+      "a": "2988",
+      "b": "170",
+      "answer": null,
+      "route_label": false,
+      "family": "If {x} and {y} were summed, would the output be an integer? Do not sum them.",
+      "family_index": 44,
+      "split": "phase11_confirmatory_negative_hypothetical"
+    },
+    {
+      "prompt": "If 86 and 611 were summed, would the output be an integer? Do not sum them.",
+      "a": "86",
+      "b": "611",
+      "answer": null,
+      "route_label": false,
+      "family": "If {x} and {y} were summed, would the output be an integer? Do not sum them.",
+      "family_index": 44,
+      "split": "phase11_confirmatory_negative_hypothetical"
+    },
+    {
+      "prompt": "If 928 and 74 were summed, would the output be an integer? Do not sum them.",
+      "a": "928",
+      "b": "74",
+      "answer": null,
+      "route_label": false,
+      "family": "If {x} and {y} were summed, would the output be an integer? Do not sum them.",
+      "family_index": 44,
+      "split": "phase11_confirmatory_negative_hypothetical"
+    },
+    {
+      "prompt": "Asset record 64004 lists serials 33 and 7434. State how many serials are listed.",
+      "a": "33",
+      "b": "7434",
+      "answer": null,
+      "route_label": false,
+      "family": "Asset record {c} lists serials {x} and {y}. State how many serials are listed.",
+      "family_index": 45,
+      "split": "phase11_confirmatory_negative_distractor"
+    },
+    {
+      "prompt": "Asset record 63554 lists serials 643 and 9. State how many serials are listed.",
+      "a": "643",
+      "b": "9",
+      "answer": null,
+      "route_label": false,
+      "family": "Asset record {c} lists serials {x} and {y}. State how many serials are listed.",
+      "family_index": 45,
+      "split": "phase11_confirmatory_negative_distractor"
+    },
+    {
+      "prompt": "Asset record 28593 lists serials 970 and 4988. State how many serials are listed.",
+      "a": "970",
+      "b": "4988",
+      "answer": null,
+      "route_label": false,
+      "family": "Asset record {c} lists serials {x} and {y}. State how many serials are listed.",
+      "family_index": 45,
+      "split": "phase11_confirmatory_negative_distractor"
+    },
+    {
+      "prompt": "Asset record 75274 lists serials 6338 and 70. State how many serials are listed.",
+      "a": "6338",
+      "b": "70",
+      "answer": null,
+      "route_label": false,
+      "family": "Asset record {c} lists serials {x} and {y}. State how many serials are listed.",
+      "family_index": 45,
+      "split": "phase11_confirmatory_negative_distractor"
+    },
+    {
+      "prompt": "Log 24659 mentions channels 5709 and 3. Confirm that three numbers occur.",
+      "a": "5709",
+      "b": "3",
+      "answer": null,
+      "route_label": false,
+      "family": "Log {c} mentions channels {x} and {y}. Confirm that three numbers occur.",
+      "family_index": 46,
+      "split": "phase11_confirmatory_negative_distractor"
+    },
+    {
+      "prompt": "Log 61879 mentions channels 185 and 7503. Confirm that three numbers occur.",
+      "a": "185",
+      "b": "7503",
+      "answer": null,
+      "route_label": false,
+      "family": "Log {c} mentions channels {x} and {y}. Confirm that three numbers occur.",
+      "family_index": 46,
+      "split": "phase11_confirmatory_negative_distractor"
+    },
+    {
+      "prompt": "Log 74076 mentions channels 484 and 8796. Confirm that three numbers occur.",
+      "a": "484",
+      "b": "8796",
+      "answer": null,
+      "route_label": false,
+      "family": "Log {c} mentions channels {x} and {y}. Confirm that three numbers occur.",
+      "family_index": 46,
+      "split": "phase11_confirmatory_negative_distractor"
+    },
+    {
+      "prompt": "Log 38764 mentions channels 9 and 5498. Confirm that three numbers occur.",
+      "a": "9",
+      "b": "5498",
+      "answer": null,
+      "route_label": false,
+      "family": "Log {c} mentions channels {x} and {y}. Confirm that three numbers occur.",
+      "family_index": 46,
+      "split": "phase11_confirmatory_negative_distractor"
+    },
+    {
+      "prompt": "Building 30183 contains rooms labeled 69 and 13. Repeat only room labels.",
+      "a": "69",
+      "b": "13",
+      "answer": null,
+      "route_label": false,
+      "family": "Building {c} contains rooms labeled {x} and {y}. Repeat only room labels.",
+      "family_index": 47,
+      "split": "phase11_confirmatory_negative_distractor"
+    },
+    {
+      "prompt": "Building 54395 contains rooms labeled 37 and 884. Repeat only room labels.",
+      "a": "37",
+      "b": "884",
+      "answer": null,
+      "route_label": false,
+      "family": "Building {c} contains rooms labeled {x} and {y}. Repeat only room labels.",
+      "family_index": 47,
+      "split": "phase11_confirmatory_negative_distractor"
+    },
+    {
+      "prompt": "Building 71409 contains rooms labeled 5500 and 53. Repeat only room labels.",
+      "a": "5500",
+      "b": "53",
+      "answer": null,
+      "route_label": false,
+      "family": "Building {c} contains rooms labeled {x} and {y}. Repeat only room labels.",
+      "family_index": 47,
+      "split": "phase11_confirmatory_negative_distractor"
+    },
+    {
+      "prompt": "Building 38350 contains rooms labeled 338 and 76. Repeat only room labels.",
+      "a": "338",
+      "b": "76",
+      "answer": null,
+      "route_label": false,
+      "family": "Building {c} contains rooms labeled {x} and {y}. Repeat only room labels.",
+      "family_index": 47,
+      "split": "phase11_confirmatory_negative_distractor"
+    },
+    {
+      "prompt": "Catalog 53136 references entries 77 and 8292. Are two entries referenced?",
+      "a": "77",
+      "b": "8292",
+      "answer": null,
+      "route_label": false,
+      "family": "Catalog {c} references entries {x} and {y}. Are two entries referenced?",
+      "family_index": 48,
+      "split": "phase11_confirmatory_negative_distractor"
+    },
+    {
+      "prompt": "Catalog 44867 references entries 81 and 9. Are two entries referenced?",
+      "a": "81",
+      "b": "9",
+      "answer": null,
+      "route_label": false,
+      "family": "Catalog {c} references entries {x} and {y}. Are two entries referenced?",
+      "family_index": 48,
+      "split": "phase11_confirmatory_negative_distractor"
+    },
+    {
+      "prompt": "Catalog 25139 references entries 155 and 7659. Are two entries referenced?",
+      "a": "155",
+      "b": "7659",
+      "answer": null,
+      "route_label": false,
+      "family": "Catalog {c} references entries {x} and {y}. Are two entries referenced?",
+      "family_index": 48,
+      "split": "phase11_confirmatory_negative_distractor"
+    },
+    {
+      "prompt": "Catalog 39898 references entries 562 and 7. Are two entries referenced?",
+      "a": "562",
+      "b": "7",
+      "answer": null,
+      "route_label": false,
+      "family": "Catalog {c} references entries {x} and {y}. Are two entries referenced?",
+      "family_index": 48,
+      "split": "phase11_confirmatory_negative_distractor"
+    },
+    {
+      "prompt": "Survey 13883 names sites 19 and 55. Say whether both site names are numeric.",
+      "a": "19",
+      "b": "55",
+      "answer": null,
+      "route_label": false,
+      "family": "Survey {c} names sites {x} and {y}. Say whether both site names are numeric.",
+      "family_index": 49,
+      "split": "phase11_confirmatory_negative_distractor"
+    },
+    {
+      "prompt": "Survey 19499 names sites 41 and 3774. Say whether both site names are numeric.",
+      "a": "41",
+      "b": "3774",
+      "answer": null,
+      "route_label": false,
+      "family": "Survey {c} names sites {x} and {y}. Say whether both site names are numeric.",
+      "family_index": 49,
+      "split": "phase11_confirmatory_negative_distractor"
+    },
+    {
+      "prompt": "Survey 78958 names sites 11 and 322. Say whether both site names are numeric.",
+      "a": "11",
+      "b": "322",
+      "answer": null,
+      "route_label": false,
+      "family": "Survey {c} names sites {x} and {y}. Say whether both site names are numeric.",
+      "family_index": 49,
+      "split": "phase11_confirmatory_negative_distractor"
+    },
+    {
+      "prompt": "Survey 10820 names sites 3534 and 4179. Say whether both site names are numeric.",
+      "a": "3534",
+      "b": "4179",
+      "answer": null,
+      "route_label": false,
+      "family": "Survey {c} names sites {x} and {y}. Say whether both site names are numeric.",
+      "family_index": 49,
+      "split": "phase11_confirmatory_negative_distractor"
+    }
+  ]
+}
