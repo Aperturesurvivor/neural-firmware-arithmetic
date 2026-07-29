@@ -1,0 +1,104 @@
+{
+  "status": "phase11_completion_audit_passed",
+  "checks": [
+    {
+      "name": "statuses",
+      "passed": true
+    },
+    {
+      "name": "frozen_model_identity",
+      "passed": true
+    },
+    {
+      "name": "protocol_hash_and_frozen_content",
+      "passed": true
+    },
+    {
+      "name": "manifest_existed_unchanged_at_confirmation",
+      "passed": true
+    },
+    {
+      "name": "result_committed_once_with_current_content",
+      "passed": true
+    },
+    {
+      "name": "freeze_before_result_commit_order",
+      "passed": true
+    },
+    {
+      "name": "canonical_prompt_hash",
+      "passed": true
+    },
+    {
+      "name": "generated_manifest_evaluated_rows_identical",
+      "passed": true
+    },
+    {
+      "name": "prompt_counts_and_splits",
+      "passed": true
+    },
+    {
+      "name": "family_and_operand_disjointness",
+      "passed": true
+    },
+    {
+      "name": "seed_and_checkpoint_manifest",
+      "passed": true
+    },
+    {
+      "name": "decoding_and_counts",
+      "passed": true
+    },
+    {
+      "name": "base_outputs_and_exact",
+      "passed": true
+    },
+    {
+      "name": "all_row_records_recomputed",
+      "passed": true
+    },
+    {
+      "name": "aggregate_metrics_recomputed",
+      "passed": true
+    },
+    {
+      "name": "paired_gains_and_gates_recomputed",
+      "passed": true
+    },
+    {
+      "name": "checkpoint_16201_hashes_and_inheritance",
+      "passed": true
+    },
+    {
+      "name": "checkpoint_16202_hashes_and_inheritance",
+      "passed": true
+    },
+    {
+      "name": "checkpoint_16203_hashes_and_inheritance",
+      "passed": true
+    },
+    {
+      "name": "analysis_primary_totals",
+      "passed": true
+    },
+    {
+      "name": "environment_dependency_and_artifact_hashes",
+      "passed": true
+    },
+    {
+      "name": "summary_contains_frozen_verdict",
+      "passed": true
+    }
+  ],
+  "passed": 22,
+  "failed": 0,
+  "failed_checks": [],
+  "artifact_hashes": {
+    "phase11_results/frozen_prompt_manifest.json": "6fed42b45d7cb3eaa5f44cf3901d56d2ca4ded5633f15526227449a1be076c47",
+    "phase11_results/confirmation.json": "b76db01dff49bfd98e74eb7ad626620b63e15750e57ea82d9d23f5a634cd5871",
+    "phase11_results/analysis.json": "cf3eef9be5e40ea6546cf9352319c903110b2c8cade0b9a949299dc2580d3c4b",
+    "phase11_results/environment_audit.json": "1ed2648f9d3bd5c76e9f23071e5a6e40df3a70f3c833563713d2b380cfc1db7f",
+    "PHASE11_AUTONOMOUS_ROUTING_PROTOCOL.md": "190b9a8668fa4bcb9b2d38cc6d7fb5b57bace2aa98cf16037a8cf3a98dd7f3c6",
+    "PHASE11_EXECUTIVE_SUMMARY.md": "f49b5dea2c6125bb3dc1297211891afec7dabbc754b1340904f5b252cdca14ca"
+  }
+}
